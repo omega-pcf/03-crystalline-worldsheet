@@ -1,5 +1,6 @@
 # The Crystalline Worldsheet: A String Theoretical framework based on φ and π for the de Sitter observer problem
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21343602.svg)](https://doi.org/10.5281/zenodo.21343602)
 [![Project Page](https://img.shields.io/badge/Project%20Page-omega--pcf.com-blue)](https://omega-pcf.com)
 
 ## Authors
@@ -28,6 +29,21 @@ This manuscript is the third instalment of the PCF trilogy:
 | 03 | `03-crystalline-worldsheet`   | The string theoretical framework for the de Sitter observer (this repo) |
 
 A fourth companion paper develops the **identity** thread (binary, ternary, golden bases).
+
+## Citation
+
+González García, J. A., González García, V. M., Dressler Pérez, I. M., García Ordóñez, L. M., & Moreno, M. (2026). *The Crystalline Worldsheet: A String Theoretical framework based on φ and π for the de Sitter observer problem*. Zenodo. DOI: [10.5281/zenodo.21343602](https://doi.org/10.5281/zenodo.21343602).
+
+```bibtex
+@article{CW3,
+  author  = {González García, J. A. and González García, V. M. and Dressler Pérez, I. M. and García Ordóñez, L. M. and Moreno, M.},
+  title   = {The Crystalline Worldsheet: A String Theoretical framework based on φ and π for the de Sitter observer problem},
+  journal = {Zenodo},
+  year    = {2026},
+  doi     = {10.5281/zenodo.21343602},
+  url     = {https://doi.org/10.5281/zenodo.21343602}
+}
+```
 
 ## Repository Structure
 
