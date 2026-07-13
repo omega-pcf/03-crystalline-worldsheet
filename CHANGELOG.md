@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.1](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.0...v0.3.1) (2026-07-13)
+
+### Bug Fixes
+
+* **readme:** remove premature trilogy/companion table ([98efd80](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/98efd8023e378fb121a9b559653d41ab834cac8f))
+* **tex:** red cross-refs, blue citations (no green) ([72b7cbe](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/72b7cbe9d31f5bd4c485b82ec27e955a36ccbd80))
+* **tex:** remove explicit hypersetup, amsart handles blue links natively ([7c1414c](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/7c1414c309b6296533bc789dae92f90c63c6fc0a))
+* **tex:** restore colored hyperlinks for refs and cites ([beb4c01](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/beb4c0155ba4a9f36d73fd9d3c6530ad8316a93d))
+
 ## [0.3.0](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.2.0...v0.3.0) (2026-07-13)
 
 ### Features

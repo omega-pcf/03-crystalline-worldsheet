@@ -3,7 +3,7 @@ message: If you use this software, please cite it using these metadata.
 title: "The Crystalline Worldsheet: A String Theoretical framework based on φ
   and π for the de Sitter observer problem"
 type: software
-version: 0.3.0
+version: 0.3.1
 date-released: 2026-07-13
 authors:
   - family-names: González García
