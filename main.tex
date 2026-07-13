@@ -24,6 +24,7 @@
 \addbibresource{src/bibliography.bib}
 \AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}
 \usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=red,citecolor=blue}
 \usepackage[capitalize,nameinlink]{cleveref}
 
 \crefname{section}{\S}{\S\S}
@@ -120,7 +121,7 @@
 \keywords{Holography; de~Sitter; M-theory; string theory; field with one element ($\mathbb{F}_1$); $\lambda$-rings; golden ratio; moduli spaces; formal verification}
 
 \begin{abstract}
-\input{src/chapters/01-introduction-abstract}
+    \input{src/chapters/01-introduction-abstract}
 \end{abstract}
 
 \maketitle
