@@ -18,18 +18,6 @@ We propose that the obstruction to holography in de Sitter space is *epistemolog
 
 **Keywords:** Holography; de Sitter; M-theory; string theory; field with one element ($\mathbb{F}_1$); $\lambda$-rings; golden ratio; moduli spaces; formal verification.
 
-## Companion Papers
-
-This manuscript is the third instalment of the PCF trilogy:
-
-| # | Paper | Focus |
-|---|-------|-------|
-| 01 | `01-hilbert-polya`            | The Hilbert–Pólya operator |
-| 02 | `02-odd-zeta`                 | Odd zeta values from pentagonal $\mathbb{F}_1$-descent |
-| 03 | `03-crystalline-worldsheet`   | The string theoretical framework for the de Sitter observer (this repo) |
-
-A fourth companion paper develops the **identity** thread (binary, ternary, golden bases).
-
 ## Citation
 
 González García, J. A., González García, V. M., Dressler Pérez, I. M., & García Ordóñez, L. M. (2026). *The Crystalline Worldsheet: A String Theoretical framework based on φ and π for the de Sitter observer problem*. Zenodo. DOI: [10.5281/zenodo.21343602](https://doi.org/10.5281/zenodo.21343602).
