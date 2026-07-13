@@ -1,169 +1,113 @@
 # TODO — Limitations, Future Work & Open Questions
 
-This document collects every item the build **does not** currently verify, every
-known blemish visible in `build/main.pdf`, and concrete recommendations for
-later rounds of editorial / engineering work.
+This document records what the build does **not** verify, the cosmetic
+blemishes visible in the current `build/document-v0.1.0.pdf`, and the
+concrete next steps. It is the hand-off note for the next editorial round.
 
-> **Operational note:** The shell is set up so that `pnpm run build` and
-> `pnpm run verify` (Lean + Python) succeed on a clean checkout. The items
-> below are *further* checks; they require human review, external data, or
-> additional engineering before they can become automated.
+---
+
+## How the bibliography pipeline works now
+
+The single source of truth is **`citation.csl.json`** (76 hand-curated CSL
+entries). `pnpm run build` runs `scripts/build.ts`, which calls
+`scripts/tasks/citation.ts`:
+
+1. `citation.csl.json` → `src/bibliography.bib`   (via `@citation-js/plugin-bibtex`)
+2. `citation.csl.json` → `CITATION.cff` references (via `@citation-js/plugin-cff`)
+3. `CITATION.cff`      → `.zenodo.json`            (native mapping in `citation.ts`)
+4. docker `pdflatex` × 3 + `biber` → `build/document-v<version>.pdf`
+
+Two non-obvious `citation.ts` settings make this work:
+
+- `plugins.config.get('@bibtex').format.useIdAsLabel = true`
+  Without it, citation-js generates `AuthorYearWord` keys *and* emits an
+  invalid trailing comma after the entry-opening brace
+  (`@article{Key},`), which biber rejects. With it, the CSL `id`
+  becomes the BibTeX key and the opener is valid
+  (`@article{Strominger01,`). This is the documented option — not a heuristic.
+- CSL `type: "article"` for the companion-paper stubs (`F1`, `HP`, `Corr`).
+  citation-js maps CSL `preprint` / `misc` / `report` to CFF types that the
+  CFF 1.2.0 schema rejects (missing `type` field). `article` maps cleanly.
+
+**Rule:** to change the bibliography, edit `citation.csl.json` and re-run
+`pnpm run build`. Do not hand-edit `src/bibliography.bib`, `CITATION.cff`,
+or `.zenodo.json` — they are regenerated every build.
 
 ---
 
 ## 1. NOT verified by this build
 
-The project explicitly did **not** verify the following. They are out of scope
-of the completeness-and-correctness pass that wired the deliverables into the
-shell, and they are the natural starting point for a separate editorial task.
+These are out of scope of the shell-wiring pass and are the natural starting
+point for a separate editorial task:
 
-- **Each citekey points to a real publication** in the cited journal/proceedings
-  (e.g. that `Maldacena98` is actually the Adv.\ Theor.\ Math.\ Phys.\ 2
-  (1998) 231 article; that `Kiely26` Phys.\ Rev.\ A 113 022403 corresponds
-  to the same paper; that `SusskindWitten98` matches hep-th/9805114, etc.).
-- **Each DOI resolves** to the correct paper on doi.org.
-- **Each arXiv ID is a real preprint** (the new-style `YYMM.NNNNN` and the
-  old-style `hep-th/YYMMNNN` forms both parsed cleanly, but no URL was
-  HEAD-checked).
-- **Each page / volume / issue number matches** the original publication. The
-  `\textbf{}`-wrapped volume markers and bare page numerals in the source
-  `\bibitem{}` blocks are dropped during parsing (see §3.1 below), so
-  quantities like `JHEP 02 () 082` or `Phys.\ Lett.\ B 379 () 283` retain the
-  year and the first page number but lose the volume.
-- **The English translation** of the Schiller epigraph in Appendix
-  §`app:epigraph-en` is a standard rendering — verify it against the
-  translator you intend to credit.
-- **The bibliography order** in the rendered PDF is alphabetical by label
-  (biblatex `style=numeric, sorting=none` does NOT reorder; the printed order
-  follows first-cite order). If the journal expects alphabetical-by-author
-  ordering, that has to be switched.
-- **Factual accuracy of the prose** (the mathematics, the physics attributions,
-  the claims about M-theory, F₁, etc.) — pure editorial review.
+- **Each citekey resolves to the correct publication.** The CSL `id`s match
+  the `\bibitem{key}` keys in the source `src/chapters/references.tex`, so
+  every `\cite{key}` in the chapter files resolves. But *which paper* each
+  key points to (e.g. that `Maldacena98` really is Adv. Theor. Math. Phys.
+  **2** (1998) 231, not a different Maldacena 1998 paper) has not been
+  cross-checked against doi.org / arXiv.
+- **Each DOI / arXiv ID is real and points to the right paper.** The URLs
+  are syntactically valid; none have been HEAD-checked.
+- **Each volume / page / article-number is exact.** Hand-transcribed from
+  the source `\bibitem{}` blocks; transcription errors are possible.
+- **Factual accuracy of the prose** (the physics, the mathematics, the
+  attributions to M-theory / F₁ / AdS-CFT literature). Pure editorial
+  review.
+- **The Schiller translation** in Appendix `app:epigraph-en` is *a* standard
+  English rendering; confirm it against the translator you want to credit.
 
 ---
 
-## 2. Cosmetic blemishes visible in the current `build/main.pdf`
+## 2. Cosmetic blemishes in the current PDF (all in the bibliography)
 
-These are *known* format quirks in the bibliography / body. None block
-compilation, but they are visible.
+None block compilation. All are fixable by editing `citation.csl.json`.
 
-- **2 entries with `In: ()` empty year.** `Pacioli1509` ("Venice (1509)") and
-  `Hurwitz1891` ("Math.Ann.39 (1891) 279"). The year appears in the raw
-  bibitem but the current `parse_raw` year regex
-  `r'\b((?:19|20)\d{2})\b'` is too narrow to catch `1509` / `1891`. Fix:
-  widen to `r'\b1[0-9]{3}|20\d{2}\b'` or any four-digit year.
-- **~62 entries** show `In: (YEAR). JournalShort.Y () Page`, with the volume
-  field empty (`()`). The `\textbf{<vol>}` markers used in the source were
-  stripped. To recover volumes, preserve `\textbf{...}` blocks and emit them
-  as a separate `volume = {...}` field in the bib (then biber routes them).
-- **`Kiely26` title is the author list** in the rendered output, because the
-  source `\bibitem{}` has no `\emph{...}` or `\textbf{...}` title. The fallback
-  heuristic picked the wrong segment. Either manually title the entry or
-  improve the fallback (look for `Phys. Rev. ...` patterns before the page
-  number).
-- **`Santos2020` DOI** renders the underscore as `\_28\_4` (escaped form that
-  biblatex prints as `_28_4`). Acceptable but cosmetically wider than a real
-  underscore; check whether DOI URLs may need `url = {...}` instead.
-- **`arXiv` URLs for new-style IDs** contain `https : / / arxiv . org` (with
-  spaces from `pdfTeX` URL breaking). This is a side effect of the
-  `arxiv.org/abs/NNNN.NNNNN` URL being passed through TeX's url-breaking
-  algorithm; the actual hyperlink target is correct. To silence it, set
-  `url = {...}` (which uses `\url{}` rather than `\href{}`) or pass `nolinkurl`.
-- **Companion-paper stubs `F1`, `HP`, `Corr`** show
-  `J.A. Gonzalez Garcia et al.` in the author position with the actual title
-  in the next field — fine, but the bibliography treats them as `@misc`
-  (correctly), and their "year" source from the original paper's
-  preprint/draft is not always recoverable (here they do get year=2026).
+| # | Entry | Symptom | Fix (in `citation.csl.json`) |
+|---|-------|---------|------------------------------|
+| 1 | `Cooper2026`, `Elvang2026` | `In: ()` — empty year slot | These are arXiv-only preprints whose year lives inside the arXiv id (`2602.12265` → 2026, `2601.11705` → 2026). citation-js does not derive a year from the arXiv id. Add `"issued": {"date-parts": [[2026]]}` explicitly. |
+| 2 | `Schreiber13cohesive` | Title renders as `Differential cohomology in a cohesive -topos` — the `∞` (U+221E) was silently dropped by citation-js's `asciiOnly` conversion. | Replace the `∞` in the title with `{\textinfinity}` won't help (citation-js strips it). Either accept the loss or rephrase the title in the CSL to avoid the symbol. The original paper's title does contain ∞, so the loss is a known citation-js limitation. |
+| 3 | `Kiely26` | Title is the placeholder `(title to be confirmed against the publication)`. The source `\bibitem{}` had no `\emph{...}` title. | Look up the actual paper title (Phys. Rev. A **113** (2026) 022403) and replace the placeholder string. |
+| 4 | ~13 arXiv-only entries | `In: (YEAR).` with no volume — correct for preprints, but visually sparse. | Cosmetic only; preprints genuinely have no volume. No action needed unless a journal style requires it. |
+| 5 | `Santos2020` | DOI renders the underscore as `\_28\_4`. | Acceptable (the hyperlink target is correct). If undesired, the DOI field can be moved into a `URL` field instead. |
+
+Everything else renders correctly: 0 literal tildes, Greek letters
+(`α`, `χ`) render in math mode, the Schiller epigraph and its English
+translation are present, all 76 `\cite{}` calls resolve.
 
 ---
 
-## 3. Recommendations for future rounds
+## 3. Pipeline / shell notes for future rounds
 
-### 3.1 Parser improvements (`/tmp/gen_bib.py` → `scripts/build_bib.py`)
-
-- **Year regex**: widen from `r'\b((?:19|20)\d{2})\b'` to
-  `r'\b1[0-9]{3}|20\d{2}\b'`. Captures `Pacioli1509` (1509),
-  `Hurwitz1891` (1891), `Aristotle_*` (350 BCE wouldn't match but
-  historical mechanics references do).
-- **Volume / number capture**: instead of stripping `\textbf{...}` entirely,
-  look for the pattern `\textbf{<vol>}\ (<num>)\ (<page>)` and emit
-  `volume = {vol}`, `number = {num}` (or `issue`), `pages = {page}` fields
-  with biblatex-compatible names.
-- **`\footnote{}` stripping** in `strip_tex`: some original `\bibitem{}`
-  arguments carry footnote markers that should not propagate into the bib.
-- **Escape unification**: `clean_field` currently escapes `%` and `#`
-  individually; centralise the LaTeX special-char escape into one helper and
-  apply it consistently across all field cleanups.
-- **Wrap-Greek fix**: `wrap_greek_in_math` is correct, but `\alpha^X` for
-  superscripts needs to attach to the surrounding math mode automatically
-  (the LaportaRemiddi96 `$\alpha^3$` patch was a manual in-place fix).
-  Implement a `wrap_math(super_pattern=r'\^[a-zA-Z0-9]{1,3}')` sweep.
-
-### 3.2 Pipeline integration
-
-- **Replace `pnpm run build`'s citation sync** (which overwrites our
-  carefully-preserved cite keys because `@citation-js/core`'s
-  `format('bibtex')` regenerates them) with the Python generator now living
-  at `/tmp/gen_bib.py`. Either:
-  - commit `/tmp/gen_bib.py` as `scripts/build_bib.py` (versioned) and
-    call it from `scripts/build.ts` via the `before:build` hook, **or**
-  - patch `scripts/tasks/citation.ts` to use the CSL entry `id` as the
-    BibTeX key by setting a `citationKey = id` option (citation-js
-    supports `--citationKey-from-id`).
-- **Round-trip regeneration**: write a separate `scripts/retex_bib.py` that
-  consumes `src/bibliography.bib` and emits a `\bibitem{...}` block
-  faithful to the original `src/chapters/references.tex`. Run
-  `diff` between the two to surface parser regressions.
-
-### 3.3 Reference archival
-
-- `src/chapters/references.tex` is preserved as a verbatim copy of the
-  original hardcoded `\begin{thebibliography}` block. It is no longer
-  compiled in the main flow (`\printbibliography` from `src/bibliography.bib`
-  is the active path). It should stay in the repo as a historical
-  reference. If commit size is a concern, it can be moved under
-  `docs/archive/references_original.tex` instead.
-
-### 3.4 Shell hygiene
-
-- Remove `src/paper_integrado_original_s4.tex.pre-split` (a stale copy of
-  the integrated preprint before split; the chapter files are now the
-  canonical manuscript sources).
-- Confirm `.env` is **not** committed (it should remain gitignored per
-  the project `.gitignore`); add a tracked `.env.example` documenting
-  the only secret the build needs (`GITHUB_TOKEN`).
-- Decide whether the PDF artifacts under `build/` belong in version
-  control. Today they are not (only `build/*.pdf` is implicitly exempted
-  by the existing `.gitignore`'s `!build/*.pdf` line — actually the PDF
-  IS currently excluded since the `build/*.aux`, etc. exclusions override
-  the keep-PDF rule, *unless* you literally want the PDF in the repo).
-
-### 3.5 Validation expansion
-
-- Add a `validate:bib` script that, for each entry in `bibliography.bib`,
-  HEAD-checks the URL field against `arxiv.org` and `doi.org` and
-  reports non-200 / redirect / mismatch. This is the automation layer
-  that would let the "factual accuracy" task move from manual editorial
-  review to CI.
+- **`src/chapters/references.tex`** is the verbatim copy of the original
+  hardcoded `\begin{thebibliography}` block. It is no longer compiled
+  (`\printbibliography` from the generated `src/bibliography.bib` is the
+  active path). Keep it as the human-readable provenance of the cite keys;
+  if commit size matters it can move under `docs/archive/`.
+- **`.env`** is gitignored and not committed. `.env.example` documents the
+  one secret the release step needs (`GITHUB_TOKEN`). The build itself does
+  not need it — only `pnpm run release` does.
+- **`build/document-v<version>.pdf`** is committed as a release artifact.
+  Intermediate LaTeX aux files (`build/*.aux`, `*.bbl`, `*.log`, …) are
+  gitignored.
+- **Optional automation:** a `validate:bib` script that HEAD-checks each
+  `URL` / `DOI` field against arxiv.org / doi.org would turn the "factual
+  accuracy" item in §1 from manual review into CI. Not implemented.
 
 ---
 
-## 4. Status of "what is in / out of scope today"
+## 4. Status snapshot
 
-| Item                                                  | Status today       |
-|--------------------------------------------------------|--------------------|
-| File-layout clone of `01-hilbert-polya` / `02-odd-zeta` | done               |
-| 8 chapter `.tex` files (cleanly split)                  | done               |
-| `lean/CW3_Backing.lean`                                | done, `lake build` |
-| `tests/CW3_backing_verify.py` (41/41 PASS)              | done               |
-| 6 publication figures in `images/`                       | done               |
-| `src/bibliography.bib` generated from CSL JSON           | done (Python gen)  |
-| `citation.csl.json` (76 entries)                         | done               |
-| Citation sync (\cite → bib → bbl → PDF)                  | done               |
-| Schiller epigraph (`\emph`-free quote env)              | done               |
-| Funding / COI / Acknowledgments / Appendix translation   | done               |
-| Citekey factual verification                            | **not done**       |
-| DOI / arXiv reality checks                              | **not done**       |
-| Volume / issue / page exactness                        | **not done (cosmetic)** |
-| Round-trip bibitem fidelity check                      | **not done**       |
-| `pnpm run build` → `citation.ts` sync uses `id` as key   | **not done**       |
+| Item | Status |
+|------|--------|
+| Project shell cloned from `01-hilbert-polya` / `02-odd-zeta` | done |
+| 8 chapter `.tex` files + acknowledgments + disclosure + appendix translation | done |
+| `lean/CW3_Backing.lean` — `lake build` | done |
+| `tests/CW3_backing_verify.py` — 41/41 PASS | done |
+| 6 publication figures in `images/` | done |
+| `citation.csl.json` — 76 hand-curated entries (single source of truth) | done |
+| `pnpm run build` end-to-end (citation sync + docker pdflatex + biber) | done |
+| Schiller epigraph + English translation appendix | done |
+| Citekey ↔ real-publication cross-check | **not done** |
+| DOI / arXiv reality (HEAD) checks | **not done** |
+| Volume / page exactness audit | **not done** |
+| `Kiely26` real title | **not done** |

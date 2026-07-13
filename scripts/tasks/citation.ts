@@ -3,14 +3,14 @@ import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import { Ajv, type ValidateFunction } from 'ajv';
 import addFormats from 'ajv-formats';
 // @ts-ignore
-import { Cite } from '@citation-js/core';
+import { Cite, plugins } from '@citation-js/core';
 import '@citation-js/plugin-csl';
 import '@citation-js/plugin-cff';
 import '@citation-js/plugin-bibtex';
 import '@citation-js/plugin-zenodo';
 import type { CslItem } from '@citestyle/types';
-import type { 
-  CitationFileFormat, 
+import type {
+  CitationFileFormat,
   Reference,
   ZenodoDepositionMetadata
 } from '../types.js';
@@ -126,6 +126,13 @@ export class MetadataPipeline {
   }
 
   private syncBibtex(items: CslItem[]): void {
+    // citation-js's `useIdAsLabel: true` config makes the BibTeX output use the
+    // CSL `id` field as the entry key, and (crucially) emits valid BibTeX with
+    // the comma INSIDE the entry opener (`@<type>{<id>,`). Without this option,
+    // citation-js auto-generates `AuthorYearWord` keys AND emits a trailing
+    // comma AFTER the closing brace (`@<type>{<key>},`), which is invalid
+    // BibTeX syntax that biber rejects with: "syntax error: found '}'".
+    (plugins as any).config.get('@bibtex').format.useIdAsLabel = true;
     const data = new Cite(items);
     const bib = data.format('bibtex');
     writeFileSync(PATHS.BIB, bib);

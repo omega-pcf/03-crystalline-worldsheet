@@ -72,63 +72,94 @@ abstract: "We propose that the obstruction to holography in de Sitter space is
   operator (Hilbert–Pólya), and identity (binary, ternary, golden) threads."
 references:
   - authors:
-      - name: L. Susskind
+      - family-names: Susskind
+        given-names: L.
     title: The world as a hologram
     date-published: 1995-01-01
     year: 1995
-    notes: J.~Math.~Phys.\ 36 6377
+    journal: Journal of Mathematical Physics
+    start: "6377"
     type: article
+    volume: "36"
   - authors:
-      - name: J. M. Maldacena
+      - family-names: Maldacena
+        given-names: J. M.
     title: The large N limit of superconformal field theories and supergravity
     date-published: 1998-01-01
     year: 1998
-    notes: Adv.\ Theor.\ Math.\ Phys.\ 2 231
+    journal: Advances in Theoretical and Mathematical Physics
+    start: "231"
     type: article
+    volume: "2"
   - authors:
-      - name: L. Susskind, E. Witten
+      - family-names: Susskind
+        given-names: L.
+      - family-names: Witten
+        given-names: E.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/hep-th/9805114
     title: The holographic bound in anti-de Sitter space
     url: https://arxiv.org/abs/hep-th/9805114
-    notes: arXiv
+    date-published: 1998-01-01
+    year: 1998
     type: article
   - authors:
-      - name: I. R. Klebanov, M. J. Strassler
+      - family-names: Klebanov
+        given-names: I. R.
+      - family-names: Strassler
+        given-names: M. J.
     title: "Supergravity and a confining gauge theory: duality cascades and
-      SB-resolution of naked singularities"
+      χSB-resolution of naked singularities"
     date-published: 2000-01-01
     year: 2000
-    notes: JHEP 08 052
+    journal: Journal of High Energy Physics
+    start: "052"
     type: article
+    volume: "08"
   - authors:
-      - name: E. Witten
+      - family-names: Witten
+        given-names: E.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/hep-th/0106109
     title: Quantum gravity in de Sitter space
     url: https://arxiv.org/abs/hep-th/0106109
-    notes: arXiv
+    date-published: 2001-01-01
+    year: 2001
     type: article
   - authors:
-      - name: V. Chandrasekaran, R. Longo, G. Penington, E. Witten
+      - family-names: Chandrasekaran
+        given-names: V.
+      - family-names: Longo
+        given-names: R.
+      - family-names: Penington
+        given-names: G.
+      - family-names: Witten
+        given-names: E.
     title: An algebra of observables for de Sitter space
     date-published: 2023-01-01
     year: 2023
-    notes: JHEP 02 082
+    journal: Journal of High Energy Physics
+    start: "082"
     type: article
+    volume: "02"
   - authors:
-      - name: L. Susskind
+      - family-names: Susskind
+        given-names: L.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/hep-th/0302219
     title: The anthropic landscape of string theory
     url: https://arxiv.org/abs/hep-th/0302219
-    notes: arXiv
+    date-published: 2003-01-01
+    year: 2003
     type: article
   - authors:
-      - name: R. Bousso, J. Polchinski
+      - family-names: Bousso
+        given-names: R.
+      - family-names: Polchinski
+        given-names: J.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/hep-th/0004134
@@ -137,10 +168,13 @@ references:
     url: https://arxiv.org/abs/hep-th/0004134
     date-published: 2000-01-01
     year: 2000
-    notes: JHEP 06 006, arXiv
+    journal: Journal of High Energy Physics
+    start: "006"
     type: article
+    volume: "06"
   - authors:
-      - name: M. R. Douglas
+      - family-names: Douglas
+        given-names: M. R.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/hep-th/0303194
@@ -148,10 +182,15 @@ references:
     url: https://arxiv.org/abs/hep-th/0303194
     date-published: 2003-01-01
     year: 2003
-    notes: JHEP 05 046, arXiv
+    journal: Journal of High Energy Physics
+    start: "046"
     type: article
+    volume: "05"
   - authors:
-      - name: R. Bousso, L. Susskind
+      - family-names: Bousso
+        given-names: R.
+      - family-names: Susskind
+        given-names: L.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1105.3796
@@ -159,78 +198,110 @@ references:
     url: https://arxiv.org/abs/1105.3796
     date-published: 2012-01-01
     year: 2012
-    notes: Phys.\ Rev.\ D 85 045007, arXiv
+    journal: Physical Review D
     type: article
+    volume: "85"
   - authors:
-      - name: P. Saad, S. H. Shenker, D. Stanford
+      - family-names: Saad
+        given-names: P.
+      - family-names: Shenker
+        given-names: S. H.
+      - family-names: Stanford
+        given-names: D.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1903.11115
     title: JT gravity as a matrix integral
     url: https://arxiv.org/abs/1903.11115
-    notes: arXiv
+    date-published: 2019-01-01
+    year: 2019
     type: article
   - authors:
-      - name: N. Cooper
+      - family-names: Cooper
+        given-names: N.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/2602.12265
     title: Holographic equidistribution
     url: https://arxiv.org/abs/2602.12265
-    notes: arXiv
     type: article
   - authors:
-      - name: F. W. Lawvere
+      - family-names: Lawvere
+        given-names: F. W.
     title: Diagonal arguments and cartesian closed categories
     date-published: 1969-01-01
     year: 1969
-    notes: Lecture Notes in Math.\ 92 134
+    journal: Lecture Notes in Mathematics
+    start: "134"
     type: article
+    volume: "92"
   - authors:
-      - name: N. S. Yanofsky
+      - family-names: Yanofsky
+        given-names: N. S.
     title: A universal approach to self-referential paradoxes, incompleteness and
       fixed points
     date-published: 2003-01-01
     year: 2003
-    notes: Bull.\ Symbolic Logic 9 362
+    journal: Bulletin of Symbolic Logic
+    start: "362"
     type: article
+    volume: "9"
   - authors:
-      - name: P. Martin-Lof
+      - family-names: Martin-Löf
+        given-names: P.
     title: "An intuitionistic theory of types: predicative part"
     date-published: 1975-01-01
     year: 1975
-    notes: in Logic Colloquium '73, North-Holland
-    type: book
+    journal: Logic Colloquium '73
+    publisher:
+      name: North-Holland
+    start: 73–118
+    type: generic
   - authors:
-      - name: G. Priest
+      - family-names: Priest
+        given-names: G.
     title: The logic of paradox
     date-published: 1979-01-01
     year: 1979
-    notes: J.~Philos.\ Logic 8 219
+    journal: Journal of Philosophical Logic
+    start: "219"
     type: article
+    volume: "8"
   - authors:
-      - name: B. Russell
+      - family-names: Russell
+        given-names: B.
     title: Mathematical logic as based on the theory of types
     date-published: 1908-01-01
     year: 1908
-    notes: Amer.\ J.\ Math.\ 30 222
+    journal: American Journal of Mathematics
+    start: "222"
     type: article
+    volume: "30"
   - authors:
-      - name: A. Tarski
+      - family-names: Tarski
+        given-names: A.
     title: A Decision Method for Elementary Algebra and Geometry
-    date-published: 1951-01-01
+    date-published: 1951-02-01
     year: 1951
-    notes: 2nd ed., Univ.\ of California Press
-    type: article
+    edition: 2nd
+    publisher:
+      name: University of California Press
+    type: book
   - authors:
-      - name: J. Huerta, U. Schreiber
+      - family-names: Huerta
+        given-names: J.
+      - family-names: Schreiber
+        given-names: U.
     title: M-theory from the superpoint
     date-published: 2018-01-01
     year: 2018
-    notes: Lett.\ Math.\ Phys.\ 108 2695
+    journal: Letters in Mathematical Physics
+    start: "2695"
     type: article
+    volume: "108"
   - authors:
-      - name: E. Witten
+      - family-names: Witten
+        given-names: E.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/hep-th/9503124
@@ -238,70 +309,110 @@ references:
     url: https://arxiv.org/abs/hep-th/9503124
     date-published: 1995-01-01
     year: 1995
-    notes: Nucl.\ Phys.\ B 443 85, arXiv
+    journal: Nuclear Physics B
+    start: "85"
     type: article
+    volume: "443"
   - authors:
-      - name: A. Connes, M. R. Douglas, A. Schwarz
+      - family-names: Connes
+        given-names: A.
+      - family-names: Douglas
+        given-names: M. R.
+      - family-names: Schwarz
+        given-names: A.
     title: Noncommutative geometry and matrix theory
     date-published: 1998-01-01
     year: 1998
-    notes: JHEP 02 003
+    journal: Journal of High Energy Physics
+    start: "003"
     type: article
+    volume: "02"
   - authors:
-      - name: R. Barthes
-    title: Le Degre zero de l'ecriture
+      - family-names: Barthes
+        given-names: R.
+    title: Le Degré zéro de l'écriture
     date-published: 1953-01-01
     year: 1953
-    notes: Seuil, Paris
+    publisher:
+      name: Seuil
     type: book
   - authors:
-      - name: A. Hurwitz
-    title: Ueber die angenaherte Darstellung der Irrationalzahlen durch rationale
-      Bruche
-    notes: Math.\ Ann.\ 39 (1891) 279
+      - family-names: Hurwitz
+        given-names: A.
+    title: Über die angenäherte Darstellung der Irrationalzahlen durch rationale
+      Brüche
+    date-published: 1891-01-01
+    year: 1891
+    journal: Mathematische Annalen
+    start: "279"
     type: article
+    volume: "39"
   - authors:
-      - name: Yu. I. Manin
-    title: Real multiplication and noncommutative geometry
+      - family-names: Manin
+        given-names: Yu. I.
+    title: Real multiplication and noncommutative geometry (ein Alterstraum)
     date-published: 2004-01-01
     year: 2004
-    notes: in The Legacy of Niels Henrik Abel, Springer 685
-    type: book
+    journal: The Legacy of Niels Henrik Abel
+    publisher:
+      name: Springer
+    start: 685–727
+    type: generic
   - authors:
-      - name: Yu. I. Manin
+      - family-names: Manin
+        given-names: Yu. I.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1312.5160
     title: Numbers as functions
     url: https://arxiv.org/abs/1312.5160
-    notes: arXiv
+    date-published: 2013-01-01
+    year: 2013
+    journal: p-Adic Numbers, Ultrametric Analysis, and Applications
+    start: "313"
     type: article
+    volume: "5"
   - authors:
-      - name: H. Elvang, A. Herderschee, R. Morales
+      - family-names: Elvang
+        given-names: H.
+      - family-names: Herderschee
+        given-names: A.
+      - family-names: Morales
+        given-names: R.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/2601.11705
     title: String theory from maximal supersymmetry
     url: https://arxiv.org/abs/2601.11705
-    notes: arXiv
     type: article
   - authors:
-      - name: G. Veneziano
+      - family-names: Veneziano
+        given-names: G.
     title: Construction of a crossing-symmetric, Regge-behaved amplitude for
       linearly rising trajectories
     date-published: 1968-01-01
     year: 1968
-    notes: Nuovo Cim.\ A 57 190
+    journal: Il Nuovo Cimento A
+    start: "190"
     type: article
+    volume: "57"
   - authors:
-      - name: S. Laporta, E. Remiddi
-    title: The analytical value of the electron (g-2) at order ^3 in QED
+      - family-names: Laporta
+        given-names: S.
+      - family-names: Remiddi
+        given-names: E.
+    title: The analytical value of the electron (g-2) at order α<sup>3</sup> in QED
     date-published: 1996-01-01
     year: 1996
-    notes: Phys.\ Lett.\ B 379 283
+    journal: Physics Letters B
+    start: "283"
     type: article
+    volume: "379"
   - authors:
-      - name: S. A. Hartnoll, M. Yang
+      - family-names: Hartnoll
+        given-names: S. A.
+      - family-names: Yang
+        given-names: M.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/2502.02661
@@ -309,134 +420,201 @@ references:
     url: https://arxiv.org/abs/2502.02661
     date-published: 2025-01-01
     year: 2025
-    notes: JHEP 07 281, arXiv
+    journal: Journal of High Energy Physics
+    start: "281"
     type: article
+    volume: "07"
   - authors:
-      - name: M. De Clerck, S. A. Hartnoll, M. Yang
+      - family-names: De Clerck
+        given-names: M.
+      - family-names: Hartnoll
+        given-names: S. A.
+      - family-names: Yang
+        given-names: M.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/2507.08788
-    title: Wheeler--DeWitt wavefunctions for 5d BKL dynamics, automorphic
-      L-functions and complex primon gases
+    title: Wheeler–DeWitt wavefunctions for 5d BKL dynamics, automorphic L-functions
+      and complex primon gases
     url: https://arxiv.org/abs/2507.08788
     date-published: 2025-01-01
     year: 2025
-    notes: JHEP 11 160, arXiv
+    journal: Journal of High Energy Physics
+    start: "160"
     type: article
+    volume: "11"
   - authors:
-      - name: B. L. Julia
+      - family-names: Julia
+        given-names: B. L.
     title: Statistical theory of numbers
     date-published: 1990-01-01
     year: 1990
-    notes: in Number Theory and Physics, Springer 276
-    type: book
+    journal: Number Theory and Physics
+    publisher:
+      name: Springer
+    start: "276"
+    type: generic
   - authors:
-      - name: H. L. Montgomery
+      - family-names: Montgomery
+        given-names: H. L.
     title: The pair correlation of zeros of the zeta function
     date-published: 1973-01-01
     year: 1973
-    notes: Proc.\ Symp.\ Pure Math.\ 24 181
+    journal: Proceedings of Symposia in Pure Mathematics
+    start: "181"
     type: article
+    volume: "24"
   - authors:
-      - name: A. M. Odlyzko
+      - family-names: Odlyzko
+        given-names: A. M.
     title: On the distribution of spacings between zeros of the zeta function
     date-published: 1987-01-01
     year: 1987
-    notes: Math.\ Comp.\ 48 273
+    journal: Mathematics of Computation
+    start: "273"
     type: article
+    volume: "48"
   - authors:
-      - name: A. Buium
+      - family-names: Buium
+        given-names: A.
     title: Arithmetic Differential Equations
     date-published: 2005-01-01
     year: 2005
-    notes: Math.\ Surveys Monogr.\ 118, AMS
-    type: article
+    publisher:
+      name: American Mathematical Society
+      region: RI
+      city: Providence
+    type: book
+    volume: "118"
   - authors:
-      - name: L. Pacioli
+      - family-names: Pacioli
+        given-names: L.
     title: De Divina Proportione
-    notes: Venice (1509)
-    type: article
+    date-published: 1509-01-01
+    year: 1509
+    type: book
   - authors:
-      - name: V. Pletser
+      - family-names: Pletser
+        given-names: V.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1801.01369
     title: "Fibonacci numbers and the golden ratio in biology, physics,
       astrophysics, chemistry and technology: a non-exhaustive review"
     url: https://arxiv.org/abs/1801.01369
-    notes: arXiv
-    type: article
+    type: report
   - authors:
-      - name: A. Jagannathan
+      - family-names: Jagannathan
+        given-names: A.
     title: "The Fibonacci quasicrystal: case study of hidden dimensions and
       multifractality"
     date-published: 2021-01-01
     year: 2021
-    notes: Rev.\ Mod.\ Phys.\ 93 045001
+    journal: Reviews of Modern Physics
     type: article
+    volume: "93"
   - authors:
-      - name: O. Jedrkiewicz et al
+      - name: O. Jedrkiewicz et al.
     title: Coherent four-mode parametric generation in a hexagonally poled nonlinear
       crystal
     date-published: 2018-01-01
     year: 2018
-    notes: Sci.\ Rep.\ 8
+    journal: Scientific Reports
     type: article
   - authors:
-      - name: G. Sonnino et al
-    title: The golden ratio family of extremal Kerr--Newman black holes and its
+      - name: G. Sonnino et al.
+    title: The golden ratio family of extremal Kerr–Newman black holes and its
       implications for the cosmological constant
     date-published: 2024-01-01
     year: 2024
-    notes: Axioms 13 720
+    journal: Axioms
+    start: "720"
     type: article
+    volume: "13"
   - authors:
-      - name: R. Apery
-    title: Irrationalite de (2) et (3)
+      - family-names: Apéry
+        given-names: R.
+    title: Irrationalité de ζ(2) et ζ(3)
     date-published: 1979-01-01
     year: 1979
-    notes: Asterisque 61 11
+    journal: Astérisque
+    start: "11"
     type: article
+    volume: "61"
   - authors:
-      - name: J. A. Gonzalez Garcia
-    title: et al
+      - name: J. A. González García et al.
+    doi: 10.5281/zenodo.19492791
+    identifiers:
+      - type: doi
+        value: 10.5281/zenodo.19492791
+      - type: url
+        value: https://doi.org/10.5281/zenodo.19492791
+    title: Odd Zeta Values from Pentagonal 𝔽₁-Descent
+    url: https://doi.org/10.5281/zenodo.19492791
     date-published: 2026-01-01
     year: 2026
-    notes: Odd Zeta Values from Pentagonal _1-Descent, companion paper . % needs
-      precise citation DOI in project folder, pending
+    journal: Zenodo
+    notes: Companion paper (2026).
     type: article
   - authors:
-      - name: J. A. Gonzalez Garcia
-    title: et al
+      - name: J. A. González García et al.
+    title: An analogue of Euler's identity for the binary, ternary, and golden bases
     date-published: 2026-01-01
     year: 2026
-    notes: An analogue of Euler's identity for the binary, ternary, and golden
-      bases, companion paper . % needs precise citation DOI pending (not yet
-      assigned)
+    notes: Companion paper (2026); DOI pending — to be added once assigned.
     type: article
   - authors:
-      - name: J. A. Gonzalez Garcia
-    title: et al
+      - name: J. A. González García et al.
+    doi: 10.5281/zenodo.17619486
+    identifiers:
+      - type: doi
+        value: 10.5281/zenodo.17619486
+      - type: url
+        value: https://doi.org/10.5281/zenodo.17619486
+    title: Hilbert–Pólya Primitive Structure of the Complex Plane
+    url: https://doi.org/10.5281/zenodo.17619486
     date-published: 2026-01-01
     year: 2026
-    notes: Hilbert--Polya Primitive Structure of the Complex Plane, companion paper
-      . % needs precise citation DOI in project folder, pending
+    journal: Zenodo
+    notes: Companion paper (2026).
     type: article
   - authors:
-      - name: A
-    title: Kiely26
+      - family-names: Kiely
+        given-names: A.
+      - family-names: Chisholm
+        given-names: D. A.
+      - family-names: Touil
+        given-names: A.
+      - family-names: Deffner
+        given-names: S.
+      - family-names: Landi
+        given-names: G.
+      - family-names: Campbell
+        given-names: S.
+    title: (title to be confirmed against the publication)
     date-published: 2026-01-01
     year: 2026
+    journal: Physical Review A
+    notes: Title not provided in source; to be confirmed against the publication.
     type: article
+    volume: "113"
   - authors:
-      - name: T. Jacobson
+      - family-names: Jacobson
+        given-names: T.
+    identifiers:
+      - type: url
+        value: https://arxiv.org/abs/gr-qc/9504004
     title: "Thermodynamics of spacetime: the Einstein equation of state"
+    url: https://arxiv.org/abs/gr-qc/9504004
     date-published: 1995-01-01
     year: 1995
-    notes: Phys.\ Rev.\ Lett.\ 75 1260, arXiv:gr-qc/9504004
+    journal: Physical Review Letters
+    start: "1260"
     type: article
+    volume: "75"
   - authors:
-      - name: T. Jacobson
+      - family-names: Jacobson
+        given-names: T.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1505.04753
@@ -444,10 +622,12 @@ references:
     url: https://arxiv.org/abs/1505.04753
     date-published: 2016-01-01
     year: 2016
-    notes: Phys.\ Rev.\ Lett.\ 116 201101, arXiv
+    journal: Physical Review Letters
     type: article
+    volume: "116"
   - authors:
-      - name: E. Verlinde
+      - family-names: Verlinde
+        given-names: E.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1001.0785
@@ -455,10 +635,13 @@ references:
     url: https://arxiv.org/abs/1001.0785
     date-published: 2011-01-01
     year: 2011
-    notes: JHEP 04 029, arXiv
+    journal: Journal of High Energy Physics
+    start: "029"
     type: article
+    volume: "04"
   - authors:
-      - name: E. Verlinde
+      - family-names: Verlinde
+        given-names: E.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1611.02269
@@ -466,84 +649,130 @@ references:
     url: https://arxiv.org/abs/1611.02269
     date-published: 2017-01-01
     year: 2017
-    notes: SciPost Phys.\ 2 016, arXiv
+    journal: SciPost Physics
     type: article
+    volume: "2"
   - authors:
-      - name: R. Landauer
+      - family-names: Landauer
+        given-names: R.
     title: Irreversibility and heat generation in the computing process
     date-published: 1961-01-01
     year: 1961
-    notes: IBM J.\ Res.\ Dev.\ 5 183
+    journal: IBM Journal of Research and Development
+    start: "183"
     type: article
+    volume: "5"
   - authors:
-      - name: J. D. Bekenstein
+      - family-names: Bekenstein
+        given-names: J. D.
     title: Black holes and entropy
     date-published: 1973-01-01
     year: 1973
-    notes: Phys.\ Rev.\ D 7 2333
+    journal: Physical Review D
+    start: "2333"
     type: article
+    volume: "7"
   - authors:
-      - name: S. W. Hawking
+      - family-names: Hawking
+        given-names: S. W.
     title: Particle creation by black holes
     date-published: 1975-01-01
     year: 1975
-    notes: Commun.\ Math.\ Phys.\ 43 199
+    journal: Communications in Mathematical Physics
+    start: "199"
     type: article
+    volume: "43"
   - authors:
-      - name: G. W. Gibbons, S. W. Hawking
+      - family-names: Gibbons
+        given-names: G. W.
+      - family-names: Hawking
+        given-names: S. W.
     title: Cosmological event horizons, thermodynamics, and particle creation
     date-published: 1977-01-01
     year: 1977
-    notes: Phys.\ Rev.\ D 15 2738
+    journal: Physical Review D
+    start: "2738"
     type: article
+    volume: "15"
   - authors:
-      - name: J. D. Brown, M. Henneaux
+      - family-names: Brown
+        given-names: J. D.
+      - family-names: Henneaux
+        given-names: M.
     title: "Central charges in the canonical realization of asymptotic symmetries:
       an example from three-dimensional gravity"
     date-published: 1986-01-01
     year: 1986
-    notes: Commun.\ Math.\ Phys.\ 104 207
+    journal: Communications in Mathematical Physics
+    start: "207"
     type: article
+    volume: "104"
   - authors:
-      - name: S. S. Gubser, I. R. Klebanov, A. M. Polyakov
+      - family-names: Gubser
+        given-names: S. S.
+      - family-names: Klebanov
+        given-names: I. R.
+      - family-names: Polyakov
+        given-names: A. M.
     title: Gauge theory correlators from non-critical string theory
     date-published: 1998-01-01
     year: 1998
-    notes: Phys.\ Lett.\ B 428 105
+    journal: Physics Letters B
+    start: "105"
     type: article
+    volume: "428"
   - authors:
-      - name: E. Witten
+      - family-names: Witten
+        given-names: E.
     title: Anti-de Sitter space and holography
     date-published: 1998-01-01
     year: 1998
-    notes: Adv.\ Theor.\ Math.\ Phys.\ 2 253
+    journal: Advances in Theoretical and Mathematical Physics
+    start: "253"
     type: article
+    volume: "2"
   - authors:
-      - name: S. Ryu, T. Takayanagi
+      - family-names: Ryu
+        given-names: S.
+      - family-names: Takayanagi
+        given-names: T.
     title: Holographic derivation of entanglement entropy from the AdS/CFT
       correspondence
     date-published: 2006-01-01
     year: 2006
-    notes: Phys.\ Rev.\ Lett.\ 96 181602
+    journal: Physical Review Letters
     type: article
+    volume: "96"
   - authors:
-      - name: G. Obied, H. Ooguri, L. Spodyneiko, C. Vafa
+      - family-names: Obied
+        given-names: G.
+      - family-names: Ooguri
+        given-names: H.
+      - family-names: Spodyneiko
+        given-names: L.
+      - family-names: Vafa
+        given-names: C.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1806.08362
     title: De Sitter space and the swampland
     url: https://arxiv.org/abs/1806.08362
-    notes: arXiv
+    date-published: 2018-01-01
+    year: 2018
     type: article
   - authors:
-      - name: J. Polchinski
+      - family-names: Polchinski
+        given-names: J.
     title: String Theory
     date-published: 1998-01-01
     year: 1998
-    notes: Cambridge University Press
+    publisher:
+      name: Cambridge University Press
     type: book
+    volume: "1"
   - authors:
-      - name: J. Huerta
+      - family-names: Huerta
+        given-names: J.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1903.02822
@@ -551,10 +780,15 @@ references:
     url: https://arxiv.org/abs/1903.02822
     date-published: 2019-01-01
     year: 2019
-    notes: LMS/EPSRC Durham Symposium on Higher Structures in M-theory , arXiv
-    type: article
+    journal: LMS/EPSRC Durham Symposium on Higher Structures in M-theory
+    type: conference-paper
   - authors:
-      - name: D. Fiorenza, H. Sati, U. Schreiber
+      - family-names: Fiorenza
+        given-names: D.
+      - family-names: Sati
+        given-names: H.
+      - family-names: Schreiber
+        given-names: U.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1308.5264
@@ -563,55 +797,69 @@ references:
     url: https://arxiv.org/abs/1308.5264
     date-published: 2015-01-01
     year: 2015
-    notes: Int.\ J.\ Geom.\ Methods Mod.\ Phys.\ 12 1550018, arXiv
+    journal: International Journal of Geometric Methods in Modern Physics
     type: article
+    volume: "12"
   - authors:
-      - name: F. W. Lawvere
+      - family-names: Lawvere
+        given-names: F. W.
     title: Unity and identity of opposites in calculus and physics
     date-published: 1996-01-01
     year: 1996
-    notes: Appl.\ Categ.\ Structures 4 167
+    journal: Applied Categorical Structures
+    start: "167"
     type: article
+    volume: "4"
   - authors:
-      - name: U. Schreiber
+      - family-names: Schreiber
+        given-names: U.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1310.7930
-    title: Differential cohomology in a cohesive -topos
+    title: Differential cohomology in a cohesive ∞-topos
     url: https://arxiv.org/abs/1310.7930
     date-published: 2013-01-01
     year: 2013
-    notes: arXiv
     type: article
   - authors:
-      - name: F. P. Oberarzbacher
-    title: Los postulados basicos de la filosofia no-dualista del Shaivismo de
+      - family-names: Oberarzbacher
+        given-names: F. P.
+    title: Los postulados básicos de la filosofía no-dualista del Shaivismo de
       Cachemira
     date-published: 2013-01-01
     year: 2013
-    notes: Estudios 104, vol.~XI, ITAM 81--91
+    journal: Estudios
+    start: 81–91
     type: article
+    volume: "104"
   - authors:
-      - name: M. Foucault
-    title: "The Order of Things: An Archaeology of the Human Sciences"
+      - family-names: Foucault
+        given-names: M.
+    title: "The Order of Things: An Archaeology of the Human Sciences (Les Mots et
+      les Choses)"
     date-published: 1966-01-01
     year: 1966
-    notes: (Les Mots et les Choses), Gallimard ch.~1 on Las Meninas
+    publisher:
+      name: Gallimard
     type: book
   - authors:
-      - name: G. S. dos Santos
-    doi: 10.14195/1984-249X\_28\_4
+      - family-names: dos Santos
+        given-names: G. S.
+    doi: 10.14195/1984-249X_28_4
     identifiers:
       - type: doi
-        value: 10.14195/1984-249X\_28\_4
-    title: Arquitetura vitruviana e retorica antiga
+        value: 10.14195/1984-249X_28_4
+    title: Arquitetura vitruviana e retórica antiga
     date-published: 2020-01-01
     year: 2020
-    notes: "[Vitruvian architecture and ancient rhetoric], Archai 28 e02804,
-      doi:10.14195/1984-249X\\_28\\_4"
+    journal: Archai
     type: article
+    volume: "28"
   - authors:
-      - name: J. Maldacena, L. Susskind
+      - family-names: Maldacena
+        given-names: J.
+      - family-names: Susskind
+        given-names: L.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1306.0533
@@ -619,10 +867,19 @@ references:
     url: https://arxiv.org/abs/1306.0533
     date-published: 2013-01-01
     year: 2013
-    notes: Fortschr.\ Phys.\ 61 781, arXiv
+    journal: Fortschritte der Physik
+    start: "781"
     type: article
+    volume: "61"
   - authors:
-      - name: A. Almheiri, D. Marolf, J. Polchinski, J. Sully
+      - family-names: Almheiri
+        given-names: A.
+      - family-names: Marolf
+        given-names: D.
+      - family-names: Polchinski
+        given-names: J.
+      - family-names: Sully
+        given-names: J.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/1207.3123
@@ -630,26 +887,46 @@ references:
     url: https://arxiv.org/abs/1207.3123
     date-published: 2013-01-01
     year: 2013
-    notes: JHEP 02 062, arXiv
+    journal: Journal of High Energy Physics
+    start: "062"
     type: article
+    volume: "02"
   - authors:
-      - name: J. S. Bell
+      - family-names: Bell
+        given-names: J. S.
     title: On the Einstein Podolsky Rosen paradox
     date-published: 1964-01-01
     year: 1964
-    notes: Physics 1 195
+    journal: Physics
+    start: "195"
     type: article
+    volume: "1"
   - authors:
-      - name: A. J. Leggett
+      - family-names: Leggett
+        given-names: A. J.
     title: "Nonlocal hidden-variable theories and quantum mechanics: an
       incompatibility theorem"
     date-published: 2003-01-01
     year: 2003
-    notes: Found.\ Phys.\ 33 1469
+    journal: Foundations of Physics
+    start: "1469"
     type: article
+    volume: "33"
   - authors:
-      - name: S. Groblacher, T. Paterek, R. Kaltenbaek, C. Brukner, M. \.Zukowski, M.
-          Aspelmeyer, A. Zeilinger
+      - family-names: Gröblacher
+        given-names: S.
+      - family-names: Paterek
+        given-names: T.
+      - family-names: Kaltenbaek
+        given-names: R.
+      - family-names: Brukner
+        given-names: Č.
+      - family-names: Żukowski
+        given-names: M.
+      - family-names: Aspelmeyer
+        given-names: M.
+      - family-names: Zeilinger
+        given-names: A.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/0704.2529
@@ -657,41 +934,75 @@ references:
     url: https://arxiv.org/abs/0704.2529
     date-published: 2007-01-01
     year: 2007
-    notes: Nature 446 871, arXiv
+    journal: Nature
+    start: "871"
     type: article
+    volume: "446"
   - authors:
-      - name: S. J. Freedman, J. F. Clauser
+      - family-names: Freedman
+        given-names: S. J.
+      - family-names: Clauser
+        given-names: J. F.
     title: Experimental test of local hidden-variable theories
     date-published: 1972-01-01
     year: 1972
-    notes: Phys.\ Rev.\ Lett.\ 28 938
+    journal: Physical Review Letters
+    start: "938"
     type: article
+    volume: "28"
   - authors:
-      - name: A. Aspect, J. Dalibard, G. Roger
+      - family-names: Aspect
+        given-names: A.
+      - family-names: Dalibard
+        given-names: J.
+      - family-names: Roger
+        given-names: G.
     title: Experimental test of Bell's inequalities using time-varying analyzers
     date-published: 1982-01-01
     year: 1982
-    notes: Phys.\ Rev.\ Lett.\ 49 1804
+    journal: Physical Review Letters
+    start: "1804"
     type: article
+    volume: "49"
   - authors:
-      - name: G. Weihs, T. Jennewein, C. Simon, H. Weinfurter, A. Zeilinger
+      - family-names: Weihs
+        given-names: G.
+      - family-names: Jennewein
+        given-names: T.
+      - family-names: Simon
+        given-names: C.
+      - family-names: Weinfurter
+        given-names: H.
+      - family-names: Zeilinger
+        given-names: A.
     title: Violation of Bell's inequality under strict Einstein locality conditions
     date-published: 1998-01-01
     year: 1998
-    notes: Phys.\ Rev.\ Lett.\ 81 5039
+    journal: Physical Review Letters
+    start: "5039"
     type: article
+    volume: "81"
   - authors:
       - name: The Royal Swedish Academy of Sciences
-    title: The Nobel Prize in Physics 2022
+    title: "The Nobel Prize in Physics 2022: A. Aspect, J. F. Clauser, A. Zeilinger,
+      for experiments with entangled photons, establishing the violation of Bell
+      inequalities and pioneering quantum information science"
     date-published: 2022-01-01
     year: 2022
-    notes: A.~Aspect, J.~F.~Clauser, A.~Zeilinger, for experiments with entangled
-      photons, establishing the violation of Bell inequalities and pioneering
-      quantum information science
     type: article
   - authors:
-      - name: C. Branciard, A. Ling, N. Gisin, C. Kurtsiefer, A. Lamas-Linares, V.
-          Scarani
+      - family-names: Branciard
+        given-names: C.
+      - family-names: Ling
+        given-names: A.
+      - family-names: Gisin
+        given-names: N.
+      - family-names: Kurtsiefer
+        given-names: C.
+      - family-names: Lamas-Linares
+        given-names: A.
+      - family-names: Scarani
+        given-names: V.
     identifiers:
       - type: url
         value: https://arxiv.org/abs/0708.0584
@@ -699,5 +1010,6 @@ references:
     url: https://arxiv.org/abs/0708.0584
     date-published: 2007-01-01
     year: 2007
-    notes: Phys.\ Rev.\ Lett.\ 99 210407, arXiv
+    journal: Physical Review Letters
     type: article
+    volume: "99"
