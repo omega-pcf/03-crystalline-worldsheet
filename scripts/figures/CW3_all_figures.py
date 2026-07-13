@@ -58,7 +58,7 @@ def make_fig1():
     ax2.set_xlabel(r'$\sigma_1$'); ax2.set_ylabel(r'$\sigma_2$')
     ax2.set_xticks(range(N)); ax2.set_yticks(range(N))
     ax2.text(-0.13,1.02,'(b)',transform=ax2.transAxes,fontsize=13,fontweight='bold')
-    plt.savefig('fig1_alphas_uniqueness.png',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
+    plt.savefig('fig1_alphas_uniqueness.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
     print(f"  Fig1 saved (min err {EM.min():.4f}%)")
 
 def make_fig2():
@@ -96,7 +96,7 @@ def make_fig2():
     ax2.set_xlabel(r'$T_{\rm trig}$',fontsize=12); ax2.set_ylabel(r'$T_{\rm alg}$',fontsize=12)
     ax2.legend(loc='upper left'); ax2.grid(True,color='#eeeeee',lw=0.4)
     ax2.text(-0.12,1.01,'(b)',transform=ax2.transAxes,fontsize=13,fontweight='bold')
-    plt.savefig('fig2_ER_bridge_identity.png',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
+    plt.savefig('fig2_ER_bridge_identity.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
     print(f"  Fig2 saved (max res {max_res:.2e})")
 
 def make_fig3():
@@ -143,7 +143,7 @@ def make_fig3():
     ax2.text(0.03,0.97,'(b)',transform=ax2.transAxes,fontsize=14,fontweight='bold',va='top')
     fig.suptitle(r'$N_{\rm modes}(\sigma)=\lfloor\pi\varphi^\sigma\rfloor$: Fibonacci-adjacent UV cutoff  |  ratio $\to\varphi$  |  KK spectrum',fontsize=14,fontweight='bold',y=0.99)
     plt.tight_layout(rect=[0,0,1,0.96])
-    plt.savefig('fig3_N_modes.png',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
+    plt.savefig('fig3_N_modes.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
     print(f"  Fig3 saved (N[0..6]={list(Nm[:7])})")
 
 def make_fig4():
@@ -226,7 +226,7 @@ def make_fig4():
                  r'$\mathbb{Z}[\omega]$ (algebra: $120°$, $S_3$) $\leftrightarrow$ $\mathbb{Z}[i]$ (isometry: $\tau{=}i$)'
                  r'  ---  $V: H_{\rm bulk}\to H_{\partial}$,  $V^\dagger V{=}I$,  $|\hat\Omega|{=}1/2$ preserved',
                  fontsize=16, fontweight='bold', y=0.97)
-    plt.savefig('fig4_top_down.png', dpi=200, bbox_inches='tight', facecolor='white')
+    plt.savefig('fig4_top_down.pdf', dpi=200, bbox_inches='tight', facecolor='white')
     plt.close()
     print("  Fig4 saved")
 
@@ -282,7 +282,7 @@ def make_fig5():
     ax3.text2D(0.5,0.02,r'Hopf: $S^1\to S^5\to\mathbb{C}P^2$; $\chi(\mathbb{C}P^2)=3=n$',transform=ax3.transAxes,fontsize=8.5,ha='center',color='#335577',bbox=dict(boxstyle='round,pad=0.3',fc='#f0f4ff',ec='#8899bb',lw=0.7))
     fig.suptitle(r'AdS$_5$ funnel $\longleftrightarrow$ $\Lambda_\sigma$ tower $\longleftrightarrow$ $H_5$ hypercube: $\varphi^\sigma$ connects all three',fontsize=13,fontweight='bold',y=0.99)
     plt.tight_layout(rect=[0,0,1,0.95])
-    plt.savefig('fig5_three_panel.png',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
+    plt.savefig('fig5_three_panel.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
     print(f"  Fig5 saved")
 
 def make_fig6():
@@ -329,7 +329,7 @@ def make_fig6():
     ax2.text2D(0.03,0.95,'(b)',transform=ax2.transAxes,fontsize=14,fontweight='bold')
     fig.suptitle(r'From $\varphi^2=\varphi+1$: $C_0$ with P,C,F $\to$ $T^2_{\rm PCF}\hookrightarrow S^3$ $\to$ SU(3)$\times$SU(2)$\times$U(1)',fontsize=13,fontweight='bold',y=0.99)
     plt.tight_layout(rect=[0,0,1,0.95])
-    plt.savefig('fig6_cylinder_torus.png',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
+    plt.savefig('fig6_cylinder_torus.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
     print(f"  Fig6 saved")
 
 if __name__=='__main__':

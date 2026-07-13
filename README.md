@@ -5,7 +5,7 @@
 
 ## Authors
 
-**Jorge Armando González García**¹, **Víctor Manuel González García**¹, **Itzel Marion Dressler Pérez**², **Luz María García Ordóñez**¹, **M. Moreno**²
+**Jorge Armando González García**¹, **Víctor Manuel González García**¹, **Itzel Marion Dressler Pérez**², **Luz María García Ordóñez**¹
 
 ¹ *TTAMAYO PUNTO COM, S.A.P.I. de C.V., Research & Development Division, Mexico*
 ² *Independent Researcher*
@@ -32,11 +32,11 @@ A fourth companion paper develops the **identity** thread (binary, ternary, gold
 
 ## Citation
 
-González García, J. A., González García, V. M., Dressler Pérez, I. M., García Ordóñez, L. M., & Moreno, M. (2026). *The Crystalline Worldsheet: A String Theoretical framework based on φ and π for the de Sitter observer problem*. Zenodo. DOI: [10.5281/zenodo.21343602](https://doi.org/10.5281/zenodo.21343602).
+González García, J. A., González García, V. M., Dressler Pérez, I. M., & García Ordóñez, L. M. (2026). *The Crystalline Worldsheet: A String Theoretical framework based on φ and π for the de Sitter observer problem*. Zenodo. DOI: [10.5281/zenodo.21343602](https://doi.org/10.5281/zenodo.21343602).
 
 ```bibtex
 @article{CW3,
-  author  = {González García, J. A. and González García, V. M. and Dressler Pérez, I. M. and García Ordóñez, L. M. and Moreno, M.},
+  author  = {González García, J. A. and González García, V. M. and Dressler Pérez, I. M. and García Ordóñez, L. M.},
   title   = {The Crystalline Worldsheet: A String Theoretical framework based on φ and π for the de Sitter observer problem},
   journal = {Zenodo},
   year    = {2026},
