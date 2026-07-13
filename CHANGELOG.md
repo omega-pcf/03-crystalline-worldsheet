@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.2.0...v0.3.0) (2026-07-13)
+
+### Features
+
+* **doi:** add Zenodo DOI 10.5281/zenodo.21343602 ([ef49111](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/ef491115bd357fa84707eb7ff0661f3838eef62f))
+
+### Bug Fixes
+
+* **tex:** add 'The Crystalline Worldsheet' to first-page title ([ff5cd19](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/ff5cd195880074332a7f4e5bcdd9a245de42cacb))
+* **tex:** correct received date to July 13 2026 (Zenodo publication date) ([51fc1b8](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/51fc1b85d585aff4aa1cf7e21e34e1755da19ab5))
+* **tex:** shorten running header to avoid page-number overlap ([816b2a3](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/816b2a3875151614ec1d3f677b692facf2dd0406))
+* **tex:** switch to amsart class, fix author block, figures to PDF ([6964e4d](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/6964e4db7cceec1209368fabb950ea1a3f9dfd7a))
+
 ## 0.2.0 (2026-07-13)
 
 ### Features
