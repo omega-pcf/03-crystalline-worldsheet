@@ -1733,7 +1733,7 @@ theorem dS_ricci_from_gauss (H : ℝ) : ((4:ℝ) - 1) * H^2 = 3 * H^2 := by ring
 /-- **Einstein's equation (vacuum + Λ) closes to Λ = 3H².**  With R_μν = 3H² g_μν
     and R = 12H² (both sympy-confirmed), the coefficient of g_μν in
     R_μν − ½R g_μν + Λ g_μν = 0 gives 3H² − 6H² + Λ = 0, i.e. Λ = 3H². -/
-theorem dS_einstein_Lambda (H Λ : ℝ) (h : 3*H^2 - (1/2)*(12*H^2) + Λ = 0) :
+theorem dS_einstein_Lambda (H Λ : ℝ) (h : 3 * H ^ 2 - (1 / 2) * (12 * H ^ 2) + Λ = 0) :
     Λ = 3 * H^2 := by linarith
 
 /-- de Sitter: the Ricci scalar equals 4Λ (R = 12H² and Λ = 3H²). -/
