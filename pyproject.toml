@@ -1,6 +1,6 @@
 [project]
 name = "03-crystalline-worldsheet"
-version = "0.1.0"
+version = "0.2.0"
 description = "The Crystalline Worldsheet: a string theoretical framework based on φ and π for the de Sitter observer problem"
 readme = "README.md"
 requires-python = ">=3.12"
