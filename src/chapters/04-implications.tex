@@ -1,0 +1,757 @@
+\section{Implications}\label{sec:implications}
+
+Sections~\ref{sec:methods} and~\ref{sec:derivations} derived AdS/CFT from a single
+microstate, with no ensemble average. The present section shows that this apparatus
+meets the criteria for holography in de~Sitter space already fixed in the literature.
+The aim is not to propose new physics: the mechanisms it uses---the tensors of general
+relativity, the Polyakov worldsheet, Kaluza--Klein compactification, the warped throat,
+Jacobson's horizon thermodynamics---are established results. What is shown is that these
+principles already coincide with the microstate; much of the section is therefore a
+review of the known principle followed by how the object realises it.
+
+\subsection{What the section does, and against what it is measured}\label{ssec:noselect}
+
+Holography in de~Sitter, as Witten poses it~\cite{Witten01dS}, requires that general relativity be embedded
+in a more complete theory that determines the cosmological constant $\Lambda$, and in
+which the observer is described by the theory rather than introduced from
+outside---because in a cosmology with $\Lambda>0$ there is no asymptotic region to which
+an external observer may retreat.
+
+The yardstick is the classification of von Neumann factors into three types---used in
+this context by Chandrasekaran, Longo, Penington and Witten---three modes of existence of
+the same field. \emph{Type~I} is that of discrete objects---particle, path integral,
+string counted one by one, operator of definite spectrum---with minimal projections.
+\emph{Type~II} is that of observation---the trace, the crossed product of the algebra by
+its modular flow---where observing turns an algebra without trace into one with a trace.
+\emph{Type~III} is that of the local field---the wedge, the horizon, the worldsheet, the
+spacetime---without normal trace or projections: non-locality.
+
+Of these types, what the section \emph{proves} is the signature of each, not the
+technical classification: type~I as discrete spectrum (\LeanInline{eigenvalues\_modulus\_half, witten\_finite\_rank}); type~II as an invariant the flow preserves---the trace in
+concrete form (\LeanInline{omega\_flow\_invariant, tower\_scale\_group}); type~III as the
+non-factorisation of the horizon into interior${}\otimes{}$exterior
+(Proposition~\ref{prop:obs-nofirewall}). The technical names (II$_1$, III$_1$) and the
+crossed product are taken from CLPW by citation; the signatures are proved here.
+Signature first, name second.
+
+The criteria come from three distinct sources, which should not be conflated. From
+\textbf{Witten 2001} (\emph{Quantum Gravity in De Sitter Space}, W01) come the
+determination of $\Lambda$, the finiteness of the Hilbert space with $S=\ln N$, the
+isometry-group obstruction, the pairing $\langle f|i\rangle$, the CPT map, the two
+conjectures---of unitarity and of entropy---and the antipodal singularity. From
+\textbf{Chandrasekaran, Longo, Penington and Witten 2022} (CLPW) come the observer
+described by the theory, the maximally mixed vacuum state, and the construction of the
+type~II algebra by crossed product from the type~III. The thermal nature of the static
+patch predates both: it is the result of \textbf{Gibbons--Hawking}. Throughout, each
+criterion is tagged with which of the three sources states it.
+
+The thesis is that the framework realises the three types on a single object, the
+microstate $\Om$ of modulus $|\Om|=\tfrac12$, and thereby satisfies the requirements
+Witten left open. The three types are not a label per subsection but three threads
+crossing the whole section: type~I runs through the particle (\S\ref{ssec:hinge}), its
+path integral, and the discrete string of the tower (\S\ref{ssec:accum})---to it belongs
+the Hermitian operator, referred to the companion paper and not proved here; type~II runs
+through the ER${=}$EPR bridge (\S\ref{ssec:hinge}), observation
+(\S\ref{ssec:observer}) and the tracial flow (\S\ref{ssec:accum}); type~III runs through
+the worldsheet (\S\ref{ssec:hinge}) and the spacetime with gravity (\S\ref{ssec:accum}).
+The modulus $\tfrac12$, the projection $\Pi$, the entropy $S$, the centre $C$ and the
+conjugation $\Theta$ recur across movements; each recurrence declares its register and
+its anchor. The repetition is the weave of a multi-thread demonstration.
+
+
+\subsection{The non-local field and the particle that emerges from it}\label{ssec:hinge}
+
+\paragraph{The worldsheet, the type~III field, and its link to gravity.}
+General relativity requires that the laws not depend on coordinates; the tensor guarantees
+this, because a tensor equation true in one frame is true in all. In string theory this
+invariance lives on the worldsheet: the string sweeps a surface whose dynamics is the
+Polyakov action, written on the worldsheet metric $h_{ab}$---a tensor---and invariant under
+diffeomorphisms and Weyl rescalings; its constant is the tension $T=1/2\pi\alpha'$. The
+worldsheet is the type~III field of the section: a local wedge without normal trace, and it
+is the same field that will reappear as the curved spacetime of \S\ref{ssec:accum}---the
+type~III face that opens and closes \S\ref{sec:implications}. Its non-locality is geometric,
+not postulated. The worldline $\Om(\tau)=\tfrac12 e^{i\tau\ln\golden}$, promoted by Polyakov,
+closes onto the torus $T^2_{\PCF}=\C/\Lambda$ with modular parameter $\tau=i$
+fixed---the self-dual point of S-duality, not chosen---and $\golden$ generates the lattice.
+A torus is compact and boundaryless, and a boundaryless domain admits no question of what
+happens at the edge of one region against another, because there is no edge at which to
+separate (\LeanInline{fibre\_independent\_of\_base}). By the modulus $\tfrac12$, the loop
+around the torus accumulates a half rotation, $e^{i\pi}=-1$: the sheet is a M\"obius band,
+non-orientable, with no privileged interior side. The particle is the bulk--boundary
+interface this field carries:
+\begin{equation}\label{eq:obs-interface}
+  \Pi\colon\E^{3}\longrightarrow\C,\qquad
+  d_H=\frac{\log3}{\log2}\approx1.585,\qquad 2^{d_H}=3 .
+\end{equation}
+The horizon of $\Pi$ does not factorise into interior${}\otimes{}$exterior, which is the
+type~III signature and the reason there is no firewall:
+\begin{proposition}[Holographic--relativistic horizon (no firewall)]\label{prop:obs-nofirewall}
+The projection $\Pi\colon\E^{3}\twoheadrightarrow\C$ creates a horizon that is at
+once \emph{holographic} (information fully encoded on the boundary) and
+\emph{relativistic} (the Galois conjugation $\golden\leftrightarrow\bar\golden$
+exchanges the two sides like the two wedges of a Rindler spacetime): $\Pi$ is
+surjective, with $\ker\Pi=\{(0,0,0)\}$ and $\Pi^{-1}(p)\neq\varnothing$ for every
+$p\in\C$. No averaging over microstates is needed: the microstate is one state and not an ensemble, as established in \S\ref{ssec:adscft} (its realisation as a self-adjoint operator being built in the companion paper~\cite{HP})---so the AMPS firewall ambiguity~\cite{AMPS13}, which requires an ensemble average, does not arise.
+\end{proposition}
+Three independent facts confirm the non-separability, and all three fall on $\tfrac12$. At
+every scale, $|\Om|_\sigma=\tfrac12\ \forall\sigma$ (\LeanInline{omega\_flow\_invariant}). At
+every separation, the entanglement is $|\Om(\tau_A)\bar\Om(\tau_B)|=\mu_3^2=\tfrac14$, and
+this ER${=}$EPR bridge is derived, not postulated: the operators $T(\sigma_1,\sigma_2)$ form
+a group (Proposition~\ref{prop:er-epr};
+\LeanInline{bridge\_cocycle, bridge\_inverse, bridge\_compose}).
+
+The conjugation $\Theta={}$CPT, the antilinear Galois map $\golden\leftrightarrow\bar\golden$,
+swaps the wedges $P\leftrightarrow F$ and fixes $C$.
+
+\emph{W6 --- the antilinear $\Theta$/CPT map (W01).} Witten defines the Hilbert space
+non-perturbatively through an antilinear map $\Theta$ (a CPT operation) that renders the
+bilinear pairing Hermitian (W01, eq.~18). It is the Galois conjugation
+$\golden\leftrightarrow\bar\golden$: $\Theta$ swaps the two Rindler wedges and fixes the
+centre, with $\Theta^2=1$. \emph{Proof:}
+\LeanInline{cpt\_swaps\_P\_to\_F, cpt\_fixes\_C, cpt\_involution}.
+
+\emph{W7 --- the $\mathrm{SO}(1,n{-}1)$ obstruction (W01).} With $N$ finite the de~Sitter
+isometry group cannot act on the Hilbert space; being non-compact it has no
+finite-dimensional unitary representations (W01). Its place is taken by the discrete
+$\mathbb{Z}_3$ symmetry of the cube roots of unity with the scale invariance
+$|\Om|_\sigma=\tfrac12$. \emph{Proof:} \LeanInline{eisenstein\_cube, omega\_conj};
+\cite{Witten01dS}.
+
+\paragraph{The whole geometry as a tensor: the warp generates curvature.}
+This spacetime is tensorial in its entirety. The throat that compactifies the scale has a
+warped metric with radial
+coordinate $z(\sigma)=\golden^{\sigma}$ and non-vanishing warp gradient: with $A=-\log z$, so
+$A'=-1$, the standard machinery---from $g$ to Christoffel, to Riemann, to Ricci---turns that
+gradient into curvature computed, not assumed:
+$R_{\mu\nu}=-(A''+d\,A'^2)\,g_{\mu\nu}=-4\,g_{\mu\nu}$, so the throat is an Einstein space
+(\S\ref{app:curvature}; \LeanInline{R\_scalar\_AdS5, R\_munu\_AdS5}). The densification of
+the warp \emph{is} the Ricci tensor. The extrinsic side closes it: the constant-$\sigma$
+leaves, their embedding and second fundamental form are tied to the intrinsic curvature by
+Gauss's equation---de~Sitter is the hyperboloid whose intrinsic curvature is the wedge of
+the extrinsic curvature of the embedding, $R_{\mu\nu}=3H^2 g_{\mu\nu}$, developed in full in
+\S\ref{app:embedding} (\LeanInline{dS\_ricci\_from\_gauss}).
+
+\paragraph{From that same geometry the particle emerges, discrete (type~I).}
+The warp is sustained by a stress--energy tensor: Einstein's equation with source balances
+the throat geometry against a matter tensor whose spatial part is pressure. The tensor that
+in gravity describes the metric is the same that describes the tension---both words share
+the root \emph{tendere}---and it is that tension that sustains the throat. Geometrically the
+throat is a densifying centre: on the Riemann sphere, with zero at one pole and infinity at
+the other, the golden tower produces concentric shells growing outward and a centre
+compressed without bottom, since $e^{2A}=z^{-2}=\golden^{-2\sigma}$ diverges as $z\to0$. The
+centre is superpoint $\mathbb{R}^{0|1}$-like, the object without metric or spin structure,
+with a single odd direction (\S\ref{sssec:superpoint}). Its $\mathbb{Z}_2=\{0,1\}$ grading
+distinguishes the even, bosonic directions (the ``0'') from the single odd, fermionic one
+(the ``1''); the centre of the tension is that odd direction: fermionic. The involution
+$\alpha(x)=1-x$ swaps $0$ and $1$ and has no fixed point between them---which makes the
+binary register self-contradictory---but a unique fixed point at $x=\tfrac12$: the extremes
+$\{0,1\}$ are the binary register---the bit, the boson, the fermion---and the self-conjugate
+midpoint $\tfrac12$ is at once the modulus $|\Om|$ and the fermion's \emph{spin} $\tfrac12$.
+The particle is thus coded by three readings of the same fact: $\tfrac12$ (modulus, spin,
+fixed point of $1-x$); the $0|1$ of the fermionic superpoint; and the tension $T_{AB}$ that
+produced it.
+
+From this object follows its one-dimensional description: the worldline and its path
+integral, the Gaussian normalised by the half-factorial,
+$\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt\pi$, $(\tfrac12)!=\Gamma(\tfrac32)=\tfrac{\sqrt\pi}{2}$
+(\LeanInline{M2\_gamma\_half}), computed where it is stated. The particle is then a type~I
+operator: real discrete spectrum, minimal projections, integer dimension. Its internal
+structure is the spin-star,
+\begin{equation}\label{eq:obs-spinstar}
+  \underbrace{S+E_1+\cdots+E_N}_{\text{central}+\text{environment}}
+   \xrightarrow{\;N=2\;}\underbrace{C+P+F}_{\text{PCF}},\qquad \Fmax=N^{2}=4 .
+\end{equation}
+with arithmetic $1+2=3$: the binary fermion, mediated by $\tfrac12$, has become the
+tripartite particle. And the geometry that generated the particle fixes its charges: the
+eigenvalue triangle is the Eisenstein lattice $\Z[\omega]=A_2=\mathfrak{su}(3)$; the Clifford
+latitude gives $SU(2)$; the Hopf fibre, $U(1)$; the weak mixing angle is a ratio of tower
+entropies, $\sin^2\theta_W=S(3)/S(6)=\golden^{-3}\approx0.236$ against $0.231$ measured
+(\S\ref{app:gauge}; \LeanInline{gauge\_dim\_su3, hopf\_from\_clifford, weinberg\_ratio}).
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{fig6_cylinder_torus.png}
+\caption{From $\golden^{2}=\golden+1$: the cylinder $C_0$ with $\mathrm{P,C,F}$ at $120^\circ$
+($\|P\|\,\|C\|\,\|F\|=\tfrac12$) closes to the torus $T^2_{\PCF}=\C/\Lambda$, $\tau=i$, whose
+Clifford embedding $T^2\hookrightarrow S^3$ and Hopf fibre give the gauge factors
+$\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$ of App.~\ref{app:gauge}.}
+\label{fig:torus-gauge}
+\end{figure}
+\paragraph{Geometry and particle are the same object.}
+The order of these facts is fixed by the diagram. The
+projection $\Pi\colon\E^3\to\C$ is the \emph{root} of the whole downstream chain, and it is
+at once the geometry of spacetime---the sheet and torus projected---and the particle. This
+reflects the \emph{self-similarity} of the object: the same modulus $\tfrac12$ at every scale
+level, seeded by $\golden^2=\golden+1$ extending $i^2=-1$ from the plane to space. The
+particle carries the same geometry in its information and, as it accumulates entropy, keeps
+it and moves within the spacetime geometry it itself is. There is no stage with geometry and
+a later one with the particle: they are the same object at two scale readings. It is this
+accumulation of information, carried by the self-similar geometry, that the next movement
+reads as an observer (\S\ref{ssec:observer}): container and content, bulk and boundary,
+geometry and particle are not separate---the same non-separation the M\"obius band already
+fixed.
+
+\emph{W1 --- the observer described by the theory (CLPW).} CLPW require (\S2.5) that the
+observer be described by the theory, not introduced from outside. $\Pi$ is internal---no
+external region from which to look---and self-similar, so the observer is the geometry itself
+read at its centre. \emph{Proof:} \eqref{eq:obs-interface} with the bulk--boundary isometry
+of \S\ref{sec:derivations}; Proposition~\ref{prop:obs-nofirewall};
+\LeanInline{cw3\_observer\_items\_core}; \cite{CLPW22}.
+
+\emph{W2 --- finite-dimensional Hilbert space (W01).} The finite horizon area requires finite
+dimension; here the spectrum is the triangle of three eigenvalues and the mode count is
+integer. \emph{Proof:} \LeanInline{witten\_finite\_rank}; \eqref{eq:obs-spinstar}.
+
+\subsection{The particle as observer}\label{ssec:observer}
+
+What turns the particle into an observer is the accumulation of information, described
+here by an internal Wick rotation, not imposed. When the centre is taken
+as the time axis, its square changes sign, $(i\,t)^2=-t^2$ (\LeanInline{wick\_squares\_flip\_sign,
+lorentzian\_signature\_sum}), and past and future become the two light cones, with the
+apex---the present---as observer (\LeanInline{C\_fixed\_PF\_rotate, causal\_trichotomy}). The
+full metric is formalised in \S\ref{ssec:accum}; here the algebra of the rotation, which
+is self-contained, suffices. The observer accumulates: its Fisher information grows to the
+ceiling the Cram\'er--Rao bound permits,
+\begin{equation}\label{eq:obs-fishertime}
+  \tau_F=\frac{\tau_D}{\sqrt{2f}},\qquad \tau_F=\tau_D\iff f=\tfrac12 .
+\end{equation}\begin{equation}\label{eq:obs-cramerrao}
+  \mathrm{Var}(\theta)\ge F_\theta^{-1},\qquad
+  \underbrace{\Fmax^{-1}=\tfrac14}_{\text{Kiely: Cram\'er--Rao}}
+   \;=\;\underbrace{|\Om|^{2}=\mu_3^{2}=\tfrac14}_{\text{PCF area factor}} .
+\end{equation}\begin{equation}\label{eq:obs-redundancy}
+  R_\delta\sim N\ \ (\text{all fragments agree})\;\longleftrightarrow\;\text{objective record},
+\end{equation}\begin{equation}\label{eq:obs-accum}
+  F_\theta(t)\xrightarrow{\;N\to\infty\;}\Fmax\big(1-e^{-(t/\tau_F)^{2}}\big),\quad \Fmax=4,
+  \qquad F_\Om=4\mu_3^{2}=1\ \text{bit},
+\end{equation}
+and sees exactly the half,
+\begin{equation}\label{eq:obs-half}
+  |P|\cdot|C|\cdot|F|=\tfrac12=|\Om| .
+\end{equation}
+The ``half'' is geometric: the eigenvalue dipole places $P$ at the south pole and $F$ at
+the north, with $C$ the equatorial axis ($|C|=1$), and $|P|\,|F|=\tfrac14$ while $|C|=1$
+gives the product $\tfrac12$; the $\sqrt3$ of $|F|$ cancels that of $|P|$---a cancellation
+proper to the equilateral triangle, arity three (Proposition~\ref{prop:pcf-norms},
+Proposition~\ref{prop:spectral}: $\sigma+\mu=2$, $\sigma\mu=\tfrac34$ with unique solution
+$\mu=\tfrac12$, $\sigma=\tfrac32$; \Lean{spectral\_uniqueness}).
+
+\emph{W5 --- the initial--final pairing observable from within (W01).} Witten computes the
+pairing $\langle f|i\rangle$ as calculable but not observable from outside (W01). It
+becomes the internal pairing $\langle F|P\rangle=\bar F P/C$, with
+$|\langle F|P\rangle|=\tfrac12$, observable because $\Pi$ is inside and no external region
+remains. \emph{Proof:} \Lean{pairing\_FP\_modulus\_half, pairing\_PF\_modulus\_half}.
+
+\emph{W3 --- the unitarity conjecture (W01).} Witten conjectures that the Hermitian
+pairing is positive definite (W01). The spectrum is positive and $|\Om|=\tfrac12>\tfrac14$, so the object does not collapse.
+\emph{Proof:} \Lean{witten\_unitarity\_realized, density\_eigenvalues\_positive};
+\eqref{eq:obs-half}.
+
+The coincidence with Kiely's quantum Darwinism is forced, not numerical. The objectivity
+threshold is $f_{\rm crit}=\tfrac12$; the redundancy grows as the mode number; the
+certainty condition is $\varepsilon_0 M=\pi$:
+\begin{equation}\label{eq:obs-threshold}
+  \underbrace{f_{\mathrm{crit}}=\tfrac12}_{\text{Kiely: objectivity}}
+   \;=\;\underbrace{|\Om|=\mu_3=\tfrac12}_{\text{PCF}},
+\end{equation}\begin{equation}\label{eq:obs-certainty}
+  \epsz\cdot\Mpcf=\pi\qquad(\text{cell capacity }=\pi\text{ bits}),
+\end{equation}
+\begin{proposition}[No separable parts before observation]\label{prop:no-parts}
+For a pure two-party state the entanglement modulus $|\Om|$---the largest Schmidt coefficient, i.e.\
+the top eigenvalue of the reduced state---satisfies $|\Om|=|\Om|^{2}$ exactly when the state is a
+product (separable parts exist) and $|\Om|>|\Om|^{2}$ otherwise. The No-Diagonal fixes
+$|\widehat\Om|=\tfrac12$ in the balanced (maximally entangled) case
+(Proposition~\ref{prop:spectral}), so
+\[
+  |\Om|=\tfrac12\;>\;\tfrac14=|\Om|^{2},\qquad H(\tfrac12)=1\ \text{bit},
+\]
+the strict inequality being the signature of non-factorizability; for a product state it collapses to
+$|\Om|=|\Om|^{2}=1$, $H=0$. Hence before observation there are no separable subsystems carrying
+values: what is real is the non-local whole, recovered as $|\widehat\Om|=\tfrac12$. PCF therefore
+predetermines no parts, so it is neither a local-realist (Bell) nor a parts-realist (Leggett)
+hidden-variable model, and the no-go theorems of~\cite{Bell64} and~\cite{Leggett03} do not bind it. 
+\Lean{M9\_eq\_half}
+\end{proposition}
+
+The No-Diagonal theorem (\S\ref{ssec:arity}) establishes that every self-referential
+structure without collapse must produce $\mu^2=\tfrac14$ and the tripartite
+decomposition, with no other solution---which forces each identification. In the diagram,
+here the first apex converges: three independent routes---the bridge (\S\ref{ssec:hinge}),
+the triangle norm and the Fisher metric---give the same $\tfrac12$. When three independent
+chains reach the same number, the diagram commutes at that point.
+
+\subsection{The tower of information, and the emergence of curved spacetime}\label{ssec:accum}
+
+\paragraph{The tower (types I and II interwoven).}
+The accumulating observer does not select one reality among many: it builds it. There is
+no landscape of vacua to choose from, no statistical ensemble to average. This
+homogeneity---the same structure at every point---is what the field equations require: it
+is the tensor covariance of \S\ref{ssec:hinge} now read as a constructive principle, and
+its full development comes below. The entropy of one bit per cell, $H(\tfrac12)=1$
+(\LeanInline{binary\_entropy\_half}), is the maximally mixed state---$\rho_{\max}=1$ in CLPW's
+language---describing the de~Sitter vacuum, and from its overflow the geometry is born.
+
+When the $\pi$-bit cell fills, the throat opens:
+\begin{equation}\label{eq:obs-throat}
+  z(\sigma)=\golden^{\sigma},\qquad S(\sigma)=\pi\golden^{\sigma},
+\end{equation}
+with $N_{\rm modes}(\sigma)=\lfloor\pi\golden^\sigma\rfloor$. As it overflows, the throat
+count is set:
+\begin{equation}\label{eq:obs-swampland}
+  \frac{|\partial_\sigma V|}{V}=\ln\golden=c_{\mathrm{PCF}} .
+\end{equation}
+The UV fixed point forces the invariants:
+\begin{equation}\label{eq:obs-fixedpoint}
+  \beta_g(g^{*},\lambda^{*})=0\;\Longleftrightarrow\;\epsz\Mpcf=\pi ,
+\end{equation}
+The quantisation is in powers of $\golden$, and the identity that closes it is
+$\golden^{-\lambda}=\tfrac12\Leftrightarrow\golden^\lambda=2$: the binary base comes out of
+the golden geometry. Here the string reappears, not as a new object but as the same
+particle in its information register: the dimension of the state space at each level is
+$\dim\mathcal{H}(\sigma)=\lfloor S(\sigma)\rfloor$.
+
+\emph{W4 --- the entropy conjecture (W01).} Witten conjectures that the Hilbert space is
+finite-dimensional with $S=\ln N$ (W01). The Hilbert dimension per level is the integer
+part of the horizon entropy, $\dim\mathcal{H}(\sigma)=\lfloor S(\sigma)\rfloor$, with
+$N_{\rm modes}=\lfloor\pi\golden^\sigma\rfloor$---the constructive form of Witten's
+$S=\ln N$. \emph{Proof:} \Lean{witten\_entropy\_realized} (by \texttt{rfl}---the most
+direct realisation), \Lean{witten\_finite\_rank, witten\_two\_conjectures}. The entropy
+branch is asserted strongly (tight); the unitarity branch is ``realised''.
+
+The flow carrying one level to another, $\sigma\mapsto\sigma+t$, fixes $\tau=i$ and
+preserves $\tfrac12$: it is the tracial flow, the type~II signature, and it is the thermal
+flow of the static patch at the Gibbons--Hawking temperature (\LeanInline{tower\_scale\_group,
+tower\_flow\_fixes\_tau, omega\_flow\_group, omega\_flow\_invariant}).
+
+\emph{W11 --- the type~II algebra by crossed product (CLPW, completed).} CLPW build the
+type~II$_1$ algebra from the type~III by the crossed product with the modular flow
+(\S1.2--1.3). The scale flow preserves $\tfrac12$ as a trace, which is the type~II
+signature; the section proves the flow and takes from CLPW the name of the crossed-product
+classification. \emph{Proof:} \Lean{omega\_flow\_invariant, tower\_scale\_group};
+\cite{CLPW22}.
+
+\emph{W12 --- the maximally mixed vacuum state (CLPW \S2.4, developed).} CLPW identify the
+de~Sitter vacuum with the maximally mixed state, $\rho_{\max}=1$. One bit per cell,
+$H(\tfrac12)=1$, gives that $\rho=1$ of maximal entropy. \emph{Proof:}
+\Lean{binary\_entropy\_half}; \cite{CLPW22}.
+
+The heart of the movement is that bulk and boundary are the same thing at once. The bulk
+is the three-dimensional projection; the boundary, the two-dimensional plane; and they are
+the same $\Pi$ of the first movement. The two accumulations---of time (Fisher) and of
+scale (tower)---are one:
+\begin{equation}\label{eq:obs-weld}
+  \tau_F(\sigma)=\tau(\sigma)=\Mpcf\,\golden^{-\sigma},\qquad
+  S(\sigma)\,\tau_F(\sigma)=\pi\Mpcf\ \ (\text{constant in }\sigma).
+\end{equation}\begin{equation}\label{eq:obs-identity}
+  \underbrace{F_\Om\cdot\Nmodes}_{\text{bits (Shannon)}}
+   =\underbrace{S(\sigma)=\pi\golden^{\sigma}}_{\text{tower}}
+   =\underbrace{\Nmodes=\lfloor S(\sigma)\rfloor}_{\text{matter}}
+   =\underbrace{\SBH=\frac{A}{4\GN}}_{\text{horizon}}
+   =\underbrace{S_{\text{Jacobson}}}_{\delta Q=T\delta S},
+\end{equation}
+This identification---the \emph{weld}---is where four routes converge, and it is the only
+point where the three types coincide in one object: type~I by the discrete tower, type~II
+by the observer's time, type~III because it lives on the spacetime. It is the maximal apex
+of the diagram. Local and global are not separate: $\tfrac12$ at each level (local) and
+invariant under the flow (global), the same invariant read two ways. Its last two branches
+close below.
+
+\paragraph{Curved spacetime (type III again).}
+The accumulated entropy now sources gravity. Each bit costs---the Landauer cost,
+$\lambda\cdot R=\log 2$---and when that cost is imposed as an equation of state
+$\delta Q=T\,\delta S$ across every local Rindler horizon, the result is, by Jacobson's
+argument, the Einstein equation:
+\begin{equation}\label{eq:obs-landauer}
+  \text{energy per bit}=\frac{1}{\Mpcf},\qquad
+  \SBH/k_B=\lng\cdot R=\frac{\log2}{\log\golden}\cdot\log\golden=\log2\ \ (\text{one bit}),
+\end{equation}\begin{equation}\label{eq:obs-jacobson}
+  \delta Q=T\,\delta S\ \Longrightarrow\ \text{the Einstein equation},
+\end{equation}\begin{equation}\label{eq:obs-einstein}
+  R_{AB}=-4\,g_{AB},\quad R=-20,\qquad G_{AB}+\Lambda_5\,g_{AB}=\kappa\,T_{AB},\quad
+  \kappa=8\pi\GN,
+\end{equation}
+with $G_N=\mu_3=\tfrac12$. Here the homogeneity of \S\ref{ssec:hinge} is redeemed:
+Jacobson's argument requires a local horizon with the same law at every point---exactly
+what tensor covariance guarantees; without it the step does not exist. The matter is the
+mode number:
+\begin{equation}\label{eq:obs-matter}
+  T^{\mathrm{YM}}_{AB}=F_{AC}F_B{}^{C}-\tfrac14\,g_{AB}F_{CD}F^{CD},\qquad
+  \text{matter}=\Nmodes=\lfloor S(\sigma)\rfloor .
+\end{equation}
+and here the two open branches of the identity close: the horizon entropy and Jacobson's
+were, all along, the same number as the bits and the modes. The cosmological constant is
+determined, not chosen:
+
+\emph{W8 --- a theory that determines $\Lambda$ (W01).} The abstract of W01 states that
+general relativity must be derived from a theory that \emph{determines} the value of
+$\Lambda$. Here $\Lambda$ comes from the curvature, with zero free parameters:
+$\Lambda_5=-d(d-1)/2\ell^2=-6$, with $\ell=1$ from \eqref{eq:bridge-S} (\S\ref{sec:derivations})
+and $d=4$ from the arity (\S\ref{sec:methods}), and the G--$\Lambda$ duality
+$\golden^{-6}\cdot\golden^{6}=1$ (\LeanInline{G\_Lambda\_duality, R\_scalar\_AdS5, BF\_bound\_AdS5}).
+Between the gravity scale and the $\Lambda$ scale there is an exact interval:
+
+It remains to show the spacetime is de~Sitter. The metric obtained is Euclidean
+anti-de~Sitter; the same internal Wick rotation that made the centre the time axis carries
+it to de~Sitter, with $\varepsilon(\sigma)=\varepsilon_0\golden^\sigma$:
+\begin{equation}\label{eq:ets-metric}
+  ds^{2}=\underbrace{(dx^{2}+dy^{2}+dz^{2})}_{\E^{3}}
+        -\underbrace{c^{2}\,dt^{2}}_{\text{Wick }(C)}
+        +\underbrace{\lambda^{2}\,d(\ln s)^{2}}_{\golden^{\sigma}\text{-tower}},
+  \qquad s=\golden^{\sigma},
+\end{equation}
+It is the bridge to de~Sitter that Maldacena anticipated, built here by internal analytic
+continuation rather than an imposed duality (\LeanInline{ets\_is\_dS\_zero\_H}). Past and future
+are the poles of a dipole, with $C$ at the equator---the two conjugate sheets of
+de~Sitter.
+
+\emph{W10 --- the antipodal map / meta-observables (W01).} The antipodal singularity
+Witten notes corresponds to $F$ being antipodal to $P$ in the dipole, which resolves
+Strominger's obstruction geometrically. \emph{Proof:} the dipole of \eqref{eq:ets-metric};
+\cite{Witten01dS} (\S\ref{app:embedding}).
+
+The geometric closure is the connection the framework contributes. The 5D ambient is
+flat---its curvature, computed, vanishes, $R^{(5)}=0$ (\LeanInline{ets\_riemann\_flat})---and the
+fifth coordinate, the scale axis, is the extra direction an embedding needs. De~Sitter is
+the hyperboloid $-X_0^2+\cdots+X_4^2=1/H^2$ embedded in that flat ambient, with intrinsic
+curvature ${}={}$ wedge of the extrinsic by Gauss: $R_{\mu\nu}=3H^2 g_{\mu\nu}$
+(\LeanInline{dS\_ricci\_from\_gauss, dS\_einstein\_Lambda}). The planar patch covers exactly half
+the hyperboloid---$X_0+X_4=\ell\,e^{t/\ell}>0$ never changes sign
+(\LeanInline{dS\_covers\_half\_hyperboloid})---and that half \emph{realises} the observer's half
+$|\Om|=\tfrac12$ by the shared value (\LeanInline{observer\_half\_from\_norms}). The assertoric
+level splits: strong on the covering, ``realises'' on the identification.
+
+\emph{W9 --- the thermal nature of the static patch (Gibbons--Hawking).} This is the
+classical Gibbons--Hawking result, prior to W01 and CLPW: the de~Sitter horizon radiates
+and the static patch is a thermal state at $T=H/2\pi$. The observer's modular flow is the
+tracial flow of the tower, and the static patch is thermal at that temperature.
+\emph{Proof:} \Lean{dS\_temperature, dS\_beta\_reciprocal} (\S\ref{app:embedding});
+\cite{GibbonsHawking77}.
+
+\medskip
+The formal statements underlying the accumulation and gravity movements follow; their
+proofs are those of the corresponding \Lean\ tags.
+\begin{remark}[The role of $\golden$ in the observer]
+$\mu_3=\tfrac12=\golden^{-\lng}$; the three invariants ($f_{\mathrm{crit}}=\tfrac12$,
+$\Fmax^{-1}=\tfrac14$, $n=3$) are $\golden$-facts of \S\ref{sec:methods}--\S\ref{sec:derivations},
+not fitted values.
+\end{remark}\begin{remark}[The role of $\golden$ in the objectivity threshold]
+$|\Om|=\tfrac12=\mu_3=\golden^{-\lng}$: the half of de Sitter, Kiely's threshold and the modulus
+are one $\golden$-fact; the throat that observation builds is the tower $\golden^{\sigma}$.
+\end{remark}\begin{remark}[The role of $\golden$ in the accumulation]
+$\epsz=\ln\golden/(6\sqrt3)$ and $\Mpcf=6\sqrt3\,\pi/\ln\golden$ give $\epsz\Mpcf=\pi$: the clock
+of the accumulation, the ultraviolet fixed point and the certainty principle are one
+$\golden$-fact; the accumulation tower is $\golden^{\sigma}$.
+\end{remark}\begin{remark}[Past and future are fixed dynamically]
+The reading of $C$-$P$-$F$ as present\,/\,past\,/\,future is not a free labelling but a consequence
+of the causal structure. The Wick rotation makes the centre $C$ the time axis and gives the metric
+of \eqref{eq:ets-metric} its Lorentzian signature $(+,+,+,-)$, so it carries a light cone: $C$ is
+its apex---the observer's present---and $P,F$ are the past- and future-directed cones, rotating in
+opposite senses about the fixed, real $C$, with $\Theta$ exchanging them. The direction of the
+$\golden$-driven accumulation along the throat---from the origin toward the ceiling
+(Proposition~\ref{prop:obs-accum})---orients the cone, singling out one direction as the future.
+The past/future assignment therefore follows from the causal cone and the direction of
+accumulation, not from convention.
+\Lean{C\_fixed\_PF\_rotate, wick\_squares\_flip\_sign, lorentzian\_signature\_sum, entropy\_increasing, rotation\_rate\_grows}
+\end{remark}\begin{proposition}[Accumulation and ceiling]\label{prop:obs-accum}
+The metrological quantum Fisher information accumulates as
+$F_\theta(t)\to\Fmax\bigl(1-e^{-(t/\tauF)^{2}}\bigr)$ with $\Fmax=4$~\cite{Kiely26},
+so the Cram\'er--Rao ceiling $\Fmax^{-1}=\tfrac14=\muthree^{2}$ equals the
+holographic area factor. The Fisher information per eigenvalue is
+$F_{\Om}=4\muthree^{2}=1$ bit; the three eigenvalues give $3F_{\Om}=3=c$, the
+central charge of \S\ref{ssec:object}; and the objectivity threshold
+$f_{\mathrm{crit}}=\muthree=\tfrac12$ is the maximum-entropy point $H(\tfrac12)=1$ bit.
+\end{proposition}\begin{theorem}[Time--scale conjugacy]\label{thm:obs-weld}
+At the operating point $f=\muthree=\tfrac12$ the metrological timescale equals the
+tower period, $\tauF(\sigma)=\tau(\sigma)=\Mpcf\,\golden^{-\sigma}$. Hence
+\[
+S(\sigma)\,\tauF(\sigma)=(\pi\golden^{\sigma})\,(\Mpcf\,\golden^{-\sigma})=\pi\Mpcf
+\]
+is constant in $\sigma$: the certainty principle $\epsz\Mpcf=\pi$
+(\eqref{eq:certainty}) promoted from a single cell to the generation/clock pair.
+\Lean{obs\_weld}
+\end{theorem}\begin{proposition}[The bulk metric is an Einstein space]\label{prop:obs-einstein}
+For the warped throat \eqref{eq:throat} with $A=-\log z$ (anti-de~Sitter,
+$\ell=1$), explicit computation of the Levi-Civita curvature gives, uniformly in
+all five components,
+\[
+R_{AB}=-4\,g_{AB},\qquad R=-20,\qquad G_{AB}=6\,g_{AB}\quad(A,B=0,\dots,4),
+\]
+so the metric solves $G_{AB}+\Lambda_5\,g_{AB}=0$ with $\Lambda_5=-6$, and the
+Breitenlohner--Freedman bound $m^{2}_{\mathrm{BF}}=-d^{2}/4=-4$ holds, so the discrete tower is
+stable. With a
+source, $G_{AB}+\Lambda_5\,g_{AB}=\kappa\,T_{AB}$ and $\kappa=8\pi\GN$; the PCF
+value $\GN=\muthree=\tfrac12$ gives $\kappa=4\pi$ (effective $G_4=\tfrac14$), and
+$\nabla^{A}G_{AB}=0$ holds identically, so $T_{AB}$ is conserved.
+\Lean{R\_scalar\_AdS5, R\_munu\_AdS5, G\_munu\_AdS5, BF\_bound\_AdS5}
+\end{proposition}\begin{theorem}[Jacobson's construction on the bulk metric]\label{thm:obs-jacobson}
+Since \eqref{eq:throat} is an Einstein space, $R_{ab}k^{a}k^{b}=-4\,g_{ab}k^{a}k^{b}=0$
+for every null $k$; in vacuum the Clausius relation
+$\delta Q=\int T_{ab}\chi^{a}\,d\Sigma^{b}=0$ forces $\delta S=0$ (Jacobson's
+entanglement equilibrium~\cite{Jacobson1995}), which coincides with the ceiling
+$\Fmax^{-1}=\muthree^{2}$ of Prop.~\ref{prop:obs-accum}. The normalisation
+$\eta=1/4\GN$ with $\GN=\muthree$ fixes the area factor $\muthree^{2}=\tfrac14$
+and the coupling $2\pi/\eta=8\pi\GN$; with matter, $\delta Q=T\,\delta S$ on every
+local Rindler horizon yields the Einstein equation~\cite{Jacobson1995,Jacobson2016}.
+\end{theorem}\begin{proposition}[Matter is the saturation entropy]\label{prop:obs-matter}
+Each interior level carries $\Nmodes(\sigma)=\lfloor\pi\golden^{\sigma}\rfloor
+=\lfloor S(\sigma)\rfloor$ scalar modes, each contributing one Shannon bit, so the
+matter content of level $\sigma$ is the saturation entropy
+$S(\sigma)=\pi\golden^{\sigma}$. The colour octet has $\dim\mathfrak{su}(3)=n^{2}-1=8$ at the arity
+$n=3$ fixed by the golden central chain $\golden^{2}+\golden^{-2}=3$; the full
+$\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$ follows from the torus $T^2_{\PCF}$
+\eqref{eq:torus}, its gauge factors landing at the force levels by increasing dimension
+$1<3<8$: $\mathrm{U}(1)$ is the Hopf fibre $S^1$ at $\sigma=3$ (EM), $\mathrm{SU}(2)$ the Clifford
+$S^3$ at $\sigma=4$ (weak), and $\mathrm{SU}(3)$ the $A_2$ roots of the Eisenstein face
+(Fig.~\ref{fig:isometry-algebra}) at $\sigma=5$ (strong), with $\dim\mathfrak{su}(3)=n^{2}-1=8$ at
+the arity $n=3$ fixed by the golden central chain $\golden^{2}+\golden^{-2}=3$
+\Lean{gauge\_dim\_su3, phi\_central\_chain, central\_chain, clifford\_S3\_condition, hopf\_from\_clifford, A2\_root\_normalized}.
+The electroweak data follow from the same modulus: the Weinberg ratio is
+$\sin^{2}\theta_W=\golden^{-3}$ \Lean{weinberg\_ratio}, the breaking $\Z_3\to\Z_4$ occurs at the
+tower midpoint $\sigma=3$, and the $G$--$\Lambda$ duality reads $\golden^{-6}\golden^{+6}=1$
+\Lean{G\_Lambda\_duality}. Only the individual Yukawa couplings and the full three-generation
+flavour spectrum are not fixed by this placement and remain open.%
+Their Yang--Mills stress-energy
+$T^{\mathrm{YM}}_{AB}=F_{AC}F_{B}{}^{C}-\tfrac14\,g_{AB}F_{CD}F^{CD}$ is
+conserved ($\nabla^{A}T^{\mathrm{YM}}_{AB}=0$) and traceless on the
+$D=4$ worldsheet (conformal there).
+\end{proposition}\begin{remark}[The G--$\Lambda$ interval: $\Lambda$ is determined, not selected]
+\label{rmk:GLambda-interval}
+The cosmological constant is not an input. The scale $\ell=1$ (from the
+S-duality fixed point $\tau=i$, \eqref{eq:bridge-S}) and the dimension $d=4$
+(from the arity $n=3$, \S\ref{ssec:arity}) are both derived, and they fix
+\begin{equation}\label{eq:Lambda-from-curvature}
+  \Lambda_5=-\frac{d(d-1)}{2\ell^{2}}=-6 ,
+\end{equation}
+with zero free parameters. This realises precisely what
+Witten~\cite{Witten01dS} identified as necessary: a theory
+``that determines the value of the cosmological constant.''
+
+\emph{The tower levels.} The activation levels of the three sectors are read
+off the arity, not postulated:
+\begin{equation}\label{eq:interval-levels}
+  \sigma_G=n-1=2,\qquad \sigma_{\mathrm{EM}}=n=3,\qquad \sigma_\Lambda=2n=6 .
+\end{equation}
+Gravity activates at $\sigma_G=n-1$ (the spatial bulk $\E^{3}$ complete, one
+dimension below the bulk); the electromagnetic sector sits at the midpoint
+$\sigma_{\mathrm{EM}}=n$ (the Page point that halves the tower $[0,2n]$); and
+$\Lambda$ activates at the ceiling $\sigma_\Lambda=2n$. The ceiling is
+geometric: the torus $T^{2}_{\PCF}$ is a \emph{complex} space, so complex
+dimension $n$ is real dimension $2n$---``complex dimension three'' is
+$\R^{6}$, never $\R^{3}$. The tower runs over the full real space
+$\sigma\in\{0,1,\dots,2n\}$, and its ceiling $\sigma_\Lambda=2n$ is that real
+dimension.
+
+\emph{The interval is the spacetime.} The gap between the gravity and
+$\Lambda$ levels is exactly the dimension of spacetime,
+\begin{equation}\label{eq:interval-gap}
+  \sigma_\Lambda-\sigma_G=2n-(n-1)=n+1=4=\dim(M^{4}),
+\end{equation}
+and the interval carries the two holographic invariants of the microstate:
+\begin{equation}\label{eq:interval-fractions}
+  \frac{\sigma_{\mathrm{EM}}-\sigma_G}{\sigma_\Lambda-\sigma_G}
+    =\frac{1}{n+1}=\frac14=|\Om|^{2}
+  \qquad\text{and}\qquad
+  \frac{\sigma_{\mathrm{EM}}-\sigma_G}{\sigma_\Lambda-\sigma_{\mathrm{EM}}}
+    =\frac1n=\frac13=\|P\|^{2},
+\end{equation}
+the holographic area factor $\tfrac14=|\Om|^{2}$ and the past-component
+weight $\tfrac13=\|P\|^{2}=F_\Om/c$.
+
+\emph{Two independent routes to the same $6$.} The curvature magnitude
+$|\Lambda_5|=d(d-1)/2=6$ (from $d=4$) and the tower ceiling
+$\sigma_\Lambda=2n=6$ (from $n=3$, as the real dimension of the complex
+torus) coincide by independent routes---5D curvature on one side, the
+real dimension of the worldsheet torus on the other. Both are the entropy
+saturation of the microstate read geometrically: $\sigma_\Lambda=2n=6$ is the
+ceiling of the golden tower $S(\sigma)=\pi\golden^{\sigma}$ whose accumulated
+bits are the horizon entropy of \eqref{eq:obs-identity} and, through
+\eqref{eq:obs-einstein}, the field equations---the six-fold value is that
+saturation, not a separate geometric fact. Together with $6=|S_{3}|=3!$ (the order of the symmetry
+group, Lem.~\ref{lem:s3-orders}) and the exponent of the $G$--$\Lambda$ duality
+$\golden^{-6}\golden^{+6}=1$, the value $\sigma_\Lambda=6$ is fixed from
+four sides.
+\LeanWrap{sigma\_G\_val, sigma\_EM\_val, sigma\_Lambda\_val, interval\_gap, interval\_gap\_general, em\_holographic\_fraction, entropy\_at\_mu\_three, threshold\_ordering, em\_asymmetry, lambda\_magnitude\_eq\_level}
+
+\emph{Scope.} This we propose as the structure Witten required: the de~Sitter
+Hilbert-space dimension $N$ is integer, so $G\Lambda^{(n-2)/n}$ cannot vary
+continuously and both $G$ and $\Lambda$ must be fixed by a more fundamental
+theory~\cite{Witten01dS}; here $\GN=\tfrac12$ and $\Lambda\sim\golden^{-6}$, the
+product fixed, $\golden^{-6}\golden^{+6}=1\iff G\Lambda\sim
+M_{\mathrm{Pl}}^{-4}M_{\mathrm{Pl}}^{4}=1$ (PCF units). What is determined is this
+dimensionless conjugacy; the ${\sim}120$-order gap to the observed
+$\Lambda_{\mathrm{obs}}\sim10^{-122}M_{\mathrm{Pl}}^{4}$ is a translation to the
+absolute scale, which the tower does not fix.
+\end{remark}
+\subsection{Why this is a single demonstration}\label{ssec:spine4}
+
+The path went through the three types: it opened in the non-local type~III field, made the
+type~I particle emerge, turned it into the type~II observer, interwove I and II in the
+tower, and closed in the type~III spacetime. These are not five demonstrations glued
+together but one, because the same object of modulus $\tfrac12$ is the protagonist of all,
+and each transition is a proved implication: entropy orients the flow and yields the
+particle, the Wick rotation gives the cones and the observer, accumulation overflows and
+builds the tower, entropy sources gravity.
+
+The commutative diagram supports this unity with precise structure. The twenty-three
+equations form a directed acyclic graph with two roots---the projection $\Pi$
+(\eqref{eq:obs-interface}) and the observer's objective record
+(\eqref{eq:obs-redundancy})---from which all else derives, with $34$ demonstrative edges.
+A topological order exists---the equations can be stated so that none depends on a later
+one---which guarantees the section reads without forward reference. Seven nodes are apices,
+where two or more independent chains converge; the weld (\eqref{eq:obs-weld}), with four
+routes, is the maximal one and the only triple point I${\cap}$II${\cap}$III. The circle
+closes literally: \eqref{eq:obs-einstein} returns to \eqref{eq:obs-interface}---the
+non-local gravity returns to the same $\Pi$ and $\tfrac12$ of the opening, III${\to}$III.
+The spacetime at the end is non-local at every point, type~III, as the field at the start,
+and its Newton constant is the same $\tfrac12$ of the object one began with. One enters by
+any door and reaches the same object: that is what it means for the diagram to commute.
+The section does not prove six things; it proves that an observer of modulus $\tfrac12$,
+which cannot be separated into parts, is at once the particle, the string, the tower of
+information and the curved de~Sitter universe that contains it, and that this universe has
+the $\Lambda$ the theory was bound to determine, with the observer inside. The debt with
+which the section opened is settled by the same object that raised it.
+
+\medskip\noindent\textbf{The demonstrative line.} Each step uses only the previous ones.
+
+\begin{description}
+  \item[\S4.1 what is proved, and against what.] Holography in de~Sitter requires a theory that
+        determines $\Lambda$ and describes the observer from within (Witten). The yardstick is the
+        von~Neumann classification into three types---I discrete (particle, definite spectrum), II
+        observation (trace, crossed product), III local field (worldsheet, horizon,
+        non-locality)---and what is proved is the \emph{signature} of each, not the technical name.
+        The criteria come from three distinct sources, each tagged where used: Witten~2001
+        ($\Lambda$, finiteness $S=\ln N$, the isometry obstruction, the pairing, the CPT map, the
+        two conjectures), CLPW~2022 (the observer described by the theory, the maximally mixed
+        vacuum, the crossed product), and Gibbons--Hawking (the thermal static patch). The thesis:
+        the three types are realised on one object, the microstate $\Om$ with $|\Om|=\tfrac12$, as
+        three threads crossing the whole section.
+  \item[\S4.2 the field and the particle.] The path opens in the non-local type~III field:
+        the worldsheet carries the interface $\Pi\colon\E^3\to\C$ (\eqref{eq:obs-interface}),
+        whose three components are the spin-star $C$-$P$-$F$ (\eqref{eq:obs-spinstar}). The whole
+        geometry is one tensor---the warp $z=\golden^\sigma$ generates the curvature
+        $R_{AB}={-}4g_{AB}$ (App.~\ref{app:curvature})---and from that same geometry, by its
+        tension, the discrete type~I particle emerges. Geometry and particle are the same object.
+  \item[\S4.3 the particle as observer.] An internal Wick rotation turns the particle into an
+        observer: the centre becomes the time axis, past and future the two cones. The observer
+        accumulates---Fisher grows to the Cram\'er--Rao ceiling $\Fmax^{-1}=\tfrac14$
+        (\eqref{eq:obs-cramerrao}, \eqref{eq:obs-fishertime})---and sees the exact half
+        $\|P\|\|C\|\|F\|=\tfrac12=|\Om|$ (\eqref{eq:obs-half}), with redundancy $R_\delta\sim N$
+        (\eqref{eq:obs-redundancy}) and accumulation to $\Fmax=4$ (\eqref{eq:obs-accum}). Three
+        independent routes converge on $\tfrac12$ (first apex), the objectivity threshold
+        $f_{\mathrm{crit}}=\tfrac12$ of Kiely (\eqref{eq:obs-threshold}) and the cell capacity
+        $\epsz\Mpcf=\pi$ (\eqref{eq:obs-certainty}).
+  \item[\S4.4 the tower, and curved spacetime.] The accumulation builds the tower (types~I and~II
+        interwoven): the cell overflows and the throat opens, $z=\golden^\sigma$,
+        $S(\sigma)=\pi\golden^\sigma$ (\eqref{eq:obs-throat}, \eqref{eq:obs-swampland}), at the UV
+        fixed point $\beta_g=0\Leftrightarrow\epsz\Mpcf=\pi$ (\eqref{eq:obs-fixedpoint}). The two
+        accumulations---of time and of scale---are one, the weld (\eqref{eq:obs-weld}), giving the
+        identity $F_\Om\Nmodes=S(\sigma)=\SBH=S_{\text{Jacobson}}$ (\eqref{eq:obs-identity}). Then
+        curved spacetime (type~III again): Landauer (\eqref{eq:obs-landauer}) $\to$ Jacobson
+        (\eqref{eq:obs-jacobson}) $\to$ Einstein (\eqref{eq:obs-einstein}), with matter the
+        saturation entropy (\eqref{eq:obs-matter}). The internal Wick rotation gives the de~Sitter
+        metric (\eqref{eq:ets-metric}), $\Lambda_5={-}6$ (\eqref{eq:Lambda-from-curvature}), and the
+        level interval $\sigma_G{=}2,\sigma_{\mathrm{EM}}{=}3,\sigma_\Lambda{=}6$
+        (\eqref{eq:interval-levels}) with $\sigma_\Lambda{-}\sigma_G{=}n{+}1{=}4$
+        (\eqref{eq:interval-gap}) and the fractions $\tfrac1{n+1}{=}\tfrac14{=}|\Om|^2$
+        (\eqref{eq:interval-fractions}); the $G$--$\Lambda$ duality and
+        $\sin^2\theta_W{=}\golden^{-3}$ (Prop.~\ref{prop:obs-matter}) give the gauge factors
+        $\mathrm{SU}(3){\times}\mathrm{SU}(2){\times}\mathrm{U}(1)$ (Fig.~\ref{fig:torus-gauge}).
+\end{description}
+\Lean{cw3\_observer\_items\_core}%
+\noindent The observer does not select; it builds without alternative --- participatory yet
+forced --- consonant with Kiely's quantum Darwinism. The whole section is one commutative
+diagram (Fig.~\ref{fig:spine4}): the twenty-three equations as nodes, the demonstrative
+arrows between them, and the apices where independent routes converge.
+
+\begin{figure}[H]\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\footnotesize,
+  >={Stealth[length=4pt]},
+  nd/.style={inner sep=2pt, outer sep=1pt},
+  ap/.style={draw, rounded corners=2pt, fill=black!5, inner sep=3pt},
+  every path/.style={->, draw=black!72, line width=0.45pt}]
+
+% ===== 4.2 field + particle (x=0) =====
+\node[nd] (int) at (0,5.4)  {$\Pi\colon\E^3{\to}\C$};
+\node[nd] (spin) at (0,4.2) {$C{+}P{+}F$};
+\node[nd] (half) at (0,3.0) {$\|P\|\|C\|\|F\|{=}\tfrac12$};
+
+% ===== 4.3 observer (x=3.4) =====
+\node[nd] (thr)  at (3.4,2.0) {$f_{\rm crit}{=}\tfrac12$};
+\node[nd] (cram) at (3.4,0.9) {$\Fmax^{-1}{=}\tfrac14$};
+\node[nd] (fish) at (3.4,-0.2){$\tau_F{=}\tau_D{\Leftrightarrow}f{=}\tfrac12$};
+\node[nd] (red)  at (3.4,3.2) {$R_\delta{\sim}N$};
+\node[ap] (acc)  at (3.4,4.4) {$F_\theta{\to}\Fmax{=}4$};
+\node[nd] (cert) at (3.4,5.6) {$\varepsilon_0 M{=}\pi$};
+
+% ===== 4.4 tower (x=6.8) =====
+\node[nd] (fix)    at (6.8,6.2) {$\beta_g{=}0$};
+\node[nd] (throat) at (6.8,4.8) {$z{=}\golden^\sigma,S{=}\pi\golden^\sigma$};
+\node[nd] (swp)    at (6.8,3.4) {$\tfrac{|\partial_\sigma V|}{V}{=}\ln\golden$};
+\node[ap] (weld)   at (6.8,2.0) {$\tau_F{=}\tau{=}M\golden^{-\sigma}$};
+\node[ap] (id)     at (6.8,0.6) {$F_\Om\Nmodes{=}\pi\golden^\sigma$};
+
+% ===== 4.4 gravity (x=10.4) =====
+\node[nd] (land) at (10.4,5.6) {$E/\text{bit}{=}1/M$};
+\node[nd] (jac)  at (10.4,4.4) {$\delta Q{=}T\delta S$};
+\node[nd] (ein)  at (10.4,3.2) {$R_{AB}{=}{-}4g_{AB}$};
+\node[ap] (ets)  at (10.4,2.0) {$ds^2{=}d\vec x^2{-}c^2dt^2$};
+\node[ap] (mat)  at (10.4,0.6) {$\text{matter}{=}\lfloor S\rfloor$};
+
+% ===== 4.5 Lambda + interval (x=13.8) =====
+\node[nd] (lam)  at (13.8,4.2) {$\Lambda_5{=}{-}6$};
+\node[nd] (lev)  at (13.8,3.0) {$\sigma_G,\sigma_{\rm EM},\sigma_\Lambda$};
+\node[nd] (gap)  at (13.8,1.8) {$\sigma_\Lambda{-}\sigma_G{=}4$};
+\node[nd] (frac) at (13.8,0.6) {$\tfrac1{n+1}{=}\tfrac14{=}|\Om|^2$};
+
+% ===== edges (columna a columna, como spine3) =====
+\draw (int) -- (half);
+\draw (int) -- (spin);
+\draw (spin) -- (acc);
+\draw (half) to[bend left=5] (thr);
+\draw (thr) -- (cram);
+\draw (thr) -- (fish);
+\draw (cram) -- (acc);
+\draw (red) -- (acc);
+\draw (acc) -- (cert);
+\draw (cert) -- (fix);
+\draw (cert) -- (throat);
+\draw (throat) -- (swp);
+\draw (fix) -- (weld);
+\draw (acc) to[bend right=8] (weld);
+\draw (throat) -- (weld);
+\draw (cert) to[bend left=8] (weld);
+\draw (weld) -- (id);
+\draw (throat) to[bend left=6] (id);
+\draw (acc) to[bend right=14] (id);
+\draw (id) to[bend right=8] (land);
+\draw (cert) to[bend left=20] (land);
+\draw (land) -- (jac);
+\draw (jac) -- (ein);
+\draw (throat) to[bend left=4] (mat);
+\draw (id) -- (mat);
+\draw (ein) -- (mat);
+\draw (throat) to[bend right=4] (ets);
+\draw (half) to[bend right=10] (ets);
+\draw (weld) -- (ets);
+\draw (ein) -- (lam);
+\draw (lam) -- (lev);
+\draw (lev) -- (gap);
+\draw (lev) -- (frac);
+\draw (half) to[out=-30,in=180,looseness=0.5] (frac);
+% cierre III->III
+\draw[dashed, draw=red!55] (ein) to[out=-90,in=-90,looseness=0.5]
+  node[below,font=\scriptsize]{III$\to$III} (int);
+
+\end{tikzpicture}
+}
+\caption{Commutative diagram of \S\ref{sec:implications}: the twenty-three equations
+of \S4 as nodes, arranged by subsection (the non-local field and particle,
+\S\ref{ssec:hinge}; the observer, \S\ref{ssec:observer}; the tower and gravity,
+\S\ref{ssec:accum}), with the thirty-four demonstrative arrows. Shaded nodes are the
+apices, where two or more independent chains converge on the same value; the weld
+$\tau_F{=}\tau{=}M\golden^{-\sigma}$ has four incoming routes and is the maximal apex.
+The dashed return edge is the closure $R_{AB}{=}-4g_{AB}\to\Pi$ (type~III to type~III):
+the non-local gravity returns to the same projection $\Pi$ and modulus $\tfrac12$ of the
+opening.}
+\label{fig:spine4}
+\end{figure}
+

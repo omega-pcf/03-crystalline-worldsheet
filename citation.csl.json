@@ -1,0 +1,1382 @@
+[
+  {
+    "id": "Strominger01",
+    "type": "article",
+    "title": "The dS/CFT correspondence",
+    "author": [
+      {
+        "literal": "A.~Strominger"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2001
+        ]
+      ]
+    },
+    "note": "JHEP 10 () 034"
+  },
+  {
+    "id": "Susskind95",
+    "type": "article",
+    "title": "The world as a hologram",
+    "author": [
+      {
+        "literal": "L.~Susskind"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1995
+        ]
+      ]
+    },
+    "note": "J. Math. Phys.36 () 6377"
+  },
+  {
+    "id": "Maldacena98",
+    "type": "article",
+    "title": "The large N limit of superconformal field theories and supergravity",
+    "author": [
+      {
+        "literal": "J.~M.~Maldacena"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "note": "Adv.Theor.Math.Phys.2 () 231"
+  },
+  {
+    "id": "SusskindWitten98",
+    "type": "article",
+    "title": "The holographic bound in anti-de Sitter space",
+    "author": [
+      {
+        "literal": "L.~Susskind, E.~Witten"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/hep-th/9805114",
+    "note": "arXiv"
+  },
+  {
+    "id": "KS00",
+    "type": "article",
+    "title": "Supergravity and a confining gauge theory: duality cascades and χSB-resolution of naked singularities",
+    "author": [
+      {
+        "literal": "I.~R.~Klebanov, M.~J.~Strassler"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2000
+        ]
+      ]
+    },
+    "note": "JHEP 08 () 052"
+  },
+  {
+    "id": "Witten01dS",
+    "type": "article",
+    "title": "Quantum gravity in de Sitter space",
+    "author": [
+      {
+        "literal": "E.~Witten"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2001
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/hep-th/0106109",
+    "note": "arXiv"
+  },
+  {
+    "id": "CLPW22",
+    "type": "article",
+    "title": "An algebra of observables for de Sitter space",
+    "author": [
+      {
+        "literal": "V.~Chandrasekaran, R.~Longo, G.~Penington, E.~Witten"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "note": "JHEP 02 () 082"
+  },
+  {
+    "id": "Susskind03",
+    "type": "article",
+    "title": "The anthropic landscape of string theory",
+    "author": [
+      {
+        "literal": "L.~Susskind"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2003
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/hep-th/0302219",
+    "note": "arXiv"
+  },
+  {
+    "id": "BoussoPolchinski00",
+    "type": "article",
+    "title": "Quantization of four-form fluxes and dynamical neutralization of the cosmological constant",
+    "author": [
+      {
+        "literal": "R.~Bousso, J.~Polchinski"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2000
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/hep-th/0004134",
+    "note": "JHEP 06 () 006, arXiv"
+  },
+  {
+    "id": "Douglas03",
+    "type": "article",
+    "title": "The statistics of string/M theory vacua",
+    "author": [
+      {
+        "literal": "M.~R.~Douglas"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2003
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/hep-th/0303194",
+    "note": "JHEP 05 () 046, arXiv"
+  },
+  {
+    "id": "BoussoSusskind11",
+    "type": "article",
+    "title": "The multiverse interpretation of quantum mechanics",
+    "author": [
+      {
+        "literal": "R.~Bousso, L.~Susskind"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2012
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1105.3796",
+    "note": "Phys.Rev.D 85 () 045007, arXiv"
+  },
+  {
+    "id": "SSS19",
+    "type": "article",
+    "title": "JT gravity as a matrix integral",
+    "author": [
+      {
+        "literal": "P.~Saad, S.~H.~Shenker, D.~Stanford"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1903.11115",
+    "note": "arXiv"
+  },
+  {
+    "id": "Cooper2026",
+    "type": "article",
+    "title": "Holographic equidistribution",
+    "author": [
+      {
+        "literal": "N.~Cooper"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/2602.12265",
+    "note": "arXiv"
+  },
+  {
+    "id": "lawvere69",
+    "type": "article",
+    "title": "Diagonal arguments and cartesian closed categories",
+    "author": [
+      {
+        "literal": "F.~W.~Lawvere"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1969
+        ]
+      ]
+    },
+    "note": "Lecture Notes in Math.92 () 134"
+  },
+  {
+    "id": "yanofsky03",
+    "type": "article",
+    "title": "A universal approach to self-referential paradoxes, incompleteness and fixed points",
+    "author": [
+      {
+        "literal": "N.~S.~Yanofsky"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2003
+        ]
+      ]
+    },
+    "note": "Bull.Symbolic Logic 9 () 362"
+  },
+  {
+    "id": "martinlof75",
+    "type": "book",
+    "title": "An intuitionistic theory of types: predicative part",
+    "author": [
+      {
+        "literal": "P.~Martin-L\\\"of"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1975
+        ]
+      ]
+    },
+    "note": "in Logic Colloquium '73, North-Holland ()"
+  },
+  {
+    "id": "priest79",
+    "type": "article",
+    "title": "The logic of paradox",
+    "author": [
+      {
+        "literal": "G.~Priest"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1979
+        ]
+      ]
+    },
+    "note": "J. Philos.Logic 8 () 219"
+  },
+  {
+    "id": "russell08",
+    "type": "article",
+    "title": "Mathematical logic as based on the theory of types",
+    "author": [
+      {
+        "literal": "B.~Russell"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1908
+        ]
+      ]
+    },
+    "note": "Amer.J.Math.30 () 222"
+  },
+  {
+    "id": "tarski52",
+    "type": "article",
+    "title": "A Decision Method for Elementary Algebra and Geometry",
+    "author": [
+      {
+        "literal": "A.~Tarski"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1951
+        ]
+      ]
+    },
+    "note": "2nd ed., Univ.of California Press ()"
+  },
+  {
+    "id": "huerta2018m",
+    "type": "article",
+    "title": "M-theory from the superpoint",
+    "author": [
+      {
+        "literal": "J.~Huerta, U.~Schreiber"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "note": "Lett.Math.Phys.108 () 2695"
+  },
+  {
+    "id": "Witten95",
+    "type": "article",
+    "title": "String theory dynamics in various dimensions",
+    "author": [
+      {
+        "literal": "E.~Witten"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1995
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/hep-th/9503124",
+    "note": "Nucl.Phys.B 443 () 85, arXiv"
+  },
+  {
+    "id": "connes98",
+    "type": "article",
+    "title": "Noncommutative geometry and matrix theory",
+    "author": [
+      {
+        "literal": "A.~Connes, M.~R.~Douglas, A.~Schwarz"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "note": "JHEP 02 () 003"
+  },
+  {
+    "id": "Barthes53",
+    "type": "book",
+    "title": "Le Degre zero de l'ecriture",
+    "author": [
+      {
+        "literal": "R.~Barthes"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1953
+        ]
+      ]
+    },
+    "note": "Seuil, Paris ()"
+  },
+  {
+    "id": "Hurwitz1891",
+    "type": "article",
+    "title": "Ueber die angen\\\"aherte Darstellung der Irrationalzahlen durch rationale Br\\\"uche",
+    "author": [
+      {
+        "literal": "A.~Hurwitz"
+      }
+    ],
+    "note": "Math.Ann.39 (1891) 279"
+  },
+  {
+    "id": "manin04",
+    "type": "book",
+    "title": "Real multiplication and noncommutative geometry",
+    "author": [
+      {
+        "literal": "Yu.~I.~Manin"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2004
+        ]
+      ]
+    },
+    "note": "in The Legacy of Niels Henrik Abel, Springer () 685"
+  },
+  {
+    "id": "manin13",
+    "type": "article",
+    "title": "Numbers as functions",
+    "author": [
+      {
+        "literal": "Yu.~I.~Manin"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1312.5160",
+    "note": "arXiv"
+  },
+  {
+    "id": "Elvang2026",
+    "type": "article",
+    "title": "String theory from maximal supersymmetry",
+    "author": [
+      {
+        "literal": "H.~Elvang, A.~Herderschee, R.~Morales"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/2601.11705",
+    "note": "arXiv"
+  },
+  {
+    "id": "Veneziano",
+    "type": "article",
+    "title": "Construction of a crossing-symmetric, Regge-behaved amplitude for linearly rising trajectories",
+    "author": [
+      {
+        "literal": "G.~Veneziano"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1968
+        ]
+      ]
+    },
+    "note": "Nuovo Cim.A 57 () 190"
+  },
+  {
+    "id": "LaportaRemiddi96",
+    "type": "article",
+    "title": "The analytical value of the electron (g-2) at order $α^3$ in QED",
+    "author": [
+      {
+        "literal": "S.~Laporta, E.~Remiddi"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1996
+        ]
+      ]
+    },
+    "note": "Phys.Lett.B 379 () 283"
+  },
+  {
+    "id": "HartnollYang25",
+    "type": "article",
+    "title": "The conformal primon gas at the end of time",
+    "author": [
+      {
+        "literal": "S.~A.~Hartnoll, M.~Yang"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/2502.02661",
+    "note": "JHEP 07 () 281, arXiv"
+  },
+  {
+    "id": "DeClerckHartnollYang25",
+    "type": "article",
+    "title": "Wheeler--DeWitt wavefunctions for 5d BKL dynamics, automorphic L-functions and complex primon gases",
+    "author": [
+      {
+        "literal": "M.~De~Clerck, S.~A.~Hartnoll, M.~Yang"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/2507.08788",
+    "note": "JHEP 11 () 160, arXiv"
+  },
+  {
+    "id": "Julia90",
+    "type": "book",
+    "title": "Statistical theory of numbers",
+    "author": [
+      {
+        "literal": "B.~L.~Julia"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1990
+        ]
+      ]
+    },
+    "note": "in Number Theory and Physics, Springer () 276"
+  },
+  {
+    "id": "Montgomery73",
+    "type": "article",
+    "title": "The pair correlation of zeros of the zeta function",
+    "author": [
+      {
+        "literal": "H.~L.~Montgomery"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1973
+        ]
+      ]
+    },
+    "note": "Proc.Symp.Pure Math.24 () 181"
+  },
+  {
+    "id": "Odlyzko87",
+    "type": "article",
+    "title": "On the distribution of spacings between zeros of the zeta function",
+    "author": [
+      {
+        "literal": "A.~M.~Odlyzko"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1987
+        ]
+      ]
+    },
+    "note": "Math.Comp.48 () 273"
+  },
+  {
+    "id": "buium05",
+    "type": "article",
+    "title": "Arithmetic Differential Equations",
+    "author": [
+      {
+        "literal": "A.~Buium"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2005
+        ]
+      ]
+    },
+    "note": "Math.Surveys Monogr.118, AMS ()"
+  },
+  {
+    "id": "pacioli1509",
+    "type": "article",
+    "title": "De Divina Proportione",
+    "author": [
+      {
+        "literal": "L.~Pacioli"
+      }
+    ],
+    "note": "Venice (1509)"
+  },
+  {
+    "id": "Pletser2018",
+    "type": "article",
+    "title": "Fibonacci numbers and the golden ratio in biology, physics, astrophysics, chemistry and technology: a non-exhaustive review",
+    "author": [
+      {
+        "literal": "V.~Pletser"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1801.01369",
+    "note": "arXiv"
+  },
+  {
+    "id": "Jagannathan2021",
+    "type": "article",
+    "title": "The Fibonacci quasicrystal: case study of hidden dimensions and multifractality",
+    "author": [
+      {
+        "literal": "A.~Jagannathan"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "note": "Rev.Mod.Phys.93 () 045001"
+  },
+  {
+    "id": "Jedrkiewicz2018",
+    "type": "article",
+    "title": "Coherent four-mode parametric generation in a hexagonally poled nonlinear crystal",
+    "author": [
+      {
+        "literal": "O.~Jedrkiewicz et al"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "note": "Sci.Rep.8 ()"
+  },
+  {
+    "id": "Sonnino2024",
+    "type": "article",
+    "title": "The golden ratio family of extremal Kerr--Newman black holes and its implications for the cosmological constant",
+    "author": [
+      {
+        "literal": "G.~Sonnino et al"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "note": "Axioms 13 () 720"
+  },
+  {
+    "id": "Apery",
+    "type": "article",
+    "title": "Irrationalite de ζ(2) et ζ(3)",
+    "author": [
+      {
+        "literal": "R.~Ap\\'ery"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1979
+        ]
+      ]
+    },
+    "note": "Asterisque 61 () 11"
+  },
+  {
+    "id": "F1",
+    "type": "misc",
+    "title": "Odd Zeta Values from Pentagonal _1-Descent",
+    "author": [
+      {
+        "literal": "J.\\,A.~Gonz\\'alez Garc\\'ia \\emph{et al.},\n"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "note": "companion paper ()."
+  },
+  {
+    "id": "Corr",
+    "type": "misc",
+    "title": "An analogue of Euler's identity for the binary, ternary, and golden bases",
+    "author": [
+      {
+        "literal": "J.\\,A.~Gonz\\'alez Garc\\'ia \\emph{et al.},\n"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "note": "companion paper ()."
+  },
+  {
+    "id": "HP",
+    "type": "misc",
+    "title": "Hilbert--Polya Primitive Structure of the Complex Plane",
+    "author": [
+      {
+        "literal": "J.\\,A.~Gonz\\'alez Garc\\'ia \\emph{et al.},\n"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "note": "companion paper ()."
+  },
+  {
+    "id": "Kiely26",
+    "type": "article",
+    "title": "A.~Kiely, D.A.~Chisholm, A.~Touil, S.~Deffner, G.~Landi, S.~Campbell",
+    "author": [
+      {
+        "literal": ""
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2026
+        ]
+      ]
+    },
+    "note": "A. Kiely, D.A. Chisholm, A. Touil, S. Deffner, G. Landi, S. Campbell, Phys.Rev.A 113 () 022403"
+  },
+  {
+    "id": "Jacobson1995",
+    "type": "article",
+    "title": "Thermodynamics of spacetime: the Einstein equation of state",
+    "author": [
+      {
+        "literal": "T.~Jacobson,\n"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1995
+        ]
+      ]
+    },
+    "note": "Phys.Rev.Lett.75 () 1260, arXiv:gr-qc/9504004"
+  },
+  {
+    "id": "Jacobson2016",
+    "type": "article",
+    "title": "Entanglement equilibrium and the Einstein equation",
+    "author": [
+      {
+        "literal": "T.~Jacobson,\n"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1505.04753",
+    "note": "Phys.Rev.Lett.116 () 201101, arXiv"
+  },
+  {
+    "id": "Verlinde2011",
+    "type": "article",
+    "title": "On the origin of gravity and the laws of Newton",
+    "author": [
+      {
+        "literal": "E.~Verlinde,\n"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1001.0785",
+    "note": "JHEP 04 () 029, arXiv"
+  },
+  {
+    "id": "Verlinde2017",
+    "type": "article",
+    "title": "Emergent gravity and the dark universe",
+    "author": [
+      {
+        "literal": "E.~Verlinde,\n"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1611.02269",
+    "note": "SciPost Phys.2 () 016, arXiv"
+  },
+  {
+    "id": "Landauer61",
+    "type": "article",
+    "title": "Irreversibility and heat generation in the computing process",
+    "author": [
+      {
+        "literal": "R.~Landauer"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1961
+        ]
+      ]
+    },
+    "note": "IBM J.Res.Dev.5 () 183"
+  },
+  {
+    "id": "Bekenstein73",
+    "type": "article",
+    "title": "Black holes and entropy",
+    "author": [
+      {
+        "literal": "J.\\,D.~Bekenstein"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1973
+        ]
+      ]
+    },
+    "note": "Phys.Rev.D 7 () 2333"
+  },
+  {
+    "id": "Hawking75",
+    "type": "article",
+    "title": "Particle creation by black holes",
+    "author": [
+      {
+        "literal": "S.\\,W.~Hawking"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1975
+        ]
+      ]
+    },
+    "note": "Commun.Math.Phys.43 () 199"
+  },
+  {
+    "id": "GibbonsHawking77",
+    "type": "article",
+    "title": "Cosmological event horizons, thermodynamics, and particle creation",
+    "author": [
+      {
+        "literal": "G.\\,W.~Gibbons, S.\\,W.~Hawking"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1977
+        ]
+      ]
+    },
+    "note": "Phys.Rev.D 15 () 2738"
+  },
+  {
+    "id": "BrownHenneaux86",
+    "type": "article",
+    "title": "Central charges in the canonical realization of asymptotic symmetries: an example from three-dimensional gravity",
+    "author": [
+      {
+        "literal": "J.\\,D.~Brown, M.~Henneaux"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1986
+        ]
+      ]
+    },
+    "note": "Commun.Math.Phys.104 () 207"
+  },
+  {
+    "id": "GKP98",
+    "type": "article",
+    "title": "Gauge theory correlators from non-critical string theory",
+    "author": [
+      {
+        "literal": "S.\\,S.~Gubser, I.\\,R.~Klebanov, A.\\,M.~Polyakov"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "note": "Phys.Lett.B 428 () 105"
+  },
+  {
+    "id": "Witten98",
+    "type": "article",
+    "title": "Anti-de Sitter space and holography",
+    "author": [
+      {
+        "literal": "E.~Witten"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "note": "Adv.Theor.Math.Phys.2 () 253"
+  },
+  {
+    "id": "RyuTakayanagi06",
+    "type": "article",
+    "title": "Holographic derivation of entanglement entropy from the AdS/CFT correspondence",
+    "author": [
+      {
+        "literal": "S.~Ryu, T.~Takayanagi"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "note": "Phys.Rev.Lett.96 () 181602"
+  },
+  {
+    "id": "Obied18",
+    "type": "article",
+    "title": "De Sitter space and the swampland",
+    "author": [
+      {
+        "literal": "G.~Obied, H.~Ooguri, L.~Spodyneiko, C.~Vafa"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1806.08362",
+    "note": "arXiv"
+  },
+  {
+    "id": "Polchinski98",
+    "type": "book",
+    "title": "String Theory",
+    "author": [
+      {
+        "literal": "J.~Polchinski"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "note": "Cambridge University Press ()"
+  },
+  {
+    "id": "Huerta2019emerge",
+    "type": "article",
+    "title": "How space-times emerge from the superpoint",
+    "author": [
+      {
+        "literal": "J.~Huerta"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1903.02822",
+    "note": "LMS/EPSRC Durham Symposium on Higher Structures in M-theory (), arXiv"
+  },
+  {
+    "id": "FiorenzaSatiSchreiber15",
+    "type": "article",
+    "title": "Super Lie n-algebra extensions, higher WZW models and super p-branes with tensor multiplet fields",
+    "author": [
+      {
+        "literal": "D.~Fiorenza, H.~Sati, U.~Schreiber"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1308.5264",
+    "note": "Int.J.Geom.Methods Mod.Phys.12 () 1550018, arXiv"
+  },
+  {
+    "id": "lawvere96unity",
+    "type": "article",
+    "title": "Unity and identity of opposites in calculus and physics",
+    "author": [
+      {
+        "literal": "F.~W.~Lawvere"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1996
+        ]
+      ]
+    },
+    "note": "Appl.Categ.Structures 4 () 167"
+  },
+  {
+    "id": "Schreiber13cohesive",
+    "type": "article",
+    "title": "Differential cohomology in a cohesive ∞-topos",
+    "author": [
+      {
+        "literal": "U.~Schreiber"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1310.7930",
+    "note": "arXiv: ()"
+  },
+  {
+    "id": "Oberarzbacher2013",
+    "type": "article",
+    "title": "Los postulados basicos de la filosofia no-dualista del Shaivismo de Cachemira",
+    "author": [
+      {
+        "literal": "F.\\,P.~Oberarzbacher"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "note": "Estudios 104, vol. XI, ITAM () 81--91"
+  },
+  {
+    "id": "Foucault66",
+    "type": "book",
+    "title": "The Order of Things: An Archaeology of the Human Sciences",
+    "author": [
+      {
+        "literal": "M.~Foucault"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1966
+        ]
+      ]
+    },
+    "note": "(Les Mots et les Choses), Gallimard (); ch. 1 on Las Meninas"
+  },
+  {
+    "id": "Santos2020",
+    "type": "article",
+    "title": "Arquitetura vitruviana e retorica antiga",
+    "author": [
+      {
+        "literal": "G.\\,S.~dos Santos"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "DOI": "10.14195/1984-249X\\_28\\_4",
+    "note": "[Vitruvian architecture and ancient rhetoric], Archai 28 () e02804, doi:10.14195/1984-249X\\_28\\_4"
+  },
+  {
+    "id": "MaldacenaSusskind13",
+    "type": "article",
+    "title": "Cool horizons for entangled black holes",
+    "author": [
+      {
+        "literal": "J.~Maldacena, L.~Susskind"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1306.0533",
+    "note": "Fortschr.Phys.61 () 781, arXiv"
+  },
+  {
+    "id": "AMPS13",
+    "type": "article",
+    "title": "Black holes: complementarity or firewalls?",
+    "author": [
+      {
+        "literal": "A.~Almheiri, D.~Marolf, J.~Polchinski, J.~Sully"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/1207.3123",
+    "note": "JHEP 02 () 062, arXiv"
+  },
+  {
+    "id": "Bell64",
+    "type": "article",
+    "title": "On the Einstein Podolsky Rosen paradox",
+    "author": [
+      {
+        "literal": "J.~S.~Bell"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1964
+        ]
+      ]
+    },
+    "note": "Physics 1 () 195"
+  },
+  {
+    "id": "Leggett03",
+    "type": "article",
+    "title": "Nonlocal hidden-variable theories and quantum mechanics: an incompatibility theorem",
+    "author": [
+      {
+        "literal": "A.~J.~Leggett"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2003
+        ]
+      ]
+    },
+    "note": "Found.Phys.33 () 1469"
+  },
+  {
+    "id": "Groblacher07",
+    "type": "article",
+    "title": "An experimental test of non-local realism",
+    "author": [
+      {
+        "literal": "S.~Gr\\\"oblacher, T.~Paterek, R.~Kaltenbaek, \\v{C}.~Brukner, M.~\\.{Z}ukowski, M.~Aspelmeyer, A.~Zeilinger"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2007
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/0704.2529",
+    "note": "Nature 446 () 871, arXiv"
+  },
+  {
+    "id": "FreedmanClauser72",
+    "type": "article",
+    "title": "Experimental test of local hidden-variable theories",
+    "author": [
+      {
+        "literal": "S.~J.~Freedman, J.~F.~Clauser"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1972
+        ]
+      ]
+    },
+    "note": "Phys.Rev.Lett.28 () 938"
+  },
+  {
+    "id": "Aspect82",
+    "type": "article",
+    "title": "Experimental test of Bell's inequalities using time-varying analyzers",
+    "author": [
+      {
+        "literal": "A.~Aspect, J.~Dalibard, G.~Roger"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1982
+        ]
+      ]
+    },
+    "note": "Phys.Rev.Lett.49 () 1804"
+  },
+  {
+    "id": "Weihs98",
+    "type": "article",
+    "title": "Violation of Bell's inequality under strict Einstein locality conditions",
+    "author": [
+      {
+        "literal": "G.~Weihs, T.~Jennewein, C.~Simon, H.~Weinfurter, A.~Zeilinger"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "note": "Phys.Rev.Lett.81 () 5039"
+  },
+  {
+    "id": "Nobel2022",
+    "type": "article",
+    "title": "The Nobel Prize in Physics 2022",
+    "author": [
+      {
+        "literal": "The Royal Swedish Academy of Sciences"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "note": "A. Aspect, J. F. Clauser, A. Zeilinger, for experiments with entangled photons, establishing the violation of Bell inequalities and pioneering quantum information science"
+  },
+  {
+    "id": "Branciard07",
+    "type": "article",
+    "title": "Experimental falsification of Leggett's nonlocal variable model",
+    "author": [
+      {
+        "literal": "C.~Branciard, A.~Ling, N.~Gisin, C.~Kurtsiefer, A.~Lamas-Linares, V.~Scarani"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2007
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/0708.0584",
+    "note": "Phys.Rev.Lett.99 () 210407, arXiv"
+  }
+]

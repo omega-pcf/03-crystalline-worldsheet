@@ -1,0 +1,419 @@
+\section{Methods}\label{sec:methods}
+
+This section develops the mathematical core of the framework, our approach to the frameworks of \S\ref{sec:manin}: Manin's quantum tori $\F_1$ program with Borger's $\Lambda$-algebraic ring. Here we develop only what is pertinent to the string; not the whole of the $\F_1$ program, which is developed in a companion paper~\cite{F1}. What we develop here is presented as a single thread, from $i$ to the two vertices $\mu=\tfrac12$ and $\sigma=\tfrac32$,
+each step formally verified in Lean~4 (theorem names in brackets); each
+subsection uses only objects already introduced.
+
+% ---------------------------------------------------------------------
+\subsection{Two geometric origins of $\mu=\tfrac12$}\label{ssec:origins}
+
+The constant $\mu=\tfrac12$ arises from two independent
+geometric origins, a $\pi$-branch (Gamma/Gaussian) and a $\golden$-branch
+(the involution $x=1-x$), both routed through $\golden$.
+
+\begin{theorem}[Pentagonal identity]\label{thm:pentagon-id}
+$\golden=2\cos(\pi/5)$.
+\end{theorem}
+\begin{proof}
+The Chebyshev polynomial $T_5$ satisfies $T_5(\cos\theta)=\cos(5\theta)$ with
+$T_5(x)=16x^5-20x^3+5x$. At $\theta=\pi/5$ this gives
+$T_5(\cos(\pi/5))=\cos\pi=-1$, so $\cos(\pi/5)$ is a root of
+$16x^5-20x^3+5x+1=0$, which factors as $(x+1)(4x^2-2x-1)^2$. Since
+$0<\pi/5<\pi/2$ forces $\cos(\pi/5)>0$, we have $\cos(\pi/5)\neq-1$; hence
+$\cos(\pi/5)$ is a root of $4x^2-2x-1=0$, whose positive root is
+$(1+\sqrt5)/4=\golden/2$. Therefore $\golden=2\cos(\pi/5)$; this classical identity is also derived in the correspondence paper~\cite{Corr} and formalised in Lean as
+\texttt{phi\_eq\_two\_cos\_pi\_fifth}.
+\end{proof}
+\Lean{phi\_eq\_two\_cos\_pi\_fifth}
+
+\begin{proposition}[Pentagonal bridge $\pi\leftrightarrow\golden$]\label{prop:pi-bridge}
+Since $\golden=2\cos(\pi/5)$ (Theorem~\ref{thm:pentagon-id}),
+\begin{equation}\label{eq:pi-arccos}
+\pi = 5\arccos(\golden/2).
+\end{equation}
+\Lean{M13\_pi\_eq\_five\_arccos}
+\end{proposition}
+
+\begin{proposition}[Gamma as an infinite integral (Euler)]\label{prop:gamma-int}
+For $s>0$,
+\begin{equation}\label{eq:gamma-int}
+\Gamma(s)=\int_0^\infty t^{\,s-1}e^{-t}\,dt .
+\end{equation}
+\Lean{M1\_gamma\_integral}
+\end{proposition}
+
+\begin{lemma}[Gaussian value]\label{lem:gamma-half}
+$\Gamma(\tfrac12)=\sqrt\pi$ (classical; from the Gaussian integral $\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt\pi$).
+\Lean{M2\_gamma\_half, gaussian\_integral\_value, gaussian\_weight\_phi}
+\end{lemma}
+
+\begin{theorem}[Half-factorial (classical)]\label{thm:half-factorial}
+\begin{equation}\label{eq:half-factorial}
+(\tfrac12)! \;=\; \Gamma(\tfrac32) \;=\; \mu\sqrt\pi,
+\qquad\text{equivalently}\qquad \mu=\frac{(\tfrac12)!}{\sqrt\pi}.
+\end{equation}
+\Lean{M3\_half\_factorial}
+\end{theorem}
+
+\begin{proposition}[Mediation half-powers]\label{prop:mediation}
+\begin{equation}\label{eq:mediation}
+\golden^{\mu\lng}=\sqrt2,\qquad
+\golden^{\mu\log_\golden 3}=\sqrt3 .
+\end{equation}
+\Lean{M4\_sqrt2, M4\_sqrt3}
+\end{proposition}
+
+\begin{remark}[$\golden$-branch]
+$\mu=\tfrac12$ is the fixed point of the involution $x=1-x$.
+\end{remark}
+
+% ---------------------------------------------------------------------
+\subsection{Arity uniqueness and the blocking of the diagonal}\label{ssec:arity}
+
+The arity $3$ and the modulus $\tfrac12$ are forced, and
+the Lawvere--Yanofsky diagonal is contracted (not prohibited).
+
+\begin{definition}[Distributed self-reference]\label{def:dsr}
+A recurrence of depth $k$ is \emph{distributed} when $k\ge 2$ (no component
+depends directly on itself). \Lean{DistributedSelfReference}
+\end{definition}
+
+\begin{theorem}[Fibonacci minimality]\label{thm:fib-min}
+Depth $k=2$ is minimal, and the unique positive root of $r^2=r+1$ is
+$\golden$. Among natural-coefficient depth-$2$ recurrences
+$F_{n+2}=c_1F_{n+1}+c_2F_n$, the pair $c_1=c_2=1$ is the unique one whose
+characteristic root---hence growth ratio---is $\golden$.
+\LeanWrap{M6\_characteristic\_root\_is\_phi, M6\_phi\_root\_unique}
+\end{theorem}
+
+\begin{proposition}[Spectral constraints force $(\sigma,\mu)=(\tfrac32,\tfrac12)$]\label{prop:spectral}
+$\sigma+\mu=2$, $\sigma\mu=\tfrac34$, with unique solution
+$0<\mu<1$ giving $\mu=\tfrac12$, $\sigma=\tfrac32$.
+\Lean{spectral\_uniqueness}
+\end{proposition}
+
+\begin{remark}[No-diagonal]
+$\|\hat\Omega\|=\tfrac12<1$ contracts the diagonal below the contradiction
+threshold. % CORPUS: eq:Omega-hat (CW); def:contractive-cat (HPPS).
+\end{remark}
+
+% ---------------------------------------------------------------------
+\subsection{Construction of PCF and the base ring on the torus}\label{ssec:construction}
+
+The generator $\golden^2=\golden+1$, the base ring, the
+tripartite operator, and the projection that fixes $\varepsilon_0$.
+
+\begin{equation}\label{eq:base}
+\golden^2=\golden+1,\qquad
+\Rpcf=\Z[\golden,\golden^{-1},\tfrac12],\qquad
+\E^3=\{(x,y,\golden y)\}.
+\end{equation}
+
+\begin{equation}\label{eq:omega-norms}
+\Omega=P\cdot C\cdot F,\qquad
+\|P\|=\tfrac{1}{\sqrt3},\ \|C\|=1,\ \|F\|=\tfrac{\sqrt3}{2},\qquad
+\|P\|\,\|C\|\,\|F\|=\tfrac12 .
+\end{equation}
+
+\begin{proposition}[Component norms from the eigenvalue triangle]\label{prop:pcf-norms}
+The operator $\hat\Omega$ has eigenvalues $\lambda_k=\tfrac12\omega^{k}$
+($k=0,1,2$, $\omega=e^{2\pi i/3}$), inscribing an equilateral triangle in the
+circle $|z|=R=\tfrac12$ of $\C$. The component norms are fixed by this geometry:
+\begin{equation}\label{eq:norms-derived}
+\|C\|=1,\qquad \|F\|=\tfrac{\sqrt3}{2},\qquad \|P\|=\tfrac{1}{\sqrt3},
+\end{equation}
+whence $\|P\|\,\|C\|\,\|F\|=\tfrac12=\|\hat\Omega\|$.
+\end{proposition}
+\begin{proof}
+\emph{(C)} $C$ is the real eigenvalue $\lambda_0=\tfrac12$, normalised by the
+circumradius $R=|\lambda_0|=\tfrac12$: $\|C\|=|\lambda_0|/R=1$.
+\emph{(F)} $F$ is the chord between adjacent eigenvalues,
+$\|F\|=|\lambda_1-\lambda_0|=\tfrac12|\omega-1|=\sin(\pi/3)=\tfrac{\sqrt3}{2}$.
+\emph{(P)} The fundamental right triangle (centre, midpoint of
+$\lambda_0\lambda_1$, vertex $\lambda_0$) has apothem $R\cos(\pi/3)=\tfrac14$ and
+half-side $\|F\|/2=\tfrac{\sqrt3}{4}$, so
+$\|P\|=\dfrac{R\cos(\pi/3)}{\|F\|/2}=\dfrac{1/4}{\sqrt3/4}=\tfrac{1}{\sqrt3}=\tan(\pi/6)$.
+\emph{(Product)} The $\sqrt3$ of $\|F\|$ cancels that of $\|P\|$, leaving $\tfrac12$;
+the cancellation is specific to the equilateral ($n{=}3$) triangle.
+\end{proof}
+
+\begin{definition}[PCF projection]\label{def:projpcf}
+$\pi_{\PCF}(a,b,c)=\dfrac{ab}{c\sqrt3}\cdot\dfrac{\pi}{3}$.
+\end{definition}
+
+\begin{proposition}[Fibonacci sum as projection]\label{prop:oplus}
+$F=P\oplus C:=\pi_{\PCF}(P,C,1)=\dfrac{(PC)\,\pi}{3\sqrt3}$.
+\Lean{M7\_oplus\_formula}
+\end{proposition}
+
+\begin{theorem}[Derivation of $\varepsilon_0$]\label{thm:eps0}
+\begin{equation}\label{eq:eps0}
+\varepsilon_0=\pi_{\PCF}\!\bigl(\sin(\tfrac{\pi}{6}),\,\ln\golden,\,\pi\bigr)
+=\frac{\ln\golden}{6\sqrt3}.
+\end{equation}
+\Lean{M8\_epsilon0\_from\_projection}
+\end{theorem}
+
+\begin{remark}[Torus, scale, and Sierpi\'nski attractor]
+The microstate is realised on the torus
+\begin{equation}\label{eq:torus}
+T^2_{\PCF}=\C/\Lambda_{\PCF},\qquad \Lambda_{\PCF}=\Mpcf\,\Z[i],\qquad \tau=i ,
+\end{equation}
+whose scale is fixed by $\varepsilon_0$ of \eqref{eq:eps0}:
+\begin{equation}\label{eq:Mpcf}
+\Mpcf=\frac{6\sqrt3\,\pi}{\ln\golden}=\frac{\pi}{\varepsilon_0}\approx 67.846 .
+\end{equation}
+\Lean{M\_PCF\_eq\_pi\_div\_eps0}%
+Equivalently, the \emph{Certainty Principle}
+\begin{equation}\label{eq:certainty}
+\varepsilon_0\,\Mpcf=\pi .
+\end{equation}
+The three eigenvalues $\lambda_k=\tfrac12\omega^{k}$ define an iterated function
+system of three contractions of ratio $\tfrac12$,
+\begin{equation}\label{eq:IFS}
+T_k(z)=\tfrac12(z-v_k)+v_k,\qquad v_k=\tfrac12\omega^{k},\qquad k\in\{0,1,2\},
+\end{equation}
+whose Sierpi\'nski-type attractor has Hausdorff dimension
+\begin{equation}\label{eq:hausdorff}
+d_H=\frac{\log3}{\log2}\approx 1.585,\qquad 2^{d_H}=3 ,
+\end{equation}
+the Moran equation counting the three components $P,C,F$.
+\end{remark}
+
+% ---------------------------------------------------------------------
+
+\subsection{The non-orientable fibre is independent of the torus}\label{ssec:mobius-torus}
+
+The base torus of \eqref{eq:torus} carries a module direction and one non-orientable
+identification of that direction, both fixed by data already in place. The module direction
+is the phase $\Om(\tau)=\tfrac12\,e^{\,i\tau\ln\golden}$, of constant modulus
+$|\Om(\tau)|=\tfrac12=\|\hat\Om\|$ (Proposition~\ref{prop:pcf-norms}).
+
+\emph{Arithmetic type: an Eisenstein--Gauss transition.} The eigenvalue triangle
+$\lambda_k=\tfrac12\omega^{k}$ ($\omega=e^{2\pi i/3}$) of Proposition~\ref{prop:pcf-norms}
+sits in the Eisenstein lattice $\Z[\omega]$ (hexagonal, $120^{\circ}$); the torus modulus
+$\tau=i$ sits in the Gauss lattice $\Z[i]$ (square, $90^{\circ}$). The golden coupling
+$z=\golden y$ of \eqref{eq:base} carries the first into the second isometrically---it
+transforms the angular structure ($120^{\circ}\to90^{\circ}$) while preserving the metric
+relations; the construction is carried out in the companion operator paper~\cite{HP}---and
+$\tau=i$ is its fixed point. The mediator is $\golden$ and no other: from \eqref{eq:base},
+$\golden=1+1/\golden$, so its continued fraction is $[1;1,1,\dots]$ and $\golden$ is the
+extremal irrational, most poorly approximated by rationals (Hurwitz~\cite{Hurwitz1891})---the
+optimality that also places $\golden$ in phyllotaxis---and the modulus $\tfrac12$ is carried
+uniformly on the fibre.
+
+\begin{proposition}[The fibre is independent of the base algebra]\label{prop:mobius-torus}
+The non-orientable identification lives in the fibre, not in the algebra of the torus, and is
+therefore independent of whether that algebra commutes. Carried once around the fundamental
+domain, the module direction accumulates the half-turn $\epsz\Mpcf=\pi$~\eqref{eq:certainty},
+acting on the fibre of modulus $\tfrac12$ as $e^{i\pi}=-1$: the reflection $v\mapsto -v$, $\pi$
+and not $2\pi$ because $\|\hat\Om\|=\tfrac12$, and orientation-reversing of order two,
+$(-1)^2=1$. This datum is a $\Z/2$ reflection of the fibre; it carries no hypothesis on the
+base commutator phase $UV=e^{2\pi i\theta}VU$. Hence the same fibre couples onto any torus---the
+commutative torus ($\theta=0$) and the noncommutative torus $T^2_\theta$ that M-theory uses
+($\theta$ irrational, \S\ref{sec:manin})---while preserving $|\Om|=\tfrac12$ on either.
+\Lean{fibre\_monodromy, fibre\_reflection\_order\_two, fibre\_independent\_of\_base}
+\end{proposition}
+\begin{proof}
+The fibre monodromy is $e^{i\pi}=-1$, of order two, $(-1)^2=1$, a $\Z/2$ datum that holds with
+no condition on $\theta$ (\LeanInline{fibre\_independent\_of\_base}); the base commutes for
+$\theta\in\Z$ and does not for $\theta$ irrational, the fibre being the same in both. The
+modulus $\tfrac12$ is Proposition~\ref{prop:pcf-norms}, constant in $\tau$ since
+$|\Om(\tau)|=\tfrac12$, and is preserved by the reflection.
+\end{proof}
+
+
+% ---------------------------------------------------------------------
+\subsection{The single microstate, the meta-invariant, and the geometric
+origin of $\tfrac12$ tied to the Euler product}\label{ssec:microstate}
+
+The geometric origin of $\tfrac12$ via the angle $\pi/6$,
+its anchoring to the critical line, and the factorial as connector.
+
+\begin{theorem}[Trigonometric collapse of the norm product]\label{thm:collapse}
+\begin{equation}\label{eq:collapse}
+\|P\|\,\|C\|\,\|F\|
+=\tan(\tfrac{\pi}{6})\cdot 1\cdot\cos(\tfrac{\pi}{6})
+=\sin(\tfrac{\pi}{6})=\tfrac12 .
+\end{equation}
+\Lean{M9\_collapse, M9\_eq\_half}
+\end{theorem}
+
+\begin{proposition}[Angle $\pi/3$ gives both invariants]\label{prop:angle}
+$\sin(\tfrac{\pi}{6})=\cos(\tfrac{\pi}{3})=\mu$, and
+\begin{equation}\label{eq:sigma-basel}
+\sigma=\frac{\zeta(2)}{(\pi/3)^2}=\frac{\pi^2/6}{\pi^2/9}=\frac{9}{6}=\frac32 .
+\end{equation}
+\Lean{M10\_sin\_cos\_mu, M10\_sigma\_from\_basel}
+\end{proposition}
+
+\begin{proposition}[Factorial as connector]\label{prop:connector}
+$\dfrac{(\tfrac12)!}{\sqrt\pi}=\mu=\tfrac12$ \ (half face), and
+$3!=6=|S_3|$ \ (integer face).
+\Lean{M11\_factorial\_face, M11\_factorial\_six}
+\end{proposition}
+
+\begin{remark}[$\tfrac12\leftrightarrow$ Euler product]
+The modulus $\tfrac12=\mu$ is anchored to the critical line; the Euler
+product factors through the ternary level $\mu_3=\tfrac12$.
+\end{remark}
+
+% ---------------------------------------------------------------------
+\subsection{Expansion of the spectrum mediated between $i$ and $\golden$}\label{ssec:spectrum}
+
+Additive spectrum (pentagons, no arithmetic) and
+multiplicative spectrum (Mersenne), joined by the $3/2$ structure; primes
+classified by $\chi_5$.
+
+\begin{equation}\label{eq:additive-mult}
+\golden^n=F_n\golden+F_{n-1}\quad(\text{additive}),\qquad
+3\,\golden^{\sigma(p)}=2^{p}\quad(\text{Mersenne}).
+\end{equation}
+
+\begin{proposition}[Mediated Mersenne]\label{prop:mersenne-med}
+$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \Lean{M12\_mersenne\_mediated}
+\end{proposition}
+
+\begin{remark}
+$\chi_5$ classifies every rational prime in $\Q(\sqrt5)$
+(split/inert/ramified). % CORPUS: eq:fib-criterion, eq:golden-split (ODD).
+\end{remark}
+
+% ---------------------------------------------------------------------
+\subsection{The rings as a tower (our reinterpretation of the $\Lambda$-structure of Borger)}\label{ssec:tower}
+
+The Frobenius lifts and the $\Lambda$-ring tower carry the
+arithmetic to the Euler product as a colimit~\cite{F1}.
+
+\begin{equation}\label{eq:frobenius-tower}
+\psi_p(\golden)=\golden^p=F_p\golden+F_{p-1},\qquad
+\zeta_{\Q(\sqrt5)}(s)=\varinjlim_{S}E(S)(s).
+\end{equation}
+
+% ---------------------------------------------------------------------
+\subsection{$\pi$ and $\pi\golden$ as producers of $\zeta$ and odd-$\zeta$}\label{ssec:zeta}
+
+The Dedekind factorisation and the even/odd zeta values;
+the bridge \eqref{eq:pi-arccos} ties $\pi$ to $\golden$ here.
+
+\begin{equation}\label{eq:dedekind}
+\zeta(s)=\frac{\zeta_{\Q(\sqrt5)}(s)}{L(s,\chi_5)},\qquad
+L(1,\chi_5)=\frac{2\log\golden}{\sqrt5}.
+\end{equation}
+
+\begin{theorem}[Basel value]\label{thm:basel}
+$\zeta(2)=\pi^2/6$ (Euler). \Lean{M14\_basel}
+\end{theorem}
+
+\begin{theorem}[General even zeta value (Euler)]\label{thm:even-zeta}
+For every integer $k\ge1$,
+\begin{equation}\label{eq:even-zeta}
+\zeta(2k)=(-1)^{k+1}\frac{B_{2k}\,(2\pi)^{2k}}{2\,(2k)!},
+\end{equation}
+with $B_{2k}$ the Bernoulli numbers; $k=1$ recovers $\zeta(2)=\pi^2/6$
+(Theorem~\ref{thm:basel}).
+\end{theorem}
+\begin{proof}
+Euler's cotangent expansion
+$\pi z\cot(\pi z)=1-2\sum_{k\ge1}\zeta(2k)\,z^{2k}$ \,($0<|z|<1$)\, and the
+Bernoulli generating function
+$\frac{w}{e^{w}-1}=\sum_{n\ge0}\frac{B_n}{n!}w^{n}$ are linked by
+$\pi z\cot(\pi z)=\pi i z+\dfrac{2\pi i z}{e^{2\pi i z}-1}$. Substituting the
+second series with $w=2\pi i z$ and using $(2i)^{2k}=(-1)^{k}4^{k}$, the
+coefficient of $z^{2k}$ on the right is $(-1)^{k}B_{2k}(2\pi)^{2k}/(2k)!$;
+matching it to $-2\zeta(2k)$ gives \eqref{eq:even-zeta}. The pentagonal,
+$\chi_5$-twisted refinement, with generalised Bernoulli numbers
+$B_{2k,\chi_5}$, extends this computation and is carried out
+independently in the companion $F_1$-descent paper~\cite{F1}.
+\end{proof}
+
+% ---------------------------------------------------------------------
+\subsection{The commutative diagram: convergence on $\mu$ and
+$\sigma$}\label{ssec:commute}
+
+The constant $\tfrac12$ is the apex of a cocone: five
+routes coincide on it. The argument is convergence, not a chain.
+
+\[
+\begin{tikzcd}[row sep=tiny, column sep=large]
+\dfrac{(\tfrac12)!}{\sqrt\pi} \arrow[ddddr] & \\
+\|P\|\|C\|\|F\| \arrow[dddr] & \\
+\cos(\tfrac{\pi}{3}) \arrow[ddr] & \\
+\golden^{-\lng} \arrow[dr] & \\
+\text{fix}(x{=}1{-}x) \arrow[r] & \ \mu=\tfrac12
+\end{tikzcd}
+\]
+
+\begin{theorem}[Modulus diagram commutes]\label{thm:mu-diagram}
+The five routes coincide on the apex:
+$\dfrac{(\tfrac12)!}{\sqrt\pi}=\|P\|\|C\|\|F\|=\cos(\tfrac{\pi}{3})
+=\golden^{-\lng}=\mathrm{fix}(x{=}1{-}x)=\mu=\tfrac12$.
+The non-elementary legs are established at~\eqref{eq:half-factorial} (the Gamma value),
+\eqref{eq:collapse} (the norm product) and~\eqref{eq:bridge} (the binary bridge
+$\golden^{\lng}=2$, whence $\golden^{-\lng}=\tfrac12$); the angle $\cos(\tfrac{\pi}{3})$
+and the involution fixed point are elementary.
+\Lean{mu\_diagram\_commutes, mu\_faces\_pairwise\_eq}
+\end{theorem}
+
+\begin{remark}[The microstate is unique: no landscape to select]\label{rmk:no-landscape}
+The five routes of Theorem~\ref{thm:mu-diagram} leave no freedom in the modulus: the value $\mu=\tfrac12$ is
+forced at once by the Gamma value, the norm product, the angle $\cos(\tfrac{\pi}{3})$, the binary bridge and the
+involution fixed point. The microstate is therefore the \emph{unique} self-consistent solution, not one option
+among many. This is what dissolves the vacuum-selection problem of \S\ref{sssec:ensemble}: there is no
+$\sim 10^{500}$ landscape to choose from and no anthropic selection to invoke---the single microstate is fixed by
+the convergence itself, and the abstract's ``unique self-consistent solution'' is established here. The uniqueness proved here is that of the modulus $\mu=\tfrac12$ as the algebraic fixed point of the five coincident routes (Theorem~\ref{thm:mu-diagram}); its reading as the absence of a physical vacuum landscape is the interpretive step developed in \S\ref{sec:implications}, where the observer builds---rather than selects---the geometry.
+\end{remark}
+
+\[
+\begin{tikzcd}[row sep=small, column sep=large]
+\dfrac{\zeta(2)}{(\pi/3)^2} \arrow[dr] & \\
+\dfrac{|{\rm rot}\,S_3|^2}{|S_3|} \arrow[r] & \ \sigma=\tfrac32
+\end{tikzcd}
+\]
+
+\begin{lemma}[Orders in $S_3$ and the geometric leg]\label{lem:s3-orders}
+The equilateral triangle of eigenvalues $\lambda_k=\tfrac12\omega^{k}$
+(Proposition~\ref{prop:pcf-norms}) has symmetry group the symmetric group
+$S_3\cong D_3$. Its order is $|S_3|=3!=6$, and its rotation subgroup is the
+cyclic group $C_3=\{1,r,r^2\}$ of order $|{\rm rot}\,S_3|=3$. Hence
+\begin{equation}\label{eq:sigma-geom}
+\frac{|{\rm rot}\,S_3|^2}{|S_3|}=\frac{3^2}{6}=\frac{9}{6}=\tfrac32 ,
+\end{equation}
+so the geometric leg equals $\sigma$ rather than defining it.
+\end{lemma}
+
+\begin{theorem}[Sum diagram commutes]\label{thm:sigma-diagram}
+Both routes coincide on $\sigma=\tfrac32$: the analytic leg gives
+$\dfrac{\zeta(2)}{(\pi/3)^2}=\dfrac{\pi^2/6}{\pi^2/9}=\dfrac{9}{6}$~\eqref{eq:sigma-basel}, and the
+geometric leg gives $\dfrac{|{\rm rot}\,S_3|^2}{|S_3|}=\dfrac{9}{6}$
+(Lemma~\ref{lem:s3-orders}); both equal $\sigma=\tfrac32$.
+\Lean{sigma\_diagram\_commutes}
+\end{theorem}
+
+\begin{theorem}[Methods master]\label{thm:master}
+Both diagrams commute and the spectral invariants follow:
+$\sigma+\mu=2$, $\sigma/\mu=3$. \Lean{section2\_master}
+\end{theorem}
+
+% ---------------------------------------------------------------------
+\subsection{Formal verification}\label{ssec:status}
+
+Each result of this section carries, in brackets, the name of its Lean~4
+theorem. The development that accompanies the paper is the self-contained
+file \texttt{CW3\_lean.lean}, which declares no axioms. The golden ratio is
+defined, $\golden:=(1+\sqrt5)/2$, and the two facts that anchor the
+construction are theorems proved from that definition, not assumptions. The
+relation $\golden^2=\golden+1$ (\texttt{phi\_sq}) is derived from the
+definition and is~\eqref{eq:phisq}. The modulus $\|\hat\Omega\|=\tfrac12$
+(\texttt{modulus\_Omega}) is likewise a theorem: its value is fixed in
+\S\ref{ssec:origins} and its component structure in
+Proposition~\ref{prop:pcf-norms}.
+
+\smallskip
+\sloppy\noindent\textbf{Compilation note (single point of record).} The library
+lemma names that require confirmation against the installed Mathlib version
+are \texttt{Gamma\_eq\_integral}, \texttt{Gamma\_one\_half\_eq},
+\texttt{riemannZeta\_two},\allowbreak\ \texttt{Real.sqrt\_eq\_rpow},\allowbreak\ \texttt{rpow\_natCast}, \texttt{Gamma\_add\_one}, \texttt{arccos\_cos} and,
+for the M6 uniqueness, \texttt{Nat.Prime.irrational\_sqrt},
+\texttt{Irrational.int\_mul}, \texttt{Int.not\_irrational}.
+

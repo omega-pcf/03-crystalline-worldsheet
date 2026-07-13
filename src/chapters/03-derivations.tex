@@ -1,0 +1,563 @@
+\section{Derivations}\label{sec:derivations}
+
+Building on the single microstate established in \S\ref{sec:methods}, this section
+presents one demonstrative line: the object generates a tower, and the tower generates
+the duality web. The line runs in the order $3.1\to3.2\to3.3\to3.4\to3.5$, summarised as a
+$19$-step spine at the end (\S\ref{ssec:spine}). The node that stitches \S\ref{sec:methods}
+to here is the function $\Gamma$; every quantitative statement below is verified to $50$
+digits in \texttt{CW3\_verify\_paper\_physics.py} (\S\ref{ssec:status}).
+
+% --- 3.1 ---
+\subsection{The fundamental object in physics}\label{ssec:object}
+The single object is the half-integer $\Gamma$ value, the carrier of the string microstate.
+The seed inherited from \S\ref{sec:methods} is
+\begin{equation}\label{eq:gamma-half}
+  \Gamma\!\left(\tfrac12\right)=\sqrt{\pi}.
+\end{equation}
+The worldline phase and its modulus are
+\begin{equation}\label{eq:worldline}
+  \Om(\tau)=\tfrac12\,e^{\,i\tau\ln\golden},\qquad |\Om|=\tfrac12 .
+\end{equation}
+The wavefunction is Gaussian, with the half-factorial normalisation $\Gamma(\tfrac12)=\sqrt\pi$
+and a weight fixed by the scale quantum,
+\begin{equation}\label{eq:gaussian}
+  \int_{\R} e^{-x^{2}}\,dx=\sqrt{\pi},\qquad
+  \mu=\golden^{-\lng}=\tfrac12\quad(\golden^{\lng}=2).
+\end{equation}
+The one-dimensional worldline is promoted to the two-dimensional worldsheet, governed by the
+Polyakov action~\cite{Polchinski98}
+\begin{equation}\label{eq:polyakov}
+  S_{P}=-\frac{1}{4\pi\alpha'}\int d^{2}\sigma\,\sqrt{-h}\;
+        h^{ab}\,\partial_{a}X^{\mu}\,\partial_{b}X^{\nu}\,\eta_{\mu\nu}.
+\end{equation}
+
+\begin{proposition}[The worldsheet inherits the non-orientable fibre]\label{prop:mobius}
+The worldsheet carries the non-orientable fibre of the base torus
+(Proposition~\ref{prop:mobius-torus}, \S\ref{ssec:mobius-torus}): the module direction of
+$\Om(\tau)=\tfrac12\,e^{\,i\tau\ln\golden}$~\eqref{eq:worldline}, carried once around the fundamental
+domain, closes with the orientation-reversing half-turn $e^{i\pi}=-1$. The worldsheet is therefore
+non-orientable and one-sided---the half-turn carries the module's interior edge to its exterior---so
+the bulk--boundary relation the torus carries admits no privileged side, independently of which torus
+carries the fibre.
+\end{proposition}
+
+The Schwinger parametrisation, used to assemble propagators and amplitudes, follows from the
+$\Gamma$ integral by the change of variable $t=xA$,
+\begin{equation}\label{eq:schwinger}
+  A^{-n}=\frac{1}{\Gamma(n)}\int_{0}^{\infty}x^{\,n-1}\,e^{-xA}\,dx\qquad(A>0,\ n>0).
+\end{equation}
+
+\begin{remark}[The role of $\golden$ in the object]
+Since $\pi=5\arccos(\golden/2)$ (\S\ref{sec:methods}), both $\sqrt\pi$ and the half-factorial
+are functions of $\golden$; and $\mu=\tfrac12=\golden^{-\lng}$. The object is $\golden$-generated,
+not posited.
+\end{remark}
+
+% --- 3.2 ---
+
+\subsection{The meta-invariant: the holographic quantum}\label{ssec:meta}
+The meta-invariant emerges from the structure already in place: the worldsheet phase
+$\Om(\tau)=\tfrac12\,e^{\,i\tau\ln\golden}$ of \S\ref{ssec:object}~\eqref{eq:worldline},
+carried on the torus $T^2_{\PCF}$ of \S\ref{ssec:construction}~\eqref{eq:torus}, whose single
+modulus $|\Om|=\tfrac12$ is the norm product fixed in
+\S\ref{ssec:construction}~\eqref{eq:omega-norms}. The bridge from this object to the rest of
+physics is that $|\Om|=\tfrac12$ \emph{is} the holographic bit (one bit per Planck area). The
+spectral invariants are
+\begin{equation}\label{eq:spectral-invariants}
+  d=3\;(=|S_{3}|=3!=6),\qquad \mu=\tfrac12,\qquad \sigma=\tfrac32,\qquad \sigma+\mu=2 .
+\end{equation}
+\paragraph{The spectral angle and the uniqueness of the invariants.}
+At scale $\sigma$ the worldline subtends the spectral angle
+$\alpha(\sigma)=\arctan(\epsz\golden^{\sigma})$, normalised by $\epsz M_{\PCF}=\pi$ (Fig.~\ref{fig:alpha-uniqueness})
+\Lean{alpha\_decomposition}. The invariants \eqref{eq:spectral-invariants} are not chosen but
+forced: the pair $(\sigma,\mu)$ with $\sigma+\mu=2$ and $\sigma\mu=\tfrac34$ has the unique
+solution $(\sigma,\mu)=(\tfrac32,\tfrac12)$ \Lean{spectral\_uniqueness}, i.e.\ $\sigma=\tfrac32$
+\Lean{sigma\_three}; over the integer grid the spectral-angle identity is matched at the single
+pair $(\sigma_1,\sigma_2)=(2,3)$, the same arity $3$ and modulus $\tfrac12$ forced by the
+No-Diagonal theorem of \S\ref{ssec:arity}.
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{fig1_alphas_uniqueness.png}
+\caption{The spectral angle $\alpha(\sigma)=\arctan(\epsz\golden^{\sigma})$: (a) the surface
+$\sin\alpha(\sigma_1)\cos\alpha(\sigma_2)$; (b) the error map, vanishing only at
+$(\sigma_1,\sigma_2)=(2,3)$ (boxed) --- the unique pair compatible with the forced invariants
+\eqref{eq:spectral-invariants}.}
+\label{fig:alpha-uniqueness}
+\end{figure}
+With the binary entropy $H(p)=-p\log_{2}p-(1-p)\log_{2}(1-p)$, the modulus saturates the
+Bekenstein bound~\cite{Bekenstein73,Hawking75},
+\begin{equation}\label{eq:bridge-BH}
+  \frac{1}{4\GN}=\tfrac12=|\Om|,\qquad H\!\left(\tfrac12\right)=1\ \text{bit},\qquad
+  \SBH=\frac{A}{4\GN}.
+\end{equation}
+\Lean{binary\_entropy\_half}
+
+\begin{remark}[The role of $\golden$ in the meta-invariant]
+$\mu=\tfrac12=\golden^{-\lng}$ is the scale quantum ($\golden^{\lng}=2=$ one bit). The invariants
+$d=3,\ \mu=\tfrac12,\ \sigma=\tfrac32$ come from the $\golden/S_{3}$ geometry of
+\S\ref{sec:methods}; they are not postulated.
+\end{remark}
+
+\paragraph{Thread (the invariants force the holographic principle).}
+The holographic principle is read off the invariants, not assumed:
+\begin{enumerate}
+  \item the modulus $\mu=\tfrac12=|\Om|$ has binary entropy $H(\tfrac12)=1$, so each fundamental
+        cell (each eigenvalue) carries exactly one bit
+        (\eqref{eq:spectral-invariants}$\to$\eqref{eq:bridge-BH});
+  \item the $d=3$ eigenvalues give $3$ bits $=c=3$ (Brown--Henneaux~\cite{BrownHenneaux86}: three eigenvalues $\times$
+        one bit);
+  \item and $1/(4\GN)=\mu=\tfrac12$ turns $\SBH=A/(4\GN)$ into the area law.
+\end{enumerate}
+Hence information $=$ one bit per Planck area (the holographic bound), read from the invariants.
+(Verified in \texttt{CW3\_verify\_paper\_physics.py}: $H(\tfrac12)=1$, $c=3$, $\GN=\tfrac12$.)
+
+This is the holographic bound that Susskind, following 't~Hooft, drew from unproven
+assumptions about the nonperturbative behaviour of string theory: one discrete degree of
+freedom per Planck area~\cite{Susskind95,SusskindWitten98}. Here it is not assumed but
+derived---the bit $H(\tfrac12)=1$, the central charge $c=3$, and the area law
+$\SBH=A/4\GN$ are read off the single modulus $|\Om|=\tfrac12$.
+
+% --- 3.3 ---
+
+\subsection{The object as generator of the tower and the amplitudes}\label{ssec:p-tower}
+Built on the golden tower of \S\ref{ssec:tower} (the Borger $\Lambda$-structure on
+$\golden^{\sigma}$) and the mediated spectrum of \S\ref{ssec:spectrum}, the tower mediates
+\emph{between} a binary register (the half-factorial $/\,\Gamma\,/\,\pi$;
+$i$, $d{=}1{\to}2$) and a ternary one ($S_{3}/\golden$; $d{=}2{\to}3$), with $\mu=\tfrac12$ as
+the geometric mean. The Huerta--Schreiber superpoint is purely binary ($\Z_{2}$)
+\cite{huerta2018m}; PCF spans and mediates both. The M-theory object enters here: the HS tower
+projects from the $\golden^{\sigma}$ tower. The dimensional chain is
+\begin{equation}\label{eq:dim-chain}
+  \R_{d=1}\xrightarrow{\;i^{2}=-1\;}\C_{d=2}
+  \xrightarrow{\;\golden^{2}=\golden+1\;}\E^{3}_{d=3}.
+\end{equation}
+Mediation by $\mu=\tfrac12$ produces the two registers,
+\begin{equation}\label{eq:tower-mediation}
+  \golden^{\,\mu\lng}=\sqrt{2}\ \ (\text{binary}),\qquad
+  \golden^{\,\mu\log_{\golden}3}=\sqrt{3}\ \ (\text{ternary}).
+\end{equation}
+The tower and its mode count are
+\begin{equation}\label{eq:tower-modes}
+  z(\sigma)=\golden^{\sigma},\qquad \Nmodes(\sigma)=\big\lfloor\pi\,\golden^{\sigma}\big\rfloor .
+\end{equation} The count and its golden ratio are shown in Fig.~\ref{fig:tower-modes}.
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{fig3_N_modes.png}
+\caption{The mode tower $\Nmodes(\sigma)=\lfloor\pi\golden^{\sigma}\rfloor$ \eqref{eq:tower-modes}:
+(a) the Fibonacci-adjacent staircase $\{3,5,8,13,21,34,56,\dots\}$; (b) the successive ratio
+$\Nmodes(\sigma)/\Nmodes(\sigma-1)\to\golden$ alongside the Kaluza--Klein spectrum.}
+\label{fig:tower-modes}
+\end{figure}
+The Huerta--Schreiber brane-bouquet tower~\cite{huerta2018m} maps to the PCF tower under a functor $F$,
+\begin{equation}\label{eq:HS-tower}
+  \R^{0|1}\to\R^{1,1|1}\to\cdots\to\R^{9,1|16}\to\R^{10,1|32}
+  \ \xrightarrow{\;F\;}\ \{\golden^{\sigma}\}_{\sigma},
+\end{equation}
+the dynamics being presupposed on the HS side ($H=L_{0}+\bar L_{0}$) and derived on the PCF side.
+Tree amplitudes follow from $\pi$ (binary, via $\Gamma$) and $\golden$ (ternary, via Regge): the
+Veneziano amplitude \cite{Veneziano}
+\begin{equation}\label{eq:veneziano}
+  A_{4}=\frac{\Gamma(-\alpha's)\,\Gamma(-\alpha'u)}{\Gamma\!\big(1-\alpha'(s+u)\big)}
+\end{equation}
+has simple poles at $\alpha's=n$, $n\ge1$ (the Regge tower). The pole \emph{positions} are the integer
+spectrum, so they index the tower's Dirichlet series; the residues are the Regge polynomials of
+degree $n-1$ (carrying spin $\le n-1$), nonzero at every level, which certifies that every integer
+level is populated. That Dirichlet series is $\zeta(s)$, which reorganises, by unique factorisation,
+into the Euler product,
+\begin{equation}\label{eq:regge-euler}
+  \sum_{n\ge1}n^{-s}=\zeta(s)=\prod_{p}\big(1-p^{-s}\big)^{-1}\qquad(\Re s>1).
+\end{equation}
+\Lean{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta, regge\_residue\_ne\_zero, regge\_residue\_degree}%
+The pentagonal origin $\golden=2\cos(\pi/5)$ generates this structure: the Regge
+tower (string side) and the Euler product (arithmetic side) are the same object seen from
+two angles. The uniqueness of the ultraviolet completion selected here---that under
+supersymmetry and the standard consistency conditions the Veneziano form is essentially
+forced---is a recent result of Elvang and collaborators~\cite{Elvang2026}.
+Loops are likewise $\golden$-organised; the one-loop partition function is finite,
+\begin{equation}\label{eq:pcf-partition}
+  \Zpcf(i)=\frac{e^{-3\pi/2}}{|\eta(i)|^{6}},\qquad \eta(i)=\frac{\Gamma(\tfrac14)}{2\,\pi^{3/4}},
+\end{equation}
+with the loop hierarchy --- one loop $=$ colour, two loops $=$ generations: a structural assignment
+(anchored on the colour ratio $1-\muthree^{2}=\tfrac34$ and on Ap\'ery's two-loop constant
+$\zeta(3)$~\cite{Apery}; odd zeta over the tower~\cite{F1}), developed in the $\F_1$ companion and
+not derived here. \Lean{colour\_ratio} The ultraviolet is regulated in two complementary
+ways: the modular partition \eqref{eq:pcf-partition} (global, on the torus) and dimensional
+regularisation at the vertex (local),
+\begin{equation}\label{eq:gamma-pole}
+  \Gamma\!\left(\tfrac{\varepsilon}{2}\right)=\frac{2}{\varepsilon}-\gamma_{E}+O(\varepsilon).
+\end{equation}
+
+\begin{remark}[The role of $\golden$ in the tower]
+$\golden^{\mu\lng}=\sqrt2$ ties the binary register and $\golden^{\mu\log_{\golden}3}=\sqrt3$ the
+ternary one, with $\mu=\tfrac12$ as mediator --- distinguishing PCF from the purely binary $\Z_{2}$
+chain of HS.
+\end{remark}
+
+\paragraph{Thread (amplitudes and loops from $\pi$ and $\golden$ via the tower).}
+\begin{enumerate}
+  \item \emph{tree (Veneziano):} in \eqref{eq:veneziano} the $\Gamma$ factors carry the $\pi$/binary
+        side ($\Gamma(\tfrac12)=\sqrt\pi$) and the poles at $\alpha's=n$ are the Regge tower (the
+        $\golden$/ternary side);
+  \item the Regge tower \emph{is} the Euler product \eqref{eq:regge-euler}, linking amplitude and primes;
+  \item \emph{loops:} the one-loop partition \eqref{eq:pcf-partition} is finite; the
+        colour/generation hierarchy ($\zeta(3)$, odd zeta over the tower) is a structural assignment,
+        not derived here;
+  \item the modes at each level are $\Nmodes(\sigma)=\lfloor\pi\golden^{\sigma}\rfloor$ \eqref{eq:tower-modes}.
+\end{enumerate}
+(Verified in \texttt{CW3\_verify\_paper\_physics.py}: $\Gamma(\tfrac12)^{2}=\pi$, Regge poles,
+$\zeta(2)=$ Euler product, $\Zpcf(i)$, $\Nmodes$.)
+
+\paragraph{Thread (the two UV regulators coexist).}
+\begin{enumerate}
+  \item \emph{modular/$\eta$:} the partition \eqref{eq:pcf-partition} is finite because $\eta(i)$ is
+        well defined --- modular invariance regulates the ultraviolet on the torus, with no divergence;
+  \item \emph{dimensional/$\Gamma(\varepsilon/2)$:} \eqref{eq:gamma-pole} extracts the $2/\varepsilon$
+        pole at the local vertex;
+  \item they are complementary: $\eta$ handles the worldsheet (global, finite partition),
+        $\Gamma(\varepsilon/2)$ the vertex (local pole); both give the same finite physics.
+\end{enumerate}
+
+% --- 3.4 ---
+
+\subsection{All AdS/CFT from a single microstate, at each level}\label{ssec:adscft}
+The whole AdS/CFT correspondence follows from one microstate (the object of \S\ref{ssec:object}),
+not from an ensemble --- and it holds at each level of the tower. This per-level statement is the
+dependency the web (\S\ref{ssec:web}) rests on. The single microstate is the object
+$\Om$ with $|\Om|=\tfrac12$ (its realisation as a self-adjoint operator is built in~\cite{HP}); being
+one state and not an ensemble, it resolves the
+firewall ambiguity (AMPS) without averaging.
+The throat and its warped metric are
+\begin{equation}\label{eq:throat}
+  z(\sigma)=\golden^{\sigma},\qquad ds^{2}=e^{2A(z)}\,\eta_{\mu\nu}\,dx^{\mu}dx^{\nu}+dz^{2}.
+\end{equation}
+\paragraph{The five-dimensional throat: $\mathrm{AdS}_5$, $S^5$ and the ladder.}
+The throat \eqref{eq:throat} is the $\mathrm{AdS}_5$ geometry whose curvature invariants are fixed
+by the modulus: $R=-20$, $\Lambda_5=-6$, $G_{\mu\nu}=6$, saturating the
+Breitenlohner--Freedman bound (Fig.~\ref{fig:ads-ladder}) \Lean{R\_scalar\_AdS5, Lambda5\_value, G\_munu\_AdS5, BF\_bound\_AdS5}.
+Its companion five-sphere carries the Hopf chain $S^1\hookrightarrow S^5\to\mathbb{CP}^2$ with
+$\chi(\mathbb{CP}^2)=3=n$ \Lean{hopf\_latitude, hopf\_from\_clifford}, the same arity-$3$ of
+\S\ref{ssec:arity}; the five-dimensional case is precisely the one requiring the Gaussian and
+Eisenstein primes (\S\ref{sec:intro}). The discrete levels $\sigma=0,\dots,5$
+(superpoint~$\to$~NS5, \S\ref{sssec:superpoint}) sit on the Hamming hypercube
+$H_5=\{0,1\}^5$, $|H_5|=2^{5}$ \Lean{hypercube\_card}, with
+$\Lambda_\sigma=\golden^{\sigma}\Lambda_{\PCF}$ and the saturation entropy
+$S(\sigma)=\pi\golden^{\sigma}$ \eqref{eq:tower-modes}.
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{fig5_three_panel.png}
+\caption{$\mathrm{AdS}_5$ funnel $z=\golden^{\sigma}$ \eqref{eq:throat} $\leftrightarrow$ the
+lattice tower $\Lambda_\sigma$ $\leftrightarrow$ the Hamming hypercube $H_5$ of the M-theory
+ladder (superpoint~$\to$~NS5); $\golden^{\sigma}$ connects all three.}
+\label{fig:ads-ladder}
+\end{figure}
+The bulk--boundary map is an isometry~\cite{HP} and obeys the GKPW dictionary~\cite{Maldacena98,GKP98,Witten98},
+\begin{equation}\label{eq:isometry}
+  V:\mathcal H_{\mathrm{bulk}}\to\mathcal H_{\partial},\qquad V^{\dagger}V=\mathbf 1,\qquad
+  Z_{\mathrm{grav}}\big[\phi|_{\partial}\big]
+   =\big\langle e^{\int_{\partial}\phi_{0}\mathcal O}\big\rangle_{\mathrm{CFT}}.
+\end{equation}
+\paragraph{The isometry as an algebra--isometry (bulk--boundary) duality.}
+The embedding $V$ \eqref{eq:isometry} is realised on the two faces of one modulus. The eigenvalue
+triangle $\lambda_k=\tfrac12\omega^{k}$ ($\omega=e^{2\pi i/3}$) of Prop.~\ref{prop:pcf-norms}
+\eqref{eq:norms-derived} is the Eisenstein lattice $\Z[\omega]$ (\emph{algebra} face: $120^\circ$,
+$S_3$ symmetry, $A_2$ root system $=\mathfrak{su}(3)$)
+\Lean{eisenstein\_omega, Omega\_eigenvalues, A2\_root\_normalized}; the same modulus on the
+$i/\pi$ side, where $(\tfrac12)!=\tfrac12\sqrt\pi$ fixes $\mu=\tfrac12$ (\S\ref{ssec:construction}),
+is the Gauss lattice $\Z[i]$ (\emph{isometry} face: $\tau=i$, $\ell=1$). The $\golden$-mediation
+$S_3\to\Z_4$ between them preserves $|\Om|=\tfrac12$ \Lean{holographic\_area} and fixes $\tau=i$:
+this is $V^{\dagger}V=\mathbf 1$ read on the lattice --- bulk (geometry, $\Z[i]$) and boundary
+(algebra, $\Z[\omega]$) are two readings of one triangle, neither privileged, exactly as
+\eqref{eq:isometry} requires.
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{fig4_top_down.png}
+\caption{Isometry $\leftrightarrow$ algebra (bulk--boundary): the Eisenstein lattice $\Z[\omega]$
+($A_2=\mathfrak{su}(3)$, algebra/boundary) and the Gauss lattice $\Z[i]$ ($\tau=i$,
+isometry/bulk) are $\golden$-mediated ($S_3\to\Z_4$) with $|\Om|=\tfrac12$ preserved --- the
+lattice realisation of $V:\mathcal H_{\mathrm{bulk}}\to\mathcal H_{\partial}$,
+$V^{\dagger}V=\mathbf 1$ \eqref{eq:isometry}.}
+\label{fig:isometry-algebra}
+\end{figure}
+Standard AdS/CFT integrates out the radial coordinate $z$ (it privileges a boundary); here
+the isometry singles out neither side, so PCF keeps both bulk and boundary
+(\eqref{eq:isometry}; ``forget $z$'' only on the Maldacena side).
+The modulus is scale invariant, so the holographic relation holds at every level:
+\begin{equation}\label{eq:tower-autosimilar}
+  |\Om|_{\sigma}=\tfrac12\qquad\forall\,\sigma .
+\end{equation}
+The gravitational data follow from the same $\mu=\tfrac12$:
+\begin{equation}\label{eq:brown-henneaux}
+  \SBH=\frac{1}{4\GN}=\mu=\tfrac12,\qquad c=\frac{3\ell}{2\GN}=3\quad(\ell=1,\ \GN=\tfrac12).
+\end{equation}
+
+\begin{remark}[The role of $\golden$ in AdS/CFT]
+\sloppy Everything follows from the microstate $\Om$ (\S\ref{ssec:object}) and the tower
+(\S\ref{ssec:p-tower}); the modulus is $\mu=\tfrac12$ at every level, and the AdS/CFT
+signature $(\ell{=}1,\GN{=}\tfrac12,c{=}3,\mathrm{GKP}{=}\tfrac34)$ is exactly the microstate's
+invariants.
+\end{remark}
+
+\paragraph{Thread (all AdS/CFT from one microstate).}
+\begin{enumerate}
+  \item the isometry $V$ with $V^{\dagger}V=\mathbf 1$ embeds bulk into boundary preserving the norm,
+        so the duality holds from \emph{one} state, without averaging
+        (\eqref{eq:worldline}$\to$\eqref{eq:isometry});
+  \item the modulus is scale invariant, $|\Om|_{\sigma}=\tfrac12\ \forall\sigma$, so the holographic
+        relation holds at \emph{each} level of the throat, not only at the boundary
+        \eqref{eq:tower-autosimilar};
+  \item from the same $\mu=\tfrac12$: $\SBH=1/(4\GN)=\tfrac12$ (area law) and $c=3$ (Brown--Henneaux)
+        --- the gravity-side entropy and central charge come from the microstate invariant
+        \eqref{eq:brown-henneaux};
+  \item hence GKPW~\cite{GKP98,Witten98} and Ryu--Takayanagi~\cite{RyuTakayanagi06} are consequences of the isometric embedding of the microstate.
+\end{enumerate}
+Thus the entire AdS/CFT correspondence comes from one microstate, not an ensemble. (Verified in
+\texttt{CW3\_verify\_paper\_physics.py}: $|\Om|_{\sigma}=\tfrac12\ \forall\sigma$,
+$\mathrm{GKP}=\tfrac34$, $\SBH=\mu$, $c=3$.)
+
+Maldacena left the AdS boundary conditions unspecified---``we leave this interesting problem
+for the future''~\cite{Maldacena98}. Here they are determined: the modular parameter is fixed
+at $\tau=i$, the fixed point of S-duality \Lean{s\_duality\_fixes\_i}, and the scale by the
+certainty principle $\varepsilon_0 M_{\PCF}=\pi$ \Lean{certainty\_principle}.
+
+% --- 3.5 ---
+
+\subsection{The M-theory type duality web from the microstate}\label{ssec:web}
+The M-theory type duality web projects from the microstate (\S\ref{ssec:object}) through the
+$\golden^{\sigma}$ tower (\S\ref{ssec:p-tower}); Witten's eight/eleven-dimensional object is not
+required here. Witten \emph{posits} that object and \emph{conjectures} that the web follows from it
+\cite{Witten95}; PCF starts from a \emph{demonstrated} microstate and \emph{generates} the tower, of
+which the web is a projection. The web follows from the tower with HS (\S\ref{ssec:p-tower}) and from
+per-level AdS/CFT (\S\ref{ssec:adscft}), both already stated. The shared signature, derived in
+App.~\ref{app:web} from the web's two corners, is that the M-theory object and AdS/CFT are
+projections of the microstate, carrying
+\begin{equation}\label{eq:shared-signature}
+  \underbrace{|\Om|=\tfrac12,\ |\Om|^{2}=\tfrac14}_{\text{Huerta--Schreiber (M-theory)}}\qquad
+  \underbrace{\ell=1,\ \GN=\tfrac12,\ c=3,\ \mathrm{GKP}=\tfrac34}_{\text{Maldacena (AdS/CFT)}} ,
+\end{equation}
+\Lean{GN\_shared, GKP\_shared, HS\_modulus\_shared}%
+which equal the microstate invariants $\mu=\tfrac12$. That the two corners are one and the
+same object is Maldacena's conjecture that ``M/string theory on various Anti-deSitter
+spacetimes is dual to various conformal field theories''~\cite{Maldacena98}---the definition of
+M-theory he anticipated extending to five non-compact dimensions: here it is realised, both corners being
+projections of the single microstate $|\Om|=\tfrac12$. The torus on which they meet is the
+noncommutative torus that Connes, Douglas and Schwarz identify with M-theory
+compactification~\cite{connes98} and that Manin attaches to the $\F_1$ program~\cite{manin04};
+the non-orientable fibre it carries is independent of that algebra (Prop.~\ref{prop:mobius-torus}). The dualities that engage the tower are
+\begin{align}
+  \text{(S-duality)}\quad & \tau\to-\tfrac1\tau\ \Longleftrightarrow\ \golden\to-\tfrac1\golden
+    =\bar\golden, \label{eq:bridge-S}\\
+  \text{(T-duality)}\quad & R\to\alpha'/R, \label{eq:bridge-T}\\
+  \text{(IIA strong coupling)}\quad & \sigma=10\to\sigma=11\ \ (\text{M-theory}), \label{eq:bridge-Witten}\\
+  \text{(ER}=\text{EPR)}\quad & \text{entanglement}\leftrightarrow\text{geometry}, \label{eq:bridge-ER}\\
+  \text{(de Sitter swampland)}\quad & \frac{|\partial_{\sigma}V|}{V}=\ln\golden, \label{eq:dS-swampland}\\
+  \text{(asymptotic safety)}\quad & \text{UV fixed point}. \label{eq:bridge-fixed}
+\end{align}
+
+\begin{remark}[The IIA$\to$11D bridge as Witten's Kaluza--Klein tower]
+The bridge $\sigma=10\to\sigma=11$ in \eqref{eq:bridge-Witten} corresponds to Witten's Kaluza--Klein
+mechanism: at Type~IIA strong coupling the tower of states are the Kaluza--Klein modes of
+eleven-dimensional supergravity on $\R^{10}\times S^1$, of mass $\sim 1/r$~\cite{Witten95}. The
+$\golden^{\sigma}$ tower plays that role here. The golden Kaluza--Klein structure
+($\golden^2+\golden^{-2}-2=1$; $G_5\to G_4=\tfrac14$; the Breitenlohner--Freedman comparison;
+discrete-spectrum stability) is proved in Appendix~\ref{app:kk}.
+\end{remark}
+
+\begin{remark}[The role of $\golden$ in the duality web]
+The dualities are projections of the microstate's $\golden^{\sigma}$ tower, not of a posited object;
+the modulus is $\mu=\tfrac12$ at every level, and S-duality is the Galois conjugation
+$\golden\to-1/\golden$.
+\end{remark}
+
+\begin{remark}[the web is reconstructed from its two corners]
+The web this paper uses has two corners only---Huerta--Schreiber M-theory and Maldacena AdS/CFT---and both
+are shown in Appendix~\ref{app:web} to carry the microstate modulus $|\Om|=\tfrac12$; the dualities are the
+symmetries of the $\golden^{\sigma}$ tower that fix it. The wider string-theory content (U-duality, $E_8$, the
+five string theories) is neither used nor needed here.
+\end{remark}
+
+\paragraph{Thread (microstate $\to$ tower $\to$ web).}
+\begin{enumerate}
+  \item the dualities are written in $\sigma/\golden$, as projections of the tower: S as
+        $\golden\to-1/\golden$ (Galois conjugate), T as $R\to\alpha'/R$, IIA$\to$11D as $\sigma=10\to11$,
+        ER$=$EPR, and the de Sitter swampland $|\partial_{\sigma}V|/V=\ln\golden$
+        (\eqref{eq:bridge-S}--\eqref{eq:dS-swampland});
+  \item the shared signature \eqref{eq:shared-signature}: the colimit proves the M-theory object
+        (modulus $\tfrac12$) and AdS/CFT ($\ell{=}1,\GN{=}\tfrac12,c{=}3,\mathrm{GKP}{=}\tfrac34$) are
+        projections with the microstate invariants ($\mu=\tfrac12$);
+  \item hence the web is reconstructed from its two corners (App.~\ref{app:web}): both carry $\mu=\tfrac12$, and
+        the dualities fix the modulus; Witten's eight-dimensional object is not required.
+\end{enumerate}
+Thus microstate $\to$ tower $\to$ web (HS and per-level AdS/CFT). The quantitative pieces
+($\golden\to-1/\golden$, the swampland constant $\ln\golden$, the T-self-dual radius, and the
+shared HS/Maldacena signature) are checked numerically in \texttt{CW3\_verify\_paper\_physics.py}
+and formally in \texttt{CW3\_lean.lean} (\S\ref{ssec:status}).
+
+
+The remaining duality, $\mathrm{ER}=\mathrm{EPR}$, is where the microstate supplies what
+Cool Horizons left open. Maldacena and Susskind observe that the ER bridge ``may be a highly
+quantum object that is yet to be independently defined'', and that they ``do not have an
+independent argument for its smoothness''~\cite{MaldacenaSusskind13}. In PCF the bridge is
+both defined and analytic: it is the cocycle $T(\sigma_1,\sigma_2)$ of the proposition below,
+smooth in the analytic sense because its denominator $1+\varepsilon_0\golden^{\sigma}$ is strictly positive at
+every level, carried, with its geometry supplied by the non-orientable fibre, on the M-theory
+noncommutative torus rather than on a general quantum object.
+
+% ====== BLOQUE MOVIDO desde §4.4 (era L1785–1825): prop:er-epr + fig + proof ======
+\begin{proposition}[$\mathrm{ER}=\mathrm{EPR}$ from the modulus]\label{prop:er-epr}
+The entanglement of the two hemispheres and the geometric bridge between them are one
+invariant, $\mu_3^{2}=\tfrac14$.
+\emph{(EPR.)} Since $|\Om(\tau)|=\tfrac12$ for every $\tau$ \eqref{eq:worldline}, the two-point
+entanglement modulus is
+\[
+  |\Om(\tau_A)\,\overline{\Om(\tau_B)}|=|\Om(\tau_A)|\,|\Om(\tau_B)|=\mu_3^{2}=\tfrac14
+  \qquad(\forall\,\tau_A,\tau_B),
+\]
+which is the holographic area factor $\mu_3^{2}=\tfrac14$. % FIX: era \eqref{eq:obs-cramerrao} (§4), ahora directo (autocontenido en §3)
+\emph{(ER.)} The bridge amplitude between two levels of the throat,
+$T(\sigma_1,\sigma_2)=\dfrac{1+\epsz\golden^{\sigma_1}}{1+\epsz\golden^{\sigma_2}}$,
+satisfies $T(\sigma_1,\sigma_2)\,T(\sigma_2,\sigma_1)=1$ and
+$T(\sigma_1,\sigma_2)\,T(\sigma_2,\sigma_3)=T(\sigma_1,\sigma_3)$, so the bridges form a group:
+a round trip is the identity and composition is additive in $\sigma$.
+\emph{($\mathrm{ER}=\mathrm{EPR}$.)} Both are fixed by the one scale-independent modulus
+$\mu_3=\tfrac12$ ($|\Om|_\sigma=\tfrac12\ \forall\sigma$, \eqref{eq:tower-autosimilar}): the
+entanglement between $P$ (south) and $F$ (north), mediated by $C$, \emph{is} the bridge that joins
+them through the equatorial axis. Entanglement is geometry, derived from the modulus, not posited.
+\Lean{bridge\_cocycle, bridge\_inverse, bridge\_compose} % ADD fase 1: respaldo Lean del cociclo
+\end{proposition} The bridge and its $\tfrac14$ identity are shown in Fig.~\ref{fig:er-epr}.
+
+\begin{proof}
+\emph{(EPR)} $\Om(\tau)=\tfrac12 e^{\,i\tau\ln\golden}$ has $|\Om(\tau)|=\tfrac12=\mu_3$ for all
+$\tau$ \eqref{eq:worldline}; the product rule for moduli gives
+$|\Om(\tau_A)\overline{\Om(\tau_B)}|=\mu_3^{2}=\tfrac14$, independent of $\tau_A,\tau_B$ because
+$\mu_3$ comes from the $S_3$ arity (Proposition~\ref{prop:pcf-norms}), not from the phase.
+\emph{(ER)} $T(\sigma_2,\sigma_1)$ is the reciprocal of $T(\sigma_1,\sigma_2)$, whence
+$T(\sigma_1,\sigma_2)T(\sigma_2,\sigma_1)=1$; the telescoping of numerator and denominator gives
+$T(\sigma_1,\sigma_2)T(\sigma_2,\sigma_3)=T(\sigma_1,\sigma_3)$.
+\emph{($\mathrm{ER}=\mathrm{EPR}$)} The levels are equivalent because
+$\epsz\golden^{\sigma}\!\cdot\!\Mpcf\golden^{-\sigma}=\pi$ at every $\sigma$ \eqref{eq:certainty}, so
+$|\Om|_\sigma=\tfrac12$ is scale-invariant \eqref{eq:tower-autosimilar}; the entanglement invariant
+$\mu_3^{2}$ and the bridge group thus share one origin.
+\end{proof}
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{fig2_ER_bridge_identity.png}
+\caption{$\mathrm{ER}=\mathrm{EPR}$ from the modulus (Prop.~\ref{prop:er-epr}): (a) the bridge
+amplitude $T(\sigma_1,\sigma_2)$ as a cocycle, $T(1,4)\,T(4,7)=T(1,7)$; (b) the algebraic and
+trigonometric forms agree, $T_{\mathrm{alg}}=T_{\mathrm{trig}}$, to machine precision.}
+\label{fig:er-epr}
+\end{figure}
+% ====== fin del bloque movido ======
+\subsection{The demonstrative line (19-step spine)}\label{ssec:spine}
+Each step uses only previous steps.
+
+\begin{description}
+  \item[\S2$\to$\S3.] P1 $\Gamma(\tfrac12)=\sqrt\pi$ \eqref{eq:gamma-half} (\S\ref{ssec:origins}; seed).
+  \item[3.1 object.] P2 $\Om,|\Om|=\tfrac12$ \eqref{eq:worldline}~(\S\ref{ssec:construction}) $\to$ P3 Gaussian, $\mu=\tfrac12$
+        \eqref{eq:gaussian}~(\S\ref{ssec:origins}) $\to$ P4 worldsheet/Polyakov \eqref{eq:polyakov}.
+  \item[3.2 meta-invariant.] P5 invariants $d{=}3,\mu{=}\tfrac12,\sigma{=}\tfrac32$
+        \eqref{eq:spectral-invariants}~(\S\ref{ssec:arity},\,\S\ref{ssec:commute}) $\to$ P6 $1/(4\GN)=\tfrac12=|\Om|$, $H(\tfrac12)=1$
+        \eqref{eq:bridge-BH}~(\S\ref{ssec:construction}).
+  \item[3.3 tower $+$ HS.] P7 chain $i\to\golden$ \eqref{eq:dim-chain}~(\S\ref{ssec:spectrum}) $\to$ P8 $\sqrt2/\sqrt3$ by $\mu$
+        \eqref{eq:tower-mediation}~(\S\ref{ssec:origins}) $\to$ P9 tower $\golden^{\sigma}$, $\Nmodes$ \eqref{eq:tower-modes}~(\S\ref{ssec:tower})
+        $\to$ P10 HS$\leftrightarrow$tower \eqref{eq:HS-tower} $\to$ P11 Veneziano \eqref{eq:veneziano}
+        $\to$ P12 loops $\Zpcf(i)$ \eqref{eq:pcf-partition} $\to$ P13 both UV regulators \eqref{eq:gamma-pole}.
+  \item[3.4 AdS/CFT per level.] P14 throat $z(\sigma)=\golden^{\sigma}$ \eqref{eq:throat}~(\S\ref{ssec:tower}) $\to$ P15
+        isometry $V^{\dagger}V=\mathbf 1$, GKPW \eqref{eq:isometry} $\to$ P16 $|\Om|_{\sigma}=\tfrac12\ \forall\sigma$
+        \eqref{eq:tower-autosimilar}~(\S\ref{ssec:construction}) $\to$ P17 $\SBH=\mu$, $c=3$ \eqref{eq:brown-henneaux}~(\S\ref{ssec:commute}).
+  \item[3.5 web (final).] P18 shared signature \eqref{eq:shared-signature} $\to$ P19 web
+        \eqref{eq:bridge-S}--\eqref{eq:bridge-fixed}.
+\end{description}
+\noindent The observer steps that close the introduction's problem (the objectivity threshold
+$f_{\mathrm{crit}}=\tfrac12=\mu$ and the Cram\'er--Rao saturation $F_{\max}^{-1}=\tfrac14=\mu^{2}$) open
+\S4 Implications. Here P18 is what makes P19 (the web) defensible without re-deriving M-theory or
+positing Witten's object: \S\ref{sec:derivations} closes with its demonstrative line complete (Fig.~\ref{fig:spine3}).
+
+\begin{figure}[H]\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\footnotesize,
+  >={Stealth[length=4pt]},
+  nd/.style={inner sep=2pt, outer sep=1pt},
+  ap/.style={draw, rounded corners=2pt, fill=black!5, inner sep=3pt},
+  every path/.style={->, draw=black!72, line width=0.45pt}]
+
+% ===== 3.1 object (x=0) =====
+\node[nd] (gh) at (0,5.6)  {$\Gamma(\tfrac12)=\sqrt\pi$};
+\node[nd] (wl) at (0,4.4)  {$\Om=\tfrac12 e^{i\tau\ln\golden}$};
+\node[nd] (gs) at (0,3.2)  {$\int e^{-x^{2}}=\sqrt\pi$};
+\node[nd] (pk) at (0,2.0)  {$S_P=\!-\tfrac{1}{4\pi\alpha'}\!\int$};
+\node[nd] (sw) at (0,0.6)  {$A^{-n}=\tfrac{1}{\Gamma(n)}\!\int$};
+
+% ===== 3.2 meta (x=3.3) =====
+\node[ap] (si) at (3.3,5.0) {$d{=}3,\ \mu{=}\tfrac12,\ \sigma{=}\tfrac32$};
+\node[nd] (al) at (3.3,6.4) {$\alpha(\sigma){=}\arctan(\epsz\golden^\sigma),\ (2,3)$};
+\node[nd] (bh) at (3.3,3.5) {$\tfrac{1}{4\GN}{=}\tfrac12{=}|\Om|,\ H{=}1$};
+
+% ===== 3.3 tower + amplitudes (x=6.6) =====
+\node[nd] (dc)  at (6.6,6.3)  {$\R{\to}\C{\to}E^3$};
+\node[nd] (tm)  at (6.6,5.2)  {$\golden^{\mu\lng}{=}\sqrt2$};
+\node[nd] (tmo) at (6.6,4.0)  {$z{=}\golden^\sigma,\ \Nmodes{=}\lfloor\pi\golden^\sigma\rfloor$};
+\node[nd] (hs)  at (6.6,2.8)  {$\R^{0|1}{\to}\cdots{\to}\R^{10,1|32}$};
+\node[nd] (vz)  at (6.6,1.6)  {$A_4{=}\tfrac{\Gamma\Gamma}{\Gamma}$};
+\node[nd] (re)  at (6.6,0.4)  {$\sum n^{-s}{=}\zeta{=}\prod_p$};
+\node[nd] (pp)  at (6.6,-0.8) {$Z{=}\tfrac{e^{-3\pi/2}}{|\eta|^{6}}$};
+\node[nd] (gp)  at (6.6,-2.0) {$\Gamma(\tfrac\varepsilon2){=}\tfrac2\varepsilon{-}\gamma_E$};
+
+% ===== 3.4 AdS/CFT (x=10.2) =====
+\node[nd] (th)  at (10.2,4.0) {$ds^2{=}e^{2A}\eta{+}dz^2$};
+\node[nd] (iso) at (10.2,2.7) {$V^\dagger V{=}\mathbf1$ (GKPW)};
+\node[nd] (ta)  at (10.2,1.5) {$|\Om|_\sigma{=}\tfrac12\ \forall\sigma$};
+\node[nd] (bhn) at (10.2,0.2) {$S_{BH}{=}\tfrac12,\ c{=}3$};
+\node[nd] (adsR) at (10.2,5.3) {$R{=}{-}20,\ \Lambda_5{=}{-}6$};
+\node[nd] (h5)   at (11.9,4.6) {$H_5{=}\{0,1\}^5,\ |H_5|{=}2^5$};
+\node[nd] (s5)   at (11.9,3.4) {$S^1{\to}S^5{\to}\mathbb{CP}^2,\ \chi{=}3$};
+\node[nd] (lat)  at (11.9,2.2) {$\mathbb{Z}[\omega]{=}A_2{=}\mathfrak{su}(3){\leftrightarrow}\mathbb{Z}[i]$};
+
+% ===== 3.5 web (x=13.7) =====
+\node[ap] (ss)  at (13.7,2.1) {$\substack{|\Om|{=}\tfrac12,\,|\Om|^2{=}\tfrac14\\ \ell{=}1,\GN{=}\tfrac12,c{=}3}$};
+\node[nd] (bS)  at (16.6,4.6) {S: $\golden{\to}{-}\tfrac1\golden$};
+\node[nd] (bT)  at (16.6,3.6) {T: $R{\to}\alpha'/R$};
+\node[nd] (bW)  at (16.6,2.6) {IIA: $\sigma{=}10{\to}11$};
+\node[nd] (bER) at (16.6,1.6) {ER$=$EPR};
+\node[nd] (bsw) at (16.6,0.6) {$\tfrac{|\partial V|}{V}{=}\ln\golden$};
+\node[nd] (bfx) at (16.6,-0.4){UV fixed pt};
+
+% ===== edges =====
+\draw (gh) -- (gs);
+\draw (gh) to[bend left=4] (wl);
+\draw (wl) -- (pk);
+\draw (wl) -- (si);
+\draw (gs) -- (si);
+\draw (sw) to[bend right=6] (vz);
+\draw (si) -- (bh);
+\draw (dc) -- (tm);
+\draw (tm) -- (tmo);
+\draw (tmo) -- (hs);
+\draw (tmo) -- (vz);
+\draw (tmo) to[bend right=6] (pp);
+\draw (tmo) -- (th);
+\draw (vz) -- (re);
+\draw (pp) -- (gp);
+\draw (th) -- (iso);
+\draw (al) -- (si);
+\draw (th) -- (adsR);
+\draw (hs) to[bend right=4] (h5);
+\draw (tmo) to[bend left=4] (h5);
+\draw (th) -- (s5);
+\draw (iso) -- (lat);
+\draw (s5) -- (lat);
+\draw (iso) -- (ta);
+\draw (ta) -- (bhn);
+\draw (bh) to[bend right=18] (bhn);
+\draw (bhn) -- (ss);
+\draw (hs) to[bend left=10] (ss);
+\draw (ss) -- (bS);
+\draw (ss) -- (bT);
+\draw (ss) -- (bW);
+\draw (ss) -- (bER);
+\draw (ss) -- (bsw);
+\draw (ss) -- (bfx);
+
+\end{tikzpicture}
+}
+\caption{Commutative spine of \S\ref{sec:derivations} (P1$\to$P19): the same microstate $\Om$, $|\Om|=\tfrac12$ propagates through the object, the meta-invariant, the tower and amplitudes, AdS/CFT, and the duality web --- every arrow uses only earlier nodes. Mathematical, physical and conceptual layers coincide on one diagram.}
+\label{fig:spine3}
+\end{figure}
+
+% ===================================================================
+

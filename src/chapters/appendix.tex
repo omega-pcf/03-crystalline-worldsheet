@@ -1,0 +1,240 @@
+% ===================================================================
+\appendix
+\section{Explicit derivations and formal tags}\label{app:derivations}
+This appendix collects, for each physical quantity asserted in the body, the explicit derivation with its
+formally verified tag. Every quantity below is an \emph{output} of the framework---a consequence of the
+microstate $|\Om|=\tfrac12$, the golden tower $z=\golden^{\sigma}$, and the lattice/Clifford/Hopf structure of
+the torus---not an external value matched by hand. The Lean tags certify the \emph{algebraic} identities (the
+$\golden$-arithmetic, the dimensions, the moduli); the \emph{physical} identification of each quantity is the
+argument of the body, not of Lean.
+
+\subsection{$\mathrm{AdS}_5$ curvature, and an independent check}\label{app:curvature}
+On the warped throat $ds^2=e^{2A}\eta_{\mu\nu}\,dx^\mu dx^\nu+dz^2$ with $A'=-1$, $A''=0$ in $d=4$, the Ricci
+and scalar curvatures are computed directly:
+\begin{align}
+  R_{\mu\nu}&=-(A''+d\,A'^2)\,g_{\mu\nu}=-(0+4)\,g_{\mu\nu}=-4\,g_{\mu\nu},\\
+  R&=-(2d\,A''+d(d{+}1)A'^2)=-(0+4\cdot5)=-20,\\
+  G_{\mu\nu}&=R_{\mu\nu}-\tfrac12 g_{\mu\nu}R=-4+10=6 .
+\end{align}
+The throat is therefore an Einstein space $R_{AB}=-4g_{AB}$ with $\Lambda_5=-d(d{-}1)/(2\ell^2)=-6$ at $\ell=1$.
+The remaining curvature invariants $R_{ab}R^{ab}=80$, $R_{abcd}R^{abcd}=40$, $\mathrm{GB}=120$ and the
+Gauss--Bonnet Lanczos tensor $H_{AB}=-12g_{AB}$ follow from Lovelock's theorem, so the second-order field
+equation is Einstein${}+\Lambda$, solved by the torus metric at $\Lambda_5=-6$, $G_N=\tfrac12$.
+\Lean{R\_munu\_AdS5, R\_scalar\_AdS5, G\_munu\_AdS5}
+
+\paragraph{Independent check.} Beyond the modulus and the dimensional counting, the same data pass two
+checks that are independent of either: the scalar mass saturates the Breitenlohner--Freedman stability bound,
+$m^2_{\mathrm{BF}}=-d^2/4=-4$, so the discrete tower is stable; and the free-energy ratio of the
+correspondence takes the Gubser--Klebanov--Polyakov value $\mathrm{GKP}=\tfrac34$. Neither follows from
+$|\Om|=\tfrac12$ by counting; both are nontrivial AdS/CFT data reproduced by the microstate.
+\Lean{BF\_bound\_AdS5}
+
+\subsection{The ETS metric is flat; de~Sitter is its embedded hyperboloid}\label{app:embedding}
+Written with the scale coordinate $\sigma$, the Lorentzian metric \eqref{eq:ets-metric} is
+$ds^2=-dt^2+dx^2+dy^2+dz^2+\lambda^2\,d(\ln\sigma)^2$, a product of Minkowski $\E^{3,1}$ with the
+one-dimensional scale line. Its Christoffel symbols, Riemann, Ricci and scalar curvatures, and Weyl
+tensor, computed directly, all vanish:
+\[
+  \Gamma^a{}_{bc}=0\ (\text{4D block}),\qquad R^a{}_{bcd}\equiv 0,\qquad R_{ab}=0,\qquad R=0,\qquad C_{abcd}=0 .
+\]
+The ETS metric is therefore \emph{intrinsically flat}---Weyl vanishes because Riemann does---and is
+not de~Sitter (which is curved, $R=12H^2$) but the flat five-dimensional \emph{ambient} in which
+de~Sitter embeds. \Lean{ets\_riemann\_flat}
+
+\paragraph{The extended light cones (causal classification).} Because \eqref{eq:ets-metric}
+is Lorentzian with signature $(-,+,+,+,+)$, it carries a light-cone structure. For two events
+separated by $(\Delta t,\Delta x,\Delta y,\Delta z,\Delta u)$ with $\Delta u=\Delta(\ln\sigma)$
+the scale gap, the interval is
+\[
+  \Delta s^2=-\Delta t^2+\Delta x^2+\Delta y^2+\Delta z^2+\lambda^2\,\Delta u^2 ,
+\]
+and the separation is exactly one of \emph{timelike} ($\Delta s^2<0$, causally connectable),
+\emph{null} ($\Delta s^2=0$, on the cone), or \emph{spacelike} ($\Delta s^2>0$, not connectable)
+--- the three-way classification of the causal cones. The scale term $\lambda^2\Delta u^2$ enters
+with the spacelike sign: a pure scale separation ($\Delta t=\Delta x=\Delta y=\Delta z=0$,
+$\Delta u\neq0$) is spacelike, and turning on any scale gap can only push a separation toward
+spacelike, never toward timelike, so the extended cone contains the Minkowski cone. A pure time
+separation is timelike and the null condition $\Delta t^2=\Delta x^2+\Delta y^2+\Delta z^2+
+\lambda^2\Delta u^2$ is the extended light cone that makes $C$ the apex (the observer's present)
+and $P,F$ the past/future cones.
+\Lean{causal\_trichotomy, ets\_null\_cone, time\_separation\_timelike, space\_separation\_spacelike, scale\_separation\_spacelike, scale\_pushes\_spacelike}
+
+\paragraph{de~Sitter as the hyperboloid (Gauss).} The observer's de~Sitter geometry is the
+hyperboloid $-X_0^2+X_1^2+X_2^2+X_3^2+X_4^2=\ell^2$ ($\ell=1/H$) inside the flat ambient
+$\eta_5=\mathrm{diag}(-,+,+,+,+)$, the scale direction $X_4=\lambda\ln\sigma$ supplying the fifth,
+flat coordinate the embedding requires. The hyperboloid is totally umbilic, $K_{\mu\nu}=H g_{\mu\nu}$,
+so Gauss's equation yields its intrinsic curvature as the extrinsic curvature of the embedding,
+\[
+  R_{\mu\nu\rho\sigma}=K_{\mu\rho}K_{\nu\sigma}-K_{\mu\sigma}K_{\nu\rho}
+    =H^2\!\left(g_{\mu\rho}g_{\nu\sigma}-g_{\mu\sigma}g_{\nu\rho}\right),\qquad
+  R_{\mu\nu}=(d-1)H^2 g_{\mu\nu}=3H^2 g_{\mu\nu}\ (d=4),
+\]
+with $R=12H^2$ and vacuum Einstein${}+\Lambda$ fixing $\Lambda=3H^2$, $H=\sqrt{\Lambda/3}$ (the 4D
+de~Sitter constant of the observer's slice, distinct from the five-dimensional bulk value
+$\Lambda_5=-6$ of Appendix~\ref{app:curvature}). Direct computation of the FLRW form
+$ds^2=-dt^2+e^{2Ht}(dx^2+dy^2+dz^2)+\lambda^2 d(\ln\sigma)^2$ reproduces these values, and the metric
+induced on the hyperboloid equals exactly this FLRW form.
+\Lean{dS\_ricci\_from\_gauss, dS\_einstein\_Lambda, dS\_hubble\_from\_Lambda}
+
+\paragraph{The static patch is thermal (Gibbons--Hawking).} The de~Sitter horizon radiates: the
+static patch is a thermal state at the Gibbons--Hawking temperature $T=H/2\pi$, with inverse
+temperature (KMS period) $\beta=1/T=2\pi/H$. This is the thermal condition Witten and
+Chandrasekaran, Longo, Penington and Witten place on the de~Sitter
+observer~\cite{Witten01dS,CLPW22}: the observer's modular flow is the KMS flow of this thermal
+state, and it is exactly the tracial scale flow $\sigma\mapsto\sigma+t$ of the tower
+(\S\ref{sssec:disc-vacuum}), which fixes $\tau=i$ and preserves $|\Om|=\tfrac12$. With
+$H=\sqrt{\Lambda/3}$ the temperature is fixed by the same $\golden$-determined $\Lambda$.
+\Lean{dS\_temperature, dS\_temperature\_pos, dS\_beta\_reciprocal}
+
+\paragraph{The observer sees exactly half.} In the planar (inflationary) slicing that gives the FLRW
+form, the embedding is
+\[
+  X_0=\ell\sinh\tfrac{t}{\ell}+\tfrac{r^2}{2\ell}e^{t/\ell},\qquad
+  X_i=e^{t/\ell}x_i,\qquad
+  X_4=\ell\cosh\tfrac{t}{\ell}-\tfrac{r^2}{2\ell}e^{t/\ell},
+\]
+which lands on the hyperboloid and satisfies $X_0+X_4=\ell\,e^{t/\ell}>0$ identically. The planar
+patch therefore covers \emph{exactly half} the hyperboloid---the region $X_0+X_4>0$, bounded by the
+cosmological horizon---and this is precisely the half the half-projection \eqref{eq:obs-half}
+separates: $|\Om|=\tfrac12$ is at once the algebraic modulus of the microstate and the fraction of
+de~Sitter accessible to the observer.
+
+\paragraph{Two corrections.} The same computation corrects two statements sometimes made about this
+metric: the ETS metric has $C_{abcd}=0$ (being flat, its Weyl tensor cannot be nonzero), and the
+constant-$\sigma$ slices of the ETS metric are totally geodesic, $K_{\mu\nu}=0$, not
+$K_{\mu\nu}=(\lambda/\sigma^2)g_{\mu\nu}$. \Lean{ets\_slices\_totally\_geodesic}
+
+\subsection{The gauge group $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$}\label{app:gauge}
+The internal gauge content descends from three substructures the torus already carries. The Eisenstein
+eigenvalue triangle $\lambda_k=\tfrac12\omega^{k}$, $\omega=e^{2\pi i/3}$, generates the root lattice
+$\Z[\omega]=A_2$---the root system of $\mathfrak{su}(3)$---of dimension
+\begin{equation}
+  \dim\mathfrak{su}(3)=3^2-1=8 .
+\end{equation}
+The Clifford latitude $(\tfrac12)^2-(\tfrac{\sqrt3}{2})^2=-\tfrac12$ realizes $S^3\cong\mathrm{SU}(2)$, and the
+Hopf fibre realizes $S^1\cong\mathrm{U}(1)$. The weak mixing angle is the entropy ratio at the colour level,
+\begin{equation}
+  \sin^2\theta_W=\frac{S(3)}{S(6)}=\frac{\golden^{3}}{\golden^{6}}=\golden^{-3}\approx0.236 ,
+\end{equation}
+to be compared with the measured $\sin^2\theta_W(M_Z)\approx0.231$ (agreement to $\sim2\%$). The
+identification is structural: $\sin^2\theta_W$ is the entropy fraction at the tower midpoint,
+$S(3)/S(6)=\golden^{-3}$---the same $\Z_3\to\Z_4$ transition at $\sigma=3$---evaluated at the
+algebraic fixed point $\epsz\Mpcf=\pi$; the running $\sin^2\theta_W(k)$ is not derived here, and
+the residual $\sim2\%$ is a scale-translation question of the same nature as the one recorded
+for $\Lambda_{\mathrm{obs}}$ in Remark~\ref{rmk:GLambda-interval}. The $G$--$\Lambda$
+duality $\golden^{-6}\golden^{6}=1$ holds. The internal $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$
+connection and the Lorentz connection both descend from a single higher-dimensional spin connection; the
+explicit Kaluza--Klein reduction giving $A^{a}_\mu$ from the metric is the one step left open here.
+\Lean{gauge\_dim\_su3, weinberg\_ratio, hopf\_from\_clifford, G\_Lambda\_duality}
+
+\subsection{The M-theory type duality web from its two corners}\label{app:web}
+The web this paper uses has exactly two corners---Huerta--Schreiber M-theory and Maldacena's AdS/CFT---and both
+are shown here to carry the microstate invariant $|\Om|=\tfrac12$, so the shared signature
+\eqref{eq:shared-signature} is \emph{derived}, not cited. \emph{Huerta--Schreiber corner:} the superpoint tower
+is purely binary ($\Z_2$); the functor $F$ of \S\ref{ssec:p-tower} maps it to the golden tower, carrying
+$|\Om|=\tfrac12$, $|\Om|^2=\tfrac14$. \emph{Maldacena corner:} the per-level AdS/CFT of \S\ref{ssec:adscft}
+(curvature in App.~\ref{app:curvature}) fixes $\ell=1$, $G_N=\tfrac12$, $c=3$, $\mathrm{GKP}=\tfrac34$. Both
+equal the microstate invariant $\mu=\tfrac12$, which \emph{is} \eqref{eq:shared-signature}. The dualities are
+then the modulus-preserving symmetries of the tower: S-duality is the Galois conjugation
+$\tau\to-1/\tau\Leftrightarrow\golden\to-1/\golden$, which fixes $\tau=i$ and preserves $|\Om|=\tfrac12$;
+T-duality is $R\to\alpha'/R$; IIA strong coupling is the dimensional lift $\sigma=10\to11$. The two corners are
+thus projections of one microstate related by symmetries that fix its modulus---the web reconstructed from this
+paper's own objects, with no external framework required.
+\Lean{s\_duality\_fixes\_i, modulus\_Omega}
+
+\subsection{The superpoint ladder and the $32$ supercharges}\label{app:superpoint}
+M-theory's eleven-dimensional content is reached as the chain of maximal invariant central extensions of the
+superpoint $\R^{0|1}$,
+\begin{equation}
+  \R^{0|1}\longrightarrow\cdots\longrightarrow\R^{10,1|32},
+\end{equation}
+each level the unique consistent extension singled out by super-Lie-algebra cohomology (the brane bouquet). The
+$32$ real supercharges are the cardinality of the binary hypercube $H_5=\{0,1\}^5$,
+\begin{equation}
+  |H_k|=2^{k},\qquad |H_5|=2^{5}=32 ,
+\end{equation}
+and the base mode count is $N(0)=\lfloor\pi\rfloor=3$, fixing $c=3$ at the colour level.
+\Lean{hypercube\_card}
+
+\subsection{Einstein's equations from observation}\label{app:einstein}
+The accumulated information of the observer is the tower entropy, the matter content, the horizon entropy, and
+the heat of $\delta Q=T\delta S$ at once,
+\begin{equation}
+  \underbrace{F_\Om\cdot N}_{\text{bits}}
+   =\underbrace{S(\sigma)=\pi\golden^{\sigma}}_{\text{tower}}
+   =\underbrace{N=\lfloor S(\sigma)\rfloor}_{\text{matter}}
+   =\underbrace{S_{BH}=\tfrac{A}{4G_N}}_{\text{horizon}}
+   =\underbrace{S_{\text{Jacobson}}}_{\delta Q=T\delta S},
+\end{equation}
+each mode carrying one Shannon bit $H(\tfrac12)=1$. Each bit costs the Landauer energy $1/\Mpcf$, and with the
+area factor $\mu_3^{2}=\tfrac14$ ($G_N=\tfrac12$) the Clausius relation on every local Rindler horizon yields,
+through Jacobson's construction, the Einstein equation
+\begin{equation}
+  \delta Q=T\,\delta S\ \Longrightarrow\ G_{\mu\nu}+\Lambda g_{\mu\nu}=\kappa\,T_{\mu\nu} .
+\end{equation}
+What is new here is not Jacobson's passage but its \emph{inputs}: the horizon entropy is the golden-tower
+entropy $S=\pi\golden^{\sigma}$, and the area factor is the microstate modulus $G_N=\tfrac12$. These two
+framework outputs are what make the Clausius relation yield \emph{this} geometry; with generic inputs it would
+not.
+
+\subsection{Kaluza--Klein structure}\label{app:kk}
+This appendix collects the Kaluza--Klein content of the framework. It supports the remark in
+\S\ref{ssec:web}: the bridge $\sigma=10\to11$ of \eqref{eq:bridge-Witten} corresponds to Witten's
+Kaluza--Klein mechanism, in which the Type~IIA strong-coupling tower is the Kaluza--Klein spectrum of
+eleven-dimensional supergravity on $\R^{10}\times S^1$~\cite{Witten95}.
+
+\paragraph{The Kaluza--Klein mass from $\golden$.}
+The numerator of the interior Kaluza--Klein mass is the golden identity
+\begin{equation}\label{eq:kk-numerator}
+  \golden^{2}+\golden^{-2}-2=1 ,
+\end{equation}
+\Lean{KK\_numerator}%
+a direct consequence of $\golden^{2}+\golden^{-2}=3$. The same identity fixes, at one stroke, the arity
+$n=3$ (gauge), this Kaluza--Klein numerator (gravity), and the dimension $d=n+1=4$
+\eqref{eq:dim-chain}, \Lean{central\_chain}.
+
+\paragraph{Dimensional reduction $G_5\to G_4$.}
+Newton's constant reduces as $G_4=G_5/(2\ell)$, which at the framework values $G_5=\tfrac12$, $\ell=1$ gives
+\begin{equation}\label{eq:kk-G4}
+  G_4=\frac{G_5}{2\ell}=\frac{1}{4} ,
+\end{equation}
+\Lean{kk\_reduction, kk\_at\_PCF}%
+the reduced Newton constant being the squared modulus, $G_4=|\Om|^{2}=(\tfrac12)^{2}$
+\Lean{G4\_eq\_omega\_sq}. The boundary Casimir $\tfrac34$ and the bulk Newton $\tfrac14$ sum to unity,
+$\tfrac34+\tfrac14=1$ \Lean{casimir\_plus\_newton}, and the boundary density ratio is
+$\golden^{-2}-1=-\golden^{-1}$ \Lean{boundary\_density\_ratio}.
+
+\paragraph{The Breitenlohner--Freedman bound and discrete stability.}
+For $\mathrm{AdS}_5$ the Breitenlohner--Freedman bound is $m^2_{BF}=-d^2/4=-4$ ($d=4$),
+\begin{equation}\label{eq:kk-BF}
+  m^2_{BF}=-\frac{d^{2}}{4}=-4 ,
+\end{equation}
+\Lean{KK\_BF\_bound}%
+The continuous interior Kaluza--Klein mass $m^2_{KK}\approx-4.318$ lies below this bound; a continuous mode
+of that mass would be unstable. The physical spectrum is not continuous but the discrete seven-level tower
+$\sigma=0,\dots,6$, whose modes all have $m^2>0$ (verified numerically in
+\texttt{CW3\_verify\_paper\_physics.py}): the discreteness is what makes the tower stable.
+
+\paragraph{The step left open.}
+The internal $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$ connection and the Lorentz connection
+descend from a single higher-dimensional spin connection (\S\ref{app:gauge}); the explicit Kaluza--Klein
+reduction giving the gauge field $A^{a}_\mu$ from the metric is the one step left open, as noted in the main
+text.
+
+
+\section{Translation of the epigraph (Schiller, 1785)}\label{app:epigraph-en}
+
+The German verse quoted in the acknowledgments (Section~\ref{sec:ack}) is the opening strophe of Friedrich Schiller's \emph{An die Freude} (``To Joy'', 1785), the poem later set to music by Ludwig van Beethoven in the final movement of his Ninth Symphony (\emph{Ode an die Freude}, Op.~125, 1824). A standard English translation runs:
+
+\begin{verse}
+Joy commands the hardy mainspring\\
+Of the universe eterne.\\[0.4em]
+Joy, oh joy the wheel is driving\\
+Which the worlds' great clock doth turn.\\[0.4em]
+Flowers from the buds she coaxes,\\
+Suns from out the hyaline,\\
+Spheres she rotates through expanses\\
+Which the seer can't divine.
+\end{verse}
+
+\noindent\textemdash{} Friedrich Schiller, \emph{An die Freude} (1785), English rendering.

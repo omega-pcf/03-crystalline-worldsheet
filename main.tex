@@ -1,0 +1,90 @@
+% =====================================================================
+%  The Crystalline Worldsheet — main.tex (shell master document)
+%
+%  Preamble preserved verbatim from CW3_paper_integrado_nuevo_s4.tex.
+%  Body content is split across src/chapters/<name>.tex in the order
+%  defined here.
+% =====================================================================
+\pdfoutput=1
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[backend=biber,style=numeric,sorting=none,doi=true,url=true,isbn=false]{biblatex}
+\addbibresource{src/bibliography.bib}
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,hypertexnames=false}
+\usepackage[capitalize,nameinlink]{cleveref}
+
+\newcommand{\golden}{\varphi}
+\newcommand{\PCF}{\mathrm{PCF}}
+\newcommand{\Rpcf}{R_{\PCF}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\Re}{\operatorname{Re}}
+\newcommand{\Om}{\Omega}
+\newcommand{\Zpcf}{Z_{\PCF}}
+\newcommand{\Nmodes}{N_{\mathrm{modes}}}
+\newcommand{\GN}{G_{N}}
+\newcommand{\SBH}{S_{\mathrm{BH}}}
+\newcommand{\muthree}{\mu_{3}}
+\newcommand{\Fmax}{F_{\max}}
+\newcommand{\Mpcf}{M_{\mathrm{PCF}}}
+\newcommand{\tauF}{\tau_{F}}
+\newcommand{\epsz}{\varepsilon_{0}}
+
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\newcommand{\lng}{\lambda_{\log}}
+\newcommand{\Lean}[1]{\hfill{\small\texttt{[#1]}}}
+\newcommand{\LeanInline}[1]{{\small\texttt{[#1]}}}
+\newcommand{\LeanWrap}[1]{\par\noindent{\small\ttfamily\raggedright[#1]\par}}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\usepackage{graphicx}
+\usepackage{float}
+
+\title{\textbf{A String Theoretical framework based on $\golden$ and $\pi$ for the de~Sitter observer problem}}
+\author{J.~A.~Gonz\'alez Garc\'ia \and V.~M.~Gonz\'alez Garc\'ia \and I.~M.~Dressler P\'erez
+\and L.~M.~Garc\'ia Ord\'o\~nez\\[2pt]
+\small TTAMAYO PUNTO COM, S.A.P.I.\ de C.V.}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% --- figure search paths: src/figures for the source PNGs ---
+\graphicspath{{src/figures/}{./}{images/}{../01-hilbert-polya/images/}{../02-odd-zeta/images/}}
+
+% 01-introduction.tex carries \begin{abstract}…\end{abstract}, the keywords
+% paragraph, and \tableofcontents before \section{Introduction}.
+% --- body chapters, in the order of the integrated preprint ---
+\input{src/chapters/01-introduction}
+\input{src/chapters/02-methods}
+\input{src/chapters/03-derivations}
+\input{src/chapters/04-implications}
+\input{src/chapters/05-discussion}
+\input{src/chapters/06-conclusions}
+\input{src/chapters/appendix}
+\input{src/chapters/disclosure}
+\input{src/chapters/acknowledgments}
+
+\printbibliography
+
+\end{document}
