@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.2](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.1...v0.3.2) (2026-07-13)
+
+### Bug Fixes
+
+* **tex:** restore urlcolor=blue in hypersetup ([82e3e1c](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/82e3e1caa2ac8838feb8fc6022e5e4904f332ebe))
+
 ## [0.3.1](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.0...v0.3.1) (2026-07-13)
 
 ### Bug Fixes
