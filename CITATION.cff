@@ -77,9 +77,14 @@ references:
     journal: Journal of High Energy Physics
     volume: "10"
     pages: "034"
+    doi: 10.1088/1126-6708/2001/10/034
   - authors:
       - family-names: Susskind
         given-names: L.
+    doi: 10.1063/1.531249
+    identifiers:
+      - type: doi
+        value: 10.1063/1.531249
     title: The world as a hologram
     date-published: 1995-01-01
     year: 1995
@@ -90,6 +95,10 @@ references:
   - authors:
       - family-names: Maldacena
         given-names: J. M.
+    doi: 10.1023/A:1026654312961
+    identifiers:
+      - type: doi
+        value: 10.1023/A:1026654312961
     title: The large N limit of superconformal field theories and supergravity
     date-published: 1998-01-01
     year: 1998
@@ -115,6 +124,10 @@ references:
         given-names: I. R.
       - family-names: Strassler
         given-names: M. J.
+    doi: 10.1088/1126-6708/2000/08/052
+    identifiers:
+      - type: doi
+        value: 10.1088/1126-6708/2000/08/052
     title: "Supergravity and a confining gauge theory: duality cascades and
       χSB-resolution of naked singularities"
     date-published: 2000-01-01
@@ -166,7 +179,10 @@ references:
         given-names: R.
       - family-names: Polchinski
         given-names: J.
+    doi: 10.1088/1126-6708/2000/06/006
     identifiers:
+      - type: doi
+        value: 10.1088/1126-6708/2000/06/006
       - type: url
         value: https://arxiv.org/abs/hep-th/0004134
     title: Quantization of four-form fluxes and dynamical neutralization of the
@@ -181,7 +197,10 @@ references:
   - authors:
       - family-names: Douglas
         given-names: M. R.
+    doi: 10.1088/1126-6708/2003/05/046
     identifiers:
+      - type: doi
+        value: 10.1088/1126-6708/2003/05/046
       - type: url
         value: https://arxiv.org/abs/hep-th/0303194
     title: The statistics of string/M theory vacua
@@ -197,7 +216,10 @@ references:
         given-names: R.
       - family-names: Susskind
         given-names: L.
+    doi: 10.1103/PhysRevD.85.045007
     identifiers:
+      - type: doi
+        value: 10.1103/PhysRevD.85.045007
       - type: url
         value: https://arxiv.org/abs/1105.3796
     title: The multiverse interpretation of quantum mechanics
@@ -236,6 +258,10 @@ references:
   - authors:
       - family-names: Lawvere
         given-names: F. W.
+    doi: 10.1007/BFb0080769
+    identifiers:
+      - type: doi
+        value: 10.1007/BFb0080769
     title: Diagonal arguments and cartesian closed categories
     date-published: 1969-01-01
     year: 1969
@@ -246,6 +272,10 @@ references:
   - authors:
       - family-names: Yanofsky
         given-names: N. S.
+    doi: 10.2178/bsl/1058448677
+    identifiers:
+      - type: doi
+        value: 10.2178/bsl/1058448677
     title: A universal approach to self-referential paradoxes, incompleteness and
       fixed points
     date-published: 2003-01-01
@@ -268,6 +298,10 @@ references:
   - authors:
       - family-names: Priest
         given-names: G.
+    doi: 10.1007/BF00258428
+    identifiers:
+      - type: doi
+        value: 10.1007/BF00258428
     title: The logic of paradox
     date-published: 1979-01-01
     year: 1979
@@ -278,6 +312,10 @@ references:
   - authors:
       - family-names: Russell
         given-names: B.
+    doi: 10.2307/2272708
+    identifiers:
+      - type: doi
+        value: 10.2307/2272708
     title: Mathematical logic as based on the theory of types
     date-published: 1908-01-01
     year: 1908
@@ -300,6 +338,10 @@ references:
         given-names: J.
       - family-names: Schreiber
         given-names: U.
+    doi: 10.1007/s11005-018-1110-z
+    identifiers:
+      - type: doi
+        value: 10.1007/s11005-018-1110-z
     title: M-theory from the superpoint
     date-published: 2018-01-01
     year: 2018
@@ -310,7 +352,10 @@ references:
   - authors:
       - family-names: Witten
         given-names: E.
+    doi: 10.1016/0550-3213(95)00158-O
     identifiers:
+      - type: doi
+        value: 10.1016/0550-3213(95)00158-O
       - type: url
         value: https://arxiv.org/abs/hep-th/9503124
     title: String theory dynamics in various dimensions
@@ -328,6 +373,10 @@ references:
         given-names: M. R.
       - family-names: Schwarz
         given-names: A.
+    doi: 10.1088/1126-6708/1998/02/003
+    identifiers:
+      - type: doi
+        value: 10.1088/1126-6708/1998/02/003
     title: Noncommutative geometry and matrix theory
     date-published: 1998-01-01
     year: 1998
@@ -369,7 +418,10 @@ references:
   - authors:
       - family-names: Manin
         given-names: Yu. I.
+    doi: 10.1134/S2070046613040055
     identifiers:
+      - type: doi
+        value: 10.1134/S2070046613040055
       - type: url
         value: https://arxiv.org/abs/1312.5160
     title: Numbers as functions
@@ -396,6 +448,10 @@ references:
   - authors:
       - family-names: Veneziano
         given-names: G.
+    doi: 10.1007/BF02824451
+    identifiers:
+      - type: doi
+        value: 10.1007/BF02824451
     title: Construction of a crossing-symmetric, Regge-behaved amplitude for
       linearly rising trajectories
     date-published: 1968-01-01
@@ -409,6 +465,10 @@ references:
         given-names: S.
       - family-names: Remiddi
         given-names: E.
+    doi: 10.1016/0370-2693(96)00439-X
+    identifiers:
+      - type: doi
+        value: 10.1016/0370-2693(96)00439-X
     title: The analytical value of the electron (g-2) at order α<sup>3</sup> in QED
     date-published: 1996-01-01
     year: 1996
@@ -664,6 +724,10 @@ references:
   - authors:
       - family-names: Landauer
         given-names: R.
+    doi: 10.1147/rd.53.0183
+    identifiers:
+      - type: doi
+        value: 10.1147/rd.53.0183
     title: Irreversibility and heat generation in the computing process
     date-published: 1961-01-01
     year: 1961
@@ -674,6 +738,10 @@ references:
   - authors:
       - family-names: Bekenstein
         given-names: J. D.
+    doi: 10.1103/PhysRevD.7.2333
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysRevD.7.2333
     title: Black holes and entropy
     date-published: 1973-01-01
     year: 1973
@@ -684,6 +752,10 @@ references:
   - authors:
       - family-names: Hawking
         given-names: S. W.
+    doi: 10.1007/BF02345020
+    identifiers:
+      - type: doi
+        value: 10.1007/BF02345020
     title: Particle creation by black holes
     date-published: 1975-01-01
     year: 1975
@@ -696,6 +768,10 @@ references:
         given-names: G. W.
       - family-names: Hawking
         given-names: S. W.
+    doi: 10.1103/PhysRevD.15.2738
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysRevD.15.2738
     title: Cosmological event horizons, thermodynamics, and particle creation
     date-published: 1977-01-01
     year: 1977
@@ -708,6 +784,10 @@ references:
         given-names: J. D.
       - family-names: Henneaux
         given-names: M.
+    doi: 10.1007/BF01211590
+    identifiers:
+      - type: doi
+        value: 10.1007/BF01211590
     title: "Central charges in the canonical realization of asymptotic symmetries:
       an example from three-dimensional gravity"
     date-published: 1986-01-01
@@ -723,6 +803,10 @@ references:
         given-names: I. R.
       - family-names: Polyakov
         given-names: A. M.
+    doi: 10.1016/S0370-2693(98)00377-3
+    identifiers:
+      - type: doi
+        value: 10.1016/S0370-2693(98)00377-3
     title: Gauge theory correlators from non-critical string theory
     date-published: 1998-01-01
     year: 1998
@@ -733,6 +817,10 @@ references:
   - authors:
       - family-names: Witten
         given-names: E.
+    doi: 10.4310/ATMP.1998.v2.n2.a2
+    identifiers:
+      - type: doi
+        value: 10.4310/ATMP.1998.v2.n2.a2
     title: Anti-de Sitter space and holography
     date-published: 1998-01-01
     year: 1998
@@ -903,6 +991,10 @@ references:
   - authors:
       - family-names: Bell
         given-names: J. S.
+    doi: 10.1103/PhysicsPhysiqueFizika.1.195
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysicsPhysiqueFizika.1.195
     title: On the Einstein Podolsky Rosen paradox
     date-published: 1964-01-01
     year: 1964
@@ -913,6 +1005,10 @@ references:
   - authors:
       - family-names: Leggett
         given-names: A. J.
+    doi: 10.1023/A:1026096313729
+    identifiers:
+      - type: doi
+        value: 10.1023/A:1026096313729
     title: "Nonlocal hidden-variable theories and quantum mechanics: an
       incompatibility theorem"
     date-published: 2003-01-01
@@ -936,7 +1032,10 @@ references:
         given-names: M.
       - family-names: Zeilinger
         given-names: A.
+    doi: 10.1038/nature05677
     identifiers:
+      - type: doi
+        value: 10.1038/nature05677
       - type: url
         value: https://arxiv.org/abs/0704.2529
     title: An experimental test of non-local realism
@@ -952,6 +1051,10 @@ references:
         given-names: S. J.
       - family-names: Clauser
         given-names: J. F.
+    doi: 10.1103/PhysRevLett.28.938
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysRevLett.28.938
     title: Experimental test of local hidden-variable theories
     date-published: 1972-01-01
     year: 1972
@@ -966,6 +1069,10 @@ references:
         given-names: J.
       - family-names: Roger
         given-names: G.
+    doi: 10.1103/PhysRevLett.49.1804
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysRevLett.49.1804
     title: Experimental test of Bell's inequalities using time-varying analyzers
     date-published: 1982-01-01
     year: 1982
@@ -984,6 +1091,10 @@ references:
         given-names: H.
       - family-names: Zeilinger
         given-names: A.
+    doi: 10.1103/PhysRevLett.81.5039
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysRevLett.81.5039
     title: Violation of Bell's inequality under strict Einstein locality conditions
     date-published: 1998-01-01
     year: 1998
@@ -1012,7 +1123,10 @@ references:
         given-names: A.
       - family-names: Scarani
         given-names: V.
+    doi: 10.1103/PhysRevLett.99.210407
     identifiers:
+      - type: doi
+        value: 10.1103/PhysRevLett.99.210407
       - type: url
         value: https://arxiv.org/abs/0708.0584
     title: Experimental falsification of Leggett's nonlocal variable model
