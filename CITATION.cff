@@ -68,6 +68,15 @@ abstract: "We propose that the obstruction to holography in de Sitter space is
   Three companion papers develop, independently, the arithmetic (F₁-descent),
   operator (Hilbert–Pólya), and identity (binary, ternary, golden) threads."
 references:
+  - type: article
+    title: The dS/CFT correspondence
+    authors:
+      - family-names: Strominger
+        given-names: A.
+    year: 2001
+    journal: Journal of High Energy Physics
+    volume: "10"
+    pages: "034"
   - authors:
       - family-names: Susskind
         given-names: L.

@@ -104,6 +104,7 @@
     "Ryu, S.; Takayanagi, T. (2006). Holographic derivation of entanglement entropy from the AdS/CFT correspondence. Physical Review Letters. 96.",
     "Saad, P.; Shenker, S. H.; Stanford, D. (2019). JT gravity as a matrix integral. https://arxiv.org/abs/1903.11115",
     "Schreiber, U. (2013). Differential cohomology in a cohesive ∞-topos. https://arxiv.org/abs/1310.7930",
+    "Strominger, A. (2001). The dS/CFT correspondence. Journal of High Energy Physics. 10, 034.",
     "Susskind, L. (1995). The world as a hologram. Journal of Mathematical Physics. 36, 6377.",
     "Susskind, L. (2003). The anthropic landscape of string theory. https://arxiv.org/abs/hep-th/0302219",
     "Susskind, L.; Witten, E. (1998). The holographic bound in anti-de Sitter space. https://arxiv.org/abs/hep-th/9805114",
@@ -127,17 +128,17 @@
     {
       "identifier": "10.5281/zenodo.19492791",
       "relation": "cites",
-      "resource_type": "publication"
+      "resource_type": "publication-article"
     },
     {
       "identifier": "10.5281/zenodo.17619486",
       "relation": "cites",
-      "resource_type": "publication"
+      "resource_type": "publication-article"
     },
     {
       "identifier": "10.14195/1984-249X_28_4",
       "relation": "cites",
-      "resource_type": "publication"
+      "resource_type": "publication-article"
     }
   ]
 }
