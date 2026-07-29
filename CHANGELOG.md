@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.4](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.3...v0.3.4) (2026-07-29)
+
+### Bug Fixes
+
+* **citation:** set upload_type to software for Zenodo ([93e7a14](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/93e7a1460ea9b267f78cfba0548db2e4b31867b2))
+
 ## [0.3.3](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.2...v0.3.3) (2026-07-29)
 
 ### Bug Fixes
