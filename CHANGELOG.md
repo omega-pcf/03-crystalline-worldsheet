@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.3.3](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.2...v0.3.3) (2026-07-29)
+
+### Bug Fixes
+
+* **build:** clean stale LaTeX artifacts and tolerate pdflatex non-zero exit ([c387f55](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/c387f55e06be7e845c01af6d1bab58e32cf7b406))
+* **citation:** normalize institution.country to ISO codes ([1da6a39](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/1da6a39a6320fe5dd9b00d32b37fa65bae80a879))
+* **citation:** repair CSL→Zenodo pipeline bugs ([1144441](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/1144441c58d56214c0931f6c7631ebde260e4d76))
+* **citations:** add confirmed DOIs via Hound MCP ([ebe25f0](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/ebe25f07352b869747e6f402a7d7795f61749c64))
+* **citations:** correct metadata for 6 references ([246f691](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/246f691084ee01545c9fb1018e245663f1448c1c))
+
+### Styles
+
+* add missing \subjclass to match 01/02 target state ([5746edf](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/5746edf4558e2288e90813a8b4a431678ce7b503))
+* use muted red for linkcolor across all repos ([23512a3](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/23512a3865b4106e8314bedb1a9af10e7a8dad3b))
+
 ## [0.3.2](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.1...v0.3.2) (2026-07-13)
 
 ### Bug Fixes
