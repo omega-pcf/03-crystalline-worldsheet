@@ -1,1 +1,1 @@
-64085a3095742506546ca5ba6a7148fd152ded7bea5cea5dd2088b7d0818d9d9  build/document-v0.3.4.pdf
+f6b23a8d1e38e477129de202ce2cf304a8abdc5bbb21f866c74ac7013312cf3c  build/document-v0.3.4.pdf
