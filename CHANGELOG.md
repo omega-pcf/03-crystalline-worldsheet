@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.5](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.4...v0.3.5) (2026-07-29)
+
+### Bug Fixes
+
+* **citation:** remove invalid publication_type from .zenodo.json ([1d9f052](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/1d9f05272001fe5cbff6a3af013b33c08140bdc0))
+
+### Chores
+
+* remove docs/archive directory ([69a6df2](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/69a6df286d4d8674aa89941d909a54c07d50ff42))
+
 ## [0.3.4](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.3...v0.3.4) (2026-07-29)
 
 ### Bug Fixes
