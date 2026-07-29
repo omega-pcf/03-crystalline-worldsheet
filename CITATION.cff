@@ -4,7 +4,7 @@ title: "The Crystalline Worldsheet: A String Theoretical framework based on φ
   and π for the de Sitter observer problem"
 type: software
 version: 0.3.2
-date-released: 2026-07-13
+date-released: 2026-07-29
 authors:
   - family-names: González García
     given-names: Jorge Armando
@@ -221,6 +221,8 @@ references:
         value: https://arxiv.org/abs/2602.12265
     title: Holographic equidistribution
     url: https://arxiv.org/abs/2602.12265
+    date-published: 2026-01-01
+    year: 2026
     type: article
   - authors:
       - family-names: Lawvere
@@ -546,7 +548,8 @@ references:
         value: 10.5281/zenodo.19492791
       - type: url
         value: https://doi.org/10.5281/zenodo.19492791
-    title: Odd Zeta Values from Pentagonal 𝔽₁-Descent
+    title: "Odd Zeta Values from the PCF Torus: φ and π as Arithmetic-Geometric
+      Sources"
     url: https://doi.org/10.5281/zenodo.19492791
     date-published: 2026-01-01
     year: 2026
@@ -555,7 +558,8 @@ references:
     type: article
   - authors:
       - name: J. A. González García et al.
-    title: An analogue of Euler's identity for the binary, ternary, and golden bases
+    title: Simultaneous identities of the golden ratio and Euler's identity,
+      formally verified in Lean 4 over the known Mersenne prime exponents
     date-published: 2026-01-01
     year: 2026
     notes: Companion paper (2026); DOI pending — to be added once assigned.
@@ -568,7 +572,7 @@ references:
         value: 10.5281/zenodo.17619486
       - type: url
         value: https://doi.org/10.5281/zenodo.17619486
-    title: Hilbert–Pólya Primitive Structure of the Complex Plane
+    title: The Hilbert–Pólya Operator and the Primitive Structure of the Complex Plane
     url: https://doi.org/10.5281/zenodo.17619486
     date-published: 2026-01-01
     year: 2026
@@ -588,11 +592,10 @@ references:
         given-names: G.
       - family-names: Campbell
         given-names: S.
-    title: (title to be confirmed against the publication)
+    title: Metrological approach to the emergence of classical objectivity
     date-published: 2026-01-01
     year: 2026
     journal: Physical Review A
-    notes: Title not provided in source; to be confirmed against the publication.
     type: article
     volume: "113"
   - authors:
@@ -841,14 +844,14 @@ references:
     type: book
   - authors:
       - family-names: dos Santos
-        given-names: G. S.
+        given-names: G. C.
     doi: 10.14195/1984-249X_28_4
     identifiers:
       - type: doi
         value: 10.14195/1984-249X_28_4
     title: Arquitetura vitruviana e retórica antiga
-    date-published: 2020-01-01
-    year: 2020
+    date-published: 2019-01-01
+    year: 2019
     journal: Archai
     type: article
     volume: "28"

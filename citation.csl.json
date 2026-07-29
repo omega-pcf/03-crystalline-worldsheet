@@ -148,6 +148,7 @@
     "type": "article",
     "title": "Holographic equidistribution",
     "author": [{"family": "Cooper", "given": "N."}],
+    "issued": {"date-parts": [[2026]]},
     "URL": "https://arxiv.org/abs/2602.12265"
   },
   {
@@ -466,7 +467,7 @@
   {
     "id": "F1",
     "type": "article",
-    "title": "Odd Zeta Values from Pentagonal 𝔽₁-Descent",
+    "title": "Odd Zeta Values from the PCF Torus: φ and π as Arithmetic-Geometric Sources",
     "author": [{"literal": "J. A. González García et al."}],
     "issued": {"date-parts": [[2026]]},
     "container-title": "Zenodo",
@@ -477,7 +478,7 @@
   {
     "id": "Corr",
     "type": "article",
-    "title": "An analogue of Euler's identity for the binary, ternary, and golden bases",
+    "title": "Simultaneous identities of the golden ratio and Euler's identity, formally verified in Lean 4 over the known Mersenne prime exponents",
     "author": [{"literal": "J. A. González García et al."}],
     "issued": {"date-parts": [[2026]]},
     "note": "Companion paper (2026); DOI pending — to be added once assigned."
@@ -485,7 +486,7 @@
   {
     "id": "HP",
     "type": "article",
-    "title": "Hilbert–Pólya Primitive Structure of the Complex Plane",
+    "title": "The Hilbert–Pólya Operator and the Primitive Structure of the Complex Plane",
     "author": [{"literal": "J. A. González García et al."}],
     "issued": {"date-parts": [[2026]]},
     "container-title": "Zenodo",
@@ -496,7 +497,7 @@
   {
     "id": "Kiely26",
     "type": "article",
-    "title": "(title to be confirmed against the publication)",
+    "title": "Metrological approach to the emergence of classical objectivity",
     "author": [
       {"family": "Kiely", "given": "A."},
       {"family": "Chisholm", "given": "D. A."},
@@ -509,8 +510,7 @@
     "container-title": "Physical Review A",
     "container-title-short": "Phys. Rev. A",
     "volume": "113",
-    "article-number": "022403",
-    "note": "Title not provided in source; to be confirmed against the publication."
+    "article-number": "022403"
   },
   {
     "id": "Jacobson1995",
@@ -751,8 +751,8 @@
     "id": "Santos2020",
     "type": "article",
     "title": "Arquitetura vitruviana e retórica antiga",
-    "author": [{"family": "dos Santos", "given": "G. S."}],
-    "issued": {"date-parts": [[2020]]},
+    "author": [{"family": "dos Santos", "given": "G. C."}],
+    "issued": {"date-parts": [[2019]]},
     "container-title": "Archai",
     "volume": "28",
     "article-number": "e02804",
