@@ -3,7 +3,7 @@ message: If you use this software, please cite it using these metadata.
 title: "The Crystalline Worldsheet: A String Theoretical framework based on φ
   and π for the de Sitter observer problem"
 type: software
-version: 0.3.5
+version: 0.4.0
 date-released: 2026-07-29
 authors:
   - family-names: González García
@@ -627,11 +627,15 @@ references:
     type: article
   - authors:
       - name: J. A. González García et al.
+    doi: 10.5281/zenodo.21681395
+    identifiers:
+      - type: doi
+        value: 10.5281/zenodo.21681395
     title: Simultaneous identities of the golden ratio and Euler's identity,
       formally verified in Lean 4 over the known Mersenne prime exponents
     date-published: 2026-01-01
     year: 2026
-    notes: Companion paper (2026); DOI pending — to be added once assigned.
+    notes: Companion paper (2026).
     type: article
   - authors:
       - name: J. A. González García et al.
@@ -1136,3 +1140,4 @@ references:
     journal: Physical Review Letters
     type: article
     volume: "99"
+doi: 10.5281/zenodo.21343602

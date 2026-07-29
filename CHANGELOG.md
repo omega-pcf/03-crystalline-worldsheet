@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.5...v0.4.0) (2026-07-29)
+
+### Features
+
+* **ci:** add Zenodo upload workflow via REST API ([f2cce11](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/f2cce1108e76104a32c7cf42107666dc906d6f11))
+
+### Bug Fixes
+
+* **citation:** add doi to package.json, propagate via pipeline ([3e64dbb](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/3e64dbb9ad5654017c33a78e213a0f5c4cad523f))
+* **citation:** replace invalid resource_type 'publication-technicalreport' with 'publication' ([b01da2d](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/b01da2d0ca5b7254573dcaccb979c1f3161ad747))
+* **citation:** set Zenodo upload_type to publication/preprint, add Corr DOI ([498313e](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/498313e8afd321022c80cefd85aa0d992cb388c1))
+
 ## [0.3.5](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.4...v0.3.5) (2026-07-29)
 
 ### Bug Fixes
