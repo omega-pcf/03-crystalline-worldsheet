@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.2](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.4.1...v0.4.2) (2026-07-30)
+
+### Documentation
+
+* acknowledge MiniMax, Z.ai, and Xiaomi Research in formal verification ([10d3920](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/10d39207565aa9932e3062302926ddbab83432a9))
+
 ## [0.4.1](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.4.0...v0.4.1) (2026-07-30)
 
 ### Bug Fixes
