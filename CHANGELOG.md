@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.4.1](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.4.0...v0.4.1) (2026-07-30)
+
+### Bug Fixes
+
+* **build:** use latexmk instead of manual pdflatex/biber ([8bfd9e9](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8bfd9e977ed652ff99c330fdd0902a7b6868a77b))
+
+### Documentation
+
+* standardize generic build pipeline docs ([7c9b0ea](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/7c9b0eac106866d14de0d8e8d7a39331b5c27888))
+
 ## [0.4.0](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.3.5...v0.4.0) (2026-07-29)
 
 ### Features
