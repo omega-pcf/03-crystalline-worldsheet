@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.4.3](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.4.2...v0.4.3) (2026-07-31)
+
+### Bug Fixes
+
+* **build:** use biblatex format, clean stale artifacts, surface latex errors ([1733271](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/17332718f06405664320bb339599c0d64c22e0e5))
+
+### Chores
+
+* regenerate metadata and PDF after biblatex format fix ([656a587](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/656a5876e3e98d2bb08c7983d99768287d4c8abd))
+* update .gitignore, remove .env.example ([c7326ab](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/c7326abd74bb367c83ee2b0da0e9f3d0cde27e31))
+
 ## [0.4.2](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.4.1...v0.4.2) (2026-07-30)
 
 ### Documentation
