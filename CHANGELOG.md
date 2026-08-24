@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.1](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.0...v1.0.1) (2026-08-24)
+
+### Bug Fixes
+
+* **metadata:** update abstract and zenodo_description to match CW6 v4 paper ([4775752](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/477575210cffba2aec18a2524bf5c6994ef65535))
+* **metadata:** update package.json description to match CW6 v4 title ([a6fe801](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/a6fe801059d926b17237a9f570d2786c229ba196))
+
+### Documentation
+
+* update README for CW6 v4 — title, abstract, file references, and verification commands ([dec4e1d](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/dec4e1d81776902fa99c620306fb1d45d8120421))
+
 ## [1.0.0](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.4.3...v1.0.0) (2026-08-24)
 
 ### ⚠ BREAKING CHANGES
