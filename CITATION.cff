@@ -624,12 +624,15 @@ references:
     type: article
   - authors:
       - name: J. A. González García et al.
-    doi: 10.5281/zenodo.21681395
+    doi: 10.5281/zenodo.21731878
     identifiers:
       - type: doi
-        value: 10.5281/zenodo.21681395
+        value: 10.5281/zenodo.21731878
+      - type: url
+        value: https://doi.org/10.5281/zenodo.21731878
     title: Simultaneous identities of the golden ratio and Euler's identity,
       formally verified in Lean 4 over the known Mersenne prime exponents
+    url: https://doi.org/10.5281/zenodo.21731878
     date-published: 2026-01-01
     year: 2026
     notes: Companion paper (2026).

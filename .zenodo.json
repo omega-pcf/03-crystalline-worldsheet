@@ -91,7 +91,7 @@
     "Hurwitz, A. (1891). Über die angenäherte Darstellung der Irrationalzahlen durch rationale Brüche. Mathematische Annalen. 39, 279.",
     "Israel, W. (1966). Singular hypersurfaces and thin shells in general relativity. Il Nuovo Cimento. 44, 1. https://doi.org/10.1007/BF02710419",
     "J. A. González García et al. (2026). Odd Zeta Values from the PCF Torus: φ and π as Arithmetic-Geometric Sources. Zenodo. https://doi.org/10.5281/zenodo.19492791",
-    "J. A. González García et al. (2026). Simultaneous identities of the golden ratio and Euler's identity, formally verified in Lean 4 over the known Mersenne prime exponents. https://doi.org/10.5281/zenodo.21681395",
+    "J. A. González García et al. (2026). Simultaneous identities of the golden ratio and Euler's identity, formally verified in Lean 4 over the known Mersenne prime exponents. https://doi.org/10.5281/zenodo.21731878",
     "J. A. González García et al. (2026). The Hilbert-Pólya Operator and the Primitive Structure of the Complex Plane: Between 𝔽₁, String Theory, and Ancient Geometry. Zenodo. https://doi.org/10.5281/zenodo.17619486",
     "Jacobi, C. G. J. (1829). Fundamenta nova theoriae functionum ellipticarum. Bornträger.",
     "Jacobson, T. (1995). Thermodynamics of spacetime: the Einstein equation of state. Physical Review Letters. 75, 1260. https://arxiv.org/abs/gr-qc/9504004",
@@ -248,7 +248,7 @@
       "resource_type": "publication-article"
     },
     {
-      "identifier": "10.5281/zenodo.21681395",
+      "identifier": "10.5281/zenodo.21731878",
       "relation": "cites",
       "resource_type": "publication-article"
     },
