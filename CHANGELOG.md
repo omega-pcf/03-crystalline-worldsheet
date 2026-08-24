@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.5](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.4...v1.0.5) (2026-08-24)
+
+### Bug Fixes
+
+* move period before \Lean tag in KK numerator passage ([1fafe60](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/1fafe6046c89475b60ec8dbbc708adf5cc21d1f9))
+* move period before \Lean tag in S-duality/certainty passage ([fa38972](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/fa38972ee074f40e81fdcedcc1b589e74aa5667f))
+* orphaned punctuation after Lean tags in W3/W5/spectral sections ([8491b34](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8491b343d209bd4c62f2a9a1cf99dc59ffffe1ce))
+* orphaned punctuation in bullet list and D3 proposition ([7459132](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/745913256980b99a1f1ece24df9d5c868b3f5921))
+* orphaned punctuation in spectral angle/uniqueness section ([9f5331a](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/9f5331a9582645a6eed3daddc7891de81cd28216))
+* orphaned punctuation, broken \Lean\, W9/W11/W12 formatting ([deb87cc](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/deb87cc52dbd910beb4a37410aa32c889e0768da))
+* **typography:** \Lean uses \nolinkurl for word-break at any character ([8f54bf2](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8f54bf2b701e192666f70313f37f070418f25d8c))
+* **typography:** \Lean uses \parbox for word-wrap, prevents right-margin overflow ([6fe3db7](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/6fe3db718ce34a94bf287db368466498ff04ccfd))
+
 ## [1.0.4](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.3...v1.0.4) (2026-08-24)
 
 ### Bug Fixes
