@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.2](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.1...v1.0.2) (2026-08-24)
+
+### Bug Fixes
+
+* **metadata:** sync title from package.json and correct CITATION.cff/zenodo ([bd74777](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/bd747775e505a3d642487ed47ca7da864a3dc504))
+
 ## [1.0.1](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.0...v1.0.1) (2026-08-24)
 
 ### Bug Fixes
