@@ -3,7 +3,7 @@ message: If you use this software, please cite it using these metadata.
 title: "The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁
   for the de Sitter observer problem"
 type: software
-version: 1.0.3
+version: 1.0.4
 date-released: 2026-08-24
 authors:
   - family-names: González García
@@ -1571,4 +1571,25 @@ references:
     start: "2445"
     type: article
     volume: "10"
+  - authors:
+      - family-names: Schiller
+        given-names: Friedrich
+    identifiers:
+      - type: url
+        value: https://archive.schillerinstitute.com/transl/trans_schil_2poems.html
+    title: Ode to Joy (An die Freude)
+    url: https://archive.schillerinstitute.com/transl/trans_schil_2poems.html
+    date-published: 1785-01-01
+    year: 1785
+    languages:
+      - en
+    notes: English translation of the poem 'An die Freude' (1785) by Friedrich
+      Schiller, translated by William F. Wertz, Jr.
+    publisher:
+      name: Schiller Institute
+    translators:
+      - family-names: Wertz
+        given-names: William F.
+        name-suffix: Jr.
+    type: article
 doi: 10.5281/zenodo.21343602

@@ -1,5 +1,38 @@
 # Changelog
 
+## [1.0.4](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.3...v1.0.4) (2026-08-24)
+
+### Bug Fixes
+
+* **acknowledgments:** correct native_decide count from two to one ([f809df9](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/f809df91b4ddbc6c5cb1f97978f59c7cfe7d8d6d))
+* add line breaks between Lean tags and following text in Section 3.3 ([a16534f](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/a16534f09e6774c0f88f061df800c745fbed6ff3))
+* **bib:** cite Wertz translation of Schiller's An die Freude ([d667d3d](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/d667d3de75cbce8915e91791c7fd3a650b55b720))
+* convert last \LeanFor in Section 3.3 to \LeanWrap for proper line break ([f7cfd03](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/f7cfd03c105ab362f59621e9318142955e89a537))
+* Funding line breaks, bullet list orphaned punctuation ([d1b15ca](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/d1b15ca8f041fab9d70aeade245c8620d3066c3e))
+* orphaned citations, broken sqrt, restore \LeanInline ([7ff573c](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/7ff573c2094f2dc19847449ff60d7cd59f560133))
+* reset paragraph settings after Schiller minipages, prevent format leak to Funding ([229ec89](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/229ec897afcb035aaa145fedd0be62f97472bbad))
+* **typography:** \Lean tags now start their own right-aligned paragraph ([4716e02](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/4716e0206d538352ca7610f3e0dfe63d64007e7b))
+* **typography:** \Lean uses \raggedleft for word-wrap, preventing right-margin overflow ([c3be14e](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/c3be14e2f7a5bffc6f5933b40390d44daf0cafbc))
+* **typography:** add newlines between \Lean tags and following text ([49a8073](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/49a8073852b9c17192f68cfbdd23fc234ae8d374))
+* **typography:** clean up inline Lean tags in Sections 3.4, 4.2, 4.4 ([7e0ebb6](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/7e0ebb66e6994ab277d1f49a2c7387688c64d241))
+* **typography:** clean up Section 3.3 Lean tags — remove % suppressors, convert inline to \LeanWrap ([fbe8a2c](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/fbe8a2c5143c7ede9c7d48f8ef22303cef31eaa4))
+* **typography:** convert 15 Lean tags with suppressed newlines to \LeanWrap ([05fbd5f](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/05fbd5ff8fe57cbb6b03445fd02fc163ec8a0a80))
+* **typography:** convert 27 inline Lean tags to \LeanWrap across all chapters ([8538be3](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8538be362ae0c418ab22ce379bd41e61a89894a3))
+* **typography:** convert 7 inline Lean tags to \LeanWrap in appendix ([ada2214](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/ada22149f4303d7761cc16f380713ed134fb457c))
+* **typography:** revert \Lean to inline \unskip\hfill, fix right-alignment leak ([c85bde9](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/c85bde9fb48bb1e4b6ab4d2a68ec65b4602f365e))
+
+### Styles
+
+* add \medskip before Chebyshev proof for visual separation ([127ac29](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/127ac29ebf48986fcef6f0fc14d1c3ceb5e22388))
+* add \medskip between Lemma 2.7 (Gaussian) and Theorem 2.8 (half-factorial) ([1f38bb4](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/1f38bb4993ec5d91a09317d986e86059880e4a45))
+* polish Schiller side-by-side — epigraph leftskip, rule separator, 1em spacing ([810dfcb](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/810dfcb921091ddcae3a388f4e02037fc9d61ab6))
+* tighten Schiller side-by-side layout — compact spacing, smaller attributions ([32aef65](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/32aef6502e4210c3dfa9bf9ba5d65608710309d6))
+
+### Refinements
+
+* move Schiller translation to acknowledgements side-by-side layout ([3187b01](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/3187b0176cfdc8b37eb9b8323d1730f028a99b8b))
+* unify \Lean and \LeanWrap into single \Lean command ([e3c9ef1](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/e3c9ef1beefa8f9a32c63f25d871fa7c4c653d40))
+
 ## [1.0.3](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.2...v1.0.3) (2026-08-24)
 
 ### Bug Fixes
