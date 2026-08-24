@@ -15,7 +15,7 @@ The seed inherited from \S\ref{sec:methods} is
 \begin{equation}\label{eq:gamma-half}
   \Gamma\!\left(\tfrac12\right)=\sqrt{\pi}.
 \end{equation}
-\LeanFor{eq:gamma-half}{M2\_gamma\_half, M1\_gamma\_integral}%
+\LeanWrap{M2\_gamma\_half, M1\_gamma\_integral}
 The worldline phase and its modulus are
 \begin{equation}\label{eq:worldline}
   \Om(\tau)=\tfrac12\,e^{\,i\tau\ln\golden},\qquad |\Om|=\tfrac12 .
@@ -26,7 +26,7 @@ and a weight fixed by the scale quantum,
   \int_{\R} e^{-x^{2}}\,dx=\sqrt{\pi},\qquad
   \mu=\golden^{-\lng}=\tfrac12\quad(\golden^{\lng}=2).
 \end{equation}
-\LeanFor{eq:gaussian}{selfdual\_gaussian\_unique, gaussian\_integral\_value}%
+\LeanWrap{selfdual\_gaussian\_unique, gaussian\_integral\_value}
 
 \begin{remark}[The wavefunction is the self-dual Gaussian]\label{rmk:wf-selfdual}
 The Gaussian weight of \eqref{eq:gaussian} is the self-dual one fixed in
@@ -89,7 +89,7 @@ The two $\tfrac32$'s of the corpus---the $\Gamma$ argument of \eqref{eq:half-fac
 spectral exponent here---are one value for a discriminating reason: the first is $1+\mu$, the
 second $3\mu$, and $1+\mu=3\mu$ has the unique solution $\mu=\tfrac12$; at arity $n$ the Basel
 route \eqref{eq:sigma-basel} gives $n^{2}/6$, which meets $\tfrac32$ only at $n=3$. \tier{P}
-\LeanFor{eq:spectral-invariants}{three\_halves\_unique, arity\_control\_three}%
+\LeanWrap{three\_halves\_unique, arity\_control\_three}
 \paragraph{The spectral angle and the uniqueness of the invariants.}
 At scale $\sigma$ the worldline subtends the spectral angle
 $\alpha(\sigma)=\arctan(\epsz\golden^{\sigma})$, normalised by $\epsz M_{\PCF}=\pi$
@@ -122,8 +122,8 @@ $\alpha(\sigma)<\pi/2$ is a property of $\arctan$ and holds for every real argum
 not the certainty relation that keeps the angle off the right angle. The bound is used for one
 thing---it gives $\cos\alpha(\sigma)>0$, the hypothesis under which
 Corollary~\ref{cor:bridge-angle} divides by $\cos\alpha$. \tier{P}
-\LeanFor{eq:spectral-angle}{spectral\_angle\_tan, spectral\_angle\_tower\_ratio}%
-\LeanFor{eq:spectral-surface}{spectral\_surface\_closed}%
+\LeanWrap{spectral\_angle\_tan, spectral\_angle\_tower\_ratio}
+\LeanWrap{spectral\_surface\_closed}
 \Lean{spectral\_angle\_lt\_pi\_div\_two, cos\_spectral\_angle\_pos}
 \end{proposition}
 \begin{proof}
@@ -200,12 +200,12 @@ Mediation by $\mu=\tfrac12$ produces the two registers,
   \golden^{\,\mu\lng}=\sqrt{2}\ \ (\text{binary}),\qquad
   \golden^{\,\mu\log_{\golden}3}=\sqrt{3}\ \ (\text{ternary}).
 \end{equation}
-\tier{P}\LeanFor{eq:tower-mediation}{M4\_sqrt2, M4\_sqrt3}%
+\tier{P}\LeanWrap{M4\_sqrt2, M4\_sqrt3}
 The tower and its mode count are
 \begin{equation}\label{eq:tower-modes}
   z(\sigma)=\golden^{\sigma},\qquad \Nmodes(\sigma)=\big\lfloor\pi\,\golden^{\sigma}\big\rfloor .
 \end{equation}
-\LeanFor{eq:tower-modes}{S\_tower}% The count and its golden ratio are shown in Fig.~\ref{fig:tower-modes}.
+\LeanFor{eq:tower-modes}{S\_tower}
 This is where the geometric encoding replaces the Fourier expansion of the string as the
 device that fixes the mode content: \eqref{eq:tower-modes} counts modes by the cell capacity
 $\pi$ of \eqref{eq:certainty} at each level of the tower rather than by harmonic order. The
@@ -260,7 +260,8 @@ the dynamics being presupposed on the HS side ($H=L_{0}+\bar L_{0}$) and derived
 Both sides are chains, so $F$ is the order-preserving level map---superpoint\,$\to$\,NS5 at
 $\sigma=0,\dots,5$ on the hypercube $H_5$ (\S\ref{ssec:adscft}, App.~\ref{app:superpoint})---and
 what it carries is the modulus, $|\Om|=\tfrac12$, $|\Om|^{2}=\tfrac14$, proved at the corner
-(App.~\ref{app:web}).\,\LeanWrap{modulus\_Omega, cocone\_property}
+(App.~\ref{app:web}).
+\LeanWrap{modulus\_Omega, cocone\_property}
 Tree amplitudes follow from $\pi$ (binary, via $\Gamma$) and $\golden$ (ternary, via Regge): the
 Veneziano amplitude \cite{Veneziano}
 \begin{equation}\label{eq:veneziano}
@@ -362,7 +363,7 @@ The throat and its warped metric are
   ds^{2}=e^{2A(z)}\,\eta_{\mu\nu}\,dx^{\mu}dx^{\nu}+dz^{2},
   \qquad z(\sigma)=\golden^{\sigma}\ \text{of \eqref{eq:tower-modes}}.
 \end{equation}
-\LeanFor{eq:throat}{ricciCoeff, ricciScalar, einsteinCoeff}%
+\LeanWrap{ricciCoeff, ricciScalar, einsteinCoeff}
 \paragraph{The five-dimensional throat: $\mathrm{AdS}_5$, $S^5$ and the ladder.}
 The throat \eqref{eq:throat} is the $\mathrm{AdS}_5$ geometry whose curvature invariants are fixed
 by the modulus: $R=-20$, $\Lambda_5=-6$, $G_{\mu\nu}=6$, saturating the
@@ -421,7 +422,7 @@ The modulus is scale invariant, so the holographic relation holds at every level
 The self-similarity is the physical face of the Frobenius lift \eqref{eq:frobenius-tower}: both
 act on the golden monoid through the one composition law $\psi_p(\golden^{\,n})=(\golden^{\,n})^{p}$,
 exponents multiplying while the modulus stands.
-\LeanFor{eq:tower-autosimilar}{tower\_frobenius\_common}%
+\LeanWrap{tower\_frobenius\_common}
 The gravitational data follow from the same $\mu=\tfrac12$, the $\tfrac34$ of the signature being
 the $\lVert v\rVert^{2}$ of \eqref{eq:isometry-triad} read as the colour ratio
 (Remark~\ref{rmk:spectral-origin}): \tier{P}
@@ -431,7 +432,7 @@ the $\lVert v\rVert^{2}$ of \eqref{eq:isometry-triad} read as the colour ratio
 This closes the circle to \S\ref{ssec:object}: the Newton constant is the worldline modulus
 itself, $\GN=|\Om(\tau)|$ for every $\tau$ \eqref{eq:worldline}, and the central charge singles
 that value out---$3\ell/(2G)=3$ iff $G=\tfrac12$.
-\LeanFor{eq:brown-henneaux}{worldline\_modulus\_is\_GN, hinge\_central\_charge}%
+\LeanWrap{worldline\_modulus\_is\_GN, hinge\_central\_charge}
 
 \begin{remark}[The role of $\golden$ in AdS/CFT]
 \sloppy Everything follows from the microstate $\Om$ (\S\ref{ssec:object}) and the tower
