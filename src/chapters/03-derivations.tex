@@ -62,7 +62,7 @@ $\Gamma$ integral by the change of variable $t=xA$,
 \begin{equation}\label{eq:schwinger}
   A^{-n}=\frac{1}{\Gamma(n)}\int_{0}^{\infty}x^{\,n-1}\,e^{-xA}\,dx\qquad(A>0,\ n>0).
 \end{equation}
-\Lean{schwinger}%
+\LeanWrap{schwinger}
 
 \begin{remark}[The role of $\golden$ in the object]
 Since $\pi=5\arccos(\golden/2)$ (\S\ref{sec:methods}), both $\sqrt\pi$ and the half-factorial
@@ -274,7 +274,7 @@ Proposition~\ref{prop:euler-product} of \S\ref{ssec:zeta},
 The Dirichlet series whose index set the poles reproduce is \eqref{eq:euler-product}, proved in
 \S\ref{ssec:zeta}; what is established here is the identification of that index set with the
 Regge tower.
-\Lean{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta, regge\_residue\_ne\_zero, regge\_residue\_degree}%
+\LeanWrap{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta, regge\_residue\_ne\_zero, regge\_residue\_degree}
 
 \begin{remark}[The tower's Dirichlet series is the Euler product of \S\ref{ssec:zeta}]\label{rmk:tower-euler}
 The Euler product \eqref{eq:euler-product} of \S\ref{ssec:zeta} is here read on
@@ -477,7 +477,7 @@ projections of the microstate, carrying
   \underbrace{|\Om|=\tfrac12,\ |\Om|^{2}=\tfrac14}_{\text{Huerta--Schreiber (M-theory)}}\qquad
   \underbrace{\ell=1,\ \GN=\tfrac12,\ c=3,\ \mathrm{GKP}=\tfrac34}_{\text{Maldacena (AdS/CFT)}} ,
 \end{equation}
-\Lean{cocone\_property, colimit\_universal, framework\_colimit, GKP\_shared}%
+\LeanWrap{cocone\_property, colimit\_universal, framework\_colimit, GKP\_shared}
 which equal the microstate invariants $\mu=\tfrac12$. That the two corners are one and the
 same object is Maldacena's conjecture that ``M/string theory on various Anti-deSitter
 spacetimes is dual to various conformal field theories''~\cite{Maldacena98}---the definition of

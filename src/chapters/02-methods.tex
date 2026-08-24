@@ -20,7 +20,7 @@ subsection depends on anything later.
 \Rpcf=\Z[\golden,\golden^{-1},\tfrac12],\qquad
 \E^3=\{(x,y,\golden y)\}.
 \end{equation}
-\Lean{phi\_sq, phi\_sq\_plus\_inv\_sq\_eq\_n}%
+\LeanWrap{phi\_sq, phi\_sq\_plus\_inv\_sq\_eq\_n}
 
 \begin{definition}[Conjugate, trace, norm, discriminant]\label{def:K-arith}
 Write $\bar\golden=(1-\sqrt5)/2$ for the Galois conjugate of $\golden$, the second root of
@@ -235,7 +235,7 @@ should have the invariant named before it is used. \tier{P}
 \begin{equation}\label{eq:omega-norms}
 \Omega=P\cdot C\cdot F .
 \end{equation}
-\Lean{Omega\_eigenvalues, normP, normP\_eq\_tan}%
+\LeanWrap{Omega\_eigenvalues, normP, normP\_eq\_tan}
 The three component norms are not posited: they are forced by the eigenvalue geometry, and their
 product is the modulus (Proposition~\ref{prop:pcf-norms}, \eqref{eq:norms-derived}).
 
@@ -319,7 +319,7 @@ as the colour ratio $1-\muthree^{2}$ and as the GKP entry of the shared signatur
 \end{remark}
 
 \begin{definition}[PCF projection]\label{def:projpcf}
-\Lean{projection\_PCF}%
+\LeanWrap{projection\_PCF}
 For $a,b\in\R$ and $c\neq0$, the \emph{PCF projection} sends the ratio $ab/c$ onto the
 $P$-component of the triad and measures it in the angular unit of the eigenvalue triangle:
 \begin{equation}\label{eq:projpcf}
@@ -381,7 +381,7 @@ whose scale is fixed by $\varepsilon_0$ of \eqref{eq:eps0}:
 \begin{equation}\label{eq:Mpcf}
 \Mpcf=\frac{6\sqrt3\,\pi}{\ln\golden}=\frac{\pi}{\varepsilon_0}\approx 67.846 .
 \end{equation}
-\Lean{M\_PCF\_eq\_pi\_div\_eps0}%
+\LeanWrap{M\_PCF\_eq\_pi\_div\_eps0}
 Equivalently, the \emph{Certainty Principle}
 \begin{equation}\label{eq:certainty}
 \varepsilon_0\,\Mpcf=\pi .
@@ -599,7 +599,7 @@ that makes the classification of the primes effective.
 \golden^n=F_n\golden+F_{n-1}\quad(\text{additive}),\qquad
 3\,\golden^{\sigma(p)}=2^{p}\quad(\text{Mersenne}).
 \end{equation}
-\Lean{phi\_pow\_fib, mersenne\_bridge}%
+\LeanWrap{phi\_pow\_fib, mersenne\_bridge}
 
 \begin{proposition}[Mediated Mersenne]\label{prop:mersenne-med}
 $3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \LeanWrap{M12\_mersenne\_mediated}
