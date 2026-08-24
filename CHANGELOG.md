@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.3](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.2...v1.0.3) (2026-08-24)
+
+### Bug Fixes
+
+* **metadata:** update Corr DOI to all-versions (10.5281/zenodo.21731878) ([5200294](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/5200294924da08279598829268336a09e09d7b16))
+
 ## [1.0.2](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.1...v1.0.2) (2026-08-24)
 
 ### Bug Fixes
