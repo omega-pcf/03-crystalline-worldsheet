@@ -113,8 +113,8 @@
 % \Lean: right-aligned tag on its own paragraph.
 % \hfill pushes to the right; \parbox constrains width and allows word-wrap
 % at commas/spaces so long tag lists don't overflow the margin.
-\newcommand{\Lean}[1]{\par\noindent\hfill\parbox{\dimexpr\linewidth-1em}{\raggedleft\small\ttfamily[#1]}\par}
-\newcommand{\LeanInline}[1]{{\small\texttt{[#1]}}}
+\newcommand{\Lean}[1]{\par\noindent\hfill\parbox{\dimexpr\linewidth-1em}{\raggedleft\small\nolinkurl{[#1]}}\par}
+\newcommand{\LeanInline}[1]{{\small\nolinkurl{[#1]}}}
 % \LeanFor{eq-label}{decls}: the first argument names the equation the tags back,
 % for the alignment tooling (CW6_ledger.py); rendering delegates to \Lean, so the
 % PDF is identical to a plain \Lean{decls}.
