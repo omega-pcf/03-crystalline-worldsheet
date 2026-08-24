@@ -237,21 +237,21 @@ the north, with $C$ the equatorial axis ($|C|=1$), and $|P|\,|F|=\tfrac14$ while
 gives the product $\tfrac12$; the $\sqrt3$ of $|F|$ cancels that of $|P|$---a cancellation
 proper to the equilateral triangle, arity three (Proposition~\ref{prop:pcf-norms},
 Proposition~\ref{prop:spectral}: $\sigma+\mu=2$, $\sigma\mu=\tfrac34$ with unique solution
-$\mu=\tfrac12$, $\sigma=\tfrac32$;
-\Lean{spectral\_uniqueness}).
+$\mu=\tfrac12$, $\sigma=\tfrac32$.
+\Lean{spectral\_uniqueness}
 
 \emph{W5 --- the initial--final pairing observable from within (W01).} Witten computes the
 pairing $\langle f|i\rangle$ as calculable but not observable from outside (W01). It
 becomes the internal pairing $\langle F|P\rangle=\bar F P/C$, with
 $|\langle F|P\rangle|=\tfrac12$, observable because $\Pi$ is inside and no external region
 remains. \emph{Proof:}
-\Lean{pairing\_FP\_modulus\_half, pairing\_PF\_modulus\_half}.
+\Lean{pairing\_FP\_modulus\_half, pairing\_PF\_modulus\_half}
 
 \emph{W3 --- the unitarity conjecture (W01).} Witten conjectures that the Hermitian
 pairing is positive definite (W01). The spectrum is positive and $|\Om|=\tfrac12>\tfrac14$, so the object does not collapse.
 \emph{Proof:}
-\Lean{witten\_unitarity\_realized, density\_eigenvalues\_positive};
-\eqref{eq:obs-half}.
+\Lean{witten\_unitarity\_realized, density\_eigenvalues\_positive}
+(4.7).
 
 The coincidence with Kiely's quantum Darwinism is forced, not numerical. The objectivity
 threshold is $f_{\rm crit}=\tfrac12$; the redundancy grows as the mode number; the
