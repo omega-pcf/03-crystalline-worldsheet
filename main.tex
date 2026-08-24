@@ -110,11 +110,14 @@
 \newcommand{\tauF}{\tau_{F}}
 \newcommand{\epsz}{\varepsilon_{0}}
 \newcommand{\lng}{\lambda_{\log}}
-% \Lean: en linea (no rompe parrafo), empujado a la derecha, y CON puntos de corte
-% legales dentro de la lista, para que no desborde el margen.
-\newcommand{\Lean}[1]{\unskip\hskip 0pt plus 1fill\penalty0\relax
-  \emergencystretch=4em\tolerance=9999\hbadness=10000\relax
-  {\small\texttt{[#1]}}}
+% \Lean: always starts its own paragraph, right-aligned.
+% After \end{equation} or at the start of a line, this creates the desired layout:
+%   equation (N.N)
+%   [decl1, decl2]                          ← right-aligned on own line
+%   Next paragraph resumes here.
+% For inline uses (\tier{P} \Lean{...}), the \tier already starts a new line,
+% so \Lean just adds the right-aligned continuation.
+\newcommand{\Lean}[1]{\par\noindent\hfill{\small\texttt{[#1]}}\par}
 \newcommand{\LeanInline}[1]{{\small\texttt{[#1]}}}
 \newcommand{\LeanWrap}[1]{\par\noindent{\small\ttfamily\raggedright[#1]\par}}
 % \LeanFor{eq-label}{decls}: the first argument names the equation the tags back,
