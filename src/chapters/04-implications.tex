@@ -121,8 +121,7 @@ centre, with $\Theta^2=1$; it preserves the modulus, $\lVert\Theta z\rVert=\lVer
 isometry group cannot act on the Hilbert space; being non-compact it has no
 finite-dimensional unitary representations (W01). Its place is taken by the discrete
 $\mathbb{Z}_3$ symmetry of the cube roots of unity with the scale invariance
-$|\Om|_\sigma=\tfrac12$. \emph{Proof:} \LeanInline{eisenstein\_cube, omega\_conj};
-\cite{Witten01dS}.
+$|\Om|_\sigma=\tfrac12$. \emph{Proof:} \LeanInline{eisenstein\_cube, omega\_conj}; \cite{Witten01dS}.
 
 \paragraph{The whole geometry as a tensor: the warp generates curvature.}
 This spacetime is tensorial in its entirety. The throat that compactifies the scale has a
@@ -343,14 +342,12 @@ type~II$_1$ algebra from the type~III by the crossed product with the modular fl
 (\S1.2--1.3). The scale flow preserves $\tfrac12$ as a trace, which is the type~II
 signature; the section proves the flow and takes from CLPW the name of the crossed-product
 classification. \emph{Proof:}
-\Lean{omega\_flow\_invariant, tower\_scale\_group};
-\cite{CLPW22}.
+\Lean{omega\_flow\_invariant, tower\_scale\_group}; \cite{CLPW22}.
 
 \emph{W12 --- the maximally mixed vacuum state (CLPW \S2.4, developed).} CLPW identify the
 de~Sitter vacuum with the maximally mixed state, $\rho_{\max}=1$. One bit per cell,
 $H(\tfrac12)=1$, gives that $\rho=1$ of maximal entropy. \emph{Proof:}
-\Lean{binary\_entropy\_half}
-\cite{CLPW22}.
+\Lean{binary\_entropy\_half}; \cite{CLPW22}.
 
 The heart of the movement is that bulk and boundary are the same thing at once. The bulk
 is the three-dimensional projection; the boundary, the two-dimensional plane; and they are
@@ -535,8 +532,7 @@ level splits: strong on the covering, ``realises'' on the identification.
 classical Gibbons--Hawking result, prior to W01 and CLPW: the de~Sitter horizon radiates
 and the static patch is a thermal state at $T=H/2\pi$. The observer's modular flow is the
 tracial flow of the tower, and the static patch is thermal at that temperature.
-\emph{Proof:} \Lean{dS\_temperature, dS\_beta\_reciprocal} (\S\ref{app:embedding});
-\cite{GibbonsHawking77}.
+\emph{Proof:} \Lean{dS\_temperature, dS\_beta\_reciprocal} (\S\ref{app:embedding}) \cite{GibbonsHawking77}.
 
 \medskip
 The formal statements underlying the accumulation and gravity movements follow; their
@@ -740,7 +736,7 @@ $1/\Lambda$, so
   \sigma_{\mathrm{obs}}=\frac{\ln(6/\Lambda_{\mathrm{obs}})}{\ln\golden}.
 \end{equation}
 Deriving the scale translation therefore derives the level, and conversely; counting them as two
-debts would be an accounting error. The scale $\\sqrt M$ that sets the charged leptons (\\S\\ref{prop:obs-matter}) is therefore the tower reading of this de~Sitter entropy, and Theorem~\ref{thm:colour-from-M} then shows the colour sector hanging on the same scale: one scale surfaces as the string constant of \S\ref{sec:derivations} and as the entropy here, the dimensionless placement already fixed, the absolute value alone carrying the observer's $\Lambda$. What the tower does add is granularity: its step is exactly
+debts would be an accounting error. The scale $\sqrt M$ that sets the charged leptons (\S\ref{prop:obs-matter}) is therefore the tower reading of this de~Sitter entropy, and Theorem~\ref{thm:colour-from-M} then shows the colour sector hanging on the same scale: one scale surfaces as the string constant of \S\ref{sec:derivations} and as the entropy here, the dimensionless placement already fixed, the absolute value alone carrying the observer's $\Lambda$. What the tower does add is granularity: its step is exactly
 $\golden$ ($\log_{10}\golden=0.209$ per level), so the absolute scale is constrained to a discrete
 ladder rather than a continuum. \tier{N}
 \LeanFor{eq:Lambda-from-curvature}{lambda\_magnitude\_eq\_level}%
