@@ -188,7 +188,7 @@ superpoint and the pentagonal side of $\golden$ are its two components. That is 
 in which PCF mediates rather than merely spans---the two registers are not juxtaposed but are the
 coprime factors of a single conductor, and the mediation $\mu=\tfrac12$ of
 \eqref{eq:tower-mediation} below is the geometric mean between them.
-\Lean{four\_cocone, conductor\_attribution}
+\LeanWrap{four\_cocone, conductor\_attribution}
 The M-theory object enters here: the HS tower
 projects from the $\golden^{\sigma}$ tower. The dimensional chain is
 \begin{equation}\label{eq:dim-chain}
@@ -370,11 +370,13 @@ by the modulus: $R=-20$, $\Lambda_5=-6$, $G_{\mu\nu}=6$, saturating the
 Breitenlohner--Freedman bound (Fig.~\ref{fig:ads-ladder}); computed in \S\ref{app:curvature}.
 \tier{P} \Lean{R\_scalar\_pcf, Lambda5\_pcf, G\_AB\_pcf, BF\_value}
 Its companion five-sphere carries the Hopf chain $S^1\hookrightarrow S^5\to\mathbb{CP}^2$ with
-$\chi(\mathbb{CP}^2)=3=n$ \LeanWrap{hopf\_latitude, hopf\_from\_clifford}, the same arity-$3$ of
+$\chi(\mathbb{CP}^2)=3=n$ \LeanWrap{hopf\_latitude, hopf\_from\_clifford}
+The same arity-$3$ of
 \S\ref{ssec:arity}; the five-dimensional case is precisely the one requiring the Gaussian and
 Eisenstein primes (\S\ref{sec:intro}). The discrete levels $\sigma=0,\dots,5$
 (superpoint~$\to$~NS5, \S\ref{sssec:superpoint}) sit on the Hamming hypercube
-$H_5=\{0,1\}^5$, $|H_5|=2^{5}$ \LeanWrap{hypercube\_card}, with
+$H_5=\{0,1\}^5$, $|H_5|=2^{5}$ \LeanWrap{hypercube\_card}
+with
 $\Lambda_\sigma=\golden^{\sigma}\Lambda_{\PCF}$ and the saturation entropy
 $S(\sigma)=\pi\golden^{\sigma}$ \eqref{eq:tower-modes}. \tier{P}
 \begin{figure}[htb]\centering
