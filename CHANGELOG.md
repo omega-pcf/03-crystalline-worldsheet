@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.0.0](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.4.3...v1.0.0) (2026-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* Paper content updated to CW6 v4 (monolithic split into
+chapters). Lean backing replaced: CW3_Backing.lean (1870 lines) →
+CW6_complete_v2.lean (6600+ lines, 0 sorry, 0 axioms, 0 warnings).
+Numerical verify replaced: CW3_backing_verify.py (148 checks) →
+CW6_complete_verify_v2.py (344/344 checks OK).
+
+- Split CW6_paper_v4.tex (5855 lines) into chapter files by line delimiter
+- Updated main.tex preamble with v4 packages, commands, and theorem envs
+- Added 31 missing entries to citation.csl.json (76 → 107 total)
+- Verified all 107 entries against DOI/publication sources (17 corrected)
+- Regenerated bibliography.bib, CITATION.cff, .zenodo.json via pipeline
+- Added biber support to .latexmkrc
+- Updated lakefile.toml: CW6_complete_v2 as default target
+- Updated package.json: verify scripts point to new files
+- Added sympy dependency to pyproject.toml
+- Added alignment ledger, propgraph, and stats artifacts
+- Fixed duplicate TOC entries in acknowledgements/funding
+
+### Features
+
+* CW6 v4 — paper, lean backing, numerical verify, and bibliography ([a9eea8f](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/a9eea8f3d2523f776b5035fff0644503587e384c))
+
+### Bug Fixes
+
+* use blackboard F_1 symbol for field-with-one-element reference ([9ef8451](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/9ef8451bedec155b778526d48a30919272baaedc))
+
+### Styles
+
+* improve title layout and section pagination ([1ceba6f](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/1ceba6fcecefc54f17369cdb42c5736a23fcc305))
+
 ## [0.4.3](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v0.4.2...v0.4.3) (2026-07-31)
 
 ### Bug Fixes
