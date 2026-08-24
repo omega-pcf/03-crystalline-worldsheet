@@ -2618,5 +2618,32 @@
     "volume": "10",
     "page": "2445",
     "DOI": "10.1103/PhysRevD.10.2445"
+  },
+  {
+    "id": "Schiller_ode_joy_wertz",
+    "type": "article",
+    "title": "Ode to Joy (An die Freude)",
+    "author": [
+      {
+        "family": "Schiller",
+        "given": "Friedrich"
+      }
+    ],
+    "translator": [
+      {
+        "family": "Wertz",
+        "given": "William F.",
+        "suffix": "Jr."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [1785]
+      ]
+    },
+    "publisher": "Schiller Institute",
+    "URL": "https://archive.schillerinstitute.com/transl/trans_schil_2poems.html",
+    "language": "en",
+    "note": "English translation of the poem 'An die Freude' (1785) by Friedrich Schiller, translated by William F. Wertz, Jr."
   }
 ]
