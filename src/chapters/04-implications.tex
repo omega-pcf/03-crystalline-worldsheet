@@ -328,9 +328,10 @@ $\dim\mathcal{H}(\sigma)=\lfloor S(\sigma)\rfloor$.
 finite-dimensional with $S=\ln N$ (W01). The Hilbert dimension per level is the integer
 part of the horizon entropy, $\dim\mathcal{H}(\sigma)=\lfloor S(\sigma)\rfloor$, with
 $N_{\rm modes}=\lfloor\pi\golden^\sigma\rfloor$---the constructive form of Witten's
-$S=\ln N$. \emph{Proof:} \Lean{witten\_entropy\_realized} (by \texttt{rfl}---the most
-direct realisation),
-\Lean{witten\_finite\_rank, witten\_two\_conjectures}. The entropy
+$S=\ln N$. \emph{Proof:}
+\Lean{witten\_entropy\_realized} (by \texttt{rfl}---the most direct realisation),
+\Lean{witten\_finite\_rank, witten\_two\_conjectures}.
+The entropy
 branch is asserted strongly (tight); the unitarity branch is ``realised''.
 
 The flow carrying one level to another, $\sigma\mapsto\sigma+t$, fixes $\tau=i$ and
@@ -342,12 +343,12 @@ type~II$_1$ algebra from the type~III by the crossed product with the modular fl
 (\S1.2--1.3). The scale flow preserves $\tfrac12$ as a trace, which is the type~II
 signature; the section proves the flow and takes from CLPW the name of the crossed-product
 classification. \emph{Proof:}
-\Lean{omega\_flow\_invariant, tower\_scale\_group}; \cite{CLPW22}.
+\Lean{omega\_flow\_invariant, tower\_scale\_group} \cite{CLPW22}.
 
 \emph{W12 --- the maximally mixed vacuum state (CLPW \S2.4, developed).} CLPW identify the
 de~Sitter vacuum with the maximally mixed state, $\rho_{\max}=1$. One bit per cell,
 $H(\tfrac12)=1$, gives that $\rho=1$ of maximal entropy. \emph{Proof:}
-\Lean{binary\_entropy\_half}; \cite{CLPW22}.
+\Lean{binary\_entropy\_half} \cite{CLPW22}.
 
 The heart of the movement is that bulk and boundary are the same thing at once. The bulk
 is the three-dimensional projection; the boundary, the two-dimensional plane; and they are
@@ -536,7 +537,7 @@ tracial flow of the tower, and the static patch is thermal at that temperature.
 
 \medskip
 The formal statements underlying the accumulation and gravity movements follow; their
-proofs are those of the corresponding \Lean\ tags.
+proofs are those of the corresponding \texttt{\textbackslash Lean} tags.
 \begin{remark}[The role of $\golden$ in the observer]
 $\mu_3=\tfrac12=\golden^{-\lng}$; the three invariants ($f_{\mathrm{crit}}=\tfrac12$,
 $\Fmax^{-1}=\tfrac14$, $n=3$) are $\golden$-facts of \S\ref{sec:methods}--\S\ref{sec:derivations},
