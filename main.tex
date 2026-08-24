@@ -110,14 +110,9 @@
 \newcommand{\tauF}{\tau_{F}}
 \newcommand{\epsz}{\varepsilon_{0}}
 \newcommand{\lng}{\lambda_{\log}}
-% \Lean: right-aligned tag on its own paragraph.
-% Uses \unskip\hfill for inline context (after \end{equation} or mid-text).
-% Long lists word-wrap thanks to the emergency stretch and tolerance settings.
-\newcommand{\Lean}[1]{\unskip\hskip 0pt plus 1fill\penalty0\relax
-  \emergencystretch=4em\tolerance=9999\hbadness=10000\relax
-  {\small\texttt{[#1]}}}
-\newcommand{\LeanInline}[1]{{\small\texttt{[#1]}}}
-\newcommand{\LeanWrap}[1]{\par\noindent\hfill{\small\ttfamily[#1]}\par}
+% \Lean: always creates its own paragraph, right-aligned.
+% Every tag appears on its own line after equations or text.
+\newcommand{\Lean}[1]{\par\noindent\hfill{\small\ttfamily[#1]}\par}
 % \LeanFor{eq-label}{decls}: the first argument names the equation the tags back,
 % for the alignment tooling (CW6_ledger.py); rendering delegates to \Lean, so the
 % PDF is identical to a plain \Lean{decls}.

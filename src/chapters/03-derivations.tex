@@ -15,7 +15,7 @@ The seed inherited from \S\ref{sec:methods} is
 \begin{equation}\label{eq:gamma-half}
   \Gamma\!\left(\tfrac12\right)=\sqrt{\pi}.
 \end{equation}
-\LeanWrap{M2\_gamma\_half, M1\_gamma\_integral}
+\Lean{M2\_gamma\_half, M1\_gamma\_integral}
 The worldline phase and its modulus are
 \begin{equation}\label{eq:worldline}
   \Om(\tau)=\tfrac12\,e^{\,i\tau\ln\golden},\qquad |\Om|=\tfrac12 .
@@ -26,7 +26,7 @@ and a weight fixed by the scale quantum,
   \int_{\R} e^{-x^{2}}\,dx=\sqrt{\pi},\qquad
   \mu=\golden^{-\lng}=\tfrac12\quad(\golden^{\lng}=2).
 \end{equation}
-\LeanWrap{selfdual\_gaussian\_unique, gaussian\_integral\_value}
+\Lean{selfdual\_gaussian\_unique, gaussian\_integral\_value}
 
 \begin{remark}[The wavefunction is the self-dual Gaussian]\label{rmk:wf-selfdual}
 The Gaussian weight of \eqref{eq:gaussian} is the self-dual one fixed in
@@ -62,7 +62,7 @@ $\Gamma$ integral by the change of variable $t=xA$,
 \begin{equation}\label{eq:schwinger}
   A^{-n}=\frac{1}{\Gamma(n)}\int_{0}^{\infty}x^{\,n-1}\,e^{-xA}\,dx\qquad(A>0,\ n>0).
 \end{equation}
-\LeanWrap{schwinger}
+\Lean{schwinger}
 
 \begin{remark}[The role of $\golden$ in the object]
 Since $\pi=5\arccos(\golden/2)$ (\S\ref{sec:methods}), both $\sqrt\pi$ and the half-factorial
@@ -89,13 +89,13 @@ The two $\tfrac32$'s of the corpus---the $\Gamma$ argument of \eqref{eq:half-fac
 spectral exponent here---are one value for a discriminating reason: the first is $1+\mu$, the
 second $3\mu$, and $1+\mu=3\mu$ has the unique solution $\mu=\tfrac12$; at arity $n$ the Basel
 route \eqref{eq:sigma-basel} gives $n^{2}/6$, which meets $\tfrac32$ only at $n=3$. \tier{P}
-\LeanWrap{three\_halves\_unique, arity\_control\_three}
+\Lean{three\_halves\_unique, arity\_control\_three}
 \paragraph{The spectral angle and the uniqueness of the invariants.}
 At scale $\sigma$ the worldline subtends the spectral angle
 $\alpha(\sigma)=\arctan(\epsz\golden^{\sigma})$, normalised by $\epsz M_{\PCF}=\pi$
 \Lean{spectral\_angle\_tan}. The invariants \eqref{eq:spectral-invariants} are not chosen but
 forced: the pair $(\sigma,\mu)$ with $\sigma+\mu=2$ and $\sigma\mu=\tfrac34$ has the unique
-solution $(\sigma,\mu)=(\tfrac32,\tfrac12)$ \LeanWrap{spectral\_uniqueness}, i.e.\ $\sigma=\tfrac32$
+solution $(\sigma,\mu)=(\tfrac32,\tfrac12)$ \Lean{spectral\_uniqueness}, i.e.\ $\sigma=\tfrac32$
 \Lean{sigma\_three}, the same arity $3$ and modulus $\tfrac12$ forced by the No-Diagonal theorem
 of \S\ref{ssec:arity}. Which \emph{integer} levels the angle is read at is not settled here: it is
 fixed by the level interval of \S\ref{sec:implications}, Proposition~\ref{prop:interval-uniqueness}.
@@ -122,8 +122,8 @@ $\alpha(\sigma)<\pi/2$ is a property of $\arctan$ and holds for every real argum
 not the certainty relation that keeps the angle off the right angle. The bound is used for one
 thing---it gives $\cos\alpha(\sigma)>0$, the hypothesis under which
 Corollary~\ref{cor:bridge-angle} divides by $\cos\alpha$. \tier{P}
-\LeanWrap{spectral\_angle\_tan, spectral\_angle\_tower\_ratio}
-\LeanWrap{spectral\_surface\_closed}
+\Lean{spectral\_angle\_tan, spectral\_angle\_tower\_ratio}
+\Lean{spectral\_surface\_closed}
 \Lean{spectral\_angle\_lt\_pi\_div\_two, cos\_spectral\_angle\_pos}
 \end{proposition}
 \begin{proof}
@@ -188,7 +188,7 @@ superpoint and the pentagonal side of $\golden$ are its two components. That is 
 in which PCF mediates rather than merely spans---the two registers are not juxtaposed but are the
 coprime factors of a single conductor, and the mediation $\mu=\tfrac12$ of
 \eqref{eq:tower-mediation} below is the geometric mean between them.
-\LeanWrap{four\_cocone, conductor\_attribution}
+\Lean{four\_cocone, conductor\_attribution}
 The M-theory object enters here: the HS tower
 projects from the $\golden^{\sigma}$ tower. The dimensional chain is
 \begin{equation}\label{eq:dim-chain}
@@ -200,12 +200,12 @@ Mediation by $\mu=\tfrac12$ produces the two registers,
   \golden^{\,\mu\lng}=\sqrt{2}\ \ (\text{binary}),\qquad
   \golden^{\,\mu\log_{\golden}3}=\sqrt{3}\ \ (\text{ternary}).
 \end{equation}
-\tier{P}\LeanWrap{M4\_sqrt2, M4\_sqrt3}
+\tier{P}\Lean{M4\_sqrt2, M4\_sqrt3}
 The tower and its mode count are
 \begin{equation}\label{eq:tower-modes}
   z(\sigma)=\golden^{\sigma},\qquad \Nmodes(\sigma)=\big\lfloor\pi\,\golden^{\sigma}\big\rfloor .
 \end{equation}
-\LeanWrap{S\_tower}
+\Lean{S\_tower}
 This is where the geometric encoding replaces the Fourier expansion of the string as the
 device that fixes the mode content: \eqref{eq:tower-modes} counts modes by the cell capacity
 $\pi$ of \eqref{eq:certainty} at each level of the tower rather than by harmonic order. The
@@ -231,7 +231,7 @@ The tower $z=\golden^{\sigma}$ of \eqref{eq:tower-modes} defines the diagonal sc
   \mathrm{spec}\,H=\{0\}\cup\{m_0\golden^{\sigma}\}_{\sigma\ge0},
 \end{equation}
 self-adjoint (real diagonal) and bounded below, with the vacuum at $0$; its gap and the reconstruction
-it supports are established in \S\ref{sec:dof}. \LeanWrap{towerHam\_isHermitian, towerHam\_bounded\_below}
+it supports are established in \S\ref{sec:dof}. \Lean{towerHam\_isHermitian, towerHam\_bounded\_below}
 
 Two spectra must be kept apart here, and the framework supplies both from the same pair $\pi,\golden$.
 The golden tower \eqref{eq:tower-modes} is the \emph{radial and scale} tower: its successive ratio
@@ -261,7 +261,7 @@ Both sides are chains, so $F$ is the order-preserving level map---superpoint\,$\
 $\sigma=0,\dots,5$ on the hypercube $H_5$ (\S\ref{ssec:adscft}, App.~\ref{app:superpoint})---and
 what it carries is the modulus, $|\Om|=\tfrac12$, $|\Om|^{2}=\tfrac14$, proved at the corner
 (App.~\ref{app:web}).
-\LeanWrap{modulus\_Omega, cocone\_property}
+\Lean{modulus\_Omega, cocone\_property}
 Tree amplitudes follow from $\pi$ (binary, via $\Gamma$) and $\golden$ (ternary, via Regge): the
 Veneziano amplitude \cite{Veneziano}
 \begin{equation}\label{eq:veneziano}
@@ -275,7 +275,7 @@ Proposition~\ref{prop:euler-product} of \S\ref{ssec:zeta},
 The Dirichlet series whose index set the poles reproduce is \eqref{eq:euler-product}, proved in
 \S\ref{ssec:zeta}; what is established here is the identification of that index set with the
 Regge tower.
-\LeanWrap{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta, regge\_residue\_ne\_zero, regge\_residue\_degree}
+\Lean{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta, regge\_residue\_ne\_zero, regge\_residue\_degree}
 
 \begin{remark}[The tower's Dirichlet series is the Euler product of \S\ref{ssec:zeta}]\label{rmk:tower-euler}
 The Euler product \eqref{eq:euler-product} of \S\ref{ssec:zeta} is here read on
@@ -311,7 +311,7 @@ two proved anchors:
 the colour ratio $1-\muthree^{2}=\tfrac34$, and the odd zeta values over the tower
 (Theorem~\ref{thm:zeta-odd}), with Ap\'ery's $\zeta(3)$~\cite{Apery} as the two-loop constant.
 What is \emph{not} derived is the assignment itself---that one loop reads as colour and two as
-generations---which remains structural. \LeanWrap{colour\_ratio} The ultraviolet is regulated in two complementary
+generations---which remains structural. \Lean{colour\_ratio} The ultraviolet is regulated in two complementary
 ways: the modular partition \eqref{eq:pcf-partition} (global, on the torus) and dimensional
 regularisation at the vertex (local),
 \begin{equation}\label{eq:gamma-pole}
@@ -363,19 +363,19 @@ The throat and its warped metric are
   ds^{2}=e^{2A(z)}\,\eta_{\mu\nu}\,dx^{\mu}dx^{\nu}+dz^{2},
   \qquad z(\sigma)=\golden^{\sigma}\ \text{of \eqref{eq:tower-modes}}.
 \end{equation}
-\LeanWrap{ricciCoeff, ricciScalar, einsteinCoeff}
+\Lean{ricciCoeff, ricciScalar, einsteinCoeff}
 \paragraph{The five-dimensional throat: $\mathrm{AdS}_5$, $S^5$ and the ladder.}
 The throat \eqref{eq:throat} is the $\mathrm{AdS}_5$ geometry whose curvature invariants are fixed
 by the modulus: $R=-20$, $\Lambda_5=-6$, $G_{\mu\nu}=6$, saturating the
 Breitenlohner--Freedman bound (Fig.~\ref{fig:ads-ladder}); computed in \S\ref{app:curvature}.
 \tier{P} \Lean{R\_scalar\_pcf, Lambda5\_pcf, G\_AB\_pcf, BF\_value}
 Its companion five-sphere carries the Hopf chain $S^1\hookrightarrow S^5\to\mathbb{CP}^2$ with
-$\chi(\mathbb{CP}^2)=3=n$ \LeanWrap{hopf\_latitude, hopf\_from\_clifford}
+$\chi(\mathbb{CP}^2)=3=n$ \Lean{hopf\_latitude, hopf\_from\_clifford}
 The same arity-$3$ of
 \S\ref{ssec:arity}; the five-dimensional case is precisely the one requiring the Gaussian and
 Eisenstein primes (\S\ref{sec:intro}). The discrete levels $\sigma=0,\dots,5$
 (superpoint~$\to$~NS5, \S\ref{sssec:superpoint}) sit on the Hamming hypercube
-$H_5=\{0,1\}^5$, $|H_5|=2^{5}$ \LeanWrap{hypercube\_card}
+$H_5=\{0,1\}^5$, $|H_5|=2^{5}$ \Lean{hypercube\_card}
 with
 $\Lambda_\sigma=\golden^{\sigma}\Lambda_{\PCF}$ and the saturation entropy
 $S(\sigma)=\pi\golden^{\sigma}$ \eqref{eq:tower-modes}. \tier{P}
@@ -400,7 +400,7 @@ $S_3$ symmetry, $A_2$ root system $=\mathfrak{su}(3)$)
 \Lean{eisenstein\_omega, Omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six}; the same modulus on the
 $i/\pi$ side, where $(\tfrac12)!=\tfrac12\sqrt\pi$ fixes $\mu=\tfrac12$ (\S\ref{ssec:construction}),
 is the Gauss lattice $\Z[i]$ (\emph{isometry} face: $\tau=i$, $\ell=1$). The $\golden$-mediation
-$S_3\to\Z_4$ between them preserves $|\Om|=\tfrac12$ \LeanWrap{holographic\_area} and fixes $\tau=i$:
+$S_3\to\Z_4$ between them preserves $|\Om|=\tfrac12$ \Lean{holographic\_area} and fixes $\tau=i$:
 this is $V^{\dagger}V=\mathbf 1$ read on the lattice --- bulk (geometry, $\Z[i]$) and boundary
 (algebra, $\Z[\omega]$) are two readings of one triangle, neither privileged, exactly as
 \eqref{eq:isometry} requires. \tier{P} for the two lattices and the mediation; the GKPW dictionary
@@ -424,7 +424,7 @@ The modulus is scale invariant, so the holographic relation holds at every level
 The self-similarity is the physical face of the Frobenius lift \eqref{eq:frobenius-tower}: both
 act on the golden monoid through the one composition law $\psi_p(\golden^{\,n})=(\golden^{\,n})^{p}$,
 exponents multiplying while the modulus stands.
-\LeanWrap{tower\_frobenius\_common}
+\Lean{tower\_frobenius\_common}
 The gravitational data follow from the same $\mu=\tfrac12$, the $\tfrac34$ of the signature being
 the $\lVert v\rVert^{2}$ of \eqref{eq:isometry-triad} read as the colour ratio
 (Remark~\ref{rmk:spectral-origin}): \tier{P}
@@ -434,7 +434,7 @@ the $\lVert v\rVert^{2}$ of \eqref{eq:isometry-triad} read as the colour ratio
 This closes the circle to \S\ref{ssec:object}: the Newton constant is the worldline modulus
 itself, $\GN=|\Om(\tau)|$ for every $\tau$ \eqref{eq:worldline}, and the central charge singles
 that value out---$3\ell/(2G)=3$ iff $G=\tfrac12$.
-\LeanWrap{worldline\_modulus\_is\_GN, hinge\_central\_charge}
+\Lean{worldline\_modulus\_is\_GN, hinge\_central\_charge}
 
 \begin{remark}[The role of $\golden$ in AdS/CFT]
 \sloppy Everything follows from the microstate $\Om$ (\S\ref{ssec:object}) and the tower
@@ -463,10 +463,10 @@ $\mathrm{GKP}=\tfrac34$, $\SBH=\mu$, $c=3$.)
 Maldacena left the AdS boundary conditions unspecified---``we leave this interesting problem
 for the future''~\cite{Maldacena98}. Here they are determined: the modular parameter is fixed
 at $\tau=i$, the fixed point of S-duality
-\LeanWrap{s\_duality\_fixes\_i}
+\Lean{s\_duality\_fixes\_i}
 and the scale by the
 certainty principle $\varepsilon_0 M_{\PCF}=\pi$
-\LeanWrap{certainty\_principle}. \tier{P}
+\Lean{certainty\_principle}. \tier{P}
 
 % --- 3.5 ---
 
@@ -483,7 +483,7 @@ projections of the microstate, carrying
   \underbrace{|\Om|=\tfrac12,\ |\Om|^{2}=\tfrac14}_{\text{Huerta--Schreiber (M-theory)}}\qquad
   \underbrace{\ell=1,\ \GN=\tfrac12,\ c=3,\ \mathrm{GKP}=\tfrac34}_{\text{Maldacena (AdS/CFT)}} ,
 \end{equation}
-\LeanWrap{cocone\_property, colimit\_universal, framework\_colimit, GKP\_shared}
+\Lean{cocone\_property, colimit\_universal, framework\_colimit, GKP\_shared}
 which equal the microstate invariants $\mu=\tfrac12$. That the two corners are one and the
 same object is Maldacena's conjecture that ``M/string theory on various Anti-deSitter
 spacetimes is dual to various conformal field theories''~\cite{Maldacena98}---the definition of

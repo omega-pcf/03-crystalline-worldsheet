@@ -20,7 +20,7 @@ subsection depends on anything later.
 \Rpcf=\Z[\golden,\golden^{-1},\tfrac12],\qquad
 \E^3=\{(x,y,\golden y)\}.
 \end{equation}
-\LeanWrap{phi\_sq, phi\_sq\_plus\_inv\_sq\_eq\_n}
+\Lean{phi\_sq, phi\_sq\_plus\_inv\_sq\_eq\_n}
 
 \begin{definition}[Conjugate, trace, norm, discriminant]\label{def:K-arith}
 Write $\bar\golden=(1-\sqrt5)/2$ for the Galois conjugate of $\golden$, the second root of
@@ -46,7 +46,7 @@ two analogous symmetries but one map, read on the orbit $\{\golden,\bar\golden\}
 
 Finally we record, without reproving it, the identity established at \eqref{eq:bridge}:
 $\golden^{\lng}=2$ with $\lng=\log_{\golden}2$. It is the only result of \S\ref{sec:intro} that
-the present section consumes. \LeanWrap{mersenne\_bridge}
+the present section consumes. \Lean{mersenne\_bridge}
 
 \begin{proposition}[The bridge anchors from outside the lattice]\label{prop:anchor-exterior}
 The exponent $\lng$ is not reachable by descent on the lattice of integer exponents. For no integer
@@ -172,7 +172,7 @@ the Lawvere--Yanofsky diagonal is contracted (not prohibited).
 
 \begin{definition}[Distributed self-reference]\label{def:dsr}
 A recurrence of depth $k$ is \emph{distributed} when $k\ge 2$ (no component
-depends directly on itself). \LeanWrap{DistributedSelfReference}
+depends directly on itself). \Lean{DistributedSelfReference}
 \tier{P}
 \end{definition}
 
@@ -181,7 +181,7 @@ Depth $k=2$ is minimal, and the unique positive root of $r^2=r+1$ is
 $\golden$. Among natural-coefficient depth-$2$ recurrences
 $F_{n+2}=c_1F_{n+1}+c_2F_n$, the pair $c_1=c_2=1$ is the unique one whose
 characteristic root---hence growth ratio---is $\golden$.
-\LeanWrap{M6\_characteristic\_root\_is\_phi, M6\_phi\_root\_unique}
+\Lean{M6\_characteristic\_root\_is\_phi, M6\_phi\_root\_unique}
 \tier{P/N}
 \end{theorem}
 
@@ -236,7 +236,7 @@ should have the invariant named before it is used. \tier{P}
 \begin{equation}\label{eq:omega-norms}
 \Omega=P\cdot C\cdot F .
 \end{equation}
-\LeanWrap{Omega\_eigenvalues, normP, normP\_eq\_tan}
+\Lean{Omega\_eigenvalues, normP, normP\_eq\_tan}
 The three component norms are not posited: they are forced by the eigenvalue geometry, and their
 product is the modulus (Proposition~\ref{prop:pcf-norms}, \eqref{eq:norms-derived}).
 
@@ -299,7 +299,7 @@ $V_k=v_k/\lVert v\rVert$. Then
   \sum_{k=0}^{2}\lVert V_k\rVert^2=1,
 \end{equation}
 so the column map $V\colon\C\to\C^3$, $z\mapsto(V_0,V_1,V_2)\,z$, is norm preserving:
-$V^{\dagger}V=\mathbf1$. \LeanWrap{bulkBoundary\_isometry}
+$V^{\dagger}V=\mathbf1$. \Lean{bulkBoundary\_isometry}
 \tier{P}
 \end{lemma}
 \begin{proof}
@@ -320,7 +320,7 @@ as the colour ratio $1-\muthree^{2}$ and as the GKP entry of the shared signatur
 \end{remark}
 
 \begin{definition}[PCF projection]\label{def:projpcf}
-\LeanWrap{projection\_PCF}
+\Lean{projection\_PCF}
 For $a,b\in\R$ and $c\neq0$, the \emph{PCF projection} sends the ratio $ab/c$ onto the
 $P$-component of the triad and measures it in the angular unit of the eigenvalue triangle:
 \begin{equation}\label{eq:projpcf}
@@ -382,7 +382,7 @@ whose scale is fixed by $\varepsilon_0$ of \eqref{eq:eps0}:
 \begin{equation}\label{eq:Mpcf}
 \Mpcf=\frac{6\sqrt3\,\pi}{\ln\golden}=\frac{\pi}{\varepsilon_0}\approx 67.846 .
 \end{equation}
-\LeanWrap{M\_PCF\_eq\_pi\_div\_eps0}
+\Lean{M\_PCF\_eq\_pi\_div\_eps0}
 Equivalently, the \emph{Certainty Principle}
 \begin{equation}\label{eq:certainty}
 \varepsilon_0\,\Mpcf=\pi .
@@ -600,10 +600,10 @@ that makes the classification of the primes effective.
 \golden^n=F_n\golden+F_{n-1}\quad(\text{additive}),\qquad
 3\,\golden^{\sigma(p)}=2^{p}\quad(\text{Mersenne}).
 \end{equation}
-\LeanWrap{phi\_pow\_fib, mersenne\_bridge}
+\Lean{phi\_pow\_fib, mersenne\_bridge}
 
 \begin{proposition}[Mediated Mersenne]\label{prop:mersenne-med}
-$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \LeanWrap{M12\_mersenne\_mediated}
+$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \Lean{M12\_mersenne\_mediated}
 \tier{P}
 \end{proposition}
 
@@ -740,7 +740,7 @@ L(1,\chi_5)=\frac{2\log\golden}{\sqrt5}.
 \LeanInline{eq:local-dedekind}%
 
 \begin{theorem}[Basel value]\label{thm:basel}
-$\zeta(2)=\pi^2/6$ (Euler). \LeanWrap{M14\_basel}
+$\zeta(2)=\pi^2/6$ (Euler). \Lean{M14\_basel}
 \tier{P}
 \end{theorem}
 
@@ -1176,7 +1176,7 @@ geometric leg gives $\dfrac{|{\rm rot}\,S_3|^2}{|S_3|}=\dfrac{9}{6}$
 Both diagrams commute and the spectral invariants follow:
 $\sigma+\mu=2$, $\sigma/\mu=3$; and the arithmetic they carry closes on the same modulus, the
 completed zeta $\xi=\Gamma_{\R}\zeta$ of Theorem~\ref{thm:places} being self-dual exactly on
-$\Re s=\mu$ (Theorem~\ref{thm:funct-eq}). \LeanWrap{section2\_master, places\_assembly}
+$\Re s=\mu$ (Theorem~\ref{thm:funct-eq}). \Lean{section2\_master, places\_assembly}
 \tier{P}
 \end{theorem}
 

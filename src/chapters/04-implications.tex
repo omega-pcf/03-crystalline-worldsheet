@@ -238,17 +238,17 @@ the north, with $C$ the equatorial axis ($|C|=1$), and $|P|\,|F|=\tfrac14$ while
 gives the product $\tfrac12$; the $\sqrt3$ of $|F|$ cancels that of $|P|$---a cancellation
 proper to the equilateral triangle, arity three (Proposition~\ref{prop:pcf-norms},
 Proposition~\ref{prop:spectral}: $\sigma+\mu=2$, $\sigma\mu=\tfrac34$ with unique solution
-$\mu=\tfrac12$, $\sigma=\tfrac32$; \LeanWrap{spectral\_uniqueness}).
+$\mu=\tfrac12$, $\sigma=\tfrac32$; \Lean{spectral\_uniqueness}).
 
 \emph{W5 --- the initial--final pairing observable from within (W01).} Witten computes the
 pairing $\langle f|i\rangle$ as calculable but not observable from outside (W01). It
 becomes the internal pairing $\langle F|P\rangle=\bar F P/C$, with
 $|\langle F|P\rangle|=\tfrac12$, observable because $\Pi$ is inside and no external region
-remains. \emph{Proof:} \LeanWrap{pairing\_FP\_modulus\_half, pairing\_PF\_modulus\_half}.
+remains. \emph{Proof:} \Lean{pairing\_FP\_modulus\_half, pairing\_PF\_modulus\_half}.
 
 \emph{W3 --- the unitarity conjecture (W01).} Witten conjectures that the Hermitian
 pairing is positive definite (W01). The spectrum is positive and $|\Om|=\tfrac12>\tfrac14$, so the object does not collapse.
-\emph{Proof:} \LeanWrap{witten\_unitarity\_realized, density\_eigenvalues\_positive};
+\emph{Proof:} \Lean{witten\_unitarity\_realized, density\_eigenvalues\_positive};
 \eqref{eq:obs-half}.
 
 The coincidence with Kiely's quantum Darwinism is forced, not numerical. The objectivity
@@ -326,8 +326,8 @@ $\dim\mathcal{H}(\sigma)=\lfloor S(\sigma)\rfloor$.
 finite-dimensional with $S=\ln N$ (W01). The Hilbert dimension per level is the integer
 part of the horizon entropy, $\dim\mathcal{H}(\sigma)=\lfloor S(\sigma)\rfloor$, with
 $N_{\rm modes}=\lfloor\pi\golden^\sigma\rfloor$---the constructive form of Witten's
-$S=\ln N$. \emph{Proof:} \LeanWrap{witten\_entropy\_realized} (by \texttt{rfl}---the most
-direct realisation), \LeanWrap{witten\_finite\_rank, witten\_two\_conjectures}. The entropy
+$S=\ln N$. \emph{Proof:} \Lean{witten\_entropy\_realized} (by \texttt{rfl}---the most
+direct realisation), \Lean{witten\_finite\_rank, witten\_two\_conjectures}. The entropy
 branch is asserted strongly (tight); the unitarity branch is ``realised''.
 
 The flow carrying one level to another, $\sigma\mapsto\sigma+t$, fixes $\tau=i$ and
@@ -338,13 +338,13 @@ flow of the static patch at the Gibbons--Hawking temperature (\LeanInline{tower\
 type~II$_1$ algebra from the type~III by the crossed product with the modular flow
 (\S1.2--1.3). The scale flow preserves $\tfrac12$ as a trace, which is the type~II
 signature; the section proves the flow and takes from CLPW the name of the crossed-product
-classification. \emph{Proof:} \LeanWrap{omega\_flow\_invariant, tower\_scale\_group};
+classification. \emph{Proof:} \Lean{omega\_flow\_invariant, tower\_scale\_group};
 \cite{CLPW22}.
 
 \emph{W12 --- the maximally mixed vacuum state (CLPW \S2.4, developed).} CLPW identify the
 de~Sitter vacuum with the maximally mixed state, $\rho_{\max}=1$. One bit per cell,
 $H(\tfrac12)=1$, gives that $\rho=1$ of maximal entropy. \emph{Proof:}
-\LeanWrap{binary\_entropy\_half}; \cite{CLPW22}.
+\Lean{binary\_entropy\_half}; \cite{CLPW22}.
 
 The heart of the movement is that bulk and boundary are the same thing at once. The bulk
 is the three-dimensional projection; the boundary, the two-dimensional plane; and they are
@@ -528,7 +528,7 @@ level splits: strong on the covering, ``realises'' on the identification.
 classical Gibbons--Hawking result, prior to W01 and CLPW: the de~Sitter horizon radiates
 and the static patch is a thermal state at $T=H/2\pi$. The observer's modular flow is the
 tracial flow of the tower, and the static patch is thermal at that temperature.
-\emph{Proof:} \LeanWrap{dS\_temperature, dS\_beta\_reciprocal} (\S\ref{app:embedding});
+\emph{Proof:} \Lean{dS\_temperature, dS\_beta\_reciprocal} (\S\ref{app:embedding});
 \cite{GibbonsHawking77}.
 
 \medskip
@@ -627,12 +627,12 @@ $1<3<8$: $\mathrm{U}(1)$ is the Hopf fibre $S^1$ at $\sigma=3$ (EM), $\mathrm{SU
 $S^3$ at $\sigma=4$ (weak), and $\mathrm{SU}(3)$ the $A_2$ roots of the Eisenstein face
 (Fig.~\ref{fig:isometry-algebra}) at $\sigma=5$ (strong), with $\dim\mathfrak{su}(3)=n^{2}-1=8$ at
 the arity $n=3$ fixed by the golden central chain $\golden^{2}+\golden^{-2}=3$
-\LeanWrap{gauge\_dim\_su3, phi\_central\_chain, central\_chain, KK\_numerator, clifford\_S3\_condition, hopf\_from\_clifford, a2\_minimal\_vectors\_exactly\_six}.
+\Lean{gauge\_dim\_su3, phi\_central\_chain, central\_chain, KK\_numerator, clifford\_S3\_condition, hopf\_from\_clifford, a2\_minimal\_vectors\_exactly\_six}.
 The electroweak data follow from the same modulus: the weak mixing angle at unification is
-$\sin^{2}\theta_W|_{\rm GUT}=\tfrac38=N(0)/N(2)$ \LeanWrap{weinberg\_angle\_gut}, running to $0.231$ at
-$M_Z$; the tower entropy ratio $S(3)/S(6)=\golden^{-3}$ \LeanWrap{entropy\_ratio\_S3\_S6} marks the
+$\sin^{2}\theta_W|_{\rm GUT}=\tfrac38=N(0)/N(2)$ \Lean{weinberg\_angle\_gut}, running to $0.231$ at
+$M_Z$; the tower entropy ratio $S(3)/S(6)=\golden^{-3}$ \Lean{entropy\_ratio\_S3\_S6} marks the
 breaking $\Z_3\to\Z_4$ at the tower midpoint $\sigma=3$, and the $G$--$\Lambda$ duality reads $\golden^{-6}\golden^{+6}=1$
-\LeanWrap{G\_Lambda\_duality}. The generations are not placed radially by this $\sigma$-assignment:
+\Lean{G\_Lambda\_duality}. The generations are not placed radially by this $\sigma$-assignment:
 the charged-lepton ratios are not integer powers of $\pi$ ($m_\mu/m_e=\pi^{4.66}$), and a
 $\pi$-graded radial triple cannot satisfy the Koide relation. Two statements are at work here, of different objects: the Koide ratio $Q=\tfrac23$ is an algebraic identity of that placement form, holding for every $\delta$ and hence no evidence for any particular value; the prediction is the three masses themselves, reconstructed to $\sim10^{-4}$ from the single scale $\sqrt M$ with $\delta=2/n^{2}$ fixed by the arity, a value so sharply selected that a $0.1\%$ departure degrades the fit by two orders of magnitude. The $\sigma$-levels label sectors and
 forces; the three generations are the \emph{angular} $\omega$-triple within a sector, placed in the
@@ -709,7 +709,7 @@ saturation, not a separate geometric fact. Together with $6=|S_{3}|=3!$ (the ord
 group, Lem.~\ref{lem:s3-orders}) and the exponent of the $G$--$\Lambda$ duality
 $\golden^{-6}\golden^{+6}=1$, the value $\sigma_\Lambda=6$ is fixed from
 four sides.
-\LeanWrap{sigma\_G\_val, sigma\_EM\_val, sigma\_Lambda\_val, interval\_gap, interval\_gap\_general, em\_holographic\_fraction, entropy\_at\_mu\_three, threshold\_ordering, em\_asymmetry, lambda\_magnitude\_eq\_level}
+\Lean{sigma\_G\_val, sigma\_EM\_val, sigma\_Lambda\_val, interval\_gap, interval\_gap\_general, em\_holographic\_fraction, entropy\_at\_mu\_three, threshold\_ordering, em\_asymmetry, lambda\_magnitude\_eq\_level}
 
 \emph{Scope.} This we propose as the structure Witten required: the de~Sitter
 Hilbert-space dimension $N$ is integer, so $G\Lambda^{(n-2)/n}$ cannot vary
@@ -960,7 +960,7 @@ opening.}
         $\sin^2\theta_W|_{\rm GUT}{=}\tfrac38$ (Prop.~\ref{prop:obs-matter}) give the gauge factors
         $\mathrm{SU}(3){\times}\mathrm{SU}(2){\times}\mathrm{U}(1)$ (Fig.~\ref{fig:torus-gauge}).
 \end{description}
-\LeanWrap{cw3\_observer\_items\_core}
+\Lean{cw3\_observer\_items\_core}
 \noindent The observer does not select; it builds without alternative --- participatory yet
 forced --- consonant with Kiely's quantum Darwinism. The whole section is one commutative
 diagram (Fig.~\ref{fig:spine4}): the twenty-four equations as nodes, the demonstrative
@@ -1023,15 +1023,15 @@ data map to Bianconi's:
 \text{(D4)}\ & \Lambda_G\approx\tfrac1{4\beta}\varepsilon^2\ \Rightarrow\ \beta=\tfrac{\ln2}{8}, & \text{($\Lambda$ scale, cf.\ }\Lambda_5=-6\text{, \S\ref{ssec:adscft})}\\
 \text{(D5)}\ & \{\tfrac12\omega^{k}\}_{k=0}^{2}\ \leftrightarrow\ 0\oplus1\oplus2, & \text{(triad $\to$ Dirac--K\"ahler)}
 \end{align*}
-\LeanWrap{BH\_factor, BH\_factor\_modes, holographic\_area\_factor}
+\Lean{BH\_factor, BH\_factor\_modes, holographic\_area\_factor}
 The five squares commute, and the relation they express is a \emph{limit} one: Bianconi's
 continuous entropic gravity is the continuum limit of the discrete accumulation of
 \S\ref{ssec:accum}---D2 is exactly that limit, the floor removed. What the present framework adds
 to her axis is the quantity it leaves free, the \emph{rate}: the growth is golden, $\golden$ per
 level, the Fibonacci quantum dimension (Corollary~\ref{cor:golden-growth}). \tier{N} (six checks);
 D3 is \tier{P}
-(\S\ref*{ssec:construction}, \LeanWrap{binary\_entropy\_half}).
-\LeanWrap{Lambda5\_pcf, G\_Lambda\_duality}
+(\S\ref*{ssec:construction}, \Lean{binary\_entropy\_half}).
+\Lean{Lambda5\_pcf, G\_Lambda\_duality}
 \end{proposition}
 \begin{proof}
 D3 is \eqref{eq:bridge-BH}. For D1, the CW6 quantum Fisher information at the operating point
@@ -1545,7 +1545,7 @@ The condensate profile and the per-level energy are the same function,
 $D(\sigma)-1=\varepsilon(\sigma)=\epsz\golden^{\sigma}$ (Proposition~\ref{prop:fluid},
 \S\ref{ssec:accum}), while the potential runs the other way: the de~Sitter swampland condition
 \eqref{eq:dS-swampland}, $|\partial_\sigma V|/V=\ln\golden$, integrates to
-$V(\sigma)=\epsz\golden^{-\sigma}$\,\LeanWrap{swampland\_hasDerivAt}. The two are therefore conjugate,
+$V(\sigma)=\epsz\golden^{-\sigma}$\,\Lean{swampland\_hasDerivAt}. The two are therefore conjugate,
 \begin{equation}\label{eq:condensate-conjugate}
   V(\sigma)\,\big(D(\sigma)-1\big)=\epsz^{2}\qquad\text{for every }\sigma ,
 \end{equation}
@@ -1721,10 +1721,10 @@ ultraviolet regulator to remove:
       and locally at the vertex (\S\ref{ssec:p-tower}); no divergence calls for a cutoff;
 \item the theory sits at an ultraviolet fixed point, the asymptotic-safety corner of the duality web
       \eqref{eq:bridge-fixed}, with the spectral flow reaching $c(n)\to2$
-      (\S\ref{ssec:accum})\,\LeanWrap{c\_tendsto\_two};
+      (\S\ref{ssec:accum})\,\Lean{c\_tendsto\_two};
 \item and that fixed point is not tuned: Assumption~\ref{asm:bridge} (\eqref{eq:obs-fixedpoint}) makes it \emph{equivalent} to the
       algebraic identity $\epsz\Mpcf=\pi$, which \S\ref{ssec:construction} derives from the half-turn
-      accumulated once around the fundamental domain\,\LeanWrap{eps0\_Mpcf\_pi}.
+      accumulated once around the fundamental domain\,\Lean{eps0\_Mpcf\_pi}.
 \end{itemize}
 
 The discreteness of the tower is therefore not a regularisation of something continuous; it is the
