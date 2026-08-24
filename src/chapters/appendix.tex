@@ -197,7 +197,8 @@ The numerator of the interior Kaluza--Klein mass is the golden identity
 \Lean{KK\_numerator}
 a direct consequence of $\golden^{2}+\golden^{-2}=3$. The same identity fixes, at one stroke, the arity
 $n=3$ (gauge), this Kaluza--Klein numerator (gravity), and the dimension $d=n+1=4$
-\eqref{eq:dim-chain}, \Lean{central\_chain}.
+\eqref{eq:dim-chain},
+\Lean{central\_chain}.
 
 \paragraph{Dimensional reduction $G_5\to G_4$.}
 Newton's constant reduces as $G_4=G_5/(2\ell)$, which at the framework values $G_5=\tfrac12$, $\ell=1$ gives
@@ -206,9 +207,12 @@ Newton's constant reduces as $G_4=G_5/(2\ell)$, which at the framework values $G
 \end{equation}
 \Lean{kk\_reduction, kk\_at\_PCF}
 the reduced Newton constant being the squared modulus, $G_4=|\Om|^{2}=(\tfrac12)^{2}$
-\Lean{G4\_eq\_omega\_sq}. The boundary Casimir $\tfrac34$ and the bulk Newton $\tfrac14$ sum to unity,
-$\tfrac34+\tfrac14=1$ \Lean{casimir\_plus\_newton}, and the boundary density ratio is
-$\golden^{-2}-1=-\golden^{-1}$ \Lean{boundary\_density\_ratio}.
+\Lean{G4\_eq\_omega\_sq}
+The boundary Casimir $\tfrac34$ and the bulk Newton $\tfrac14$ sum to unity,
+$\tfrac34+\tfrac14=1$ \Lean{casimir\_plus\_newton}
+and the boundary density ratio is
+$\golden^{-2}-1=-\golden^{-1}$ \Lean{boundary\_density\_ratio}
+.
 
 \paragraph{The Breitenlohner--Freedman bound and discrete stability.}
 For $\mathrm{AdS}_5$ the Breitenlohner--Freedman bound is $m^2_{BF}=-d^2/4=-4$ ($d=4$),
@@ -260,7 +264,8 @@ operator \eqref{eq:kk-operator} has eigenvalue equal to the interior row sum,
 \end{equation}
 whose numerator is exactly the golden identity \eqref{eq:kk-numerator}. With $m^{2}=-\lambda$ that
 mode carries $m^{2}=-1/(\ln\golden)^{2}\approx-4.318$: the continuous value quoted above, below the
-bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \Lean{log\_phi\_lt\_half}. Truncating to the
+bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \Lean{log\_phi\_lt\_half}
+Truncating to the
 $2n+1$ levels removes the constant mode---the boundary rows have row sums
 $(\golden^{-2}-2)$ and $(\golden^{2}-2)$ over $(\ln\golden)^{2}$, so the all-ones vector is no
 longer an eigenvector---and replaces it with the strictly negative Dirichlet spectrum of
@@ -285,7 +290,8 @@ $\mathrm{U}(1)\times\mathrm{U}(1)$, abelian and of dimension $2$, so no such red
 non-abelian $A^{a}_\mu$. The torus enters instead as the \emph{maximal torus} of the gauge group---rank
 $2$, Weyl group $S_3$, root lattice $A_2$, the three data the construction already carries
 (Proposition~\ref{prop:a2})---and the gauge bosons arise by enhancement at the self-dual radius
-$R^{2}=\alpha'$\,\Lean{Tdual\_selfdual}, where the minimal vectors of the lattice supply the root
+$R^{2}=\alpha'$\,\Lean{Tdual\_selfdual}
+where the minimal vectors of the lattice supply the root
 generators and the torus supplies the Cartan subalgebra. The dimension count is then
 $\dim\mathfrak g=\text{kissing}+\text{rank}$, satisfied at every rung of the ladder of
 Proposition~\ref{prop:ladder}: $8=6+2$, $28=24+4$, $78=72+6$, $248=240+8$. What remains open is not the

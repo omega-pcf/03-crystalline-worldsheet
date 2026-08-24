@@ -93,9 +93,11 @@ route \eqref{eq:sigma-basel} gives $n^{2}/6$, which meets $\tfrac32$ only at $n=
 \paragraph{The spectral angle and the uniqueness of the invariants.}
 At scale $\sigma$ the worldline subtends the spectral angle
 $\alpha(\sigma)=\arctan(\epsz\golden^{\sigma})$, normalised by $\epsz M_{\PCF}=\pi$
-\Lean{spectral\_angle\_tan}. The invariants \eqref{eq:spectral-invariants} are not chosen but
+\Lean{spectral\_angle\_tan}.
+The invariants \eqref{eq:spectral-invariants} are not chosen but
 forced: the pair $(\sigma,\mu)$ with $\sigma+\mu=2$ and $\sigma\mu=\tfrac34$ has the unique
-solution $(\sigma,\mu)=(\tfrac32,\tfrac12)$ \Lean{spectral\_uniqueness}, i.e.\ $\sigma=\tfrac32$
+solution $(\sigma,\mu)=(\tfrac32,\tfrac12)$
+\Lean{spectral\_uniqueness}, i.e.\ $\sigma=\tfrac32$
 \Lean{sigma\_three}, the same arity $3$ and modulus $\tfrac12$ forced by the No-Diagonal theorem
 of \S\ref{ssec:arity}. Which \emph{integer} levels the angle is read at is not settled here: it is
 fixed by the level interval of \S\ref{sec:implications}, Proposition~\ref{prop:interval-uniqueness}.
@@ -397,7 +399,8 @@ The embedding $V$ \eqref{eq:isometry} is realised on the two faces of one modulu
 triangle $\lambda_k=\tfrac12\omega^{k}$ ($\omega=e^{2\pi i/3}$) of Prop.~\ref{prop:pcf-norms}
 \eqref{eq:norms-derived} is the Eisenstein lattice $\Z[\omega]$ (\emph{algebra} face: $120^\circ$,
 $S_3$ symmetry, $A_2$ root system $=\mathfrak{su}(3)$)
-\Lean{eisenstein\_omega, Omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six}; the same modulus on the
+\Lean{eisenstein\_omega, Omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six};
+the same modulus on the
 $i/\pi$ side, where $(\tfrac12)!=\tfrac12\sqrt\pi$ fixes $\mu=\tfrac12$ (\S\ref{ssec:construction}),
 is the Gauss lattice $\Z[i]$ (\emph{isometry} face: $\tau=i$, $\ell=1$). The $\golden$-mediation
 $S_3\to\Z_4$ between them preserves $|\Om|=\tfrac12$ \Lean{holographic\_area} and fixes $\tau=i$:
