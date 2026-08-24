@@ -1038,8 +1038,7 @@ continuous entropic gravity is the continuum limit of the discrete accumulation 
 to her axis is the quantity it leaves free, the \emph{rate}: the growth is golden, $\golden$ per
 level, the Fibonacci quantum dimension (Corollary~\ref{cor:golden-growth}). \tier{N} (six checks);
 D3 is \tier{P}
-(\S\ref*{ssec:construction},
-\Lean{binary\_entropy\_half}).
+(\S\ref*{ssec:construction}, \Lean{binary\_entropy\_half}).
 \Lean{Lambda5\_pcf, G\_Lambda\_duality}
 \end{proposition}
 \begin{proof}
@@ -1731,12 +1730,12 @@ ultraviolet regulator to remove:
       and locally at the vertex (\S\ref{ssec:p-tower}); no divergence calls for a cutoff;
 \item the theory sits at an ultraviolet fixed point, the asymptotic-safety corner of the duality web
       \eqref{eq:bridge-fixed}, with the spectral flow reaching $c(n)\to2$
-      (\S\ref{ssec:accum}),
-\Lean{c\_tendsto\_two};
+      (\S\ref{ssec:accum});
+\Lean{c\_tendsto\_two}
 \item and that fixed point is not tuned: Assumption~\ref{asm:bridge} (\eqref{eq:obs-fixedpoint}) makes it \emph{equivalent} to the
       algebraic identity $\epsz\Mpcf=\pi$, which \S\ref{ssec:construction} derives from the half-turn
-      accumulated once around the fundamental domain,
-\Lean{eps0\_Mpcf\_pi}.
+      accumulated once around the fundamental domain.
+\Lean{eps0\_Mpcf\_pi}
 \end{itemize}
 
 The discreteness of the tower is therefore not a regularisation of something continuous; it is the
