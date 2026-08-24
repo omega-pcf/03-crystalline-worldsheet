@@ -46,7 +46,7 @@ two analogous symmetries but one map, read on the orbit $\{\golden,\bar\golden\}
 
 Finally we record, without reproving it, the identity established at \eqref{eq:bridge}:
 $\golden^{\lng}=2$ with $\lng=\log_{\golden}2$. It is the only result of \S\ref{sec:intro} that
-the present section consumes. \Lean{mersenne\_bridge}
+the present section consumes. \LeanWrap{mersenne\_bridge}
 
 \begin{proposition}[The bridge anchors from outside the lattice]\label{prop:anchor-exterior}
 The exponent $\lng$ is not reachable by descent on the lattice of integer exponents. For no integer
@@ -171,7 +171,7 @@ the Lawvere--Yanofsky diagonal is contracted (not prohibited).
 
 \begin{definition}[Distributed self-reference]\label{def:dsr}
 A recurrence of depth $k$ is \emph{distributed} when $k\ge 2$ (no component
-depends directly on itself). \Lean{DistributedSelfReference}
+depends directly on itself). \LeanWrap{DistributedSelfReference}
 \tier{P}
 \end{definition}
 
@@ -298,7 +298,7 @@ $V_k=v_k/\lVert v\rVert$. Then
   \sum_{k=0}^{2}\lVert V_k\rVert^2=1,
 \end{equation}
 so the column map $V\colon\C\to\C^3$, $z\mapsto(V_0,V_1,V_2)\,z$, is norm preserving:
-$V^{\dagger}V=\mathbf1$. \Lean{bulkBoundary\_isometry}
+$V^{\dagger}V=\mathbf1$. \LeanWrap{bulkBoundary\_isometry}
 \tier{P}
 \end{lemma}
 \begin{proof}
@@ -602,7 +602,7 @@ that makes the classification of the primes effective.
 \Lean{phi\_pow\_fib, mersenne\_bridge}%
 
 \begin{proposition}[Mediated Mersenne]\label{prop:mersenne-med}
-$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \Lean{M12\_mersenne\_mediated}
+$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \LeanWrap{M12\_mersenne\_mediated}
 \tier{P}
 \end{proposition}
 
@@ -739,7 +739,7 @@ L(1,\chi_5)=\frac{2\log\golden}{\sqrt5}.
 \LeanInline{eq:local-dedekind}%
 
 \begin{theorem}[Basel value]\label{thm:basel}
-$\zeta(2)=\pi^2/6$ (Euler). \Lean{M14\_basel}
+$\zeta(2)=\pi^2/6$ (Euler). \LeanWrap{M14\_basel}
 \tier{P}
 \end{theorem}
 
@@ -1175,7 +1175,7 @@ geometric leg gives $\dfrac{|{\rm rot}\,S_3|^2}{|S_3|}=\dfrac{9}{6}$
 Both diagrams commute and the spectral invariants follow:
 $\sigma+\mu=2$, $\sigma/\mu=3$; and the arithmetic they carry closes on the same modulus, the
 completed zeta $\xi=\Gamma_{\R}\zeta$ of Theorem~\ref{thm:places} being self-dual exactly on
-$\Re s=\mu$ (Theorem~\ref{thm:funct-eq}). \Lean{section2\_master, places\_assembly}
+$\Re s=\mu$ (Theorem~\ref{thm:funct-eq}). \LeanWrap{section2\_master, places\_assembly}
 \tier{P}
 \end{theorem}
 
