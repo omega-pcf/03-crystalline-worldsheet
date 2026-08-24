@@ -1,4 +1,3 @@
-% ===================================================================
 \appendix
 \section{Explicit derivations and formal tags}\label{app:derivations}
 This appendix collects, for each physical quantity asserted in the body, the explicit derivation with its
@@ -20,14 +19,14 @@ The throat is therefore an Einstein space $R_{AB}=-4g_{AB}$ with $\Lambda_5=-d(d
 The remaining curvature invariants $R_{ab}R^{ab}=80$, $R_{abcd}R^{abcd}=40$, $\mathrm{GB}=120$ and the
 Gauss--Bonnet Lanczos tensor $H_{AB}=-12g_{AB}$ follow from Lovelock's theorem, so the second-order field
 equation is Einstein${}+\Lambda$, solved by the torus metric at $\Lambda_5=-6$, $G_N=\tfrac12$.
-\Lean{R\_munu\_AdS5, R\_scalar\_AdS5, G\_munu\_AdS5}
+\Lean{ricciCoeff, ricciScalar, einsteinCoeff, R\_AB\_einstein, R\_scalar\_pcf, G\_AB\_pcf}
 
 \paragraph{Independent check.} Beyond the modulus and the dimensional counting, the same data pass two
 checks that are independent of either: the scalar mass saturates the Breitenlohner--Freedman stability bound,
 $m^2_{\mathrm{BF}}=-d^2/4=-4$, so the discrete tower is stable; and the free-energy ratio of the
 correspondence takes the Gubser--Klebanov--Polyakov value $\mathrm{GKP}=\tfrac34$. Neither follows from
 $|\Om|=\tfrac12$ by counting; both are nontrivial AdS/CFT data reproduced by the microstate.
-\Lean{BF\_bound\_AdS5}
+\Lean{BFbound, BF\_value}
 
 \subsection{The ETS metric is flat; de~Sitter is its embedded hyperboloid}\label{app:embedding}
 Written with the scale coordinate $\sigma$, the Lorentzian metric \eqref{eq:ets-metric} is
@@ -39,7 +38,7 @@ tensor, computed directly, all vanish:
 \]
 The ETS metric is therefore \emph{intrinsically flat}---Weyl vanishes because Riemann does---and is
 not de~Sitter (which is curved, $R=12H^2$) but the flat five-dimensional \emph{ambient} in which
-de~Sitter embeds. \Lean{ets\_riemann\_flat}
+de~Sitter embeds. \Lean{ets\_constant\_block\_christoffels\_vanish}
 
 \paragraph{The extended light cones (causal classification).} Because \eqref{eq:ets-metric}
 is Lorentzian with signature $(-,+,+,+,+)$, it carries a light-cone structure. For two events
@@ -112,20 +111,27 @@ $\Z[\omega]=A_2$---the root system of $\mathfrak{su}(3)$---of dimension
   \dim\mathfrak{su}(3)=3^2-1=8 .
 \end{equation}
 The Clifford latitude $(\tfrac12)^2-(\tfrac{\sqrt3}{2})^2=-\tfrac12$ realizes $S^3\cong\mathrm{SU}(2)$, and the
-Hopf fibre realizes $S^1\cong\mathrm{U}(1)$. The weak mixing angle is the entropy ratio at the colour level,
+Hopf fibre realizes $S^1\cong\mathrm{U}(1)$. The weak mixing angle at the unification scale is the ratio of mode counts,
 \begin{equation}
-  \sin^2\theta_W=\frac{S(3)}{S(6)}=\frac{\golden^{3}}{\golden^{6}}=\golden^{-3}\approx0.236 ,
+  \sin^2\theta_W|_{\rm GUT}=\frac{N(0)}{N(2)}=\frac{3}{8},
 \end{equation}
-to be compared with the measured $\sin^2\theta_W(M_Z)\approx0.231$ (agreement to $\sim2\%$). The
-identification is structural: $\sin^2\theta_W$ is the entropy fraction at the tower midpoint,
-$S(3)/S(6)=\golden^{-3}$---the same $\Z_3\to\Z_4$ transition at $\sigma=3$---evaluated at the
-algebraic fixed point $\epsz\Mpcf=\pi$; the running $\sin^2\theta_W(k)$ is not derived here, and
-the residual $\sim2\%$ is a scale-translation question of the same nature as the one recorded
-for $\Lambda_{\mathrm{obs}}$ in Remark~\ref{rmk:GLambda-interval}. The $G$--$\Lambda$
+the canonical $SU(5)$ value, from the Fibonacci mode counts $N(0)=\lfloor\pi\rfloor=3$ and
+$N(2)=\lfloor\pi\golden^{2}\rfloor=8$. Running down through the MSSM one-loop $\beta$-functions
+$b=(\tfrac{33}5,1,-3)$, it reaches the measured $\sin^2\theta_W(M_Z)\approx0.231$: the three gauge
+couplings unify, and the low-energy angle is the GUT value evolved, not an independent input. The
+tower entropy ratio $S(3)/S(6)=\golden^{-3}\approx0.236$ is a distinct quantity---the entropy
+fraction at the tower midpoint $\sigma=3$, one level of the flow, marking the $\Z_3\to\Z_4$
+transition at the algebraic fixed point $\epsz\Mpcf=\pi$---not the physical angle. The $G$--$\Lambda$
 duality $\golden^{-6}\golden^{6}=1$ holds. The internal $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$
 connection and the Lorentz connection both descend from a single higher-dimensional spin connection; the
-explicit Kaluza--Klein reduction giving $A^{a}_\mu$ from the metric is the one step left open here.
-\Lean{gauge\_dim\_su3, weinberg\_ratio, hopf\_from\_clifford, G\_Lambda\_duality}
+non-abelian part does not come from a Kaluza--Klein reduction on the torus (whose isometry group
+$\mathrm{U}(1)^{2}$ is abelian) but from enhancement at the self-dual radius, with
+$\dim\mathfrak g=\text{kissing}+\text{rank}=6+2=8$ for the colour factor (\S\ref{app:kk},
+Proposition~\ref{prop:ladder}). The Eisenstein face is the one that carries that factor: its six minimal
+vectors give $6+2=8=\dim\mathfrak{su}(3)$, whereas the Gauss face $\tau=i$ has four, giving $4+2=6$---the
+algebra of $\mathrm{SU}(2)\times\mathrm{SU}(2)$, not of $\mathrm{SU}(3)$. The assignment is forced, not
+chosen. What remains open here is the explicit mode expansion.
+\Lean{ladder\_dim\_eq\_kissing\_plus\_rank, a2\_roots\_give\_su3\_dim, gauge\_dim\_su3, weinberg\_angle\_gut, Nmodes\_zero\_eq\_three, Nmodes\_two\_eq\_eight, entropy\_ratio\_S3\_S6, beta\_is\_mssm, hopf\_from\_clifford, G\_Lambda\_duality}
 
 \subsection{The M-theory type duality web from its two corners}\label{app:web}
 The web this paper uses has exactly two corners---Huerta--Schreiber M-theory and Maldacena's AdS/CFT---and both
@@ -211,30 +217,153 @@ For $\mathrm{AdS}_5$ the Breitenlohner--Freedman bound is $m^2_{BF}=-d^2/4=-4$ (
 \end{equation}
 \Lean{KK\_BF\_bound}%
 The continuous interior Kaluza--Klein mass $m^2_{KK}\approx-4.318$ lies below this bound; a continuous mode
-of that mass would be unstable. The physical spectrum is not continuous but the discrete seven-level tower
-$\sigma=0,\dots,6$, whose modes all have $m^2>0$ (verified numerically in
-\texttt{CW3\_verify\_paper\_physics.py}): the discreteness is what makes the tower stable.
+of that mass would be unstable. The physical spectrum is not continuous but the discrete tower
+$\sigma=0,\dots,2n$, and its spectrum is computable in closed form.
 
-\paragraph{The step left open.}
-The internal $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$ connection and the Lorentz connection
-descend from a single higher-dimensional spin connection (\S\ref{app:gauge}); the explicit Kaluza--Klein
-reduction giving the gauge field $A^{a}_\mu$ from the metric is the one step left open, as noted in the main
-text.
+\begin{proposition}[The discrete Kaluza--Klein spectrum]\label{prop:kk-discrete-spectrum}
+Let $L$ be the second-difference operator of the warped scale direction on the $2n+1$ levels
+$\sigma=0,\dots,2n$, with the golden hopping amplitudes and the step $\ln\golden$ of
+\eqref{eq:tower-modes}:
+\begin{equation}\label{eq:kk-operator}
+  L_{\sigma\sigma}=\frac{-2}{(\ln\golden)^{2}},\qquad
+  L_{\sigma,\sigma-1}=\frac{\golden^{+2}}{(\ln\golden)^{2}},\qquad
+  L_{\sigma,\sigma+1}=\frac{\golden^{-2}}{(\ln\golden)^{2}} .
+\end{equation}
+Then, with $m^{2}=-\lambda$,
+\begin{equation}\label{eq:kk-spectrum}
+  m^{2}_{k}=\frac{4}{(\ln\golden)^{2}}\,\sin^{2}\!\frac{k\pi}{4(n+1)},
+  \qquad k=1,\dots,2n+1 ,
+\end{equation}
+which at $n=3$ gives seven modes $m^{2}_{k}=4\sin^{2}(k\pi/16)/(\ln\golden)^{2}$, all strictly
+positive, the lowest $\approx0.657$ and the highest $\approx16.616$. Every one lies above the bound
+\eqref{eq:kk-BF}, so the discrete tower is stable. \tier{P} (the spectrum of the Dirichlet
+second-difference operator enters as \tier{L})
+\LeanFor{eq:kk-operator}{kk\_hopping\_reciprocal}%
+\LeanFor{eq:kk-spectrum}{kk\_discrete\_spectrum, kk\_discrete\_positive, kk\_above\_BF}%
+\end{proposition}
+\begin{proof}
+The two hopping amplitudes are \emph{reciprocal}, $\golden^{+2}\cdot\golden^{-2}=1$, because
+$\golden$ is a unit of $\OK$ \eqref{eq:trace-norm}. Hence their geometric mean is $1$, and the
+diagonal similarity $D=\operatorname{diag}(\golden^{\sigma})$ conjugates $L$ into the
+\emph{symmetric} tridiagonal $(\ln\golden)^{-2}\,\mathrm{tridiag}(1,-2,1)$ on $2n+1$ nodes---the
+Dirichlet second-difference operator, whose spectrum is
+$-4\sin^{2}\bigl(k\pi/(2(2n+2))\bigr)$, $k=1,\dots,2n+1$, strictly negative. A similarity preserves
+the spectrum, so $\lambda_k<0$ and $m^{2}_k=-\lambda_k>0$, which is \eqref{eq:kk-spectrum} after
+$2(2n+2)=4(n+1)$.
+\end{proof}
+
+\begin{remark}[Where the sign convention comes from, and what the truncation does]\label{rmk:kk-sign}
+The convention $m^{2}=-\lambda$ is not imposed. The constant mode of the \emph{untruncated}
+operator \eqref{eq:kk-operator} has eigenvalue equal to the interior row sum,
+\begin{equation}\label{eq:kk-rowsum}
+  \frac{\golden^{2}+\golden^{-2}-2}{(\ln\golden)^{2}}=\frac{1}{(\ln\golden)^{2}}\approx4.3184 ,
+\end{equation}
+whose numerator is exactly the golden identity \eqref{eq:kk-numerator}. With $m^{2}=-\lambda$ that
+mode carries $m^{2}=-1/(\ln\golden)^{2}\approx-4.318$: the continuous value quoted above, below the
+bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \Lean{log\_phi\_lt\_half}. Truncating to the
+$2n+1$ levels removes the constant mode---the boundary rows have row sums
+$(\golden^{-2}-2)$ and $(\golden^{2}-2)$ over $(\ln\golden)^{2}$, so the all-ones vector is no
+longer an eigenvector---and replaces it with the strictly negative Dirichlet spectrum of
+Proposition~\ref{prop:kk-discrete-spectrum}. \emph{That} is the sense in which the discreteness is
+what makes the tower stable, and both halves are now computed rather than asserted.
+
+Two facts do the work, and each fails without its hypothesis. Reciprocity: with non-reciprocal
+amplitudes the symmetrisation is unavailable and modes of $m^{2}<0$ appear---$(\golden^{2},\golden^{-1})$
+gives $\lambda_{\max}=+1.51$ and $(\golden^{3},\golden^{-1})$ gives $+4.27$. And the base: the
+numerator of \eqref{eq:kk-rowsum} equals $1$ only for $\golden$, since $b^{2}+b^{-2}-2$ is
+$\tfrac94$ at $b=2$ and $\tfrac{64}9$ at $b=3$; that is where the arity
+$\golden^{2}+\golden^{-2}=3$ enters. Both are checked in
+\texttt{CW6\_complete\_verify\_v2.py}. \tier{P/N}
+\Lean{kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates}
+\end{remark}
+
+\paragraph{The mechanism, and what remains.}
+As established in \S\ref{app:gauge}, the internal and Lorentz connections descend from a single
+higher-dimensional spin connection. That connection does
+\emph{not} arise by Kaluza--Klein reduction on $T^{2}_{\mathrm{PCF}}$: the isometry group of a torus is
+$\mathrm{U}(1)\times\mathrm{U}(1)$, abelian and of dimension $2$, so no such reduction can yield a
+non-abelian $A^{a}_\mu$. The torus enters instead as the \emph{maximal torus} of the gauge group---rank
+$2$, Weyl group $S_3$, root lattice $A_2$, the three data the construction already carries
+(Proposition~\ref{prop:a2})---and the gauge bosons arise by enhancement at the self-dual radius
+$R^{2}=\alpha'$\,\Lean{Tdual\_selfdual}, where the minimal vectors of the lattice supply the root
+generators and the torus supplies the Cartan subalgebra. The dimension count is then
+$\dim\mathfrak g=\text{kissing}+\text{rank}$, satisfied at every rung of the ladder of
+Proposition~\ref{prop:ladder}: $8=6+2$, $28=24+4$, $78=72+6$, $248=240+8$. What remains open is not the
+mechanism but the explicit mode expansion realising it. \tier{P}
+\Lean{ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims, a2\_minimal\_vectors\_exactly\_six, Tdual\_selfdual}
 
 
-\section{Translation of the epigraph (Schiller, 1785)}\label{app:epigraph-en}
 
-The German verse quoted in the acknowledgments (Section~\ref{sec:ack}) is the opening strophe of Friedrich Schiller's \emph{An die Freude} (``To Joy'', 1785), the poem later set to music by Ludwig van Beethoven in the final movement of his Ninth Symphony (\emph{Ode an die Freude}, Op.~125, 1824). A standard English translation runs:
+% ---------------------------------------------------------------------
+\subsection{Arithmetic machinery: Hurwitz, even values, and the Archimedean density}\label{app:arithmetic}
 
-\begin{verse}
+The statements of \S\ref{ssec:zeta} rest on three pieces of arithmetic machinery that are
+computational rather than structural; they are collected here so the demonstrative line is not
+interrupted by them.
+
+\paragraph{Hurwitz representation.}
+\begin{equation}\label{eq:hurwitz}
+  L(s,\chi_5)=5^{-s}\sum_{a=1}^{4}\chi_5(a)\,\zeta(s,a/5),
+  \qquad \zeta(s,x)=\sum_{n\ge0}(n+x)^{-s} .
+\end{equation}
+The term-level content is the reindexing $n=5m+a$,
+\begin{equation}\label{eq:reindex}
+  (5m+a)^{-s}=5^{-s}(m+a/5)^{-s},
+\end{equation}
+which pulls one factor $5^{-s}$ out of every term. The rearrangement of the convergent series is
+the classical input. \tier{P} (the rearrangement enters as \tier{L}) \Lean{hurwitz\_reindex}
+
+\paragraph{Even values.}
+\begin{equation}\label{eq:even-L}
+  L(2k,\chi_5)\in\sqrt5\cdot\pi^{2k}\cdot\Q ,
+\end{equation}
+the rational coefficient being rational by typing: Bernoulli polynomials have rational
+coefficients and are evaluated at the rational pentagonal points $a/5$. The passage through
+$\zeta(-n,x)=-B_{n+1}(x)/(n+1)$ and the functional equation is the classical input. Verified:
+$L(2,\chi_5)=\sqrt5\pi^{2}\cdot\tfrac{4}{125}$, $L(4,\chi_5)=\sqrt5\pi^{4}\cdot\tfrac{8}{1875}$,
+$L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$. \tier{P} (Bernoulli enters as \tier{L})
+\Lean{even\_L\_rationality, bernoulli\_eval\_rational}
+
+\paragraph{The Archimedean density.}
+Since $K$ is totally real, $r_1=2$ and $r_2=0$, so the completed zeta carries $\Gamma_\R(s)^{2}$
+and the Archimedean part of $-\dfrac{d}{ds}\log\xi_K$ is $\log\pi-\psi(s/2)$. By Gauss--Binet,
+with $z=s/2$, $t=2v$, $v=\log u$,
+\begin{equation}\label{eq:kappa-derivation}
+  -\psi(s/2)=\int_1^{\infty}\Bigl(\frac{2u^{2}}{u^{2}-1}\,u^{-s}-\frac{u^{-2}}{\log u}\Bigr)
+  \frac{du}{u},
+\end{equation}
+so the Archimedean density is
+\begin{equation}\label{eq:kappa}
+  \kappa_K(u)=\frac{2u^{2}}{u^{2}-1}=2\,\kappa_\Q(u),
+  \qquad \kappa_\Q(u)=\frac{u^{2}}{u^{2}-1},
+\end{equation}
+one factor per real place, and the subtracted term is exactly the principal value at $u=1$: by
+$(u-1)\kappa_K(u)=2u^{2}/(u+1)\to1$ the pole is simple, of residue one, which is \emph{why} a
+principal value is required. For $\Q$, with $r_1=1$, \eqref{eq:kappa} is the distribution of
+Connes and Consani~\cite{ConnesConsaniSite}; the doubling for a real quadratic field is ours.
+An independent check that never touches Gauss--Binet: the von Mangoldt explicit formula gives
+$u\,d\psi/du=u-\sum_\rho u^{\rho}-1/(u^{2}-1)$, so
+$N_\Q-u\,d\psi/du=1+1/(u^{2}-1)=u^{2}/(u^{2}-1)$, reproducing $\kappa_\Q$.
+\tier{P} (Gauss--Binet enters as \tier{L})
+\Lean{kappaK\_two\_real\_places, kappaK\_alt, kappaK\_simple\_pole, kappaK\_pole\_numerator\_at\_one,
+kappaK\_pos, kappaK\_exp, kappa\_per\_real\_place}
+
+% ===================================================================
+\section{Translation of the epigraph (Schiller, 1785)}\label{app:schiller}
+The German verse quoted in the acknowledgements is the opening strophe of Friedrich
+Schiller's \emph{An die Freude} (``To Joy'', 1785), the poem later set to music by Ludwig
+van Beethoven in the final movement of his Ninth Symphony (\emph{Ode an die Freude},
+Op.~125, 1824). A standard English translation runs:
+
+\begin{quote}\itshape
 Joy commands the hardy mainspring\\
-Of the universe eterne.\\[0.4em]
+Of the universe eterne.\\
 Joy, oh joy the wheel is driving\\
-Which the worlds' great clock doth turn.\\[0.4em]
+Which the worlds' great clock doth turn.\\
 Flowers from the buds she coaxes,\\
 Suns from out the hyaline,\\
 Spheres she rotates through expanses\\
 Which the seer can't divine.
-\end{verse}
+\end{quote}
+\noindent--- Friedrich Schiller, \emph{An die Freude} (1785), English rendering.
 
-\noindent\textemdash{} Friedrich Schiller, \emph{An die Freude} (1785), English rendering.

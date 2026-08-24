@@ -336,7 +336,8 @@
     "container-title": "Lecture Notes in Mathematics",
     "volume": "92",
     "page": "134",
-    "DOI": "10.1007/BFb0080769"
+    "DOI": "10.1007/BFb0080769",
+    "publisher": "North-Holland"
   },
   {
     "id": "yanofsky03",
@@ -891,7 +892,7 @@
   {
     "id": "Jedrkiewicz2018",
     "type": "article",
-    "title": "Coherent four-mode parametric generation in a hexagonally poled nonlinear crystal",
+    "title": "Golden Ratio Gain Enhancement in Coherently Coupled Parametric Processes",
     "author": [
       {
         "literal": "O. Jedrkiewicz et al."
@@ -925,7 +926,7 @@
     },
     "container-title": "Axioms",
     "volume": "13",
-    "page": "720"
+    "article-number": "862"
   },
   {
     "id": "Apery",
@@ -991,7 +992,7 @@
   {
     "id": "HP",
     "type": "article",
-    "title": "The Hilbert–Pólya Operator and the Primitive Structure of the Complex Plane",
+    "title": "The Hilbert-Pólya Operator and the Primitive Structure of the Complex Plane: Between 𝔽₁, String Theory, and Ancient Geometry",
     "author": [
       {
         "literal": "J. A. González García et al."
@@ -1544,7 +1545,7 @@
     "issued": {
       "date-parts": [
         [
-          2019
+          2020
         ]
       ]
     },
@@ -1864,5 +1865,757 @@
     "article-number": "210407",
     "URL": "https://arxiv.org/abs/0708.0584",
     "DOI": "10.1103/PhysRevLett.99.210407"
+  },
+  {
+    "id": "KT00",
+    "type": "article",
+    "title": "Gravity duals of supersymmetric $SU(N)\\times SU(N+M)$ gauge theories",
+    "author": [
+      {
+        "family": "Klebanov",
+        "given": "I. R."
+      },
+      {
+        "family": "Tseytlin",
+        "given": "A. A."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2000
+        ]
+      ]
+    },
+    "container-title": "Nuclear Physics B",
+    "container-title-short": "Nucl. Phys. B",
+    "volume": "578",
+    "page": "123",
+    "DOI": "10.1016/S0550-3213(00)00206-6"
+  },
+  {
+    "id": "GrisalesHerrera",
+    "type": "thesis",
+    "title": "Golden Prime Symmetry",
+    "author": [
+      {
+        "family": "Grisales Herrera",
+        "given": "J."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "publisher": "Universidad del Tolima",
+    "publisher-place": "Ibagué, Colombia",
+    "genre": "B.Sc. thesis"
+  },
+  {
+    "id": "fgc:farish22",
+    "type": "article",
+    "title": "On isometrical perspective",
+    "author": [
+      {
+        "family": "Farish",
+        "given": "W."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1822
+        ]
+      ]
+    },
+    "container-title": "Transactions of the Cambridge Philosophical Society",
+    "container-title-short": "Trans. Cambridge Philos. Soc.",
+    "volume": "1",
+    "page": "1--20"
+  },
+  {
+    "id": "Borger",
+    "type": "article",
+    "title": "Lambda-rings and the field with one element",
+    "author": [
+      {
+        "family": "Borger",
+        "given": "J."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "DOI": "10.1016/j.jalgebra.2009.05.008",
+    "URL": "https://arxiv.org/abs/0906.3146"
+  },
+  {
+    "id": "dirichlet",
+    "type": "article",
+    "title": "Beweis des Satzes, dass jede unbegrenzte arithmetische Progression, deren erstes Glied und Differenz ganzzahlig sind, unendlich viele Primzahlen enthält",
+    "author": [
+      {
+        "family": "Dirichlet",
+        "given": "P. G. L."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1837
+        ]
+      ]
+    },
+    "container-title": "Abhandlungen der Königlichen Preußischen Akademie der Wissenschaften",
+    "page": "33--53"
+  },
+  {
+    "id": "Riemann1859",
+    "type": "article",
+    "title": "Ueber die Anzahl der Primzahlen unter einer gegebenen Größe",
+    "author": [
+      {
+        "family": "Riemann",
+        "given": "B."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1859
+        ]
+      ]
+    },
+    "container-title": "Monatsberichte der Berliner Akademie",
+    "page": "671--680"
+  },
+  {
+    "id": "Jacobi1829",
+    "type": "book",
+    "title": "Fundamenta nova theoriae functionum ellipticarum",
+    "author": [
+      {
+        "family": "Jacobi",
+        "given": "C. G. J."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1829
+        ]
+      ]
+    },
+    "publisher": "Bornträger",
+    "publisher-place": "Königsberg"
+  },
+  {
+    "id": "Tate1967",
+    "type": "thesis",
+    "title": "Fourier analysis in number fields and Hecke's zeta-functions",
+    "author": [
+      {
+        "family": "Tate",
+        "given": "J. T."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1950
+        ]
+      ]
+    },
+    "publisher": "Princeton University",
+    "publisher-place": "Princeton",
+    "genre": "Ph.D. thesis"
+  },
+  {
+    "id": "ConnesConsaniSite",
+    "type": "article",
+    "title": "The arithmetic site",
+    "author": [
+      {
+        "family": "Connes",
+        "given": "A."
+      },
+      {
+        "family": "Consani",
+        "given": "C."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "container-title": "Comptes Rendus Mathematique",
+    "container-title-short": "Comptes Rendus Math.",
+    "volume": "352",
+    "page": "965--969",
+    "DOI": "10.1016/j.crma.2014.07.009"
+  },
+  {
+    "id": "LopezPenaLorscheid",
+    "type": "article",
+    "title": "Torified varieties and their geometries over $\\F_1$",
+    "author": [
+      {
+        "family": "López Peña",
+        "given": "J."
+      },
+      {
+        "family": "Lorscheid",
+        "given": "O."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "container-title": "Mathematische Zeitschrift",
+    "volume": "267",
+    "page": "605--643",
+    "DOI": "10.1007/s00209-009-0638-0"
+  },
+  {
+    "id": "Israel66",
+    "type": "article",
+    "title": "Singular hypersurfaces and thin shells in general relativity",
+    "author": [
+      {
+        "family": "Israel",
+        "given": "W."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1966
+        ]
+      ]
+    },
+    "container-title": "Il Nuovo Cimento",
+    "volume": "44",
+    "page": "1--14",
+    "DOI": "10.1007/BF02710419"
+  },
+  {
+    "id": "Frobenius1878",
+    "type": "article",
+    "title": "Ueber lineare Substitutionen und bilineare Formen",
+    "author": [
+      {
+        "family": "Frobenius",
+        "given": "G."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1878
+        ]
+      ]
+    },
+    "container-title": "Journal für die reine und angewandte Mathematik",
+    "container-title-short": "J. Reine Angew. Math.",
+    "volume": "84",
+    "page": "1--63"
+  },
+  {
+    "id": "maturana1980",
+    "type": "book",
+    "title": "Autopoiesis and Cognition: The Realization of the Living",
+    "author": [
+      {
+        "family": "Maturana",
+        "given": "H. R."
+      },
+      {
+        "family": "Varela",
+        "given": "F. J."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1980
+        ]
+      ]
+    },
+    "publisher": "D. Reidel",
+    "publisher-place": "Dordrecht"
+  },
+  {
+    "id": "AlmheiriDongHarlow",
+    "type": "article",
+    "title": "Bulk locality and quantum error correction in AdS/CFT",
+    "author": [
+      {
+        "family": "Almheiri",
+        "given": "A."
+      },
+      {
+        "family": "Dong",
+        "given": "X."
+      },
+      {
+        "family": "Harlow",
+        "given": "D."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "container-title": "Journal of High Energy Physics",
+    "container-title-short": "JHEP",
+    "volume": "04",
+    "page": "163",
+    "DOI": "10.1007/JHEP04(2015)163"
+  },
+  {
+    "id": "ArkaniHamedTrnka",
+    "type": "article",
+    "title": "The Amplituhedron",
+    "author": [
+      {
+        "family": "Arkani-Hamed",
+        "given": "N."
+      },
+      {
+        "family": "Trnka",
+        "given": "J."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "container-title": "Journal of High Energy Physics",
+    "container-title-short": "JHEP",
+    "volume": "10",
+    "page": "030",
+    "DOI": "10.1007/JHEP10(2014)030"
+  },
+  {
+    "id": "ABHY18",
+    "type": "article",
+    "title": "Scattering forms and the positive geometry of kinematics, color and the worldsheet",
+    "author": [
+      {
+        "family": "Arkani-Hamed",
+        "given": "N."
+      },
+      {
+        "family": "Bai",
+        "given": "Y."
+      },
+      {
+        "family": "He",
+        "given": "S."
+      },
+      {
+        "family": "Yan",
+        "given": "G."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "container-title": "Journal of High Energy Physics",
+    "container-title-short": "JHEP",
+    "volume": "05",
+    "page": "096",
+    "DOI": "10.1007/JHEP05(2018)096"
+  },
+  {
+    "id": "AHL19",
+    "type": "article",
+    "title": "Stringy canonical forms",
+    "author": [
+      {
+        "family": "Arkani-Hamed",
+        "given": "N."
+      },
+      {
+        "family": "He",
+        "given": "S."
+      },
+      {
+        "family": "Lam",
+        "given": "T."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "container-title": "Journal of High Energy Physics",
+    "container-title-short": "JHEP",
+    "volume": "02",
+    "page": "069",
+    "DOI": "10.1007/JHEP02(2021)069"
+  },
+  {
+    "id": "BCJ",
+    "type": "article",
+    "title": "Perturbative Quantum Gravity as a Double Copy of Gauge Theory",
+    "author": [
+      {
+        "family": "Bern",
+        "given": "Z."
+      },
+      {
+        "family": "Carrasco",
+        "given": "J. J. M."
+      },
+      {
+        "family": "Johansson",
+        "given": "H."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2010
+        ]
+      ]
+    },
+    "container-title": "Physical Review Letters",
+    "container-title-short": "Phys. Rev. Lett.",
+    "volume": "105",
+    "page": "061602",
+    "DOI": "10.1103/PhysRevLett.105.061602"
+  },
+  {
+    "id": "BengtssonZyczkowski",
+    "type": "book",
+    "title": "Geometry of Quantum States: An Introduction to Quantum Entanglement",
+    "author": [
+      {
+        "family": "Bengtsson",
+        "given": "I."
+      },
+      {
+        "family": "Życzkowski",
+        "given": "K."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "publisher": "Cambridge University Press",
+    "publisher-place": "Cambridge"
+  },
+  {
+    "id": "Bianconi",
+    "type": "article",
+    "title": "Gravity from entropy",
+    "author": [
+      {
+        "family": "Bianconi",
+        "given": "G."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "container-title": "Physical Review D",
+    "DOI": "10.1103/PhysRevD.111.066001",
+    "volume": "111",
+    "page": "066001"
+  },
+  {
+    "id": "ConwaySloane",
+    "type": "book",
+    "title": "Sphere Packings, Lattices and Groups",
+    "author": [
+      {
+        "family": "Conway",
+        "given": "J. H."
+      },
+      {
+        "family": "Sloane",
+        "given": "N. J. A."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1988
+        ]
+      ]
+    },
+    "publisher": "Springer",
+    "publisher-place": "New York",
+    "DOI": "10.1007/978-1-4757-6568-7"
+  },
+  {
+    "id": "FZ",
+    "type": "article",
+    "title": "Cluster algebras II: Finite type classification",
+    "author": [
+      {
+        "family": "Fomin",
+        "given": "S."
+      },
+      {
+        "family": "Zelevinsky",
+        "given": "A."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2003
+        ]
+      ]
+    },
+    "container-title": "Inventiones Mathematicae",
+    "volume": "154",
+    "page": "63--121",
+    "DOI": "10.1007/s00222-003-0302-y"
+  },
+  {
+    "id": "GGSA",
+    "type": "book",
+    "title": "Grassmannian Geometry of Scattering Amplitudes",
+    "author": [
+      {
+        "family": "Arkani-Hamed",
+        "given": "N."
+      },
+      {
+        "family": "Trnka",
+        "given": "J."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "publisher": "Cambridge University Press",
+    "publisher-place": "Cambridge"
+  },
+  {
+    "id": "KodamaWilliams",
+    "type": "article",
+    "title": "KP solitons and total positivity for the Grassmannian",
+    "author": [
+      {
+        "family": "Kodama",
+        "given": "Y."
+      },
+      {
+        "family": "Williams",
+        "given": "L."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "container-title": "Inventiones Mathematicae",
+    "volume": "198",
+    "page": "637--699",
+    "DOI": "10.1007/s00222-014-0506-3"
+  },
+  {
+    "id": "KogutSusskind",
+    "type": "article",
+    "title": "Hamiltonian formulation of Wilson's lattice gauge theories",
+    "author": [
+      {
+        "family": "Kogut",
+        "given": "J."
+      },
+      {
+        "family": "Susskind",
+        "given": "L."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1975
+        ]
+      ]
+    },
+    "container-title": "Physical Review D",
+    "volume": "11",
+    "page": "395",
+    "DOI": "10.1103/PhysRevD.11.395"
+  },
+  {
+    "id": "Martin",
+    "type": "article",
+    "title": "A Supersymmetry Primer",
+    "author": [
+      {
+        "family": "Martin",
+        "given": "S. P."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1997
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/hep-ph/9709356",
+    "DOI": "10.1142/S0217751X09033232"
+  },
+  {
+    "id": "OsterwalderSchrader",
+    "type": "article",
+    "title": "Axioms for Euclidean Green's functions",
+    "author": [
+      {
+        "family": "Osterwalder",
+        "given": "K."
+      },
+      {
+        "family": "Schrader",
+        "given": "R."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1973
+        ]
+      ]
+    },
+    "container-title": "Communications in Mathematical Physics",
+    "volume": "31",
+    "page": "83--112",
+    "DOI": "10.1007/BF01645738"
+  },
+  {
+    "id": "Postnikov",
+    "type": "article",
+    "title": "Total positivity, Grassmannians, and networks",
+    "author": [
+      {
+        "family": "Postnikov",
+        "given": "A."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "URL": "https://arxiv.org/abs/math/0609764"
+  },
+  {
+    "id": "Scott",
+    "type": "article",
+    "title": "Grassmannians and cluster algebras",
+    "author": [
+      {
+        "family": "Scott",
+        "given": "J."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the London Mathematical Society",
+    "container-title-short": "Proc. LMS",
+    "volume": "92",
+    "page": "345--380",
+    "DOI": "10.1112/S0024611506015747"
+  },
+  {
+    "id": "Viazovska",
+    "type": "article",
+    "title": "The sphere packing problem in dimension 8",
+    "author": [
+      {
+        "family": "Viazovska",
+        "given": "M."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "container-title": "Annals of Mathematics",
+    "volume": "185",
+    "page": "991--1015",
+    "DOI": "10.4007/annals.2017.185.3.7"
+  },
+  {
+    "id": "Wilson",
+    "type": "article",
+    "title": "Confinement of quarks",
+    "author": [
+      {
+        "family": "Wilson",
+        "given": "K. G."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1974
+        ]
+      ]
+    },
+    "container-title": "Physical Review D",
+    "volume": "10",
+    "page": "2445",
+    "DOI": "10.1103/PhysRevD.10.2445"
   }
 ]

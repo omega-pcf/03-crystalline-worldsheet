@@ -1,20 +1,99 @@
 \section{Conclusions}\label{sec:conclusions}
-The framework establishes two results and joins them into one. First
-(\S\ref{sec:methods}--\S\ref{sec:derivations}), a single microstate --- the modulus
-$|\Om|=\tfrac12$ --- suffices to derive the AdS/CFT correspondence and, through the
-$\golden^{\sigma}$ tower, the M-theory type duality web, with no ensemble average: the correspondence
-follows from \emph{one} state, not a statistical family. Second (\S\ref{sec:implications}), this
-determinism does not dispense with the observer but recasts its role.
+We have set out how a theory of self-reference and classification under equivalence---one that
+arose from analysing the intersection of the proposals for approaching the Riemann hypothesis,
+AdS/CFT, and string theory---can carry holography into de~Sitter space: a framework built on
+$\F_1$ that joins string theory to holography without depending on a statistical microstate,
+that is, without a choice of vacuum.
 
-The observer --- the projection $\Pi$ already present in that derivation --- is a genuine
-participant, yet not as a \emph{selector} of the vacuum: the microstate is the unique
-self-consistent solution, so there is no landscape to choose from. It participates, instead,
-through the information that its own act of observing accumulates. That quantum Fisher information
-(in Kiely's metrological sense~\cite{Kiely26}) is what builds the geometry --- conjugate to the
-tower entropy, bounded by the ultraviolet cuts of \S\ref{sec:derivations}, and, through the
-Landauer cost of each bit and the Jacobson--Verlinde passage from entropy to curvature, the source
-of the Einstein equations. The observer does not choose the world; it constructs it \emph{without
-alternative} --- participatory yet forced. The objectivity threshold $f_{\mathrm{crit}}=\tfrac12$
-is reached, and it is the modulus of the microstate: the framework is thereby consonant with Kiely's
-quantum Darwinism and, at the same time, with non-local realism.
+We have demonstrated how a self-referential observer can transcend the paradox by translation
+between domains: not only physically, through dimensional emergence, but mathematically,
+through the several counterparts each domain demands for a translation to be consistent---what
+a duality requires in order to be a duality. The observer---the projection $\Pi$ already
+present in the derivation---is a genuine participant, yet not as a \emph{selector} of the
+vacuum: the microstate is the unique self-consistent solution, so there is no landscape to
+choose from; and the same datum is read four ways---amplitude, fluid, degrees of freedom,
+state---because the projector depends on the point and not on the frame
+(Theorem~\ref{thm:faces}).
+
+It is here that the Hilbert--P\'olya route and the $\F_1$ program---which seeks to prove the
+Riemann hypothesis by transporting Weil's proof of the Riemann hypothesis for curves over
+finite fields, together with Weil's analogy between algebraic geometry, analysis and
+arithmetic, which that program inherits---became particularly valuable to the project;
+particularly so through Manin's earlier developments on Borger's $\Lambda$-rings and the
+quantum tori~\cite{manin04}---the noncommutative tori of Connes--Douglas--Schwarz that arise as
+compactifications of M-theory.
+
+One could call the result a \emph{correction} to string theory in the mathematical sense---a
+refinement of the apparatus, not new physics: it substitutes the Fourier device of the string
+by the geometric encoding between the additive and the multiplicative spectrum, without
+contradicting it. The mathematical layer of that correction is demonstrated in Lean, a tool
+indispensable for a multi-domain project of this kind; the same correction has a physical
+counterpart which is not demonstrated but is verified with code, in correspondence with what
+is proved---the tier discipline \tier{P}/\tier{L}/\tier{N}/\tier{C} of the abstract.
+
+Concretely, we have developed four things, each resting on the one before. First
+(\S\ref{sec:methods}), the geometric $\F_1$ descent and the towers of powers: the mathematics,
+developed out of the interaction of $\golden$, $\pi$, the Euler product and the primes. The
+modulus $\tfrac12$ is not posited: eight independent routes converge on it, and two on
+$\sigma=\tfrac32$. The arithmetic of $K=\Q(\sqrt5)$, its discriminant, its ring of integers
+and its regulator $R_K=\log\golden$, is derived here, as is the character $\chi_5$, read off
+the pentagon itself and turned into an \emph{effective} classification of the primes by the
+Fibonacci criterion. The framework's spectral partition is then the completed zeta as a
+product over \emph{all} places, which yields the functional equation, whose fixed point is the
+same $\tfrac12$. The consequence that matters physically is \eqref{eq:entropy-bridge}: through
+$\SBH/k_B=\lng R_K=\log2$, one bit per Planck area \emph{is} the regulator of $\Q(\sqrt5)$,
+measured in the logarithmic index. This quantity refers to itself: the field is measured by
+its own fundamental unit, and $\tfrac12$ is a fixed point of the involution the functional
+equation carries. By Proposition~\ref{prop:entropy-max} it is also the most information a
+single site can pack. Self-reference, maximal packing and an invariant of a number field are
+here one quantity.
+
+Second (\S\ref{sec:derivations}), its counterpart in strings and holography. A single
+microstate---the modulus $|\Om|=\tfrac12$---suffices to derive the AdS/CFT correspondence and,
+through the $\golden^{\sigma}$ tower, the M-theory type duality web, with no ensemble average:
+the correspondence follows from \emph{one} state, not a statistical family. The Regge tower is
+the Euler product of \S\ref{ssec:zeta}, index set and all.
+
+Third (\S\ref{sec:implications}), the connection with de~Sitter space according to the von
+Neumann-algebra criterion. We take as our reference the criterion of Chandrasekaran, Longo,
+Penington and Witten~\cite{CLPW22}: the passage from a type~III algebra to a type~II one by
+crossed product, which is what puts the observer inside the description. This determinism does
+not dispense with the observer but recasts its role: it participates through the information
+that its own act of observing accumulates. That quantum Fisher information (in Kiely's
+metrological sense~\cite{Kiely26}) builds the geometry. It is conjugate to the tower entropy,
+bounded by the ultraviolet cuts of \S\ref{sec:derivations}, and, through the Landauer cost of
+each bit and the Jacobson--Verlinde passage from entropy to curvature, the source of the
+Einstein equations.
+
+Fourth (\S\ref{sec:dof}), the connection with operators and dynamics. The transfer operator
+$T=e^{-aH}$ and the antiunitary $\Theta$ reconstruct the Osterwalder--Schrader data from the
+tower alone, with a mass gap that survives the continuum limit; reflection positivity holds in
+both its forms, and the identification $\langle\Theta F,F\rangle=\langle f,Tf\rangle$ is
+proved: the two half-separations compose because the Euclidean separation is the KMS period of
+the static patch. On that footing we propose the base operator that low-dimensional holography
+lacks: the tower Hamiltonian $H\lvert\sigma\rangle=m_0\golden^{\sigma}\lvert\sigma\rangle$ on
+a single point of the positive Grassmannian.
+
+What the four developments yield is concrete. The eigenvalue triangle gives $\su(3)$, and with
+it the gauge group $SU(3)\times SU(2)\times U(1)$ and the Weinberg angle
+$\sin^2\theta_W=\tfrac38$ at unification; the ladder closes on $E_8$ with $248=240+8$; the
+$\beta$-coefficients come out $(b_1,b_2,b_3)=(\tfrac{33}5,1,-3)$ with the anomaly sum
+vanishing; the angular $\omega$-triple fixes three generations (the charged-lepton masses
+reconstructed to $\sim10^{-4}$; the quark spectrum and its CKM mixing remain open); the
+strong-coupling gap is $\Delta=\tfrac23g^{2}>0$ and the physical gap is the transmuted scale
+$\Lambda_{\mathrm{QCD}}$, independent of the cutoff (Corollary~\ref{cor:survive}); the central charge is the
+$c=3$ of Brown--Henneaux; and the throat carries $\Lambda_5=-6$. None of these is fitted: each
+is read off the same modulus, at the level where it appears.
+
+Everything above is established here at its stated tier. The development declares no axiom:
+each classical input enters as a hypothesis argument in the type of the theorem that consumes
+it, where the reader can see it, and the companion papers are cited for co-attribution and for
+scope, for nothing a derivation above consumes. The article is presented together with a
+companion \emph{artifact} of dependencies: an alignment ledger recording, entry by entry, the
+correspondences between equations, propositions, Lean proofs and numerical checks, with a
+reproducible tool that rebuilds and re-checks it from the sources (\S\ref{ssec:status}). The
+objectivity threshold $f_{\mathrm{crit}}=\tfrac12$ is reached, and it is the modulus of the
+microstate: the framework is thereby consonant with Kiely's quantum Darwinism and, at the same
+time, with non-local realism. The observer does not choose the world; it constructs it
+\emph{without alternative}---participatory yet forced.
 

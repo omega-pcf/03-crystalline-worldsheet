@@ -1,0 +1,11 @@
+
+  nodos (objetos tipo-teorema): 158
+  aristas objeto->objeto:       217
+  ecuaciones con dueño:         96
+  por tipo: {'definition': 12, 'lemma': 4, 'theorem': 33, 'proposition': 71, 'corollary': 5, 'remark': 32, 'assumption': 1}
+  aislados: 14   citas hacia adelante: 19   hacia atrás: 198
+
+  El contraste que motiva esta herramienta: 96 ecuaciones se
+  reparten en 158 objetos. Medir conexiones sobre las ecuaciones
+  cuenta como 'conectadas' las que solo comparten contenedor.
+

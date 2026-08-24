@@ -4,7 +4,7 @@ title: "The Crystalline Worldsheet: A String Theoretical framework based on φ
   and π for the de Sitter observer problem"
 type: software
 version: 0.4.3
-date-released: 2026-07-31
+date-released: 2026-08-24
 authors:
   - family-names: González García
     given-names: Jorge Armando
@@ -266,6 +266,8 @@ references:
     date-published: 1969-01-01
     year: 1969
     journal: Lecture Notes in Mathematics
+    publisher:
+      name: North-Holland
     start: "134"
     type: article
     volume: "92"
@@ -583,8 +585,7 @@ references:
     volume: "93"
   - authors:
       - name: O. Jedrkiewicz et al.
-    title: Coherent four-mode parametric generation in a hexagonally poled nonlinear
-      crystal
+    title: Golden Ratio Gain Enhancement in Coherently Coupled Parametric Processes
     date-published: 2018-01-01
     year: 2018
     journal: Scientific Reports
@@ -596,7 +597,6 @@ references:
     date-published: 2024-01-01
     year: 2024
     journal: Axioms
-    start: "720"
     type: article
     volume: "13"
   - authors:
@@ -645,7 +645,8 @@ references:
         value: 10.5281/zenodo.17619486
       - type: url
         value: https://doi.org/10.5281/zenodo.17619486
-    title: The Hilbert–Pólya Operator and the Primitive Structure of the Complex Plane
+    title: "The Hilbert-Pólya Operator and the Primitive Structure of the Complex
+      Plane: Between 𝔽₁, String Theory, and Ancient Geometry"
     url: https://doi.org/10.5281/zenodo.17619486
     date-published: 2026-01-01
     year: 2026
@@ -951,8 +952,8 @@ references:
       - type: doi
         value: 10.14195/1984-249X_28_4
     title: Arquitetura vitruviana e retórica antiga
-    date-published: 2019-01-01
-    year: 2019
+    date-published: 2020-01-01
+    year: 2020
     journal: Archai
     type: article
     volume: "28"
@@ -1140,4 +1141,434 @@ references:
     journal: Physical Review Letters
     type: article
     volume: "99"
+  - authors:
+      - family-names: Klebanov
+        given-names: I. R.
+      - family-names: Tseytlin
+        given-names: A. A.
+    doi: 10.1016/S0550-3213(00)00206-6
+    identifiers:
+      - type: doi
+        value: 10.1016/S0550-3213(00)00206-6
+    title: Gravity duals of supersymmetric $SU(N)\times SU(N+M)$ gauge theories
+    date-published: 2000-01-01
+    year: 2000
+    journal: Nuclear Physics B
+    start: "123"
+    type: article
+    volume: "578"
+  - authors:
+      - family-names: Grisales Herrera
+        given-names: J.
+    title: Golden Prime Symmetry
+    date-published: 2023-01-01
+    year: 2023
+    thesis-type: B.Sc. thesis
+    institution:
+      name: Universidad del Tolima
+      city: Ibagué
+    type: thesis
+  - authors:
+      - family-names: Farish
+        given-names: W.
+    title: On isometrical perspective
+    date-published: 1822-01-01
+    year: 1822
+    journal: Transactions of the Cambridge Philosophical Society
+    start: "1"
+    type: article
+    volume: "1"
+  - authors:
+      - family-names: Borger
+        given-names: J.
+    doi: 10.1016/j.jalgebra.2009.05.008
+    identifiers:
+      - type: doi
+        value: 10.1016/j.jalgebra.2009.05.008
+      - type: url
+        value: https://arxiv.org/abs/0906.3146
+    title: Lambda-rings and the field with one element
+    url: https://arxiv.org/abs/0906.3146
+    date-published: 2009-01-01
+    year: 2009
+    type: article
+  - authors:
+      - family-names: Dirichlet
+        given-names: P. G. L.
+    title: Beweis des Satzes, dass jede unbegrenzte arithmetische Progression, deren
+      erstes Glied und Differenz ganzzahlig sind, unendlich viele Primzahlen
+      enthält
+    date-published: 1837-01-01
+    year: 1837
+    journal: Abhandlungen der Königlichen Preußischen Akademie der Wissenschaften
+    start: "33"
+    type: article
+  - authors:
+      - family-names: Riemann
+        given-names: B.
+    title: Ueber die Anzahl der Primzahlen unter einer gegebenen Größe
+    date-published: 1859-01-01
+    year: 1859
+    journal: Monatsberichte der Berliner Akademie
+    start: "671"
+    type: article
+  - authors:
+      - family-names: Jacobi
+        given-names: C. G. J.
+    title: Fundamenta nova theoriae functionum ellipticarum
+    date-published: 1829-01-01
+    year: 1829
+    publisher:
+      name: Bornträger
+    type: book
+  - authors:
+      - family-names: Tate
+        given-names: J. T.
+    title: Fourier analysis in number fields and Hecke's zeta-functions
+    date-published: 1950-01-01
+    year: 1950
+    thesis-type: Ph.D. thesis
+    institution:
+      name: Princeton University
+    type: thesis
+  - authors:
+      - family-names: Connes
+        given-names: A.
+      - family-names: Consani
+        given-names: C.
+    doi: 10.1016/j.crma.2014.07.009
+    identifiers:
+      - type: doi
+        value: 10.1016/j.crma.2014.07.009
+    title: The arithmetic site
+    date-published: 2014-01-01
+    year: 2014
+    journal: Comptes Rendus Mathematique
+    start: "965"
+    type: article
+    volume: "352"
+  - authors:
+      - family-names: López Peña
+        given-names: J.
+      - family-names: Lorscheid
+        given-names: O.
+    doi: 10.1007/s00209-009-0638-0
+    identifiers:
+      - type: doi
+        value: 10.1007/s00209-009-0638-0
+    title: Torified varieties and their geometries over $\F_1$
+    date-published: 2011-01-01
+    year: 2011
+    journal: Mathematische Zeitschrift
+    start: "605"
+    type: article
+    volume: "267"
+  - authors:
+      - family-names: Israel
+        given-names: W.
+    doi: 10.1007/BF02710419
+    identifiers:
+      - type: doi
+        value: 10.1007/BF02710419
+    title: Singular hypersurfaces and thin shells in general relativity
+    date-published: 1966-01-01
+    year: 1966
+    journal: Il Nuovo Cimento
+    start: "1"
+    type: article
+    volume: "44"
+  - authors:
+      - family-names: Frobenius
+        given-names: G.
+    title: Ueber lineare Substitutionen und bilineare Formen
+    date-published: 1878-01-01
+    year: 1878
+    journal: Journal für die reine und angewandte Mathematik
+    start: "1"
+    type: article
+    volume: "84"
+  - authors:
+      - family-names: Maturana
+        given-names: H. R.
+      - family-names: Varela
+        given-names: F. J.
+    title: "Autopoiesis and Cognition: The Realization of the Living"
+    date-published: 1980-01-01
+    year: 1980
+    publisher:
+      name: D. Reidel
+    type: book
+  - authors:
+      - family-names: Almheiri
+        given-names: A.
+      - family-names: Dong
+        given-names: X.
+      - family-names: Harlow
+        given-names: D.
+    doi: 10.1007/JHEP04(2015)163
+    identifiers:
+      - type: doi
+        value: 10.1007/JHEP04(2015)163
+    title: Bulk locality and quantum error correction in AdS/CFT
+    date-published: 2015-01-01
+    year: 2015
+    journal: Journal of High Energy Physics
+    start: "163"
+    type: article
+    volume: "04"
+  - authors:
+      - family-names: Arkani-Hamed
+        given-names: N.
+      - family-names: Trnka
+        given-names: J.
+    doi: 10.1007/JHEP10(2014)030
+    identifiers:
+      - type: doi
+        value: 10.1007/JHEP10(2014)030
+    title: The Amplituhedron
+    date-published: 2014-01-01
+    year: 2014
+    journal: Journal of High Energy Physics
+    start: "030"
+    type: article
+    volume: "10"
+  - authors:
+      - family-names: Arkani-Hamed
+        given-names: N.
+      - family-names: Bai
+        given-names: Y.
+      - family-names: He
+        given-names: S.
+      - family-names: Yan
+        given-names: G.
+    doi: 10.1007/JHEP05(2018)096
+    identifiers:
+      - type: doi
+        value: 10.1007/JHEP05(2018)096
+    title: Scattering forms and the positive geometry of kinematics, color and the
+      worldsheet
+    date-published: 2018-01-01
+    year: 2018
+    journal: Journal of High Energy Physics
+    start: "096"
+    type: article
+    volume: "05"
+  - authors:
+      - family-names: Arkani-Hamed
+        given-names: N.
+      - family-names: He
+        given-names: S.
+      - family-names: Lam
+        given-names: T.
+    doi: 10.1007/JHEP02(2021)069
+    identifiers:
+      - type: doi
+        value: 10.1007/JHEP02(2021)069
+    title: Stringy canonical forms
+    date-published: 2019-01-01
+    year: 2019
+    journal: Journal of High Energy Physics
+    start: "069"
+    type: article
+    volume: "02"
+  - authors:
+      - family-names: Bern
+        given-names: Z.
+      - family-names: Carrasco
+        given-names: J. J. M.
+      - family-names: Johansson
+        given-names: H.
+    doi: 10.1103/PhysRevLett.105.061602
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysRevLett.105.061602
+    title: Perturbative Quantum Gravity as a Double Copy of Gauge Theory
+    date-published: 2010-01-01
+    year: 2010
+    journal: Physical Review Letters
+    start: "061602"
+    type: article
+    volume: "105"
+  - authors:
+      - family-names: Bengtsson
+        given-names: I.
+      - family-names: Życzkowski
+        given-names: K.
+    title: "Geometry of Quantum States: An Introduction to Quantum Entanglement"
+    date-published: 2006-01-01
+    year: 2006
+    publisher:
+      name: Cambridge University Press
+    type: book
+  - authors:
+      - family-names: Bianconi
+        given-names: G.
+    doi: 10.1103/PhysRevD.111.066001
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysRevD.111.066001
+    title: Gravity from entropy
+    date-published: 2025-01-01
+    year: 2025
+    journal: Physical Review D
+    start: "066001"
+    type: article
+    volume: "111"
+  - authors:
+      - family-names: Conway
+        given-names: J. H.
+      - family-names: Sloane
+        given-names: N. J. A.
+    doi: 10.1007/978-1-4757-6568-7
+    identifiers:
+      - type: doi
+        value: 10.1007/978-1-4757-6568-7
+    title: Sphere Packings, Lattices and Groups
+    date-published: 1988-01-01
+    year: 1988
+    publisher:
+      name: Springer
+    type: book
+  - authors:
+      - family-names: Fomin
+        given-names: S.
+      - family-names: Zelevinsky
+        given-names: A.
+    doi: 10.1007/s00222-003-0302-y
+    identifiers:
+      - type: doi
+        value: 10.1007/s00222-003-0302-y
+    title: "Cluster algebras II: Finite type classification"
+    date-published: 2003-01-01
+    year: 2003
+    journal: Inventiones Mathematicae
+    start: "63"
+    type: article
+    volume: "154"
+  - authors:
+      - family-names: Arkani-Hamed
+        given-names: N.
+      - family-names: Trnka
+        given-names: J.
+    title: Grassmannian Geometry of Scattering Amplitudes
+    date-published: 2016-01-01
+    year: 2016
+    publisher:
+      name: Cambridge University Press
+    type: book
+  - authors:
+      - family-names: Kodama
+        given-names: Y.
+      - family-names: Williams
+        given-names: L.
+    doi: 10.1007/s00222-014-0506-3
+    identifiers:
+      - type: doi
+        value: 10.1007/s00222-014-0506-3
+    title: KP solitons and total positivity for the Grassmannian
+    date-published: 2014-01-01
+    year: 2014
+    journal: Inventiones Mathematicae
+    start: "637"
+    type: article
+    volume: "198"
+  - authors:
+      - family-names: Kogut
+        given-names: J.
+      - family-names: Susskind
+        given-names: L.
+    doi: 10.1103/PhysRevD.11.395
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysRevD.11.395
+    title: Hamiltonian formulation of Wilson's lattice gauge theories
+    date-published: 1975-01-01
+    year: 1975
+    journal: Physical Review D
+    start: "395"
+    type: article
+    volume: "11"
+  - authors:
+      - family-names: Martin
+        given-names: S. P.
+    doi: 10.1142/S0217751X09033232
+    identifiers:
+      - type: doi
+        value: 10.1142/S0217751X09033232
+      - type: url
+        value: https://arxiv.org/abs/hep-ph/9709356
+    title: A Supersymmetry Primer
+    url: https://arxiv.org/abs/hep-ph/9709356
+    date-published: 1997-01-01
+    year: 1997
+    type: article
+  - authors:
+      - family-names: Osterwalder
+        given-names: K.
+      - family-names: Schrader
+        given-names: R.
+    doi: 10.1007/BF01645738
+    identifiers:
+      - type: doi
+        value: 10.1007/BF01645738
+    title: Axioms for Euclidean Green's functions
+    date-published: 1973-01-01
+    year: 1973
+    journal: Communications in Mathematical Physics
+    start: "83"
+    type: article
+    volume: "31"
+  - authors:
+      - family-names: Postnikov
+        given-names: A.
+    identifiers:
+      - type: url
+        value: https://arxiv.org/abs/math/0609764
+    title: Total positivity, Grassmannians, and networks
+    url: https://arxiv.org/abs/math/0609764
+    date-published: 2006-01-01
+    year: 2006
+    type: article
+  - authors:
+      - family-names: Scott
+        given-names: J.
+    doi: 10.1112/S0024611506015747
+    identifiers:
+      - type: doi
+        value: 10.1112/S0024611506015747
+    title: Grassmannians and cluster algebras
+    date-published: 2006-01-01
+    year: 2006
+    journal: Proceedings of the London Mathematical Society
+    start: "345"
+    type: article
+    volume: "92"
+  - authors:
+      - family-names: Viazovska
+        given-names: M.
+    doi: 10.4007/annals.2017.185.3.7
+    identifiers:
+      - type: doi
+        value: 10.4007/annals.2017.185.3.7
+    title: The sphere packing problem in dimension 8
+    date-published: 2017-01-01
+    year: 2017
+    journal: Annals of Mathematics
+    start: "991"
+    type: article
+    volume: "185"
+  - authors:
+      - family-names: Wilson
+        given-names: K. G.
+    doi: 10.1103/PhysRevD.10.2445
+    identifiers:
+      - type: doi
+        value: 10.1103/PhysRevD.10.2445
+    title: Confinement of quarks
+    date-published: 1974-01-01
+    year: 1974
+    journal: Physical Review D
+    start: "2445"
+    type: article
+    volume: "10"
 doi: 10.5281/zenodo.21343602

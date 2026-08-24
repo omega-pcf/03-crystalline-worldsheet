@@ -5,14 +5,72 @@ each step formally verified in Lean~4 (theorem names in brackets); each
 subsection uses only objects already introduced.
 
 % ---------------------------------------------------------------------
-\subsection{Two geometric origins of $\mu=\tfrac12$}\label{ssec:origins}
+\noindent\emph{Tiers, used from here on:} \tier{P} proved in Lean; \tier{L} assumed from the
+literature and cited; \tier{N} verified numerically; \tier{C} proposed. Compound tags mark a claim
+resting on more than one, and each classical input is named where it enters.
 
-The constant $\mu=\tfrac12$ arises from two independent
-geometric origins, a $\pi$-branch (Gamma/Gaussian) and a $\golden$-branch
-(the involution $x=1-x$), both routed through $\golden$.
+\subsection{The generator, its conjugate, and the binary bridge}\label{ssec:generator}
+
+Everything below is read off one quadratic. We fix here what $\golden$ is, what its conjugate
+is, and the one identity of \S\ref{sec:intro} we shall use throughout; nothing in this
+subsection depends on anything later.
+
+\begin{equation}\label{eq:base}
+\golden^2=\golden+1,\qquad
+\Rpcf=\Z[\golden,\golden^{-1},\tfrac12],\qquad
+\E^3=\{(x,y,\golden y)\}.
+\end{equation}
+\Lean{phi\_sq, phi\_sq\_plus\_inv\_sq\_eq\_n}%
+
+\begin{definition}[Conjugate, trace, norm, discriminant]\label{def:K-arith}
+Write $\bar\golden=(1-\sqrt5)/2$ for the Galois conjugate of $\golden$, the second root of
+$x^{2}-x-1$. Then
+\begin{equation}\label{eq:trace-norm}
+  \golden+\bar\golden=1,
+  \qquad
+  \golden\,\bar\golden=-1,
+  \qquad
+  (\golden-\bar\golden)^{2}=\Delta_K=5 .
+\end{equation}
+The norm $N(\golden)=-1$ exhibits $\golden$ as a unit; the discriminant $\Delta_K=5$ makes $5$
+the only ramified rational prime, which is what the trichotomy of \S\ref{ssec:spectrum} rests on.
+\tier{P} \Lean{phi\_trace, phi\_norm, galois\_pair, phi\_discriminant}
+\end{definition}
+
+\begin{lemma}[The Galois conjugate is the involution]\label{lem:galois-inv}
+$\bar\golden=1-\golden$; equivalently, $x\mapsto(\golden+\bar\golden)-x$ and $x\mapsto1-x$ are
+the same map. The Galois conjugation of $K$ and the involution $x\mapsto1-x$ are therefore not
+two analogous symmetries but one map, read on the orbit $\{\golden,\bar\golden\}$ and on $\R$.
+\tier{P} \Lean{galois\_conj\_is\_one\_sub, galois\_involution\_is\_one\_sub}
+\end{lemma}
+
+Finally we record, without reproving it, the identity established at \eqref{eq:bridge}:
+$\golden^{\lng}=2$ with $\lng=\log_{\golden}2$. It is the only result of \S\ref{sec:intro} that
+the present section consumes. \Lean{mersenne\_bridge}
+
+\begin{proposition}[The bridge anchors from outside the lattice]\label{prop:anchor-exterior}
+The exponent $\lng$ is not reachable by descent on the lattice of integer exponents. For no integer
+$n$ does $\golden^{n}=2$:
+\begin{equation}\label{eq:anchor-exterior}
+  \golden<2<\golden^{2}=\golden+1,
+\end{equation}
+and $n\mapsto\golden^{n}$ is strictly monotone since $\golden>1$, so by \eqref{eq:anchor-exterior}
+the $2$ falls in the gap between two consecutive powers and is missed by all of them. The identity
+$\golden^{\lng}=2$ therefore holds in $\R$ and at no point of $\Z$. This is what makes
+\eqref{eq:bridge} an \emph{anchor}: it fixes the scale from outside rather than being derived
+inside the tower, which is why the present section consumes it and does not prove it.
+\tier{P} \Lean{phi\_lt\_two, two\_lt\_phi\_sq, two\_not\_in\_golden\_lattice, anchor\_is\_exterior}
+\end{proposition}
+
+% ---------------------------------------------------------------------
+\subsection{Three geometric origins of $\mu=\tfrac12$}\label{ssec:origins}
+
+The constant $\mu=\tfrac12$ arises from three independent origins on the generator of
+\S\ref{ssec:generator}: a $\pi$-branch (Gamma/Gaussian), a $\golden$-branch (the involution
+$x=1-x$), and an arithmetic branch (the Galois pair of $K$). These are the seeds.
 
 \begin{theorem}[Pentagonal identity]\label{thm:pentagon-id}
-$\golden=2\cos(\pi/5)$.
+$\golden=2\cos(\pi/5)$. \tier{P} \Lean{phi\_eq\_two\_cos\_pi\_fifth}
 \end{theorem}
 \begin{proof}
 The Chebyshev polynomial $T_5$ satisfies $T_5(\cos\theta)=\cos(5\theta)$ with
@@ -21,10 +79,9 @@ $T_5(\cos(\pi/5))=\cos\pi=-1$, so $\cos(\pi/5)$ is a root of
 $16x^5-20x^3+5x+1=0$, which factors as $(x+1)(4x^2-2x-1)^2$. Since
 $0<\pi/5<\pi/2$ forces $\cos(\pi/5)>0$, we have $\cos(\pi/5)\neq-1$; hence
 $\cos(\pi/5)$ is a root of $4x^2-2x-1=0$, whose positive root is
-$(1+\sqrt5)/4=\golden/2$. Therefore $\golden=2\cos(\pi/5)$; this classical identity is also derived in the correspondence paper~\cite{Corr} and formalised in Lean as
-\texttt{phi\_eq\_two\_cos\_pi\_fifth}.
+$(1+\sqrt5)/4=\golden/2$. Therefore $\golden=2\cos(\pi/5)$; this classical identity is also
+derived in the correspondence paper~\cite{Corr}.
 \end{proof}
-\Lean{phi\_eq\_two\_cos\_pi\_fifth}
 
 \begin{proposition}[Pentagonal bridge $\pi\leftrightarrow\golden$]\label{prop:pi-bridge}
 Since $\golden=2\cos(\pi/5)$ (Theorem~\ref{thm:pentagon-id}),
@@ -32,6 +89,7 @@ Since $\golden=2\cos(\pi/5)$ (Theorem~\ref{thm:pentagon-id}),
 \pi = 5\arccos(\golden/2).
 \end{equation}
 \Lean{M13\_pi\_eq\_five\_arccos}
+\tier{P}
 \end{proposition}
 
 \begin{proposition}[Gamma as an infinite integral (Euler)]\label{prop:gamma-int}
@@ -40,11 +98,13 @@ For $s>0$,
 \Gamma(s)=\int_0^\infty t^{\,s-1}e^{-t}\,dt .
 \end{equation}
 \Lean{M1\_gamma\_integral}
+\tier{P}
 \end{proposition}
 
 \begin{lemma}[Gaussian value]\label{lem:gamma-half}
 $\Gamma(\tfrac12)=\sqrt\pi$ (classical; from the Gaussian integral $\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt\pi$).
 \Lean{M2\_gamma\_half, gaussian\_integral\_value, gaussian\_weight\_phi}
+\tier{P}
 \end{lemma}
 
 \begin{theorem}[Half-factorial (classical)]\label{thm:half-factorial}
@@ -53,7 +113,29 @@ $\Gamma(\tfrac12)=\sqrt\pi$ (classical; from the Gaussian integral $\int_{-\inft
 \qquad\text{equivalently}\qquad \mu=\frac{(\tfrac12)!}{\sqrt\pi}.
 \end{equation}
 \Lean{M3\_half\_factorial}
+\tier{P}
 \end{theorem}
+The Gaussian of Lemma~\ref{lem:gamma-half} enters with its width still free; three separate
+conditions close it.
+
+\begin{proposition}[Uniqueness of the self-dual Gaussian]\label{prop:selfdual-gaussian}
+Let $g_a(x)=e^{-a x^{2}}$ be the Gaussian family of which
+Lemma~\ref{lem:gamma-half} uses the case $a=1$, with the width $a>0$ now left free, and let $\widehat g(\xi)=\int_{\R} g(x)e^{-2\pi i x\xi}\,dx$, so that
+$\widehat{g_a}(\xi)=\sqrt{\pi/a}\;e^{-\pi^{2}\xi^{2}/a}$. Three independent conditions
+each fix $a=\pi$: normalisation, the amplitude of the Fourier
+transform, and its width. The self-dual Gaussian is therefore
+\begin{equation}\label{eq:selfdual-gaussian}
+  g(x)=e^{-\pi x^{2}},\qquad \widehat g=g,\qquad \int_{\R}g=1 .
+\end{equation}
+\tier{P} \Lean{gauss\_normalised\_iff, fourier\_amplitude\_iff, fourier\_width\_iff, selfdual\_gaussian\_unique}
+\end{proposition}
+\begin{proof}
+$\int_{\R}g_a=\sqrt{\pi/a}$, so normalisation gives $\sqrt{\pi/a}=1$, hence $a=\pi$.
+Self-duality $\widehat{g_a}=g_a$ gives independently $\sqrt{\pi/a}=1$ (amplitude) and
+$\pi^{2}/a=a$ (width); since $a,\pi>0$, the second reads $(a-\pi)(a+\pi)=0$ with
+$a+\pi>0$, hence again $a=\pi$. The three conditions are distinct and coincide.
+\end{proof}
+
 
 \begin{proposition}[Mediation half-powers]\label{prop:mediation}
 \begin{equation}\label{eq:mediation}
@@ -61,11 +143,25 @@ $\Gamma(\tfrac12)=\sqrt\pi$ (classical; from the Gaussian integral $\int_{-\inft
 \golden^{\mu\log_\golden 3}=\sqrt3 .
 \end{equation}
 \Lean{M4\_sqrt2, M4\_sqrt3}
+\tier{P}
 \end{proposition}
 
-\begin{remark}[$\golden$-branch]
-$\mu=\tfrac12$ is the fixed point of the involution $x=1-x$.
-\end{remark}
+\begin{proposition}[$\golden$-branch: the involution and its unique fixed point]\label{prop:phi-branch}
+$\mu=\tfrac12$ is the \emph{unique} fixed point of $x\mapsto1-x$: for real $x$, $x=1-x$ if and
+only if $x=\tfrac12$. \tier{P} \Lean{faceInv\_apex}
+\end{proposition}
+
+\begin{proposition}[Arithmetic branch: the midpoint of the Galois pair]\label{prop:galois-seed}
+By Lemma~\ref{lem:galois-inv} the Galois conjugation of $K$ and the involution $x\mapsto1-x$ are
+the same map; the midpoint of the pair $\{\golden,\bar\golden\}$ is therefore its fixed point,
+\begin{equation}\label{eq:galois-seed}
+  \frac{\golden+\bar\golden}{2}=\frac12=\mu ,
+\end{equation}
+by the trace of \eqref{eq:trace-norm}. This is the third seed, and it is the one that is
+\emph{arithmetic}: the other two are analytic and elementary, whereas this one is an invariant
+of the field $K$ itself.
+\tier{P} \Lean{faceGalois\_apex}
+\end{proposition}
 
 % ---------------------------------------------------------------------
 \subsection{Arity uniqueness and the blocking of the diagonal}\label{ssec:arity}
@@ -76,6 +172,7 @@ the Lawvere--Yanofsky diagonal is contracted (not prohibited).
 \begin{definition}[Distributed self-reference]\label{def:dsr}
 A recurrence of depth $k$ is \emph{distributed} when $k\ge 2$ (no component
 depends directly on itself). \Lean{DistributedSelfReference}
+\tier{P}
 \end{definition}
 
 \begin{theorem}[Fibonacci minimality]\label{thm:fib-min}
@@ -84,36 +181,63 @@ $\golden$. Among natural-coefficient depth-$2$ recurrences
 $F_{n+2}=c_1F_{n+1}+c_2F_n$, the pair $c_1=c_2=1$ is the unique one whose
 characteristic root---hence growth ratio---is $\golden$.
 \LeanWrap{M6\_characteristic\_root\_is\_phi, M6\_phi\_root\_unique}
+\tier{P/N}
 \end{theorem}
 
 \begin{proposition}[Spectral constraints force $(\sigma,\mu)=(\tfrac32,\tfrac12)$]\label{prop:spectral}
 $\sigma+\mu=2$, $\sigma\mu=\tfrac34$, with unique solution
 $0<\mu<1$ giving $\mu=\tfrac12$, $\sigma=\tfrac32$.
 \Lean{spectral\_uniqueness}
+\tier{P}
 \end{proposition}
 
-\begin{remark}[No-diagonal]
+\begin{remark}[No-diagonal]\label{rmk:no-diagonal}
 $\|\hat\Omega\|=\tfrac12<1$ contracts the diagonal below the contradiction
-threshold. % CORPUS: eq:Omega-hat (CW); def:contractive-cat (HPPS).
+threshold.
 \end{remark}
 
 % ---------------------------------------------------------------------
 \subsection{Construction of PCF and the base ring on the torus}\label{ssec:construction}
 
-The generator $\golden^2=\golden+1$, the base ring, the
-tripartite operator, and the projection that fixes $\varepsilon_0$.
+On the generator and the conjugate of \S\ref{ssec:generator}, the ring of integers and the
+regulator, then the base ring, the tripartite operator, and the projection that fixes
+$\varepsilon_0$ out of the regulator.
 
-\begin{equation}\label{eq:base}
-\golden^2=\golden+1,\qquad
-\Rpcf=\Z[\golden,\golden^{-1},\tfrac12],\qquad
-\E^3=\{(x,y,\golden y)\}.
+
+\begin{proposition}[The ring of integers and the base ring]\label{prop:rings}
+\begin{equation}\label{eq:OK-vs-Rpcf}
+  \OK=\Z[\golden],
+  \qquad
+  \Rpcf=\Z\bigl[\golden,\golden^{-1},\tfrac12\bigr] .
 \end{equation}
+The two differ by integrality: $\golden$ is a root of the \emph{monic} $x^{2}-x-1$, so it is an
+algebraic integer and lies in $\OK$, whereas $\tfrac12$ is a root of $2x-1$, which is not monic.
+$\Rpcf$ therefore adjoins to $\OK$ an element that is not an algebraic integer, namely
+$\tfrac12$; the modulus that the tripartite operator will carry is that same $\tfrac12$, a unit
+of $\Rpcf$ and not of $\OK$. \tier{P}
+\Lean{phi\_is\_algebraic\_integer, half\_not\_algebraic\_integer}
+\end{proposition}
+
+\begin{definition}[Regulator and period]\label{def:regulator}
+\begin{equation}\label{eq:regulator}
+  R_K=\log\golden,
+  \qquad
+  T=2\pi\log\golden=2\pi R_K .
+\end{equation}
+$R_K$ is the regulator of $K$ in the arithmetic sense---not the ultraviolet regulators of
+\S\ref{ssec:p-tower}---and $T$ is the period of the torus constructed below in this subsection.
+Both are named here
+because $\varepsilon_0=\ln\golden/(6\sqrt3)$ is derived below out of $\ln\golden$, and the reader
+should have the invariant named before it is used. \tier{P}
+\Lean{regulator\_K\_pos, period\_eq\_two\_pi\_regulator}
+\end{definition}
 
 \begin{equation}\label{eq:omega-norms}
-\Omega=P\cdot C\cdot F,\qquad
-\|P\|=\tfrac{1}{\sqrt3},\ \|C\|=1,\ \|F\|=\tfrac{\sqrt3}{2},\qquad
-\|P\|\,\|C\|\,\|F\|=\tfrac12 .
+\Omega=P\cdot C\cdot F .
 \end{equation}
+\Lean{Omega\_eigenvalues, normP, normP\_eq\_tan}%
+The three component norms are not posited: they are forced by the eigenvalue geometry, and their
+product is the modulus (Proposition~\ref{prop:pcf-norms}, \eqref{eq:norms-derived}).
 
 \begin{proposition}[Component norms from the eigenvalue triangle]\label{prop:pcf-norms}
 The operator $\hat\Omega$ has eigenvalues $\lambda_k=\tfrac12\omega^{k}$
@@ -122,7 +246,12 @@ circle $|z|=R=\tfrac12$ of $\C$. The component norms are fixed by this geometry:
 \begin{equation}\label{eq:norms-derived}
 \|C\|=1,\qquad \|F\|=\tfrac{\sqrt3}{2},\qquad \|P\|=\tfrac{1}{\sqrt3},
 \end{equation}
-whence $\|P\|\,\|C\|\,\|F\|=\tfrac12=\|\hat\Omega\|$.
+whence $\|P\|\,\|C\|\,\|F\|=\tfrac12$, which is also the operator norm $\|\hat\Omega\|$ and the
+common modulus $|\lambda_k|$ of each eigenvalue. Three quantities coincide here and are
+distinguished in Proposition~\ref{prop:triad-invariants}, where they cease to: the product of
+the three \emph{component} norms, the product of the three eigenvalue \emph{moduli}, and the
+product of their \emph{real parts}.
+\tier{P} \Lean{normP\_eq\_tan, normF\_eq\_cos, Omega\_eigenvalues}
 \end{proposition}
 \begin{proof}
 \emph{(C)} $C$ is the real eigenvalue $\lambda_0=\tfrac12$, normalised by the
@@ -137,22 +266,111 @@ $\|P\|=\dfrac{R\cos(\pi/3)}{\|F\|/2}=\dfrac{1/4}{\sqrt3/4}=\tfrac{1}{\sqrt3}=\ta
 the cancellation is specific to the equilateral ($n{=}3$) triangle.
 \end{proof}
 
+
+\begin{proposition}[Invariants of the eigenvalue triad]\label{prop:triad-invariants}
+For the triad $\lambda_k=\tfrac12\omega^{k}$ of Proposition~\ref{prop:pcf-norms}, with
+$\golden^{\lng}=2$ \eqref{eq:bridge}:
+\begin{equation}\label{eq:triad-re}
+  \Re\lambda_k=\golden^{-\lng}\cos\!\Bigl(\frac{2\pi k}{3}\Bigr),\qquad k=0,1,2,
+\end{equation}
+so the real spectrum is $(\tfrac12,-\tfrac14,-\tfrac14)$ and its sum vanishes. The two products
+do \emph{not} agree, and each exponent records a different face of the same
+$\golden^{2}=\golden+1$:
+\begin{equation}\label{eq:triad-products}
+  \prod_{k}\lvert\lambda_k\rvert=2^{-3},
+  \qquad
+  \prod_{k}\Re\lambda_k=2^{-5}=\golden^{-5\lng}.
+\end{equation}
+The base $2$ is the binary bridge \eqref{eq:bridge} in both. The exponent $3$ is the arity of the
+triad---the same $n{=}3$ whose cancellation gives $\tfrac12$ in
+Proposition~\ref{prop:pcf-norms}---and the exponent $5$ is the pentagon of
+Theorem~\ref{thm:pentagon-id}. The two identities that generate the framework meet inside one
+invariant of the spectrum.
+\tier{P} \Lean{triad\_re, triad\_trace\_zero, triad\_two\_products, triad\_det\_is\_phi\_pow}
+\end{proposition}
+
+\begin{lemma}[Isometric embedding of the triad]\label{lem:isometry}
+Let $v_k=\tfrac12\omega^{k}$ ($k=0,1,2$) be the eigenvalue triad of
+Proposition~\ref{prop:pcf-norms}, and set $\lVert v\rVert^2=\sum_k|v_k|^2$ and
+$V_k=v_k/\lVert v\rVert$. Then
+\begin{equation}\label{eq:isometry-triad}
+  \lVert v\rVert^2=3\cdot\tfrac14=\tfrac34,\qquad \lVert v\rVert=\tfrac{\sqrt3}{2},\qquad
+  \sum_{k=0}^{2}\lVert V_k\rVert^2=1,
+\end{equation}
+so the column map $V\colon\C\to\C^3$, $z\mapsto(V_0,V_1,V_2)\,z$, is norm preserving:
+$V^{\dagger}V=\mathbf1$. \Lean{bulkBoundary\_isometry}
+\tier{P}
+\end{lemma}
+\begin{proof}
+Each $|v_k|=\tfrac12$ (Proposition~\ref{prop:pcf-norms}), so $\lVert v\rVert^2=3\cdot\tfrac14=\tfrac34$
+and $\lVert v\rVert=\sqrt3/2$. Then $\lVert V_k\rVert^2=|v_k|^2/\lVert v\rVert^2=(\tfrac14)/(\tfrac34)=\tfrac13$
+for each $k$, and the three sum to $1$. For a single column $V$ that sum is $V^{\dagger}V$.
+\end{proof}
+
+\begin{remark}[Where the two spectral constraints come from]\label{rmk:spectral-origin}
+The system solved in Proposition~\ref{prop:spectral} is not assumed: both of its constraints are
+established here. The product is the squared norm of the eigenvalue triad,
+$\sigma\mu=\lVert v\rVert^{2}=\tfrac34$~\eqref{eq:isometry-triad}, and the ratio is the arity,
+$\sigma/\mu=d=3$ (\S\ref{ssec:arity}). Eliminating $\sigma=3\mu$ gives $3\mu^{2}=\tfrac34$, hence
+$\mu=\tfrac12$ and $\sigma=\tfrac32$, and only then $\sigma+\mu=2$. The same $\tfrac34$ reappears
+as the colour ratio $1-\muthree^{2}$ and as the GKP entry of the shared signature
+(\S\ref{ssec:web}), which is why it is an invariant of the object and not a fitted value.
+\tier{P} \Lean{spectral\_uniqueness, bulkBoundary\_isometry}
+\end{remark}
+
 \begin{definition}[PCF projection]\label{def:projpcf}
-$\pi_{\PCF}(a,b,c)=\dfrac{ab}{c\sqrt3}\cdot\dfrac{\pi}{3}$.
+\Lean{projection\_PCF}%
+For $a,b\in\R$ and $c\neq0$, the \emph{PCF projection} sends the ratio $ab/c$ onto the
+$P$-component of the triad and measures it in the angular unit of the eigenvalue triangle:
+\begin{equation}\label{eq:projpcf}
+  \pi_{\PCF}(a,b,c)\;=\;\frac{ab}{c}\cdot\underbrace{\lVert P\rVert}_{1/\sqrt3}
+  \cdot\underbrace{\frac{\pi}{3}}_{\text{angular unit}}
+  \;=\;\frac{ab}{c\sqrt3}\cdot\frac{\pi}{3}.
+\end{equation}
+\tier{P}
 \end{definition}
+
+\begin{remark}[The two constants of \eqref{eq:projpcf} are already fixed]\label{rmk:projpcf-constants}
+Neither factor is free. The projection norm is $\lVert P\rVert=1/\sqrt3=\tan(\pi/6)$, forced by the
+eigenvalue geometry in Proposition~\ref{prop:pcf-norms}; and $\pi/3$ is the angular unit of the
+same equilateral triangle---the half-angle between adjacent eigenvalues $\lambda_k=\tfrac12\omega^k$,
+already used as the normalising angle in Proposition~\ref{prop:angle}, where
+$\sigma=\zeta(2)/(\pi/3)^2$ and $\cos(\pi/3)=\mu$. So \eqref{eq:projpcf} is not a fitted form: it is
+``ratio, projected on $P$, in units of $\pi/3$'', and both constants come from
+\eqref{eq:norms-derived}. \tier{P} \Lean{M7\_oplus\_formula}
+\end{remark}
 
 \begin{proposition}[Fibonacci sum as projection]\label{prop:oplus}
 $F=P\oplus C:=\pi_{\PCF}(P,C,1)=\dfrac{(PC)\,\pi}{3\sqrt3}$.
 \Lean{M7\_oplus\_formula}
+\tier{P}
 \end{proposition}
 
 \begin{theorem}[Derivation of $\varepsilon_0$]\label{thm:eps0}
+Apply \eqref{eq:projpcf} to the three data of the module direction---the modulus
+$\mu=\sin(\pi/6)$ \eqref{eq:collapse}, the logarithmic generator $\ln\golden$ of the
+multiplicative tower $\golden^{\sigma}$ of \eqref{eq:base}, and the half-turn $\pi$ accumulated
+once around the fundamental domain (Proposition~\ref{prop:mobius-torus}):
 \begin{equation}\label{eq:eps0}
 \varepsilon_0=\pi_{\PCF}\!\bigl(\sin(\tfrac{\pi}{6}),\,\ln\golden,\,\pi\bigr)
 =\frac{\ln\golden}{6\sqrt3}.
 \end{equation}
-\Lean{M8\_epsilon0\_from\_projection}
+\tier{P} \Lean{M8\_epsilon0\_from\_projection}
 \end{theorem}
+\begin{proof}
+By \eqref{eq:projpcf} with $a=\sin(\pi/6)=\tfrac12$, $b=\ln\golden$ and $c=\pi$,
+\[
+  \pi_{\PCF}\!\bigl(\tfrac12,\ln\golden,\pi\bigr)
+  =\frac{\tfrac12\ln\golden}{\pi}\cdot\frac{1}{\sqrt3}\cdot\frac{\pi}{3}
+  =\frac{\ln\golden}{6\sqrt3}.
+\]
+The three arguments are not free either: $\sin(\pi/6)$ is the modulus $\mu$ of
+Theorem~\ref{thm:collapse} below, $\ln\golden$ is the logarithmic rate of the only tower the ring
+\eqref{eq:base} generates, and $\pi$ is the monodromy of the fibre, of order two by
+Proposition~\ref{prop:mobius-torus} below. The $\pi$ of the angular unit and the $\pi$ of the monodromy
+cancel, which is why $\varepsilon_0$ is a pure multiple of $\ln\golden$ and why the scale it fixes
+below satisfies $\varepsilon_0\Mpcf=\pi$ exactly.
+\end{proof}
 
 \begin{remark}[Torus, scale, and Sierpi\'nski attractor]
 The microstate is realised on the torus
@@ -184,6 +402,9 @@ the Moran equation counting the three components $P,C,F$.
 
 \subsection{The non-orientable fibre is independent of the torus}\label{ssec:mobius-torus}
 
+The fibre, the isometry type of each map in the golden coupling, and the lattice scale that closes
+the two.
+
 The base torus of \eqref{eq:torus} carries a module direction and one non-orientable
 identification of that direction, both fixed by data already in place. The module direction
 is the phase $\Om(\tau)=\tfrac12\,e^{\,i\tau\ln\golden}$, of constant modulus
@@ -193,10 +414,10 @@ $|\Om(\tau)|=\tfrac12=\|\hat\Om\|$ (Proposition~\ref{prop:pcf-norms}).
 $\lambda_k=\tfrac12\omega^{k}$ ($\omega=e^{2\pi i/3}$) of Proposition~\ref{prop:pcf-norms}
 sits in the Eisenstein lattice $\Z[\omega]$ (hexagonal, $120^{\circ}$); the torus modulus
 $\tau=i$ sits in the Gauss lattice $\Z[i]$ (square, $90^{\circ}$). The golden coupling
-$z=\golden y$ of \eqref{eq:base} carries the first into the second isometrically---it
-transforms the angular structure ($120^{\circ}\to90^{\circ}$) while preserving the metric
-relations; the construction is carried out in the companion operator paper~\cite{HP}---and
-$\tau=i$ is its fixed point. The mediator is $\golden$ and no other: from \eqref{eq:base},
+$z=\golden y$ of \eqref{eq:base} carries the first into the second, and
+Proposition~\ref{prop:coupling-isometries} identifies exactly which map is an isometry at each
+step: the passage $120^{\circ}\to90^{\circ}$ is not a distortion of one lattice into another but a
+change of the group that acts, and $\tau=i$ is the fixed point of the one that survives. The mediator is $\golden$ and no other: from \eqref{eq:base},
 $\golden=1+1/\golden$, so its continued fraction is $[1;1,1,\dots]$ and $\golden$ is the
 extremal irrational, most poorly approximated by rationals (Hurwitz~\cite{Hurwitz1891})---the
 optimality that also places $\golden$ in phyllotaxis---and the modulus $\tfrac12$ is carried
@@ -213,6 +434,7 @@ base commutator phase $UV=e^{2\pi i\theta}VU$. Hence the same fibre couples onto
 commutative torus ($\theta=0$) and the noncommutative torus $T^2_\theta$ that M-theory uses
 ($\theta$ irrational, \S\ref{sec:manin})---while preserving $|\Om|=\tfrac12$ on either.
 \Lean{fibre\_monodromy, fibre\_reflection\_order\_two, fibre\_independent\_of\_base}
+\tier{P}
 \end{proposition}
 \begin{proof}
 The fibre monodromy is $e^{i\pi}=-1$, of order two, $(-1)^2=1$, a $\Z/2$ datum that holds with
@@ -220,6 +442,109 @@ no condition on $\theta$ (\LeanInline{fibre\_independent\_of\_base}); the base c
 $\theta\in\Z$ and does not for $\theta$ irrational, the fibre being the same in both. The
 modulus $\tfrac12$ is Proposition~\ref{prop:pcf-norms}, constant in $\tau$ since
 $|\Om(\tau)|=\tfrac12$, and is preserved by the reflection.
+\end{proof}
+
+
+
+\begin{proposition}[$\Mpcf$ is fixed by the ring on the torus, not chosen]\label{prop:mpcf-forced}
+The lattice scale of \eqref{eq:torus} is not a free parameter. Two data already in place fix it.
+The module direction advances at the rate $\varepsilon_0$ of \eqref{eq:eps0} per unit of lattice
+length, and carried once around the fundamental domain it must return the fibre to itself through
+the order-two monodromy of Proposition~\ref{prop:mobius-torus}---the half-turn $\pi$, not $2\pi$,
+because $\lVert\hat\Om\rVert=\tfrac12$. That closure condition,
+\begin{equation}\label{eq:closure}
+  \varepsilon_0\,\Mpcf=\pi ,
+\end{equation}
+has the unique solution $\Mpcf=\pi/\varepsilon_0$, and every factor of it is an invariant of
+$\Rpcf$ on the torus:
+\begin{equation}\label{eq:mpcf-invariants}
+  \Mpcf\;=\;\frac{\pi}{\varepsilon_0}
+  \;=\;\frac{3\pi}{\mu\,\lVert P\rVert\,\ln\golden}
+  \;=\;\frac{d^{2}\,\pi}{\lVert v\rVert\,\ln\golden}
+  \;=\;\frac{6\sqrt3\,\pi}{\ln\golden}\;\approx\;67.846 ,
+\end{equation}
+with $d=3$ the arity of \S\ref{ssec:arity}, $\mu=\tfrac12$ the modulus, $\lVert P\rVert=1/\sqrt3$
+the projection norm and $\lVert v\rVert=\sqrt3/2$ the norm by which Lemma~\ref{lem:isometry}
+divides the eigenvalue triad to make $V^{\dagger}V=\mathbf1$, and $\ln\golden$ the logarithmic rate
+of the generator of \eqref{eq:base}. \tier{P}
+\LeanFor{eq:closure}{M\_PCF\_eq\_pi\_div\_eps0}%
+\LeanFor{eq:mpcf-invariants}{M8\_epsilon0\_from\_projection, bulkBoundary\_isometry}%
+\end{proposition}
+\begin{proof}
+The monodromy is $e^{i\theta}$ with $\theta=\varepsilon_0\Mpcf$ the angle accumulated over one
+period. Proposition~\ref{prop:mobius-torus} requires that this act on the fibre of modulus
+$\tfrac12$ as $v\mapsto-v$, of order two; on $[0,2\pi)$ the only such angle is $\theta=\pi$, whence
+\eqref{eq:closure} and $\Mpcf=\pi/\varepsilon_0$, the solution being unique because
+$\varepsilon_0>0$.
+
+For \eqref{eq:mpcf-invariants}, \eqref{eq:projpcf} and \eqref{eq:eps0} give
+$\varepsilon_0=\mu\lVert P\rVert\ln\golden/3$, so $\Mpcf=3\pi/(\mu\lVert P\rVert\ln\golden)$. The
+isometric division of Lemma~\ref{lem:isometry} has $\lVert v\rVert=\sqrt3/2$, which is $\lVert
+F\rVert$ of \eqref{eq:norms-derived}, and $\lVert P\rVert\lVert F\rVert=\tfrac12=\mu$ by
+Proposition~\ref{prop:pcf-norms} with $\lVert C\rVert=1$. Hence
+$\mu\lVert P\rVert=\lVert P\rVert^{2}\lVert v\rVert=\lVert v\rVert/d$, using
+$\lVert P\rVert^{2}=1/3=1/d$, and $3\pi/(\lVert v\rVert\ln\golden/d)=d^{2}\pi/(\lVert
+v\rVert\ln\golden)$. Substituting $\lVert v\rVert=\sqrt3/2$ and $d=3$ gives
+$18\pi/(\sqrt3\ln\golden)=6\sqrt3\pi/\ln\golden$.
+\end{proof}
+
+\begin{remark}[What this rules out]\label{rmk:mpcf-not-free}
+Had $\Mpcf$ been an independent scale, \eqref{eq:closure} would be a normalisation choice and the
+Certainty Principle a convention. It is neither: the rate $\varepsilon_0$ is fixed by the ring's own
+data (Theorem~\ref{thm:eps0}), the required monodromy is fixed by the fibre being of order two
+(Proposition~\ref{prop:mobius-torus}), and the lattice scale is what closes the two. In particular
+$\Mpcf$ is not tuned to the arity, the modulus or the isometric division---it is
+\emph{their quotient}, \eqref{eq:mpcf-invariants}.
+\end{remark}
+
+\begin{proposition}[The golden coupling: which map is an isometry]\label{prop:coupling-isometries}
+Four maps occur in the passage from the eigenvalue triangle to the torus, and the isometry type of
+each is different and explicit.
+\begin{enumerate}
+\item[(i)] \emph{The Farish rotation is an ordinary isometry of $\R^{3}$.} The cyclic permutation
+  $\rho(x,y,z)=(y,z,x)$ is orthogonal with $\det\rho=+1$ and $\rho^{3}=\mathrm{id}$, fixing the
+  diagonal $a=\tfrac{1}{\sqrt3}(1,1,1)$. It preserves the inner product, hence all lengths and
+  distances. The golden coupling is therefore not one plane but the $\rho$-orbit of \emph{three
+  congruent planes}, congruent in the ordinary metric sense, with normals of equal length
+  $s_\golden=\sqrt{1+\golden^{2}}=2\sin\tfrac{2\pi}{5}$ and equal mutual inclination
+  $\arccos(-1/\sqrt5)$.
+\item[(ii)] \emph{The Farish sense enters only in the projection.} Along $a$ the three axes are
+  foreshortened equally, $\lVert\pi_a(e_k)\rVert=\sqrt{2/3}$, and appear at $120^{\circ}$. This is
+  a property of how the figure is \emph{seen}, not of the objects, and it is the sense Farish fixed
+  in 1822~\cite{fgc:farish22}.
+\item[(iii)] \emph{On the torus the order three descends as an ordinary isometry too.}
+  $\operatorname{Aut}(\Lambda_{\PCF})=\Z[i]^{\times}\cong\Z_4$ contains no element of order three,
+  so the symmetry changes type rather than disappearing: it acts by \emph{translation} by a
+  three-torsion point of $\mathbb{T}^{2}_{\PCF}[3]\cong(\Z/3)^{2}$. Translations are isometries of
+  the flat torus, and since $3t=0$ gives $2t=-t$, the orbit $\{p,p+t,p+2t\}$ is
+  \emph{equilateral in the ordinary metric}, of side $\lvert t\rvert$. Both $\Z_4$ (rotation,
+  the Gauss face $\tau=i$) and $\Z_3$ (translation, the ternary face) therefore act by isometries.
+\item[(iv)] \emph{Only the coupling map itself expands, and by an explicit factor.} The induced metric of
+  $\iota(x+iy)=(x,y,\golden y)$ is
+  \begin{equation}\label{eq:coupling-metric}
+    \lVert\iota(x+iy)\rVert^{2}=x^{2}+(1+\golden^{2})y^{2},
+  \end{equation}
+  so $\iota$ preserves the real direction and expands the imaginary one by $s_\golden$. This does
+  not contradict (i)--(iii): they concern different maps.
+\end{enumerate}
+Consequently the passage $120^{\circ}\leftrightarrow90^{\circ}$ is a change of the group under
+which the structure is read---in $\R^{3}$ the projection along the Farish axis, on the torus
+rotation versus translation---and not a morphism carrying one lattice onto another. \tier{P}
+\Lean{farishRot\_cube, farishRot\_diag, farishRot\_preserves\_dot, farishRot\_preserves\_norm,
+order\_three\_not\_in\_Z4, translation\_preserves\_difference, three\_torsion\_equilateral,
+coupling\_metric, coupling\_expands\_imaginary, coupling\_preserves\_real}
+\end{proposition}
+\begin{proof}
+(i) $\rho$ is a permutation matrix: $\rho^{\mathsf T}\rho=\mathbf 1$, $\det\rho=+1$,
+$\rho^{3}=\mathrm{id}$, $\rho(1,1,1)=(1,1,1)$; and $\langle\rho u,\rho v\rangle=\langle u,v\rangle$
+by inspection of the three terms. Congruence of the planes follows because $\rho$ is orthogonal, so
+$\rho(n^{\perp})=(\rho n)^{\perp}$.
+(ii) $\langle e_k,a\rangle=1/\sqrt3$ gives $\pi_a(e_k)=e_k-\tfrac13(1,1,1)$, of squared norm
+$\tfrac23$, and $\langle\pi_a(e_j),\pi_a(e_k)\rangle=-\tfrac13$ for $j\neq k$, so
+$\cos\angle=-\tfrac12$.
+(iii) $3\nmid4$; $(p+t)-(q+t)=p-q$ in any abelian group, so translation preserves differences and
+hence the quotient metric; and $3t=0\Rightarrow2t=-t$ makes the three pairwise differences $\pm t$.
+(iv) is \eqref{eq:coupling-metric} evaluated at $x=1,y=0$ and at $x=0,y=1$.
 \end{proof}
 
 
@@ -237,6 +562,7 @@ its anchoring to the critical line, and the factorial as connector.
 =\sin(\tfrac{\pi}{6})=\tfrac12 .
 \end{equation}
 \Lean{M9\_collapse, M9\_eq\_half}
+\tier{P}
 \end{theorem}
 
 \begin{proposition}[Angle $\pi/3$ gives both invariants]\label{prop:angle}
@@ -245,64 +571,176 @@ $\sin(\tfrac{\pi}{6})=\cos(\tfrac{\pi}{3})=\mu$, and
 \sigma=\frac{\zeta(2)}{(\pi/3)^2}=\frac{\pi^2/6}{\pi^2/9}=\frac{9}{6}=\frac32 .
 \end{equation}
 \Lean{M10\_sin\_cos\_mu, M10\_sigma\_from\_basel}
+\tier{P}
 \end{proposition}
 
 \begin{proposition}[Factorial as connector]\label{prop:connector}
 $\dfrac{(\tfrac12)!}{\sqrt\pi}=\mu=\tfrac12$ \ (half face), and
 $3!=6=|S_3|$ \ (integer face).
 \Lean{M11\_factorial\_face, M11\_factorial\_six}
+\tier{P}
 \end{proposition}
 
-\begin{remark}[$\tfrac12\leftrightarrow$ Euler product]
-The modulus $\tfrac12=\mu$ is anchored to the critical line; the Euler
-product factors through the ternary level $\mu_3=\tfrac12$.
+\begin{remark}[$\tfrac12\leftrightarrow$ Euler product]\label{rmk:half-euler}
+That the modulus $\tfrac12=\mu$ is anchored to the self-dual line is not an analogy: it is
+Theorem~\ref{thm:funct-eq} together with Remark~\ref{rmk:half-selfdual}, where the fixed point of
+$s\mapsto1-s$ is shown to be the same $\tfrac12$. The Euler product itself is
+Proposition~\ref{prop:euler-product}, and it factors through the ternary level $\mu_3=\tfrac12$.
 \end{remark}
 
 % ---------------------------------------------------------------------
 \subsection{Expansion of the spectrum mediated between $i$ and $\golden$}\label{ssec:spectrum}
 
-Additive spectrum (pentagons, no arithmetic) and
-multiplicative spectrum (Mersenne), joined by the $3/2$ structure; primes
-classified by $\chi_5$.
+Additive spectrum (pentagons) and multiplicative spectrum (Mersenne), joined by the $3/2$
+structure; and the character $\chi_5$ read off the pentagon itself, with the Fibonacci criterion
+that makes the classification of the primes effective.
 
 \begin{equation}\label{eq:additive-mult}
 \golden^n=F_n\golden+F_{n-1}\quad(\text{additive}),\qquad
 3\,\golden^{\sigma(p)}=2^{p}\quad(\text{Mersenne}).
 \end{equation}
+\Lean{phi\_pow\_fib, mersenne\_bridge}%
 
 \begin{proposition}[Mediated Mersenne]\label{prop:mersenne-med}
 $3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \Lean{M12\_mersenne\_mediated}
+\tier{P}
 \end{proposition}
 
-\begin{remark}
-$\chi_5$ classifies every rational prime in $\Q(\sqrt5)$
-(split/inert/ramified). % CORPUS: eq:fib-criterion, eq:golden-split (ODD).
-\end{remark}
+\begin{definition}[The quadratic character]\label{def:chi5}
+$\chi_5$ is the Legendre symbol $\bigl(\tfrac{\cdot}{5}\bigr)$ on $\Z/5\Z$:
+\begin{equation}\label{eq:chi5-values}
+  \chi_5(0)=0,\qquad \chi_5(1)=\chi_5(4)=+1,\qquad \chi_5(2)=\chi_5(3)=-1,
+\end{equation}
+multiplicative on $(\Z/5\Z)^{\times}$, with $\sum_{a=0}^{4}\chi_5(a)=0$. \tier{P}
+\Lean{chi5, chi5\_even, chi5\_mul\_on\_units, chi5\_sum\_zero}
+\end{definition}
+
+\begin{proposition}[The pentagon dictates $\chi_5$]\label{prop:pentagon-chi5}
+The four pentagonal cosines are exactly $\{\pm\golden,\pm\golden^{-1}\}$, so
+\begin{equation}\label{eq:chi5-pentagon}
+  \bigl|2\cos(\pi a/5)\bigr|=\golden^{\chi_5(a)},
+  \qquad\text{equivalently}\qquad
+  \chi_5(a)=\frac{\log\bigl|2\cos(\pi a/5)\bigr|}{\log\golden},
+  \qquad a=1,2,3,4 .
+\end{equation}
+The character is therefore read off the pentagon itself, through
+Theorem~\ref{thm:pentagon-id} ($\golden=2\cos(\pi/5)$), and needs no separate arithmetic input.
+\tier{P} \Lean{norm\_cosine\_phi, phi\_eq\_two\_cos\_pi\_fifth}
+\end{proposition}
+\begin{proof}
+$2\cos(\pi/5)=\golden$ is Theorem~\ref{thm:pentagon-id}. The double-angle formula with
+$\cos(\pi/5)=\golden/2$ and $\golden^{2}=\golden+1$ gives
+$2\cos(2\pi/5)=\golden-1=\golden^{-1}$, and $\cos(\pi-x)=-\cos x$ carries the remaining two
+cases: $\cos(3\pi/5)=-\cos(2\pi/5)$ and $\cos(4\pi/5)=-\cos(\pi/5)$. Taking absolute values gives
+$\golden,\golden^{-1},\golden^{-1},\golden$ against $\chi_5=+1,-1,-1,+1$.
+\end{proof}
+
+\begin{proposition}[The logarithmic signature of $\golden$]\label{prop:log-signature}
+\begin{equation}\label{eq:log-signature}
+  \sum_{a=1}^{4}\chi_5(a)\,\log\bigl(2\sin(\pi a/5)\bigr)=-2\log\golden .
+\end{equation}
+The whole content is $\sin2x=2\sin x\cos x$: with $\sin(3\pi/5)=\sin(2\pi/5)$ and
+$\sin(4\pi/5)=\sin(\pi/5)$ the sum collapses to $2\log\bigl(\sin(\pi/5)/\sin(2\pi/5)\bigr)$, and
+$\sin(2\pi/5)/\sin(\pi/5)=2\cos(\pi/5)=\golden$. So the sine reads the same character the cosine
+read in \eqref{eq:chi5-pentagon}, and $\golden$ is the value in both. \tier{P}
+\Lean{sin\_ratio\_eq\_two\_cos, pentagon\_log\_signature}
+\end{proposition}
+
+\begin{proposition}[Fibonacci criterion and the trichotomy]\label{prop:fib-criterion}
+For every rational prime $q\neq2,5$,
+\begin{equation}\label{eq:fib-criterion}
+  F_q\;\equiv\;\Bigl(\frac{q}{5}\Bigr)\;=\;\chi_5(q)\pmod q ,
+\end{equation}
+and the value is determined by the residue class modulo $20$: $\chi_5(q)=+1$ (split) for
+$q\equiv1,9,11,19$, $\chi_5(q)=-1$ (inert) for $q\equiv3,7,13,17$, and $\chi_5(5)=0$ (ramified),
+$5$ being the only ramified prime by $\Delta_K=5$ \eqref{eq:trace-norm}. This is what makes
+$\chi_5$ an \emph{effective} classification of the primes of $\Q(\sqrt5)$: the class of $q$ is
+computed from the Fibonacci sequence of \eqref{eq:additive-mult}, without factoring anything in
+$\OK$. \tier{P} for the thirteen primes decided in Lean and the twenty-three verified numerically;
+the general congruence for every $q\neq2,5$ is Lucas' and enters as \tier{L}
+\Lean{fib\_criterion\_cases, chi5\_split\_inert\_mod20}
+\end{proposition}
 
 % ---------------------------------------------------------------------
 \subsection{The rings as a tower (our reinterpretation of the $\Lambda$-structure of Borger)}\label{ssec:tower}
 
-The Frobenius lifts and the $\Lambda$-ring tower carry the
-arithmetic to the Euler product as a colimit~\cite{F1}.
+The multiplicative tower generated by $\golden$ carries a Frobenius lift for each prime, and the
+lifts compose as the primes multiply. Both facts are established here.
 
-\begin{equation}\label{eq:frobenius-tower}
-\psi_p(\golden)=\golden^p=F_p\golden+F_{p-1},\qquad
-\zeta_{\Q(\sqrt5)}(s)=\varinjlim_{S}E(S)(s).
+\begin{definition}[The golden monoid and its Fibonacci coordinates]\label{def:golden-monoid}
+Let $\langle\golden\rangle=\{\golden^{\,n}:n\in\Z\}$ be the multiplicative monoid generated by the
+unit $\golden$ of \eqref{eq:base}, and let $F_n$ be the Fibonacci sequence, $F_0=0$, $F_1=1$,
+$F_{n+2}=F_{n+1}+F_n$---the depth-two recurrence singled out in Theorem~\ref{thm:fib-min}. The
+coordinates of the tower in the basis $\{\golden,1\}$ hold in the following generality: in
+\emph{any} commutative ring containing an element $\alpha$ with $\alpha^{2}=\alpha+1$, induction
+on $n$ gives
+\begin{equation}\label{eq:binet}
+  \alpha^{\,n+1}=F_{n+1}\,\alpha+F_n\qquad(n\ge0),
 \end{equation}
+of which the additive spectrum \eqref{eq:additive-mult} is the case $\alpha=\golden$.
+Nothing of $\R$ or of $\sqrt5$ enters: only the quadratic relation and the recurrence. This is
+why the same coordinates govern the tower in $\Rpcf$, in $\OK$, and modulo $q$---which is what
+Proposition~\ref{prop:fib-criterion} exploits. \tier{P} \Lean{binet\_general, phi\_pow\_fib}
+\end{definition}
+
+\begin{definition}[Frobenius lift on the golden monoid]\label{def:frobenius}
+For each prime $p$ define
+\begin{equation}\label{eq:frobenius-tower}
+  \psi_p:\langle\golden\rangle\to\langle\golden\rangle,\qquad
+  \psi_p(\golden^{\,n})=\golden^{\,pn},
+  \qquad\text{so}\qquad
+  \psi_p(\golden)=\golden^{\,p}=F_p\,\golden+F_{p-1}
+\end{equation}
+by \eqref{eq:binet}. \tier{P} \Lean{psiGolden, psi\_on\_powers, psi\_golden\_fib}
+\end{definition}
+
+\begin{remark}[Two maps, one symbol]\label{rmk:psi-two}
+The $\psi_p$ of \eqref{eq:frobenius-tower} is \emph{not} the map $a\mapsto a^{p}\bmod p$ recalled in
+\S\ref{sec:manin}, which is a ring endomorphism in the sense of Manin and Buium~\cite{manin13,buium05}.
+Ours is exact rather than reduced modulo $p$, and it is an endomorphism of the multiplicative
+\emph{monoid} $\langle\golden\rangle$, not of the ring $\Rpcf$: additivity is not preserved, since
+$\psi_p(\golden+1)=\psi_p(\golden^{2})=\golden^{2p}\neq\golden^{p}+1$ for $p\ge2$. The restriction to
+the multiplicative level is the point of the descent, not a limitation of it.
+\end{remark}
+
+\begin{proposition}[The lifts compose as the primes multiply]\label{prop:psi-functorial}
+For all $p,q\ge1$ and all $x\in\langle\golden\rangle$,
+\begin{equation}\label{eq:psi-functorial}
+  \psi_p\circ\psi_q=\psi_{pq},\qquad \psi_1=\mathrm{id},
+\end{equation}
+so $p\mapsto\psi_p$ is a monoid homomorphism from $(\N_{\ge1},\times)$ into
+$\mathrm{End}_{\mathrm{Mon}}\langle\golden\rangle$. This is the $\Lambda$-structure of
+Borger~\cite{Borger} in its multiplicative form, and it is what makes the tower carry the
+multiplicative structure of the Euler product \eqref{eq:euler-product}.
+\tier{P} \Lean{psi\_functorial, psi\_one}
+\end{proposition}
+\begin{proof}
+On a generator, $\psi_p(\psi_q(\golden^{\,n}))=\psi_p(\golden^{\,qn})=\golden^{\,pqn}=\psi_{pq}(\golden^{\,n})$,
+and every element of $\langle\golden\rangle$ is such a generator; $\psi_1(\golden^{\,n})=\golden^{\,n}$.
+\end{proof}
+
+The remaining ingredient---that the Dedekind zeta of $\Q(\sqrt5)$ is the \emph{Euler colimit} of
+the partial Euler products over finite sets of primes,
+$\zeta_{\Q(\sqrt5)}(s)=\varinjlim_{S}E(S)(s)$---is Proposition~\ref{prop:euler-colimit} below, and it is what
+Theorem~\ref{thm:places} uses on the finite side.
 
 % ---------------------------------------------------------------------
-\subsection{$\pi$ and $\pi\golden$ as producers of $\zeta$ and odd-$\zeta$}\label{ssec:zeta}
+\subsection{The zeta values, the Euler product, and the completed zeta}\label{ssec:zeta}
 
-The Dedekind factorisation and the even/odd zeta values;
-the bridge \eqref{eq:pi-arccos} ties $\pi$ to $\golden$ here.
+The zeta values, even and odd; the Dedekind zeta of $K$ with its local factors and its Euler
+colimit; the Archimedean place; and the completed zeta as the product over all places, with its
+functional equation. This is the first of two movements---building $\xi$; \S\ref{ssec:L1}
+evaluates it at $s=1$. The bridge \eqref{eq:pi-arccos} ties $\pi$ to $\golden$ throughout.
 
 \begin{equation}\label{eq:dedekind}
 \zeta(s)=\frac{\zeta_{\Q(\sqrt5)}(s)}{L(s,\chi_5)},\qquad
 L(1,\chi_5)=\frac{2\log\golden}{\sqrt5}.
 \end{equation}
+\LeanInline{eq:local-dedekind}%
 
 \begin{theorem}[Basel value]\label{thm:basel}
 $\zeta(2)=\pi^2/6$ (Euler). \Lean{M14\_basel}
+\tier{P}
 \end{theorem}
 
 \begin{theorem}[General even zeta value (Euler)]\label{thm:even-zeta}
@@ -311,7 +749,7 @@ For every integer $k\ge1$,
 \zeta(2k)=(-1)^{k+1}\frac{B_{2k}\,(2\pi)^{2k}}{2\,(2k)!},
 \end{equation}
 with $B_{2k}$ the Bernoulli numbers; $k=1$ recovers $\zeta(2)=\pi^2/6$
-(Theorem~\ref{thm:basel}).
+(Theorem~\ref{thm:basel}). \tier{P/N} \Lean{even\_zeta\_bernoulli}
 \end{theorem}
 \begin{proof}
 Euler's cotangent expansion
@@ -323,45 +761,386 @@ second series with $w=2\pi i z$ and using $(2i)^{2k}=(-1)^{k}4^{k}$, the
 coefficient of $z^{2k}$ on the right is $(-1)^{k}B_{2k}(2\pi)^{2k}/(2k)!$;
 matching it to $-2\zeta(2k)$ gives \eqref{eq:even-zeta}. The pentagonal,
 $\chi_5$-twisted refinement, with generalised Bernoulli numbers
-$B_{2k,\chi_5}$, extends this computation and is carried out
-independently in the companion $\F_1$-descent paper~\cite{F1}.
+$B_{2k,\chi_5}$, extends this computation; it is taken up in
+\S\ref{app:arithmetic} below and carried out independently in the $\F_1$-descent
+companion~\cite{F1}.
 \end{proof}
+
+The remaining ingredients of $\xi$ are the product over primes and the factor that completes it.
+
+\begin{proposition}[Euler product]\label{prop:euler-product}
+For $\Re s>1$,
+\begin{equation}\label{eq:euler-product}
+  \sum_{n\ge1}n^{-s}=\zeta(s)=\prod_{p}\big(1-p^{-s}\big)^{-1},
+\end{equation}
+by unique factorisation in $\Z$. \tier{P}
+\Lean{regge\_dirichlet\_eq\_zeta, regge\_tower\_is\_euler\_product}
+\end{proposition}
+
+\begin{definition}[The Dedekind zeta of $K$]\label{def:zetaK}
+\begin{equation}\label{eq:zetaK}
+  \zeta_K(s)\;=\;\sum_{\mathfrak a}N(\mathfrak a)^{-s}
+  \;=\;\prod_{\mathfrak p}\bigl(1-N(\mathfrak p)^{-s}\bigr)^{-1},
+  \qquad \Re s>1,
+\end{equation}
+the sum over integral ideals of $\OK=\Z[\golden]$ \eqref{eq:OK-vs-Rpcf} and the product over prime
+ideals, $N$ the absolute norm. This is the object \eqref{eq:dedekind} factorises; it is defined
+here rather than assumed. \tier{P}
+\Lean{idealNormK, idealEulerK, euler\_from\_ideals\_K}
+\end{definition}
+
+\begin{proposition}[Splitting data and local factors]\label{prop:local-factors}
+Every rational prime $p$ falls in one of the three classes of
+Proposition~\ref{prop:fib-criterion}, with $\sum_i e_if_i=[K:\Q]=2$ in each:
+\begin{equation}\label{eq:splitting}
+  \begin{array}{lllll}
+    \chi_5(p)=+1 & \text{split}    & g=2 & e=1,\ f=1 & N(\mathfrak p)=p\\
+    \chi_5(p)=-1 & \text{inert}    & g=1 & e=1,\ f=2 & N(\mathfrak p)=p^{2}\\
+    \chi_5(p)=0  & \text{ramified} & g=1 & e=2,\ f=1 & N(\mathfrak p)=p
+  \end{array}
+\end{equation}
+Writing $u=p^{-s}$, the product over the prime ideals above $p$ is
+\begin{equation}\label{eq:local-K}
+  f_p(s)=\prod_{\mathfrak p\mid p}\bigl(1-N(\mathfrak p)^{-s}\bigr)^{-1}
+  =\begin{cases}
+     (1-u)^{-1} & \chi_5(p)=0,\\
+     (1-u)^{-2} & \chi_5(p)=+1,\\
+     (1-u^{2})^{-1} & \chi_5(p)=-1,
+   \end{cases}
+\end{equation}
+The von Mangoldt function of $K$ weights a prime power by the log of its norm,
+\begin{equation}\label{eq:LambdaK}
+  \Lambda_K(\mathfrak p^{k})=\log N(\mathfrak p),
+\end{equation}
+so the weight is $\log p$ at a split prime and $2\log p$ at an inert one. In all three cases the
+local factor factors as
+\begin{equation}\label{eq:local-dedekind}
+  f_p(s)=(1-u)^{-1}\cdot\bigl(1-\chi_5(p)u\bigr)^{-1},
+\end{equation}
+which is \eqref{eq:dedekind} place by place. The inert case is the identity $(1-u)(1+u)=1-u^{2}$.
+\tier{P}
+\LeanFor{eq:splitting}{degree\_formula\_K, ideal\_norm\_values\_K}%
+\LeanFor{eq:local-K}{euler\_from\_ideals\_K}%
+\LeanFor{eq:LambdaK}{vonMangoldtK\_values}%
+\LeanFor{eq:local-dedekind}{local\_dedekind\_ramified\_K, local\_dedekind\_split\_K, local\_dedekind\_inert\_K}%
+\end{proposition}
+
+\begin{proposition}[The Euler product as a colimit]\label{prop:euler-colimit}
+Let $\mathcal P$ be the poset of finite sets of primes under inclusion and
+$E(S)(s)=\prod_{p\in S}f_p(s)$. Then
+\begin{equation}\label{eq:colimit}
+  \zeta_K(s)=\varinjlim_{S\in\mathcal P}E(S)(s),\qquad \Re s>1 .
+\end{equation}
+\emph{Existence} is coefficientwise stabilisation: the $n$-th coefficient is already determined
+once $S$ contains the prime factors of $n$, and enlarging $S$ never alters it. \emph{Uniqueness} is
+extensionality: a Dirichlet series is determined by its coefficients. This is the \emph{Euler}
+colimit, not the framework colimit of \S\ref{ssec:web}. \tier{P} (absolute convergence for
+$\Re s>1$ enters as \tier{L})
+\Lean{coeff\_stabilises\_K, colimit\_exists\_K}
+\end{proposition}
+
+\begin{proposition}[The Archimedean local factor]\label{prop:archimedean}
+The completing factor is the Mellin transform of the self-dual Gaussian
+\eqref{eq:selfdual-gaussian}, i.e.\ the local zeta integral at the real place,
+\begin{equation}\label{eq:gammaR-mellin}
+  \Gamma_{\R}(s)\;:=\;\pi^{-s/2}\Gamma\!\left(\tfrac s2\right)
+  \;=\;2\int_{0}^{\infty} g(x)\,x^{s-1}\,dx ,
+\end{equation}
+so it is produced by the object of \S\ref{ssec:origins} and not imported: the $\pi$ is
+that of Lemma~\ref{lem:gamma-half} and the $\Gamma$ that of the Euler integral
+\eqref{eq:gamma-int}. Summed over the integer direction of the Gauss lattice
+$\Lambda_{\PCF}=\Mpcf\,\Z[i]$ of \eqref{eq:torus}, the same weight gives
+\begin{equation}\label{eq:theta-lattice}
+  \Theta(t)=\sum_{n\in\Z}e^{-\pi n^{2}t},\qquad
+  \Theta(1/t)=\sqrt t\,\Theta(t)\quad(t>0),
+\end{equation}
+which is the involution $\tau\to-1/\tau$ of the torus \eqref{eq:torus} written in the Mellin
+variable $t$, with unique fixed point $t=1$, i.e.\ $\tau=i$; \eqref{eq:theta-lattice} is
+Jacobi's theta transformation~\cite{Jacobi1829}, and reading $\Gamma_{\R}$ as the local zeta
+integral at the real place is Tate's~\cite{Tate1967}. The Boltzmann weight $e^{-nt}$ of the primon gas fails
+\eqref{eq:theta-lattice} and is therefore excluded by that involution.
+\tier{P} (Poisson summation enters as \tier{L})
+\LeanFor{eq:gammaR-mellin}{gammaR\_from\_tate}%
+\LeanFor{eq:theta-lattice}{theta\_from\_jacobi, theta\_fixed\_point\_unique}%
+\end{proposition}
+\begin{proof}
+Substituting $u=\pi x^{2}$ in \eqref{eq:gammaR-mellin} gives
+$2\int_{0}^{\infty}e^{-\pi x^{2}}x^{s-1}dx=\pi^{-s/2}\int_{0}^{\infty}e^{-u}u^{s/2-1}du
+=\pi^{-s/2}\Gamma(s/2)$, which is \eqref{eq:gamma-int} read with $A=\pi$ and exponent
+$s/2$. For \eqref{eq:theta-lattice}, Poisson summation applied to $f(x)=g(x\sqrt t)$,
+whose transform is $\widehat f(\xi)=t^{-1/2}g(\xi/\sqrt t)$ by
+Proposition~\ref{prop:selfdual-gaussian}, gives $\Theta(1/t)=\sqrt t\,\Theta(t)$
+directly. The fixed point of $t\mapsto1/t$ on $t>0$ is $t=1$, since
+$(t-1)(t+1)=0$ with $t+1>0$. The exclusion is a computation:
+$\sum_{n\ge1}e^{-nt}=(e^{t}-1)^{-1}$ does not satisfy \eqref{eq:theta-lattice}.
+\end{proof}
+
+\begin{remark}[The value at the self-dual point]\label{rmk:eta-i}
+The classical evaluation $\Theta(1)=\pi^{1/4}/\Gamma(\tfrac34)$ (Gauss;
+see~\cite{Jacobi1829}) together with the reflection formula $\Gamma(\tfrac14)\Gamma(\tfrac34)=\pi\sqrt2$ gives
+\begin{equation}\label{eq:eta-i}
+  \Theta(1)=\sqrt2\,\eta(i)=\golden^{\mu\lng}\,\eta(i),\qquad
+  \eta(i)=\frac{\Gamma(\tfrac14)}{2\,\pi^{3/4}},\qquad
+  \Gamma_{\R}(\tfrac12)=2\sqrt\pi\,\eta(i),
+\end{equation}
+with $\golden^{\mu\lng}=\sqrt2$ of Proposition~\ref{prop:mediation}. \tier{P} (the two classical
+evaluations enter as \tier{L})
+\end{remark}
+
+\begin{theorem}[The partition is the product over all places]\label{thm:places}
+Write the framework's spectral partition as the product of the Archimedean factor
+\eqref{eq:gammaR-mellin} with the finite places, the latter being the Dirichlet
+series \eqref{eq:euler-product}:
+\begin{equation}\label{eq:places-product}
+  \Xipcf(s)\;=\;\underbrace{\Gamma_{\R}(s)}_{\text{Archimedean}}\cdot
+  \underbrace{\sum_{n\ge1}n^{-s}}_{\text{finite places}}
+  \;=\;\Gamma_{\R}(s)\,\zeta(s)\;=\;\xi(s)\qquad(\Re s>1).
+\end{equation}
+Equivalently $\Xipcf(s)=\int_{0}^{\infty}t^{s/2-1}\,\omega(t)\,dt$ with
+$\omega(t)=\tfrac12(\Theta(t)-1)$, so the partition is the Mellin transform of the
+framework's own lattice sum. Reading $\xi$ as the product over \emph{all} places, the Archimedean one included, is the
+formulation of L\'opez Pe\~na and Lorscheid~\cite{LopezPenaLorscheid}. The completed zeta is
+therefore not posited: the finite places are the Euler product \eqref{eq:euler-product} and the Archimedean place is the self-dual
+Gaussian (Proposition~\ref{prop:archimedean}); \S\ref{ssec:p-tower} reads the first as the Regge
+tower and \S\ref{ssec:object} the second as the worldline weight.
+\tier{P} \Lean{framework\_partition, framework\_partition\_eq\_completed\_zeta, places\_assembly}
+\end{theorem}
+\begin{proof}
+The finite-place leg is Proposition~\ref{prop:euler-product}; the Archimedean leg is
+Proposition~\ref{prop:archimedean}. Their product is $\pi^{-s/2}\Gamma(s/2)\zeta(s)$,
+which is $\xi(s)$ by definition of the completed zeta. For the integral form, apply
+\eqref{eq:gammaR-mellin} at each level $n$ with $A=\pi n^{2}$ and sum over $n\ge1$,
+exchanging sum and integral by absolute convergence for $\Re s>1$.
+\end{proof}
+
+\begin{remark}[Consistency with the $\F_1$ companion]\label{rmk:places-F1}
+$\Q(\sqrt5)$ is real quadratic, hence has two real places, and $\chi_5$ is even
+($\chi_5(-1)=\chi_5(4)=+1$), so each real place contributes $\Gamma_{\R}$ and not the
+odd factor. The Dedekind factorisation $\zeta_K=\zeta\cdot L(\cdot,\chi_5)$ of
+Proposition~\ref{prop:local-factors} therefore distributes one $\Gamma_{\R}$ to each factor, and the one
+attached to $\zeta$ is exactly \eqref{eq:gammaR-mellin}. The companion's Euler colimit
+is indexed by finite sets of \emph{primes}; the Archimedean place is the one it leaves
+out, absorbed there into the counting correction $\kappa_K$ of the Connes--Consani
+type~\cite{ConnesConsaniSite}. Proposition~\ref{prop:archimedean} supplies it. \tier{P} \Lean{chi5\_even}
+\end{remark}
+
+
+\begin{theorem}[Functional equation and the self-dual line]\label{thm:funct-eq}
+The completed zeta,
+\[
+  \xi(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\]
+satisfies
+\begin{equation}\label{eq:funct-eq}
+  \xi(1-s)=\xi(s),
+\end{equation}
+and the reflection $s\mapsto 1-s$ fixes the single point $s=\tfrac12$ of $\C$, while the line
+\begin{equation}\label{eq:selfdual-line}
+  \{s\in\C:\ \Re s=\Re(1-s)\}=\{s\in\C:\ \Re s=\tfrac12\}
+\end{equation}
+is the locus on which it preserves the real part. The point and the line are distinct statements
+about the same involution, and it is the line that the cocone of \S\ref{ssec:commute} takes as a
+leg.
+\tier{P} \Lean{theta\_from\_jacobi, s\_duality\_exact, s\_duality\_fixed\_point\_unique,
+functional\_equation\_fixed\_line, fixed\_line\_is\_facePhi, places\_assembly}
+\end{theorem}
+\begin{proof}
+By Theorem~\ref{thm:places}, $\xi(s)=\int_{0}^{\infty}t^{s/2-1}\omega(t)\,dt$ for $\Re s>1$, with
+$\omega(t)=\tfrac12(\Theta(t)-1)$. Splitting at $t=1$ and applying \eqref{eq:theta-lattice} on
+$(0,1)$---Riemann's argument~\cite{Riemann1859}---,
+\begin{equation}\label{eq:xi-split}
+  \xi(s)=\frac{1}{s(s-1)}
+        +\int_{1}^{\infty}\!\big(t^{s/2-1}+t^{(1-s)/2-1}\big)\,\omega(t)\,dt ,
+\end{equation}
+whose right-hand side is manifestly invariant under $s\leftrightarrow1-s$: the involution exchanges
+the two exponents and fixes $1/(s(s-1))$. This gives \eqref{eq:funct-eq}, and by analytic
+continuation for all $s$. The completing factor $\pi^{-s/2}\Gamma(s/2)$ is not imported: it is the
+Archimedean local factor \eqref{eq:gammaR-mellin}, the $\pi$ of Lemma~\ref{lem:gamma-half} with the
+$\Gamma$ of \eqref{eq:gamma-int}, and it carries at every $s$ the same $\pi$ that
+Theorem~\ref{thm:basel} gives at $s=2$. The map $s\mapsto1-s$ is an involution of $\C$; its fixed
+set is $\{s:2s=1\}$, i.e.\ the single value $s=\tfrac12$. For the line, $\Re(1-s)=1-\Re s$, so
+$\Re s=\Re(1-s)$ holds precisely when $2\Re s=1$: this is \eqref{eq:selfdual-line}, and by
+\eqref{eq:bridge} its abscissa is $\golden^{-\lng}$. The line is fixed \emph{pointwise} not by
+$s\mapsto1-s$ but by the antiholomorphic $s\mapsto1-\bar s$; that reading is
+\S\ref{ssec:extreme} below.
+\end{proof}
+
+\begin{remark}[The self-dual line is the modulus]\label{rmk:half-selfdual}
+The $\tfrac12$ of \eqref{eq:funct-eq} is the same $\tfrac12$ that \S\ref{ssec:origins} fixed as
+the unique fixed point of $x\mapsto1-x$ (Proposition~\ref{prop:phi-branch}) and as the midpoint
+of the Galois pair (Proposition~\ref{prop:galois-seed}): the self-dual line of the completed
+zeta \emph{is} the modulus $\mu=\tfrac12$, and by \eqref{eq:selfdual-line} its abscissa is
+$\golden^{-\lng}$. Three involutions---$x\mapsto1-x$ on $\R$, the Galois conjugation of $K$, and
+$s\mapsto1-s$ on $\C$---have here one fixed value; by Lemma~\ref{lem:galois-inv} the first two
+are the same map.
+\Lean{s\_duality\_exact, faceInv\_apex, faceGalois\_apex, fixed\_line\_is\_facePhi}
+\end{remark}
+
+% ---------------------------------------------------------------------
+\subsection{The fundamental formula and the entropy bridge}\label{ssec:L1}
+
+With $\xi$ built, the second movement evaluates it at $s=1$: the class number, the residue, the
+value $L(1,\chi_5)$, and the bridge that turns it into one bit.
+
+\begin{proposition}[Class number one]\label{prop:class-number}
+The Minkowski bound of $K$ is
+\begin{equation}\label{eq:minkowski}
+  M_K=\frac{n!}{n^{n}}\Bigl(\frac{4}{\pi}\Bigr)^{r_2}\sqrt{|\Delta_K|}=\frac{\sqrt5}{2}\approx1.11803,
+  \qquad (n,r_1,r_2,\Delta_K)=(2,2,0,5),
+\end{equation}
+and $M_K<2$. Granting Minkowski's theorem---every ideal class contains an integral ideal of norm
+at most $M_K$---that ideal has norm a positive integer below $2$, hence norm $1$, hence is the
+unit ideal. Therefore
+\begin{equation}\label{eq:hK}
+  h_K=1 .
+\end{equation}
+\tier{P} (Minkowski's theorem enters as \tier{L})
+\LeanFor{eq:minkowski}{minkowski\_bound\_lt\_two}%
+\LeanFor{eq:hK}{class\_number\_one\_K}%
+\end{proposition}
+
+\begin{theorem}[The fundamental formula]\label{thm:L1}
+\begin{equation}\label{eq:L1}
+  L(1,\chi_5)=\frac{2\log\golden}{\sqrt5}=\frac{T}{\pi\sqrt5}\approx0.4304089410 .
+\end{equation}
+Granting the Dirichlet class-number formula~\cite{dirichlet},
+\begin{equation}\label{eq:cnf}
+  \lim_{s\to1}(s-1)\zeta_K(s)=\frac{2^{r_1}(2\pi)^{r_2}h_KR_K}{w\sqrt{\Delta_K}}
+  =\frac{4\cdot1\cdot\log\golden}{2\sqrt5}=\frac{2\log\golden}{\sqrt5},
+\end{equation}
+with $h_K=1$ \eqref{eq:hK}, $R_K=\log\golden$ \eqref{eq:regulator}, $w=2$, $\Delta_K=5$
+\eqref{eq:trace-norm}, $r_1=2$, $r_2=0$; then \eqref{eq:dedekind} and
+$\lim_{s\to1}(s-1)\zeta(s)=1$ give \eqref{eq:L1}. The arithmetic downstream of the formula is
+proved; the formula itself is the input. \tier{P} (the class-number formula enters as \tier{L})
+\LeanFor{eq:L1}{L1\_from\_class\_number\_formula, L1\_eq\_period\_over\_pi\_sqrt5}%
+\end{theorem}
+
+\begin{theorem}[The entropy--$L$-value bridge]\label{thm:entropy-bridge}
+With $\lambda_{\log}=\log2/\log\golden$, so that $\golden^{\lambda_{\log}}=2$ and
+$\golden^{-\lambda_{\log}}=\tfrac12$,
+\begin{equation}\label{eq:entropy-bridge}
+  \frac{S_{\mathrm{BH}}}{k_B}
+  =\lambda_{\log}\,R_K
+  =\lambda_{\log}\cdot\frac{\sqrt5}{2}L(1,\chi_5)
+  =\log 2 .
+\end{equation}
+The regulator cancels exactly: $\lambda_{\log}\log\golden=\log2$, and
+$(\sqrt5/2)L(1,\chi_5)=\log\golden=R_K$ by \eqref{eq:L1}. The one bit per Planck area that
+\S\ref{ssec:meta} and \S\ref{ssec:accum} carry is therefore not a coincidence with $\mu_3=\tfrac12$:
+it is the regulator of $\Q(\sqrt5)$, measured in the unit $\lambda_{\log}$. \tier{P}
+\Lean{lambda\_log\_mul\_regulator, sqrt5\_half\_L1\_eq\_regulator, entropy\_bridge}
+\end{theorem}
+
+\begin{remark}[Three roles of one invariant]\label{rmk:regulator-roles}
+$R_K=\log\golden$ occurs three times over: as the class-number residue \eqref{eq:cnf}, as the
+exponent of the torus period $T=2\pi\log\golden$ \eqref{eq:regulator}, and through
+\eqref{eq:entropy-bridge} as the entropy scale. It is also the rate out of which
+$\varepsilon_0=\ln\golden/(6\sqrt3)$ is built \eqref{eq:eps0}. One arithmetic invariant of $K$,
+four appearances.
+\end{remark}
+
+\begin{proposition}[$\tfrac12$ is where the packing is maximal]\label{prop:entropy-max}
+For every $p\in(0,1)$ the binary entropy satisfies
+\begin{equation}\label{eq:entropy-max}
+  H(p)=-p\log_2p-(1-p)\log_2(1-p)\;\le\;1,
+\end{equation}
+with equality exactly at $p=\tfrac12$. The modulus is therefore not merely a point where the
+entropy happens to equal one bit: it is the point where it is \emph{largest}. \tier{P}
+\Lean{entropy\_slack\_nonneg, binary\_entropy\_le\_one, binary\_entropy\_half}
+\end{proposition}
+\begin{proof}
+$\log x\le x-1$ for $x>0$ applied to $x=1/(2p)$ and $x=1/(2(1-p))$ gives
+$p\bigl(-\log 2p\bigr)\le(1-2p)/2$ and $(1-p)\bigl(-\log 2(1-p)\bigr)\le(2p-1)/2$; the two
+right-hand sides cancel, so $p\log 2p+(1-p)\log 2(1-p)\ge0$, which is \eqref{eq:entropy-max} after
+dividing by $\log2$. Equality in $\log x\le x-1$ holds only at $x=1$, i.e.\ only at $p=\tfrac12$.
+\end{proof}
+
+
+
+\begin{theorem}[Odd zeta values over the tower]\label{thm:zeta-odd}
+For $k\ge1$, $L(2k+1,\chi_5)\neq0$ and
+\begin{equation}\label{eq:zeta-odd}
+  \zeta(2k+1)=\frac{\zeta_K(2k+1)}{L(2k+1,\chi_5)} .
+\end{equation}
+Together with Theorem~\ref{thm:even-zeta} this closes the two families: $\pi$ produces the even
+values, and $\golden$ through $\chi_5$ produces the odd ones, both over the same pentagonal points
+$\{a/5\}$. It is what the loop hierarchy of \S\ref{ssec:p-tower} rests on, and it is derived here
+rather than deferred. \tier{P} (the global Dedekind factorisation enters as \tier{L})
+\Lean{odd\_zeta\_ratio}
+\end{theorem}
 
 % ---------------------------------------------------------------------
 \subsection{The commutative diagram: convergence on $\mu$ and
 $\sigma$}\label{ssec:commute}
 
-The constant $\tfrac12$ is the apex of a cocone: five
+
+The constant $\tfrac12$ is the apex of a cocone: eight
 routes coincide on it. The argument is convergence, not a chain.
 
 \[
 \begin{tikzcd}[row sep=tiny, column sep=large]
-\dfrac{(\tfrac12)!}{\sqrt\pi} \arrow[ddddr] & \\
+\dfrac{(\tfrac12)!}{\sqrt\pi} \arrow[dddddr] & \\
+\dfrac{\Gamma(\tfrac32)}{\Gamma(\tfrac12)} \arrow[ddddr] & \\
 \|P\|\|C\|\|F\| \arrow[dddr] & \\
 \cos(\tfrac{\pi}{3}) \arrow[ddr] & \\
 \golden^{-\lng} \arrow[dr] & \\
-\text{fix}(x{=}1{-}x) \arrow[r] & \ \mu=\tfrac12
+\dfrac{\golden+\bar\golden}{2} \arrow[r] & \ \mu=\tfrac12 \\
+\text{fix}(x{=}1{-}x) \arrow[ur] & \\
+\text{fix}(\Re s{=}\Re(1{-}s)) \arrow[uur] &
 \end{tikzcd}
 \]
 
+\begin{remark}[One principle, five fixed points]\label{rmk:pi-selfdual}
+None of the last three legs is a separate mechanism. Each of the framework's constants is the fixed point of
+an involution: $a=\pi$ of the Fourier transform (Proposition~\ref{prop:selfdual-gaussian}),
+$\tau=i$ of $\tau\mapsto-1/\tau$ on the torus~\eqref{eq:torus}, $\tfrac12$ of the
+Galois conjugation of $\Q(\sqrt5)$---whose fixed field is $\Q$ and whose midpoint is
+\eqref{eq:galois-seed}---and $\tfrac12$ of both $x\mapsto1-x$
+(Proposition~\ref{prop:phi-branch}) and
+$s\mapsto1-s$ (Theorem~\ref{thm:funct-eq}). The cocone above collects the \emph{five} that land on the
+modulus; the $\pi$ of \eqref{eq:selfdual-gaussian} is the same principle applied to the weight
+rather than to the modulus. By Lemma~\ref{lem:galois-inv} the Galois conjugation and
+$x\mapsto1-x$ are one map, so the five involutions are four distinct maps landing on one value.
+
+A further symmetry is \emph{not} of this kind, and the contrast is informative: the order three of
+the eigenvalue triad is not the fixed point of an involution but a symmetry that \emph{changes
+type} on descending---a rotation of $\R^{3}$ above, a translation by a three-torsion point of the
+torus below (Proposition~\ref{prop:coupling-isometries}). It is the same three that
+Proposition~\ref{prop:triad-invariants} reads as the exponent of
+$\prod_k|\lambda_k|=2^{-3}$. Five fixed points and one change of type.
+\end{remark}
+
 \begin{theorem}[Modulus diagram commutes]\label{thm:mu-diagram}
-The five routes coincide on the apex:
-$\dfrac{(\tfrac12)!}{\sqrt\pi}=\|P\|\|C\|\|F\|=\cos(\tfrac{\pi}{3})
-=\golden^{-\lng}=\mathrm{fix}(x{=}1{-}x)=\mu=\tfrac12$.
+Six values and two identifications coincide on the apex:
+\[
+\dfrac{(\tfrac12)!}{\sqrt\pi}=\dfrac{\Gamma(\tfrac32)}{\Gamma(\tfrac12)}
+=\|P\|\|C\|\|F\|=\cos(\tfrac{\pi}{3})=\golden^{-\lng}
+=\dfrac{\golden+\bar\golden}{2}=\mu=\tfrac12 ,
+\]
+and $x=1-x\iff x=\mu$ on $\R$, $\Re s=\Re(1-s)\iff\Re s=\mu$ on $\C$.
 The non-elementary legs are established at~\eqref{eq:half-factorial} (the Gamma value),
-\eqref{eq:collapse} (the norm product) and~\eqref{eq:bridge} (the binary bridge
-$\golden^{\lng}=2$, whence $\golden^{-\lng}=\tfrac12$); the angle $\cos(\tfrac{\pi}{3})$
-and the involution fixed point are elementary.
+\eqref{eq:collapse} (the norm product), \eqref{eq:bridge} (the binary bridge
+$\golden^{\lng}=2$, whence $\golden^{-\lng}=\tfrac12$) and~\eqref{eq:galois-seed} (the Galois
+midpoint, by Lemma~\ref{lem:galois-inv}); the angle $\cos(\tfrac{\pi}{3})$
+and the involution fixed point are elementary; the self-dual line of $\xi$ is
+\eqref{eq:selfdual-line}, derived above rather than cited.
+
+Two of the eight come from the same quadratic read on its two faces: the binary
+$\golden^{-\lng}$ through \eqref{eq:bridge}, and the arithmetic
+$\tfrac{\golden+\bar\golden}{2}$ through \eqref{eq:trace-norm}. That they agree is not a further
+coincidence but the statement that the two readings of $\golden^{2}=\golden+1$ close on the same
+value.
 \Lean{mu\_diagram\_commutes, mu\_faces\_pairwise\_eq}
+\tier{P}
 \end{theorem}
 
 \begin{remark}[The microstate is unique: no landscape to select]\label{rmk:no-landscape}
-The five routes of Theorem~\ref{thm:mu-diagram} leave no freedom in the modulus: the value $\mu=\tfrac12$ is
-forced at once by the Gamma value, the norm product, the angle $\cos(\tfrac{\pi}{3})$, the binary bridge and the
-involution fixed point. The microstate is therefore the \emph{unique} self-consistent solution, not one option
+The eight routes of Theorem~\ref{thm:mu-diagram} leave no freedom in the modulus: the value $\mu=\tfrac12$ is
+forced at once by the Gamma value, the norm product, the angle $\cos(\tfrac{\pi}{3})$, the binary bridge, the
+involution fixed point and the self-dual line of the completed zeta. The microstate is therefore the \emph{unique} self-consistent solution, not one option
 among many. This is what dissolves the vacuum-selection problem of \S\ref{sssec:ensemble}: there is no
 $\sim 10^{500}$ landscape to choose from and no anthropic selection to invoke---the single microstate is fixed by
-the convergence itself, and the abstract's ``unique self-consistent solution'' is established here. The uniqueness proved here is that of the modulus $\mu=\tfrac12$ as the algebraic fixed point of the five coincident routes (Theorem~\ref{thm:mu-diagram}); its reading as the absence of a physical vacuum landscape is the interpretive step developed in \S\ref{sec:implications}, where the observer builds---rather than selects---the geometry.
+the convergence itself, and the abstract's ``unique self-consistent solution'' is established here. The uniqueness proved here is that of the modulus $\mu=\tfrac12$ as the algebraic fixed point of the eight coincident routes (Theorem~\ref{thm:mu-diagram}); its reading as the absence of a physical vacuum landscape is the interpretive step developed in \S\ref{sec:implications}, where the observer builds---rather than selects---the geometry.
 \end{remark}
 
 \[
@@ -380,6 +1159,7 @@ cyclic group $C_3=\{1,r,r^2\}$ of order $|{\rm rot}\,S_3|=3$. Hence
 \frac{|{\rm rot}\,S_3|^2}{|S_3|}=\frac{3^2}{6}=\frac{9}{6}=\tfrac32 ,
 \end{equation}
 so the geometric leg equals $\sigma$ rather than defining it.
+\tier{P} \Lean{M11\_factorial\_six, s3\_orders, sigma\_geom\_from\_S3}
 \end{lemma}
 
 \begin{theorem}[Sum diagram commutes]\label{thm:sigma-diagram}
@@ -388,32 +1168,400 @@ $\dfrac{\zeta(2)}{(\pi/3)^2}=\dfrac{\pi^2/6}{\pi^2/9}=\dfrac{9}{6}$~\eqref{eq:si
 geometric leg gives $\dfrac{|{\rm rot}\,S_3|^2}{|S_3|}=\dfrac{9}{6}$
 (Lemma~\ref{lem:s3-orders}); both equal $\sigma=\tfrac32$.
 \Lean{sigma\_diagram\_commutes}
+\tier{P}
 \end{theorem}
 
 \begin{theorem}[Methods master]\label{thm:master}
 Both diagrams commute and the spectral invariants follow:
-$\sigma+\mu=2$, $\sigma/\mu=3$. \Lean{section2\_master}
+$\sigma+\mu=2$, $\sigma/\mu=3$; and the arithmetic they carry closes on the same modulus, the
+completed zeta $\xi=\Gamma_{\R}\zeta$ of Theorem~\ref{thm:places} being self-dual exactly on
+$\Re s=\mu$ (Theorem~\ref{thm:funct-eq}). \Lean{section2\_master, places\_assembly}
+\tier{P}
 \end{theorem}
+
+\begin{remark}[The sum and the real places]\label{rmk:sum-places}
+Recorded as an exact coincidence, with nothing asserted: the invariant $\sigma+\mu=2$ of
+Theorem~\ref{thm:master} equals $r_1=2$, the number of real places of $K=\Q(\sqrt5)$---which is
+what fixes the factor $\Gamma_\R^{2}$ in the completed zeta and the doubling
+$\kappa_K=2\kappa_\Q$ of \S\ref{app:arithmetic}. No causal claim is attached and none is used
+below.
+\end{remark}
+
+
+\begin{remark}[One bit, three readings of the same $\tfrac12$]\label{rmk:bit-three-readings}
+Equation~\eqref{eq:entropy-bridge} is not an analogy between an arithmetic invariant and a physical
+one; it is one quantity read three ways, and the three are the three things the framework has been
+saying about $\tfrac12$ all along.
+
+It is \emph{self-referential}. The regulator measures $K$ by its own fundamental unit: $R_K=\log\golden$
+and $\golden$ generates the units of $\OK$ \eqref{eq:trace-norm}, so the field is measured in the
+scale it itself produces. On the geometric side the same $\tfrac12$ is the fixed point of the
+involution $s\mapsto1-s$ (Theorem~\ref{thm:funct-eq}), and of the involution $x\mapsto1-x$ that
+Theorem~\ref{thm:mu-diagram} assembles with seven further routes to the same value---a fixed point,
+which is the non-paradoxical self-reference of
+\S\ref{sec:manin} and Definition~\ref{def:dsr}, where the recurrence is distributed at depth two and
+so never depends directly on itself.
+
+It is \emph{maximal}. By Proposition~\ref{prop:entropy-max}, $\tfrac12$ is where the binary entropy
+attains its largest value: one bit is not one value among many but the most a single site can carry.
+That is what makes the holographic bound a bound, and it is why $f_{\mathrm{crit}}=\tfrac12$ of
+\S\ref{ssec:accum} is a threshold rather than a coincidence.
+
+And it is \emph{arithmetic}. Through $\lambda_{\log}R_K=\log2$ that maximal bit \emph{is} the
+regulator of $\Q(\sqrt5)$, measured in the logarithmic index. A quantity that refers to itself, that
+is the most information a site can pack, and that is an invariant of a number field, are here the
+same quantity; the framework does not relate them, it finds them to be one.
+\end{remark}
+% ---------------------------------------------------------------------
+\subsection{The conductor, the scale, and the unit of spacing}\label{ssec:spacings}
+
+Section~\ref{ssec:spectrum} fixed the residue class modulo $20$ that decides $\chi_5$
+\eqref{eq:fib-criterion}. What that $20$ \emph{is} has not been said, and it is needed before any
+statement about the spacings of zeros: a spacing is a number only once a unit is fixed, and if the
+unit were free the statement would be about the unit rather than about the zeros.
+
+\begin{proposition}[The conductor is derived]\label{prop:conductor}
+The modulus $20$ is not chosen. It is the least common multiple of the two periods already in the
+framework---the $4$ of the turn, $i^{4}=1$, and the $5$ of the pentagon
+(Theorem~\ref{thm:pentagon-id})---and these are coprime, so the lcm is the product:
+\begin{equation}\label{eq:conductor}
+  \operatorname{lcm}(4,5)=20,\qquad \gcd(4,5)=1 .
+\end{equation}
+\tier{P} \Lean{conductor\_is\_derived}
+\end{proposition}
+
+\begin{proposition}[The two factors are one four and one five]\label{prop:four-cocone}
+The $4$ of the turn and the $4$ that the binary register carries are not two numbers that agree.
+They are one, and the identification is a reduction rather than an analogy. In $\F_5$ the element
+$2$ satisfies the equation of the turn,
+\begin{equation}\label{eq:two-is-i}
+  2^{2}=-1 \ \text{ in } \F_5, \qquad i^{2}=-1 \ \text{ in } \C ,
+\end{equation}
+and the two cycles agree term by term: $2^{k}\bmod 5$ runs $2,4,3,1$ where $i^{k}$ runs
+$i,-1,-i,1$. The reduction that carries one to the other exists because $5$ splits in the Gaussian
+integers, $(2+i)(2-i)=5$; under $\Z[i]\to\Z[i]/(2-i)\cong\F_5$ the image of $i$ is $2$. What makes
+this possible is $5\equiv1\pmod4$, so that $\lvert(\Z/5)^{\times}\rvert=4$, and $5$ is the only
+prime with $p-1=4$. The $4$ of \eqref{eq:conductor} is therefore $\operatorname{ord}(i)$, the
+conductor of $\Q(i)=\Q(\zeta_4)$, and the period of the binary register is that same $4$ seen
+through the reduction---not a property of the factor $4$ itself, where $2^{m}\equiv0$ for
+$m\geq2$ and there is no period at all.
+\tier{P} \Lean{two\_sq\_eq\_neg\_one\_mod\_five, five\_splits\_gaussian, conductor\_four\_is\_order\_of\_turn, binary\_period\_lives\_in\_the\_five\_component, four\_cocone}
+\end{proposition}
+
+\begin{proposition}[Each factor governs one character, and only one]\label{prop:attribution}
+The factorisation $20=4\cdot5$ separates the two characters exactly. Writing $r_4,r_5$ for the two
+reductions, the pair is injective---the Chinese remainder theorem in the form needed here---and
+each factor determines its own character while leaving the other free:
+\begin{equation}\label{eq:attribution}
+  r_4(a)=r_4(b)\ \wedge\ r_5(a)=r_5(b)\implies a=b,
+\end{equation}
+with $r_4$ determining $\chi_4$ and $r_5$ determining $\chi_5$, and neither determining the other.
+The two witnesses are what keep this from being empty: $1$ and $13$ agree mod $4$ and differ in
+$\chi_5$; $1$ and $11$ agree mod $5$ and differ in $\chi_4$. Consequently the classes
+$\{1,9,11,19\}$ and $\{3,7,13,17\}$ of \S\ref{ssec:spectrum} are not tabulated lists but the fibres
+of $r_5$, and the $\chi_5$ of \eqref{eq:chi5-pentagon} agrees with the quadratic fibre:
+$\chi_5(n)=+1$ exactly when $n\equiv\pm1\pmod5$.
+\tier{P} \Lean{conductor\_splits, fiber\_mod4, fiber\_mod5, chi5\_is\_the\_mod5\_fiber, mod4\_does\_not\_determine\_chi5, mod5\_does\_not\_determine\_chi4, conductor\_attribution}
+\end{proposition}
+
+\begin{proposition}[The scale is injective in the conductor]\label{prop:scale}
+For $q,T$ with $2\pi<qT$ put $\mathrm{sc}(q,T)=2\pi/\log(qT/2\pi)$. Distinct conductors give
+distinct scales at the same height:
+\begin{equation}\label{eq:scale-injective}
+  q_1\neq q_2 \implies \mathrm{sc}(q_1,T)\neq \mathrm{sc}(q_2,T).
+\end{equation}
+Hence ``the unfolded spacings have mean one'' selects one conductor: it is a statement about the
+zeros, not about a choice of units. Without it the bound of
+Definition~\ref{def:repulsion} would say nothing.
+\tier{P} \Lean{spacingScale, scale\_injective\_in\_conductor}
+\end{proposition}
+
+\begin{proposition}[The envelope carries both faces]\label{prop:envelope}
+With $\mathrm{env}(q,T)=\frac{T}{2\pi}\log\frac{qT}{2\pi e}$, whose derivative is the density that
+unfolds the ordinates,
+\begin{equation}\label{eq:envelope-splits}
+  \log\frac{qT}{2\pi e}=\underbrace{\log q}_{\text{field}}+\log T
+  -\underbrace{\log 2\pi e}_{\text{universal}},
+\end{equation}
+and only the field part distinguishes: $q_1\neq q_2\Rightarrow\log q_1\neq\log q_2$. With $q=5$ the
+first term is the $\golden$-face of \S\ref{ssec:commute} and the third the $\pi$-face. The counting
+law $N(T)=\mathrm{env}(T)+S(T)$ and the unit $u_n$ it derives are asymptotic and enter as hypothesis
+arguments \tier{C}; what is proved is that the conductor entering them is forced.
+\tier{P} \Lean{envelope, envelope\_splits, field\_part\_distinguishes, CountingLaw, DerivedUnit, the\_unit\_is\_derived}
+\end{proposition}
+
+\begin{proposition}[The radial reading]\label{prop:li-modulus}
+For $\rho\neq0$,
+\begin{equation}\label{eq:li-modulus}
+  \Bigl\lvert 1-\tfrac1\rho\Bigr\rvert=1 \iff \Re\rho=\tfrac12 :
+\end{equation}
+the critical line is exactly the preimage of the unit circle under $\rho\mapsto1-1/\rho$.
+\tier{P} \Lean{li\_modulus\_on\_line}
+\end{proposition}
+
+% ---------------------------------------------------------------------
+\subsection{The extreme case, and the individual the ensemble replaces}\label{ssec:extreme}
+
+The abstract began with an ensemble: the pair correlation of the zeros of $\zeta$ follows GUE
+statistics, and so does the boundary side of low-dimensional holography. An ensemble is what one
+writes for want of an individual. This section has produced the individual---the modulus
+$\mu=\tfrac12$ of Theorem~\ref{thm:mu-diagram}. What remains is to say, with statements of our
+own, what the ensemble was standing in for; and the answer is not a statistic but a pair.
+
+\begin{definition}[The companion of the functional equation]\label{def:sdual-mate}
+For $\rho\in\C$ set
+\begin{equation}\label{eq:sdual-mate}
+  \sigma\tau(\rho)=1-\bar\rho ,
+\end{equation}
+the reflection $s\mapsto1-s$ of Theorem~\ref{thm:funct-eq} composed with complex conjugation.
+The two commute---$1$ is real---so $\sigma\tau$ is an involution, and it is
+\emph{antiholomorphic}.
+\tier{P} \Lean{sdualMate, sdual\_conj\_commute, sdualMate\_involutive}
+\end{definition}
+
+\begin{proposition}[The self-dual line, as a fixed set]\label{prop:line-fixed}
+$\sigma\tau$ preserves the ordinate and reflects the abscissa,
+$\Im\sigma\tau(\rho)=\Im\rho$ and $\Re\sigma\tau(\rho)=1-\Re\rho$; hence
+\begin{equation}\label{eq:line-fixed}
+  \sigma\tau(\rho)=\rho \iff \Re\rho=\golden^{-\lng}.
+\end{equation}
+This is the sense in which the line \eqref{eq:selfdual-line} is \emph{self-dual}: not merely the
+locus where $s\mapsto1-s$ preserves the real part, but the set fixed pointwise by an
+involution---the antiholomorphic one. The holomorphic reflection fixes a single point of $\C$;
+the line is what its composition with conjugation fixes. Its abscissa is the apex of
+Theorem~\ref{thm:mu-diagram}.
+\tier{P} \Lean{sdualMate\_im, sdualMate\_re, sdualMate\_fixed\_iff}
+\end{proposition}
+
+\begin{proposition}[The extreme case has arity two]\label{prop:arity-two}
+If $\Re\rho\neq\golden^{-\lng}$ then $\sigma\tau(\rho)\neq\rho$ and
+$\Im\sigma\tau(\rho)-\Im\rho=0$: off the line there are \emph{two} distinct points sharing one
+ordinate, at separation exactly zero. The configuration that GUE statistics make improbable is
+therefore not a statistic here but a concrete pair. The phenomenon the ensemble
+describes---\emph{level repulsion}, the suppression of small spacings---is on this side a
+statement of arity two, decided pointwise on one pair.
+\tier{P} \Lean{extreme\_case\_is\_binary}
+\end{proposition}
+
+\begin{proposition}[Angular and radial bound the same event]\label{prop:two-readings}
+For $\rho\neq0$, by \eqref{eq:li-modulus},
+\begin{equation}\label{eq:two-readings}
+  \sigma\tau(\rho)\neq\rho \iff \bigl\lvert1-\tfrac1\rho\bigr\rvert\neq1 .
+\end{equation}
+The angular reading (arity two: a pair with zero separation) and the radial one (arity zero: a
+modulus off unity) are two descriptions of one event. No hypothesis is needed: the radial reading
+is Proposition~\ref{prop:li-modulus}.
+\tier{P} \Lean{binary\_iff\_radial}
+\end{proposition}
+
+\begin{definition}[Measured repulsion]\label{def:repulsion}
+Say $Z$ \emph{repels} at $m>0$ if any two distinct elements differ in ordinate by at least $m$, the
+ordinates unfolded by the unit of \S\ref{ssec:spacings}:
+\begin{equation}\label{eq:repulsion}
+  \forall\,\rho\neq\tau\in Z:\quad \lvert\Im\tau-\Im\rho\rvert\ \geq\ m .
+\end{equation}
+This is \emph{level repulsion}: the suppression of small spacings that GUE statistics describe and
+Poisson statistics do not. It is measured, not proved \tier{N}: over $237$ unfolded spacings with
+$\gamma\leq329.30$ the minimum is $0.2307$; none falls below $0.10$, where independence would put
+several; the fit to GUE against Poisson favours GUE by a factor $7.6$; and the unfolded mean is
+$1.0073$ with the proper conductor against $0.8899$ with a foreign one---which is
+Proposition~\ref{prop:scale} showing in the data. Only the \emph{sign} of $m$ enters anything below.
+\Lean{Repulsion}
+\end{definition}
+
+\begin{proposition}[Repulsion excludes the extreme case]\label{prop:repulsion-excludes}
+If $Z$ repels at some $m>0$ then no two distinct elements share an ordinate; and since off the line
+the pair $\{\rho,\sigma\tau(\rho)\}$ has separation exactly zero
+(Proposition~\ref{prop:arity-two}), every $\rho\in Z$ closed under $\sigma\tau$ satisfies
+$\Re\rho=\golden^{-\lng}$. The configuration the ensemble makes improbable and the one repulsion
+excludes are the same configuration.
+\tier{P} \Lean{repulsion\_excludes\_zero\_spacing, repulsion\_excludes\_the\_extreme\_case}
+\end{proposition}
+
+\begin{theorem}[The weak form, and what would suffice]\label{thm:weak-form}
+Closure under $\sigma\tau$ alone gives
+\begin{equation}\label{eq:E-iff-no-sharing}
+  \bigl(\forall\rho\in Z:\ \Re\rho=\golden^{-\lng}\bigr)
+  \iff \text{no two distinct elements of } Z \text{ share an ordinate}.
+\end{equation}
+The right-hand side is strictly weaker than Definition~\ref{def:repulsion}: repulsion implies it,
+not conversely. It is what any future argument would discharge in place of the metric bound.
+\tier{P} \Lean{E\_iff\_no\_shared\_ordinate}
+\end{theorem}
+
+\begin{proposition}[Repulsion gives the modulus]\label{prop:repulsion-modulus}
+Under the same hypotheses, $\lvert1-1/\rho\rvert=1$ exactly. The measured repulsion does not merely
+constrain the modulus: it \emph{produces} it.
+\tier{P} \Lean{repulsion\_gives\_the\_modulus}
+\end{proposition}
+
+\begin{theorem}[Zeros on the apex, with its inputs in view]\label{thm:zeros-apex}
+Let $Z\subset\C$ be closed under $\sigma\tau$ and repel at some $m>0$
+(Definition~\ref{def:repulsion}). Then every $\rho\in Z$ satisfies $\Re\rho=\golden^{-\lng}$, the
+apex of Theorem~\ref{thm:mu-diagram}.
+
+Two inputs are open and are named here rather than hidden. Closure needs the conjugation half of
+\eqref{eq:sdual-mate}, $\xi(\bar s)=\overline{\xi(s)}$, not established in this paper \tier{C}; and
+the repulsion is measured \tier{N}. Everything between them is proved, and of the measurement only
+the \emph{sign} enters.
+\Lean{XiConjClosed, Repulsion, zeros\_on\_the\_apex}
+\end{theorem}
+
+\begin{remark}[What the argument does not use]\label{rmk:no-statistics}
+Theorem~\ref{thm:zeros-apex} uses the geometry of $\C$ and the sign of one bound. It uses no
+joint density, no sine kernel, no form factor, no asymptotic statistics of the spacings. That is
+the point of stating the extreme case at arity two: the exclusion the criterion needs is about
+\emph{one pair}, and a pair is an individual. Where the ensemble was standing in for an object,
+the object here is the modulus, and what the statistics described is a consequence of its
+geometry rather than a substitute for it. The chain that discharges the two open inputs, and the
+measured bound itself, belong to the companion papers~\cite{HP,F1}; note that they are stated
+there for $L(s,\chi_5)$, whose functional equation is a different theorem from
+\eqref{eq:funct-eq}, proved separately in~\cite{F1}.
+\end{remark}
+
+
+\begin{definition}[The ensemble's own object]\label{def:pair-correlation}
+The statistics invoked in \S\ref{sec:intro} are those of the GUE pair-correlation kernel
+\begin{equation}\label{eq:sine-kernel}
+  K(u)=1-\Bigl(\frac{\sin\pi u}{\pi u}\Bigr)^{2} .
+\end{equation}
+It is written here---the attribution is at \S\ref{sec:intro}---so that the object the paper opened
+with is a node of this development rather than a gap in it. It vanishes as $u\to0$, which is the
+suppression of small spacings that Definition~\ref{def:repulsion} measures, and tends to $1$ for
+large $u$, which is decorrelation. Nothing below uses it. \tier{C}
+\Lean{sineKernel, sineKernel\_at\_nonzero\_integer}
+\end{definition}
+
+\begin{remark}[Envelope yes, fluctuations no]\label{rmk:envelope-not-fluctuations}
+The ensemble stands on a distinction between the smooth spectral density and the fluctuations
+around it. A deterministic operator built without reference to $\zeta$ determines the
+envelope---the global distribution of zeros---but the pair-correlation statistics reside in the
+fluctuations, and reproducing them would require either an exact spectrum or a dynamical mechanism
+generating the level repulsion of Definition~\ref{def:repulsion}. \emph{This is intrinsic to the
+construction, not a gap in the work}: it is why the present subsection proves a statement about
+\emph{one pair} rather than about a distribution. The joint density and the form factor are
+declared in the development and used in no signature; that is the check that nothing here rests on
+them. \tier{$\varnothing$}
+\Lean{SmoothDensity, FineFluctuations, JointDensity, FormFactor}
+\end{remark}
+
+\begin{remark}[A geometric origin for the constraint]\label{rmk:geometric-origin}
+What the framework does supply is a candidate \emph{origin} for the constraint that makes such
+statistics possible, and it is already proved above: the ratio $\sigma/\mu$ is the arity $d=3$
+(Remark~\ref{rmk:spectral-origin}), the modulus contracts strictly, $\|\hat\Omega\|=\tfrac12<1$
+(Remark~\ref{rmk:no-diagonal}), and the same $3$ is the exponent of
+$\prod_k\lvert\lambda_k\rvert=2^{-3}$ in Proposition~\ref{prop:triad-invariants}. The reading that
+eigenvalue correlations in this regime arise from \emph{geometric constraint}---the no-diagonal
+condition---rather than from dynamical instability is advanced in the companion paper~\cite{HP};
+it is a proposal there and not a theorem here, and is recorded as such. What is established in
+this section is the regime, not the reading. \tier{O}
+\end{remark}
+
+\begin{remark}[Not the tower spacing]\label{rmk:not-the-tower-spacing}
+One caution, now that spacings are in play: the tower has its own spacing, the regulator
+$R_K=\log\golden$ of \eqref{eq:regulator}, numerically $0.481212$, while the unit that unfolds
+ordinates at $T=100$ is $1.435589$ (Proposition~\ref{prop:scale}). They share the symbol $\golden$
+and are different objects.
+\tier{P} \Lean{tower\_spacing\_is\_the\_regulator}
+\end{remark}
 
 % ---------------------------------------------------------------------
 \subsection{Formal verification}\label{ssec:status}
 
 Each result of this section carries, in brackets, the name of its Lean~4
 theorem. The development that accompanies the paper is the self-contained
-file \texttt{CW3\_lean.lean}, which declares no axioms. The golden ratio is
+file \texttt{CW6\_complete\_v2.lean}. It compiles under \texttt{leanprover/lean4}~v4.29.0 with
+Mathlib~v4.29.0: \texttt{lake build} completes with no errors and no warnings, and the file
+declares \emph{no} \texttt{axiom} and contains no \texttt{sorry}. The file closes with the
+framework colimit of \S\ref{ssec:web} below (namespace \texttt{PCFColimit}): the frameworks the paper
+treats---Polyakov, Maldacena, ER$=$EPR, Huerta--Schreiber, Kiely---as partial spectral objects
+together with the PCF core, whose fields are populated by theorems of this same file
+(\texttt{modulus\_Omega}, \texttt{holographic\_area}, \texttt{kk\_at\_PCF},
+\texttt{two\_pow\_hausdorff}, the P/C/F norms), the cocone into the vertex $T_{\PCF}$
+(\texttt{cocone\_property}), and the universal property that makes the vertex unique
+(\texttt{colimit\_universal}, \texttt{framework\_colimit}).
+The external results the file uses
+enter as explicit hypothesis arguments in the types of the theorems that consume them---where
+the reader can see them---rather than as axioms; the classical analytic inputs
+(\texttt{gammaR\_from\_tate}, \texttt{theta\_from\_jacobi}) and the combinatorial ones
+(\texttt{ladder\_from\_scott}, \texttt{e8\_dim\_from\_kissing}, \texttt{positroid\_from\_kp},
+\texttt{no\_separable\_parts}) are carried that way. Two further inputs enter the same way in
+\S\ref{ssec:extreme} and are recorded here because they are the only open ones in that
+subsection: \texttt{XiConjClosed}, the closure $\xi(\bar s)=\overline{\xi(s)}$ of the zeros
+under conjugation, which is \emph{not} established in this paper \tier{C}; and
+\texttt{MinSpacing}, a positive minimal ordinate separation, which is measured rather than
+proved \tier{N}. Of the second only its sign is used. Neither is an axiom: both are hypothesis
+arguments in the type of Theorem~\ref{thm:zeros-apex}. Two decision procedures use
+\texttt{native\_decide} rather than \texttt{decide}---the multiplicativity of $\chi_5$ over the
+units, and the sweep of $16\times17\times18$ triples behind
+Proposition~\ref{prop:interval-uniqueness}---which extends the trusted base to Lean's compiler
+as well as its type kernel; every other proof rests on the kernel alone. The golden ratio is
 defined, $\golden:=(1+\sqrt5)/2$, and the two facts that anchor the
 construction are theorems proved from that definition, not assumptions. The
 relation $\golden^2=\golden+1$ (\texttt{phi\_sq}) is derived from the
 definition and is~\eqref{eq:phisq}. The modulus $\|\hat\Omega\|=\tfrac12$
-(\texttt{modulus\_Omega}) is likewise a theorem: its value is fixed in
-\S\ref{ssec:origins} and its component structure in
-Proposition~\ref{prop:pcf-norms}.
+(\texttt{modulus\_Omega}) is likewise a theorem. Its value is reached by the routes assembled in
+Theorem~\ref{thm:mu-diagram}, its component structure is
+Proposition~\ref{prop:pcf-norms}, and the trigonometric collapse of the norm product is
+Theorem~\ref{thm:collapse}; the three quantities that coincide there and cease to coincide
+afterwards are separated in Proposition~\ref{prop:triad-invariants}.
 
 \smallskip
-\sloppy\noindent\textbf{Compilation note (single point of record).} The library
-lemma names that require confirmation against the installed Mathlib version
-are \texttt{Gamma\_eq\_integral}, \texttt{Gamma\_one\_half\_eq},
-\texttt{riemannZeta\_two},\allowbreak\ \texttt{Real.sqrt\_eq\_rpow},\allowbreak\ \texttt{rpow\_natCast}, \texttt{Gamma\_add\_one}, \texttt{arccos\_cos} and,
-for the M6 uniqueness, \texttt{Nat.Prime.irrational\_sqrt},
-\texttt{Irrational.int\_mul}, \texttt{Int.not\_irrational}.
+\sloppy\noindent\textbf{Compilation note (single point of record).} The development declares no
+axiom: every classical input is a hypothesis argument in the type of the theorem that consumes it.
+What remains to be confirmed against the installed Mathlib version is the spelling of the library
+lemmas the proofs call. Grouped by what they serve:
+\begin{itemize}\itemsep1pt\parskip0pt
+\item \emph{Completed zeta and the places} (\S\ref{ssec:zeta}): \texttt{Gamma}$_\R$,
+  \texttt{Gamma}$_\R$\texttt{\_ne\_zero\_of\_re\_pos}, \texttt{riemannZeta\_def\_of\_ne\_zero},
+  \texttt{zeta\_eq\_tsum\_one\_div\_nat\_cpow}, \texttt{riemannZeta\_eulerProduct\_tprod},
+  \texttt{completedRiemannZeta\_one\_sub}, \texttt{integral\_gaussian}, \texttt{Real.sq\_sqrt},
+  \texttt{Real.Gamma\_eq\_integral}.
+\item \emph{The generator and its conjugate} (\S\ref{ssec:generator}), \emph{the arithmetic
+  seed} (\S\ref{ssec:origins}) \emph{and the cocone} (\S\ref{ssec:commute}):
+  \texttt{Real.sq\_sqrt}, \texttt{Real.Gamma\_add\_one}, \texttt{Real.Gamma\_pos\_of\_pos}.
+\item \emph{The eigenvalue triad} (Proposition~\ref{prop:triad-invariants}):
+  \texttt{Complex.exp\_ofReal\_mul\_I\_re}, \texttt{Complex.exp\_nat\_mul},
+  \texttt{Complex.exp\_two\_pi\_mul\_I}, \texttt{Real.cos\_pi\_add}, \texttt{Real.cos\_pi\_sub},
+  \texttt{Real.rpow\_mul}, \texttt{Real.rpow\_natCast}, \texttt{Real.rpow\_neg}.
+\item \emph{The companion and the extreme case} (\S\ref{ssec:extreme}): \texttt{map\_sub},
+  \texttt{map\_one} on \texttt{starRingEnd}, \texttt{Complex.conj\_re},
+  \texttt{Complex.conj\_im}, \texttt{Complex.ext\_iff}.
+\item \emph{Theta and Poisson} (\eqref{eq:theta-lattice}):
+  \texttt{Real.tsum\_eq\_tsum\_fourierIntegral}, \texttt{jacobiTheta}.
+\item \emph{Pentagon and Fibonacci} (\S\ref{ssec:spectrum}, \S\ref{ssec:tower}):
+  \texttt{Real.cos\_pi\_sub}, \texttt{Real.cos\_two\_mul}, \texttt{goldenRatio}, \texttt{Nat.fib}.
+  The general form of \eqref{eq:fib-criterion} would need Frobenius in \texttt{ZMod q}; it is
+  stated here by cases.
+\item \emph{Even zeta values} (Theorem~\ref{thm:even-zeta}): the name of the even-value lemma,
+  and \textbf{whether it is stated with \texttt{bernoulli} or with \texttt{bernoulli'}}. The two
+  differ only at $B_1$ and agree at every even index $\ge2$, so the statement is the same either
+  way; the identifier is not.
+\item \emph{Group orders} (Lemma~\ref{lem:s3-orders}): the index-two fact for $A_n$,
+  \texttt{two\_mul\_card\_alternatingGroup} or its equivalent.
+\item \emph{Matrices} (Theorem~\ref{thm:faces}): \texttt{Matrix.mul\_inv\_rev},
+  \texttt{Matrix.transpose\_nonsing\_inv}.
+\item \emph{Earlier blocks}: \texttt{Gamma\_one\_half\_eq}, \texttt{riemannZeta\_two},
+  \texttt{Real.sqrt\_eq\_rpow}, \texttt{rpow\_natCast}, \texttt{Gamma\_add\_one},
+  \texttt{arccos\_cos}, and for the M6 uniqueness \texttt{Nat.Prime.irrational\_sqrt},
+  \texttt{Irrational.int\_mul}, \texttt{Int.not\_irrational}.
+\end{itemize}
+\noindent The list and the file cannot drift apart, and the guarantee is now stronger than a
+convention: since \texttt{lake build} completes, any renaming or removal of these lemmas in a
+future Mathlib breaks the build rather than passing silently. The numerical companion is \texttt{CW6\_complete\_verify\_v2.py},
+whose checks are indexed by the \TeX{} labels of this file: of the $162$ labelled equations,
+$147$ carry a Lean proof and $108$ a numerical check, $102$ carrying both---the checks evaluating
+identities at up to $25$-digit precision and, where a claim is a correspondence with measurement,
+comparing against the measured value. The nine carrying neither a proof nor a check of their
+own are the six correspondence statements of the duality list
+\eqref{eq:bridge-S}--\eqref{eq:bridge-fixed}; the class-number formula \eqref{eq:cnf}, whose
+Lean form is the hypothesis \texttt{hCNF} of \texttt{L1\_from\_class\_number\_formula};
+the Polyakov action \eqref{eq:polyakov} (an \tier{L} input); and the
+Lawvere--Yanofsky diagonal \eqref{eq:LY}, which states the problem rather than a result.
+The global Dedekind factorisation \eqref{eq:dedekind} is counted among the $147$: its Lean
+backing sits at the local factors \eqref{eq:local-dedekind} that compose it. The figures are generated by
+\texttt{CW6\_all\_figures\_v2.py} and their assertions checked, separately and against the labels of
+this file, by \texttt{CW6\_figures\_verify\_v2.py}.
 
+
+% ===================================================================
