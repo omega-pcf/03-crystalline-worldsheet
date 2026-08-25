@@ -949,9 +949,9 @@ def muThree : ℚ := 1 / 2
 
 /-- Colour ratio 1 − μ₃² = 3/4 (gauge/gravity entropy ratio; the colour 3/4). -/
 theorem colour_ratio : 1 - muThree ^ 2 = 3 / 4 := by unfold muThree; norm_num
-/-- NOTE: "one loop = colour, two loops = generations" is a physical assignment
-    (gravity bridge L1001, L1010–1011), anchored on ζ(3) as Apéry's two-loop constant.
-    Recorded as STRUCTURAL, not as a derived theorem. -/
+-- NOTE: "one loop = colour, two loops = generations" is a physical assignment
+-- (gravity bridge L1001, L1010–1011), anchored on ζ(3) as Apéry's two-loop constant.
+-- Recorded as STRUCTURAL, not as a derived theorem.
 
 /- ════════════════════════════════════════════════════════════════════════════════
    §C — The Regge tower IS the Euler product
