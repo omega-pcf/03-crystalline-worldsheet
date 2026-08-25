@@ -25,43 +25,43 @@ set_option linter.style.longLine false
 set_option linter.style.whitespace false
 
 -- ════════ §2  (PCF_Section2_Unified.lean) ════════
--- (los namespaces conservan los nombres historicos CW5*/PaperS*: son
---  identificadores internos)
+-- (namespaces preserve the historical CW5*/PaperS* names: they are
+--  internal identifiers)
 namespace PaperS2
 open Real
 
 -- ════════════════════════════════════════════════════════════════════
---  CONSTANTES (corpus: reusar φ, μ_n/σ_n, lambda_log, mersenne_bridge)
+--  CONSTANTS (corpus: reuse φ, μ_n/σ_n, lambda_log, mersenne_bridge)
 -- ════════════════════════════════════════════════════════════════════
 
 noncomputable def φ : ℝ := (1 + Real.sqrt 5) / 2
 noncomputable def μ : ℝ := 1 / 2
 noncomputable def σ : ℝ := 3 / 2
 noncomputable def lambda_log : ℝ := Real.log 2 / Real.log φ
-/-- §2.0  El conjugado de Galois de φ: la segunda raíz de x² = x + 1. -/
+/-- §2.0  The Galois conjugate of φ: the second root of x² = x + 1. -/
 noncomputable def φ_bar : ℝ := (1 - Real.sqrt 5) / 2
 
-/-- **[P] `eq:trace-norm`, la traza.** -/
+/-- **[P] `eq:trace-norm`, the trace.** -/
 theorem phi_trace : φ + φ_bar = 1 := by unfold φ φ_bar; ring
 
-/-- **[P] `eq:trace-norm`, la norma.**  N(φ) = −1: φ es una unidad. -/
+/-- **[P] `eq:trace-norm`, the norm.**  N(φ) = −1: φ is a unit. -/
 theorem phi_norm : φ * φ_bar = -1 := by
   unfold φ φ_bar
   have h5 : Real.sqrt 5 ^ 2 = 5 := Real.sq_sqrt (by norm_num)
   nlinarith [h5]
 
-/-- **[P] G8 — LA BISAGRA DE LA PATA ARITMÉTICA.**  El conjugado de Galois ES
-    la imagen de φ por la involución x ↦ 1 − x: la conjugación de ℚ(√5) y la
-    involución del ápice no son dos simetrías análogas, son el mismo mapa
-    sobre la órbita {φ, φ̄}.  Sin esto, (φ+φ̄)/2 = μ sería una coincidencia. -/
+/-- **[P] G8 — THE HINGE OF THE ARITHMETIC LEG.**  The Galois conjugate IS
+    the image of φ under the involution x ↦ 1 − x: conjugation of ℚ(√5) and the
+    apex involution are not two analogous symmetries but the same map
+    on the orbit {φ, φ̄}.  Without this, (φ+φ̄)/2 = μ would be a coincidence. -/
 theorem galois_conj_is_one_sub : φ_bar = 1 - φ := by
   have h := phi_trace; linarith
 
-/-- **[P]** La involución de Galois, punto a punto, ES x ↦ 1 − x. -/
+/-- **[P]** The Galois involution, pointwise, IS x ↦ 1 − x. -/
 theorem galois_involution_is_one_sub (x : ℝ) : (φ + φ_bar) - x = 1 - x := by
   rw [phi_trace]
 
-/-- **[P] `eq:trace-norm`, el discriminante.**  Δ_K = 5. -/
+/-- **[P] `eq:trace-norm`, the discriminant.**  Δ_K = 5. -/
 theorem phi_discriminant : (φ - φ_bar) ^ 2 = 5 := by
   unfold φ φ_bar
   have h5 : Real.sqrt 5 ^ 2 = 5 := Real.sq_sqrt (by norm_num)
@@ -93,7 +93,7 @@ theorem mersenne_bridge : φ ^ lambda_log = 2 := by
   exact Real.exp_log (by norm_num)
 
 -- ════════════════════════════════════════════════════════════════════
---  §2.1 — Puente π↔φ y rama π (M13, M1–M4)
+--  §2.1 — π↔φ bridge and the π branch (M13, M1–M4)
 -- ════════════════════════════════════════════════════════════════════
 
 /-- Chebyshev polynomial of degree 5: cos(5θ) = 16cos⁵θ − 20cos³θ + 5cosθ. -/
@@ -180,27 +180,27 @@ theorem M13_pi_eq_five_arccos :
   · positivity
   · linarith [Real.pi_pos]
 
-/-- [M1] Γ como integral (Mathlib `Real.Gamma_eq_integral`). -/
+/-- [M1] Γ as an integral (Mathlib `Real.Gamma_eq_integral`). -/
 theorem M1_gamma_integral {s : ℝ} (hs : 0 < s) :
     Real.Gamma s = ∫ t in Set.Ioi (0:ℝ), Real.exp (-t) * t ^ (s - 1) :=
   Real.Gamma_eq_integral hs
 
-/-- [M2] Γ(1/2) = √π (gaussiana). -/
+/-- [M2] Γ(1/2) = √π (Gaussian). -/
 theorem M2_gamma_half : Real.Gamma (1/2) = Real.sqrt π :=
   Real.Gamma_one_half_eq
 
-/-- [M3] medio factorial: (1/2)! = Γ(3/2) = μ·√π. -/
+/-- [M3] half factorial: (1/2)! = Γ(3/2) = μ·√π. -/
 theorem M3_half_factorial : Real.Gamma (3/2) = μ * Real.sqrt π := by
   have h : (3:ℝ)/2 = 1/2 + 1 := by norm_num
   rw [h, Real.Gamma_add_one (by norm_num : (1:ℝ)/2 ≠ 0), M2_gamma_half]
   unfold μ; ring
 
-/-- [M4a] mediación √2: φ^{μ·λ_log} = √2. -/
+/-- [M4a] √2 mediation: φ^{μ·λ_log} = √2. -/
 theorem M4_sqrt2 : φ ^ (μ * lambda_log) = Real.sqrt 2 := by
   rw [mul_comm, Real.rpow_mul (le_of_lt φ_pos), mersenne_bridge]
   unfold μ; rw [Real.sqrt_eq_rpow]
 
-/-- [M4b] mediación √3: φ^{μ·log_φ 3} = √3. -/
+/-- [M4b] √3 mediation: φ^{μ·log_φ 3} = √3. -/
 theorem M4_sqrt3 : φ ^ (μ * (Real.log 3 / Real.log φ)) = Real.sqrt 3 := by
   have hternary : φ ^ (Real.log 3 / Real.log φ) = 3 := by
     have hlog : Real.log φ ≠ 0 := ne_of_gt log_φ_pos
@@ -211,10 +211,10 @@ theorem M4_sqrt3 : φ ^ (μ * (Real.log 3 / Real.log φ)) = Real.sqrt 3 := by
   unfold μ; rw [Real.sqrt_eq_rpow]
 
 -- ════════════════════════════════════════════════════════════════════
---  §2.2 — Autorreferencia distribuida y minimalidad (M5, M6)
+--  §2.2 — Distributed self-reference and minimality (M5, M6)
 -- ════════════════════════════════════════════════════════════════════
 
-/-- [M5] autorreferencia distribuida: profundidad k ≥ 2. -/
+/-- [M5] distributed self-reference: depth k ≥ 2. -/
 def DistributedSelfReference (k : ℕ) : Prop := 2 ≤ k
 
 def fib : ℕ → ℝ
@@ -222,7 +222,7 @@ def fib : ℕ → ℝ
   | 1 => 1
   | n + 2 => fib (n + 1) + fib n
 
-/-- [M6] minimalidad (núcleo): la raíz positiva de r²=r+1 es φ; k=2 mínimo. -/
+/-- [M6] minimality (core): the positive root of r²=r+1 is φ; k=2 minimal. -/
 theorem M6_characteristic_root_is_phi :
     DistributedSelfReference 2 ∧ (∀ r : ℝ, 0 < r → r ^ 2 = 1 * r + 1 → r = φ) := by
   refine ⟨le_refl 2, ?_⟩
@@ -235,7 +235,7 @@ theorem M6_characteristic_root_is_phi :
   · exfalso; linarith
 
 -- ════════════════════════════════════════════════════════════════════
---  §2.3 — ProjectionPCF, normas, ε₀ (M7, M8)  [corpus: reusar las defs]
+--  §2.3 — ProjectionPCF, norms, ε₀ (M7, M8)  [corpus: reuse the defs]
 -- ════════════════════════════════════════════════════════════════════
 
 noncomputable def projection_PCF (a b c : ℝ) : ℝ := (a * b) / (c * Real.sqrt 3) * (π / 3)
@@ -246,7 +246,7 @@ noncomputable def normF : ℝ := Real.sqrt 3 / 2
 
 theorem sqrt3_pos : (0:ℝ) < Real.sqrt 3 := Real.sqrt_pos.mpr (by norm_num)
 
-/-- [M7] suma de Fibonacci como proyección: F = P ⊕ C := projection_PCF P C 1. -/
+/-- [M7] Fibonacci sum as a projection: F = P ⊕ C := projection_PCF P C 1. -/
 noncomputable def fibOplus (P C : ℝ) : ℝ := projection_PCF P C 1
 
 theorem M7_oplus_formula (P C : ℝ) :
@@ -255,7 +255,7 @@ theorem M7_oplus_formula (P C : ℝ) :
   have h3 : Real.sqrt 3 ≠ 0 := ne_of_gt sqrt3_pos
   field_simp
 
-/-- [M8] derivación de ε₀ desde la proyección (usa sin(π/6)=1/2). -/
+/-- [M8] derivation of ε₀ from the projection (uses sin(π/6)=1/2). -/
 theorem M8_epsilon0_from_projection :
     projection_PCF (Real.sin (π/6)) (Real.log φ) π = epsilon_0 := by
   unfold projection_PCF epsilon_0
@@ -265,7 +265,7 @@ theorem M8_epsilon0_from_projection :
   field_simp; ring
 
 -- ════════════════════════════════════════════════════════════════════
---  §2.4 — Origen geométrico del 1/2 (M9–M11)
+--  §2.4 — Geometric origin of 1/2 (M9–M11)
 -- ════════════════════════════════════════════════════════════════════
 
 /-- |P| = tan(π/6). -/
@@ -279,7 +279,7 @@ theorem normP_eq_tan : normP = Real.tan (π/6) := by
 theorem normF_eq_cos : normF = Real.cos (π/6) := by
   unfold normF; rw [Real.cos_pi_div_six]
 
-/-- [M9] colapso: |P||C||F| = tan(π/6)·1·cos(π/6) = sin(π/6). -/
+/-- [M9] collapse: |P||C||F| = tan(π/6)·1·cos(π/6) = sin(π/6). -/
 theorem M9_collapse : normP * normC * normF = Real.sin (π/6) := by
   rw [normP_eq_tan, normF_eq_cos]; unfold normC
   rw [mul_one, Real.tan_eq_sin_div_cos]
@@ -295,22 +295,22 @@ theorem M10_sin_cos_mu :
   refine ⟨by rw [Real.sin_pi_div_six, Real.cos_pi_div_three], ?_⟩
   unfold μ; rw [Real.cos_pi_div_three]
 
-/-- [M10b] σ desde Basel: ζ(2)/(π/3)² = (π²/6)/(π²/9) = 3/2 = σ. -/
+/-- [M10b] σ from Basel: ζ(2)/(π/3)² = (π²/6)/(π²/9) = 3/2 = σ. -/
 theorem M10_sigma_from_basel : (π ^ 2 / 6) / (π / 3) ^ 2 = σ := by
   have hπ : π ≠ 0 := ne_of_gt Real.pi_pos
   unfold σ; field_simp; ring
 
-/-- [M11a] factorial conector (cara media): (1/2)!/√π = μ. -/
+/-- [M11a] factorial connector (middle face): (1/2)!/√π = μ. -/
 theorem M11_factorial_face : Real.Gamma (3/2) / Real.sqrt π = μ := by
   rw [M3_half_factorial]
   have hπ : Real.sqrt π ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr Real.pi_pos)
   field_simp
 
-/-- [M11b] factorial conector (cara entera): 3! = 6 = |S₃|. -/
+/-- [M11b] factorial connector (integer face): 3! = 6 = |S₃|. -/
 theorem M11_factorial_six : Nat.factorial 3 = 6 := by decide
 
-/-- **[P] `lem:s3-orders`.** Los órdenes leídos DEL GRUPO, no escritos a mano:
-    |S₃| = 3! = 6 y |rot S₃| = |A₃| = 3. -/
+/-- **[P] `lem:s3-orders`.** The orders read FROM THE GROUP, not written by hand:
+    |S₃| = 3! = 6 and |rot S₃| = |A₃| = 3. -/
 theorem s3_orders :
     Fintype.card (Equiv.Perm (Fin 3)) = 6 ∧
     Fintype.card (alternatingGroup (Fin 3)) = 3 := by
@@ -322,23 +322,23 @@ theorem s3_orders :
       simpa [Fintype.card_fin, Nat.factorial] using h
     omega
 
-/-- **[P] `eq:sigma-geom`.** La pata geométrica de σ, obtenida de los órdenes del grupo:
-    |rot S₃|² / |S₃| = 9/6 = 3/2 = σ. El 9 y el 6 salen de `s3_orders`, no de numerales. -/
+/-- **[P] `eq:sigma-geom`.** The geometric leg of σ, obtained from the group orders:
+    |rot S₃|² / |S₃| = 9/6 = 3/2 = σ. The 9 and 6 come from `s3_orders`, not numerals. -/
 theorem sigma_geom_from_S3 :
     ((Fintype.card (alternatingGroup (Fin 3)) : ℝ)) ^ 2
       / (Fintype.card (Equiv.Perm (Fin 3)) : ℝ) = 3 / 2 := by
   rw [s3_orders.1, s3_orders.2]; norm_num
 
 -- ════════════════════════════════════════════════════════════════════
---  §2.5 — Mersenne mediado (M12)
+--  §2.5 — Mersenne mediation (M12)
 -- ════════════════════════════════════════════════════════════════════
 
 -- ════════════════════════════════════════════════════════════════════
---  §2.6 — El monoide áureo y los levantamientos de Frobenius (ssec:tower)
+--  §2.6 — The golden monoid and Frobenius liftings (ssec:tower)
 -- ════════════════════════════════════════════════════════════════════
 
-/-- **[P] `eq:phi-fib`.** Coordenadas de la torre en la base {φ,1}:
-    φⁿ = F_n·φ + F_{n−1}, iterando φ² = φ + 1. -/
+/-- **[P] `eq:phi-fib`.** Tower coordinates in the base {φ,1}:
+    φⁿ = F_n·φ + F_{n−1}, by iterating φ² = φ + 1. -/
 theorem phi_pow_fib (n : ℕ) (hn : 1 ≤ n) :
     φ ^ n = (Nat.fib n : ℝ) * φ + (Nat.fib (n - 1) : ℝ) := by
   induction n with
@@ -356,10 +356,10 @@ theorem phi_pow_fib (n : ℕ) (hn : 1 ≤ n) :
         simp [Nat.fib_add_two] at *
         nlinarith [hphi]
 
-/-- **[P] `eq:binet`.**  La forma general: en CUALQUIER anillo conmutativo que contenga un
-    elemento `α` con `α² = α + 1`, la inducción da `α^{n+1} = F_{n+1}·α + F_n`.  No usa nada
-    de `ℝ` ni de `√5`: sólo la relación cuadrática y la recurrencia de Fibonacci.  La versión
-    para `φ` es el caso particular. -/
+/-- **[P] `eq:binet`.**  The general form: in ANY commutative ring containing an
+    element `α` with `α² = α + 1`, induction gives `α^{n+1} = F_{n+1}·α + F_n`.  It uses nothing
+    from `ℝ` or `√5`: only the quadratic relation and the Fibonacci recurrence.  The version
+    for `φ` is the particular case. -/
 theorem binet_general {R : Type*} [CommRing R] (α : R) (hα : α ^ 2 = α + 1) :
     ∀ n : ℕ, α ^ (n + 1) = (Nat.fib (n + 1) : R) * α + (Nat.fib n : R) := by
   intro n
@@ -375,21 +375,21 @@ theorem binet_general {R : Type*} [CommRing R] (α : R) (hα : α ^ 2 = α + 1) 
            = (Nat.fib (m+1) : R) * α ^ 2 + (Nat.fib m : R) * α := by ring
       rw [this, hα]; ring
 
-/-- **`def:frobenius`.** El levantamiento de Frobenius sobre el monoide áureo:
-    ψ_p(φⁿ) = φ^{pn}. Es endomorfismo del MONOIDE ⟨φ⟩, no del anillo R_PCF. -/
+/-- **`def:frobenius`.** The Frobenius lifting on the golden monoid:
+    ψ_p(φⁿ) = φ^{pn}. It is an endomorphism of the MONOID ⟨φ⟩, not of the ring R_PCF. -/
 noncomputable def psiGolden (p : ℕ) (x : ℝ) : ℝ := x ^ (p : ℕ)
 
-/-- **[P]** Acción sobre los generadores: ψ_p(φⁿ) = φ^{pn}. -/
+/-- **[P]** Action on generators: ψ_p(φⁿ) = φ^{pn}. -/
 theorem psi_on_powers (p n : ℕ) : psiGolden p (φ ^ n) = φ ^ (p * n) := by
   unfold psiGolden; rw [← pow_mul, Nat.mul_comm]
 
-/-- **[P]** ψ_p(φ) = φ^p = F_p·φ + F_{p−1}, la forma de `eq:frobenius-tower`. -/
+/-- **[P]** ψ_p(φ) = φ^p = F_p·φ + F_{p−1}, the form of `eq:frobenius-tower`. -/
 theorem psi_golden_fib (p : ℕ) (hp : 1 ≤ p) :
     psiGolden p φ = (Nat.fib p : ℝ) * φ + (Nat.fib (p - 1) : ℝ) := by
   unfold psiGolden; exact phi_pow_fib p hp
 
-/-- **[P] `eq:psi-functorial`.** Los levantamientos componen como se multiplican los
-    primos: ψ_p ∘ ψ_q = ψ_{pq}. Es el axioma de Borger en forma multiplicativa. -/
+/-- **[P] `eq:psi-functorial`.** Liftings compose as primes multiply:
+    ψ_p ∘ ψ_q = ψ_{pq}. This is the Borger axiom in multiplicative form. -/
 theorem psi_functorial (p q : ℕ) (x : ℝ) :
     psiGolden p (psiGolden q x) = psiGolden (p * q) x := by
   unfold psiGolden; rw [← pow_mul, Nat.mul_comm]
@@ -397,8 +397,8 @@ theorem psi_functorial (p q : ℕ) (x : ℝ) :
 /-- **[P]** ψ₁ = id. -/
 theorem psi_one (x : ℝ) : psiGolden 1 x = x := by unfold psiGolden; simp
 
-/-- **[P] `rmk:psi-two`.** ψ_p NO es aditivo: ψ_p(φ+1) = ψ_p(φ²) = φ^{2p} ≠ φ^p + 1
-    para p ≥ 2. Es lo que confina el descenso al nivel multiplicativo. -/
+/-- **[P] `rmk:psi-two`.** ψ_p is NOT additive: ψ_p(φ+1) = ψ_p(φ²) = φ^{2p} ≠ φ^p + 1
+    for p ≥ 2. This confines descent to the multiplicative level. -/
 theorem psi_not_additive : psiGolden 2 (φ + 1) ≠ psiGolden 2 φ + 1 := by
   unfold psiGolden
   have h : φ + 1 = φ ^ 2 := phi_sq.symm
@@ -419,18 +419,18 @@ theorem M12_mersenne_mediated (p : ℝ) :
   congr 1
 
 -- ════════════════════════════════════════════════════════════════════
---  §2.7 — ζ pares (M14)
+--  §2.7 — Even ζ values (M14)
 -- ════════════════════════════════════════════════════════════════════
 
 /-- [M14] ζ(2)=π²/6 (Basel; Mathlib `riemannZeta_two`). -/
 theorem M14_basel : riemannZeta 2 = (π : ℂ) ^ 2 / 6 := riemannZeta_two
 
-/-- **[P] `thm:even-zeta`.** Valores pares de ζ en la forma de `eq:even-zeta`:
+/-- **[P] `thm:even-zeta`.** Even values of ζ in the form of `eq:even-zeta`:
       ζ(2k) = (−1)^{k+1} B_{2k} (2π)^{2k} / (2·(2k)!) ,  k ≥ 1.
-    La demostración completa (cotangente de Euler + generatriz de Bernoulli) está en el
-    texto; aquí se reduce al lema de Mathlib reescribiendo
+    The full proof (Euler cotangent + Bernoulli generating function) is in the
+    paper; here it reduces to the Mathlib lemma by rewriting
       (2π)^{2k}/(2·(2k)!) = 2^{2k−1}·π^{2k}/(2k)!.
-    Verificado numéricamente en `thm:even-zeta` (k = 1..6, |dif| ≤ 7.8e−26). -/
+    Numerically verified in `thm:even-zeta` (k = 1..6, |dif| ≤ 7.8e−26). -/
 theorem even_zeta_bernoulli (k : ℕ) (hk : k ≠ 0) :
     riemannZeta (2 * k) =
       (-1) ^ (k + 1) * (bernoulli (2 * k) : ℂ) * (2 * (π : ℂ)) ^ (2 * k)
@@ -449,7 +449,7 @@ theorem even_zeta_bernoulli (k : ℕ) (hk : k ≠ 0) :
   field_simp
 
 -- ════════════════════════════════════════════════════════════════════
---  DIAGRAMA CONMUTATIVO — vértice μ=1/2  (cocono de cinco rutas)
+--  COMMUTATIVE DIAGRAM — vertex μ=1/2  (cocone of five routes)
 -- ════════════════════════════════════════════════════════════════════
 --
 --      (1/2)!/√π ──┐
@@ -458,20 +458,20 @@ theorem even_zeta_bernoulli (k : ℕ) (hk : k ≠ 0) :
 --   fix(x=1−x) ──┤
 --    φ^{−λ_log} ──┘
 --
---  "Conmuta" = las cinco rutas coinciden en el apex (todas = 1/2).
+--  "Commutes" = the five routes meet at the apex (all equal 1/2).
 
-/-- Ruta factorial. -/
+/-- Factorial route. -/
 noncomputable def faceFact : ℝ := Real.Gamma (3/2) / Real.sqrt π
-/-- Ruta de normas (S₃). -/
+/-- Norm route (S₃). -/
 noncomputable def faceNorm : ℝ := normP * normC * normF
-/-- Ruta del ángulo ternario. -/
+/-- Ternary angle route. -/
 noncomputable def faceCos : ℝ := Real.cos (π/3)
-/-- Ruta φ (giro binario inverso): la cara BINARIA de x² = x + 1. -/
+/-- φ route (inverse binary turn): the BINARY face of x² = x + 1. -/
 noncomputable def facePhi : ℝ := φ ^ (-lambda_log)
-/-- Ruta del cociente de Gammas (la misma Gamma, sin √π). -/
+/-- Gamma ratio route (same Gamma, without √π). -/
 noncomputable def faceGammaRatio : ℝ := Real.Gamma (3/2) / Real.Gamma (1/2)
-/-- Ruta aritmética: el punto medio del par de Galois.  Cara ARITMÉTICA de
-    la misma x² = x + 1. -/
+/-- Arithmetic route: the midpoint of the Galois pair.  The ARITHMETIC face of
+    the same x² = x + 1. -/
 noncomputable def faceGalois : ℝ := (φ + φ_bar) / 2
 
 theorem faceFact_apex : faceFact = μ := M11_factorial_face
@@ -489,20 +489,20 @@ theorem faceGammaRatio_apex : faceGammaRatio = μ := by
   have hpos : (0:ℝ) < Real.Gamma (1/2) := Real.Gamma_pos_of_pos (by norm_num)
   rw [h32, hadd]; field_simp
 
-/-- **[P] RUTA ARITMÉTICA AL ÁPICE (G9).**  Por `galois_conj_is_one_sub` la
-    conjugación de ℚ(√5) y x ↦ 1−x son el mismo mapa; su punto medio es su
-    punto fijo, y vale μ. -/
+/-- **[P] ARITHMETIC ROUTE TO THE APEX (G9).**  By `galois_conj_is_one_sub` the
+    conjugation of ℚ(√5) and x ↦ 1−x are the same map; their midpoint is their
+    fixed point, and it equals μ. -/
 theorem faceGalois_apex : faceGalois = μ := by
   unfold faceGalois μ; rw [phi_trace]
 
-/-- **[P] Ruta de la involución, CON ↔ (G3).**  μ es el ÚNICO punto fijo de
-    x ↦ 1−x.  El ↔ es lo que el cocono consume: una pata es una
-    identificación, no una implicación.  Cierra D14. -/
+/-- **[P] Involution route, IFF ↔ (G3).**  μ is the UNIQUE fixed point of
+    x ↦ 1−x.  The ↔ is what the cocone consumes: a leg is an
+    identification, not an implication.  Closes D14. -/
 theorem faceInv_apex : ∀ x : ℝ, x = 1 - x ↔ x = μ := by
   intro x; unfold μ; constructor <;> intro h <;> linarith
 
-/-- Ruta de la ecuación funcional: la RECTA autodual, no el punto.  Es `Prop`
-    y no `ℝ` porque su objeto es un subconjunto de ℂ. -/
+/-- Functional equation route: the SELF-DUAL LINE, not the point.  It is `Prop`
+    rather than `ℝ` because its object is a subset of ℂ. -/
 def faceLine : Prop := ∀ s : ℂ, s.re = (1 - s).re ↔ s.re = μ
 
 /-- **[P] Pata 8 — la recta.** -/
@@ -510,10 +510,10 @@ theorem faceLine_apex : faceLine := by
   intro s; rw [Complex.sub_re, Complex.one_re]
   unfold μ; constructor <;> intro h <;> linarith
 
-/-- **[P] DIAGRAMA CONMUTATIVO — OCHO RUTAS.**  Seis valores reales y dos
-    identificaciones (una en ℝ, una en ℂ).  `facePhi` y `faceGalois` salen de
-    la MISMA x² = x + 1 por sus dos caras, binaria y aritmética.  `faceLine`
-    es la que el título de `thm:funct-eq` pedía y el enunciado no entregaba. -/
+/-- **[P] COMMUTATIVE DIAGRAM — EIGHT ROUTES.**  Six real values and two
+    identifications (one in ℝ, one in ℂ).  `facePhi` and `faceGalois` arise from
+    the SAME x² = x + 1 via its two faces, binary and arithmetic.  `faceLine`
+    is what the title of `thm:funct-eq` promised and the statement did not deliver. -/
 theorem mu_diagram_commutes :
     faceFact = μ ∧ faceGammaRatio = μ ∧ faceNorm = μ ∧ faceCos = μ ∧
     facePhi = μ ∧ faceGalois = μ ∧
@@ -521,7 +521,7 @@ theorem mu_diagram_commutes :
   ⟨faceFact_apex, faceGammaRatio_apex, faceNorm_apex, faceCos_apex,
    facePhi_apex, faceGalois_apex, faceInv_apex, faceLine_apex, rfl⟩
 
-/-- Conmutatividad pairwise sobre las SEIS que son valores reales. -/
+/-- Pairwise commutativity over the SIX that are real values. -/
 theorem mu_faces_pairwise_eq :
     faceFact = faceGammaRatio ∧ faceGammaRatio = faceNorm ∧
     faceNorm = faceCos ∧ faceCos = facePhi ∧ facePhi = faceGalois := by
@@ -533,7 +533,7 @@ theorem mu_faces_pairwise_eq :
   · rw [facePhi_apex, faceGalois_apex]
 
 -- ════════════════════════════════════════════════════════════════════
---  DIAGRAMA CONMUTATIVO — vértice σ=3/2  (cocono de dos rutas)
+--  COMMUTATIVE DIAGRAM — vertex σ=3/2  (cocone of two routes)
 -- ════════════════════════════════════════════════════════════════════
 --
 --     ζ(2)/(π/3)² ──┐
@@ -541,25 +541,25 @@ theorem mu_faces_pairwise_eq :
 --   |rotS₃|²/|S₃| ──┘
 --
 
-/-- Ruta Basel. -/
+/-- Basel route. -/
 noncomputable def sigmaBasel : ℝ := (π ^ 2 / 6) / (π / 3) ^ 2
-/-- Ruta geométrica S₃: |rot S₃|²/|S₃| = 3²/6. -/
+/-- Geometric S₃ route: |rot S₃|²/|S₃| = 3²/6. -/
 noncomputable def sigmaGeom : ℝ := (3 : ℝ) ^ 2 / 6
 
 theorem sigmaBasel_apex : sigmaBasel = σ := M10_sigma_from_basel
 theorem sigmaGeom_apex : sigmaGeom = σ := by unfold sigmaGeom σ; norm_num
 
-/-- DIAGRAMA CONMUTATIVO (suma): ambas rutas coinciden en σ=3/2. -/
+/-- COMMUTATIVE DIAGRAM (sum): both routes meet at σ=3/2. -/
 theorem sigma_diagram_commutes :
     sigmaBasel = σ ∧ sigmaGeom = σ ∧ σ = (3/2 : ℝ) :=
   ⟨sigmaBasel_apex, sigmaGeom_apex, rfl⟩
 
 -- ════════════════════════════════════════════════════════════════════
---  HILO ÚNICO — teorema maestro de §2
+--  SINGLE THREAD — master theorem of §2
 -- ════════════════════════════════════════════════════════════════════
 
-/-- MAESTRO §2: los dos diagramas conmutan (μ=1/2 por cinco rutas, σ=3/2 por dos),
-    y los invariantes espectrales se siguen: σ+μ=2, σ/μ=3. -/
+/-- MASTER §2: the two diagrams commute (μ=1/2 via five routes, σ=3/2 via two),
+    and the spectral invariants follow: σ+μ=2, σ/μ=3. -/
 theorem section2_master :
     (faceFact = μ ∧ faceNorm = μ ∧ faceCos = μ ∧ facePhi = μ) ∧
     (sigmaBasel = σ ∧ sigmaGeom = σ) ∧
@@ -655,7 +655,7 @@ end PaperM6
 namespace PaperS3a
 open Real
 
--- Reusados del §2 unificado / PCF_Section3_Missing (NO redefinir al integrar):
+-- Reused from the unified §2 / PCF_Section3_Missing (do NOT redefine when integrating):
 noncomputable def φ : ℝ := (1 + Real.sqrt 5) / 2
 
 theorem φ_pos : 0 < φ := by unfold φ; positivity
@@ -668,47 +668,47 @@ theorem φ_gt_one : 1 < φ := by
 
 
 
-/-- Bloque π/binario de la amplitud de Veneziano: Γ(1/2)² = π. -/
+/-- π/binary block of the Veneziano amplitude: Γ(1/2)² = π. -/
 theorem gamma_half_sq : Real.Gamma (1 / 2) ^ 2 = π := by
   rw [Real.Gamma_one_half_eq]
   exact Real.sq_sqrt Real.pi_pos.le
 
-/-- Torre de Regge: la amplitud de Veneziano A₄ = Γ(-α's)Γ(-α'u)/Γ(1-α'(s+u))
-    tiene polos en α's = n ∈ ℕ.  Equivalentemente, el recíproco de Γ se anula
-    en los enteros no positivos. -/
+/-- Regge tower: the Veneziano amplitude A₄ = Γ(-α's)Γ(-α'u)/Γ(1-α'(s+u))
+    has poles at α's = n ∈ ℕ. Equivalently, the reciprocal of Γ vanishes
+    at the non-positive integers. -/
 theorem regge_tower_pole (n : ℕ) : (Real.Gamma (-(n : ℝ)))⁻¹ = 0 := by
   rw [Real.Gamma_neg_nat_eq_zero, inv_zero]
 
-/-- ζ(2) = π²/6  (los residuos de la torre de Regge ensamblan Σ n^{-s}). -/
+/-- ζ(2) = π²/6  (the Regge tower residues assemble Σ n^{-s}). -/
 theorem zeta_two_value : riemannZeta 2 = (π : ℂ) ^ 2 / 6 := riemannZeta_two
 
-/-- La torre de Regge ES el producto de Euler:  Σ n^{-s} = ζ(s) = Π_p (1-p^{-s})^{-1}
-    (reorganización por el teorema fundamental de la aritmética). -/
+/-- The Regge tower IS the Euler product:  Σ n^{-s} = ζ(s) = Π_p (1-p^{-s})^{-1}
+    (rearranged by the fundamental theorem of arithmetic). -/
 theorem regge_eq_euler_product :
     ∏' p : Nat.Primes, (1 - ((p : ℕ) : ℂ) ^ (-(2 : ℂ)))⁻¹ = riemannZeta 2 := by
   have hs : (1 : ℝ) < (2 : ℂ).re := by
     rw [show (2 : ℂ) = ((2 : ℝ) : ℂ) by norm_num, Complex.ofReal_re]; norm_num
   exact riemannZeta_eulerProduct_tprod hs
 
-/-- Torre del throat: S_tower(σ) = π φ^σ satisface la recurrencia S(σ+1) = φ·S(σ).
-    Los modos son N_modes(σ) = ⌊S_tower(σ)⌋ = ⌊π φ^σ⌋. -/
+/-- Throat tower: S_tower(σ) = π φ^σ satisfies the recurrence S(σ+1) = φ·S(σ).
+    The modes are N_modes(σ) = ⌊S_tower(σ)⌋ = ⌊π φ^σ⌋. -/
 noncomputable def S_tower (σ : ℝ) : ℝ := π * φ ^ σ
 
-/-- **[P]** El generador de dilatación de la torre: el nivel `σ` avanza a tasa `R_K = log φ`.
-    Tanto el hamiltoniano del bulk como el generador modular de la frontera son exponenciales
-    de ESTE generador, y en la misma base. -/
+/-- **[P]** The dilation generator of the tower: level `σ` advances at rate `R_K = log φ`.
+    Both the bulk Hamiltonian and the boundary modular generator are exponentials
+    of THIS generator, in the same basis. -/
 noncomputable def towerE (m0 σ : ℝ) : ℝ := m0 * φ ^ σ
 
-/-- **[P] `eq:bulk-exp`.**  El hamiltoniano del bulk es la exponencial del generador de
-    dilatación, con tasa el regulador: `H(σ) = m₀ e^{σ R_K}`. -/
+/-- **[P] `eq:bulk-exp`.**  The bulk Hamiltonian is the exponential of the dilation
+    generator, with rate the regulator: `H(σ) = m₀ e^{σ R_K}`. -/
 theorem towerE_eq_exp_regulator (m0 σ : ℝ) (_hm : 0 < m0) :
     towerE m0 σ = m0 * Real.exp (σ * Real.log φ) := by
   unfold towerE
   rw [Real.rpow_def_of_pos φ_pos]
   ring_nf
 
-/-- **[P] `eq:boundary-exp`.**  El generador modular de la frontera es la exponencial del
-    MISMO generador, con la MISMA tasa: `K̂(σ) = π e^{σ R_K}`.  Difiere del bulk sólo en el
+/-- **[P] `eq:boundary-exp`.**  The modular generator of the boundary is the exponential of the
+    SAME generator, with the SAME rate: `K̂(σ) = π e^{σ R_K}`.  It differs from the bulk only in the
     prefactor. -/
 theorem S_tower_eq_exp_regulator (σ : ℝ) :
     S_tower σ = Real.pi * Real.exp (σ * Real.log φ) := by
@@ -716,23 +716,23 @@ theorem S_tower_eq_exp_regulator (σ : ℝ) :
   rw [Real.rpow_def_of_pos φ_pos]
   ring_nf
 
-/-- **[P] `eq:intertwine`.  EL NÚCLEO.**  La razón entre el generador modular de la frontera
-    y el hamiltoniano del bulk es INDEPENDIENTE DEL NIVEL:
-        K̂(σ) / H(σ) = π / m₀   para todo σ.
-    Es lo que hace que un isometría que actúe nivel a nivel los entrelace, y es la forma
-    precisa de que la correspondencia valga «en cada nivel de la torre» y no sólo en uno.
-    Si el bulk creciera en otra base la razón derivaría con σ; que no lo haga es el
-    contenido, no una trivialidad. -/
+/-- **[P] `eq:intertwine`.  THE CORE.**  The ratio between the modular generator of the boundary
+    and the bulk Hamiltonian is LEVEL-INDEPENDENT:
+        K̂(σ) / H(σ) = π / m₀   for all σ.
+    This is what makes an isometry acting level-by-level intertwine them, and it is the precise
+    form of the correspondence holding "at every level of the tower" rather than just one.
+    If the bulk grew in a different base the ratio would depend on σ; that it does not is the
+    content, not a triviality. -/
 theorem modular_bulk_ratio_level_independent (m0 σ : ℝ) (hm : 0 < m0) :
     S_tower σ / towerE m0 σ = Real.pi / m0 := by
   unfold S_tower towerE
   have hp : (0:ℝ) < φ ^ σ := Real.rpow_pos_of_pos φ_pos σ
   field_simp
 
-/-- **[P] `eq:intertwine`, forma de entrelazamiento.**  Sobre cada nivel, el hamiltoniano
-    del bulk y el generador modular de la frontera son el mismo operador salvo la constante
-    `m₀/π`: `m₀ · K̂(σ) = π · H(σ)`.  Una isometría que actúe nivel a nivel —la `V†V = 1` de
-    `bulkBoundary_isometry`— los entrelaza por tanto exactamente. -/
+/-- **[P] `eq:intertwine`, intertwining form.** At each level, the bulk Hamiltonian
+    and the boundary modular generator are the same operator up to the constant
+    `m₀/π`: `m₀ · K̂(σ) = π · H(σ)`.  An isometry acting level-by-level —the `V†V = 1` of
+    `bulkBoundary_isometry`— therefore intertwines them exactly. -/
 theorem bulk_boundary_intertwine (m0 σ : ℝ) :
     m0 * S_tower σ = Real.pi * towerE m0 σ := by
   unfold S_tower towerE; ring
@@ -743,42 +743,42 @@ theorem S_tower_recurrence (σ : ℝ) : S_tower (σ + 1) = φ * S_tower σ := by
   ring
 
 noncomputable def N_modes (σ : ℝ) : ℤ := ⌊S_tower σ⌋
--- ⌊π φ^σ⌋ para σ=0..6 : [3, 5, 8, 13, 21, 34, 56]  (verificado en el .py)
+-- ⌊π φ^σ⌋ for σ=0..6 : [3, 5, 8, 13, 21, 34, 56]  (verified in the .py)
 
 
 
 
-/-- Regulador modular: la partición de un loop Z_PCF(i) = e^{-3π/2} / η(i)^6 es
-    finita y positiva (el modular regula el UV), dado η(i) > 0.
-    [η(i) = Γ(1/4)/(2 π^{3/4}) es el valor de Chowla–Selberg, fuera de Mathlib,
-     real y positivo; verificado a 50 díg. contra el producto de Dedekind.] -/
+/-- Modular regulator: the one-loop partition Z_PCF(i) = e^{-3π/2} / η(i)^6 is
+    finite and positive (the modular regulates the UV), given η(i) > 0.
+    [η(i) = Γ(1/4)/(2 π^{3/4}) is the Chowla–Selberg value, outside Mathlib,
+     real and positive; numerically verified to 50 digits against the Dedekind product.] -/
 theorem Z_PCF_finite_pos (η_i : ℝ) (hη : 0 < η_i) :
     0 < Real.exp (-(3 * π / 2)) / η_i ^ 6 := by
   positivity
 
-/-  Regulador dimensional Γ(ε/2) = (2/ε)·Γ(1+ε/2): ya probado en
-    PCF_Section3_Missing.lean (gamma_pole_extraction).  Ambos coexisten:
-    el modular da una partición finita; dim-reg extrae el polo 2/ε del vértice. -/
+/-  Dimensional regulator Γ(ε/2) = (2/ε)·Γ(1+ε/2): already proved in
+    PCF_Section3_Missing.lean (gamma_pole_extraction).  Both coexist:
+    the modular gives a finite partition; the dim-reg extracts the 2/ε pole of the vertex. -/
 
 
 
 
-/-- Conjugado de Galois (= S-dualidad φ → -1/φ). -/
+/-- Galois conjugate (= S-duality φ → -1/φ). -/
 noncomputable def φbar : ℝ := (1 - Real.sqrt 5) / 2
 
-/-- φ·φ̄ = -1  (la norma; involución de Galois). -/
+/-- φ·φ̄ = -1  (the norm; Galois involution). -/
 theorem φ_mul_φbar : φ * φbar = -1 := by
   unfold φ φbar
   have h5 : Real.sqrt 5 ^ 2 = 5 := Real.sq_sqrt (by norm_num)
   nlinarith [h5]
 
-/-- φ̄² = φ̄ + 1  (el conjugado satisface la misma ecuación mínima). -/
+/-- φ̄² = φ̄ + 1  (the conjugate satisfies the same minimal equation). -/
 theorem φbar_sq : φbar ^ 2 = φbar + 1 := by
   unfold φbar
   have h5 : Real.sqrt 5 ^ 2 = 5 := Real.sq_sqrt (by norm_num)
   nlinarith [h5]
 
-/-- φ̄ = -1/φ  (S-dualidad como conjugación de Galois). -/
+/-- φ̄ = -1/φ  (S-duality as Galois conjugation). -/
 theorem φbar_eq_neg_inv : φbar = -(1 / φ) := by
   have hφ : φ ≠ 0 := ne_of_gt φ_pos
   have h : φ * φbar = -1 := φ_mul_φbar
@@ -786,8 +786,8 @@ theorem φbar_eq_neg_inv : φbar = -(1 / φ) := by
   linear_combination h
 
 
-/-- Swampland dS: para V(σ) = φ^{-σ},  V'(σ) = -(ln φ)·V(σ),
-    luego |V'|/V = ln φ.  (Derivada de base constante.) -/
+/-- Swampland dS: for V(σ) = φ^{-σ},  V'(σ) = -(ln φ)·V(σ),
+    hence |V'|/V = ln φ.  (Constant-base derivative.) -/
 theorem swampland_hasDerivAt (σ : ℝ) :
     HasDerivAt (fun s => φ ^ (-s)) (-(Real.log φ) * φ ^ (-σ)) σ := by
   have h2 : HasDerivAt (fun x : ℝ => φ ^ x) (φ ^ (-σ) * Real.log φ) (-σ) :=
@@ -845,11 +845,11 @@ theorem gaussian_integral_value :
   have h := integral_gaussian (1 : ℝ)
   simpa [neg_one_mul, div_one] using h
 
--- ── (S2b) Peso/módulo gaussiano: μ = φ^{-λ_log} = 1/2 ───────────────
+-- ── (S2b) Gaussian weight/modulus: μ = φ^{-λ_log} = 1/2 ───────────────
 theorem gaussian_weight_phi : φ ^ (-lambda_log) = (1 : ℝ) / 2 := by
   rw [Real.rpow_neg (le_of_lt φ_pos), mersenne_bridge']; norm_num
 
--- ── (S3) Polo UV: extracción exacta Γ(ε/2) = (2/ε)·Γ(1+ε/2) ─────────
+-- ── (S3) UV pole: exact extraction Γ(ε/2) = (2/ε)·Γ(1+ε/2) ─────────
 theorem gamma_pole_extraction {ε : ℝ} (hε : ε ≠ 0) :
     Real.Gamma (ε / 2) = (2 / ε) * Real.Gamma (1 + ε / 2) := by
   have hz : ε / 2 ≠ 0 := by intro h; apply hε; linarith
@@ -1130,9 +1130,9 @@ noncomputable def φ_bar : ℝ := (1 - Real.sqrt 5) / 2
 theorem phi_pos : 0 < φ := by unfold φ; positivity
 
 /-- φ + φ̄ = 1 (the trace of the minimal polynomial). -/
--- [D20] `φ`, `φ_bar`, `phi_trace`, `phi_norm` existen también en `PaperS2`
--- (§2.0) con el MISMO definiens.  Se dejan ambas y se registra el puente por
--- `rfl`; unificarlas es cambio de namespace, no de matemática.
+-- [D20] `φ`, `φ_bar`, `phi_trace`, `phi_norm` also exist in `PaperS2`
+-- (§2.0) with the SAME definiens. Both are kept and the bridge is registered by
+-- `rfl`; unifying them is a namespace change, not a mathematics change.
 theorem φ_eq_paperS2 : φ = PaperS2.φ := rfl
 theorem φ_bar_eq_paperS2 : φ_bar = PaperS2.φ_bar := rfl
 
@@ -2215,24 +2215,24 @@ theorem phi_eq_two_cos : φ = 2 * Real.cos (π / 5) := by
   -- Mathlib: `Real.cos_pi_div_five : Real.cos (π/5) = (1 + Real.sqrt 5)/4`
   rw [Real.cos_pi_div_five]; simp only [φ]; ring
 
-/-! ### El acoplamiento áureo: qué es isometría y de qué mapa (fgc) -/
+/-! ### The golden coupling: what is an isometry and which map (fgc) -/
 
-/-- La rotación de Farish `ρ(x,y,z) = (y,z,x)`, de orden tres en torno a la diagonal. -/
+/-- The Farish rotation `ρ(x,y,z) = (y,z,x)`, of order three about the diagonal. -/
 def farishRot (v : ℝ × ℝ × ℝ) : ℝ × ℝ × ℝ := (v.2.1, v.2.2, v.1)
 
 def dot3 (u v : ℝ × ℝ × ℝ) : ℝ := u.1*v.1 + u.2.1*v.2.1 + u.2.2*v.2.2
 
-/-- **[P]** `farishRot` tiene orden tres. -/
+/-- **[P]** `farishRot` has order three. -/
 theorem farishRot_cube (v : ℝ × ℝ × ℝ) : farishRot (farishRot (farishRot v)) = v := rfl
 
-/-- **[P]** `farishRot` fija la diagonal espacial. -/
+/-- **[P]** `farishRot` fixes the spatial diagonal. -/
 theorem farishRot_diag : farishRot (1,1,1) = ((1,1,1) : ℝ × ℝ × ℝ) := rfl
 
-/-- **[P] `farishRot` ES una isometría ordinaria de ℝ³.**  Preserva el producto interno,
-    luego preserva normas y distancias: es una permutación cíclica de coordenadas, es
-    decir una matriz ortogonal de determinante `+1`.  Esto es lo que hace que los tres
-    planos áureos sean congruentes en el sentido métrico corriente, y no sólo iguales
-    «en la imagen». -/
+/-- **[P] `farishRot` IS an ordinary isometry of ℝ³.** It preserves the inner product,
+    hence preserves norms and distances: it is a cyclic permutation of coordinates, i.e.\
+    an orthogonal matrix of determinant `+1`. This is what makes the three
+    golden planes congruent in the usual metric sense, not merely equal
+    "up to image." -/
 theorem farishRot_preserves_dot (u v : ℝ × ℝ × ℝ) :
     dot3 (farishRot u) (farishRot v) = dot3 u v := by
   unfold dot3 farishRot; ring
@@ -2241,16 +2241,16 @@ theorem farishRot_preserves_norm (v : ℝ × ℝ × ℝ) :
     dot3 (farishRot v) (farishRot v) = dot3 v v :=
   farishRot_preserves_dot v v
 
-/-- **[P] La traslación del toro plano ES una isometría ordinaria.**  En cualquier grupo
-    abeliano con métrica invariante por traslación, `(p+t) − (q+t) = p − q`, luego la
-    distancia se preserva exactamente. -/
+/-- **[P] Translation on the flat torus IS an ordinary isometry.** In any abelian group
+    with a translation-invariant metric, `(p+t) − (q+t) = p − q`, so the
+    distance is exactly preserved. -/
 theorem translation_preserves_difference {G : Type*} [AddCommGroup G] (p q t : G) :
     (p + t) - (q + t) = p - q := by abel
 
-/-- **[P] La órbita de tres torsión es EQUILÁTERA en la métrica ordinaria.**  De `3•t = 0`
-    se sigue `2•t = -t`, luego las tres diferencias mutuas son `±t` y las tres distancias
-    valen `|t|`.  No hay aquí ninguna noción especial de isometría: es la métrica llana
-    del toro. -/
+/-- **[P] The three-torsion orbit is EQUILATERAL in the usual metric.** From `3•t = 0`
+    it follows that `2•t = -t`, so the three mutual differences are `±t` and all three distances
+    equal `|t|`. There is no special isometry notion here: it is the flat metric
+    of the torus. -/
 theorem three_torsion_equilateral {G : Type*} [AddCommGroup G] {t p : G}
     (h : (3 : ℕ) • t = 0) :
     (p + t) - p = t ∧ (p + (2:ℕ) • t) - (p + t) = t ∧ p - (p + (2:ℕ) • t) = t := by
@@ -2263,17 +2263,17 @@ theorem three_torsion_equilateral {G : Type*} [AddCommGroup G] {t p : G}
   · rw [two_nsmul]; abel
   · rw [h2]; abel
 
-/-- **[P] El orden tres no es automorfismo del retículo cuadrado**, y por eso desciende
-    como traslación y no como rotación: `Aut(ℤ[i]) = ℤ₄` y `3 ∤ 4`. -/
+/-- **[P] Order three is not an automorphism of the square lattice**, and hence descends
+    as a translation rather than a rotation: `Aut(ℤ[i]) = ℤ₄` and `3 ∤ 4`. -/
 theorem order_three_not_in_Z4 :
     ¬ (3 ∣ 4) ∧ ∀ g : ℤ, g ∈ [(1:ℤ), -1] → g ^ 4 = 1 ∧ g ^ 3 ≠ 1 ∨ g = 1 := by
   refine ⟨by decide, ?_⟩
   intro g hg; fin_cases hg <;> simp
 
-/-- **[P] El único mapa de la cadena que NO es isometría métrica es el acoplamiento.**
-    La métrica inducida por `ι(x + iy) = (x, y, φy)` es `x² + (1+φ²)y²`: preserva la
-    dirección real y expande la imaginaria por `s_φ = √(1+φ²)`.  No contradice lo
-    anterior: son mapas distintos. -/
+/-- **[P] The only map in the chain that is NOT a metric isometry is the coupling.**
+    The metric induced by `ι(x + iy) = (x, y, φy)` is `x² + (1+φ²)y²`: it preserves the
+    real direction and expands the imaginary one by `s_φ = √(1+φ²)`. This does not contradict the
+    above: they are different maps. -/
 theorem coupling_metric (x y : ℝ) :
     dot3 (x, y, φ * y) (x, y, φ * y) = x^2 + (1 + φ^2) * y^2 := by
   unfold dot3; ring
@@ -2287,30 +2287,30 @@ theorem coupling_expands_imaginary :
 theorem coupling_preserves_real :
     dot3 (1, 0, 0) ((1:ℝ), (0:ℝ), (0:ℝ)) = 1 := by unfold dot3; ring
 
-/-- **[P]** El discriminante de `ℚ(√5)`: `(φ − φ̄)² = 5`.  Es lo que hace de 5 el único
-    primo ramificado, y por tanto lo que sostiene la palabra «ramified» del criterio de
-    χ₅ en `ssec:spectrum`. -/
+/-- **[P]** The discriminant of `ℚ(√5)`: `(φ − φ̄)² = 5`. This is what makes 5 the unique
+    ramified prime, and hence what supports the "ramified" word in the criterion of
+    χ₅ in `ssec:spectrum`. -/
 theorem phi_discriminant : (φ - CWfig.φ_bar) ^ 2 = 5 := by
   unfold φ CWfig.φ_bar
   have h5 : Real.sqrt 5 ^ 2 = 5 := Real.sq_sqrt (by norm_num)
   field_simp
   nlinarith [h5]
 
-/-- **[P]** `φ` es raíz del polinomio MÓNICO `x² − x − 1`, luego es entero algebraico y
-    pertenece a `O_K = ℤ[φ]`. -/
+/-- **[P]** `φ` is a root of the MONIC polynomial `x² − x − 1`, hence an algebraic integer
+    belonging to `O_K = ℤ[φ]`. -/
 theorem phi_is_algebraic_integer : φ ^ 2 - φ - 1 = 0 := by
   have h := phi_sq; linarith
 
-/-- **[P]** `1/2` es raíz de `2x − 1`, que NO es mónico: no es entero algebraico.  Ésta es
-    la distinción aritmética entre `O_K = ℤ[φ]` y `R_PCF = ℤ[φ, φ⁻¹, ½]`; el segundo
-    adjunta un elemento que el primero no contiene. -/
+/-- **[P]** `1/2` is a root of `2x − 1`, which is NOT monic: it is not an algebraic integer. This is
+    the arithmetic distinction between `O_K = ℤ[φ]` and `R_PCF = ℤ[φ, φ⁻¹, ½]`; the latter
+    adjoins an element the former does not contain. -/
 theorem half_not_algebraic_integer : 2 * (1/2 : ℝ) - 1 = 0 := by norm_num
 
-/-- El regulador de `K = ℚ(√5)`, `R_K = log φ`.  Nombrado aquí porque `ε₀ = ln φ/(6√3)`
-    se deriva unas líneas más abajo y el lector debe tener ya el nombre del invariante. -/
+/-- The regulator of `K = ℚ(√5)`, `R_K = log φ`. Named here because `ε₀ = ln φ/(6√3)`
+    is derived a few lines below and the reader should already have the invariant's name. -/
 noncomputable def regulator_K : ℝ := Real.log φ
 
-/-- El período del toro PCF, `T = 2π log φ = 2π R_K`. -/
+/-- The PCF torus period, `T = 2π log φ = 2π R_K`. -/
 noncomputable def period_K : ℝ := 2 * Real.pi * Real.log φ
 
 theorem period_eq_two_pi_regulator : period_K = 2 * Real.pi * regulator_K := rfl
@@ -2335,11 +2335,11 @@ noncomputable def Ωmod : ℝ := 1 / 2
 /-- Binary (Shannon) entropy, bits. -/
 noncomputable def H (p : ℝ) : ℝ := - p * Real.logb 2 p - (1 - p) * Real.logb 2 (1 - p)
 
-/-- **[P] `eq:entropy-max`.**  El núcleo de la maximalidad: para todo `x > 0`,
-    `log x ≤ x − 1`, luego `p·log(2p) + (1−p)·log(2(1−p)) ≥ 0` en `(0,1)`.
-    Aplicado a `x = 1/(2p)` y a `x = 1/(2(1−p))`, los dos residuos se cancelan
-    exactamente: `(1−2p)/2 + (2p−1)/2 = 0`.  Es la desigualdad que hace de `½` un
-    máximo y no un valor cualquiera. -/
+/-- **[P] `eq:entropy-max`.** The core of maximality: for all `x > 0`,
+    `log x ≤ x − 1`, hence `p·log(2p) + (1−p)·log(2(1−p)) ≥ 0` on `(0,1)`.
+    Applied to `x = 1/(2p)` and `x = 1/(2(1−p))`, the two residues cancel
+    exactly: `(1−2p)/2 + (2p−1)/2 = 0`. This is the inequality that makes `½` a
+    maximum rather than just any value. -/
 theorem entropy_slack_nonneg (p : ℝ) (h0 : 0 < p) (h1 : p < 1) :
     0 ≤ p * Real.log (2*p) + (1-p) * Real.log (2*(1-p)) := by
   have hp2 : (0:ℝ) < 2*p := by linarith
@@ -2365,9 +2365,9 @@ theorem entropy_slack_nonneg (p : ℝ) (h0 : 0 < p) (h1 : p < 1) :
         ring
   nlinarith [hA, hB]
 
-/-- **[P] `eq:entropy-max`.**  `½` es el MÁXIMO de la entropía binaria, no sólo un punto
-    donde vale un bit: `H(p) ≤ 1` para todo `p ∈ (0,1)`, con igualdad exactamente en `p = ½`.
-    Cierra la afirmación de `ssec:accum`, que hasta ahora daba la maximalidad por sentada. -/
+/-- **[P] `eq:entropy-max`.** `½` is the MAXIMUM of the binary entropy, not just a point
+    where it attains one bit: `H(p) ≤ 1` for all `p ∈ (0,1)`, with equality exactly at `p = ½`.
+    Closes the claim of `ssec:accum`, which until now assumed maximality. -/
 theorem binary_entropy_le_one (p : ℝ) (h0 : 0 < p) (h1 : p < 1) : H p ≤ 1 := by
   have hlog2 : (0:ℝ) < Real.log 2 := Real.log_pos (by norm_num)
   have key := entropy_slack_nonneg p h0 h1
@@ -2396,8 +2396,8 @@ noncomputable def Nmodes (σ : ℕ) : ℕ := ⌊Real.pi * φ ^ σ⌋₊
 theorem tower_start :
     Nmodes 0 = 3 ∧ Nmodes 1 = 5 ∧ Nmodes 2 = 8 ∧ Nmodes 3 = 13 := by
   -- π ∈ (3.14, 3.15) basta: π·φ ∈ (5.080, 5.097), π·φ² ∈ (8.220, 8.247), π·φ³ ∈ (13.301, 13.344).
-  -- φ² y φ³ NO se acotan cuadrando (pierde precisión): se usan las formas exactas
-  -- φ² = φ+1 (phi_sq) y φ³ = 2φ+1 (linear_combination sobre phi_sq).
+  -- φ² and φ³ are NOT bounded by squaring (loses precision): the exact forms
+  -- φ² = φ+1 (phi_sq) and φ³ = 2φ+1 (linear_combination over phi_sq) are used.
   have h5lo : (2.2360679:ℝ) < Real.sqrt 5 := by
     nlinarith [Real.sq_sqrt (show (0:ℝ) ≤ 5 by norm_num), Real.sqrt_nonneg 5]
   have h5hi : Real.sqrt 5 < 2.2360680 := by
@@ -2466,9 +2466,9 @@ noncomputable def ωc : ℂ := Complex.exp (2 * Real.pi * Complex.I / 3)
 /-- [P] `involution_fixed_point`: ½ is the fixed point of the facet map x ↦ 1−x. -/
 theorem involution_fixed_point : (1 : ℝ) / 2 = 1 - 1 / 2 := by norm_num
 
-/-- **[P] G14 — puente de namespace.**  El `φ` local y el de `PaperS2` son la
-    misma constante: mismo definiens.  Sin esto, `φ^(−5λ)` escrito aquí
-    hablaría de otro objeto que el `facePhi` de §2.10. -/
+/-- **[P] G14 — namespace bridge.** The local `φ` and that of `PaperS2` are the
+    same constant: same definiens. Without this, `φ^(−5λ)` written here
+    would refer to a different object from the `facePhi` of §2.10. -/
 theorem phi_eq_paperS2 : φ = PaperS2.φ := rfl
 
 /-- **[P] G11.**  Re ω = −1/2. -/
@@ -2480,7 +2480,7 @@ theorem omega_re : ωc.re = -(1/2) := by
       Real.cos_pi_sub, Real.cos_pi_div_three]
 
 set_option linter.flexible false in
-/-- **[P] G12.**  Re ω² = −1/2: el triángulo es equilátero. -/
+/-- **[P] G12.**  Re ω² = −1/2: the triangle is equilateral. -/
 theorem omega_sq_re : (ωc ^ 2).re = -(1/2) := by
   rw [show ωc ^ 2 = Complex.exp (((4 * Real.pi / 3 : ℝ)) * Complex.I) by
         simp [ωc]; rw [← Complex.exp_nat_mul]; ring_nf,
@@ -2489,7 +2489,7 @@ theorem omega_sq_re : (ωc ^ 2).re = -(1/2) := by
       Real.cos_add_pi, Real.cos_pi_div_three]
 
 set_option linter.flexible false in
-/-- **[P] G13.**  ω³ = 1: el rotor cierra. -/
+/-- **[P] G13.**  ω³ = 1: the rotor closes. -/
 theorem omega_cubed : ωc ^ 3 = 1 := by
   rw [show ωc ^ 3 = Complex.exp ((3 : ℂ) * (2 * Real.pi * Complex.I / 3)) by
         simp [ωc]; rw [← Complex.exp_nat_mul]; norm_cast]
@@ -2504,8 +2504,8 @@ private theorem cos_four_thirds : Real.cos (4 * Real.pi / 3) = -(1/2) := by
   rw [show (4:ℝ) * Real.pi / 3 = Real.pi / 3 + Real.pi by ring,
       Real.cos_add_pi, Real.cos_pi_div_three]
 
-/-- **[P] G15 — `eq:triad-re`.**  Re λ_k = φ^(−λ_log)·cos(2πk/3): el espectro
-    real de la tríada es el ápice de §2.10 multiplicado por el ternario. -/
+/-- **[P] G15 — `eq:triad-re`.**  Re λ_k = φ^(−λ_log)·cos(2πk/3): the real spectrum
+    of the triad is the apex of §2.10 multiplied by the ternary. -/
 theorem triad_re :
     ((1/2 : ℂ) * ωc ^ 0).re = PaperS2.facePhi * Real.cos 0 ∧
     ((1/2 : ℂ) * ωc ^ 1).re = PaperS2.facePhi * Real.cos (2 * Real.pi / 3) ∧
@@ -2517,7 +2517,7 @@ theorem triad_re :
   · simp [Complex.mul_re, omega_re]
   · simp [Complex.mul_re, omega_sq_re]
 
-/-- **[P]** La traza se anula: ½ − ¼ − ¼ = 0. -/
+/-- **[P]** The trace vanishes: ½ − ¼ − ¼ = 0. -/
 theorem triad_trace_zero :
     ((1/2 : ℂ) * ωc ^ 0).re + ((1/2 : ℂ) * ωc ^ 1).re
       + ((1/2 : ℂ) * ωc ^ 2).re = 0 := by
@@ -2537,16 +2537,16 @@ theorem Omega_eigenvalues (k : ℕ) : ‖(1 / 2 : ℂ) * ωc ^ k‖ = 1 / 2 := b
       show (1/2 : ℂ) = ((1/2 : ℝ) : ℂ) by norm_num,
       Complex.norm_real, Real.norm_of_nonneg (by norm_num)]
 
-/-- **[P] G16 — `eq:triad-products`.  LOS DOS PRODUCTOS SON DISTINTOS, Y CADA
-    EXPONENTE ES UNA CARA.**
+/-- **[P] G16 — `eq:triad-products`.  THE TWO PRODUCTS ARE DIFFERENT, AND EACH
+    EXPONENT IS A FACE.**
 
-      · producto de MÓDULOS:       ∏‖λ_k‖ = 2⁻³   ← exponente = ARIDAD
-      · producto de PARTES REALES: ∏Re λ_k = 2⁻⁵  ← exponente = PENTÁGONO
+      · product of MODULI:       ∏‖λ_k‖ = 2⁻³   ← exponent = ARITY
+      · product of REAL PARTS: ∏Re λ_k = 2⁻⁵  ← exponent = PENTAGON
 
-    La base 2 es la misma en los dos y es `mersenne_bridge`; lo que cambia es
-    el exponente, y cambia por la razón correcta.  Sin este enunciado,
-    «det = 2⁻⁵» convive con `Omega_eigenvalues` (‖λ_k‖ = ½ cada uno)
-    invitando a leer 2⁻³ donde dice 2⁻⁵. -/
+    The base 2 is the same in both and comes from `mersenne_bridge`; what changes is
+    the exponent, and it changes by the correct ratio. Without this statement,
+    "det = 2⁻⁵" coexists with `Omega_eigenvalues` (‖λ_k‖ = ½ each)
+    inviting one to read 2⁻³ where it says 2⁻⁵. -/
 theorem triad_two_products :
     (‖(1/2 : ℂ) * ωc ^ 0‖ * ‖(1/2 : ℂ) * ωc ^ 1‖ * ‖(1/2 : ℂ) * ωc ^ 2‖
         = (2 : ℝ) ^ (-3 : ℤ)) ∧
@@ -2560,8 +2560,8 @@ theorem triad_two_products :
     rw [h0, h1, h2, hf, Real.cos_zero, cos_two_thirds, cos_four_thirds]
     norm_num
 
-/-- **[P]** Y el 2⁻⁵ en la coordenada de §2.0: base = el 2 de x² = x + 1 vía
-    `mersenne_bridge`, exponente = el 5 del pentágono. -/
+/-- **[P]** And the 2⁻⁵ in the coordinate of §2.0: base = the 2 of x² = x + 1 via
+    `mersenne_bridge`, exponent = the 5 of the pentagon. -/
 theorem triad_det_is_phi_pow :
     PaperS2.φ ^ (-(PaperS2.lambda_log * 5)) = (2 : ℝ) ^ (-5 : ℤ) := by
   have h5 : PaperS2.φ ^ (PaperS2.lambda_log * 5) = 32 := by
@@ -2661,8 +2661,8 @@ theorem two_positivities_distinct {k n : ℕ} (C : Matrix (Fin k) (Fin n) ℝ)
   intro hpos I hI
   exact hpos I hI  -- ρ≥0 automatic (rho_is_state); Δ_I≥0 is `totalPositive`, separate.
 
-/-- **[P]** Dimensión de su(3) y razón de color: 3²−1 = 8 y 1 − μ₃² = ¾.
-    NO es el enunciado de Hopf/Clifford — llevaba ese nombre por error. -/
+/-- **[P]** Dimension of su(3) and color ratio: 3²−1 = 8 and 1 − μ₃² = ¾.
+    This is NOT the Hopf/Clifford statement — it bore that name by error. -/
 theorem su3_dim_and_colour_ratio : (3:ℕ)^2 - 1 = 8 ∧ (1:ℝ) - (1/2)^2 = 3/4 := by
   refine ⟨by norm_num, by norm_num⟩
 
@@ -2880,8 +2880,8 @@ theorem ft_limit (s t : ℝ) (hs : 0 < s) (ht : 0 < t) :
   have hone : ((s+t)/(s*t)) * ((1:ℝ) * 1 / 1) = (s+t)/(s*t) := by norm_num
   rw [hone] at hg
   -- El objetivo ya es Tendsto … (𝓝 ((s+t)/(s*t))) por el `rw [← hlim]` de arriba;
-  -- hg tiene el mismo límite. Se transfiere por igualdad eventual en Ioi 0
-  -- vía ft_identity, que es exactamente para lo que se probó.
+  -- hg has the same limit. It is transferred by eventual equality on Ioi 0
+  -- via ft_identity, which is exactly what was proved.
   refine hg.congr' ?_
   filter_upwards [self_mem_nhdsWithin] with a ha
   exact (ft_identity (Set.mem_Ioi.mp ha) hs ht).symm
@@ -3288,13 +3288,13 @@ theorem gap_independent_of_cutoff {a b0 Λ : ℝ} (ha : 0 < a) (hb : 0 < b0) (h�
 theorem gap_survives {a b0 g2 : ℝ} (ha : 0 < a) (hb : 0 < b0) (hg : 0 < g2) :
     Delta_phys a b0 g2 = Lambda_QCD a b0 g2 ∧ 0 < Delta_phys a b0 g2 :=
   ⟨rfl, Lambda_QCD_pos ha hb hg⟩
-/-! ### La plaza arquimediana y el producto sobre plazas
-    (CW5 §2 `ssec:origins` y `ssec:zeta`: prop:selfdual-gaussian, prop:archimedean, thm:places) -/
+/-! ### The Archimedean place and the product over places
+    (CW5 §2 `ssec:origins` and `ssec:zeta`: prop:selfdual-gaussian, prop:archimedean, thm:places) -/
 
-/-- La gaussiana de `lem:gamma-half` con la anchura `a` libre. -/
+/-- The Gaussian from `lem:gamma-half` with width `a` free. -/
 noncomputable def gauss (a x : ℝ) : ℝ := Real.exp (-a * x ^ 2)
 
-/-- Auxiliar: para `a > 0`, `√(π/a) = 1 ↔ a = π`. -/
+/-- Auxiliary: for `a > 0`, `√(π/a) = 1 ↔ a = π`. -/
 theorem sqrt_pi_div_eq_one_iff (a : ℝ) (ha : 0 < a) :
     Real.sqrt (Real.pi / a) = 1 ↔ a = Real.pi := by
   have hnn : (0:ℝ) ≤ Real.pi / a := le_of_lt (div_pos Real.pi_pos ha)
@@ -3308,20 +3308,20 @@ theorem sqrt_pi_div_eq_one_iff (a : ℝ) (ha : 0 < a) :
   · rintro rfl
     rw [div_self (ne_of_gt Real.pi_pos), Real.sqrt_one]
 
-/-- **[P] Condición 1 — normalización.** `∫ e^{-a x²} = 1 ↔ a = π`. -/
+/-- **[P] Condition 1 — normalization.** `∫ e^{-a x²} = 1 ↔ a = π`. -/
 theorem gauss_normalised_iff (a : ℝ) (ha : 0 < a) :
     (∫ x : ℝ, gauss a x) = 1 ↔ a = Real.pi := by
   unfold gauss
   rw [integral_gaussian]
   exact sqrt_pi_div_eq_one_iff a ha
 
-/-- **[P] Condición 2 — amplitud de Fourier.** El prefactor `√(π/a)` de la transformada
-    de `gauss a` vale 1 sólo si `a = π`. -/
+/-- **[P] Condition 2 — Fourier amplitude.** The prefactor `√(π/a)` of the transform
+    of `gauss a` equals 1 only if `a = π`. -/
 theorem fourier_amplitude_iff (a : ℝ) (ha : 0 < a) :
     Real.sqrt (Real.pi / a) = 1 ↔ a = Real.pi :=
   sqrt_pi_div_eq_one_iff a ha
 
-/-- **[P] Condición 3 — anchura de Fourier.** `π²/a = a ↔ a = π`. -/
+/-- **[P] Condition 3 — Fourier width.** `π²/a = a ↔ a = π`. -/
 theorem fourier_width_iff (a : ℝ) (ha : 0 < a) :
     Real.pi ^ 2 / a = a ↔ a = Real.pi := by
   have hπ : 0 < Real.pi := Real.pi_pos
@@ -3334,34 +3334,34 @@ theorem fourier_width_iff (a : ℝ) (ha : 0 < a) :
     · exfalso; linarith
   · rintro rfl; field_simp
 
-/-- **[P] `prop:selfdual-gaussian`.** Las tres condiciones son independientes y las tres
-    dan `a = π`. El π del exponente no es convención: es la misma autodualidad que fija
-    `τ = i` y `μ = ½`. -/
+/-- **[P] `prop:selfdual-gaussian`.** The three conditions are independent and all three
+    give `a = π`. The π in the exponent is not a convention: it is the same self-duality that fixes
+    `τ = i` and `μ = ½`. -/
 theorem selfdual_gaussian_unique (a : ℝ) (ha : 0 < a) :
     ((∫ x : ℝ, gauss a x) = 1 ↔ a = Real.pi) ∧
     (Real.sqrt (Real.pi / a) = 1 ↔ a = Real.pi) ∧
     (Real.pi ^ 2 / a = a ↔ a = Real.pi) :=
   ⟨gauss_normalised_iff a ha, fourier_amplitude_iff a ha, fourier_width_iff a ha⟩
 
-/-- La gaussiana autodual: la función de prueba de la plaza arquimediana. -/
+/-- The self-dual Gaussian: the test function of the Archimedean place. -/
 noncomputable def g : ℝ → ℝ := gauss Real.pi
 
 theorem g_normalised : (∫ x : ℝ, g x) = 1 :=
   (gauss_normalised_iff Real.pi Real.pi_pos).mpr rfl
 
-/- **[L — Riemann 1859; Tate 1950]** `eq:gammaR-mellin`: el factor local arquimediano es la
-    transformada de Mellin de la función de prueba autodual. Enunciado con contenido. -/
+/- **[L — Riemann 1859; Tate 1950]** `eq:gammaR-mellin`: the local Archimedean factor is the
+    Mellin transform of the self-dual test function. A substantive statement. -/
 
-/-- `eq:theta-lattice`: la suma gaussiana sobre la dirección entera del retículo de Gauss
-    `Λ_PCF = M_PCF · ℤ[i]` de `eq:torus`. -/
+/-- `eq:theta-lattice`: the Gaussian sum over the integer direction of the Gauss lattice
+    `Λ_PCF = M_PCF · ℤ[i]` from `eq:torus`. -/
 noncomputable def Theta (t : ℝ) : ℝ := ∑' n : ℤ, g ((n : ℝ) * Real.sqrt t)
 
--- **[L — Jacobi; sumación de Poisson]** `Θ(1/t) = √t · Θ(t)`. En la variable de Schwinger
--- es la involución `τ ↦ -1/τ` del toro. El peso de Boltzmann `e^{-nt}` no la cumple
+-- **[L — Jacobi; Poisson summation]** `Θ(1/t) = √t · Θ(t)`. In the Schwinger variable
+-- this is the involution `τ ↦ -1/τ` on the torus. The Boltzmann weight `e^{-nt}` does not satisfy it
 -- (`boltzmann_fails_S`).
 
-/-- **[P]** El punto fijo de la involución en la variable de Schwinger es `t = 1`, es decir
-    `τ = i`: el punto autodual que `eq:torus` deriva, no elige. -/
+/-- **[P]** The fixed point of the involution in the Schwinger variable is `t = 1`, i.e.\
+    `τ = i`: the self-dual point that `eq:torus` derives, not chooses. -/
 theorem theta_fixed_point_unique (t : ℝ) (ht : 0 < t) : 1 / t = t ↔ t = 1 := by
   constructor
   · intro h
@@ -3372,25 +3372,25 @@ theorem theta_fixed_point_unique (t : ℝ) (ht : 0 < t) : 1 / t = t ↔ t = 1 :=
     · exfalso; linarith
   · rintro rfl; norm_num
 
-/-- Las plazas finitas: la serie de Dirichlet de la torre, `eq:euler-product`.
-    Alias de `regge_dirichlet_eq_zeta` (arriba); se mantiene el nombre por legibilidad
-    del ensamblaje. -/
+/-- The finite places: the Dirichlet series of the tower, `eq:euler-product`.
+    Alias of `regge_dirichlet_eq_zeta` (above); the name is kept for readability
+    of the assembly. -/
 noncomputable def framework_tower (s : ℂ) : ℂ := ∑' n : ℕ, 1 / (n : ℂ) ^ s
 
-/-- **[P]** Las plazas finitas dan ζ. Mismo contenido que `regge_dirichlet_eq_zeta`. -/
+/-- **[P]** The finite places give ζ. Same content as `regge_dirichlet_eq_zeta`. -/
 theorem framework_tower_eq_zeta (s : ℂ) (hs : 1 < s.re) :
     framework_tower s = riemannZeta s := by
   unfold framework_tower
   exact (zeta_eq_tsum_one_div_nat_cpow hs).symm
 
-/-- **`thm:places`. La partición espectral: producto sobre TODAS las plazas.**
-    Arquimediana (`Gammaℝ`, `prop:archimedean`) por finitas (`framework_tower`,
-    `prop:euler-product`). NO se define como Λ. -/
+/-- **`thm:places`. The spectral partition: product over ALL places.**
+    Archimedean (`Gammaℝ`, `prop:archimedean`) times finite (`framework_tower`,
+    `prop:euler-product`). Not defined as Λ. -/
 noncomputable def framework_partition (s : ℂ) : ℂ := Gammaℝ s * framework_tower s
 
-/-- **[P] TEOREMA — antes era definición.** La partición del framework ES la ζ completada.
-    Ya no sale por `rfl`: es el producto sobre plazas, y coincide con Λ porque Mathlib
-    define `riemannZeta s = completedRiemannZeta s / Gammaℝ s`. -/
+/-- **[P] THEOREM — formerly a definition.** The framework partition IS the completed ζ.
+    It no longer follows by `rfl`: it is the product over places, and equals Λ because Mathlib
+    defines `riemannZeta s = completedRiemannZeta s / Gammaℝ s`. -/
 theorem framework_partition_eq_completed_zeta (s : ℂ) (hs : 1 < s.re) :
     framework_partition s = completedRiemannZeta s := by
   have hs0 : s ≠ 0 := by rintro rfl; rw [Complex.zero_re] at hs; linarith
@@ -3399,11 +3399,11 @@ theorem framework_partition_eq_completed_zeta (s : ℂ) (hs : 1 < s.re) :
   rw [framework_tower_eq_zeta s hs, riemannZeta_def_of_ne_zero hs0]
   field_simp
 
-/-- **[P]** `eq:places-product` en su forma de producto. -/
+/-- **[P]** `eq:places-product` in its product form. -/
 theorem framework_partition_eq_tower_completed (s : ℂ) :
     framework_partition s = Gammaℝ s * framework_tower s := rfl
 
-/-- El carácter de Artin χ₅ (`eq:chi5-pentagon`, cara de valores). -/
+/-- The Artin character χ₅ (`eq:chi5-pentagon`, value face). -/
 def chi5 (n : ℕ) : ℤ :=
   match n % 5 with
   | 0 => 0
@@ -3412,16 +3412,16 @@ def chi5 (n : ℕ) : ℤ :=
   | 3 => -1
   | _ => 1
 
-/-- **[P] χ₅ es PAR**: como `-1 ≡ 4 (mod 5)`, `χ₅(4) = χ₅(1) = +1`. De ahí que el factor
-    gamma en cada plaza real sea `Gammaℝ` y no el impar (`rmk:places-F1`). -/
+/-- **[P] χ₅ is EVEN**: since `-1 ≡ 4 (mod 5)`, `χ₅(4) = χ₅(1) = +1`. Hence the gamma factor
+    at each real place is `Gammaℝ` and not the odd one (`rmk:places-F1`). -/
 theorem chi5_even : chi5 4 = chi5 1 ∧ chi5 4 = 1 := by decide
 
-/-! ### Apéndice aritmético: Hurwitz, valores pares, y κ_K derivada (app:arithmetic) -/
+/-! ### Arithmetic appendix: Hurwitz, even values, and the derived κ_K (app:arithmetic) -/
 
-/-- **[P] `eq:reindex`.**  El núcleo de la representación de Hurwitz: todo `n` con
-    `χ₅(n) ≠ 0` es `n = 5m + a` con `a ∈ {1,2,3,4}`, y el término reescala sacando un
-    factor `5^{-s}` de cada sumando.  El reordenamiento de la serie convergente es la
-    entrada clásica; lo que se prueba aquí es la identidad término a término. -/
+/-- **[P] `eq:reindex`.** The core of the Hurwitz representation: every `n` with
+    `χ₅(n) ≠ 0` is `n = 5m + a` with `a ∈ {1,2,3,4}`, and the term rescales by pulling out a
+    factor `5^{-s}` from each summand. The rearrangement of the convergent series is the
+    classical entry; what is proved here is the term-by-term identity. -/
 theorem hurwitz_reindex (m a : ℕ) (s : ℝ) :
     ((5 * m + a : ℝ)) ^ (-s) = (5:ℝ) ^ (-s) * ((m : ℝ) + a / 5) ^ (-s) := by
   have h5 : (0:ℝ) ≤ 5 := by norm_num
@@ -3438,16 +3438,16 @@ theorem even_L_rationality (k : ℕ) (Lv : ℝ) (r : ℚ)
     (hBernoulli : Lv = Real.sqrt 5 * Real.pi ^ (2*k) * (r : ℝ)) :
     ∃ q : ℚ, Lv = Real.sqrt 5 * Real.pi ^ (2*k) * (q : ℝ) := ⟨r, hBernoulli⟩
 
-/-- **[P]** La razón de que el coeficiente sea racional: los polinomios de Bernoulli son
-    polinomios sobre `ℚ`, luego sus valores en `a/5` son racionales por tipado. -/
+/-- **[P]** The reason the coefficient is rational: the Bernoulli polynomials are
+    polynomials over `ℚ`, so their values at `a/5` are rational by typing. -/
 theorem bernoulli_eval_rational (n a : ℕ) :
     ∃ q : ℚ, (Polynomial.bernoulli n).eval ((a : ℚ)/5) = q :=
   ⟨(Polynomial.bernoulli n).eval ((a : ℚ)/5), rfl⟩
 
-/-- La densidad arquimediana de `ℚ`, con `r₁ = 1`: `κ_ℚ(u) = u²/(u²−1)`. -/
+/-- The Archimedean density of `ℚ`, with `r₁ = 1`: `κ_ℚ(u) = u²/(u²−1)`. -/
 noncomputable def kappaQ (u : ℝ) : ℝ := u^2 / (u^2 - 1)
 
-/-- La densidad arquimediana de `K = ℚ(√5)`, con `r₁ = 2`. -/
+/-- The Archimedean density of `K = ℚ(√5)`, with `r₁ = 2`. -/
 noncomputable def kappaK (u : ℝ) : ℝ := 2 * u^2 / (u^2 - 1)
 
 /-- **[P] `eq:kappa-two-places`.**  `κ_K = 2κ_ℚ`: un factor por plaza real.  El `2` no es
@@ -3455,7 +3455,7 @@ noncomputable def kappaK (u : ℝ) : ℝ := 2 * u^2 / (u^2 - 1)
 theorem kappaK_two_real_places (u : ℝ) : kappaK u = 2 * kappaQ u := by
   unfold kappaK kappaQ; ring
 
-/-- **[P] `eq:kappa-alt`.**  La forma en que surge de la sustitución `u = e^v`. -/
+/-- **[P] `eq:kappa-alt`.**  How it arises from the substitution `u = e^v`. -/
 theorem kappaK_alt (u : ℝ) (hu : 1 < u) : kappaK u = 2 / (1 - (u⁻¹)^2) := by
   have h0 : u ≠ 0 := by positivity
   have h1 : u^2 - 1 ≠ 0 := by nlinarith
@@ -3478,16 +3478,16 @@ theorem kappaK_pole_numerator_at_one :
     ∀ u : ℝ, u ≠ 1 → u ≠ -1 → (u - 1) * kappaK u = 2 * u^2 / (u + 1) := by
   intro u h1 h2; exact kappaK_simple_pole u h1 h2
 
-/-- **[P]** `κ_K > 0` en `(1,∞)`: es una densidad genuina ahí, y el único problema es el
-    extremo. -/
+/-- **[P]** `κ_K > 0` on `(1,∞)`: it is a genuine density there, and the only issue is the
+    endpoint. -/
 theorem kappaK_pos (u : ℝ) (hu : 1 < u) : 0 < kappaK u := by
   unfold kappaK
   have : 0 < u^2 - 1 := by nlinarith
   positivity
 
-/-- **[P] `eq:kappa-exp`.**  La sustitución `u = e^v` que convierte el integrando de
-    Gauss–Binet en `κ_K`.  Es una identidad puntual: no requiere teoría de integración
-    para enunciarse, y es donde está la identificación. -/
+/-- **[P] `eq:kappa-exp`.**  The substitution `u = e^v` that converts the Gauss–Binet
+    integrand into `κ_K`. It is a pointwise identity: it requires no integration
+    theory to state, and it is where the identification lies. -/
 theorem kappaK_exp (v : ℝ) (hv : 0 < v) :
     kappaK (Real.exp v) = 2 / (1 - Real.exp (-(2*v))) := by
   have hsq : Real.exp v ^ 2 = Real.exp (2*v) := by rw [sq, ← Real.exp_add]; ring_nf
@@ -3500,15 +3500,15 @@ theorem kappaK_exp (v : ℝ) (hv : 0 < v) :
   rw [hsq, Real.exp_neg]
   field_simp
 
-/-- **[P] la comprobación independiente.**  La fórmula explícita de von Mangoldt da
-    `N_ℚ − u·dψ/du = 1 + 1/(u²−1) = u²/(u²−1)`, que es `κ_ℚ` por una ruta que no toca
+/-- **[P] the independent check.** The explicit von Mangoldt formula gives
+    `N_ℚ − u·dψ/du = 1 + 1/(u²−1) = u²/(u²−1)`, which is `κ_ℚ` via a route that does not touch
     Gauss–Binet. -/
 theorem kappa_per_real_place (u : ℝ) (h : u^2 - 1 ≠ 0) :
     1 + 1/(u^2 - 1) = u^2/(u^2 - 1) := by field_simp; ring
 
-/-! ### L(1,χ₅), h_K = 1 y el puente entropía↔valor L (ssec:zeta) -/
+/-! ### L(1,χ₅), h_K = 1, and the entropy↔L-value bridge (ssec:zeta) -/
 
-/-- La cota de Minkowski de `K = ℚ(√5)`: `(n!/nⁿ)(4/π)^{r₂}√|d|` con `n=2`, `r₂=0`, `d=5`. -/
+/-- The Minkowski bound of `K = ℚ(√5)`: `(n!/nⁿ)(4/π)^{r₂}√|d|` with `n=2`, `r₂=0`, `d=5`. -/
 noncomputable def minkowskiBoundK : ℝ := (2/4 : ℝ) * Real.sqrt 5
 
 /-- **[P]** `M_K = √5/2 < 2`. -/
@@ -3517,11 +3517,11 @@ theorem minkowski_bound_lt_two : minkowskiBoundK < 2 := by
   nlinarith [Real.sq_sqrt (by norm_num : (5:ℝ) ≥ 0), Real.sqrt_nonneg 5,
              Real.sqrt_pos.mpr (by norm_num : (0:ℝ) < 5)]
 
-/-- **[P dado L] `eq:hK`.  h_K = 1.**  Dado el teorema de Minkowski —toda clase de ideales
-    contiene un ideal íntegro de norma a lo sumo `M_K`, `hMink`—, ese ideal tiene norma un
-    entero positivo menor que 2, luego norma 1, luego es el ideal unidad.  La cota y el
-    paso entero se prueban aquí; Minkowski es la entrada clásica.  F₁ usa `h_K = 1` como
-    dato y no lo deriva en ninguna parte del corpus. -/
+/-- **[P dado L] `eq:hK`.  h_K = 1.** Given Minkowski's theorem — every ideal class
+    contains an integral ideal of norm at most `M_K`, `hMink` — that ideal has norm a
+    positive integer less than 2, hence norm 1, hence is the unit ideal. The bound and the
+    integrality step are proved here; Minkowski is the classical entry. F₁ uses `h_K = 1` as
+    data and never derives it anywhere in the corpus. -/
 theorem class_number_one_K (N : ℕ) (hN : 1 ≤ N)
     (hMink : (N : ℝ) ≤ minkowskiBoundK) : N = 1 := by
   by_contra h
@@ -3533,10 +3533,10 @@ theorem class_number_one_K (N : ℕ) (hN : 1 ≤ N)
 open PCFEntropyDOF (regulator_K period_K phi_gt_one phi_sq Ωmod)
 open PaperS2 (φ lambda_log φ_pos phi_eq_two_cos_pi_fifth log_φ_pos)
 
-/-- **[P dado L] `eq:L1`.**  Dada la fórmula de Dirichlet del número de clases `hCNF`,
-    la aritmética con `r₁=2`, `r₂=0`, `h_K=1`, `R_K=log φ`, `w=2`, `Δ=5` da exactamente
-    `2 log φ/√5`.  Todo lo que va después de la fórmula está probado; la fórmula es la
-    hipótesis, visible en el tipo. -/
+/-- **[P dado L] `eq:L1`.** Given the Dirichlet class number formula `hCNF`,
+    the arithmetic with `r₁=2`, `r₂=0`, `h_K=1`, `R_K=log φ`, `w=2`, `Δ=5` yields exactly
+    `2 log φ/√5`. Everything after the formula is proved; the formula is the
+    hypothesis, visible in the type. -/
 theorem L1_from_class_number_formula (L1 : ℝ)
     (hCNF : L1 = (2^2 * 1 * regulator_K) / (2 * Real.sqrt 5)) :
     L1 = 2 * Real.log φ / Real.sqrt 5 := by
@@ -3545,8 +3545,8 @@ theorem L1_from_class_number_formula (L1 : ℝ)
   have h5 : Real.sqrt 5 ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr (by norm_num))
   field_simp
 
-/-- **[P]** `L(1,χ₅) = T/(π√5)` con `T = 2π log φ`: el valor L es el período del toro
-    dividido por `π√5`. -/
+/-- **[P]** `L(1,χ₅) = T/(π√5)` with `T = 2π log φ`: the L-value is the torus period
+    divided by `π√5`. -/
 theorem L1_eq_period_over_pi_sqrt5 :
     2 * Real.log φ / Real.sqrt 5 = period_K / (Real.pi * Real.sqrt 5) := by
   unfold period_K PCFEntropyDOF.φ PaperS2.φ
@@ -3554,7 +3554,7 @@ theorem L1_eq_period_over_pi_sqrt5 :
   have h5 : Real.sqrt 5 ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr (by norm_num))
   field_simp
 
-/-- **[P]** `λ_log · R_K = log 2`.  El regulador se cancela exactamente: éste es el puente. -/
+/-- **[P]** `λ_log · R_K = log 2`. The regulator cancels exactly: this is the bridge. -/
 theorem lambda_log_mul_regulator : lambda_log * regulator_K = Real.log 2 := by
   unfold lambda_log regulator_K PaperS2.φ PCFEntropyDOF.φ
   have hφ : (1:ℝ) < (1 + Real.sqrt 5) / 2 := by
@@ -3570,29 +3570,29 @@ theorem sqrt5_half_L1_eq_regulator :
   field_simp
 
 /-- **[P] `eq:entropy-bridge`.**  `S_BH/k_B = λ_log·R_K = λ_log·(√5/2)·L(1,χ₅) = log 2`.
-    El bit holográfico es el regulador de `ℚ(√5)`, medido en la unidad `λ_log`. -/
+    The holographic bit is the regulator of `ℚ(√5)`, measured in the unit `λ_log`. -/
 theorem entropy_bridge :
     lambda_log * ((Real.sqrt 5 / 2) * (2 * Real.log φ / Real.sqrt 5)) = Real.log 2 := by
   rw [sqrt5_half_L1_eq_regulator, lambda_log_mul_regulator]
 
-/-- **[P dado L] `eq:zeta-odd`.**  Dada la factorización de Dedekind `hDedekind` y la no
-    anulación del valor L, el zeta impar es el cociente.  El paso de división es lo que se
-    prueba; la factorización es la entrada clásica. -/
+/-- **[P dado L] `eq:zeta-odd`.**  Given the Dedekind factorization `hDedekind` and the non-
+    vanishing of the L-value, the odd zeta is the quotient. The division step is what is
+    proved; the factorization is the classical entry. -/
 theorem odd_zeta_ratio (zK zv Lv : ℝ) (hDedekind : zK = zv * Lv) (hL : Lv ≠ 0) :
     zv = zK / Lv := by
   rw [hDedekind]; field_simp
 
-/-- **[P]** `sin(2x) = 2 sin x cos x`, de donde `sin(2π/5)/sin(π/5) = 2cos(π/5) = φ`.
-    Es todo el contenido de la firma logarítmica. -/
+/-- **[P]** `sin(2x) = 2 sin x cos x`, whence `sin(2π/5)/sin(π/5) = 2cos(π/5) = φ`.
+    This is the entire content of the logarithmic signature. -/
 theorem sin_ratio_eq_two_cos (x : ℝ) (hx : Real.sin x ≠ 0) :
     Real.sin (2*x) / Real.sin x = 2 * Real.cos x := by
   rw [Real.sin_two_mul]; field_simp
 
-/-- **[P] `eq:log-signature`.**  La firma logarítmica de φ en el pentágono:
+/-- **[P] `eq:log-signature`.**  The logarithmic signature of φ on the pentagon:
     `Σ_{a=1}^{4} χ₅(a)·log(2 sin(πa/5)) = −2 log φ`.
-    Como `χ₅ = (+1,−1,−1,+1)` y `sin(3π/5) = sin(2π/5)`, `sin(4π/5) = sin(π/5)`, la suma
-    colapsa a `2 log(sin(π/5)/sin(2π/5))`, y la razón de senos es `1/φ`.  Es la ruta del
-    seno hacia `L(1,χ₅)`, complementaria a la del coseno de `eq:chi5-pentagon`. -/
+    Since `χ₅ = (+1,−1,−1,+1)` and `sin(3π/5) = sin(2π/5)`, `sin(4π/5) = sin(π/5)`, the sum
+    collapses to `2 log(sin(π/5)/sin(2π/5))`, and the sine ratio is `1/φ`. This is the sine route
+    toward `L(1,χ₅)`, complementary to the cosine route of `eq:chi5-pentagon`. -/
 theorem pentagon_log_signature (h1 : Real.sin (Real.pi/5) ≠ 0) :
     Real.log (2 * Real.sin (Real.pi/5)) - Real.log (2 * Real.sin (2*(Real.pi/5)))
       - Real.log (2 * Real.sin (3*(Real.pi/5))) + Real.log (2 * Real.sin (4*(Real.pi/5)))
@@ -3626,23 +3626,23 @@ theorem pentagon_log_signature (h1 : Real.sin (Real.pi/5) ≠ 0) :
   rw [hlog2s, hlog1s]
   ring
 
-/-! ### ζ_K, las plazas finitas y el colímite de Euler (ssec:zeta) -/
+/-! ### ζ_K, the finite places, and the Euler colimit (ssec:zeta) -/
 
-/-- Tipo de descomposición de un primo racional en `O_K = ℤ[φ]`. -/
+/-- Splitting type of a rational prime in `O_K = ℤ[φ]`. -/
 inductive SplitTypeK | split | inert | ramified
 deriving DecidableEq
 
-/-- Número de primos de `O_K` sobre `p`, índice de ramificación, grado residual. -/
+/-- Number of primes of `O_K` above `p`, ramification index, residual degree. -/
 def numAboveK : SplitTypeK → ℕ | .split => 2 | .inert => 1 | .ramified => 1
 def ramIndexK : SplitTypeK → ℕ | .split => 1 | .inert => 1 | .ramified => 2
 def resDegreeK : SplitTypeK → ℕ | .split => 1 | .inert => 2 | .ramified => 1
 
-/-- **[P] `eq:degree-formula`.**  `Σ e_i f_i = [K:ℚ] = 2` en los tres casos.  Es la
-    identidad que hace que los tres tipos agoten las posibilidades. -/
+/-- **[P] `eq:degree-formula`.**  `Σ e_i f_i = [K:ℚ] = 2` in all three cases. This is the
+    identity that makes the three types exhaust all possibilities. -/
 theorem degree_formula_K (t : SplitTypeK) :
     numAboveK t * (ramIndexK t * resDegreeK t) = 2 := by cases t <;> rfl
 
-/-- Norma absoluta de un primo sobre `p`: `N(𝔭) = p^f`. -/
+/-- Absolute norm of a prime above `p`: `N(𝔭) = p^f`. -/
 noncomputable def idealNormK (t : SplitTypeK) (p : ℝ) : ℝ := p ^ (resDegreeK t)
 
 /-- **[P] `eq:ideal-norms`.**  Split `N(𝔭)=p`, inerte `N(𝔭)=p²`, ramificado `N(𝔭)=p`. -/
@@ -3651,14 +3651,14 @@ theorem ideal_norm_values_K (p : ℝ) :
     idealNormK .ramified p = p := by
   refine ⟨?_, ?_, ?_⟩ <;> simp [idealNormK, resDegreeK]
 
-/-- Factor local de `ζ_K` según el valor del carácter, con `u = p^{-s}`. -/
+/-- Factor local of `ζ_K` according to the character value, with `u = p^{-s}`. -/
 noncomputable def eulerFactorK (c : ℤ) (u : ℝ) : ℝ :=
   if c = 0 then (1 - u)⁻¹ else if c = 1 then (1 - u)⁻¹ * (1 - u)⁻¹ else (1 - u^2)⁻¹
 
 noncomputable def eulerFactorZ (u : ℝ) : ℝ := (1 - u)⁻¹
 noncomputable def eulerFactorL (c : ℤ) (u : ℝ) : ℝ := (1 - (c : ℝ) * u)⁻¹
 
-/-- **[P]** Producto sobre los primos de `O_K` que están sobre `p`, con `u = p^{-s}`. -/
+/-- **[P]** Product over the primes of `O_K` lying above `p`, with `u = p^{-s}`. -/
 noncomputable def idealEulerK (t : SplitTypeK) (u : ℝ) : ℝ :=
   ((1 - u ^ (resDegreeK t))⁻¹) ^ (numAboveK t)
 
@@ -3682,7 +3682,7 @@ theorem local_dedekind_split_K (u : ℝ) :
     eulerFactorK 1 u = eulerFactorZ u * eulerFactorL 1 u := by
   simp [eulerFactorK, eulerFactorZ, eulerFactorL]
 
-/-- **[P] `eq:local-dedekind`, caso inerte.  El núcleo algebraico es `(1-u)(1+u) = 1-u²`. -/
+/-- **[P] `eq:local-dedekind`, inert case.  The algebraic core is `(1-u)(1+u) = 1-u²`. -/
 theorem local_dedekind_inert_K (u : ℝ) (_h1 : 1 - u ≠ 0) (_h2 : 1 + u ≠ 0) :
     eulerFactorK (-1) u = eulerFactorZ u * eulerFactorL (-1) u := by
   have hkey : 1 - u^2 = (1 - u) * (1 + u) := by ring
@@ -3690,9 +3690,9 @@ theorem local_dedekind_inert_K (u : ℝ) (_h1 : 1 - u ≠ 0) (_h2 : 1 + u ≠ 0)
   norm_num
   rw [hkey, mul_inv]
 
-/-- **[P] `eq:LambdaK`.**  La función de von Mangoldt de `K`: `Λ_K(𝔭^k) = log N(𝔭)`, de
-    modo que el peso es `log p` en un primo split y `2 log p` en uno inerte.  Es lo que
-    parametriza el soporte de la función de conteo. -/
+/-- **[P] `eq:LambdaK`.**  The von Mangoldt function of `K`: `Λ_K(𝔭^k) = log N(𝔭)`, so
+    the weight is `log p` at a split prime and `2 log p` at an inert one. This is what
+    parametrizes the support of the counting function. -/
 noncomputable def vonMangoldtK (t : SplitTypeK) (p : ℝ) : ℝ := Real.log (idealNormK t p)
 
 theorem vonMangoldtK_values (p : ℝ) (_hp : 0 < p) :
@@ -3702,10 +3702,10 @@ theorem vonMangoldtK_values (p : ℝ) (_hp : 0 < p) :
   · simp [vonMangoldtK, idealNormK, resDegreeK]
   · simp [vonMangoldtK, idealNormK, resDegreeK, Real.log_pow]
 
-/-- `n` es `S`-liso: todo primo que divide a `n` está en `S`. -/
+/-- `n` is `S`-smooth: every prime dividing `n` lies in `S`. -/
 def SmoothK (S : Finset ℕ) (n : ℕ) : Prop := ∀ p, p.Prime → p ∣ n → p ∈ S
 
-/-- Producto parcial de Euler como función de coeficientes. -/
+/-- Euler partial product as a coefficient function. -/
 noncomputable def partialEK (S : Finset ℕ) (a : ℕ → ℝ) (n : ℕ) : ℝ :=
   @ite ℝ (SmoothK S n) (Classical.propDecidable (SmoothK S n)) (a n) 0
 
@@ -3738,11 +3738,11 @@ theorem chi5_mul_on_units :
 
 theorem chi5_sum_zero : chi5 0 + chi5 1 + chi5 2 + chi5 3 + chi5 4 = 0 := by decide
 
-/-- **[P] `eq:chi5-pentagon`.** La cara geométrica del carácter: los cuatro cosenos
-    pentagonales son exactamente `±φ` y `±φ⁻¹`, de modo que `|2cos(πa/5)| = φ^{χ₅(a)}`.
-    Enunciado como los cuatro casos, ya que χ₅ toma sólo `±1` sobre las unidades.
-    Es la ruta que da χ₅ a partir de `thm:pentagon-id` — φ = 2cos(π/5), ya probado —
-    sin pasar por el funtor de Galois de ℤ₂₀ˣ. -/
+/-- **[P] `eq:chi5-pentagon`.** The geometric face of the character: the four pentagonal
+    cosines are exactly `±φ` and `±φ⁻¹`, so `|2cos(πa/5)| = φ^{χ₅(a)}`.
+    Stated as the four cases, since χ₅ takes only `±1` on the units.
+    This is the route that gives χ₅ from `thm:pentagon-id` — φ = 2cos(π/5), already proved —
+    without passing through the Galois functor of ℤ₂₀ˣ. -/
 theorem norm_cosine_phi :
     |2 * Real.cos (Real.pi/5)|       = φ     ∧
     |2 * Real.cos (2*(Real.pi/5))|   = φ⁻¹   ∧
@@ -3752,8 +3752,8 @@ theorem norm_cosine_phi :
   have h1 : 2 * Real.cos (Real.pi/5) = φ := phi_eq_two_cos_pi_fifth.symm
   have hφ : φ ≠ 0 := ne_of_gt hpos
   have hsq : φ - 1 = φ⁻¹ := by
-    -- NB: el `phi_sq` abierto aquí es PCFEntropyDOF.phi_sq, sobre OTRO φ;
-    -- el φ del enunciado es PaperS2.φ, así que se cita PaperS2.phi_sq calificado.
+    -- NB: the `phi_sq` opened here is PCFEntropyDOF.phi_sq, about a DIFFERENT φ;
+    -- the φ of the statement is PaperS2.φ, so PaperS2.phi_sq is cited qualified.
     rw [inv_eq_one_div, eq_div_iff hφ]
     linear_combination PaperS2.phi_sq
   have h2 : 2 * Real.cos (2*(Real.pi/5)) = φ⁻¹ := by
@@ -3773,25 +3773,25 @@ theorem norm_cosine_phi :
   · rw [h3, mul_neg, abs_neg, h2]; exact abs_of_pos (by positivity)
   · rw [h4, mul_neg, abs_neg, h1]; exact abs_of_pos hpos
 
-/-- **[P] `eq:fib-criterion`, Lucas 1878.**  El criterio que hace de χ₅ una clasificación
-    EFECTIVA de los primos: `F_q ≡ (q/5) (mod q)`.  Es lo que la remark de `ssec:spectrum`
-    afirmaba sin decir cómo.  Verificado para los 23 primos hasta 97 en
-    `eq:fib-criterion`; aquí como los casos que fijan la trichotomía. -/
+/-- **[P] `eq:fib-criterion`, Lucas 1878.** The criterion that makes χ₅ an EFFECTIVE
+    classification of primes: `F_q ≡ (q/5) (mod q)`. This is what the remark in `ssec:spectrum`
+    claimed without saying how. Verified for the 23 primes up to 97 in
+    `eq:fib-criterion`; here as the cases that fix the trichotomy. -/
 theorem fib_criterion_cases :
     ∀ q ∈ [3,7,11,13,17,19,23,29,31,37,41,43,47],
       (Nat.fib q : ℤ) % q = chi5 q % q := by decide
 
-/-- **[P] La trichotomía por clases módulo 20.**  `(q/5) = +1` (split) exactamente para
-    `q mod 20 ∈ {1,9,11,19}`, y `= -1` (inert) para `{3,7,13,17}`.  Es lo que da contenido
-    a «split/inert/ramified» en `ssec:spectrum`. -/
+/-- **[P] The trichotomy by residue classes mod 20.**  `(q/5) = +1` (split) exactly for
+    `q mod 20 ∈ {1,9,11,19}`, and `= -1` (inert) for `{3,7,13,17}`. This gives content
+    to "split/inert/ramified" in `ssec:spectrum`. -/
 theorem chi5_split_inert_mod20 :
     (chi5 1 = 1 ∧ chi5 9 = 1 ∧ chi5 11 = 1 ∧ chi5 19 = 1) ∧
     (chi5 3 = -1 ∧ chi5 7 = -1 ∧ chi5 13 = -1 ∧ chi5 17 = -1) ∧
     chi5 5 = 0 := by decide
 
-/-- **[P] `places_assembly`.** Para `Re s > 1`: la partición es el producto de la plaza
-    arquimediana por las finitas, es la ζ completada, su dualidad `s ↦ 1-s` es exacta y el
-    punto fijo es `½ = |Ω|`. -/
+/-- **[P] `places_assembly`.** For `Re s > 1`: the partition is the product of the Archimedean
+    place by the finite ones, equals the completed ζ, its duality `s ↦ 1-s` is exact, and the
+    fixed point is `½ = |Ω|`. -/
 theorem places_assembly (s : ℂ) (hs : 1 < s.re) :
     framework_partition s = Gammaℝ s * framework_tower s ∧
     framework_partition s = completedRiemannZeta s ∧
@@ -3799,7 +3799,7 @@ theorem places_assembly (s : ℂ) (hs : 1 < s.re) :
     ((1 : ℂ) - 1/2 = 1/2) :=
   ⟨rfl, framework_partition_eq_completed_zeta s hs, completedRiemannZeta_one_sub s, by norm_num⟩
 
-/-- **[P]** El punto fijo de `s ↦ 1 - s` es único: `s = ½`. -/
+/-- **[P]** The fixed point of `s ↦ 1 - s` is unique: `s = ½`. -/
 theorem s_duality_fixed_point_unique (s : ℂ) : 1 - s = s ↔ s = 1 / 2 := by
   constructor
   · intro h; linear_combination -h / 2
@@ -3823,47 +3823,47 @@ theorem s_duality_exact (s : ℂ) (hs : 1 < s.re) :
     completedRiemannZeta (1 - s) = framework_partition s := by
   rw [completedRiemannZeta_one_sub, framework_partition_eq_completed_zeta s hs]
 
--- [D13 RESUELTO] `s_duality_self_dual_half` era un duplicado literal de
--- `s_duality_fixed_point_unique` (enunciado y prueba idénticos). Borrado.
+-- [D13 RESOLVED] `s_duality_self_dual_half` was a literal duplicate of
+-- `s_duality_fixed_point_unique` (identical statement and proof). Deleted.
 
-/-! ### §2.8  La RECTA autodual (A1: G1, G2)
+/-! ### §2.8  The SELF-DUAL LINE (A1: G1, G2)
 
-    `s_duality_fixed_point_unique` da el PUNTO `s = ½` de ℂ.  El título del
-    teorema del paper pide la RECTA.  Son dos enunciados distintos sobre la
-    misma involución, y los dos hacen falta. -/
+    `s_duality_fixed_point_unique` gives the POINT `s = ½` of ℂ. The paper's theorem
+    title asks for the LINE. These are two distinct statements about the
+    same involution, and both are needed. -/
 
-/-- **[P] G1 — LA RECTA.**  La reflexión `s ↦ 1−s` preserva la parte real
-    exactamente sobre `{Re s = ½}`. -/
+/-- **[P] G1 — THE LINE.** The reflection `s ↦ 1−s` preserves the real part
+    exactly on `{Re s = ½}`. -/
 theorem functional_equation_fixed_line (s : ℂ) :
     s.re = (1 - s).re ↔ s.re = 1 / 2 := by
   rw [Complex.sub_re, Complex.one_re]
   constructor <;> intro h <;> linarith
 
-/-- **[P] G2 — LA CONECTIVA AL COCONO.**  La misma recta, en la coordenada de
-    §2.0: `φ^(−λ_log)`.  Sin este enunciado G1 queda paralelo y la pata del
-    cocono sigue siendo el punto. -/
+/-- **[P] G2 — THE CONNECTIVE TO THE COCONE.** The same line, in the coordinate of
+    §2.0: `φ^(−λ_log)`. Without this statement G1 remains parallel and the leg of the
+    cocone is still the point. -/
 theorem fixed_line_is_facePhi (s : ℂ) :
     s.re = (1 - s).re ↔ s.re = PaperS2.facePhi := by
   rw [functional_equation_fixed_line s, PaperS2.facePhi_apex]; rfl
 
-/-- **[P]** Las dos lecturas juntas: el punto es el único punto de la recta
-    que además queda fijo como número complejo. -/
+/-- **[P]** The two readings together: the point is the unique point on the line
+    that is also fixed as a complex number. -/
 theorem point_and_line (s : ℂ) :
     (1 - s = s ↔ s = 1 / 2) ∧
     (s.re = (1 - s).re ↔ s.re = PaperS2.facePhi) :=
   ⟨s_duality_fixed_point_unique s, fixed_line_is_facePhi s⟩
 
-/-! ### §2.11bis  El conductor, la escala y la unidad de espaciado
+/-! ### §2.11bis  The conductor, the scale, and the spacing unit
 
-    CW6 tiene el `20` como clase de residuos (`eq:fib-criterion`) pero no la
-    identidad que lo deriva de los dos periodos, ni la escala que de él
-    depende.  Sin esa capa, un enunciado sobre espaciados de ceros habla de
-    una unidad que el paper no ha fijado. -/
+    CW6 has `20` as a residue class (`eq:fib-criterion`) but not the
+    identity that derives it from the two periods, nor the scale that depends on it.
+    Without that layer, a statement about zero spacings speaks of
+    a unit that the paper has not fixed. -/
 
-/-- **[P] EL CONDUCTOR ESTÁ DERIVADO.**  `20 = lcm(4,5)`: el `4` del giro y el
-    `5` del pentágono, coprimos.  No se elige.
+/-- **[P] THE CONDUCTOR IS DERIVED.** `20 = lcm(4,5)`: the `4` from the turn and the
+    `5` from the pentagon, coprime. It is not chosen.
     (`conductor_is_derived` F1_PCF_session_modules:2029; `periods_coprime`:2041.)
-    El periodo `4` se prueba aquí porque `eq:torus` da `τ = i` pero no `i⁴ = 1`. -/
+    The period `4` is proved here because `eq:torus` gives `τ = i` but not `i⁴ = 1`. -/
 theorem conductor_is_derived :
     Nat.lcm 4 5 = 20 ∧ Nat.gcd 4 5 = 1 ∧ (Complex.I) ^ (4 : ℕ) = 1 := by
   refine ⟨by decide, by decide, ?_⟩
@@ -3871,15 +3871,14 @@ theorem conductor_is_derived :
     ring
   rw [this, Complex.I_mul_I]; ring
 
-/-- La escala local de espaciado a altura `T` para conductor `q`. -/
+/-- The local spacing scale at height `T` for conductor `q`. -/
 noncomputable def spacingScale (q T : ℝ) : ℝ :=
   2 * Real.pi / Real.log (q * T / (2 * Real.pi))
 
-/-- **[P] LA ESCALA ES INYECTIVA EN EL CONDUCTOR.**  Conductores distintos dan
-    escalas distintas a la misma altura.  Por eso «los espaciados desdoblados
-    tienen media uno» selecciona UN conductor: **es un enunciado sobre los
-    ceros, no sobre una elección de unidades.**  Sin esto, la cota de
-    repulsión de §2.12 no diría nada. -/
+/-- **[P] THE SCALE IS INJECTIVE IN THE CONDUCTOR.** Different conductors give
+    different scales at the same height. Hence "unfolded spacings have mean one" selects ONE conductor:
+    **it is a statement about the zeros, not about a choice of units.** Without this, the repulsion
+    bound of §2.12 would say nothing. -/
 theorem scale_injective_in_conductor {q₁ q₂ T : ℝ}
     (hT : 0 < T) (h₁ : 2 * Real.pi < q₁ * T) (hne : q₁ ≠ q₂)
     (h₂ : 2 * Real.pi < q₂ * T) :
@@ -3907,13 +3906,13 @@ theorem scale_injective_in_conductor {q₁ q₂ T : ℝ}
     simpa [div_mul_cancel₀, ne_of_gt hpi] using this
   exact hne (mul_right_cancel₀ (ne_of_gt hT) hqT)
 
-/-- La envolvente de conteo para conductor `q`: su derivada es la densidad con
-    la que se desdobla. -/
+/-- The counting envelope for conductor `q`: its derivative is the density with
+    which zeros unfold. -/
 noncomputable def envelope (q T : ℝ) : ℝ :=
   (T / (2 * Real.pi)) * Real.log (q * T / (2 * Real.pi * Real.exp 1))
 
-/-- **[P] LA ENVOLVENTE SE PARTE EN LAS DOS CARAS.**  `log q` es la parte del
-    cuerpo —con `q = 5`, la cara φ— y `log(2πe)` la universal, la cara π.
+/-- **[P] THE ENVELOPE SPLITS INTO THE TWO FACES.** `log q` is the body part
+    — with `q = 5`, the φ face — and `log(2πe)` the universal one, the π face.
     (`envelope_splits` F1_PCF_session_modules:2524.) -/
 theorem envelope_splits (q T : ℝ) (hq : 0 < q) (hT : 0 < T) :
     Real.log (q * T / (2 * Real.pi * Real.exp 1))
@@ -3922,27 +3921,27 @@ theorem envelope_splits (q T : ℝ) (hq : 0 < q) (hT : 0 < T) :
   rw [Real.log_div (by positivity) (ne_of_gt h1),
       Real.log_mul (ne_of_gt hq) (ne_of_gt hT)]
 
-/-- **[P] Y SÓLO LA PARTE DEL CUERPO DISTINGUE.**  Quitar el `5` no elimina
-    «una constante»: elimina la aritmética del cuerpo.  Es la razón de que el
-    desdoblado con el conductor ajeno no dé media uno.
-    (`field_part_distinguishes` ídem:2537.) -/
+/-- **[P] AND ONLY THE BODY PART DISTINGUISHES.** Removing the `5` does not eliminate
+    "a constant": it eliminates the body's arithmetic. This is why unfolding
+    with the wrong conductor does not give mean one.
+    (`field_part_distinguishes` ibid:2537.) -/
 theorem field_part_distinguishes {q₁ q₂ : ℝ}
     (h₁ : 0 < q₁) (h₂ : 0 < q₂) (hne : q₁ ≠ q₂) :
     Real.log q₁ ≠ Real.log q₂ := fun hc =>
   hne (Real.log_injOn_pos (Set.mem_Ioi.mpr h₁) (Set.mem_Ioi.mpr h₂) hc)
 
-/-- **[C] LA LEY DE CONTEO.**  `N(T) = env(T) + S(T)`.  Asintótica: hipótesis.
+/-- **[C] THE COUNTING LAW.**  `N(T) = env(T) + S(T)`.  Asymptotics: hypothesis.
     (`CountingLaw` PCF_sesion_completa:6958.) -/
 def CountingLaw (N env S : ℝ → ℝ) : Prop :=
   ∀ T : ℝ, 0 < T → N T = env T + S T
 
-/-- **[C] LA UNIDAD DERIVADA.**  `uₙ = gapₙ · densidadₙ`: no se elige, sale del
-    término principal, que sale del conductor.
-    (`DerivedUnit` ídem:6965.) -/
+/-- **[C] THE DERIVED UNIT.**  `uₙ = gapₙ · densityₙ`: it is not chosen, it comes from the
+    leading term, which comes from the conductor.
+    (`DerivedUnit` ibid:6965.) -/
 def DerivedUnit (u gap density : ℕ → ℝ) : Prop :=
   ∀ n : ℕ, u n = gap n * density n
 
-/-- **[P] LA UNIDAD ESTÁ DERIVADA, SIN ESLABÓN ELEGIDO.** -/
+/-- **[P] THE UNIT IS DERIVED, WITH NO CHOSEN LINK.** -/
 theorem the_unit_is_derived :
     (Nat.lcm 4 5 = 20 ∧ Nat.gcd 4 5 = 1) ∧
     (∀ q₁ q₂ T : ℝ, 0 < T → 2*Real.pi < q₁*T → 2*Real.pi < q₂*T → q₁ ≠ q₂ →
@@ -3954,10 +3953,10 @@ theorem the_unit_is_derived :
    fun _ _ _ hT h₁ h₂ hne => scale_injective_in_conductor hT h₁ hne h₂,
    fun q T hq hT => envelope_splits q T hq hT⟩
 
-/-- **[P] EL MÓDULO DE LI, PROBADO.**  `‖1 − 1/ρ‖ = 1 ↔ Re ρ = ½`: la línea
-    crítica es la preimagen del círculo unidad.  **Corrige el cambio 6**, donde
-    entró como hipótesis `[C]`.  (`F1_iff_F7` PCF_sesion_completa:7873,
-    transcrito a `norm`: CW6 no usa `Complex.abs`.) -/
+/-- **[P] THE LI MODULUS, PROVED.**  `‖1 − 1/ρ‖ = 1 ↔ Re ρ = ½`: the critical
+    line is the preimage of the unit circle. **Corrects change 6**, where
+    it entered as hypothesis `[C]`. (`F1_iff_F7` PCF_sesion_completa:7873,
+    transcribed to `norm`: CW6 does not use `Complex.abs`.) -/
 theorem li_modulus_on_line (ρ : ℂ) (hρ : ρ ≠ 0) :
     ‖1 - 1 / ρ‖ = 1 ↔ ρ.re = 1 / 2 := by
   have hsub : (1 : ℂ) - 1 / ρ = (ρ - 1) / ρ := by field_simp
@@ -3972,140 +3971,140 @@ theorem li_modulus_on_line (ρ : ℂ) (hρ : ρ ≠ 0) :
   · intro h; rw [normSq_eq_norm_sq, normSq_eq_norm_sq]; exact (sq_eq_sq₀ (norm_nonneg _) (norm_nonneg _) |>.mpr h)
   · intro h; rw [normSq_eq_norm_sq, normSq_eq_norm_sq] at h; exact (sq_eq_sq₀ (norm_nonneg _) (norm_nonneg _) |>.mp h)
 
-/-! ### §2.11  El compañero de la ecuación funcional, y el caso extremo
+/-! ### §2.11  The companion of the functional equation, and the extreme case
 
-    El abstract abre con un ensemble.  §2 produce el individuo.  Lo que queda
-    es decir, con enunciados propios, qué estaba sustituyendo el ensemble; y
-    la respuesta no es un estadístico, es un par. -/
+    The abstract opens with an ensemble. §2 produces the individual. What remains
+    is to say, with proper statements, what the ensemble was substituting; and
+    the answer is not a statistic but a pair. -/
 
-/-- **G19.**  El compañero: la reflexión de la ecuación funcional compuesta
-    con la conjugación.  Es la involución ANTIholomorfa cuyo conjunto fijo es
-    la recta —el sentido fuerte en que esa recta es autodual. -/
+/-- **G19.** The companion: the functional equation's reflection composed
+    with conjugation. It is the ANTIholomorphic involution whose fixed set is
+    the line — the strong sense in which that line is self-dual. -/
 def sdualMate (ρ : ℂ) : ℂ := 1 - (starRingEnd ℂ) ρ
 
-/-- **[P] G20.**  Las dos involuciones conmutan, porque `1` es real. -/
+/-- **[P] G20.** The two involutions commute, because `1` is real. -/
 theorem sdual_conj_commute (ρ : ℂ) :
     1 - (starRingEnd ℂ) ρ = (starRingEnd ℂ) (1 - ρ) := by
   simp [map_sub, map_one]
 
-/-- **[P] G21.**  Y por eso el compañero es una involución. -/
+/-- **[P] G21.** Hence the companion is an involution. -/
 theorem sdualMate_involutive (ρ : ℂ) : sdualMate (sdualMate ρ) = ρ := by
   unfold sdualMate; rw [sdual_conj_commute]; simp
 
-/-- **[P] G22.**  Preserva la ordenada. -/
+/-- **[P] G22.** It preserves the imaginary part. -/
 theorem sdualMate_im (ρ : ℂ) : (sdualMate ρ).im = ρ.im := by
   simp [sdualMate, Complex.sub_im, Complex.conj_im]
 
-/-- **[P] G22.**  Refleja la abscisa. -/
+/-- **[P] G22.** It reflects the real part. -/
 theorem sdualMate_re (ρ : ℂ) : (sdualMate ρ).re = 1 - ρ.re := by
   simp [sdualMate, Complex.sub_re, Complex.conj_re]
 
-/-- **[P] G23 — LA RECTA COMO CONJUNTO FIJO, EN LA COORDENADA DE §2.0.**
-    Esto es lo que el título de `thm:funct-eq` pedía: la recta autodual en
-    sentido fuerte.  La reflexión holomorfa fija UN punto de ℂ; la recta es
-    lo que fija su composición con la conjugación. -/
+/-- **[P] G23 — THE LINE AS A FIXED SET, IN THE §2.0 COORDINATE.**
+    This is what the title of `thm:funct-eq` asked for: the self-dual line in the
+    strong sense. The holomorphic reflection fixes ONE point of ℂ; the line is
+    what its composition with conjugation fixes. -/
 theorem sdualMate_fixed_iff (ρ : ℂ) :
     sdualMate ρ = ρ ↔ ρ.re = PaperS2.facePhi := by
   rw [Complex.ext_iff, sdualMate_re, sdualMate_im, PaperS2.facePhi_apex]
   unfold PaperS2.μ
   exact ⟨fun h => by have := h.1; linarith, fun h => ⟨by linarith, rfl⟩⟩
 
-/-- **[P] G24 — EL CASO EXTREMO ES DE ARIDAD 2.**  Fuera de la recta el
-    compañero es un cero DISTINTO con la MISMA ordenada: un par concreto con
-    separación nula, no un enunciado estadístico. -/
+/-- **[P] G24 — THE EXTREME CASE IS OF ARITY 2.** Off the line the
+    companion is a DISTINCT zero with the SAME imaginary part: a concrete pair with
+    null separation, not a statistical statement. -/
 theorem extreme_case_is_binary (ρ : ℂ) (h : ρ.re ≠ PaperS2.facePhi) :
     sdualMate ρ ≠ ρ ∧ (sdualMate ρ).im - ρ.im = 0 := by
   refine ⟨fun hc => h ((sdualMate_fixed_iff ρ).mp hc), ?_⟩
   rw [sdualMate_im]; ring
 
-/-- **[P] ARIDAD 2 ⟺ ARIDAD 0.**  El par con separación nula existe si y sólo
-    si el módulo de Li se desvía: la lectura angular y la radial acotan el
-    MISMO evento.  **Individuo y ensemble, como teorema.**
-    Ya SIN hipótesis: `li_modulus_on_line` está probado (§2.11bis).
-    `ModulusOnLine` queda borrado — era `[C]` de algo demostrado. -/
+/-- **[P] ARITY 2 ⟺ ARITY 0.**  The null-separation pair exists if and only if
+    the Li modulus deviates: the angular and radial readings bound the
+    SAME event. **Individual and ensemble, as a theorem.**
+    Now WITHOUT hypothesis: `li_modulus_on_line` is proved (§2.11bis).
+    `ModulusOnLine` is deleted — it was `[C]` for something proved. -/
 theorem binary_iff_radial (ρ : ℂ) (hρ : ρ ≠ 0) :
     (sdualMate ρ ≠ ρ) ↔ (‖1 - 1 / ρ‖ ≠ 1) := by
   simp only [sdualMate_fixed_iff, PaperS2.facePhi_apex, li_modulus_on_line ρ hρ,
     not_iff_not, PaperS2.μ]
 
-/-! ### §2.12b  Lo que el ensemble describe, y lo que este marco no reproduce -/
+/-! ### §2.12b  What the ensemble describes, and what this framework does not reproduce -/
 
-/-- **[C] EL NÚCLEO DE CORRELACIÓN DE PARES DE GUE.**  `K(u) = 1 − (sin πu/πu)²`.
-    La atribución (Montgomery, Dyson, Odlyzko) está en §1; lo que faltaba en el
-    desarrollo es la FÓRMULA, para que el objeto del que habla el abstract sea
-    un nodo y no un hueco.  **No se usa en ninguna firma.** -/
+/-- **[C] THE GUE PAIR CORRELATION KERNEL.**  `K(u) = 1 − (sin πu/πu)²`.
+    The attribution (Montgomery, Dyson, Odlyzko) is in §1; what was missing in the
+    development is the FORMULA, so that the object the abstract speaks of is
+    a node rather than a gap. **Not used in any signature.** -/
 noncomputable def sineKernel (u : ℝ) : ℝ :=
   1 - (Real.sin (Real.pi * u) / (Real.pi * u)) ^ 2
 
-/-- **[P]** En los enteros no nulos el núcleo vale `1`: a separación entera
-    exacta no hay correlación.  Lo único que este desarrollo prueba de él. -/
+/-- **[P]** At non-zero integers the kernel equals `1`: at exact integer
+    separation there is no correlation. The only thing this development proves of it. -/
 theorem sineKernel_at_nonzero_integer (n : ℤ) (_hn : n ≠ 0) :
     sineKernel (n : ℝ) = 1 := by
   unfold sineKernel
   rw [show Real.pi * (n : ℝ) = (n : ℝ) * Real.pi by ring, Real.sin_int_mul_pi]
   simp
 
-/-- **[∅-doc] LA DENSIDAD SUAVE.**  Lo que un operador determinista SÍ
-    determina: la envolvente, la distribución global de los ceros. -/
+/-- **[∅-doc] THE SMOOTH DENSITY.**  What a deterministic operator DOES
+    determine: the envelope, the global distribution of zeros. -/
 def SmoothDensity (N : ℝ → ℝ) : Prop := ∀ T, 0 ≤ T → 0 ≤ N T
 
-/-- **[∅-doc] LAS FLUCTUACIONES FINAS.**  Lo que NO determina: las
-    correlaciones de pares residen en las fluctuaciones alrededor de la
-    envolvente, y reproducirlas pediría un espectro exacto o un mecanismo
-    dinámico que genere la repulsión.  **La distinción es intrínseca a la
-    construcción, no una laguna.**  Declarado y no usado: ésa es la
-    comprobación. -/
+/-- **[∅-doc] THE FINE FLUCTUATIONS.** What it does NOT determine: pair
+    correlations reside in the fluctuations around the
+    envelope, and reproducing them would require an exact spectrum or a dynamical
+    mechanism generating repulsion. **The distinction is intrinsic to the
+    construction, not a gap.** Declared and unused: that is the
+    check. -/
 def FineFluctuations (N Nsmooth : ℝ → ℝ) : Prop := ∀ T, N T = Nsmooth T
 
-/-- **[∅]** Densidad conjunta.  Declarada, **sin consumidor**. -/
+/-- **[∅]** Joint density.  Declared, **with no consumer**. -/
 def JointDensity (F : ℝ → ℝ → ℝ) : Prop := ∀ s t, 0 ≤ F s t
 
-/-- **[∅]** Factor de forma.  Declarado, **sin consumidor**. -/
+/-- **[∅]** Form factor.  Declared, **with no consumer**. -/
 def FormFactor (K : ℝ → ℝ) : Prop := ∀ τ, 0 ≤ K τ
 
-/-- **[P] NO-ARISTA: el espaciado de la torre NO es la unidad de desdoblado.**
-    `log φ^{n+1} − log φ^n = log φ = R_K = 0.481212` (`eq:regulator`); la unidad
-    que desdobla ordenadas a `T = 100` es `1.435589` (§2.11bis).
-    **Comparten el símbolo φ y no son el mismo objeto.** -/
+/-- **[P] NO-EDGE: the tower spacing is NOT the unfolding unit.**
+    `log φ^{n+1} − log φ^n = log φ = R_K = 0.481212` (`eq:regulator`); the unit
+    that unfolds ordinates at `T = 100` is `1.435589` (§2.11bis).
+    **They share the symbol φ and are not the same object.** -/
 theorem tower_spacing_is_the_regulator (n : ℕ) :
     Real.log (PaperS2.φ ^ (n+1)) - Real.log (PaperS2.φ ^ n) = Real.log PaperS2.φ := by
   rw [Real.log_pow, Real.log_pow]; push_cast; ring
 
-/-- **[?] G26.**  El cierre por conjugación de los ceros de ξ.  La ecuación
-    funcional la tiene el marco (`s_duality_exact`); esto no.  Se lleva como
-    hipótesis para que el hueco sea visible en el tipo. -/
+/-- **[?] G26.** The conjugation closure of the zeros of ξ. The functional
+    equation has it (`s_duality_exact`); this does not. Carried as
+    hypothesis so that the gap is visible in the type. -/
 def XiConjClosed (Ξ : ℂ → ℂ) : Prop :=
   ∀ s : ℂ, Ξ ((starRingEnd ℂ) s) = (starRingEnd ℂ) (Ξ s)
 
-/-- **[N] LA REPULSIÓN MEDIDA.**  Los espaciados desdoblados —con la unidad
-    de §2.11bis— no bajan de un umbral positivo.  Es la **repulsión de
-    niveles**: el fenómeno que el ensemble GUE describe y el de Poisson no.
+/-- **[N] THE MEASURED REPULSION.** The unfolded spacings — with the unit
+    of §2.11bis — do not drop below a positive threshold. This is **level
+    repulsion**: the phenomenon that the GUE ensemble describes and the Poisson one does not.
 
-    Medido, no probado: mínimo `0.2307` sobre `237` espaciados con
-    `γ ≤ 329.30`; ninguno por debajo de `0.10`; ajuste GUE contra Poisson por
-    factor `7.6`; media desdoblada `1.0073` con el conductor propio y `0.8899`
-    con el ajeno.  **De todo eso, abajo entra sólo el SIGNO.**
-    (`MeasuredRepulsion` completa:11944; `SpacingsRepel` unificado:5063.) -/
+    Measured, not proved: minimum `0.2307` over `237` spacings with
+    `γ ≤ 329.30`; none below `0.10`; GUE vs Poisson fit by
+    factor `7.6`; unfolded mean `1.0073` with the proper conductor and `0.8899`
+    with the wrong one. **Of all that, only the SIGN enters below.**
+    (`MeasuredRepulsion` completa:11944; `SpacingsRepel` unified:5063.) -/
 def Repulsion (Z : Set ℂ) (m : ℝ) : Prop :=
   0 < m ∧ ∀ ρ ∈ Z, ∀ τ ∈ Z, ρ ≠ τ → m ≤ |τ.im - ρ.im|
 
-/-- Dos ceros distintos con la misma ordenada. -/
+/-- Two distinct zeros with the same imaginary part. -/
 def SharesOrdinate (Z : Set ℂ) : Prop :=
   ∃ ρ ∈ Z, ∃ τ ∈ Z, ρ ≠ τ ∧ ρ.im = τ.im
 
-/-- **[P] LA REPULSIÓN EXCLUYE EL ESPACIADO CERO.**  Éste es el teorema que
-    hace que la repulsión haga algo: sin él es una hipótesis suelta.
-    (`repulsion_excludes_zero_spacing` unificado:5069.) -/
+/-- **[P] REPULSION EXCLUDES ZERO SPACING.** This is the theorem that
+    makes repulsion do something: without it, it is a loose hypothesis.
+    (`repulsion_excludes_zero_spacing` unified:5069.) -/
 theorem repulsion_excludes_zero_spacing (Z : Set ℂ) (m : ℝ)
     (h : Repulsion Z m) : ¬ SharesOrdinate Z := by
   rintro ⟨ρ, hρ, τ, hτ, hne, him⟩
   have hle := h.2 ρ hρ τ hτ hne
   rw [him] at hle; simp at hle; linarith [h.1, hle]
 
-/-- **[P] Y LO QUE EXCLUYE ES EXACTAMENTE EL PAR DE ARIDAD 2.**  Fuera de la
-    recta el par `{ρ, στρ}` tiene separación `0`; la repulsión lo prohíbe.
-    **La configuración que el ensemble hace improbable y la que la repulsión
-    excluye son la misma — y aquí es un par concreto, no un estadístico.** -/
+/-- **[P] AND WHAT IT EXCLUDES IS EXACTLY THE ARITY-2 PAIR.** Off the
+    line the pair `{ρ, στρ}` has separation `0`; repulsion forbids it.
+    **The configuration the ensemble makes improbable and the one repulsion
+    excludes are the same — and here it is a concrete pair, not a statistic.** -/
 theorem repulsion_excludes_the_extreme_case (Z : Set ℂ) (m : ℝ)
     (h : Repulsion Z m) (hc : ∀ ρ ∈ Z, sdualMate ρ ∈ Z)
     (ρ : ℂ) (hρ : ρ ∈ Z) : ρ.re = PaperS2.facePhi := by
@@ -4114,9 +4113,9 @@ theorem repulsion_excludes_the_extreme_case (Z : Set ℂ) (m : ℝ)
   exact repulsion_excludes_zero_spacing Z m h
     ⟨ρ, hρ, sdualMate ρ, hc ρ hρ, Ne.symm hne, (sdualMate_im ρ).symm⟩
 
-/-- **[P] `E ⟺ NINGÚN PAR DISTINTO COMPARTE ORDENADA`.**  LA FORMA DÉBIL:
-    `¬SharesOrdinate` es estrictamente menos que `Repulsion`, y basta.
-    Es lo que un avance futuro descargaría en lugar de la cota métrica.
+/-- **[P] `E ⟺ NO DISTINCT PAIR SHARES IMAGINARY PART`.** THE WEAK FORM:
+    `¬SharesOrdinate` is strictly less than `Repulsion`, and suffices.
+    This is what a future advance would discharge instead of the metric bound.
     (`E_iff_no_shared_ordinate` completa:13035.) -/
 theorem E_iff_no_shared_ordinate (Z : Set ℂ)
     (hc : ∀ ρ ∈ Z, sdualMate ρ ∈ Z) :
@@ -4129,9 +4128,9 @@ theorem E_iff_no_shared_ordinate (Z : Set ℂ)
     obtain ⟨hne, _⟩ := extreme_case_is_binary ρ hδ
     exact hns ⟨ρ, hρ, sdualMate ρ, hc ρ hρ, Ne.symm hne, (sdualMate_im ρ).symm⟩
 
-/-- **[P] LA REPULSIÓN DA EL MÓDULO.**  Sin ordenadas repetidas no hay órbitas
-    libres, luego `στρ = ρ`, luego el módulo de Li vale `1` EXACTO.
-    **La repulsión medida no acota el módulo: lo produce.**  Eso es `N(70)=33`.
+/-- **[P] REPULSION GIVES THE MODULUS.** Without repeated imaginary parts there are no free
+    orbits, so `στρ = ρ`, hence the Li modulus equals `1` EXACTLY.
+    **Measured repulsion does not bound the modulus: it produces it.** That is `N(70)=33`.
     (`repulsion_gives_the_modulus` completa:12350.) -/
 theorem repulsion_gives_the_modulus (Z : Set ℂ) (m : ℝ)
     (h : Repulsion Z m) (hc : ∀ ρ ∈ Z, sdualMate ρ ∈ Z)
@@ -4141,13 +4140,13 @@ theorem repulsion_gives_the_modulus (Z : Set ℂ) (m : ℝ)
     ((sdualMate_fixed_iff ρ).mpr
       (repulsion_excludes_the_extreme_case Z m h hc ρ hρ))
 
-/-- **[P] con los insumos en la firma.**  Si el conjunto de ceros es cerrado
-    bajo el compañero y su separación mínima es positiva, todo cero está en
-    el ápice de `mu_diagram_commutes`.
+/-- **[P] with the inputs in the signature.** If the zero set is closed
+    under the companion and its minimum separation is positive, every zero lies on
+    the apex of `mu_diagram_commutes`.
 
-    NO usa densidad conjunta, ni núcleo seno, ni factor de forma, ni
-    estadística asintótica: usa geometría de ℂ y el SIGNO de una cota.
-    De `hmin` entra sólo `0 < m`, nunca el valor. -/
+    It does not use joint density, sine kernel, form factor, or
+    asymptotic statistics: it uses the geometry of ℂ and the SIGN of a bound.
+    From `hmin` only `0 < m` enters, never the value. -/
 theorem zeros_on_the_apex (Z : Set ℂ) (m : ℝ)
     (hclosed : ∀ ρ ∈ Z, sdualMate ρ ∈ Z)
     (hrep : Repulsion Z m) :
@@ -4270,7 +4269,7 @@ theorem transfer_spectral_data (a m0 : ℝ) (_ha : 0 < a) (hm : 0 < m0) :
     unique vacuum, and exponential clustering from the gap. These are CONSTRUCTED here, so the
     Wightman/OS reconstruction is explicitly part of the framework. -/
 
-/-- Propagador a media separación: la reflexión coloca el estado conjugado a distancia
+/-- Propagator at half separation: reflection places the conjugate state at distance
     euclídea a/2 del plano y el estado original a +a/2, de modo que el par cruza la
     separación total a. -/
 noncomputable def halfProp (a m0 : ℝ) (σ : ℕ) : ℝ :=
@@ -4301,7 +4300,7 @@ theorem theta_pairing_eq_transfer (a m0 : ℝ) (c : ℕ → ℝ) (n : ℕ) :
   rw [← half_prop_sq a m0 σ]
   ring
 
-/-- **[P] Positividad de reflexión sobre estados GENERALES**, no término a término:
+/-- **[P] Positivity of reflection on GENERAL states**, not term-by-term:
     `⟨Θ F, F⟩ = ⟨f, T f⟩ ≥ 0` para todo `f = Σ c_σ|σ⟩` y todo truncamiento.
     Junto con `theta_pairing_eq_transfer` esto es `eq:rp` completa. -/
 theorem reflection_positive_general (a m0 : ℝ) (c : ℕ → ℝ) (n : ℕ) :
@@ -4312,11 +4311,11 @@ theorem reflection_positive_general (a m0 : ℝ) (c : ℕ → ℝ) (n : ℕ) :
 /-- **[P]** Θ es involutiva: Θ² = 1 (W6). -/
 theorem theta_involutive (z : ℂ) : (starRingEnd ℂ) ((starRingEnd ℂ) z) = z := by simp
 
-/-- **[P]** Θ preserva el módulo, luego es antiunitaria (W6). -/
+/-- **[P]** Θ preserves the modulus, hence is antiunitary (W6). -/
 theorem theta_preserves_modulus_C (z : ℂ) :
     ‖(starRingEnd ℂ) z‖ = ‖z‖ := Complex.norm_conj z
 
-/-- **[P]** Θ conmuta con un hamiltoniano real diagonal: la reflexión que intercambia las
+/-- **[P]** Θ commutes with a real diagonal Hamiltonian: the reflection that interchanges the
     dos cuñas preserva el generador de cuña.  Es la hipótesis geométrica que la primera
     igualdad necesita, y aquí es un cálculo. -/
 theorem theta_commutes_real_diagonal (E : ℝ) (z : ℂ) :
@@ -4605,7 +4604,7 @@ theorem four_faces_one_datum {k n : ℕ} (C : Matrix (Fin k) (Fin n) ℝ)
     rho C h = (1 / (k : ℝ)) • projector C h :=
   ⟨projector_idem C h, projector_trace_eq_rank C h, rho_is_state C h hk, rfl⟩
 
-/-! ### `prop:rp-measure` — positividad de reflexión como propiedad de la MEDIDA -/
+/-! ### `prop:rp-measure` — positivity of reflection as a property of the MEASURE -/
 
 /-- Covarianza reflejada del escalar libre unidimensional en el semiespacio `x > 0`:
     `C(-x, y) = e^{-m|-x-y|}/(2 sinh m)`. -/
@@ -4649,7 +4648,7 @@ theorem reflQuadForm_eq_square (m : ℝ) (N : ℕ) (x c : Fin N → ℝ)
     rw [sq, Finset.sum_mul_sum]
   rw [hsum, hsq]
 
-/-- **[P] `prop:rp-measure`.  Positividad de reflexión del escalar libre, sobre TODO
+/-- **[P] `prop:rp-measure`.  Positivity of reflection of the free scalar, over ALL
     funcional lineal soportado en el semiespacio.**  Distinta de la del modelo diagonal
     (`reflection_positive_general`): aquí es propiedad de la MEDIDA gaussiana, y vale
     para todo `c`, no término a término. -/
@@ -4661,18 +4660,20 @@ theorem reflection_positive_measure (m : ℝ) (hm : 0 < m) (N : ℕ)
     have : 0 < Real.sinh m := Real.sinh_pos_iff.mpr hm; linarith
   exact div_nonneg (sq_nonneg _) (le_of_lt hs)
 
-/-! ### Entradas clásicas, como HIPÓTESIS del teorema que las usa
-    No hay axiomas en este archivo. Cada resultado externo que el paper invoca entra como
-    argumento de hipótesis, visible en el tipo del teorema que lo consume, con su fuente en
-    el docstring. El lector ve, sin salir del enunciado, exactamente qué se supone y para qué.
-    Es el patrón que ya seguían `colour_jacobi` y `no_separable_parts`. -/
-
 open PCFEntropyDOF (clusterRank clusterPosRoots clusterKissing totalPositive)
 
-/-- **[P dado L]** La escalera sobre los datos de Scott: si los rangos y raíces positivas de
-    los tipos finitos son los de Scott 2006, entonces en cada peldaño el número de besos es el
-    doble de las raíces positivas y la dimensión del álgebra es besos más rango.
-    Entrada clásica: **Scott 2006**, `hScott`. -/
+/-! ### Classical entries, as HYPOTHESES of the theorem that uses them
+
+    There are no axioms in this file. Every external result the paper invokes enters as
+    a hypothesis argument, visible in the type of the theorem that consumes it, with its
+    source in the docstring. The reader sees, without leaving the statement, exactly what
+    is assumed and for what. This is the pattern already followed by `colour_jacobi`
+    and `no_separable_parts`. -/
+
+/-- **[P given L]** The ladder over Scott's data: if the ranks and positive roots of
+    the finite types are those of Scott 2006, then at each rung the kissing number is
+    twice the positive roots and the algebra dimension is kissing plus rank.
+    Classical entry: **Scott 2006**, `hScott`. -/
 theorem ladder_from_scott
     (hScott : ∀ n : ℕ, 6 ≤ n → n ≤ 8 →
       (clusterRank n, clusterPosRoots n) =
@@ -4682,15 +4683,15 @@ theorem ladder_from_scott
       (if n = 6 then (4, 12) else if n = 7 then (6, 36) else (8, 120)) :=
   hScott n h6 h8
 
-/-- **[P dado L]** El peldaño superior: si el número de besos de E₈ es 240, la dimensión del
-    álgebra es 240 + 8 = 248.  Entrada clásica: **Viazovska 2017**, `hViazovska`. -/
+/-- **[P given L]** The top rung: if the kissing number of E₈ is 240, the dimension of
+    the algebra is 240 + 8 = 248.  Classical entry: **Viazovska 2017**, `hViazovska`. -/
 theorem e8_dim_from_kissing (hViazovska : clusterKissing 8 = 240) :
     clusterKissing 8 + 8 = 248 := by
   rw [hViazovska]
 
-/-- **[P dado L]** El perfil de positroide: si la positividad total implica menores no
-    negativos, entonces los menores del punto grassmanniano son no negativos y el perfil del
-    condensado está bien definido.  Entrada clásica: **Kodama–Williams 2014**, `hKP`. -/
+/-- **[P given L]** The positroid profile: if total positivity implies non-negative
+    minors, then the Grassmannian point's minors are non-negative and the condensate
+    profile is well-defined.  Classical entry: **Kodama–Williams 2014**, `hKP`. -/
 theorem positroid_from_kp
     (hKP : ∀ {k n : ℕ} (C : Matrix (Fin k) (Fin n) ℝ),
       totalPositive C → ∀ I : Fin k → Fin n, StrictMono I → 0 ≤ (C.submatrix id I).det)
@@ -4699,8 +4700,8 @@ theorem positroid_from_kp
     0 ≤ (C.submatrix id I).det :=
   hKP C hC I hI
 
-/-- **[P dado L]** El factor local arquimediano como transformada de Mellin de la función de
-    prueba autodual, y su valor en la línea autodual.  Entrada clásica: **Riemann 1859;
+/-- **[P given L]** The local Archimedean factor as the Mellin transform of the self-dual
+    test function, and its value on the self-dual line.  Classical entry: **Riemann 1859;
     Tate 1950**, `hTate`. -/
 theorem gammaR_from_tate
     (hTate : ∀ s : ℂ, 0 < s.re →
@@ -4709,9 +4710,9 @@ theorem gammaR_from_tate
     Gammaℝ s = 2 * ∫ x in Set.Ioi (0:ℝ), ((g x : ℝ) : ℂ) * (x : ℂ) ^ (s - 1) :=
   hTate s hs
 
-/-- **[P dado L]** La transformación theta y su punto fijo: dada la identidad de Jacobi, la
-    suma sobre el retículo transforma con peso ½ y `t = 1` es su único punto fijo, es decir
-    `τ = i`.  Entrada clásica: **Jacobi; sumación de Poisson**, `hJacobi`. -/
+/-- **[P given L]** The theta transformation and its fixed point: given the Jacobi identity,
+    the lattice sum transforms with weight ½ and `t = 1` is its unique fixed point, i.e.\
+    `τ = i`.  Classical entry: **Jacobi; Poisson summation**, `hJacobi`. -/
 theorem theta_from_jacobi
     (hJacobi : ∀ t : ℝ, 0 < t → Theta (1 / t) = Real.sqrt t * Theta t) :
     Theta (1 / 1) = Real.sqrt 1 * Theta 1 ∧ (∀ t : ℝ, 0 < t → (1 / t = t ↔ t = 1)) :=
@@ -5265,7 +5266,7 @@ noncomputable def eps0 : ℝ := Real.log φ / (6 * Real.sqrt 3)
 theorem eps0_pos : 0 < eps0 := by
   unfold eps0; have := log_phi_pos; positivity
 
-/-! ### §3.2 `prop:spectral-angle-tower` — la tangente del ángulo ES la torre -/
+/-! ### §3.2 `prop:spectral-angle-tower` — the tangent of the angle IS the tower -/
 
 /-- The spectral angle of `ssec:meta`: `α(σ) = arctan(ε₀ φ^σ)`. -/
 noncomputable def alphaSpec (σ : ℝ) : ℝ := Real.arctan (eps0 * φ ^ (σ : ℝ))
@@ -5315,7 +5316,7 @@ theorem spectral_surface_closed (σ₁ σ₂ : ℝ) :
   rw [Real.sin_arctan, Real.cos_arctan]
   field_simp
 
-/-! ### §3.5 `cor:bridge-angle` — el cociclo ER=EPR es el ángulo en forma π/4 -/
+/-! ### §3.5 `cor:bridge-angle` — the ER=EPR cocycle is the angle in π/4 form -/
 
 /-- The ER=EPR bridge of `prop:er-epr`, algebraic form. -/
 noncomputable def bridgeT (σ₁ σ₂ : ℝ) : ℝ :=
@@ -5353,32 +5354,32 @@ theorem bridge_pi_quarter (σ : ℝ) :
 /-- **[P] `tan(π/4) = 1`** — the reason the shift is π/4 and no other angle. -/
 theorem tan_pi_quarter_eq_one : Real.tan (Real.pi / 4) = 1 := Real.tan_pi_div_four
 
-/-! ### §3.3 `rmk:fib-adjacent` — adyacente a Fibonacci, y dónde se separa -/
+/-! ### §3.3 `rmk:fib-adjacent` — adjacent to Fibonacci, and where it diverges -/
 
-/-! #### Nota sobre los registros: por qué esta lista es literal y no un generador
+/-! #### Note on registers: why this list is literal and not a generator
 
-    La misma sucesión aparece en tres archivos del corpus en tres formas distintas, y **eso no
-    es redundancia**: es un hecho leído en el registro que cada tier exige.
+    The same sequence appears in three corpus files in three different forms, and **that is not
+    redundancy**: it is a fact read from the register that each tier demands.
 
-    · Aquí, tier **[P]**: el enunciado se cierra con `decide`, así que la sucesión ha de ser un
-      literal finito.  Un generador —`Nat.fib`, o una recursión— obligaría a inducción y el
-      enunciado dejaría de ser decidible; el precio de la certeza formal es la finitud.
-    · En `CW6_complete_verify_v2.py` y en `CW6_figures_verify_v2.py`, tier **[N]**: allí la sucesión
-      se calcula, porque hace falta longitud arbitraria — para ver la razón sucesiva tender a φ
-      y para comprobar la adyacencia más allá del techo de la torre.
+    · Here, tier **[P]**: the statement closes with `decide`, so the sequence must be a
+      finite literal. A generator — `Nat.fib`, or a recursion — would force induction and the
+      statement would cease to be decidable; the price of formal certainty is finiteness.
+    · In `CW6_complete_verify_v2.py` and `CW6_figures_verify_v2.py`, tier **[N]**: there the sequence
+      is computed, because arbitrary length is needed — to see the successive ratio tend to φ
+      and to check adjacency beyond the tower ceiling.
 
-    Y la independencia entre los tres **es el control cruzado**, no un riesgo.  Si los tres
-    leyeran una única definición, el acuerdo entre ellos se volvería vacuo: ya no compararían
-    dos cálculos, sino un cálculo consigo mismo (criterio A1 del plan de verificación).  Colapsar
-    los registros para «evitar duplicación» destruiría precisamente la evidencia.
+    And the independence among the three **is the cross-check**, not a risk. If the three
+    read a single definition, the agreement between them would become vacuous: they would no longer compare
+    two calculations but a calculation with itself (criterion A1 of the verification plan). Collapsing
+    the registers to "avoid duplication" would destroy precisely the evidence.
 
-    Lo que sí hay que sostener es que **coincidan donde se solapan**, y eso es verificable en vez
-    de confiable: `CW6_complete_verify_v2.py` transcribe estos dos literales y comprueba que
-    reproducen la sucesión que él calcula (chequeos `rmk:fib-adjacent` y `eq:tower-modes`).  Si
-    alguien alarga una lista y no la otra, ese chequeo falla.
+    What must be sustained is that **they agree where they overlap**, and that is verifiable rather than
+    trust-based: `CW6_complete_verify_v2.py` transcribes these two literals and checks that they
+    reproduce the sequence it computes (checks `rmk:fib-adjacent` and `eq:tower-modes`). If
+    someone lengthens one list and not the other, that check fails.
 
-    El mismo patrón gobierna `modes` y `ledger` de este namespace, y por la misma razón: el
-    `⌊π φ^σ⌋` de `eq:tower-modes` es transcendente y `decide` no lo evalúa. -/
+    The same pattern governs `modes` and `ledger` in this namespace, and for the same reason: the
+    `⌊π φ^σ⌋` of `eq:tower-modes` is transcendental and `decide` cannot evaluate it. -/
 
 /-- Mode count of `eq:tower-modes`, carried as the concrete values for σ = 0..6.  Literal by
     necessity of the [P] register — see the note above.  The floor evaluation of the
@@ -5406,7 +5407,7 @@ theorem Nmodes_six_ne_fib :
     ∧ fibList.contains 56 = false
     ∧ fibDist 56 = 1 := by decide
 
-/-! ### §4 `prop:interval-uniqueness` — la terna de niveles es única sobre ℤ -/
+/-! ### §4 `prop:interval-uniqueness` — the level triple is unique over ℤ -/
 
 /-- The four conditions of `eq:interval-unique`, stated over the integers.  The two fractions
     are cleared of denominators so the statement is decidable:
@@ -5450,7 +5451,7 @@ theorem interval_arity_discriminates :
 theorem interval_gap_only_three :
     ((List.range 9).filter (fun n => 2 ≤ n && 2 * n - (n - 1) == 4)) = [3] := by decide
 
-/-! ### app:kk `prop:kk-discrete-spectrum` — el espectro Kaluza–Klein discreto -/
+/-! ### app:kk `prop:kk-discrete-spectrum` — the discrete Kaluza–Klein spectrum -/
 
 /-- **[P] the two hopping amplitudes of `eq:kk-operator` are reciprocal.**  This is what makes
     the symmetrisation available: their geometric mean is `1`, because φ is a unit of `𝒪_K`
@@ -5545,22 +5546,22 @@ theorem kk_reciprocal_discriminates (a b : ℝ) (hab : a + b ≠ 0) :
   exact (mul_eq_zero.mp h1).resolve_right hlog
 
 
-/-! ### §4.3 `prop:israel` — la retroacción de cada nivel
+/-! ### §4.3 `prop:israel` — the backreaction of each level
 
-    Los tres teoremas que cierran el enlace gravedad↔cuerdas: la energía por bit es constante,
-    la tensión de capa queda fijada por el conteo de modos, y el prefactor de Israel colapsa a
-    4π/3 exactamente cuando G₅ = μ₃.
+    The three theorems that close the gravity↔strings link: energy per bit is constant,
+    shell tension is fixed by the mode count, and the Israel prefactor collapses to
+    4π/3 exactly when G₅ = μ₃.
 
-    La condición de unión de Israel entra como ARGUMENTO DE HIPÓTESIS del teorema que la
-    consume, siguiendo el patrón del archivo para las entradas clásicas. -/
+    The Israel matching condition enters as a HYPOTHESIS ARGUMENT of the theorem that
+    consumes it, following the file's pattern for classical entries. -/
 
-/-- Entropía de saturación de `eq:tower-modes`. -/
+/-- Saturation entropy of `eq:tower-modes`. -/
 noncomputable def S_sat (σ : ℝ) : ℝ := Real.pi * φ ^ (σ : ℝ)
 
-/-- Energía por nivel de `eq:obs-accum`. -/
+/-- Energy per level of `eq:obs-accum`. -/
 noncomputable def epsLevel (σ : ℝ) : ℝ := eps0 * φ ^ (σ : ℝ)
 
-/-- M_PCF de `eq:Mpcf`. -/
+/-- M_PCF of `eq:Mpcf`. -/
 noncomputable def MpcfA : ℝ := 6 * Real.sqrt 3 * Real.pi / Real.log φ
 
 theorem eps0_MpcfA_pi : eps0 * MpcfA = Real.pi := by
@@ -5569,10 +5570,10 @@ theorem eps0_MpcfA_pi : eps0 * MpcfA = Real.pi := by
   have hl : Real.log φ ≠ 0 := ne_of_gt log_phi_pos
   field_simp
 
-/-- **[P] `eq:ebit`.**  La energía por bit es constante en toda la torre: el cociente
-    ε(σ)/S(σ) cancela φ^σ y deja ε₀/π, que es 1/M_PCF por la relación de certeza.
-    La cancelación es lo que compra la base común: una energía que creciera a otro ritmo
-    dejaría un residuo dependiente de σ. -/
+/-- **[P] `eq:ebit`.** The energy per bit is constant across the entire tower: the ratio
+    ε(σ)/S(σ) cancels φ^σ and leaves ε₀/π, which equals 1/M_PCF by the certainty relation.
+    The cancellation is what purchases the common base: an energy growing at a different rate
+    would leave a σ-dependent residue. -/
 theorem energy_per_bit_constant (σ : ℝ) :
     epsLevel σ / S_sat σ = eps0 / Real.pi := by
   unfold epsLevel S_sat
@@ -5580,7 +5581,7 @@ theorem energy_per_bit_constant (σ : ℝ) :
   have hpi : Real.pi ≠ 0 := ne_of_gt Real.pi_pos
   field_simp
 
-/-- **[P] y es 1/M_PCF**, por `eq:certainty`. -/
+/-- **[P] and it equals 1/M_PCF**, by `eq:certainty`. -/
 theorem energy_per_bit_eq_inv_Mpcf (σ : ℝ) (hM : MpcfA ≠ 0) :
     epsLevel σ / S_sat σ = 1 / MpcfA := by
   rw [energy_per_bit_constant σ]
@@ -5588,32 +5589,32 @@ theorem energy_per_bit_eq_inv_Mpcf (σ : ℝ) (hM : MpcfA ≠ 0) :
   field_simp at h ⊢
   linarith [h]
 
-/-- **[P] `eq:shell-tension`.**  La tensión de capa no tiene parámetro libre: es la energía
-    por bit por el número de bits.  Cada modo de la torre es un bit —N = ⌊S⌋ y la cota de
-    Kiely F_Ω = 4μ₃² = 1 lo hace exacto— de modo que λ = ε·N/S = N/M_PCF. -/
+/-- **[P] `eq:shell-tension`.** Shell tension has no free parameter: it is the energy
+    per bit times the number of bits. Each tower mode is a bit — N = ⌊S⌋ and Kiely's bound
+    F_Ω = 4μ₃² = 1 makes it exact — so λ = ε·N/S = N/M_PCF. -/
 theorem shell_tension_determined (σ N : ℝ) (hM : MpcfA ≠ 0) :
     epsLevel σ * N / S_sat σ = N / MpcfA := by
   have h : epsLevel σ / S_sat σ = 1 / MpcfA := energy_per_bit_eq_inv_Mpcf σ hM
   rw [show epsLevel σ * N / S_sat σ = (epsLevel σ / S_sat σ) * N from by ring,
     h, show (1 / MpcfA) * N = N / MpcfA from by ring]
 
-/-- **[P] La cota de Kiely hace que cada modo sea un bit exacto:** F_Ω = 4μ₃² = 1. -/
+/-- **[P] Kiely's bound makes each mode exactly one bit:** F_Ω = 4μ₃² = 1. -/
 theorem kiely_one_bit : 4 * ((1:ℝ)/2) ^ 2 = 1 := by norm_num
 
-/-- **[P] `eq:israel`, el prefactor.**  Con G₅ = μ₃ = 1/2 el prefactor 8πG₅/3 colapsa a
-    4π/3, y **solo ahí**: cualquier otra constante de Newton deja 8πG₅/3 ≠ 4π/3. -/
+/-- **[P] `eq:israel`, the prefactor.** With G₅ = μ₃ = 1/2 the prefactor 8πG₅/3 collapses to
+    4π/3, and **only there**: any other Newton constant leaves 8πG₅/3 ≠ 4π/3. -/
 theorem israel_prefactor : 8 * Real.pi * ((1:ℝ)/2) / 3 = 4 * Real.pi / 3 := by ring
 
-/-- **[P] y discrimina.**  Si el prefactor colapsa a 4π/3 entonces G₅ = 1/2. -/
+/-- **[P] and it discriminates.** If the prefactor collapses to 4π/3 then G₅ = 1/2. -/
 theorem israel_prefactor_forces_GN (G : ℝ) (h : 8 * Real.pi * G / 3 = 4 * Real.pi / 3) :
     G = 1/2 := by
   have hpi : Real.pi ≠ 0 := ne_of_gt Real.pi_pos
   field_simp at h
   nlinarith [h, Real.pi_pos]
 
-/-- **[P dado L] `prop:israel`.**  Dada la condición de unión de Israel para una capa delgada
-    de tensión pura —entrada clásica `hIsrael`, que el teorema recibe como hipótesis— el salto
-    del warp queda determinado nivel por nivel por el conteo de modos. -/
+/-- **[P dado L] `prop:israel`.** Given the Israel matching condition for a thin shell
+    of pure tension — classical entry `hIsrael`, received by the theorem as hypothesis — the warp
+    jump is determined level by level by the mode count. -/
 theorem israel_jump_determined
     (jump : ℝ → ℝ) (lam : ℝ → ℝ) (N : ℝ → ℝ) (_hM : MpcfA ≠ 0)
     (hIsrael : ∀ σ, jump σ = -(8 * Real.pi * ((1 : ℝ) / 2) / 3) * lam σ)
@@ -5622,8 +5623,8 @@ theorem israel_jump_determined
     jump σ = -(4 * Real.pi / 3) * (N σ / MpcfA) := by
   rw [hIsrael σ, hTension σ, israel_prefactor]
 
-/-- **[P] `rmk:backreaction`.**  La retroacción acumulada hasta el nivel k es la suma de los
-    conteos de modos: 3, 8, 16, 29, 50, 84, 140 para k = 0..6. -/
+/-- **[P] `rmk:backreaction`.** The cumulative backreaction up to level k is the sum of the
+    mode counts: 3, 8, 16, 29, 50, 84, 140 for k = 0..6. -/
 theorem backreaction_cumulative :
     (List.range 7).map (fun k => ((NmodesList.take (k+1)).sum))
       = [3, 8, 16, 29, 50, 84, 140] := by decide
@@ -5802,22 +5803,22 @@ theorem entropy_response_hasDerivAt (σ : ℝ) :
 end CW5FaceLinks
 
 -- ════════════════════════════════════════════════════════════════════
---  PARTE FINAL — EL COLÍMITE DE FRAMEWORKS (eq:shared-signature, §3.5)
---  Diagrama de 6 objetos: los cinco frameworks que el artículo trata
---  (Polyakov, Maldacena, ER=EPR, Huerta–Schreiber, Kiely) más el núcleo
---  PCF_core, cuyos campos provienen de teoremas YA demostrados en este
---  archivo (modulus_Omega, holographic_area, kk_at_PCF, normP/C/F,
---  Omega_eigenvalues).  Autocontenido: sin dependencias externas.
---  Cada objeto es una firma espectral parcial; el vértice T_PCF las
---  recibe a todas (cocone_property) y es el único cocono
---  (colimit_universal): la firma compartida no es coincidencia numérica
---  sino colímite.
+--  FINAL PART — THE FRAMEWORK COLIMIT (eq:shared-signature, §3.5)
+--  Diagram of 6 objects: the five frameworks treated in the paper
+--  (Polyakov, Maldacena, ER=EPR, Huerta–Schreiber, Kiely) plus the PCF_core,
+--  whose fields come from theorems ALREADY proved in this file
+--  (modulus_Omega, holographic_area, kk_at_PCF, normP/C/F,
+--  Omega_eigenvalues). Self-contained: no external dependencies.
+--  Each object is a partial spectral signature; the vertex T_PCF receives
+--  all of them (cocone_property) and is the only cocone
+--  (colimit_universal): the shared signature is not a numerical coincidence
+--  but a colimit.
 -- ════════════════════════════════════════════════════════════════════
 
 namespace PCFColimit
 
-/-- Compatibilidad de campos parciales: la fuente no define, o coinciden.
-    Es el orden plano sobre `Option`. -/
+/-- Field compatibility: either the source is undefined, or they agree.
+    This is the flat order on `Option`. -/
 def OptCompat {α : Type*} (a b : Option α) : Prop := a = none ∨ a = b
 
 theorem optCompat_refl {α} (a : Option α) : OptCompat a a := Or.inr rfl
@@ -5838,12 +5839,12 @@ theorem optCompat_antisymm {α} {a b : Option α}
     · exact hba.symm
   · exact hab
 
-/-- Firma espectral parcial.  Los 15 campos son exactamente las cantidades
-    que el artículo enuncia: |Ω|=1/2 y |Ω|²=1/4 (eq:collapse,
-    eq:shared-signature), la aridad 3 (eq:norms-derived), d_H = log 3/log 2
+/-- Partial spectral signature. The 15 fields are exactly the quantities
+    the paper states: |Ω|=1/2 and |Ω|²=1/4 (eq:collapse,
+    eq:shared-signature), arity 3 (eq:norms-derived), d_H = log 3/log 2
     (eq:hausdorff), τ=i, ℓ=1, G_N=1/2, c=3, GKP=3/4 (eq:shared-signature),
-    G_4=1/4 (app:kk), F_max=4 y f_crit=1/2 (eq:obs-accum, Kiely), y las
-    normas P/C/F (eq:norms-derived). -/
+    G_4=1/4 (app:kk), F_max=4 and f_crit=1/2 (eq:obs-accum, Kiely), and the
+    norms P/C/F (eq:norms-derived). -/
 structure SpectralData where
   arity          : Option ℕ := none
   modulus        : Option ℝ := none
@@ -5872,7 +5873,7 @@ theorem SpectralData.ext {A B : SpectralData}
   cases A; cases B; simp only at h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15
   subst h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15; rfl
 
-/-- Morfismo de refinamiento A → B: todo campo definido de A coincide en B. -/
+/-- Refinement morphism A → B: every field defined in A agrees in B. -/
 def projectsTo (A B : SpectralData) : Prop :=
   OptCompat A.arity B.arity ∧
   OptCompat A.modulus B.modulus ∧
@@ -5890,12 +5891,12 @@ def projectsTo (A B : SpectralData) : Prop :=
   OptCompat A.C_norm B.C_norm ∧
   OptCompat A.F_norm B.F_norm
 
-/-- Identidad: la categoría de firmas es reflexiva. -/
+/-- Identity: the category of signatures is reflexive. -/
 theorem projectsTo_refl (A : SpectralData) : projectsTo A A := by
   refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩ <;>
     exact optCompat_refl _
 
-/-- Composición: los refinamientos componen (orden parcial delgado). -/
+/-- Composition: refinements compose (thin partial order). -/
 theorem projectsTo_trans {A B C : SpectralData}
     (hAB : projectsTo A B) (hBC : projectsTo B C) : projectsTo A C := by
   refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
@@ -5915,7 +5916,7 @@ theorem projectsTo_trans {A B C : SpectralData}
   · exact optCompat_trans hAB.2.2.2.2.2.2.2.2.2.2.2.2.2.1 hBC.2.2.2.2.2.2.2.2.2.2.2.2.2.1
   · exact optCompat_trans hAB.2.2.2.2.2.2.2.2.2.2.2.2.2.2 hBC.2.2.2.2.2.2.2.2.2.2.2.2.2.2
 
-/-- Antisimetría: dos refinamientos mutuos son la misma firma. -/
+/-- Antisymmetry: two mutual refinements are the same signature. -/
 theorem projectsTo_antisymm {A B : SpectralData}
     (hAB : projectsTo A B) (hBA : projectsTo B A) : A = B :=
   SpectralData.ext
@@ -5938,8 +5939,8 @@ theorem projectsTo_antisymm {A B : SpectralData}
 /-- d_H = log 3/log 2 (eq:hausdorff). -/
 noncomputable def hausdorff_dim : ℝ := Real.log 3 / Real.log 2
 
-/-- 2^{d_H} = 3: la dimensión del atractor de eq:hausdorff, demostrada
-    (antes el ledger la respaldaba con un teorema ajeno). -/
+/-- 2^{d_H} = 3: the Hausdorff dimension of the attractor from eq:hausdorff, proved
+    (formerly the ledger backed it with an external theorem). -/
 theorem two_pow_hausdorff : (2 : ℝ) ^ hausdorff_dim = 3 := by
   unfold hausdorff_dim
   have h2 : (0:ℝ) < Real.log 2 := Real.log_pos (by norm_num)
@@ -5947,39 +5948,39 @@ theorem two_pow_hausdorff : (2 : ℝ) ^ hausdorff_dim = 3 := by
       mul_div_cancel₀ _ (ne_of_gt h2)]
   exact Real.exp_log (by norm_num)
 
--- ── Los seis objetos del diagrama, con los campos que cada uno fija ──
+-- ── The six objects of the diagram, with the fields each one fixes ──
 
-/-- Polyakov (worldsheet en T²_PCF): fija τ = i y c = 3. -/
+/-- Polyakov (worldsheet on T²_PCF): fixes τ = i and c = 3. -/
 noncomputable def Polyakov : SpectralData := {
   tau := some Complex.I,
   central_charge := some 3 }
 
-/-- Maldacena (AdS/CFT): fija ℓ = 1, G_N = 1/2, c = 3, GKP = 3/4. -/
+/-- Maldacena (AdS/CFT): fixes ℓ = 1, G_N = 1/2, c = 3, GKP = 3/4. -/
 noncomputable def Maldacena : SpectralData := {
   AdS_radius := some 1,
   Newton := some (1/2),
   central_charge := some 3,
   GKP_ratio := some (3/4) }
 
-/-- ER=EPR (Maldacena–Susskind): fija GKP = 3/4. -/
+/-- ER=EPR (Maldacena–Susskind): fixes GKP = 3/4. -/
 noncomputable def ER_EPR : SpectralData := {
   GKP_ratio := some (3/4) }
 
-/-- Huerta–Schreiber (M-theory desde el superpunto): fija |Ω| = 1/2 y |Ω|² = 1/4. -/
+/-- Huerta–Schreiber (M-theory from the superpoint): fixes |Ω| = 1/2 and |Ω|² = 1/4. -/
 noncomputable def HuertaSchreiber : SpectralData := {
   modulus := some (1/2),
   modulus_sq := some (1/4) }
 
-/-- Kiely (darwinismo cuántico metrológico): fija F_max = 4 y f_crit = 1/2
-    (`fisher_unit_iff` liga 4μ² = 1 con μ = 1/2). -/
+/-- Kiely (metrical quantum darwinism): fixes F_max = 4 and f_crit = 1/2
+    (`fisher_unit_iff` links 4μ² = 1 with μ = 1/2). -/
 noncomputable def Kiely : SpectralData := {
   fisher_max := some 4,
   obj_threshold := some (1/2) }
 
-/-- El núcleo PCF, con procedencia interna: cada campo es un teorema de
-    ESTE archivo.  arity=3 (`Omega_eigenvalues`), |Ω|=1/2 (`modulus_Omega`,
+/-- The PCF core, with internal provenance: every field is a theorem from
+    THIS file. arity=3 (`Omega_eigenvalues`), |Ω|=1/2 (`modulus_Omega`,
     `M9_eq_half`), |Ω|²=1/4 (`holographic_area`), d_H (`two_pow_hausdorff`),
-    G_4=1/4 (`kk_at_PCF`), y las normas P/C/F (`normP_eq_tan`,
+    G_4=1/4 (`kk_at_PCF`), and the norms P/C/F (`normP_eq_tan`,
     `normF_eq_cos`, `M9_collapse`). -/
 noncomputable def PCF_core : SpectralData := {
   arity := some 3,
@@ -5991,7 +5992,7 @@ noncomputable def PCF_core : SpectralData := {
   C_norm := some PaperS2.normC,
   F_norm := some PaperS2.normF }
 
-/-- El vértice: la firma total. -/
+/-- The vertex: the total signature. -/
 noncomputable def T_PCF : SpectralData := {
   arity := some 3,
   modulus := some (1/2),
@@ -6009,26 +6010,26 @@ noncomputable def T_PCF : SpectralData := {
   C_norm := some PaperS2.normC,
   F_norm := some PaperS2.normF }
 
--- ── Puentes de procedencia: los valores del núcleo NO son postulados ──
+-- ── Provenance bridges: the core values are NOT postulates ──
 
-/-- |Ω| del núcleo = módulo del microestado (`modulus_Omega`). -/
+/-- |Ω| from the core = microstate modulus (`modulus_Omega`). -/
 theorem core_modulus_from_microstate :
     PCF_core.modulus = some ‖PaperA_Web.Omega 0‖ := by
   unfold PCF_core; rw [PaperA_Web.modulus_Omega]
 
-/-- |Ω|² del núcleo = área holográfica (`holographic_area`). -/
+/-- |Ω|² from the core = holographic area (`holographic_area`). -/
 theorem core_modulus_sq_from_area :
     PCF_core.modulus_sq = some ((CWfig.μ 3)^2) := by
   unfold PCF_core; rw [CWfig.holographic_area]
 
-/-- G_4 del núcleo = reducción Kaluza–Klein G_5/(2ℓ) en los valores del marco
+/-- G_4 from the core = Kaluza–Klein reduction G_5/(2ℓ) at the framework values
     (`kk_at_PCF`). -/
 theorem core_Newton4D_from_kk :
     PCF_core.Newton_4D = some (CWfig.kk_reduction (1/2) 1) := by
   unfold PCF_core; rw [CWfig.kk_at_PCF]
 
-/-- Las normas del núcleo son las del triángulo de autovalores (eq:norms-derived):
-    |P| = tan(π/6), |C| = 1, |F| = cos(π/6) — contenido geométrico, no definicional
+/-- The core norms are those of the eigenvalue triangle (eq:norms-derived):
+    |P| = tan(π/6), |C| = 1, |F| = cos(π/6) — geometric content, not definitional
     (`normP_eq_tan`, `normF_eq_cos`). -/
 theorem core_norms_from_triangle :
     PCF_core.P_norm = some (Real.tan (Real.pi/6)) ∧
@@ -6039,28 +6040,28 @@ theorem core_norms_from_triangle :
   · rw [show PCF_core.C_norm = some PaperS2.normC from rfl]; rfl
   · rw [show PCF_core.F_norm = some PaperS2.normF from rfl, PaperS2.normF_eq_cos]
 
-/-- El producto de las tres normas del núcleo colapsa al módulo (eq:collapse,
-    `M9_eq_half`): la aridad 3 del núcleo es la del triángulo cuyo producto da 1/2. -/
+/-- The product of the three core norms collapses to the modulus (eq:collapse,
+    `M9_eq_half`): the core's arity 3 is that of the triangle whose product gives 1/2. -/
 theorem core_norms_collapse_to_modulus :
     PaperS2.normP * PaperS2.normC * PaperS2.normF = 1 / 2 :=
   PaperS2.M9_eq_half
 
-/-- La aridad 3 del núcleo es la de la tríada de autovalores: los tres λ_k = ½ω^k
-    comparten módulo 1/2 (`Omega_eigenvalues`), y son tres. -/
+/-- The core's arity 3 is that of the eigenvalue triad: the three λ_k = ½ω^k
+    share modulus 1/2 (`Omega_eigenvalues`), and there are three. -/
 theorem core_arity_from_triad :
     PCF_core.arity = some 3 ∧
     ∀ k : ℕ, ‖(1 / 2 : ℂ) * PCFEntropyDOF.ωc ^ k‖ = 1 / 2 :=
   ⟨rfl, PCFEntropyDOF.Omega_eigenvalues⟩
 
-/-- c del vértice = Brown–Henneaux 3ℓ/(2G_N) en ℓ=1, G_N=1/2
+/-- c of the vertex = Brown–Henneaux 3ℓ/(2G_N) at ℓ=1, G_N=1/2
     (`brown_henneaux_c_eq_three`). -/
 theorem vertex_c_from_brown_henneaux : (3:ℝ) * 1 / (2 * (1/2)) = 3 :=
   SitterPCF.brown_henneaux_c_eq_three 1 (1/2) rfl rfl
 
--- ── El cocono y su universalidad ──
+-- ── The cocone and its universality ──
 
-/-- **Propiedad de cocono (eq:shared-signature):** los seis objetos del
-    diagrama proyectan compatiblemente en T_PCF. -/
+/-- **Cocone property (eq:shared-signature):** the six objects of the
+    diagram project compatibly into T_PCF. -/
 theorem cocone_property :
     projectsTo Polyakov T_PCF ∧
     projectsTo Maldacena T_PCF ∧
@@ -6074,9 +6075,9 @@ theorem cocone_property :
     | exact Or.inl rfl
     | exact Or.inr rfl
 
-/-- **Universalidad:** todo cocono X sobre el diagrama ES T_PCF.  Cada campo
-    de X queda forzado por el objeto que lo puebla; el espacio de coconos es
-    un punto.  Esta es la forma fuerte: rigidez, no solo factorización. -/
+/-- **Universality:** every cocone X over the diagram IS T_PCF. Each field
+    of X is forced by the object that populates it; the cocone space is
+    a single point. This is the strong form: rigidity, not just factorization. -/
 theorem colimit_universal
     (X : SpectralData)
     (hP : projectsTo Polyakov X) (hM : projectsTo Maldacena X)
@@ -6146,10 +6147,10 @@ theorem colimit_universal
     · simp [PCF_core] at h
     · exact h.symm
 
-/-- **El colímite de frameworks:** T_PCF es cocono del diagrama de 6 objetos
-    y todo cocono coincide con él — la firma compartida
-    (|Ω|=1/2, ℓ=1, G_N=1/2, c=3, GKP=3/4) es un colímite, no una
-    coincidencia. -/
+/-- **The framework colimit:** T_PCF is the cocone of the 6-object diagram
+    and every cocone coincides with it — the shared signature
+    (|Ω|=1/2, ℓ=1, G_N=1/2, c=3, GKP=3/4) is a colimit, not a
+    coincidence. -/
 theorem framework_colimit :
     (projectsTo Polyakov T_PCF ∧ projectsTo Maldacena T_PCF ∧
      projectsTo ER_EPR T_PCF ∧ projectsTo HuertaSchreiber T_PCF ∧
@@ -6164,57 +6165,57 @@ theorem framework_colimit :
 end PCFColimit
 
 -- ════════════════════════════════════════════════════════════════════
---  EL COCONO DE LOS TRES CUATROS  (prop:conductor, ssec:spacings)
+--  THE COCONE OF THE THREE FOURS  (prop:conductor, ssec:spacings)
 --
---  El conductor 20 = lcm(4,5) tiene un factor 4 que el paper atribuye al
---  giro (i⁴ = 1).  El registro binario 2^m mod 20 tiene periodo 4.  Y
---  |(ℤ/5)*| = 4.  No son tres cuatros: son uno.
+--  The conductor 20 = lcm(4,5) has a factor 4 that the paper attributes to the
+--  turn (i⁴ = 1). The binary register 2^m mod 20 has period 4. And
+--  |(ℤ/5)*| = 4. They are not three fours: they are one.
 --
---  La razón es que 2 es raíz cuadrada de -1 en 𝔽₅, exactamente como i lo
---  es en ℂ, y esa coincidencia no es analógica sino de reducción: 5 se
---  escinde en ℤ[i] como (2+i)(2-i), y bajo ℤ[i] → ℤ[i]/(2-i) ≅ 𝔽₅ la
---  imagen de i ES 2.  El vértice del cocono es ℤ/4; los tres objetos
---  parciales son el giro, el factor del conductor y el registro binario.
+--  The reason is that 2 is a square root of -1 in 𝔽₅, exactly as i is
+--  in ℂ, and this coincidence is not analogical but a reduction: 5 splits
+--  in ℤ[i] as (2+i)(2-i), and under ℤ[i] → ℤ[i]/(2-i) ≅ 𝔽₅ the
+--  image of i IS 2. The vertex of the cocone is ℤ/4; the three partial
+--  objects are the turn, the conductor factor, and the binary register.
 --
---  Sin esto, `binary_register_has_period_four` contradice `prop:conductor`:
---  con esto, es su componente reducida.
+--  Without this, `binary_register_has_period_four` contradicts `prop:conductor`:
+--  with it, it is the reduced component.
 -- ════════════════════════════════════════════════════════════════════
 
 namespace FourCocone
 
-/-- **El registro binario satisface la ecuación del giro.**  `2² = -1` en 𝔽₅,
-    exactamente como `i² = -1` en ℂ.  Es la raíz de toda la identificación. -/
+/-- **The binary register satisfies the turn equation.** `2² = -1` in 𝔽₅,
+    exactly as `i² = -1` in ℂ. This is the root of the entire identification. -/
 theorem two_sq_eq_neg_one_mod_five : (2 : ZMod 5) ^ 2 = -1 := by decide
 
-/-- El giro en ℂ: `i² = -1`.  Registrado aquí para exhibir el par. -/
+/-- The turn in ℂ: `i² = -1`. Recorded here to exhibit the pair. -/
 theorem I_sq_eq_neg_one : Complex.I ^ 2 = -1 := Complex.I_sq
 
-/-- **LOS DOS SATISFACEN LA MISMA ECUACIÓN.**  `x² = -1` tiene por solución
-    `i` en ℂ y `2` en 𝔽₅.  El registro binario no imita al giro: lo realiza. -/
+/-- **BOTH SATISFY THE SAME EQUATION.** `x² = -1` has solution
+    `i` in ℂ and `2` in 𝔽₅. The binary register does not imitate the turn: it realizes it. -/
 theorem two_and_I_solve_the_same_equation :
     (2 : ZMod 5) ^ 2 = -1 ∧ Complex.I ^ 2 = -1 :=
   ⟨two_sq_eq_neg_one_mod_five, Complex.I_sq⟩
 
-/-- **5 SE ESCINDE EN LOS ENTEROS DE GAUSS**: `(2+i)(2-i) = 5`.  Es lo que
-    permite reducir ℤ[i] módulo un primo sobre 5 y aterrizar en 𝔽₅. -/
+/-- **5 SPLITS IN THE GAUSSIAN INTEGERS**: `(2+i)(2-i) = 5`. This is what
+    allows reducing ℤ[i] modulo a prime above 5 and landing in 𝔽₅. -/
 theorem five_splits_gaussian :
     (2 + Complex.I) * (2 - Complex.I) = 5 := by
   have h : Complex.I * Complex.I = -1 := Complex.I_mul_I
   linear_combination -h
 
-/-- **EL PERIODO DEL GIRO ES 4.**  Las potencias de 2 en 𝔽₅ recorren
-    2, 4, 3, 1 — el mismo ciclo de longitud 4 que i, -1, -i, 1. -/
+/-- **THE TURN PERIOD IS 4.** The powers of 2 in 𝔽₅ cycle through
+    2, 4, 3, 1 — the same length-4 cycle as i, -1, -i, 1. -/
 theorem two_pow_cycle_mod_five :
     (2 : ZMod 5) ^ 1 = 2 ∧ (2 : ZMod 5) ^ 2 = 4 ∧
     (2 : ZMod 5) ^ 3 = 3 ∧ (2 : ZMod 5) ^ 4 = 1 := by decide
 
-/-- `2` genera todo `(ℤ/5)*`: es raíz primitiva mod 5, y ningún exponente
-    menor que 4 devuelve la unidad. -/
+/-- `2` generates all of `(ℤ/5)*`: it is a primitive root mod 5, and no exponent
+    less than 4 returns the unit. -/
 theorem two_is_primitive_root_mod_five :
     (2 : ZMod 5) ^ 4 = 1 ∧ (2 : ZMod 5) ^ 1 ≠ 1 ∧
     (2 : ZMod 5) ^ 2 ≠ 1 ∧ (2 : ZMod 5) ^ 3 ≠ 1 := by decide
 
-/-- Las potencias del giro en ℂ, para comparar término a término. -/
+/-- Powers of the turn in ℂ, for term-by-term comparison. -/
 theorem I_pow_cycle :
     Complex.I ^ 1 = Complex.I ∧ Complex.I ^ 2 = -1 ∧
     Complex.I ^ 3 = -Complex.I ∧ Complex.I ^ 4 = 1 := by
@@ -6222,24 +6223,24 @@ theorem I_pow_cycle :
   · rw [pow_succ, Complex.I_sq]; ring
   · rw [show (4:ℕ) = 2 + 2 from rfl, pow_add, Complex.I_sq]; ring
 
-/-- **5 ≡ 1 (mod 4)**: la congruencia que hace que `(ℤ/5)*` tenga orden 4
-    y por tanto contenga una raíz primitiva cuarta de la unidad.  Es la misma
-    congruencia que hace simétrico el símbolo en la reciprocidad de χ₅. -/
+/-- **5 ≡ 1 (mod 4)**: the congruence that makes `(ℤ/5)*` have order 4
+    and hence contain a primitive fourth root of unity. It is the same
+    congruence that makes the symbol in the reciprocity of χ₅ symmetric. -/
 theorem five_mod_four : 5 % 4 = 1 := by decide
 
-/-- El orden de `(ℤ/5)*` es 4: hay exactamente cuatro unidades. -/
+/-- The order of `(ℤ/5)*` is 4: there are exactly four units. -/
 theorem card_units_mod_five : Nat.totient 5 = 4 := by decide
 
-/-- **5 ES EL ÚNICO PRIMO CON `|(ℤ/p)*| = 4`.**  El pentágono no es un
-    ejemplo entre varios: `p - 1 = 4` fuerza `p = 5`. -/
+/-- **5 IS THE UNIQUE PRIME WITH `|(ℤ/p)*| = 4`.** The pentagon is not one
+    example among several: `p - 1 = 4` forces `p = 5`. -/
 theorem five_is_the_unique_prime_with_four_units (p : ℕ) (hp : p.Prime)
     (h : p - 1 = 4) : p = 5 := by
   have h2 := hp.two_le
   omega
 
-/-- **EL 4 DEL CONDUCTOR ES EL 4 DEL GIRO.**  El factor 4 de
-    `20 = lcm(4,5)` es el orden de `i`, no un número escogido:
-    `i⁴ = 1` y ningún exponente menor lo consigue. -/
+/-- **THE 4 IN THE CONDUCTOR IS THE TURN'S 4.** The factor 4 of
+    `20 = lcm(4,5)` is the order of `i`, not a chosen number:
+    `i⁴ = 1` and no smaller exponent achieves this. -/
 theorem conductor_four_is_order_of_turn :
     Nat.lcm 4 5 = 20 ∧ Complex.I ^ 4 = 1 ∧ Complex.I ^ 2 ≠ 1 := by
   refine ⟨by decide, ?_, ?_⟩
@@ -6249,10 +6250,10 @@ theorem conductor_four_is_order_of_turn :
     have : (2 : ℂ) = 0 := by linear_combination -h
     norm_num at this
 
-/-- **EL 4 DEL REGISTRO BINARIO ES EL MISMO 4.**  El periodo de `2^m mod 20`
-    no procede del factor 4 del conductor — allí `2^m ≡ 0` para `m ≥ 2` y no
-    hay periodo alguno — sino de la componente 5, donde `2` tiene orden 4
-    por ser raíz cuadrada de `-1`, igual que `i`. -/
+/-- **THE 4 IN THE BINARY REGISTER IS THE SAME 4.** The period of `2^m mod 20`
+    does not come from the conductor's factor 4 — there `2^m ≡ 0` for `m ≥ 2` and there
+    is no period at all — but from the 5-component, where `2` has order 4
+    because it is a square root of `-1`, just like `i`. -/
 theorem binary_period_lives_in_the_five_component :
     (∀ m : ℕ, (2 : ZMod 4) ^ (m + 2) = 0) ∧
     (2 : ZMod 5) ^ 4 = 1 ∧ (2 : ZMod 5) ^ 2 = -1 := by
@@ -6265,32 +6266,32 @@ theorem binary_period_lives_in_the_five_component :
         rw [show k + 1 + 2 = (k + 2) + 1 from by omega, pow_succ]; ring
       rw [hstep, ih, mul_zero]
 
-/-- **EL COCONO DE LOS TRES CUATROS.**
+/-- **THE COCONE OF THE THREE FOURS.**
 
-    Vértice: el ciclo de orden 4.  Objetos parciales que proyectan en él:
+    Vertex: the order-4 cycle. Partial objects projecting into it:
 
-      (i)   el giro          — `i ∈ ℂ*`,      `i² = -1`,  `i⁴ = 1`
-      (ii)  el conductor     — el factor 4 de `20 = lcm(4,5)`
-      (iii) el registro binario — `2 ∈ (ℤ/5)*`, `2² = -1`, `2⁴ = 1`
+      (i)   the turn       — `i ∈ ℂ*`,      `i² = -1`,  `i⁴ = 1`
+      (ii)  the conductor  — the factor 4 of `20 = lcm(4,5)`
+      (iii) the binary register — `2 ∈ (ℤ/5)*`, `2² = -1`, `2⁴ = 1`
 
-    El morfismo que hace conmutar el cuadrado es la reducción de ℤ[i] módulo
-    un primo sobre 5, disponible porque `(2+i)(2-i) = 5`; bajo ella la imagen
-    de `i` es `2`.  La congruencia `5 ≡ 1 (mod 4)` es la condición que lo
-    permite, y `5` es el único primo que la satisface con `p - 1 = 4`.
+    The morphism making the square commute is the reduction of ℤ[i] modulo
+    a prime above 5, available because `(2+i)(2-i) = 5`; under it the image
+    of `i` is `2`. The congruence `5 ≡ 1 (mod 4)` is the condition that
+    allows it, and `5` is the only prime satisfying it with `p - 1 = 4`.
 
-    Consecuencia para el paper: `prop:conductor` («el 4 del giro») y el
-    periodo del registro binario no son afirmaciones rivales sobre dos
-    cuatros distintos; son dos proyecciones del mismo. -/
+    Consequence for the paper: `prop:conductor` ("the 4 of the turn") and the
+    binary register's period are not rival claims about two different fours;
+    they are two projections of the same one. -/
 theorem four_cocone :
-    -- (i) el giro
+    -- (i) the turn
     (Complex.I ^ 2 = -1 ∧ Complex.I ^ 4 = 1 ∧ Complex.I ^ 2 ≠ 1) ∧
-    -- (ii) el conductor
+    -- (ii) the conductor
     (Nat.lcm 4 5 = 20 ∧ Nat.gcd 4 5 = 1) ∧
-    -- (iii) el registro binario, con la MISMA ecuación y el MISMO orden
+    -- (iii) the binary register, with the SAME equation and the SAME order
     ((2 : ZMod 5) ^ 2 = -1 ∧ (2 : ZMod 5) ^ 4 = 1 ∧ (2 : ZMod 5) ^ 2 ≠ 1) ∧
-    -- el morfismo que los conecta
+    -- the morphism connecting them
     ((2 + Complex.I) * (2 - Complex.I) = 5) ∧
-    -- y la congruencia que lo hace posible
+    -- and the congruence that makes it possible
     (5 % 4 = 1 ∧ Nat.totient 5 = 4) := by
   refine ⟨⟨Complex.I_sq, conductor_four_is_order_of_turn.2.1,
            conductor_four_is_order_of_turn.2.2⟩,
@@ -6302,24 +6303,24 @@ theorem four_cocone :
 end FourCocone
 
 -- ════════════════════════════════════════════════════════════════════
---  ATRIBUCIÓN DEL CONDUCTOR  (prop:conductor, ssec:spacings)
+--  CONDUCTOR ATTRIBUTION  (prop:conductor, ssec:spacings)
 --
---  El conductor 20 se separa en sus dos factores coprimos, y cada factor
---  gobierna exactamente uno de los dos caracteres — ni más ni menos.  Las
---  listas {1,9,11,19} y {1,9,13,17} de `chi5_split_inert_mod20` dejan de
---  ser tabulaciones: son las fibras de las dos reducciones.
+--  The conductor 20 splits into its two coprime factors, and each factor
+--  governs exactly one of the two characters — no more, no less. The lists
+--  {1,9,11,19} and {1,9,13,17} from `chi5_split_inert_mod20` cease to be
+--  tabulations: they are the fibers of the two reductions.
 --
---  «Gobierna» se toma en sentido fuerte: determinación Y no-determinación.
---  Sin los dos testigos, «el 5 gobierna χ₅» sería compatible con que el 5
---  lo gobernara todo, y el enunciado sería vacuo.
+--  "Governs" is taken in the strong sense: determination AND non-determination.
+--  Without the two witnesses, "5 governs χ₅" would be compatible with 5
+--  governing everything, and the statement would be vacuous.
 -- ════════════════════════════════════════════════════════════════════
 
 namespace ConductorAttribution
 
-/-- Reducción mod 4 del conductor.  Morfismo de anillos, no función ad hoc. -/
+/-- Reduction mod 4 of the conductor.  Ring morphism, not ad hoc function. -/
 def red4 : ZMod 20 →+* ZMod 4 := ZMod.castHom (by decide) (ZMod 4)
 
-/-- Reducción mod 5 del conductor. -/
+/-- Reduction mod 5 of the conductor. -/
 def red5 : ZMod 20 →+* ZMod 5 := ZMod.castHom (by decide) (ZMod 5)
 
 theorem red4_natCast (n : ℕ) : red4 ((n : ℕ) : ZMod 20) = ((n : ℕ) : ZMod 4) :=
@@ -6328,76 +6329,76 @@ theorem red4_natCast (n : ℕ) : red4 ((n : ℕ) : ZMod 20) = ((n : ℕ) : ZMod 
 theorem red5_natCast (n : ℕ) : red5 ((n : ℕ) : ZMod 20) = ((n : ℕ) : ZMod 5) :=
   map_natCast red5 n
 
-/-- **EL CONDUCTOR SE SEPARA.**  La pareja de reducciones es inyectiva: es el
-    teorema chino del resto en la forma que hace falta, `20 = 4 · 5` con
-    `gcd(4,5) = 1` (`conductor_is_derived`), por decisión sobre las 400 parejas. -/
+/-- **THE CONDUCTOR SPLITS.** The pair of reductions is injective: it is the
+    Chinese remainder theorem in the needed form, `20 = 4 · 5` with
+    `gcd(4,5) = 1` (`conductor_is_derived`), by decision over the 400 pairs. -/
 theorem conductor_splits (a b : ZMod 20)
     (h4 : red4 a = red4 b) (h5 : red5 a = red5 b) : a = b := by
   revert h5 h4; revert b a; decide
 
-/-- Las unidades del conductor: las ocho clases coprimas con 20. -/
+/-- Units of the conductor: the eight classes coprime to 20. -/
 def units20 : Finset (ZMod 20) := {1, 3, 7, 9, 11, 13, 17, 19}
 
 theorem units20_card : units20.card = 8 := by decide
 
-/-- El carácter χ₄, como predicado sobre las clases: la fibra de `red4` en 1. -/
+/-- The character χ₄, as a predicate on classes: the fiber of `red4` at 1. -/
 def chi4Triv (a : ZMod 20) : Prop := red4 a = 1
 
 instance (a : ZMod 20) : Decidable (chi4Triv a) := by unfold chi4Triv; infer_instance
 
-/-- **{1,9,13,17} ES LA FIBRA DE `red4`.**  La condición que define χ₄ es una
-    congruencia mod 4, no una lista escogida. -/
+/-- **{1,9,13,17} IS THE FIBER OF `red4`.** The condition defining χ₄ is a
+    congruence mod 4, not a chosen list. -/
 theorem fiber_mod4 (a : ZMod 20) (ha : a ∈ units20) :
     red4 a = 1 ↔ (a = 1 ∨ a = 9 ∨ a = 13 ∨ a = 17) := by
   revert ha; revert a; decide
 
-/-- **{1,9,11,19} ES LA FIBRA CUADRÁTICA DE `red5`.**  Es exactamente el
-    conjunto cuya reducción mod 5 es un resto cuadrático — y es la lista
-    «split» de `chi5_split_inert_mod20`. -/
+/-- **{1,9,11,19} IS THE QUADRATIC FIBER OF `red5`.** It is exactly the
+    set whose reduction mod 5 is a quadratic residue — and it is the "split"
+    list from `chi5_split_inert_mod20`. -/
 theorem fiber_mod5 (a : ZMod 20) (ha : a ∈ units20) :
     (red5 a = 1 ∨ red5 a = 4) ↔ (a = 1 ∨ a = 9 ∨ a = 11 ∨ a = 19) := by
   revert ha; revert a; decide
 
-/-- **PUENTE CON EL χ₅ DEL ARTÍCULO.**  El `chi5 : ℕ → ℤ` de `eq:chi5-pentagon`,
-    con valores en {-1,0,+1}, y la fibra cuadrática de `red5` clasifican la misma
-    partición: χ₅(n) = +1 exactamente cuando n mod 5 ∈ {1,4}.  Las dos lecturas
-    —símbolo de Legendre y componente del conductor— no son rivales. -/
+/-- **BRIDGE TO THE PAPER'S χ₅.** The `chi5 : ℕ → ℤ` of `eq:chi5-pentagon`,
+    with values in {-1,0,+1}, and the quadratic fiber of `red5` classify the same
+    partition: χ₅(n) = +1 exactly when n mod 5 ∈ {1,4}. The two readings
+    — Legendre symbol and conductor component — are not rivals. -/
 theorem chi5_is_the_mod5_fiber (n : ℕ) :
     chi5 n = 1 ↔ (n % 5 = 1 ∨ n % 5 = 4) := by
   unfold chi5
   have h : n % 5 < 5 := Nat.mod_lt _ (by norm_num)
   interval_cases h5 : (n % 5) <;> simp_all
 
-/-- **EL 4 DETERMINA χ₄.** -/
+/-- **4 DETERMINES χ₄.** -/
 theorem mod4_determines_chi4 (a b : ZMod 20)
     (_ha : a ∈ units20) (_hb : b ∈ units20) (h : red4 a = red4 b) :
     (red4 a = 1 ↔ red4 b = 1) := by
   rw [h]
 
-/-- **EL 5 DETERMINA LA FIBRA CUADRÁTICA.** -/
+/-- **5 DETERMINES THE QUADRATIC FIBER.** -/
 theorem mod5_determines_chi5 (a b : ZMod 20)
     (_ha : a ∈ units20) (_hb : b ∈ units20) (h : red5 a = red5 b) :
     ((red5 a = 1 ∨ red5 a = 4) ↔ (red5 b = 1 ∨ red5 b = 4)) := by
   rw [h]
 
-/-- **EL 4 NO DETERMINA χ₅.**  Testigo: 1 y 13, ambos ≡ 1 (mod 4), con
-    reducciones mod 5 iguales a 1 y 3.  Sin esto la atribución sería vacua. -/
+/-- **4 DOES NOT DETERMINE χ₅.** Witness: 1 and 13, both ≡ 1 (mod 4), with
+    reductions mod 5 equal to 1 and 3. Without this the attribution would be vacuous. -/
 theorem mod4_does_not_determine_chi5 :
     ∃ a b : ZMod 20, a ∈ units20 ∧ b ∈ units20 ∧
       red4 a = red4 b ∧ ¬ ((red5 a = 1 ∨ red5 a = 4) ↔ (red5 b = 1 ∨ red5 b = 4)) :=
   ⟨1, 13, by decide, by decide, by decide, by decide⟩
 
-/-- **EL 5 NO DETERMINA χ₄.**  Testigo: 1 y 11, ambos ≡ 1 (mod 5). -/
+/-- **5 DOES NOT DETERMINE χ₄.** Witness: 1 and 11, both ≡ 1 (mod 5). -/
 theorem mod5_does_not_determine_chi4 :
     ∃ a b : ZMod 20, a ∈ units20 ∧ b ∈ units20 ∧
       red5 a = red5 b ∧ ¬ (red4 a = 1 ↔ red4 b = 1) :=
   ⟨1, 11, by decide, by decide, by decide, by decide⟩
 
-/-- **TEOREMA DE ATRIBUCIÓN.**  La factorización `20 = 4 · 5` del conductor
-    coincide exactamente con la separación de los dos caracteres, y la
-    coincidencia es estricta en ambos sentidos: cada factor determina su
-    carácter y no determina el otro.  Junto con `FourCocone.four_cocone`,
-    que identifica el 4 del conductor con el del giro y el del registro
+/-- **ATTRIBUTION THEOREM.** The factorization `20 = 4 · 5` of the conductor
+    coincides exactly with the separation of the two characters, and the
+    coincidence is strict in both directions: each factor determines its
+    character and does not determine the other. Together with `FourCocone.four_cocone`,
+    which identifies the conductor's 4 with the turn's and the register's,
     binario, esto completa `prop:conductor`. -/
 theorem conductor_attribution :
     (∀ a b : ZMod 20, a ∈ units20 → b ∈ units20 → red4 a = red4 b →
@@ -6416,26 +6417,25 @@ theorem conductor_attribution :
 end ConductorAttribution
 
 -- ════════════════════════════════════════════════════════════════════
---  EL ANCLA ES EXTERIOR AL RETÍCULO  (eq:bridge, ssec:generator)
+--  THE ANCHOR IS EXTERIOR TO THE LATTICE  (eq:bridge, ssec:generator)
 --
---  φ^λ = 2 se registra en §2 «without reproving it».  Lo que no se dice es
---  su estatus: el 2 NO es alcanzable por ninguna potencia entera de φ, de
---  modo que λ no puede obtenerse por descenso sobre el retículo de
---  exponentes.  Eso es lo que hace del puente un ANCLA y no un teorema
---  interno de la torre.
+--  φ^λ = 2 is registered in §2 "without reproving it". What is not said is
+--  its status: 2 is NOT reachable by any integer power of φ, so λ cannot be
+--  obtained by descent on the exponent lattice. This is what makes the bridge
+--  an ANCHOR rather than an internal theorem of the tower.
 -- ════════════════════════════════════════════════════════════════════
 
 namespace AnchorExterior
 
 open PaperS2
 
-/-- La realización del retículo de exponentes: n ↦ φⁿ. -/
+/-- The realization of the exponent lattice: n ↦ φⁿ. -/
 noncomputable def realise (n : ℤ) : ℝ := φ ^ n
 
 theorem realise_pos (n : ℤ) : 0 < realise n := by
   unfold realise; exact zpow_pos φ_pos _
 
-/-- φ < 2, pues √5 < 3. -/
+/-- φ < 2, since √5 < 3. -/
 theorem phi_lt_two : φ < 2 := by
   unfold φ
   have h : Real.sqrt 5 < 3 := by
@@ -6446,15 +6446,15 @@ theorem phi_lt_two : φ < 2 := by
     exact Real.sqrt_lt_sqrt (by norm_num) (by norm_num)
   linarith
 
-/-- φ² > 2: por `phi_sq`, φ² = φ + 1 > 2 ya que φ > 1. -/
+/-- φ² > 2: by `phi_sq`, φ² = φ + 1 > 2 since φ > 1. -/
 theorem two_lt_phi_sq : (2 : ℝ) < φ ^ 2 := by
   rw [PaperS2.phi_sq]
   have := φ_gt_one
   linarith
 
-/-- **EL 2 NO ESTÁ EN EL RETÍCULO DORADO.**  Para ningún entero n vale φⁿ = 2:
-    φ¹ = φ < 2, φ² = φ+1 > 2, y n ↦ φⁿ es estrictamente monótona por φ > 1.
-    El 2 cae en el hueco entre dos potencias consecutivas. -/
+/-- **2 IS NOT IN THE GOLDEN LATTICE.** For no integer n does φⁿ = 2 hold:
+    φ¹ = φ < 2, φ² = φ+1 > 2, and n ↦ φⁿ is strictly monotone since φ > 1.
+    The number 2 falls in the gap between two consecutive powers. -/
 theorem two_not_in_golden_lattice : ∀ n : ℤ, realise n ≠ 2 := by
   intro n hn
   unfold realise at hn
@@ -6474,9 +6474,9 @@ theorem two_not_in_golden_lattice : ∀ n : ℤ, realise n ≠ 2 := by
     have := two_lt_phi_sq
     linarith
 
-/-- **EL ANCLA, CON SU ESTATUS.**  φ^λ = 2 vale en ℝ (`mersenne_bridge`,
-    `eq:bridge`) y en ningún punto del retículo entero.  El exponente λ es
-    exterior al descenso: por eso ancla la escala en vez de derivarse de ella. -/
+/-- **THE ANCHOR, WITH ITS STATUS.** φ^λ = 2 holds in ℝ (`mersenne_bridge`,
+    `eq:bridge`) and at no point of the integer lattice. The exponent λ is
+    exterior to descent: that is why it anchors the scale rather than being derived from it. -/
 theorem anchor_is_exterior :
     (φ ^ lambda_log = 2) ∧ (∀ n : ℤ, realise n ≠ 2) :=
   ⟨mersenne_bridge, two_not_in_golden_lattice⟩
@@ -6484,41 +6484,41 @@ theorem anchor_is_exterior :
 end AnchorExterior
 
 -- ════════════════════════════════════════════════════════════════════
---  LA CONTRACARA: DOS TORRES, UN MICROESTADO  (ssec:web, ssec:adscft)
+--  THE OBFACE: TWO TOWERS, ONE MICROSTATE  (ssec:web, ssec:adscft)
 --
---  Para llevar los grados de libertad de la frontera al bulk, holografía
---  necesita la torre de Virasoro (su carga central c) y M-teoría necesita
---  la escalera de extensiones centrales del superpunto (32 supercargas).
---  Cada una es compleja por su lado, y cubrir lo que deben cubrir exige
---  una complejidad altísima.
+--  To carry the boundary's degrees of freedom into the bulk, holography
+--  needs the Virasoro tower (its central charge c) and M-theory needs
+--  the superpoint's central extension ladder (32 supercharges).
+--  Each is complex on its own, and covering what they must cover demands
+--  enormous complexity.
 --
---  Aquí no se refuta ninguna: el cocono las UNE.  Lo que se muestra es la
---  contracara — ambas son lecturas de un microestado, y su encuentro no es
---  coincidencia numérica sino conmutación en el vértice:
+--  Here neither is refuted: the cocone UNIFIES them. What is shown is the
+--  obface — both are readings of a microstate, and their encounter is not
+--  a numerical coincidence but commutation at the vertex:
 --
---    · c = 3 llega DOS VECES — por la hoja de mundo (Polyakov) y por
---      Brown–Henneaux 3ℓ/(2G_N) con ℓ = 1 y G_N = ½ = |Ω| — y las dos
---      llegadas son la misma componente del vértice.  Ése es el cuadrado
---      que conmuta entre cuerdas y holografía.
---    · las 32 supercargas son |H₅| = 2⁵, y el 2 que las cuenta ES el giro
---      i reducido en un primo sobre 5 (`FourCocone`).  La escalera se
---      cuenta con el generador del nivel ℂ de la cadena dimensional.
---    · la torre avanza con UNA recurrencia, S(σ+1) = φ·S(σ), y la razón
---      bulk/frontera no depende del nivel: ningún nivel privilegiado, luego
---      la escalera es un índice sobre un flujo, no una pila de estructuras.
---    · y se alcanza d = 3 sin álgebra de división en dimensión 3 —que
---      Frobenius prohíbe— porque lo que llega a 3 es una isometría FIEL
---      desde ℂ, no un producto.
+--    · c = 3 arrives TWICE — via the worldsheet (Polyakov) and via
+--      Brown–Henneaux 3ℓ/(2G_N) with ℓ = 1 and G_N = ½ = |Ω| — and the two
+--      arrivals are the same component of the vertex. That is the square
+--      that commutes between strings and holography.
+--    · the 32 supercharges are |H₅| = 2⁵, and the 2 that counts them IS the turn
+--      i reduced at a prime above 5 (`FourCocone`). The ladder is
+--      counted with the ℂ-level generator of the dimensional chain.
+--    · the tower advances with ONE recurrence, S(σ+1) = φ·S(σ), and the
+--      bulk/boundary ratio does not depend on the level: no privileged level, hence
+--      the ladder is an index over a flow, not a stack of structures.
+--    · and d = 3 is reached without a division algebra in dimension 3 — which
+--      Frobenius forbids — because what arrives at 3 is a FAITHFUL isometry
+--      from ℂ, not a product.
 -- ════════════════════════════════════════════════════════════════════
 
 namespace TwoTowersOneMicrostate
 
 open PCFColimit
 
-/-- **CUERDAS Y HOLOGRAFÍA CONMUTAN EN EL VÉRTICE.**  La carga central de la
-    hoja de mundo (Polyakov) y la de la frontera (Maldacena) son la misma
-    componente de `T_PCF`, y el cocono da los dos morfismos.  No son dos
-    valores que coinciden: son una componente alcanzada por dos caminos. -/
+/-- **STRINGS AND HOLOGRAPHY COMMUTE AT THE VERTEX.** The central charge of the
+    worldsheet (Polyakov) and that of the boundary (Maldacena) are the same
+    component of `T_PCF`, and the cocone gives the two morphisms. They are not two
+    values that agree: they are one component reached by two paths. -/
 theorem strings_and_holography_commute_at_c :
     Polyakov.central_charge = T_PCF.central_charge ∧
     Maldacena.central_charge = T_PCF.central_charge ∧
@@ -6526,72 +6526,72 @@ theorem strings_and_holography_commute_at_c :
     projectsTo Polyakov T_PCF ∧ projectsTo Maldacena T_PCF :=
   ⟨rfl, rfl, rfl, cocone_property.1, cocone_property.2.1⟩
 
-/-- **LA CARGA CENTRAL ES EL MÓDULO DEL MICROESTADO.**  El único parámetro
-    libre de la torre de Virasoro queda fijado por `ℓ = 1` y `G_N = ½`, que
-    son componentes del mismo vértice: `c = 3ℓ/(2G_N) = 3`.  La torre no se
-    postula con su carga; la carga se deriva. -/
+/-- **THE CENTRAL CHARGE IS THE MICROSTATE'S MODULUS.** The sole free parameter
+    of the Virasoro tower is fixed by `ℓ = 1` and `G_N = ½`, which
+    are components of the same vertex: `c = 3ℓ/(2G_N) = 3`. The tower is not
+    postulated with its charge; the charge is derived. -/
 theorem virasoro_charge_is_the_modulus :
     Maldacena.AdS_radius = some 1 ∧ Maldacena.Newton = some (1/2) ∧
     3 * (1:ℝ) / (2 * (1/2)) = 3 ∧ T_PCF.central_charge = some 3 :=
   ⟨rfl, rfl, SitterPCF.brown_henneaux_c_eq_three 1 (1/2) rfl rfl, rfl⟩
 
-/-- **LA ESCALERA SE CUENTA CON EL GIRO.**  Las 32 supercargas del
-    superpunto son `2⁵`, y el `2` que las cuenta satisface en 𝔽₅ la ecuación
-    del giro `x² = -1` (`FourCocone`).  El lado binario de la escalera y el
-    nivel ℂ de la cadena dimensional son el mismo generador. -/
+/-- **THE LADDER IS COUNTED WITH THE TURN.** The 32 supercharges of the
+    superpoint are `2⁵`, and the `2` that counts them satisfies in 𝔽₅ the turn
+    equation `x² = -1` (`FourCocone`). The binary side of the ladder and the
+    ℂ level of the dimensional chain are the same generator. -/
 theorem ladder_count_is_the_turn :
     2 ^ 5 = 32 ∧ (2 : ZMod 5) ^ 2 = -1 ∧ Complex.I ^ 2 = -1 :=
   ⟨by decide, FourCocone.two_sq_eq_neg_one_mod_five, Complex.I_sq⟩
 
-/-- **UNA SOLA RECURRENCIA CUBRE LA ESCALERA.**  Cada paso de la torre es una
-    multiplicación por φ, y la razón entre el generador modular de la frontera
-    y el hamiltoniano del bulk no depende del nivel.  Los muchos pasos
-    discretos de la construcción son un índice sobre un único flujo. -/
+/-- **ONE RECURRENCE COVERS THE LADDER.** Each step of the tower is a
+    multiplication by φ, and the ratio between the boundary modular generator
+    and the bulk Hamiltonian does not depend on the level. The many discrete
+    steps of the construction are an index over a single flow. -/
 theorem one_recurrence_covers_the_ladder (m0 : ℝ) (hm : 0 < m0) :
     (∀ σ : ℝ, PaperS3a.S_tower (σ + 1) = PaperS2.φ * PaperS3a.S_tower σ) ∧
     (∀ σ : ℝ, PaperS3a.S_tower σ / PaperS3a.towerE m0 σ = Real.pi / m0) :=
   ⟨PaperS3a.S_tower_recurrence,
    fun σ => PaperS3a.modular_bulk_ratio_level_independent m0 σ hm⟩
 
-/-- **NINGÚN NIVEL PRIVILEGIADO.**  Para cualesquiera dos niveles la razón
-    coincide.  Si ninguno está privilegiado, la escalera de niveles no es una
-    pila de estructuras distintas. -/
+/-- **NO PRIVILEGED LEVEL.** For any two levels the ratio
+    agrees. If none is privileged, the level ladder is not a
+    stack of different structures. -/
 theorem no_privileged_level (m0 σ₁ σ₂ : ℝ) (hm : 0 < m0) :
     PaperS3a.S_tower σ₁ / PaperS3a.towerE m0 σ₁
       = PaperS3a.S_tower σ₂ / PaperS3a.towerE m0 σ₂ := by
   rw [PaperS3a.modular_bulk_ratio_level_independent m0 σ₁ hm,
       PaperS3a.modular_bulk_ratio_level_independent m0 σ₂ hm]
 
-/-- Las dimensiones que el teorema de Frobenius permite a un álgebra de
-    división real asociativa de dimensión finita: ℝ, ℂ, ℍ. -/
+/-- The dimensions that Frobenius's theorem allows for a finite-dimensional
+    associative real division algebra: ℝ, ℂ, ℍ. -/
 def frobeniusDims : Finset ℕ := {1, 2, 4}
 
-/-- **EL 3 NO ESTÁ ENTRE ELLAS.** -/
+/-- **3 IS NOT AMONG THEM.** -/
 theorem three_not_frobenius_dim : (3 : ℕ) ∉ frobeniusDims := by decide
 
-/-- **Y SIN EMBARGO SE ALCANZA EL 3.**  La tríada de autovalores da un mapa
-    `ℂ → ℂ³` que preserva la norma: la suma de los cuadrados normalizados es
-    `1` (`bulkBoundary_isometry`).  Un mapa que preserva la norma es inyectivo,
-    luego FIEL: lleva ℂ a dimensión 3 sin pérdida.
+/-- **AND YET 3 IS REACHED.** The eigenvalue triad gives a map
+    `ℂ → ℂ³` that preserves the norm: the sum of normalized squares is
+    `1` (`bulkBoundary_isometry`). A norm-preserving map is injective, hence
+    FAITHFUL: it carries ℂ to dimension 3 without loss.
 
-    Lo que Frobenius prohíbe es MULTIPLICAR en dimensión 3.  Aquí nunca se
-    pide un producto: se pide una incrustación, y la incrustación existe.
-    Ésa es la diferencia entre el límite algebraico y el alcance geométrico. -/
+    What Frobenius forbids is MULTIPLYING in dimension 3. Here no product is
+    ever requested: an embedding is requested, and the embedding exists.
+    That is the difference between the algebraic bound and the geometric reach. -/
 theorem three_reached_by_faithful_isometry :
     (3 : ℕ) ∉ frobeniusDims ∧
     ∑ k : Fin 3, (‖(1/2 : ℂ) * PCFEntropyDOF.ωc ^ (k:ℕ)‖ / (Real.sqrt 3 / 2)) ^ 2 = 1 ∧
     (∀ z w : ℂ, ‖z‖ = ‖w‖ → ‖z‖ - ‖w‖ = 0) :=
   ⟨three_not_frobenius_dim, bulkBoundary_isometry, fun _ _ h => by rw [h]; ring⟩
 
-/-- **LA CONTRACARA, REUNIDA.**  Las dos torres que la literatura necesita
-    —la de Virasoro en holografía, la del superpunto en M-teoría— se
-    encuentran aquí como dos caminos al mismo vértice:
+/-- **THE OBFACE, REUNITED.** The two towers the literature needs
+    — the Virasoro tower in holography, the superpoint tower in M-theory —
+    meet here as two paths to the same vertex:
 
-      (1) cuerdas y holografía conmutan en `c`;
-      (2) la carga central de Virasoro es el módulo del microestado;
-      (3) el conteo de la escalera es el giro;
-      (4) una recurrencia cubre la escalera y ningún nivel está privilegiado;
-      (5) se alcanza d = 3 por isometría fiel, no por álgebra.
+      (1) strings and holography commute at `c`;
+      (2) the Virasoro central charge is the microstate modulus;
+      (3) the ladder count is the turn;
+      (4) one recurrence covers the ladder and no level is privileged;
+      (5) d = 3 is reached by faithful isometry, not by algebra.
 
     No se afirma que ninguna de las dos construcciones sea falsa ni
     prescindible: se afirma que ambas proyectan del mismo microestado, que es
