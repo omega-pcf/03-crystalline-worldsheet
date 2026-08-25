@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.8](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.7...v1.0.8) (2026-08-25)
+
+### Bug Fixes
+
+* align author ordering in CITATION.cff and .zenodo.json with main.tex ([73bca0e](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/73bca0ea140c19b54250175c9d4af7503a23bef2))
+* **tex:** connect eq:bridge-fixed to its Lean proof and update counts ([3354175](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/335417550d05e85019ba8d64ee468ccde64a0e9c))
+* **tex:** correct compilation note and verification table in 02-methods.tex ([bb067ac](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/bb067ac651672fb049732552d746b66e7d4df77e))
+
 ## [1.0.7](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.6...v1.0.7) (2026-08-25)
 
 ### Bug Fixes
