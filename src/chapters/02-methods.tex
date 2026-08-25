@@ -1492,9 +1492,8 @@ subsection: \texttt{XiConjClosed}, the closure $\xi(\bar s)=\overline{\xi(s)}$ o
 under conjugation, which is \emph{not} established in this paper \tier{C}; and
 \texttt{MinSpacing}, a positive minimal ordinate separation, which is measured rather than
 proved \tier{N}. Of the second only its sign is used. Neither is an axiom: both are hypothesis
-arguments in the type of Theorem~\ref{thm:zeros-apex}. Two decision procedures use
-\texttt{native\_decide} rather than \texttt{decide}---the multiplicativity of $\chi_5$ over the
-units, and the sweep of $16\times17\times18$ triples behind
+arguments in the type of Theorem~\ref{thm:zeros-apex}. One decision procedure uses
+\texttt{native\_decide} rather than \texttt{decide}---the sweep of $16\times17\times18$ triples behind
 Proposition~\ref{prop:interval-uniqueness}---which extends the trusted base to Lean's compiler
 as well as its type kernel; every other proof rests on the kernel alone. The golden ratio is
 defined, $\golden:=(1+\sqrt5)/2$, and the two facts that anchor the
@@ -1510,8 +1509,10 @@ afterwards are separated in Proposition~\ref{prop:triad-invariants}.
 \smallskip
 \sloppy\noindent\textbf{Compilation note (single point of record).} The development declares no
 axiom: every classical input is a hypothesis argument in the type of the theorem that consumes it.
-What remains to be confirmed against the installed Mathlib version is the spelling of the library
-lemmas the proofs call. Grouped by what they serve:
+\texttt{lake build} completes against Mathlib, confirming the spelling
+of every library lemma the proofs call. The lemma names, grouped by what they serve,
+are recorded here so that a future Mathlib rename breaks the build visibly rather than
+passing silently:
 \begin{itemize}\itemsep1pt\parskip0pt
 \item \emph{Completed zeta and the places} (\S\ref{ssec:zeta}): \texttt{Gamma}$_\R$,
   \texttt{Gamma}$_\R$\texttt{\_ne\_zero\_of\_re\_pos}, \texttt{riemannZeta\_def\_of\_ne\_zero},
@@ -1523,15 +1524,15 @@ lemmas the proofs call. Grouped by what they serve:
   \texttt{Real.sq\_sqrt}, \texttt{Real.Gamma\_add\_one}, \texttt{Real.Gamma\_pos\_of\_pos}.
 \item \emph{The eigenvalue triad} (Proposition~\ref{prop:triad-invariants}):
   \texttt{Complex.exp\_ofReal\_mul\_I\_re}, \texttt{Complex.exp\_nat\_mul},
-  \texttt{Complex.exp\_two\_pi\_mul\_I}, \texttt{Real.cos\_pi\_add}, \texttt{Real.cos\_pi\_sub},
+  \texttt{Complex.exp\_two\_pi\_mul\_I}, \texttt{Real.cos\_pi\_sub},
   \texttt{Real.rpow\_mul}, \texttt{Real.rpow\_natCast}, \texttt{Real.rpow\_neg}.
 \item \emph{The companion and the extreme case} (\S\ref{ssec:extreme}): \texttt{map\_sub},
   \texttt{map\_one} on \texttt{starRingEnd}, \texttt{Complex.conj\_re},
   \texttt{Complex.conj\_im}, \texttt{Complex.ext\_iff}.
 \item \emph{Theta and Poisson} (\eqref{eq:theta-lattice}):
-  \texttt{Real.tsum\_eq\_tsum\_fourierIntegral}, \texttt{jacobiTheta}.
+  the file defines \texttt{Theta} directly without Mathlib's \texttt{jacobiTheta}.
 \item \emph{Pentagon and Fibonacci} (\S\ref{ssec:spectrum}, \S\ref{ssec:tower}):
-  \texttt{Real.cos\_pi\_sub}, \texttt{Real.cos\_two\_mul}, \texttt{goldenRatio}, \texttt{Nat.fib}.
+  \texttt{Real.cos\_pi\_sub}, \texttt{Real.cos\_two\_mul}, \texttt{Nat.fib}.
   The general form of \eqref{eq:fib-criterion} would need Frobenius in \texttt{ZMod q}; it is
   stated here by cases.
 \item \emph{Even zeta values} (Theorem~\ref{thm:even-zeta}): the name of the even-value lemma,
@@ -1545,18 +1546,17 @@ lemmas the proofs call. Grouped by what they serve:
 \item \emph{Earlier blocks}: \texttt{Gamma\_one\_half\_eq}, \texttt{riemannZeta\_two},
   \texttt{Real.sqrt\_eq\_rpow}, \texttt{rpow\_natCast}, \texttt{Gamma\_add\_one},
   \texttt{arccos\_cos}, and for the M6 uniqueness \texttt{Nat.Prime.irrational\_sqrt},
-  \texttt{Irrational.int\_mul}, \texttt{Int.not\_irrational}.
+  \texttt{Irrational.intCast\_mul}, \texttt{Int.not\_irrational}.
 \end{itemize}
-\noindent The list and the file cannot drift apart, and the guarantee is now stronger than a
-convention: since \texttt{lake build} completes, any renaming or removal of these lemmas in a
+\noindent Since \texttt{lake build} completes, any renaming or removal of these lemmas in a
 future Mathlib breaks the build rather than passing silently. The numerical companion is \texttt{CW6\_complete\_verify\_v2.py},
 whose checks are indexed by the \TeX{} labels of this file: of the $162$ labelled equations,
 $147$ carry a Lean proof and $108$ a numerical check, $102$ carrying both---the checks evaluating
 identities at up to $25$-digit precision and, where a claim is a correspondence with measurement,
 comparing against the measured value. The nine carrying neither a proof nor a check of their
-own are the six correspondence statements of the duality list
-\eqref{eq:bridge-S}--\eqref{eq:bridge-fixed}; the class-number formula \eqref{eq:cnf}, whose
-Lean form is the hypothesis \texttt{hCNF} of \texttt{L1\_from\_class\_number\_formula};
+own are the five correspondence statements \eqref{eq:bridge-S}--\eqref{eq:bridge-ER} plus
+\eqref{eq:dS-swampland}; \eqref{eq:cnf} whose Lean form is the hypothesis
+\texttt{hCNF} of \texttt{L1\_from\_class\_number\_formula};
 the Polyakov action \eqref{eq:polyakov} (an \tier{L} input); and the
 Lawvere--Yanofsky diagonal \eqref{eq:LY}, which states the problem rather than a result.
 The global Dedekind factorisation \eqref{eq:dedekind} is counted among the $147$: its Lean
