@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.6](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.5...v1.0.6) (2026-08-25)
+
+### Bug Fixes
+
+* correct project page badge link to crystalline-worldsheet slug ([534879f](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/534879f8ad959d11f4634a3cd8904b0eebbd654e))
+
+### Chores
+
+* **lean:** remove CW3_Backing.lean ([afdd7f4](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/afdd7f4fb09605a988109e1ecbde9d10952955b1))
+* **lean:** remove development process artifacts from CW6_complete_v2.lean ([6177f09](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/6177f09705796e456de036f903ce862c6d41ab61))
+* **lean:** translate all Spanish comments/docstrings to English ([60e3a5c](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/60e3a5c7d6ccbbba9ab6d770efbfda7b53e37e52))
+* **tests:** remove orphaned CW3_backing_verify.py ([e794244](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/e7942443b138cbd8400bda77097a15f81b4b806e))
+
 ## [1.0.5](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.4...v1.0.5) (2026-08-24)
 
 ### Bug Fixes
