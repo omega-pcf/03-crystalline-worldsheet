@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.7](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.6...v1.0.7) (2026-08-25)
+
+### Bug Fixes
+
+* **lean:** restore -- comments after colour_ratio theorem ([27f89f0](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/27f89f0752f5355ebde51a2c1f9e11caff6b0c62))
+
 ## [1.0.6](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.5...v1.0.6) (2026-08-25)
 
 ### Bug Fixes
