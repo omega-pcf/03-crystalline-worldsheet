@@ -1,7 +1,7 @@
 # The Crystalline Worldsheet: A String Theoretical Framework based on $\mathbb{F}_1$ for the de Sitter observer problem
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21343602.svg)](https://doi.org/10.5281/zenodo.21343602)
-[![Project Page](https://img.shields.io/badge/Project%20Page-omega--pcf.com-blue)](https://omega-pcf.com)
+[![Project Page](https://img.shields.io/badge/Project%20Page-omega--pcf.com-blue)](https://omega-pcf.com/crystalline-worldsheet)
 
 ## Authors
 
