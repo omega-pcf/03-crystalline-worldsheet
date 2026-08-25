@@ -3,7 +3,7 @@
   "CW6 — A String Theoretical framework based on φ and π for the de Sitter
    observer problem"
 
-  ONE file for the whole paper. Every \\Lean{...} tag in CW6_paper_v2.tex resolves to a
+  ONE file for the whole paper. Every \\Lean{...} tag in CW6_paper.tex resolves to a
   declaration here.
 
   Layout
@@ -16,7 +16,7 @@
 -/
 
 /- ============================================================================
-   PART I — §1–§4, appendices, and the corpus development.
+   PART I — §1–§4 and the appendices.
    ============================================================================ -/
 
 import Mathlib
@@ -31,7 +31,7 @@ namespace PaperS2
 open Real
 
 -- ════════════════════════════════════════════════════════════════════
---  CONSTANTS (corpus: reuse φ, μ_n/σ_n, lambda_log, mersenne_bridge)
+--  CONSTANTS (φ, μ_n/σ_n, lambda_log, mersenne_bridge)
 -- ════════════════════════════════════════════════════════════════════
 
 noncomputable def φ : ℝ := (1 + Real.sqrt 5) / 2
@@ -84,7 +84,7 @@ theorem phi_sq : φ ^ 2 = φ + 1 := by
   have h5 : Real.sqrt 5 ^ 2 = 5 := Real.sq_sqrt (by norm_num)
   nlinarith [h5, Real.sqrt_nonneg 5]
 
-/-- φ^{λ_log} = 2 (corpus `eq:mersenne-bridge`). -/
+/-- φ^{λ_log} = 2 (`eq:mersenne-bridge`). -/
 theorem mersenne_bridge : φ ^ lambda_log = 2 := by
   have hlog : Real.log φ ≠ 0 := ne_of_gt log_φ_pos
   have hkey : lambda_log * Real.log φ = Real.log 2 := by
@@ -164,13 +164,12 @@ private theorem cos_pi_div_five_eq_phi_half :
 
 /-- **Pentagonal identity: φ = 2·cos(π/5)** (thm:pentagon-id).
     Connects the algebraic generator φ (φ² = φ + 1) with the geometry
-    of the regular pentagon. Proof ported from the correspondence-paper
-    Lean development; self-contained here via `phi_sq` and Chebyshev T₅. -/
+    of the regular pentagon. Self-contained via `phi_sq` and Chebyshev T₅. -/
 theorem phi_eq_two_cos_pi_fifth : φ = 2 * Real.cos (π / 5) := by
   rw [cos_pi_div_five_eq_phi_half]; ring
 
-/-- [M13] π = 5·arccos(φ/2). The pentagonal identity is now proved
-    (`phi_eq_two_cos_pi_fifth`), not assumed. -/
+/-- [M13] π = 5·arccos(φ/2). The pentagonal identity
+    (`phi_eq_two_cos_pi_fifth`) is used, not assumed. -/
 theorem M13_pi_eq_five_arccos :
     5 * Real.arccos (φ / 2) = π := by
   have hhalf : φ / 2 = Real.cos (π / 5) := by
@@ -235,7 +234,7 @@ theorem M6_characteristic_root_is_phi :
   · exfalso; linarith
 
 -- ════════════════════════════════════════════════════════════════════
---  §2.3 — ProjectionPCF, norms, ε₀ (M7, M8)  [corpus: reuse the defs]
+--  §2.3 — ProjectionPCF, norms, ε₀ (M7, M8)
 -- ════════════════════════════════════════════════════════════════════
 
 noncomputable def projection_PCF (a b c : ℝ) : ℝ := (a * b) / (c * Real.sqrt 3) * (π / 3)
@@ -655,7 +654,7 @@ end PaperM6
 namespace PaperS3a
 open Real
 
--- Reused from the unified §2 / PCF_Section3_Missing (do NOT redefine when integrating):
+-- From §2 (do NOT redefine when integrating):
 noncomputable def φ : ℝ := (1 + Real.sqrt 5) / 2
 
 theorem φ_pos : 0 < φ := by unfold φ; positivity
@@ -950,17 +949,17 @@ def muThree : ℚ := 1 / 2
 
 /-- Colour ratio 1 − μ₃² = 3/4 (gauge/gravity entropy ratio; the colour 3/4). -/
 theorem colour_ratio : 1 - muThree ^ 2 = 3 / 4 := by unfold muThree; norm_num
--- NOTE: "one loop = colour, two loops = generations" is a physical assignment
--- (gravity bridge L1001, L1010–1011), anchored on ζ(3) as Apéry's two-loop constant.
--- Recorded as STRUCTURAL, not as a derived theorem.
+/-- NOTE: "one loop = colour, two loops = generations" is a physical assignment
+    (gravity bridge L1001, L1010–1011), anchored on ζ(3) as Apéry's two-loop constant.
+    Recorded as STRUCTURAL, not as a derived theorem. -/
 
 /- ════════════════════════════════════════════════════════════════════════════════
-   §C — The Regge tower IS the Euler product                       [NEW; spine PROVED]
+   §C — The Regge tower IS the Euler product
    CW5 §3.3 (L1014–1047), eq:regge-euler.
-   Precision (the in-session correction): it is the POLE POSITIONS (= ℕ) that give the
-   Dirichlet series as the tower's spectral zeta; the RESIDUES are the Regge polynomials
-   that CERTIFY each integer level is populated (and carry spin ≤ n−1).  The Euler
-   product then follows by unique factorisation (Mathlib).
+   It is the pole POSITIONS (= ℕ) that give the Dirichlet series as the tower's
+   spectral zeta; the RESIDUES are the Regge polynomials that CERTIFY each integer
+   level is populated (and carry spin ≤ n−1). The Euler product then follows by
+   unique factorisation (Mathlib).
    ════════════════════════════════════════════════════════════════════════════════ -/
 
 section ReggeEuler
@@ -1069,10 +1068,9 @@ end ReggeEuler
    MASTER — the Lean-verifiable core of the four CW 3.0 observer items.
    A) dim su(3)=8 ;  B) colour ratio 1−μ₃²=3/4 ;
    C) Regge tower = Euler product (Re s>1) ;
-   D) la curvatura escalar del throat en (d,A',A'')=(4,−1,0) da −20, citada por su
-      nombre: `CurvatureCoeffs.ricciScalar`. (El bloque de curvatura vive ANTES de
-      este namespace desde v5, así que la copia en línea de borradores previos ya
-      no es necesaria; la prueba es el teorema del bloque, no una repetición.)
+   D) the scalar curvature of the throat at (d,A',A'')=(4,−1,0) equals −20, cited as
+      `CurvatureCoeffs.ricciScalar`. (The curvature block lives before
+      this namespace; the proof is the block's theorem, not a repetition.)
    (A and B are STRUCTURAL; C and D are PROVED.)
    ════════════════════════════════════════════════════════════════════════════════ -/
 
@@ -1089,34 +1087,9 @@ end PCF.CW5
 
 
 -- ════════════════════════════════════════════════════════════════════
--- FIGURE DEVELOPMENTS ADDENDUM  —  merged
+-- FIGURE DEVELOPMENTS
 --   figures named by \label, never by ordinal (the LaTeX number moves when a figure moves)
 -- ════════════════════════════════════════════════════════════════════
-/-
-  PCF_Figures_Addendum.lean
-  ─────────────────────────
-  Lean backing for the figure developments inserted into the paper (now CW6_paper_v2.tex)
-  (fig:alpha-uniqueness spectral angle, fig:isometry-algebra Gauss↔Eisenstein lattice,
-   fig:ads-ladder AdS5/S5/ladder, fig:torus-gauge torus→SU(3)×SU(2)×U(1)).
-
-  Theorems ported from the corpus; the two corpus `sorry`s (entropy_ratio_S3_S6,
-  alpha_decomposition) are CLOSED here with standard zpow / linear_combination proofs.
-    namespace CWfig  ←  crystalline_worldsheet_v10.lean
-    namespace V11fig ←  PCF_Complete_v11_Unified.lean
-
-  Paper \Lean tag → ported theorem:
-    sigma_three                                 → CWfig         (fig:alpha-uniqueness)
-    spectral_uniqueness                         → V11fig        (fig:alpha-uniqueness)
-    eisenstein_omega, OmegaEigenvalue         → V11fig        (fig:isometry-algebra)
-    a2_screen_embedding_unit, holographic_area  → CWfig         (fig:isometry-algebra)
-    Lambda5_value                               → CWfig         (fig:ads-ladder)
-    hopf_latitude, hopf_from_clifford           → CWfig         (fig:ads-ladder, fig:torus-gauge)
-    hypercube_card                              → V11fig        (fig:ads-ladder)
-    clifford_S3_condition, central_chain        → CWfig         (fig:torus-gauge)
-    entropy_ratio_S3_S6, G_Lambda_duality       → CWfig         (fig:torus-gauge)
-  (gauge_dim_su3, R_scalar_pcf, G_AB_pcf, BF_value, phi_central_chain
-   already live in PCF_Paper_Complete.lean.)
--/
 
 namespace CWfig
 open PaperS3a (N_modes S_tower)
@@ -1401,7 +1374,7 @@ theorem central_chain :
     := ⟨phi_sq_plus_inv_sq_eq_n, KK_numerator, rfl⟩
 
 -- ═══════════════════════════════════════════════════════════════
--- Appendix: Kaluza–Klein structure (ported from corpus)
+-- Appendix: Kaluza–Klein structure
 -- ═══════════════════════════════════════════════════════════════
 
 /-- Kaluza–Klein reduction of Newton's constant:  G₄ = G₅/(2ℓ). -/
@@ -1846,8 +1819,7 @@ theorem wick_squares_flip_sign (t : ℝ) :
 theorem lorentzian_signature_sum :
     (1 : ℤ) + 1 + 1 + (-1) = 2 := by norm_num
 
-/-- The Eisenstein root has imaginary part √3/2 (so it is not real): ω rotates.
-    Ported from the corpus `w_properties` (PCF_Complete_v11_Unified). -/
+/-- The Eisenstein root has imaginary part √3/2 (so it is not real): ω rotates. -/
 theorem eisenstein_im : eisenstein_omega.im = Real.sqrt 3 / 2 := by
   unfold eisenstein_omega
   rw [show 2 * ↑Real.pi * Complex.I / 3 = ↑(2 * Real.pi / 3) * Complex.I by push_cast; ring,
@@ -1903,8 +1875,8 @@ end V11fig
 
 -- ════════════════════════════════════════════════════════════════════════
 -- Dynamical arrow (A2 / rmk past-future-dynamical in sec:implications)
--- Ported from PCF_session_consolidated.lean. Backs the demonstrated remark
--- that past/future is fixed by the entropy arrow + the spectral rotation.
+-- Backs the demonstrated remark that past/future is fixed by the entropy
+-- arrow + the spectral rotation.
 -- ════════════════════════════════════════════════════════════════════════
 namespace PCF_Dynamics
 
@@ -1987,25 +1959,22 @@ theorem ets_Gamma_sigma {σ : ℝ} (hσ : σ ≠ 0) (hlam : lam ≠ 0) :
 /-- [P] Why the ETS block is flat, stated as the fact that carries it: the 4D block has
     constant metric components, so every Christoffel symbol built from them vanishes, and
     with them every Riemann component. The full component computation is external (sympy,
-    `CW6_all_figures_v2.py`); the derivative fact below is the reason it returns zero.
-    (Earlier this file recorded only `(0 : ℝ) = 0 := rfl`, which asserted nothing.) -/
+    `CW6_all_figures_v2.py`); the derivative fact below is the reason it returns zero. -/
 theorem ets_constant_block_christoffels_vanish (c : ℝ) :
     (deriv (fun _ : ℝ => c) = fun _ => 0) ∧ ((1/2 : ℝ) * deriv (fun _ : ℝ => c) 0 = 0) := by
   refine ⟨by funext _; simp, by simp⟩
 
 /-- [P] Brown–Henneaux central charge of the framework: c = 3ℓ/(2G_N) with the derived
     ℓ = 1 and G_N = ½ gives c = 3 — the colour arity ⌊π⌋ = 3 (paper §3, eq. c=3; verified in
-    `verify_crystalline_worldsheet_unified_v10.py`). This is the real content of what the
-    corpus records as `polyakov_route : (3 : ℝ) = 3 := rfl`. -/
+    `verify_crystalline_worldsheet_unified_v10.py`). This is the real content of the
+    identity `polyakov_route : (3 : ℝ) = 3 := rfl`. -/
 theorem brown_henneaux_c_eq_three (ell GN : ℝ) (hl : ell = 1) (hg : GN = 1/2) :
     3 * ell / (2 * GN) = 3 := by
   subst hl; subst hg; norm_num
 
 /-- **The σ = const slices of the ETS metric are totally geodesic** (K_μν = 0).
     In the product metric (A) the 4D block η does not depend on σ, so the second
-    fundamental form K_μν = −1/(2N) ∂_σ η_μν vanishes (sympy-confirmed).
-    CORRECTION: the pasted "Theorem 8.2" reported K_μν = (λ/σ²) g_μν for these
-    slices — that is NOT their extrinsic curvature in (A); it is 0. -/
+    fundamental form K_μν = −1/(2N) ∂_σ η_μν vanishes (sympy-confirmed). -/
 theorem ets_slices_totally_geodesic (c : ℝ) :
     (fun _ : ℝ => (-(1:ℝ)/2) * deriv (fun _ : ℝ => c) 0) = fun _ => (0:ℝ) := by
   funext _; simp
@@ -2173,8 +2142,7 @@ theorem observer_half_from_norms : normP * normC * normF = 1 / 2 :=
 
 end PCF_W10_Antipodal
 
-/-! ### Ported from `crystalline_worldsheet_v10.lean` so the backing is self-contained
-    (the paper's D3 / eq:bridge-BH tags must resolve inside this file). -/
+/-! ### Bridge and gauge theory (D3 / eq:bridge-BH tags). -/
 
 /-- [P] Bekenstein–Hawking factor: with $G_N=\mu_3=1/2$, the area-law constant is
     $1/(4G_N)=1/2=\mu_3$. This is the constant of $S_{BH}=A/(4G_N)$; the area law
@@ -3388,8 +3356,8 @@ theorem framework_tower_eq_zeta (s : ℂ) (hs : 1 < s.re) :
     `prop:euler-product`). Not defined as Λ. -/
 noncomputable def framework_partition (s : ℂ) : ℂ := Gammaℝ s * framework_tower s
 
-/-- **[P] THEOREM — formerly a definition.** The framework partition IS the completed ζ.
-    It no longer follows by `rfl`: it is the product over places, and equals Λ because Mathlib
+/-- **[P] THEOREM.** The framework partition IS the completed ζ.
+    It is the product over places, and equals Λ because Mathlib
     defines `riemannZeta s = completedRiemannZeta s / Gammaℝ s`. -/
 theorem framework_partition_eq_completed_zeta (s : ℂ) (hs : 1 < s.re) :
     framework_partition s = completedRiemannZeta s := by
@@ -3521,7 +3489,7 @@ theorem minkowski_bound_lt_two : minkowskiBoundK < 2 := by
     contains an integral ideal of norm at most `M_K`, `hMink` — that ideal has norm a
     positive integer less than 2, hence norm 1, hence is the unit ideal. The bound and the
     integrality step are proved here; Minkowski is the classical entry. F₁ uses `h_K = 1` as
-    data and never derives it anywhere in the corpus. -/
+    data and does not derive it. -/
 theorem class_number_one_K (N : ℕ) (hN : 1 ≤ N)
     (hMink : (N : ℝ) ≤ minkowskiBoundK) : N = 1 := by
   by_contra h
@@ -3823,9 +3791,6 @@ theorem s_duality_exact (s : ℂ) (hs : 1 < s.re) :
     completedRiemannZeta (1 - s) = framework_partition s := by
   rw [completedRiemannZeta_one_sub, framework_partition_eq_completed_zeta s hs]
 
--- [D13 RESOLVED] `s_duality_self_dual_half` was a literal duplicate of
--- `s_duality_fixed_point_unique` (identical statement and proof). Deleted.
-
 /-! ### §2.8  The SELF-DUAL LINE (A1: G1, G2)
 
     `s_duality_fixed_point_unique` gives the POINT `s = ½` of ℂ. The paper's theorem
@@ -4019,9 +3984,7 @@ theorem extreme_case_is_binary (ρ : ℂ) (h : ρ.re ≠ PaperS2.facePhi) :
 
 /-- **[P] ARITY 2 ⟺ ARITY 0.**  The null-separation pair exists if and only if
     the Li modulus deviates: the angular and radial readings bound the
-    SAME event. **Individual and ensemble, as a theorem.**
-    Now WITHOUT hypothesis: `li_modulus_on_line` is proved (§2.11bis).
-    `ModulusOnLine` is deleted — it was `[C]` for something proved. -/
+    SAME event. **Individual and ensemble, as a theorem.** -/
 theorem binary_iff_radial (ρ : ℂ) (hρ : ρ ≠ 0) :
     (sdualMate ρ ≠ ρ) ↔ (‖1 - 1 / ρ‖ ≠ 1) := by
   simp only [sdualMate_fixed_iff, PaperS2.facePhi_apex, li_modulus_on_line ρ hρ,
@@ -4442,7 +4405,7 @@ def IsLieStructureConstants (f : Fin 8 → Fin 8 → Fin 8 → ℝ) : Prop :=
            trivially provable. `lake build` would NOT have caught it: the file was
            syntactically sound and the theory inconsistent. -/
 
-/-- [P] Colour Jacobi identity. Now a THEOREM: it follows from `f` being the structure-constant
+/-- [P] Colour Jacobi identity. It follows from `f` being the structure-constant
     tensor. It is what makes the local field F = dA + A∧A and the action tr F² well defined
     (the W4 field of §5.8). -/
 theorem colour_jacobi {f : Fin 8 → Fin 8 → Fin 8 → ℝ}
@@ -4718,7 +4681,7 @@ theorem theta_from_jacobi
     Theta (1 / 1) = Real.sqrt 1 * Theta 1 ∧ (∀ t : ℝ, 0 < t → (1 / t = t ↔ t = 1)) :=
   ⟨hJacobi 1 one_pos, theta_fixed_point_unique⟩
 
-/-! ### Ported from `PCF_OperatorConvergence.lean` so every paper tag resolves in this file -/
+/-! ### Operator convergence and spectral flow -/
 
 /-! ### `c_tendsto_two` — the spectral flow to the ultraviolet fixed point
 
@@ -5045,7 +5008,7 @@ theorem one_object (q : ℝ) (_hq : q ≠ 0) :
 /-! ═══════════════════════════════════════════════════════════════════════
     LANDAU–LIFSHITZ IN de SITTER (§4 thm:LL-energy, §5 thm:modular-LL)
     G_N = mu3 = 1/2 shared with the gravity sector above. `area`, `T_GH`, etc.
-    are horizon quantities (new; no clash with S_sat/V_cond of the tower).
+    are horizon quantities (distinct from S_sat/V_cond of the tower).
     ═══════════════════════════════════════════════════════════════════════ -/
 
 
@@ -5175,7 +5138,7 @@ noncomputable def scaleFlow (φ σ t : ℝ) : ℝ := Real.pi * φ^(σ+t:ℝ)
 /-- **[P] The scale flow is a pure dilation: S(σ+t) = φ^t · S(σ).** This is why the
     static-patch boost IS the tower scale flow — the ETS is one spacetime with a warp
     φ^σ, not a family of vacua, so Bisognano–Wichmann reduces to this identity (already
-    carried by `tower_scale_group`, `omega_flow_invariant` in the corpus). Hence the
+    carried by `tower_scale_group`, `omega_flow_invariant`). Hence the
     modular generator is the scale-flow generator, and by `modular_generator_is_tower`
     it equals S(σ) = the LL boundary charge. -/
 theorem scale_flow_is_dilation (φ σ t : ℝ) (hφ : 0 < φ) :
@@ -5358,7 +5321,7 @@ theorem tan_pi_quarter_eq_one : Real.tan (Real.pi / 4) = 1 := Real.tan_pi_div_fo
 
 /-! #### Note on registers: why this list is literal and not a generator
 
-    The same sequence appears in three corpus files in three different forms, and **that is not
+    The same sequence appears in three files in three different forms, and **that is not
     redundancy**: it is a fact read from the register that each tier demands.
 
     · Here, tier **[P]**: the statement closes with `decide`, so the sequence must be a
@@ -5633,8 +5596,8 @@ end CW5Additions
 
 /- ═══════════════════════════════════════════════════════════════════════════
    Face links (task A): the six connections the prose claims across sections,
-   each demonstrated with a discriminant — the identity holds at the corpus
-   value and fails off it.  Own namespace; nothing here is used elsewhere.
+   each demonstrated with a discriminant — the identity holds at the
+   framework value and fails off it. Own namespace; nothing here is used elsewhere.
    ═══════════════════════════════════════════════════════════════════════════ -/
 namespace CW5FaceLinks
 open Real PaperS2
@@ -5939,8 +5902,7 @@ theorem projectsTo_antisymm {A B : SpectralData}
 /-- d_H = log 3/log 2 (eq:hausdorff). -/
 noncomputable def hausdorff_dim : ℝ := Real.log 3 / Real.log 2
 
-/-- 2^{d_H} = 3: the Hausdorff dimension of the attractor from eq:hausdorff, proved
-    (formerly the ledger backed it with an external theorem). -/
+/-- 2^{d_H} = 3: the Hausdorff dimension of the attractor from eq:hausdorff. -/
 theorem two_pow_hausdorff : (2 : ℝ) ^ hausdorff_dim = 3 := by
   unfold hausdorff_dim
   have h2 : (0:ℝ) < Real.log 2 := Real.log_pos (by norm_num)
