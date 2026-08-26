@@ -110,13 +110,11 @@
 \newcommand{\tauF}{\tau_{F}}
 \newcommand{\epsz}{\varepsilon_{0}}
 \newcommand{\lng}{\lambda_{\log}}
-% Verification tags: \P{...} = formal proof (Lean), \N{...} = numerical check,
+% Verification tags: \Proof{...} = formal proof (Lean), \Numeric{...} = numerical check,
 % \Hyp{...} = hypothesis from literature, \Conj = proposed, \Open = open question.
-% Block form: right-aligned on own paragraph (for end of theorem/remark).
-% Inline form: just use the command mid-sentence.
-% Note: \P overrides the pilcrow sign but the paper never uses it.
-\newcommand{\P}[1]{{\footnotesize\textbf{P[#1]}}}
-\newcommand{\N}[1]{{\footnotesize\textbf{N[#1]}}}
+% Rendering: P[...], N[...], H[...] — compact in PDF, descriptive in source.
+\newcommand{\Proof}[1]{{\footnotesize\textbf{P[#1]}}}
+\newcommand{\Numeric}[1]{{\footnotesize\textbf{N[#1]}}}
 \newcommand{\Hyp}[1]{{\footnotesize\textbf{H[#1]}}}
 \newcommand{\Conj}{{\footnotesize\textbf{C}}}
 \newcommand{\Open}{{\footnotesize\textbf{O}}}

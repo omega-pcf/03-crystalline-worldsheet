@@ -2,8 +2,22 @@
   nodos (objetos tipo-teorema): 158
   aristas objeto->objeto:       217
   ecuaciones con dueño:         96
-  por tipo: {'definition': 12, 'lemma': 4, 'theorem': 33, 'proposition': 71, 'corollary': 5, 'remark': 32, 'assumption': 1}
-  aislados: 14   citas hacia adelante: 19   hacia atrás: 198
+  por tipo: {'definition': 12, 'lemma': 4, 'theorem': 33, 'proposition': 71, 'remark': 32, 'corollary': 5, 'assumption': 1}
+  aislados: 14   citas hacia adelante: 30   hacia atrás: 187
+
+  Verification tag distribution:
+    \P{} (Lean proof):     138
+    \N{} (numerical):      14
+    \Hyp{} (hypothesis):   19
+    \Conj (conjectured):     4
+    \Open (open):            1
+    untagged:                 14
+
+  File distribution:
+    02-methods.tex                                89
+    04-implications.tex                           56
+    03-derivations.tex                            11
+    appendix.tex                                  2
 
   El contraste que motiva esta herramienta: 96 ecuaciones se
   reparten en 158 objetos. Medir conexiones sobre las ecuaciones
