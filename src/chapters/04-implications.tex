@@ -174,7 +174,8 @@ latitude gives $SU(2)$; the Hopf fibre, $U(1)$; the weak mixing angle at
 unification is a ratio of mode counts, $\sin^2\theta_W|_{\rm GUT}=N(0)/N(2)=\tfrac38$, which runs
 to the measured $0.231$ at $M_Z$ through the MSSM $\beta$-functions
 (\S\ref{app:gauge}; \ProofWitness{gauge\_dim\_su3, hopf\_from\_clifford, weinberg\_angle\_gut}).
-\begin{figure}[!htbp]\centering\n\includegraphics[height=0.82\textheight,keepaspectratio]{fig6_cylinder_torus.pdf}
+\begin{figure}[!htbp]\centering
+\includegraphics[height=0.82\textheight,keepaspectratio]{fig6_cylinder_torus.pdf}
 \caption{From $\golden^{2}=\golden+1$: (a) the cylinder $C_0$ with $\mathrm{P,C,F}$ at $120^\circ$
 ($\|P\|\,\|C\|\,\|F\|=\tfrac12$) closes to (b) the torus $T^2_{\PCF}=\C/\Lambda$, $\tau=i$
 ($|z_1|^2+|z_2|^2=\tfrac14{+}\tfrac34=1$, the $S^3$ constraint), whose
@@ -479,7 +480,7 @@ so the cumulative back-reaction up to level $k$ is $\sum_{\sigma\le k}\Nmodes(\s
 $3,8,16,29,50,84,140$ for $k=0,\dots,6$. The gravitational side and the string side are here the
 same computation: \eqref{eq:israel} ties the extrinsic curvature to the shell tension, and
 \eqref{eq:shell-tension} ties that tension to the mode count, so what curves the geometry is the
-number of bits the level carries. \ProofWitness{backreaction\_cumulative} \NumericalWitness{eq:shell-tension}
+number of bits the level carries. \ProofWitnessBlock{backreaction\_cumulative} \NumericalWitnessBlock{eq:shell-tension}
 \end{remark}
 
 \noindent The cosmological constant is determined, not chosen:
@@ -646,7 +647,7 @@ $D=4$ worldsheet (conformal there).
 
 \begin{theorem}[The Landau--Lifshitz energy of the field]\label{thm:LL-energy}
 On the de~Sitter background \eqref{eq:ets-metric} with $\GN=\muthree=\tfrac12$, the Landau--Lifshitz complex $(-g)(T^{\mu\nu}+t_{\mathrm{LL}}^{\mu\nu})=\tfrac1{16\pi\GN}\partial_\alpha\partial_\beta H^{\mu\alpha\nu\beta}$ has vanishing energy density---its $00$ component is zero, the net energy of matter and field balancing, the classical face of the entanglement equilibrium $\delta S=0$ of Theorem~\ref{thm:obs-jacobson}---while its spatial components $-2H^{2}e^{4Ht}/\pi$ do not vanish, as de~Sitter is not static (the standard complex differs from the physical vacuum pressure by the $\Lambda$-term the pseudotensor requires for $\Lambda\neq0$). The gravitational energy is a definite boundary charge: the energy in the Hubble volume $\rho_\Lambda V_H=1/H=T_{\mathrm{GH}}\,S_{\mathrm{GH}}$ is the first law of de~Sitter, and the Komar/Landau--Lifshitz charge of the horizon $\kappa A/(8\pi\GN)$ gives the same $1/H$. The modulus $\muthree=\tfrac12$ is the ratio $T_{\mathrm{GH}}/T_{\mathrm{local}}$ of horizon and local temperatures. The gravitational field energy---absent from $\nabla^{A}T_{AB}=0$ (Proposition~\ref{prop:obs-matter})---is thus fixed, the energy conjugate to the tower entropy $S(\sigma)$ by the first law.
-(the vanishing-$00$ and spatial values are \NumericalWitness{eq:obs-landauer}, symbolic) \ProofWitness{dS\_first\_law, energy\_is\_inv\_H, komar\_first\_law, mu3\_temp\_ratio, LL\_spatial\_ne\_zero}
+(the vanishing-$00$ and spatial values are \NumericalWitnessBlock{eq:obs-landauer}, symbolic) \ProofWitnessBlock{dS\_first\_law, energy\_is\_inv\_H, komar\_first\_law, mu3\_temp\_ratio, LL\_spatial\_ne\_zero}
 \end{theorem}\begin{remark}[The G--$\Lambda$ interval: $\Lambda$ is determined, not selected]
 \label{rmk:GLambda-interval}
 The cosmological constant is not an input. The scale $\ell=1$ (from the
@@ -767,7 +768,8 @@ step determined its unknown. For the discrimination, $(n-1,n,2n)$ gives $a=1$, $
 the fractions are $1/(n+1)$ and $1/n$; these equal $\tfrac14$ and $\tfrac13$ iff $n=3$.
 \end{proof}
 
-\begin{figure}[!htbp]\centering\n\includegraphics[height=0.82\textheight,keepaspectratio]{fig1_alphas_uniqueness.pdf}
+\begin{figure}[!htbp]\centering
+\includegraphics[height=0.82\textheight,keepaspectratio]{fig1_alphas_uniqueness.pdf}
 \caption{(a) The spectral-angle surface $\sin\alpha(\sigma_1)\cos\alpha(\sigma_2)$ of
 \eqref{eq:spectral-surface}; $\tan\alpha(\sigma{+}1)/\tan\alpha(\sigma)=\golden$
 (\eqref{eq:spectral-angle}). The marked point $(2,3)$ gives
@@ -1165,7 +1167,7 @@ $\alpha's=n$, the Regge tower; the pole positions index $\sum_{n\ge1}n^{-s}=\zet
 $\displaystyle\lim_{\alpha'\to0^{+}}\alpha'\,B(\alpha's,\alpha't)=\tfrac1s+\tfrac1t=\Om(X)|_{n=4}$,
 and the amplitude admits two computations meeting at $\lvert\Om\rvert=\tfrac12$ and $\zeta$: a
 $2$D path integral (the $\pi$ side, $\Gamma(\tfrac12)=\sqrt\pi$) and a $3$D positive-geometry
-canonical form (the $\golden$ side). \ProofWitness{ft\_identity, ft\_limit, pentagon\_u\_eq\_golden}
+canonical form (the $\golden$ side). \ProofWitnessBlock{ft\_identity, ft\_limit, pentagon\_u\_eq\_golden}
 \end{proposition}
 
 \subsection{Second face: particle, graviton, matter}\label{ssec:particle}
@@ -1271,7 +1273,7 @@ $b_{\mathrm{SM}}+\Delta b$ & $-3$ & $1$ & $33/5$\\\hline
 The regular KP solitons~\cite{KodamaWilliams} $u=2(\log\tau)_{xx}$ correspond exactly to points of $\Grpos$ (total
 positivity $\Leftrightarrow\tau>0\Leftrightarrow$ regularity); their positroid profiles are the
 condensate profiles $D(\sigma)-1=\varepsilon_0\golden^{\sigma}$, so the confining monopoles are
-the bridges of \S\ref{ssec:susy}.  (Kodama--Williams enters as \HypWitness{\cite{KodamaWilliams}}) \ProofWitness{positroid\_from\_kp, bridge\_cocycle} \NumericalWitness{TODO}
+the bridges of \S\ref{ssec:susy}.  (Kodama--Williams enters as \HypWitness{\cite{KodamaWilliams}}) \ProofWitnessBlock{positroid\_from\_kp, bridge\_cocycle} \NumericalWitnessBlock{TODO}
 \end{proposition}
 
 \subsection{The gauge operators, AdS/CFT, and the mass gap}\label{ssec:operators}
@@ -1353,7 +1355,7 @@ The potential $A_\mu$ valued in $\su(3)=A_2$ (Proposition~\ref{prop:a2}) gives t
 $F=dA+A\wedge A$ and the action $S=\tfrac1{4}\int\operatorname{tr}F^2$; the Wilson lattice measure
 $e^{-S_W}$ on the $A_2$ lattice---the Eisenstein lattice $\Z[\omega]$ in which the eigenvalue
 triangle sits (\S\ref{ssec:construction})---is gauge-invariant and reflection-positive, and generates
-$T=e^{-aH}$. \ProofWitness{colour\_jacobi}
+$T=e^{-aH}$. \ProofWitnessBlock{colour\_jacobi}
 \end{proposition}
 
 \begin{table}[htb]\centering\footnotesize
@@ -1481,13 +1483,13 @@ it by the field operators, so their span is dense in the GNS space.
 \begin{remark}[Analyticity (OS0)]\label{rmk:os0}
 The Euclidean--Lorentzian passage is the internal Wick rotation $(it)^2=-t^2$, geometric (carried
 by the eigenvalue metric), not an external continuation; with the UV-finite worldsheet partition
-(\S\ref*{ssec:p-tower}) it is the analyticity/temperedness axiom. \ProofWitness{internal\_wick}
+(\S\ref*{ssec:p-tower}) it is the analyticity/temperedness axiom. \ProofWitnessBlock{internal\_wick}
 \end{remark}
 
 \begin{theorem}[The bulk--boundary isometry]\label{thm:isometry}
 The bulk--boundary map $V$, $V^{\dagger}V=\mathbf1$---its norm core proved in Lemma~\ref{lem:isometry}, its holographic content \eqref{eq:isometry} of \S\ref{ssec:adscft}---together with the GKPW dictionary~\cite{Maldacena98,GKP98,Witten98}
 $Z_{\mathrm{grav}}[\phi|_\partial]=\langle e^{\int_\partial\phi_0\mathcal O}\rangle$ and its isometric (quantum error-correcting) refinement~\cite{AlmheiriDongHarlow}, identifies the OS-reconstructed theory with the four-dimensional boundary
-gauge theory. \ProofWitness{bulkBoundary\_isometry}
+gauge theory. \ProofWitnessBlock{bulkBoundary\_isometry}
 \end{theorem}
 \begin{proof}
 $V^{\dagger}V=\mathbf1$ is Lemma~\ref{lem:isometry} (with \eqref{eq:isometry} of \S\ref{ssec:adscft}); an isometry preserves the inner product, so
@@ -1570,7 +1572,7 @@ The static patch is thermal at the Gibbons--Hawking temperature, and its modular
   \hat K_{\mathrm{mod}}=\frac{A}{4\GN}=S(\sigma)=\pi\golden^{\sigma}.
 \]
 Matching the horizon entropy to the tower fixes $H(\sigma)=\sqrt2\,\golden^{-\sigma/2}$: the horizon descends the tower as the colour gap of Proposition~\ref{prop:gap-faces}, another reading of $\golden^{-\sigma/2}$. The crossed product turning the type~III algebra into type~II~\cite{CLPW22} is generated by $\hat K_{\mathrm{mod}}+q$, with $q$ the observer's energy; its gravitational part is the Landau--Lifshitz charge. The generator that makes the observer's algebra tracial is the tower entropy.
-for the proved core---the modular flow is the tower's scale group, $\hat K_{\mathrm{mod}}=S(\sigma)$, and the descent $H(\sigma)\propto\golden^{-\sigma/2}$; \HypWitness{\cite{BisognanoWichmann75}} for the Bisognano--Wichmann/KMS identification and the CLPW crossed product, which enter as hypotheses. \ProofWitness{modular\_generator\_is\_entropy, modular\_generator\_is\_LL\_over\_T, modular\_generator\_is\_tower, scale\_flow\_is\_dilation, hubble\_descends\_tower}
+for the proved core---the modular flow is the tower's scale group, $\hat K_{\mathrm{mod}}=S(\sigma)$, and the descent $H(\sigma)\propto\golden^{-\sigma/2}$; \HypWitness{\cite{BisognanoWichmann75}} for the Bisognano--Wichmann/KMS identification and the CLPW crossed product, which enter as hypotheses. \ProofWitnessBlock{modular\_generator\_is\_entropy, modular\_generator\_is\_LL\_over\_T, modular\_generator\_is\_tower, scale\_flow\_is\_dilation, hubble\_descends\_tower}
 \end{theorem}
 
 \begin{theorem}[The colour scale and running are derived from $M$]\label{thm:colour-from-M}
@@ -1580,7 +1582,7 @@ The lepton scale $M$ and the framework scale $\Mpcf$ coincide, both fixed by $\v
 
 \begin{remark}[The two faces of $M$: dynamical and placement]\label{rmk:M-two-faces}
 The scale $M=\Mpcf$ of Theorem~\ref{thm:colour-from-M} is the \emph{dynamical} face, exact by the certainty relation. It has a \emph{placement} face in the tower: with the proton at $\sigma=5$, five worldsheet transitions of action $\pi$ above the electron at $\sigma=0$, $m_p/m_e=\lvert S_3\rvert\,\pi^5=6\pi^5=1836.12$ (experiment $1836.15$), whence $m_p/3=312.8$~MeV. Two of the three factors are formal---$\pi=5\arccos(\golden/2)$ (Proposition~\ref{prop:pi-bridge}) and $\lvert S_3\rvert=3!=6$ (Lemma~\ref{lem:s3-orders})---while the assignment of the proton to $\sigma=5$ and the comparison of $6\pi^5$ with the measured ratio (to $1.9\times10^{-5}$) are empirical: a confrontation with data, not a theorem.
-(data comparison only) \ProofWitness{M\_eq\_Mpcf}
+(data comparison only) \ProofWitnessBlock{M\_eq\_Mpcf}
 \end{remark}
 
 \begin{theorem}[One object, four registers]\label{thm:one-object}

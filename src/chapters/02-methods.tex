@@ -45,7 +45,7 @@ two analogous symmetries but one map, read on the orbit $\{\golden,\bar\golden\}
 
 Finally we record, without reproving it, the identity established at \eqref{eq:bridge}:
 $\golden^{\lng}=2$ with $\lng=\log_{\golden}2$. It is the only result of \S\ref{sec:intro} that
-the present section consumes. \ProofWitness{mersenne\_bridge}
+the present section consumes. \ProofWitnessBlock{mersenne\_bridge}
 
 \begin{proposition}[The bridge anchors from outside the lattice]\label{prop:anchor-exterior}
 The exponent $\lng$ is not reachable by descent on the lattice of integer exponents. For no integer
@@ -69,7 +69,7 @@ The constant $\mu=\tfrac12$ arises from three independent origins on the generat
 $x=1-x$), and an arithmetic branch (the Galois pair of $K$). These are the seeds.
 
 \begin{theorem}[Pentagonal identity]\label{thm:pentagon-id}
-$\golden=2\cos(\pi/5)$. \ProofWitness{phi\_eq\_two\_cos\_pi\_fifth}
+$\golden=2\cos(\pi/5)$. \ProofWitnessBlock{phi\_eq\_two\_cos\_pi\_fifth}
 \end{theorem}
 \medskip
 \begin{proof}
@@ -143,7 +143,7 @@ $a+\pi>0$, hence again $a=\pi$. The three conditions are distinct and coincide.
 
 \begin{proposition}[$\golden$-branch: the involution and its unique fixed point]\label{prop:phi-branch}
 $\mu=\tfrac12$ is the \emph{unique} fixed point of $x\mapsto1-x$: for real $x$, $x=1-x$ if and
-only if $x=\tfrac12$. \ProofWitness{faceInv\_apex}
+only if $x=\tfrac12$. \ProofWitnessBlock{faceInv\_apex}
 \end{proposition}
 
 \begin{proposition}[Arithmetic branch: the midpoint of the Galois pair]\label{prop:galois-seed}
@@ -166,7 +166,7 @@ the Lawvere--Yanofsky diagonal is contracted (not prohibited).
 
 \begin{definition}[Distributed self-reference]\label{def:dsr}
 A recurrence of depth $k$ is \emph{distributed} when $k\ge 2$ (no component
-depends directly on itself). \ProofWitness{DistributedSelfReference}
+depends directly on itself). \ProofWitnessBlock{DistributedSelfReference}
 \end{definition}
 
 \begin{theorem}[Fibonacci minimality]\label{thm:fib-min}
@@ -206,7 +206,7 @@ The two differ by integrality: $\golden$ is a root of the \emph{monic} $x^{2}-x-
 algebraic integer and lies in $\OK$, whereas $\tfrac12$ is a root of $2x-1$, which is not monic.
 $\Rpcf$ therefore adjoins to $\OK$ an element that is not an algebraic integer, namely
 $\tfrac12$; the modulus that the tripartite operator will carry is that same $\tfrac12$, a unit
-of $\Rpcf$ and not of $\OK$. \ProofWitness{phi\_is\_algebraic\_integer, half\_not\_algebraic\_integer}
+of $\Rpcf$ and not of $\OK$. \ProofWitnessBlock{phi\_is\_algebraic\_integer, half\_not\_algebraic\_integer}
 
 \end{proposition}
 
@@ -220,7 +220,7 @@ $R_K$ is the regulator of $K$ in the arithmetic sense---not the ultraviolet regu
 \S\ref{ssec:p-tower}---and $T$ is the period of the torus constructed below in this subsection.
 Both are named here
 because $\varepsilon_0=\ln\golden/(6\sqrt3)$ is derived below out of $\ln\golden$, and the reader
-should have the invariant named before it is used. \ProofWitness{regulator\_K\_pos, period\_eq\_two\_pi\_regulator}
+should have the invariant named before it is used. \ProofWitnessBlock{regulator\_K\_pos, period\_eq\_two\_pi\_regulator}
 
 \end{definition}
 
@@ -289,7 +289,7 @@ $V_k=v_k/\lVert v\rVert$. Then
   \sum_{k=0}^{2}\lVert V_k\rVert^2=1,
 \end{equation}
 so the column map $V\colon\C\to\C^3$, $z\mapsto(V_0,V_1,V_2)\,z$, is norm preserving:
-$V^{\dagger}V=\mathbf1$. \ProofWitness{bulkBoundary\_isometry}
+$V^{\dagger}V=\mathbf1$. \ProofWitnessBlock{bulkBoundary\_isometry}
 \end{lemma}
 \begin{proof}
 Each $|v_k|=\tfrac12$ (Proposition~\ref{prop:pcf-norms}), so $\lVert v\rVert^2=3\cdot\tfrac14=\tfrac34$
@@ -326,7 +326,7 @@ same equilateral triangle---the half-angle between adjacent eigenvalues $\lambda
 already used as the normalising angle in Proposition~\ref{prop:angle}, where
 $\sigma=\zeta(2)/(\pi/3)^2$ and $\cos(\pi/3)=\mu$. So \eqref{eq:projpcf} is not a fitted form: it is
 ``ratio, projected on $P$, in units of $\pi/3$'', and both constants come from
-\eqref{eq:norms-derived}. \ProofWitness{M7\_oplus\_formula}
+\eqref{eq:norms-derived}. \ProofWitnessBlock{M7\_oplus\_formula}
 \end{remark}
 
 \begin{proposition}[Fibonacci sum as projection]\label{prop:oplus}
@@ -452,7 +452,7 @@ $\Rpcf$ on the torus:
 with $d=3$ the arity of \S\ref{ssec:arity}, $\mu=\tfrac12$ the modulus, $\lVert P\rVert=1/\sqrt3$
 the projection norm and $\lVert v\rVert=\sqrt3/2$ the norm by which Lemma~\ref{lem:isometry}
 divides the eigenvalue triad to make $V^{\dagger}V=\mathbf1$, and $\ln\golden$ the logarithmic rate
-of the generator of \eqref{eq:base}. \ProofWitness{M\_PCF\_eq\_pi\_div\_eps0}
+of the generator of \eqref{eq:base}. \ProofWitnessBlock{M\_PCF\_eq\_pi\_div\_eps0}
 %
 \ProofWitnessBlock{M8\_epsilon0\_from\_projection, bulkBoundary\_isometry}%
 \end{proposition}
@@ -584,7 +584,7 @@ that makes the classification of the primes effective.
 \end{equation}
 
 \begin{proposition}[Mediated Mersenne]\label{prop:mersenne-med}
-$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \ProofWitness{M12\_mersenne\_mediated}
+$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \ProofWitnessBlock{M12\_mersenne\_mediated}
 \end{proposition}
 
 \begin{definition}[The quadratic character]\label{def:chi5}
@@ -592,7 +592,7 @@ $\chi_5$ is the Legendre symbol $\bigl(\tfrac{\cdot}{5}\bigr)$ on $\Z/5\Z$:
 \begin{equation}\label{eq:chi5-values}
   \chi_5(0)=0,\qquad \chi_5(1)=\chi_5(4)=+1,\qquad \chi_5(2)=\chi_5(3)=-1,
 \end{equation}
-multiplicative on $(\Z/5\Z)^{\times}$, with $\sum_{a=0}^{4}\chi_5(a)=0$. \ProofWitness{chi5, chi5\_even, chi5\_mul\_on\_units, chi5\_sum\_zero}
+multiplicative on $(\Z/5\Z)^{\times}$, with $\sum_{a=0}^{4}\chi_5(a)=0$. \ProofWitnessBlock{chi5, chi5\_even, chi5\_mul\_on\_units, chi5\_sum\_zero}
 
 \end{definition}
 
@@ -623,7 +623,7 @@ $\golden,\golden^{-1},\golden^{-1},\golden$ against $\chi_5=+1,-1,-1,+1$.
 The whole content is $\sin2x=2\sin x\cos x$: with $\sin(3\pi/5)=\sin(2\pi/5)$ and
 $\sin(4\pi/5)=\sin(\pi/5)$ the sum collapses to $2\log\bigl(\sin(\pi/5)/\sin(2\pi/5)\bigr)$, and
 $\sin(2\pi/5)/\sin(\pi/5)=2\cos(\pi/5)=\golden$. So the sine reads the same character the cosine
-read in \eqref{eq:chi5-pentagon}, and $\golden$ is the value in both. \ProofWitness{sin\_ratio\_eq\_two\_cos, pentagon\_log\_signature}
+read in \eqref{eq:chi5-pentagon}, and $\golden$ is the value in both. \ProofWitnessBlock{sin\_ratio\_eq\_two\_cos, pentagon\_log\_signature}
 
 \end{proposition}
 
@@ -637,7 +637,7 @@ $q\equiv1,9,11,19$, $\chi_5(q)=-1$ (inert) for $q\equiv3,7,13,17$, and $\chi_5(5
 $5$ being the only ramified prime by $\Delta_K=5$ \eqref{eq:trace-norm}. This is what makes
 $\chi_5$ an \emph{effective} classification of the primes of $\Q(\sqrt5)$: the class of $q$ is
 computed from the Fibonacci sequence of \eqref{eq:additive-mult}, without factoring anything in
-$\OK$.  for the thirteen primes decided in Lean and the twenty-three verified numerically; \ProofWitness{mersenne\_bridge, phi\_pow\_fib}
+$\OK$.  for the thirteen primes decided in Lean and the twenty-three verified numerically; \ProofWitnessBlock{mersenne\_bridge, phi\_pow\_fib}
 the general congruence for every $q\neq2,5$ is Lucas' and enters as \HypWitness{\cite{Lucas1878}}
 \end{proposition}
 
@@ -660,7 +660,7 @@ on $n$ gives
 of which the additive spectrum \eqref{eq:additive-mult} is the case $\alpha=\golden$.
 Nothing of $\R$ or of $\sqrt5$ enters: only the quadratic relation and the recurrence. This is
 why the same coordinates govern the tower in $\Rpcf$, in $\OK$, and modulo $q$---which is what
-Proposition~\ref{prop:fib-criterion} exploits. \ProofWitness{binet\_general, phi\_pow\_fib}
+Proposition~\ref{prop:fib-criterion} exploits. \ProofWitnessBlock{binet\_general, phi\_pow\_fib}
 \end{definition}
 
 \begin{definition}[Frobenius lift on the golden monoid]\label{def:frobenius}
@@ -671,7 +671,7 @@ For each prime $p$ define
   \qquad\text{so}\qquad
   \psi_p(\golden)=\golden^{\,p}=F_p\,\golden+F_{p-1}
 \end{equation}
-by \eqref{eq:binet}. \ProofWitness{psiGolden, psi\_on\_powers, psi\_golden\_fib}
+by \eqref{eq:binet}. \ProofWitnessBlock{psiGolden, psi\_on\_powers, psi\_golden\_fib}
 \end{definition}
 
 \begin{remark}[Two maps, one symbol]\label{rmk:psi-two}
@@ -719,7 +719,7 @@ L(1,\chi_5)=\frac{2\log\golden}{\sqrt5}.
 \ProofWitnessBlock{eq:local-dedekind}%
 
 \begin{theorem}[Basel value]\label{thm:basel}
-$\zeta(2)=\pi^2/6$ (Euler). \ProofWitness{M14\_basel}
+$\zeta(2)=\pi^2/6$ (Euler). \ProofWitnessBlock{M14\_basel}
 \end{theorem}
 
 \begin{theorem}[General even zeta value (Euler)]\label{thm:even-zeta}
@@ -728,7 +728,7 @@ For every integer $k\ge1$,
 \zeta(2k)=(-1)^{k+1}\frac{B_{2k}\,(2\pi)^{2k}}{2\,(2k)!},
 \end{equation}
 with $B_{2k}$ the Bernoulli numbers; $k=1$ recovers $\zeta(2)=\pi^2/6$
-(Theorem~\ref{thm:basel}). \ProofWitness{even\_zeta\_bernoulli} \NumericalWitness{thm:basel}
+(Theorem~\ref{thm:basel}). \ProofWitnessBlock{even\_zeta\_bernoulli} \NumericalWitnessBlock{thm:basel}
 \end{theorem}
 \begin{proof}
 Euler's cotangent expansion
@@ -752,7 +752,7 @@ For $\Re s>1$,
 \begin{equation}\label{eq:euler-product}
   \sum_{n\ge1}n^{-s}=\zeta(s)=\prod_{p}\big(1-p^{-s}\big)^{-1},
 \end{equation}
-by unique factorisation in $\Z$. \ProofWitness{regge\_dirichlet\_eq\_zeta, regge\_tower\_is\_euler\_product}
+by unique factorisation in $\Z$. \ProofWitnessBlock{regge\_dirichlet\_eq\_zeta, regge\_tower\_is\_euler\_product}
 
 \end{proposition}
 
@@ -764,7 +764,7 @@ by unique factorisation in $\Z$. \ProofWitness{regge\_dirichlet\_eq\_zeta, regge
 \end{equation}
 the sum over integral ideals of $\OK=\Z[\golden]$ \eqref{eq:OK-vs-Rpcf} and the product over prime
 ideals, $N$ the absolute norm. This is the object \eqref{eq:dedekind} factorises; it is defined
-here rather than assumed. \ProofWitness{idealNormK, idealEulerK, euler\_from\_ideals\_K}
+here rather than assumed. \ProofWitnessBlock{idealNormK, idealEulerK, euler\_from\_ideals\_K}
 
 \end{definition}
 
