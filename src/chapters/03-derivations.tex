@@ -5,7 +5,7 @@ presents one demonstrative line: the object generates a tower, and the tower gen
 the duality web. The line runs in the order $3.1\to3.2\to3.3\to3.4\to3.5$, summarised as a
 $20$-step spine at the end (\S\ref{ssec:spine}). The node that stitches \S\ref{sec:methods}
 to here is the function $\Gamma$; every quantitative statement below is verified numerically
-in \texttt{CW6\_complete\_verify\_v2.py} (\S\ref{ssec:status}), at $25$-digit precision where
+in the pytest suite \texttt{tests/} (\S\ref{ssec:status}), at $25$-digit precision where
 the identity requires it.
 
 % --- 3.1 ---
@@ -161,7 +161,7 @@ The holographic principle is read off the invariants, not assumed:
   \item and $1/(4\GN)=\mu=\tfrac12$ turns $\SBH=A/(4\GN)$ into the area law.
 \end{enumerate}
 Hence information $=$ one bit per Planck area (the holographic bound), read from the invariants.
-(Verified in \texttt{CW6\_complete\_verify\_v2.py}: $H(\tfrac12)=1$, $c=3$, $\GN=\tfrac12$.)
+(Verified in \texttt{tests/test\_gravity.py}: $H(\tfrac12)=1$, $c=3$, $\GN=\tfrac12$.)
 
 This is the holographic bound that Susskind, following 't~Hooft, drew from unproven
 assumptions about the nonperturbative behaviour of string theory: one discrete degree of
@@ -339,7 +339,7 @@ chain of HS.
         while the assignment of loop order to colour and generations remains structural;
   \item the modes at each level are $\Nmodes(\sigma)=\lfloor\pi\golden^{\sigma}\rfloor$ \eqref{eq:tower-modes}.
 \end{enumerate}
-(Verified in \texttt{CW6\_complete\_verify\_v2.py}: $\Gamma(\tfrac12)^{2}=\pi$, Regge poles,
+(Verified in \texttt{tests/test\_core\_identities.py} and \texttt{tests/test\_tower.py}: $\Gamma(\tfrac12)^{2}=\pi$, Regge poles,
 $\zeta(2)=$ Euler product, $\Zpcf(i)$, $\Nmodes$.)
 
 \paragraph{Thread (the two ultraviolet regulators coexist).}
@@ -466,7 +466,7 @@ invariants.
   \item hence GKPW~\cite{GKP98,Witten98} and Ryu--Takayanagi~\cite{RyuTakayanagi06} are consequences of the isometric embedding of the microstate.
 \end{enumerate}
 Thus the entire AdS/CFT correspondence comes from one microstate, not an ensemble. (Verified in
-\texttt{CW6\_complete\_verify\_v2.py}: $|\Om|_{\sigma}=\tfrac12\ \forall\sigma$,
+\texttt{tests/test\_core\_identities.py}: $|\Om|_{\sigma}=\tfrac12\ \forall\sigma$,
 $\mathrm{GKP}=\tfrac34$, $\SBH=\mu$, $c=3$.)
 
 Maldacena left the AdS boundary conditions unspecified---``we leave this interesting problem
@@ -561,7 +561,7 @@ five string theories) is neither used nor needed here.
 Thus microstate $\to$ tower $\to$ web (HS and per-level AdS/CFT). The quantitative pieces
 ($\golden\to-1/\golden$, the swampland constant $\ln\golden$ (the regulator $R_K$,
 Definition~\ref{def:regulator}), the T-self-dual radius, and the
-shared HS/Maldacena signature) are checked numerically in \texttt{CW6\_complete\_verify\_v2.py}
+shared HS/Maldacena signature) are checked numerically in \texttt{tests/test\_gravity.py}
 and formally in \texttt{CW6\_complete\_v2.lean} (\S\ref{ssec:status}); the framework colimit
 itself---the five frameworks and the PCF core as partial spectral objects, the cocone into the
 vertex $T_{\PCF}$, and its universal property---is proved in the same file

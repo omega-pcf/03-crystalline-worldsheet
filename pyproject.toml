@@ -1,6 +1,6 @@
 [project]
 name = "03-crystalline-worldsheet"
-version = "1.0.9"
+version = "1.1.0"
 description = "The Crystalline Worldsheet: A String Theoretical Framework based on F₁ for the de Sitter observer problem"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -10,4 +10,24 @@ dependencies = [
     "numpy>=1.26.0",
     "scipy>=1.11.0",
     "sympy>=1.12.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0",
+    "hypothesis>=6.100",
+    "rich>=13.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests/src"]
+addopts = "-v --tb=short -p no:cacheprovider"
+markers = [
+    "slow: marks tests that take >5s (deselect with '-m \"not slow\"')",
+    "symbolic: tests using sympy symbolic computation",
+    "numerical: tests using mpmath high-precision arithmetic",
+    "gauge: gauge sector tests (Weinberg, MSSM, unification)",
+    "gravity: gravity sector tests (Einstein, de Sitter, LL energy)",
+    "places: product-over-places tests (Archimedean, Euler, Dedekind)",
 ]
