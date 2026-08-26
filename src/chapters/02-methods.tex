@@ -1362,13 +1362,22 @@ ordinates unfolded by the unit of \S\ref{ssec:spacings}:
   \forall\,\rho\neq\tau\in Z:\quad \lvert\Im\tau-\Im\rho\rvert\ \geq\ m .
 \end{equation}
 This is \emph{level repulsion}: the suppression of small spacings that GUE statistics describe and
-Poisson statistics do not. It is measured, not proved \tier{N}: over $237$ unfolded spacings with
-$\gamma\leq329.30$ the minimum is $0.2307$; none falls below $0.10$, where independence would put
-several; the fit to GUE against Poisson favours GUE by a factor $7.6$; and the unfolded mean is
-$1.0073$ with the proper conductor against $0.8899$ with a foreign one---which is
-Proposition~\ref{prop:scale} showing in the data. Only the \emph{sign} of $m$ enters anything below.
+Poisson statistics do not. It is measured, not proved \tier{N}: over the $237$ spacings of $\gamma_1=14.13$ to
+$\gamma_{238}=453.99$, unfolded by the unit of \S\ref{ssec:spacings}, the minimum is $0.2911$ and
+none falls below $0.25$, let alone $0.10$, where independence would put $22.6$ and the Gaussian
+ensemble $0.25$. The unfolded mean is $0.9979$ with $\zeta$'s own conductor $q=1$ against $1.8828$
+with the foreign $q=20$, and every other conductor breaks it as well ($q{=}2\colon1.2026$,
+$q{=}5\colon1.4733$)---which is Proposition~\ref{prop:scale} showing in the data: the scale is
+injective in $q$, so the ordinates identify which conductor belongs to which $L$-function.
+Only the \emph{sign} of $m$ enters anything below.
 \Lean{Repulsion}
 \end{definition}
+
+\begin{figure}[htb]\centering
+\includegraphics[width=\linewidth]{fig7_spacing_histogram.pdf}
+\caption{Level repulsion in $\zeta$ zeros (Def.~\ref{def:repulsion}): (a) histogram of $237$ unfolded spacings ($\gamma_1{=}14.13$ to $\gamma_{238}{=}453.99$) against the GUE Wigner surmise and the Poisson exponential; (b) zoom on the repulsion region, with $\delta_{\min}{=}0.2911$ marked. The shaded zone $u{<}\delta_{\min}$ is where GUE suppresses spacings that Poisson permits.}
+\label{fig:spacing-histogram}
+\end{figure}
 
 \begin{proposition}[Repulsion excludes the extreme case]\label{prop:repulsion-excludes}
 If $Z$ repels at some $m>0$ then no two distinct elements share an ordinate; and since off the line
@@ -1432,6 +1441,12 @@ suppression of small spacings that Definition~\ref{def:repulsion} measures, and 
 large $u$, which is decorrelation. Nothing below uses it. \tier{C}
 \Lean{sineKernel, sineKernel\_at\_nonzero\_integer}
 \end{definition}
+
+\begin{figure}[htb]\centering
+\includegraphics[width=\linewidth]{fig8_sine_kernel.pdf}
+\caption{The GUE pair-correlation kernel $K(u)=1-(\sin\pi u/\pi u)^{2}$ of Def.~\ref{def:pair-correlation}. The red point at $K(0){=}0$ is level repulsion---the suppression of small spacings that Def.~\ref{def:repulsion} measures. Blue points mark $K(n){=}0$ for $n\in\Z\setminus\{0\}$ (no long-range correlation). The kernel tends to $1$ for large $u$ (decorrelation).}
+\label{fig:sine-kernel}
+\end{figure}
 
 \begin{remark}[Envelope yes, fluctuations no]\label{rmk:envelope-not-fluctuations}
 The ensemble stands on a distinction between the smooth spectral density and the fluctuations

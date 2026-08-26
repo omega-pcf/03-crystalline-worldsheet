@@ -27,6 +27,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 import CW3_all_figures  # noqa: E402
+import CW3_gue_figures  # noqa: E402
 
 GENERATORS = [
     ("fig1_alphas_uniqueness", CW3_all_figures.make_fig1),
@@ -35,6 +36,8 @@ GENERATORS = [
     ("fig4_top_down", CW3_all_figures.make_fig4),
     ("fig5_three_panel", CW3_all_figures.make_fig5),
     ("fig6_cylinder_torus", CW3_all_figures.make_fig6),
+    ("fig7_spacing_histogram", CW3_gue_figures.make_fig7),
+    ("fig8_sine_kernel", CW3_gue_figures.make_fig8),
 ]
 
 

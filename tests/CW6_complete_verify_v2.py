@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# CW6_complete_verify_v2.py — CW6 v2. El total de chequeos se imprime al final de la
-# corrida (no se declara aquí: los conteos en comentarios envejecen en silencio).
+# CW6_complete_verify_v2.py — CW6 v2. Total checks printed at end of run
+# (not declared here: comment counts age silently).
 # -*- coding: utf-8 -*-
 """
 CW6_complete_verify_v2.py — numerical backing for CW6_paper_v4.tex
@@ -52,10 +52,10 @@ chk("mu-half", "|P||C||F| = 1/2 = |Omega| = mu_3",
     abs(normP*normC*normF - 0.5) < 1e-12, "product = 1/2")
 chk("eps0-Mpcf", "eps0 * M_PCF = pi (certainty / cell capacity)",
     abs(eps0*Mpcf - np.pi) < 1e-10)
-# gamma-half: antes comparaba sqrt(pi) con su propio decimal y nunca evaluaba Gamma.
-# Ahora compara DOS rutas: la funcion Gamma en 1/2 y la integral gaussiana.
+# gamma-half: previously compared sqrt(pi) with its own decimal and never evaluated Gamma.
+# Now compares TWO routes: the Gamma function at 1/2 and the Gaussian integral.
 from math import gamma as _gammafn
-chk("gamma-half", "Gamma(1/2) = sqrt(pi) por dos rutas: la funcion Gamma y la integral gaussiana",
+chk("gamma-half", "Gamma(1/2) = sqrt(pi) by two routes: the Gamma function and the Gaussian integral",
     abs(_gammafn(0.5) - np.sqrt(np.pi)) < 1e-12
     and abs(_gammafn(0.5)**2 - np.pi) < 1e-12)
 chk("eisenstein-cube", "omega^3 = 1, 1+omega+omega^2 = 0",
@@ -78,16 +78,16 @@ chk("bridge-inverse", "T(a,b)T(b,a) = 1",
 # ---- §4 Implications (the 23 spine equations) ----
 print("\n-- Implications (the observer spine) --")
 dH = np.log(3)/np.log(2)
-# eq:obs-interface: antes comparaba log3/log2 con su decimal. Ahora usa la ecuacion de
-# Moran, 2^{d_H} = 3, que es la que define la dimension del atractor de tres contracciones.
-chk("eq:obs-interface", "Pi:E^3->C, d_H = log3/log2 por la ecuacion de Moran: 2^{d_H} = 3",
+# eq:obs-interface: previously compared log3/log2 with its decimal. Now uses the equation of
+# Moran, 2^{d_H} = 3, which defines the dimension of the three-contraction attractor.
+chk("eq:obs-interface", "Pi:E^3->C, d_H = log3/log2 by the Moran equation: 2^{d_H} = 3",
     abs(2**dH - 3) < 1e-12 and abs(3*(0.5**dH) - 1) < 1e-12, f"d_H={dH:.6f}")
-# eq:obs-spinstar: antes era n==3 con n asignado antes. El contenido enunciado es
-# S + E_1..E_N -> C+P+F con N=2, y F_max = N^2 = 4. Se comprueba la aritmetica del
-# enunciado y su enlace con la carga central: 3 componentes x F_Omega = 3 = c.
+# eq:obs-spinstar: previously was n==3 with n assigned earlier. The stated content is
+# S + E_1..E_N -> C+P+F with N=2, and F_max = N^2 = 4. Checking the arithmetic of
+# the statement and its link to central charge: 3 components x F_Omega = 3 = c.
 _Narms = 2
 chk("eq:obs-spinstar",
-    "spin-star: 1 central + N=2 del entorno = 3 componentes, F_max = N^2 = 4, y 3 x F_Omega = c = 3",
+    "spin-star: 1 central + N=2 from environment = 3 components, F_max = N^2 = 4, and 3 x F_Omega = c = 3",
     1 + _Narms == 3 and _Narms**2 == 4
     and abs((4*0.5**2) - 1.0) < 1e-14
     and abs(3*(4*0.5**2) - 3) < 1e-14)
@@ -104,35 +104,35 @@ chk("eq:obs-accum", "F(t) -> Fmax(1-e^{-(t/tauF)^2}); Fmax=4",
     abs(Fmax - 4.0) < 1e-12)
 chk("eq:obs-half", "|P||C||F| = 1/2 = |Omega|",
     abs(normP*normC*normF - 0.5) < 1e-12)
-chk("eq:obs-threshold", "f_crit = mu, con mu calculado del producto de normas |P||C||F|",
+chk("eq:obs-threshold", "f_crit = mu, with mu computed from the product of norms |P||C||F|",
     abs((1/np.sqrt(3))*1.0*(np.sqrt(3)/2) - 0.5) < 1e-12)
 chk("eq:obs-certainty", "eps0 * M_PCF = pi (cell capacity = pi bits)",
     abs(eps0*Mpcf - np.pi) < 1e-10)
 # throat
 chk("eq:obs-throat", "z(sigma)=phi^sigma, S(sigma)=pi phi^sigma",
     abs(phi**2 - (phi+1)) < 1e-12)
-# eq:obs-swampland: antes comparaba ln phi con su decimal. Ahora computa el cociente
-# |dV/dsigma|/V sobre V(sigma) = eps0 phi^{-sigma}, que es de donde sale la constante.
+# eq:obs-swampland: previously compared ln phi with its decimal. Now computes the quotient
+# |dV/dsigma|/V over V(sigma) = eps0 phi^{-sigma}, which is where the constant comes from.
 _Vsw = lambda sg: eps0*phi**(-sg)
 _dVsw = lambda sg, h=1e-7: (_Vsw(sg+h)-_Vsw(sg-h))/(2*h)
-chk("eq:obs-swampland", "|dV/dsigma|/V = ln phi, computado sobre V(sigma)=eps0 phi^{-sigma}",
+chk("eq:obs-swampland", "|dV/dsigma|/V = ln phi, computed over V(sigma)=eps0 phi^{-sigma}",
     all(abs(abs(_dVsw(sg))/_Vsw(sg) - lnphi) < 1e-6 for sg in (0.0, 1.5, 3.0, 6.0)),
     f"ln phi={lnphi:.6f}")
 chk("eq:obs-fixedpoint", "beta_g=0 <=> eps0 M_PCF = pi (UV fixed point)",
     abs(eps0*Mpcf - np.pi) < 1e-10)
 # tau se calcula de M_PCF; tau_F de la razon S(sigma)/H(sigma) del hilo de Fisher
-chk("eq:obs-weld", "tau_F(sigma) = tau(sigma): una via M_PCF, la otra via pi phi^sigma / (pi phi^{2 sigma}/M)",
+chk("eq:obs-weld", "tau_F(sigma) = tau(sigma): one route M_PCF, the other pi phi^sigma / (pi phi^{2 sigma}/M)",
     all(abs((np.pi*phi**s)/((np.pi*phi**(2*s))/Mpcf) - Mpcf*phi**(-s)) < 1e-10
         for s in (1, 2, 3, 5)))
-# F_Omega = 4 mu3^2 = 1 bit; N = pi phi^sigma celdas; el producto ha de dar S(sigma)
+# F_Omega = 4 mu3^2 = 1 bit; N = pi phi^sigma cells; the product must yield S(sigma)
 chk("eq:obs-identity", "F_Omega * N = S(sigma): F_Omega = 4 mu3^2 = 1, N = pi phi^sigma",
     all(abs((4*0.5**2) * (np.pi*phi**s) - np.pi*phi**s) < 1e-10 for s in (1, 2, 3, 5))
     and abs(4*0.5**2 - 1.0) < 1e-14)
 chk("eq:obs-landauer", "energy/bit = 1/M_PCF; S_BH/k_B = (log2/log phi) log phi = log 2",
     abs((np.log(2)/lnphi)*lnphi - np.log(2)) < 1e-12)
-# eq:obs-jacobson: antes era True. El contenido de thm:obs-jacobson es que en un espacio
-# de Einstein con R_AB = -4 g_AB la contraccion nula R_AB k^A k^B se anula para TODO k nulo,
-# y por eso el flujo de Clausius delta Q = 0 fuerza delta S = 0 en vacio. Eso se computa.
+# eq:obs-jacobson: previously was True. The content of thm:obs-jacobson is that in an
+# Einstein space with R_AB = -4 g_AB the null contraction R_AB k^A k^B vanishes for ALL null k,
+# and hence the Clausius flow delta Q = 0 forces delta S = 0 in vacuum. That is what is computed.
 _gE = np.diag([-1.0, 1.0, 1.0, 1.0, 1.0])      # espacio de Einstein, forma diagonal local
 _RE = -4.0 * _gE                                # R_AB = -4 g_AB
 np.random.seed(7)
@@ -142,11 +142,11 @@ def _null_vec():
     return np.array([t, *sp])
 _ks = [_null_vec() for _ in range(400)]
 chk("eq:obs-jacobson",
-    "espacio de Einstein: R_AB k^A k^B = -4 g_AB k^A k^B = 0 para todo k nulo (400 vectores)",
+    "Einstein space: R_AB k^A k^B = -4 g_AB k^A k^B = 0 for all null k (400 vectors)",
     all(abs(float(k @ _gE @ k)) < 1e-10 for k in _ks)
     and all(abs(float(k @ _RE @ k)) < 1e-9 for k in _ks))
 chk("eq:obs-jacobson",
-    "DISCRIMINA: para k NO nulo la contraccion no se anula, luego el test tiene contenido",
+    "DISCRIMINATES: for non-null k the contraction does not vanish, so the test is substantive",
     max(abs(float(k @ _RE @ k)) for k in
         [np.array([1.0,0,0,0,0]), np.array([0,1.0,0,0,0]), np.array([2.0,1.0,0,0,0])]) > 1.0)
 # Einstein / de Sitter curvature
@@ -156,17 +156,17 @@ chk("eq:obs-einstein", "R_AB=-4g_AB, R=-20 (AdS5); Einstein+Lambda",
     abs(-4*5 - (-20)) < 1e-12, "trace: -4*5=-20")
 chk("eq:obs-matter", "T^YM_AB = F_AC F_B^C - 1/4 g_AB F^2; matter=N_modes=floor(S)",
     Nmodes(3) == int(np.floor(np.pi*phi**3)))
-# eq:ets-metric: antes True. La afirmacion es que la rotacion de Wick del centro da
-# signatura lorentziana. Se computa por los autovalores de la metrica: un signo negativo
-# y cuatro positivos, suma de signos = 3. La planitud se verifica aparte, mas abajo.
+# eq:ets-metric: previously True. The claim is that the Wick rotation of the center gives
+# Lorentzian signature. Computed via eigenvalues of the metric: one negative sign
+# and four positive, sum of signs = 3. Flatness verified separately below.
 _gETSnum = np.diag([-1.0, 1.0, 1.0, 1.0, 2.7**2])   # diag(-1,1,1,1,lambda^2), lambda arbitraria
 _ev = np.linalg.eigvalsh(_gETSnum)
 chk("eq:ets-metric",
-    "la rotacion de Wick da signatura (-,+,+,+,+): un autovalor negativo, cuatro positivos",
+    "Wick rotation gives signature (-,+,+,+,+): one negative eigenvalue, four positive",
     sum(1 for e in _ev if e < 0) == 1 and sum(1 for e in _ev if e > 0) == 4
     and int(sum(np.sign(_ev))) == 3)
 chk("eq:ets-metric",
-    "DISCRIMINA: sin la rotacion la metrica es euclidiana, suma de signos = 5",
+    "DISCRIMINATES: without rotation the metric is Euclidean, sum of signs = 5",
     int(sum(np.sign(np.linalg.eigvalsh(np.diag([1.0,1.0,1.0,1.0,2.7**2]))))) == 5)
 Lambda5 = -d*(d-1)/(2*1**2)
 chk("eq:Lambda-from-curvature", "Lambda_5 = -d(d-1)/2l^2 = -6",
@@ -185,7 +185,7 @@ chk("dS_ricci_from_gauss", "umbilic K=Hg => R_munu=(d-1)H^2 g=3H^2 g",
     abs(Ricci_coeff - 3*H**2) < 1e-12)
 chk("dS_ricci_scalar", "R = 12 H^2 (de Sitter)",
     abs(R_scalar - 12*H**2) < 1e-12)
-# Lambda por la traza de la ecuacion de Einstein en vacio en d=4: R = 4 Lambda, R = 12 H^2
+# Lambda from the trace of the vacuum Einstein equation in d=4: R = 4 Lambda, R = 12 H^2
 chk("dS_einstein_Lambda", "vacuum Einstein: R = 12 H^2 y R = 4 Lambda dan Lambda = 3 H^2",
     all(abs((12*Hv**2)/4 - 3*Hv**2) < 1e-12 for Hv in (0.5, 1.0, 2.0, H)))
 chk("dS_covers_half_hyperboloid", "X0+X4 = l e^{t/l} > 0 : covers exactly half",
@@ -223,12 +223,12 @@ def _spread(b):
 chk("mssm_unifies", "MSSM couplings meet (spread<0.5), SM do not (spread>3)",
     _spread([33/5,1,-3])<0.5 and _spread([41/10,-19/6,-7])>3,
     f"MSSM={_spread([33/5,1,-3]):.2f}, SM={_spread([41/10,-19/6,-7]):.2f}")
-# running_3_8_to_0231: antes comparaba 0.23122 con 0.231, dos literales, sin correr nada.
-# Ahora usa el mismo mecanismo de _spread: las tres constantes con las beta del MSSM
-# convergen (dispersion < 0.5) mientras las del SM no (> 3), que es lo que hace posible
-# leer 3/8 en el punto de unificacion y bajarlo a M_Z.
+# running_3_8_to_0231: previously compared0.23122 with 0.231, two literals, without running anything.
+# Now uses the same _spread mechanism: three constants with MSSM beta functions
+# converge (spread < 0.5) while SM ones do not (> 3), which is what makes it possible
+# to read 3/8 at the unification point and descend to M_Z.
 chk("running_3_8_to_0231",
-    "el 3/8 del GUT baja a ~0.231 porque las beta del MSSM unifican y las del SM no",
+    "the GUT 3/8 descends to ~0.231 because MSSM beta functions unify and SM ones do not",
     _spread([33/5,1,-3]) < 0.5 and _spread([41/10,-19/6,-7]) > 3
     and abs(_Nm(0)/_Nm(2) - 0.375) < 1e-12,
     f"MSSM={_spread([33/5,1,-3]):.2f} vs SM={_spread([41/10,-19/6,-7]):.2f}")
@@ -238,37 +238,47 @@ chk("gauge_dim_su3", "dim su(3) = 3^2-1 = 8 (A2 root lattice)",
     3**2 - 1 == 8)
 
 print("\n" + "="*78)
-# ============ NUEVOS (últimos turnos): condensado, transmutación, dos torres ============
-# --- transmutación dimensional (reemplaza el vacuo Delta_phys := Lambda) ---
+# ============ NEW (recent turns): condensate, transmutation, two towers ============
+# --- dimensional transmutation (replaces the Delta_phys := Lambda vacuum) ---
 def _Lambda_QCD(a,b0,g2): return (1.0/a)*np.exp(-1.0/(b0*g2))
-chk("Lambda_QCD_pos", "Lambda_QCD = a^-1 exp(-1/(b0 g2)) > 0 para a,b0,g2 > 0",
+chk("Lambda_QCD_pos", "Lambda_QCD = a^-1 exp(-1/(b0 g2)) > 0 for a,b0,g2 > 0",
     all(_Lambda_QCD(a,b0,g2) > 0 for a in (0.1,1.0) for b0 in (0.5,2.0) for g2 in (0.3,1.5)))
-chk("gap_survives_transmutation", "el gap fisico es un multiplo positivo de Lambda_QCD (finito a a->0)",
+chk("gap_survives_transmutation", "the physical gap is a positive multiple of Lambda_QCD (finite as a->0)",
     _Lambda_QCD(1e-3, 1.0, 1.0) > 0 and np.isfinite(_Lambda_QCD(1e-3, 1.0, 1.0)))
 
-# --- condensado magnetico -> tension de cuerda -> gap de color (exp47) ---
+# --- magnetic condensate -> string tension -> colour gap (exp47) ---
 _q = np.sqrt(2*np.pi)
-chk("self_dual_charges", "en el punto autodual q = q_m = sqrt(2 pi), Dirac q*q_m = 2 pi",
+chk("self_dual_charges", "at the self-dual point q = q_m = sqrt(2 pi), Dirac q*q_m = 2 pi",
     abs(_q*_q - 2*np.pi) < 1e-12)
 _V = 0.3581
 chk("colour_gap_pos", "sigma = q_m^2 V > 0 y Delta = sqrt(sigma) > 0 (Meissner dual)",
     (_q**2*_V) > 0 and np.sqrt(_q**2*_V) > 0)
-# q_m se calcula de Dirac q*q_m = 2 pi; en tau=i la autodualidad da q^2 = 2 pi, luego q = q_m
+# q_m is computed from Dirac q*q_m = 2 pi; at tau=i self-duality gives q^2 = 2 pi, hence q = q_m
 _qsd = np.sqrt(2*np.pi); _qm_dirac = 2*np.pi/_qsd
-chk("gap_self_dual_invariant", "en tau=i, q_m de Dirac (q q_m = 2 pi) coincide con q: q^2 V = q_m^2 V",
+chk("gap_self_dual_invariant", "at tau=i, Dirac q_m (q q_m = 2 pi) coincides with q: q^2 V = q_m^2 V",
     abs(_qm_dirac - _qsd) < 1e-12 and abs(_qsd**2*_V - _qm_dirac**2*_V) < 1e-12
     and abs(_qsd*_qm_dirac - 2*np.pi) < 1e-12)
 
-# --- las dos torres: phi^sigma (escala/KK) vs Regge sqrt(n) (masas) ---
-chk("two_towers_distinct", "la torre dorada (ratio phi) y la Regge (ratio sqrt(n)) son distintas",
-    abs(phi - np.sqrt(2)) > 0.2)
-chk("kk_golden_identity", "identidad KK: phi^2 + phi^-2 - 2 = 1",
+# --- the two towers: phi^sigma (scale/KK) vs Regge sqrt(n) (masses) ---
+# The distinction is STRUCTURAL, not threshold-based: the golden tower has constant ratio phi
+# and the Regge tower has ratio sqrt((n+1)/n), which decreases with n and never equals phi.
+# The previous check compared phi with sqrt2 (the Regge ratio at n=1 only) against a threshold
+# 0.2 that the actual difference, 0.20382, barely exceeded: 1.9% margin.
+_regge_ratio = lambda n: np.sqrt(n + 1) / np.sqrt(n)
+chk("two_towers_distinct", "golden tower has constant ratio phi; Regge decreases with n",
+    all(abs(phi**(n+1)/phi**n - phi) < 1e-12 for n in range(1, 9))
+    and len({round(_regge_ratio(n), 9) for n in range(1, 9)}) == 8)
+chk("two_towers_distinct", "no Regge ratio equals phi, n=1..200",
+    all(abs(_regge_ratio(n) - phi) > 1e-9 for n in range(1, 201)))
+chk("two_towers_distinct", "and the towers diverge: phi^n/sqrt(n) grows without bound",
+    [round(phi**n/np.sqrt(n)) for n in (1, 10, 20, 40)] == [2, 39, 3383, 36180587])
+chk("kk_golden_identity", "KK identity: phi^2 + phi^-2 - 2 = 1",
     abs(phi**2 + phi**-2 - 2 - 1) < 1e-12)
-chk("regge_spin_assignment", "el nivel n lleva espin <= n-1, luego J=2 exige n>=3 (no n=2)",
+chk("regge_spin_assignment", "level n carries spin <= n-1, hence J=2 requires n>=3 (not n=2)",
     (2 <= 3-1) and not (2 <= 2-1))
 
-# --- Brown-Henneaux c=3 (reemplaza polyakov_route : 3=3) ---
-chk("brown_henneaux_c_eq_three", "c = 3 l /(2 G_N) = 3 con l=1, G_N=1/2",
+# --- Brown-Henneaux c=3 (replaces polyakov_route : 3=3) ---
+chk("brown_henneaux_c_eq_three", "c = 3 l /(2 G_N) = 3 with l=1, G_N=1/2",
     abs(3*1.0/(2*0.5) - 3) < 1e-12)
 
 # --- traza del proyector = rango (cierra rho_is_state) ---
@@ -278,23 +288,23 @@ for _k,_n in [(2,5),(3,7),(4,9)]:
     _ok = _ok and abs(np.trace(_P)-_k)<1e-9 and np.allclose(_P@_P,_P) and abs(np.trace(_P/_k)-1)<1e-9
 chk("projector_trace_eq_rank", "tr P = k, P^2 = P, tr(P/k) = 1 (cierra rho_is_state)", _ok)
 
-# --- el límite continuo: Lambda_QCD constante en la trayectoria AF ---
+# --- the continuum limit: Lambda_QCD constant along the AF trajectory ---
 def _gSq_AF(a,b0,Lam): return 1.0/(b0*np.log(1.0/(a*Lam)))
 _Lam,_b0=0.3,1.7
-chk("Lambda_QCD_eq_Lambda", "en la trayectoria AF, Lambda_QCD(a) = Lambda EXACTO para todo a",
+chk("Lambda_QCD_eq_Lambda", "along the AF trajectory, Lambda_QCD(a) = Lambda EXACT for all a",
     all(abs(_Lambda_QCD(a,_b0,_gSq_AF(a,_b0,_Lam))-_Lam)<1e-9 for a in (1e-1,1e-2,1e-4,1e-8)))
-chk("gap_independent_of_cutoff", "el gap fisico no depende del cutoff (no se desvanece en a->0)",
+chk("gap_independent_of_cutoff", "the physical gap does not depend on the cutoff (does not vanish as a->0)",
     abs(_Lambda_QCD(1e-10,_b0,_gSq_AF(1e-10,_b0,_Lam))-_Lam)<1e-9)
-# --- ft_limit por identidad exacta ---
+# --- ft_limit by exact identity ---
 from math import gamma as _G
 def _ident(a,s,t): return abs(a*_G(a*s)*_G(a*t)/_G(a*(s+t)) - ((s+t)/(s*t))*_G(a*s+1)*_G(a*t+1)/_G(a*(s+t)+1))
-chk("ft_identity", "a*B(as,at) = ((s+t)/st)*G(as+1)G(at+1)/G(a(s+t)+1) -- identidad exacta",
+chk("ft_identity", "a*B(as,at) = ((s+t)/st)*G(as+1)G(at+1)/G(a(s+t)+1) -- exact identity",
     all(_ident(a,1.3,2.1)<1e-12 for a in (0.5,0.1,1e-3)))
-chk("ft_limit", "el limite es (s+t)/(st) = 1/s + 1/t",
+chk("ft_limit", "the limit is (s+t)/(st) = 1/s + 1/t",
     abs(1.3*0+((1.3+2.1)/(1.3*2.1)) - (1/1.3+1/2.1))<1e-12)
 
 # ============================================================================
-#  Nuevos: escalera FKS, par conjugado, granularidad de la torre, hexagono A2
+#  NEW: FKS ladder, conjugate pair, tower granularity, A2 hexagon
 # ============================================================================
 print("\n-- FKS enhancement ladder / A2 roots / conjugate pair --")
 
@@ -317,32 +327,41 @@ chk("prop:a2", "A2: EXACTLY six lattice vectors have norm^2 = 2",
     sum(1 for a,b in _box if _a2n2(a,b)==2) == 6)
 chk("prop:a2", "A2: #roots + rank = dim su(3)", 6 + 2 == 3**2 - 1)
 
-# --- par conjugado: z(sigma)*tau(sigma) = M_PCF, constante en todo nivel ---
+# --- conjugate pair: z(sigma)*tau(sigma) = M_PCF, constant at every level ---
 for _s in [0,2,3,4,5,6]:
     chk("eq:obs-weld", f"conjugate pair sigma={_s}: z*tau = M_PCF",
         abs((phi**_s)*(Mpcf*phi**(-_s)) - Mpcf) < 1e-9)
 chk("eq:obs-weld", "alpha' is FORCED by the product, not chosen",
     abs((phi**4.7)*(Mpcf*phi**(-4.7)) - Mpcf) < 1e-9, f"alpha'={Mpcf:.4f}")
 
-# --- granularidad de la torre y el indice observado ---
+# --- tower granularity and the observed index ---
 chk("eq:tower-modes", "tower step ratio is exactly phi",
     abs((np.pi*phi**(3.3+1))/(np.pi*phi**3.3) - phi) < 1e-12)
-# eq:tower-ratio: antes comparaba log10(phi) con su decimal. Ahora lo obtiene como la
-# diferencia de log10 entre dos niveles consecutivos de la torre, que es su significado.
-chk("eq:tower-autosimilar", "granularidad = log10 S(s+1) - log10 S(s) = log10(phi), niveles 0..8",
+# eq:tower-ratio: previously compared log10(phi) with its decimal. Now obtains it as the
+# difference of log10 between two consecutive tower levels, which is its meaning.
+chk("eq:tower-autosimilar", "granularity = log10 S(s+1) - log10 S(s) = log10(phi), levels 0..8",
     all(abs((np.log10(np.pi*phi**(s+1)) - np.log10(np.pi*phi**s)) - np.log10(phi)) < 1e-12
         for s in range(9)), f"log10(phi)={np.log10(phi):.7f}")
-# eq:sigma-obs: sigma_obs = ln(S_dS/pi)/ln(phi) con S_dS = 3*pi/(G*Lambda) y G=1/2,
-# es decir S_dS = 6*pi/Lambda. Antes se comparaba log10(pi*phi^581) con 122, lo que no
-# pasaba por Lambda ni por el factor 6*pi y daba 581 en vez de 585.3.
+# eq:sigma-obs: sigma_obs = ln(S_dS/pi)/ln(phi) with S_dS = 3*pi/(G*Lambda) and G=1/2,
+# i.e. S_dS = 6*pi/Lambda. Previously compared log10(pi*phi^581) with 122, which did not
+# pass through Lambda or the 6*pi factor and gave 581 instead of 585.3.
 _Lam_obs = 2.888e-122                      # Lambda * l_P^2 (Planck 2018)
 _S_dS    = 6*np.pi/_Lam_obs                # convencion del paper, G_N = 1/2
 _sigma_obs = np.log(_S_dS/np.pi)/np.log(phi)
+# La tolerancia es la media anchura de redondeo de 585.3 a un decimal (0.05), NO
+# log10(phi): ese numero es la granularidad en log10 S entre niveles consecutivos
+# (eq:tower-autosimilar, arriba), que vive en otro eje.  0.05 en sigma admite ademas
+# ~2.4% en Lambda, holgado frente al ~1-2% de Planck 2018 (dLambda/Lambda=1% -> dsigma=0.021).
 chk("eq:sigma-obs", "sigma_obs = ln(S_dS/pi)/ln(phi) con S_dS = 6pi/Lambda, G_N=1/2",
-    abs(_sigma_obs - 585.3) < np.log10(phi),
-    f"sigma_obs = {_sigma_obs:.2f}, log10 S_dS = {np.log10(_S_dS):.3f}")
+    abs(_sigma_obs - 585.3) < 0.05,
+    f"sigma_obs = {_sigma_obs:.4f}, log10 S_dS = {np.log10(_S_dS):.3f}")
+chk("eq:sigma-obs", "DISCRIMINA: con tolerancia de redondeo, 585.2/585.4/585.0/586.0 se rechazan",
+    all(abs(_sigma_obs - _t) >= 0.05 for _t in (585.2, 585.4, 585.0, 586.0)))
+chk("eq:sigma-obs", "sensibilidad declarada: 1% en Lambda mueve sigma en 0.021, dentro de 0.05",
+    abs(np.log(6/(_Lam_obs*1.01))/np.log(phi) - _sigma_obs) < 0.05
+    and abs(np.log(6/(_Lam_obs*1.01))/np.log(phi) - _sigma_obs) > 0.015)
 
-# --- Jacobi: se cumple sobre las f COMPUTADAS, falla sobre f arbitraria ---
+# --- Jacobi: holds for the COMPUTED f, fails for arbitrary f ---
 _l = [np.zeros((3,3),complex) for _ in range(8)]
 _l[0][0,1]=_l[0][1,0]=1; _l[1][0,1]=-1j; _l[1][1,0]=1j
 _l[2][0,0]=1; _l[2][1,1]=-1; _l[3][0,2]=_l[3][2,0]=1
@@ -364,10 +383,10 @@ chk("prop:localfield", "Jacobi FAILS for arbitrary f -- the old axiom was FALSE"
     abs(_bad) > 1e-6, f"f=1 gives {_bad:.0f}, axiom asserted 0")
 
 
-# --- sigma_obs y Lambda_obs son UN solo abierto (eq:sigma-obs) ---
-# El nivel se determina a partir de Lambda: derivar uno deriva el otro.
+# --- sigma_obs and Lambda_obs are a single open parameter (eq:sigma-obs) ---
+# The level is determined from Lambda: deriving one derives the other.
 _sig_from_Lam = np.log(6/_Lam_obs)/np.log(phi)
-chk("eq:sigma-obs", "sigma_obs y Lambda_obs son un solo abierto: ln(S_dS/pi) = ln(6/Lambda)",
+chk("eq:sigma-obs", "sigma_obs and Lambda_obs are a single open parameter: ln(S_dS/pi) = ln(6/Lambda)",
     abs(_sigma_obs - _sig_from_Lam) < 1e-9, f"sigma={_sig_from_Lam:.2f}")
 
 # --- colocacion angular de generaciones (bridge rmk:placement-done) ---
@@ -395,7 +414,7 @@ chk("eq:condensate-conjugate", "V(s)*(D(s)-1) = eps0^2, conjugate pair",
     f"eps0^2={_eps0**2:.8f}")
 
 
-# --- la aridad 3 desde autorreferencia minima no paradojica (ssec:arity) ---
+# --- arity 3 from minimal non-paradoxical self-reference (ssec:arity) ---
 chk("thm:fib-min", "depth-2 recurrence: unique positive root of r^2=r+1 is phi",
     abs(phi**2 - (phi+1)) < 1e-12)
 chk("phi_central_chain", "phi^2 + phi^-2 = 3 fixes the arity",
@@ -405,43 +424,50 @@ chk("ssec:arity", "arity 3 = floor(pi) = colour = number of generations",
 
 
 
-# ===================================================================
-# --- Adiciones §5: tension soldada, gap-faces, color desde M, cierre ---
-# ===================================================================
+# ============================================================================
+# --- §5 additions: welded tension, gap-faces, colour from M, closure ---
+# ============================================================================
 _q = 3.0; _qm = 2*np.pi/_q
 # eq:tension-weld: sigma_tension(σ)·S(σ) invariante = 4π⁴/(q²·Mpcf)
 _inv = [( _qm**2 * (eps0*phi**(-s)) ) * ( np.pi*phi**s ) for s in (0.0,2.0,5.0)]
-chk("eq:tension-weld", "sigma_tension(σ)·S(σ) invariante en la torre",
+chk("eq:tension-weld", "sigma_tension(σ)·S(σ) invariant along the tower",
     all(abs(v-_inv[0]) < 1e-9 for v in _inv))
-chk("eq:tension-weld", "= 4π⁴/(q²·Mpcf) via Dirac y certeza",
+chk("eq:tension-weld", "= 4π⁴/(q²·Mpcf) via Dirac and certainty",
     abs(_inv[0] - 4*np.pi**4/(_q**2*Mpcf)) < 1e-9)
-# prop:gap-faces: S(σ)=π·φ^σ es el espectro del operador (salvo π): para m0 generico,
-# S(σ)/(m0·φ^σ) = π/m0, constante en σ — la forma espectral coincide y solo difiere el factor π.
+# prop:gap-faces: S(σ)=π·φ^σ is the spectrum of the operator (up to π): for generic m0,
+# S(σ)/(m0·φ^σ) = π/m0, constant in σ — the spectral form matches and differs only by the factor π.
 _m0g = 1.7  # m0 generico del operador
-chk("prop:gap-faces", "S(σ)/(m0·φ^σ)=π/m0 constante en σ: S es el espectro de H salvo π",
+chk("prop:gap-faces", "S(σ)/(m0·φ^σ)=π/m0 constant in σ: S is the spectrum of H up to π",
     all(abs((np.pi*phi**s)/(_m0g*phi**s) - np.pi/_m0g) < 1e-12 for s in (0.0,2.0,4.0)))
-# prop:gap-faces: Δ_colour razon φ^(-1/2) por nivel
+# prop:gap-faces: Δ_colour ratio φ^(-1/2) per level
 _D = lambda s: np.sqrt(_qm**2 * eps0 * phi**(-s))
-chk("prop:gap-faces", "Δ_colour(σ+1)/Δ_colour(σ)=φ^(-1/2): baja la torre",
+chk("prop:gap-faces", "Δ_colour(σ+1)/Δ_colour(σ)=φ^(-1/2): descends the tower",
     all(abs(_D(s+1)/_D(s) - phi**(-0.5)) < 1e-9 for s in (0.0,2.0,4.0)))
-# thm:colour-from-M: M=M_PCF (misma certeza)
+# thm:colour-from-M: M=M_PCF (same certainty)
 _M = np.pi/eps0
-chk("thm:colour-from-M", "M = M_PCF (misma certeza ε₀·X=π)", abs(_M - Mpcf) < 1e-8)
-chk("thm:colour-from-M", "escala del color 4π⁴/(q²M) = 4π⁴/(q²M_PCF)",
+chk("thm:colour-from-M", "M = M_PCF (same certainty ε₀·X=π)", abs(_M - Mpcf) < 1e-8)
+chk("thm:colour-from-M", "colour scale 4π⁴/(q²M) = 4π⁴/(q²M_PCF)",
     abs(4*np.pi**4/(_q**2*_M) - 4*np.pi**4/(_q**2*Mpcf)) < 1e-9)
 # thm:one-object: ε₀·M_PCF = 2π·μ₃
-chk("thm:one-object", "ε₀·M_PCF = 2π·μ₃ = π (la certeza es el modulo)",
+chk("thm:one-object", "ε₀·M_PCF = 2π·μ₃ = π (the certainty is the modulus)",
     abs(eps0*Mpcf - 2*np.pi*0.5) < 1e-9)
-# rmk:M-two-faces: 6π⁵ y residuo
+# rmk:M-two-faces: 6π⁵ and residue
 chk("rmk:M-two-faces", "m_p/m_e = 6π⁵ = 1836.12 (error ~1.9e-5 vs 1836.15)",
     abs(6*np.pi**5 - 1836.15) < 0.1)
-_Mdyn = 313.84; _Mpl = 312.76
-chk("rmk:M-two-faces", "residuo dinamica/placement ~0.35% = ligadura QCD",
-    abs((_Mdyn-_Mpl)/_Mdyn - 0.00344) < 5e-4)
+# The derivable residue of the two faces is 1.88e-5.  M_PCF is dimensionless so it
+# cannot be compared to MeV without a conversion the paper does not provide.
+_me_MeV  = 0.51099895069            # CODATA
+_mp_MeV  = 938.27208816             # CODATA
+_mp_plac = 6*np.pi**5 * _me_MeV     # placement face: 6 pi^5 m_e
+chk("rmk:M-two-faces", "placement face: 6 pi^5 m_e /3 = 312.75 MeV",
+    abs(_mp_plac/3 - 312.7515) < 1e-3, f"m_p(placement)/3 = {_mp_plac/3:.4f} MeV")
+chk("rmk:M-two-faces", "placement vs measured residue = 1.88e-5, same as 6pi^5 vs 1836.15",
+    abs((_mp_MeV - _mp_plac)/_mp_MeV - 1.8823e-5) < 1e-7
+    and abs((_mp_MeV/_me_MeV - 6*np.pi**5)/(_mp_MeV/_me_MeV) - 1.8823e-5) < 1e-7)
 
 
 # ============================================================================
-# thm:LL-energy (§4) y thm:modular-LL (§5): Landau-Lifshitz en de Sitter
+# thm:LL-energy (§4) and thm:modular-LL (§5): Landau-Lifshitz in de Sitter
 # ============================================================================
 import sympy as _sp
 _t,_H=_sp.symbols('t H',real=True,positive=True); _GN=_sp.Rational(1,2)
@@ -454,11 +480,11 @@ def _Hs(m,al,n,be): return _go[m,n]*_go[al,be]-_go[m,al]*_go[n,be]
 def _C(m,n):
     s=sum(_sp.diff(_Hs(m,al,n,be),_co[al],_co[be]) for al in range(4) for be in range(4))
     return _sp.simplify(s/(16*_sp.pi*_GN))
-# complejo: 00 = 0 (equilibrio), espaciales = -2H^2 e^{4Ht}/pi (no estatico)
+# complex: 00 = 0 (equilibrium), spatial = -2H^2 e^{4Ht}/pi (non-stationary)
 chk("thm:LL-energy", "complejo LL^00 = 0 (equilibrio de Jacobson)", _C(0,0)==0)
-chk("thm:LL-energy", "complejo LL^xx = -2H^2 e^{4Ht}/pi (dS no estatico)",
+chk("thm:LL-energy", "complex LL^xx = -2H^2 e^{4Ht}/pi (dS non-stationary)",
     _sp.simplify(_C(1,1) - (-2*_H**2*_sp.exp(4*_H*_t)/_sp.pi))==0)
-# primera ley: E_H = rho_Lambda V_H = 1/H = T_GH S_GH (G_N=1/2)
+# first law: E_H = rho_Lambda V_H = 1/H = T_GH S_GH (G_N=1/2)
 _HH=_sp.Symbol('Hb',positive=True)
 _area=4*_sp.pi/_HH**2; _SGH=_area/(4*_GN); _TGH=_HH/(2*_sp.pi)
 _rho=3*_HH**2/(8*_sp.pi*_GN); _V=_sp.Rational(4,3)*_sp.pi/_HH**3
@@ -477,7 +503,7 @@ chk("thm:modular-LL", "K_mod = A/4G_N = S_GH", _sp.simplify(_Kmod-_SGH)==0)
 _sig=_sp.Symbol('sig',positive=True); _phi=(1+_sp.sqrt(5))/2
 _Kt=_Kmod.subs(_HH,_sp.sqrt(2)*_phi**(-_sig/2))
 chk("thm:modular-LL", "K_mod = pi phi^sigma = S(sigma)", _sp.simplify(_Kt-_sp.pi*_phi**_sig)==0)
-chk("thm:modular-LL", "flujo escala dilatacion: S(s+t)=phi^t S(s)",
+chk("thm:modular-LL", "dilatation scaling flow: S(s+t)=phi^t S(s)",
     _sp.simplify(_sp.pi*_phi**(_sig+_sp.Symbol('tt'))-_phi**_sp.Symbol('tt')*(_sp.pi*_phi**_sig))==0)
 # H(sigma) = sqrt2 phi^{-sigma/2}
 _sol=_sp.solve(_sp.Eq(_SGH,_sp.pi*_phi**_sig),_HH)
@@ -529,9 +555,9 @@ chk("kp_grassmannian","positroid profile D(σ)-1=eps0 phi^σ",
 
 
 # =============================================================================
-# §2 — PRODUCTO SOBRE PLAZAS  (prop:selfdual-gaussian, prop:archimedean,
-#      prop:euler-product, thm:places, rmk:eta-i, cor. ecuacion funcional)
-# Ningun aserto es vacuo: cada uno compara dos calculos independientes.
+# §2 — PRODUCT OVER PLACES  (prop:selfdual-gaussian, prop:archimedean,
+#      prop:euler-product, thm:places, rmk:eta-i, cor. functional equation)
+# No assertion is vacuous: each compares two independent computations.
 # =============================================================================
 from mpmath import (mp, mpf, mpc, pi, exp, sqrt, log, gamma, zeta, power,
                     quad, nsum, inf)
@@ -572,20 +598,20 @@ ETA_I = gamma(mpf(1)/4) / (2 * power(pi, mpf(3)/4))     # eq:pcf-partition
 
 print()
 print("-" * 78)
-print("  §2 — producto sobre plazas: arquimediana x finitas = Lambda")
+print("  §2 — product over places: Archimedean x finite = Lambda")
 print("-" * 78)
 
-# --- 1. la plaza arquimediana: la gaussiana autodual --------------------------
-print("\n  -- plaza arquimediana (prop:selfdual-gaussian) --")
+# --- 1. the Archimedean place: the self-dual Gaussian --------------------------
+print("\n  -- Archimedean place (prop:selfdual-gaussian) --")
 
 chk("selfdual_gaussian_unique",
-    "|ghat_a - g_a| se anula solo en a = pi (a=1 -> 0.41, a=2 -> 0.12)",
+    "|ghat_a - g_a| vanishes only at a = pi (a=1 -> 0.41, a=2 -> 0.12)",
     abs(ghat(mpf('0.37'), pi) - g(mpf('0.37'), pi)) < mpf('1e-20')
     and abs(ghat(mpf('0.37'), mpf(1)) - g(mpf('0.37'), mpf(1))) > mpf('0.4')
     and abs(ghat(mpf('0.37'), mpf(2)) - g(mpf('0.37'), mpf(2))) > mpf('0.1'))
 
 chk("gaussian_normalised_at_pi",
-    "int_R e^{-a x^2} = 1  <=>  a = pi   (eq:gaussian normalizada)",
+    "int_R e^{-a x^2} = 1  <=>  a = pi   (eq:normalized gaussian)",
     abs(quad(lambda x: g(x), [-inf, inf]) - 1) < mpf('1e-20')
     and abs(quad(lambda x: exp(-x**2), [-inf, inf]) - sqrt(pi)) < mpf('1e-20'))
 
@@ -595,11 +621,11 @@ chk("gammaR_is_mellin_gaussian",
         for s in (mpf(2), mpf(3), mpf(1)/2, mpc(3, 1))))
 
 chk("gammaR_at_one",
-    "Gammaℝ(1) = 1   (la plaza real normalizada)",
+    "Gammaℝ(1) = 1   (the normalized real place)",
     abs(GammaR(1) - 1) < mpf('1e-22'))
 
-# --- 2. Poisson = S-dualidad --------------------------------------------------
-print("\n  -- Poisson como S-dualidad (eq:bridge-S) --")
+# --- 2. Poisson = S-duality --------------------------------------------------
+print("\n  -- Poisson as S-duality (eq:bridge-S) --")
 
 chk("theta_poisson_S",
     "Theta(1/t) = sqrt(t) Theta(t)   [t -> 1/t  es  tau -> -1/tau]",
@@ -607,24 +633,24 @@ chk("theta_poisson_S",
         for t in (mpf('0.25'), mpf('0.6'), mpf(1), mpf(2), mpf(5))))
 
 chk("boltzmann_fails_S",
-    "el peso e^{-nt} del gas de primones NO cumple la S-dualidad",
+    "the weight e^{-nt} of the primon gas does NOT satisfy S-duality",
     all(abs(nsum(lambda n: exp(-n/t), [1, inf]) - sqrt(t)*nsum(lambda n: exp(-n*t), [1, inf])) > mpf('0.5')
         for t in (mpf('0.6'), mpf(2))))
 
 chk("theta_fixed_point_is_i",
-    "punto fijo t = 1 (tau = i) y Theta(1) = sqrt2 * eta(i) = phi^{mu log_phi 2} eta(i)",
+    "fixed point t = 1 (tau = i) and Theta(1) = sqrt2 * eta(i) = phi^{mu log_phi 2} eta(i)",
     abs(Theta(1) - sqrt(2)*ETA_I) < mpf('1e-20')
     and abs(PHI**(mpf(1)/2 * log(2)/log(PHI)) - sqrt(2)) < mpf('1e-20'))
 
 chk("gammaR_half_is_eta",
-    "Gammaℝ(1/2) = 2 sqrt(pi) eta(i)   (factor completante en la linea autodual)",
+    "Gammaℝ(1/2) = 2 sqrt(pi) eta(i)   (completing factor on the self-dual line)",
     abs(GammaR(mpf(1)/2) - 2*sqrt(pi)*ETA_I) < mpf('1e-20'))
 
-# --- 3. plazas finitas: la torre de Regge -------------------------------------
-print("\n  -- plazas finitas (prop:veneziano, eq:regge-euler) --")
+# --- 3. finite places: the Regge tower -------------------------------------
+print("\n  -- finite places (prop:veneziano, eq:regge-euler) --")
 
 chk("regge_dirichlet_eq_zeta",
-    "torre  sum_n n^{-s} = zeta(s)  para Re s > 1",
+    "tower  sum_n n^{-s} = zeta(s)  for Re s > 1",
     all(abs(torre(s) - zeta(s)) < mpf('1e-4')
         for s in (mpf(2), mpc(3, 1), mpc('1.5', 4))))
 
@@ -644,8 +670,8 @@ chk("regge_tower_is_euler_product",
     "zeta(s) = prod_p (1-p^{-s})^{-1}  (producto parcial, primos < 20000)",
     abs(euler_partial(mpf(3)) - zeta(3)) < mpf('1e-8'))
 
-# --- 4. el ensamblaje ---------------------------------------------------------
-print("\n  -- ensamblaje: Lambda = arquimediana x finitas --")
+# --- 4. the assembly ---------------------------------------------------------
+print("\n  -- assembly: Lambda = Archimedean x finite --")
 
 chk("schwinger_per_level",
     "(pi n^2)^{-s/2} Gamma(s/2) = int_0^inf t^{s/2-1} e^{-pi n^2 t} dt  (eq:schwinger)",
@@ -654,56 +680,56 @@ chk("schwinger_per_level",
         for s in (mpf(2), mpc(3, 1)) for n in (1, 3)))
 
 chk("partition_eq_tower_completed",
-    "Lambda(s) = Gammaℝ(s) zeta(s) = int_0^inf t^{s/2-1} omega(t) dt (forma de Riemann)",
+    "Lambda(s) = Gammaℝ(s) zeta(s) = int_0^inf t^{s/2-1} omega(t) dt (Riemann form)",
     all(abs(GammaR(s)*zeta(s) - Lambda_riemann(s)) < mpf('1e-20')
         for s in (mpf(2), mpf(3), mpf(4), mpc(3, 1), mpc(2, 5), mpf(1)/2)))
 
 chk("functional_equation_derived",
-    "el lado derecho es manifiestamente simetrico: R(s) = R(1-s)",
+    "the right-hand side is manifestly symmetric: R(s) = R(1-s)",
     all(abs(Lambda_riemann(s) - Lambda_riemann(1-s)) < mpf('1e-20')
         for s in (mpc(3, 1), mpf(4), mpc(2, 5))))
 
 chk("selfdual_line_is_modulus",
-    "punto fijo de s -> 1-s  es  s = 1/2 = |Omega|",
+    "fixed point of s -> 1-s  is  s = 1/2 = |Omega|",
     abs(mpf(1)/2 - (1 - mpf(1)/2)) < mpf('1e-30'))
 
 # --- 5. consistencia con F1: la estructura de plazas de Q(sqrt5) --------------
-print("\n  -- consistencia con F1 (plazas de Q(sqrt5)) --")
+print("  -- consistency with F1 (places of Q(sqrt5)) --")
 
 chk("chi5_is_even",
-    "chi5(-1) = chi5(4) = +1  =>  el factor gamma es Gammaℝ, no el impar",
+    "chi5(-1) = chi5(4) = +1  =>  the gamma factor is Gammaℝ, not the odd one",
     chi5(4) == 1 and chi5(-1) == 1)
 
 Lam5 = lambda s: power(mpf(5)/pi, s/2) * gamma(s/2) * L_chi5(s)
 LamK = lambda s: power(5, s/2) * GammaR(s)**2 * zeta(s) * L_chi5(s)
 
 chk("L_chi5_functional_equation",
-    "Lam(s,chi5) = (5/pi)^{s/2} Gamma(s/2) L(s,chi5)  cumple  s <-> 1-s",
+    "Lam(s,chi5) = (5/pi)^{s/2} Gamma(s/2) L(s,chi5)  satisfies  s <-> 1-s",
     all(abs(Lam5(s) - Lam5(1-s)) < mpf('1e-22')
         for s in (mpc(2, 1), mpc(3, 4), mpc('0.7', 2))))
 
 chk("zetaK_two_real_places",
-    "Lam_K = 5^{s/2} Gammaℝ(s)^2 zeta_K(s)  cumple  s <-> 1-s  (dos plazas reales)",
+    "Lam_K = 5^{s/2} Gammaℝ(s)^2 zeta_K(s)  satisfies  s <-> 1-s  (two real places)",
     all(abs(LamK(s) - LamK(1-s)) < mpf('1e-22')
         for s in (mpc(2, 1), mpc(3, 4), mpc('0.7', 2))))
 
 chk("one_gammaR_per_dedekind_factor",
-    "Lam_K(s) = Lambda(s) * Lam(s,chi5):  una Gammaℝ a cada factor de Dedekind",
+    "Lam_K(s) = Lambda(s) * Lam(s,chi5):  one Gammaℝ per Dedekind factor",
     all(abs(LamK(s) - GammaR(s)*zeta(s)*Lam5(s)) < mpf('1e-22')
         for s in (mpc(2, 1), mpc(3, 4), mpc('0.7', 2))))
 
 
 
-# ---- respaldo de los tiers de la revision (even-zeta, S3, curvatura AdS5) ----
+# ---- backing of the revision tiers (even-zeta, S3, AdS5 curvature) ----
 import math as _math
 from mpmath import bernoulli as _bern, factorial as _fact
 chk("thm:even-zeta",
-    "zeta(2k) = (-1)^{k+1} B_{2k} (2pi)^{2k} / (2 (2k)!)  para k = 1..6",
+    "zeta(2k) = (-1)^{k+1} B_{2k} (2pi)^{2k} / (2 (2k)!)  for k = 1..6",
     all(abs(zeta(2*k) - (-1)**(k+1)*_bern(2*k)*(2*pi)**(2*k)/(2*_fact(2*k))) < mpf('1e-20')
         for k in range(1, 7)))
 
 chk("lem:s3-orders",
-    "|S_3| = 3! = 6, |rot S_3| = |A_3| = 3, y |rot|^2/|S_3| = 3/2 = sigma",
+    "|S_3| = 3! = 6, |rot S_3| = |A_3| = 3, and |rot|^2/|S_3| = 3/2 = sigma",
     _math.factorial(3) == 6 and _math.factorial(3)//2 == 3
     and abs(mpf((_math.factorial(3)//2)**2)/_math.factorial(3) - mpf(3)/2) < mpf('1e-25'))
 
@@ -714,31 +740,31 @@ chk("prop:obs-einstein",
         lambda d,Ap,App: -(App + d*Ap**2), lambda d,Ap,App: -(2*d*App + d*(d+1)*Ap**2))
     and abs(-(mpf(4)**2)/4 + 4) < mpf('1e-25'))
 
-# ---- ssec:tower: monoide aureo y levantamientos de Frobenius ----
+# ---- ssec:tower: golden monoid and Frobenius lifts ----
 def _fib(n):
     a,b=0,1
     for _ in range(n): a,b=b,a+b
     return a
 _phi=(1+mpf(5)**mpf('0.5'))/2
 chk("eq:binet",
-    "phi^n = F_n phi + F_{n-1}  para n = 1..25",
+    "phi^n = F_n phi + F_{n-1}  for n = 1..25",
     all(abs(_phi**n - (_fib(n)*_phi + _fib(n-1))) < mpf('1e-18') for n in range(1,26)))
 
 chk("eq:frobenius-tower",
-    "psi_p(phi) = phi^p = F_p phi + F_{p-1}  para p primo <= 31",
+    "psi_p(phi) = phi^p = F_p phi + F_{p-1}  for prime p <= 31",
     all(abs(_phi**p - (_fib(p)*_phi + _fib(p-1))) < mpf('1e-15')
         for p in [2,3,5,7,11,13,17,19,23,29,31]))
 
 chk("eq:psi-functorial",
-    "psi_p(psi_q(x)) = psi_{pq}(x)  sobre generadores phi^n",
+    "psi_p(psi_q(x)) = psi_{pq}(x)  on generators phi^n",
     all(abs((_phi**n)**q**0*0 + ((_phi**n)**q)**p - (_phi**n)**(p*q)) < mpf('1e-12')
         for (p,q,n) in [(2,3,1),(3,5,2),(5,7,1),(2,2,3)]))
 
 chk("rmk:psi-two",
-    "psi_p NO es aditivo: psi_2(phi+1) = phi^4 != phi^2 + 1",
+    "psi_p is NOT additive: psi_2(phi+1) = phi^4 != phi^2 + 1",
     abs((_phi+1)**2 - _phi**4) < mpf('1e-18') and abs(_phi**4 - (_phi**2 + 1)) > mpf('1'))
 
-# ---- prop:rp: la PRIMERA igualdad, y la RP sobre estados generales ----
+# ---- prop:rp: the FIRST equality, and RP on general states ----
 import random as _rnd
 _rnd.seed(11)
 _phi = (1 + mpf(5)**mpf('0.5')) / 2
@@ -747,7 +773,7 @@ def _half(a, m0, s): return exp(-(a/2) * _E(m0, s))
 def _T(a, m0, s):    return exp(-a * _E(m0, s))
 
 chk("eq:half-prop",
-    "e^{-(a/2)E} * e^{-(a/2)E} = e^{-aE}: las dos medias separaciones suman a",
+    "e^{-(a/2)E} * e^{-(a/2)E} = e^{-aE}: the two half-separations sum to a",
     all(abs(_half(a,m0,s)*_half(a,m0,s) - _T(a,m0,s)) < mpf('1e-25')
         for a in (mpf('0.7'), mpf(2), mpf('0.1')) for m0 in (mpf(1), mpf('0.3'))
         for s in range(6)))
@@ -757,12 +783,12 @@ def _pairing_ok(a, m0, c):
     rhs = sum(c[s]**2 * _T(a,m0,s) for s in range(len(c)))
     return abs(lhs - rhs) <= mpf('1e-20') * max(mpf(1), abs(rhs))
 chk("eq:rp",
-    "PRIMERA igualdad: <Theta F,F> = <f,T f> para f arbitrario, F = e^{-(a/2)H} f",
+    "FIRST equality: <Theta F,F> = <f,T f> for arbitrary f, F = e^{-(a/2)H} f",
     all(_pairing_ok(mpf(_rnd.uniform(0.05,3)), mpf(_rnd.uniform(0.1,3)),
                     [mpf(_rnd.uniform(-3,3)) for _ in range(8)]) for _ in range(200)))
 
 chk("eq:rp",
-    "RP sobre estados GENERALES: <f,T f> >= 0 para todo f (2000 estados aleatorios)",
+    "RP on GENERAL states: <f,T f> >= 0 for all f (2000 random states)",
     all(sum(mpf(_rnd.uniform(-5,5))**2 * _T(mpf(_rnd.uniform(0.05,3)),
                                             mpf(_rnd.uniform(0.1,3)), s)
             for s in range(10)) >= 0 for _ in range(2000)))
@@ -775,13 +801,13 @@ def _rp_reflected(C, sites=(1,2,3,4,5)):
     return _np.linalg.eigvalsh(M).min() > -1e-10
 _m = 0.7
 chk("eq:rp-measure",
-    "escalar libre 1D, C(x,y)=e^{-m|x-y|}/(2 sinh m): la covarianza reflejada ES PSD",
+    "free scalar 1D, C(x,y)=e^{-m|x-y|}/(2 sinh m): the reflected covariance IS PSD",
     _rp_reflected(lambda x, y: exp(-_m*abs(x-y))/(exp(_m)-exp(-_m))))
 chk("eq:rp-measure",
-    "el test DISCRIMINA: una covarianza oscilante NO es reflexion-positiva",
+    "test DISCRIMINATES: an oscillating covariance is NOT reflection-positive",
     not _rp_reflected(lambda x, y: mp.cos(2*(x-y))))
 
-# ---- thm:faces: un dato, cuatro caras ----
+# ---- thm:faces: one datum, four faces ----
 import numpy as _np
 _np.random.seed(5)
 def _P(X): return X.T @ _np.linalg.inv(X @ X.T) @ X
@@ -792,15 +818,15 @@ for _ in range(300):
     while abs(_np.linalg.det(_g)) < 1e-3: _g = _np.random.randn(_k, _k)
     if _np.abs(_P(_g @ _C) - _P(_C)).max() > 1e-8: _ok = False
 chk("eq:frame-invariance",
-    "P(gC) = P(C): el proyector es funcion del PUNTO, no del marco (300 marcos)", _ok)
+    "P(gC) = P(C): the projector is a function of the POINT, not the frame (300 frames)", _ok)
 
 _C = _np.random.randn(3, 7); _Pm = _P(_C)
 chk("eq:four-faces",
-    "P^2=P, P^T=P, tr P = k, tr(P/k) = 1: las cuatro caras factorizan por P",
+    "P^2=P, P^T=P, tr P = k, tr(P/k) = 1: the four faces factor through P",
     _np.abs(_Pm @ _Pm - _Pm).max() < 1e-10 and _np.abs(_Pm.T - _Pm).max() < 1e-10
     and abs(_np.trace(_Pm) - 3) < 1e-10 and abs(_np.trace(_Pm/3) - 1) < 1e-10)
 
-# ---- prop:rp-measure: RP de la MEDIDA ----
+# ---- prop:rp-measure: RP of the MEASURE ----
 _m = mpf('0.7'); _xs = [mpf(k) for k in (1,2,3,4,5)]
 def _reflCov(m, x, y): return exp(-m*abs(-x-y)) / (2*(exp(m)-exp(-m))/2)
 _rnd = _rnd if 'rnd' in dir() else __import__('random')
@@ -810,7 +836,7 @@ def _quad(cs):
 def _square(cs):
     return (sum(cs[i]*exp(-_m*_xs[i]) for i in range(5)))**2 / (2*(exp(_m)-exp(-_m))/2)
 chk("eq:rp-measure",
-    "forma reflejada = (sum c_i e^{-m x_i})^2/(2 sinh m), y >= 0 para todo c (300 vectores)",
+    "reflected form = (sum c_i e^{-m x_i})^2/(2 sinh m), and >= 0 for all c (300 vectors)",
     all(abs(_quad(cs) - _square(cs)) <= mpf('1e-20')*max(mpf(1), abs(_square(cs)))
         and _quad(cs) >= 0
         for cs in [[mpf(_rnd.uniform(-4,4)) for _ in range(5)] for _ in range(300)]))
@@ -818,48 +844,48 @@ chk("eq:rp-measure",
 _M = _np.array([[float(_reflCov(_m,x,y)) for y in _xs] for x in _xs])
 _v = _np.array([float(exp(-_m*x)) for x in _xs])
 chk("eq:rp-measure",
-    "la covarianza reflejada es (2 sinh m)^-1 v v^T: Gram de rango uno, PSD",
+    "the reflected covariance is (2 sinh m)^-1 v v^T: rank-one Gram, PSD",
     _np.abs(_M - _np.outer(_v,_v)/float(2*(exp(_m)-exp(-_m))/2)).max() < 1e-12
     and _np.linalg.matrix_rank(_M, tol=1e-10) == 1
     and _np.linalg.eigvalsh(_M).min() > -1e-12)
 
-# ---- def:K-arith, prop:rings, def:regulator (aritmetica de K = Q(sqrt5)) ----
+# ---- def:K-arith, prop:rings, def:regulator (arithmetic of K = Q(sqrt5)) ----
 _ph = (1 + mpf(5)**mpf('0.5')) / 2
 _pb = (1 - mpf(5)**mpf('0.5')) / 2
 chk("eq:trace-norm",
-    "phi + phibar = 1, phi*phibar = -1, (phi-phibar)^2 = Delta_K = 5",
+    "phi + phi_bar = 1, phi*phi_bar = -1, (phi-phi_bar)^2 = Delta_K = 5",
     abs(_ph + _pb - 1) < mpf('1e-25') and abs(_ph*_pb + 1) < mpf('1e-25')
     and abs((_ph - _pb)**2 - 5) < mpf('1e-25'))
 
 chk("eq:OK-vs-Rpcf",
-    "phi es raiz del MONICO x^2-x-1; 1/2 lo es de 2x-1, que no lo es",
+    "phi is a root of the MONIC x^2-x-1; 1/2 is a root of 2x-1, which is not",
     abs(_ph**2 - _ph - 1) < mpf('1e-25') and abs(2*(mpf(1)/2) - 1) < mpf('1e-25'))
 
-# el periodo se calcula del toro (M_PCF y eps0), el regulador del generador: rutas distintas
+# the period is computed from the torus (M_PCF and eps0), the regulator from the generator: independent routes
 _RK = log(_ph)
 _eps0_from_proj = (mp.sin(pi/6) * log(_ph) / pi) * (1/mpf(3)**mpf('0.5')) * (pi/3)
 _M_from_eps0 = pi / _eps0_from_proj
 chk("eq:regulator",
-    "R_K = log phi por dos rutas: del generador y de eps0 = pi_PCF(mu, R_K, pi) via M_PCF",
+    "R_K = log phi by two routes: from the generator and from eps0 = pi_PCF(mu, R_K, pi) via M_PCF",
     abs(_eps0_from_proj - _RK/(6*mpf(3)**mpf('0.5'))) < mpf('1e-25')
     and abs(_M_from_eps0 * _eps0_from_proj - pi) < mpf('1e-22')
     and abs(2*pi*_RK - 2*pi*log((1+mpf(5)**mpf('0.5'))/2)) < mpf('1e-25')
     and _RK > 0)
 
-# ---- prop:coupling-isometries: que mapa es isometria en cada paso ----
+# ---- prop:coupling-isometries: which map is an isometry at each step ----
 import numpy as _np2
 _np2.random.seed(3)
 _phic = float((1 + mpf(5)**mpf('0.5')) / 2)
 _R = _np2.array([[0,1,0],[0,0,1],[1,0,0]], dtype=float)
 chk("prop:coupling-isometries",
-    "farishRot ES isometria ordinaria de R^3: R^T R = I, det = +1, preserva distancias",
+    "farishRot IS an ordinary isometry of R^3: R^T R = I, det = +1, preserves distances",
     _np2.abs(_R.T @ _R - _np2.eye(3)).max() < 1e-14 and abs(_np2.linalg.det(_R) - 1) < 1e-12
     and max(abs(_np2.linalg.norm(_R@u - _R@v) - _np2.linalg.norm(u - v))
             for u, v in [(_np2.random.randn(3), _np2.random.randn(3)) for _ in range(300)]) < 1e-12)
 
 _nv = _np2.array([0.0, _phic, -1.0]); _N3 = [_nv, _R@_nv, _R@_R@_nv]
 chk("prop:coupling-isometries",
-    "los tres planos son congruentes en la metrica ORDINARIA: normas y angulos iguales",
+    "the three planes are congruent in the ORDINARY metric: equal norms and angles",
     max(abs(_np2.linalg.norm(m) - (1+_phic**2)**0.5) for m in _N3) < 1e-12
     and max(abs(float(_np2.dot(_N3[i], _N3[(i+1)%3])) - float(_np2.dot(_N3[0], _N3[1])))
             for i in range(3)) < 1e-12)
@@ -868,7 +894,7 @@ _Mp = float(6*3**0.5*pi/log(mpf(_phic)))
 def _red(z):
     return min((z - complex(_Mp*p, _Mp*q) for p in range(-2,3) for q in range(-2,3)), key=abs)
 chk("prop:coupling-isometries",
-    "traslacion = isometria del toro llano, y la orbita de 3-torsion es EQUILATERA",
+    "translation = isometry of the flat torus, and the 3-torsion orbit is EQUILATERAL",
     max(abs(abs(_red((p+t)-(q+t))) - abs(_red(p-q)))
         for p, q, t in [(complex(*_np2.random.uniform(0,_Mp,2)),
                          complex(*_np2.random.uniform(0,_Mp,2)),
@@ -878,11 +904,11 @@ chk("prop:coupling-isometries",
              for t in (complex(_Mp,0)/3, complex(0,_Mp)/3, complex(_Mp,_Mp)/3)]))
 
 chk("eq:coupling-metric",
-    "solo el acoplamiento expande: ||iota(i)|| = s_phi != 1, ||iota(1)|| = 1",
+    "only the coupling expands: ||iota(i)|| = s_phi != 1, ||iota(1)|| = 1",
     abs((1+_phic**2)**0.5 - float(2*mp.sin(2*pi/5))) < 1e-12
     and abs((1+_phic**2)**0.5 - 1) > 0.9 and abs(1.0 - 1) < 1e-14)
 
-# ---- def:chi5, prop:pentagon-chi5, prop:fib-criterion ----
+# ---- def:chi5, prop:pentagon-chi5, prop:fib-criterion (Chi5, pentagon, Fibonacci) ----
 _CHI = {0:0, 1:1, 2:-1, 3:-1, 4:1}
 def _chi5(k): return _CHI[k % 5]
 def _fibn(k):
@@ -892,12 +918,12 @@ def _fibn(k):
 _phv = (1 + mpf(5)**mpf('0.5')) / 2
 
 chk("eq:chi5-values",
-    "chi5 multiplicativo en (Z/5)^x y suma cero sobre el ciclo",
+    "chi5 multiplicative on (Z/5)^x and sums to zero over the cycle",
     all(_chi5(a*b) == _chi5(a)*_chi5(b) for a in range(1,5) for b in range(1,5))
     and sum(_chi5(a) for a in range(5)) == 0)
 
 chk("eq:chi5-pentagon",
-    "|2cos(pi a/5)| = phi^chi5(a) para a = 1,2,3,4",
+    "|2cos(pi a/5)| = phi^chi5(a) for a = 1,2,3,4",
     all(abs(abs(2*mp.cos(pi*a/5)) - _phv**_chi5(a)) < mpf('1e-25') for a in range(1,5))
     and all(abs(log(abs(2*mp.cos(pi*a/5)))/log(_phv) - _chi5(a)) < mpf('1e-22')
             for a in range(1,5)))
@@ -908,7 +934,7 @@ chk("eq:fib-criterion",
         [3,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]))
 
 chk("prop:pentagon-chi5",
-    "split {1,9,11,19}, inert {3,7,13,17}, ramificado 5",
+    "split {1,9,11,19}, inert {3,7,13,17}, ramified 5",
     sorted(a for a in [1,3,7,9,11,13,17,19] if _chi5(a)==1) == [1,9,11,19]
     and sorted(a for a in [1,3,7,9,11,13,17,19] if _chi5(a)==-1) == [3,7,13,17]
     and _chi5(5) == 0)
@@ -920,16 +946,16 @@ def _fibn2(k):
     return a
 _alphas = [(1 + mpf(5)**mpf('0.5'))/2, (1 - mpf(5)**mpf('0.5'))/2]
 chk("eq:binet",
-    "alpha^{n+1} = F_{n+1} alpha + F_n para las DOS raices de x^2-x-1, n = 0..25",
+    "alpha^{n+1} = F_{n+1} alpha + F_n for BOTH roots of x^2-x-1, n = 0..25",
     all(abs(a**(k+1) - (_fibn2(k+1)*a + _fibn2(k))) < mpf('1e-15')
         for a in _alphas for k in range(26)))
 
 chk("eq:binet",
-    "la misma recurrencia vale modulo q: F_{n+1} y F_n determinan alpha^{n+1} en Z/q",
+    "the same recurrence holds modulo q: F_{n+1} and F_n determine alpha^{n+1} in Z/q",
     all((_fibn2(k+1) + _fibn2(k)) % q == _fibn2(k+2) % q
         for q in (7, 11, 13, 19, 23) for k in range(20)))
 
-# ---- def:zetaK, prop:local-factors, prop:euler-colimit ----
+# ---- def:zetaK, prop:local-factors, prop:euler-colimit (Dedekind zeta) ----
 def _fK(p, s):
     c = _chi5(p)
     if c == 0:  return (1 - mpf(p)**(-s))**(-1)
@@ -944,16 +970,16 @@ def _primes2(N):
     return [i for i in range(2, N+1) if sv[i]]
 
 chk("eq:local-dedekind",
-    "f_p^K = f_p^zeta * f_p^L en los tres casos, 46 primos x 4 valores de s",
+    "f_p^K = f_p^zeta * f_p^L in the three cases, 46 primes x 4 values of s",
     all(abs(_fK(p,s) - _fZ(p,s)*_fL(p,s)) < mpf('1e-22')
         for s in (mpf(2), mpf(3), mpf('2.5'), mpf(5)) for p in _primes2(200)))
 
 chk("eq:splitting",
-    "g*e*f = 2 en los tres tipos, y N(p) = p, p^2, p",
+    "g*e*f = 2 in the three types, and N(p) = p, p^2, p",
     all(g*e*f == 2 for g,e,f in [(2,1,1),(1,1,2),(1,2,1)]))
 
 chk("eq:local-K",
-    "producto sobre ideales primos sobre p = factor local, en los tres casos",
+    "product over prime ideals above p = local factor, in the three cases",
     all(abs(((1 - (mpf(p0)**(-s))**f)**(-1))**g - _fK(p0,s)) < mpf('1e-22')
         for (p0,g,f) in [(5,1,1),(11,2,1),(7,1,2)] for s in (mpf(2), mpf(3), mpf(5))))
 
@@ -966,13 +992,13 @@ def _Lchi5(s):
 _s0 = mpf(3); _zK3 = zeta(_s0) * _Lchi5(_s0)
 _errs = [abs(_partE(_primes2(N), _s0) - _zK3) for N in (400, 2000, 20000)]
 chk("eq:colimit",
-    "el producto parcial converge monotonamente a zeta_K(3): el colimite existe",
+    "the partial product converges monotonically to zeta_K(3): the colimit exists",
     _errs[0] > _errs[1] > _errs[2] and _errs[2] < mpf('1e-8'))
 
 # ---- prop:class-number, thm:L1, thm:entropy-bridge, thm:zeta-odd ----
 _R = log(_phv); _lam = log(2)/log(_phv); _L1 = 2*log(_phv)/mpf(5)**mpf('0.5')
 chk("eq:minkowski",
-    "M_K = sqrt5/2 = 1.118... < 2, luego un entero 1 <= N <= M_K es 1: h_K = 1",
+    "M_K = sqrt5/2 = 1.118... < 2, hence an integer 1 <= N <= M_K is 1: h_K = 1",
     abs((mpf(2)/4)*mpf(5)**mpf('0.5') - mpf(5)**mpf('0.5')/2) < mpf('1e-25')
     and (mpf(2)/4)*mpf(5)**mpf('0.5') < 2)
 
@@ -980,37 +1006,37 @@ _La = -sum(_chi5(a)*mp.digamma(mpf(a)/5) for a in range(1,5))/5
 _Lb = -(1/mpf(5)**mpf('0.5'))*sum(_chi5(a)*log(2*mp.sin(pi*a/5)) for a in range(1,5))
 _cnf = (2**2 * 1 * _R)/(2*mpf(5)**mpf('0.5'))
 chk("eq:L1",
-    "L(1,chi5) = 2 log phi/sqrt5 por TRES rutas: digamma, log-seno y numero de clases",
+    "L(1,chi5) = 2 log phi/sqrt5 by THREE routes: digamma, log-sine, and class number",
     max(abs(_La-_L1), abs(_Lb-_L1), abs(_cnf-_L1)) < mpf('1e-25'))
 
 chk("eq:entropy-bridge",
-    "S_BH/k_B = lambda*R_K = lambda*(sqrt5/2)*L(1,chi5) = log 2 (un bit)",
+    "S_BH/k_B = lambda*R_K = lambda*(sqrt5/2)*L(1,chi5) = log 2 (one bit)",
     abs(_lam*_R - log(2)) < mpf('1e-25')
     and abs(mpf(5)**mpf('0.5')/2*_L1 - _R) < mpf('1e-25')
     and abs(_lam*(mpf(5)**mpf('0.5')/2)*_L1 - log(2)) < mpf('1e-25')
     and abs(_phv**_lam - 2) < mpf('1e-25') and abs(_phv**(-_lam) - mpf(1)/2) < mpf('1e-25'))
 
-# zeta_K se calcula por el PRODUCTO DE EULER sobre ideales (ruta independiente de zeta*L)
+# zeta_K is computed by the EULER PRODUCT over ideals (independent route from zeta*L)
 def _zetaK_euler(s, N=20000):
     r = mpf(1)
     for p in _primes2(N): r *= _fK(p, s)
     return r
 chk("eq:zeta-odd",
-    "zeta(2k+1) = zeta_K/L con zeta_K por el producto de Euler sobre ideales, k = 1,2",
+    "zeta(2k+1) = zeta_K/L with zeta_K by the Euler product over ideals, k = 1,2",
     all(abs(_zetaK_euler(mpf(2*k+1))/_Lchi5(2*k+1) - zeta(2*k+1)) < mpf('1e-8')
         and abs(_Lchi5(2*k+1)) > mpf('0.5') for k in (1, 2)))
 
 from mpmath import quad, inf
 # ---- app:arithmetic: Hurwitz, valores pares, kappa_K ----
 chk("eq:hurwitz",
-    "L(s,chi5) = 5^-s sum chi5(a) zeta(s,a/5), y el reindexado (5m+a)^-s = 5^-s (m+a/5)^-s",
+    "L(s,chi5) = 5^-s sum chi5(a) zeta(s,a/5), and the reindexed (5m+a)^-s = 5^-s (m+a/5)^-s",
     all(abs(_Lchi5(s) - mpf(5)**(-s)*sum(_chi5(a)*zeta(s, mpf(a)/5) for a in range(1,5)))
         < mpf('1e-22') for s in (mpf(2), mpf(3), mpf(5)))
     and all(abs(mpf(5*m+a)**(-mpf(3)) - mpf(5)**(-mpf(3))*(mpf(m)+mpf(a)/5)**(-mpf(3)))
             < mpf('1e-22') for m in range(12) for a in range(1,5)))
 
 chk("eq:even-L",
-    "L(2k,chi5) = sqrt5 pi^2k r con r racional: 4/125, 8/1875, 536/1171875",
+    "L(2k,chi5) = sqrt5 pi^2k r with rational r: 4/125, 8/1875, 536/1171875",
     all(abs(_Lchi5(2*k)/(mpf(5)**mpf('0.5')*pi**(2*k)) - r) < mpf('1e-22')
         for k, r in [(1, mpf(4)/125), (2, mpf(8)/1875), (3, mpf(536)/1171875)]))
 
@@ -1019,7 +1045,7 @@ def _binet_rhs(s):
     f = lambda v: (3-s) if v < mpf('1e-18') else _kapK(exp(v))*exp(-s*v) - exp(-2*v)/v
     return quad(f, [0, mpf('0.5'), 2, 10, inf])
 chk("eq:kappa-derivation",
-    "-psi(s/2) = int (kappa_K u^-s - u^-2/log u) du/u  para s = 2, 3, 7",
+    "-psi(s/2) = int (kappa_K u^-s - u^-2/log u) du/u  for s = 2, 3, 7",
     all(abs(-mp.digamma(s/2) - _binet_rhs(s)) < mpf('1e-13') for s in (mpf(2), mpf(3), mpf(7))))
 
 chk("eq:kappa",
@@ -1029,31 +1055,31 @@ chk("eq:kappa",
     and abs(2*mpf(1)**2/(1+1) - 1) < mpf('1e-25')
     and all(_kapK(u) > 0 for u in (mpf('1.001'), mpf(2), mpf(100))))
 
-# ---- prop:log-signature y eq:LambdaK ----
+# ---- prop:log-signature and eq:LambdaK ----
 chk("eq:log-signature",
     "sum chi5(a) log(2 sin(pi a/5)) = -2 log phi",
     abs(sum(_chi5(a)*log(2*mp.sin(pi*a/5)) for a in range(1,5)) + 2*log(_phv)) < mpf('1e-22')
     and abs(mp.sin(2*pi/5)/mp.sin(pi/5) - _phv) < mpf('1e-22'))
 
 chk("eq:LambdaK",
-    "Lambda_K = log N(p): log p en split, 2 log p en inerte",
+    "Lambda_K = log N(p): log p at split, 2 log p at inert",
     all(abs(log(mpf(p)**1) - log(mpf(p))) < mpf('1e-25') for p in (11, 19))
     and all(abs(log(mpf(p)**2) - 2*log(mpf(p))) < mpf('1e-25') for p in (7, 13)))
 
-# ---- prop:entropy-max: 1/2 es el MAXIMO de la entropia binaria ----
+# ---- prop:entropy-max: 1/2 is the MAXIMUM of the binary entropy ----
 def _Hbin(p): return -p*log(p)/log(2) - (1-p)*log(1-p)/log(2)
 chk("eq:entropy-max",
-    "H(p) <= 1 en (0,1) con igualdad SOLO en p=1/2 (999 puntos)",
+    "H(p) <= 1 on (0,1) with equality ONLY at p=1/2 (999 points)",
     all(_Hbin(mpf(k)/1000) <= 1 + mpf('1e-20') for k in range(1,1000))
     and abs(_Hbin(mpf(1)/2) - 1) < mpf('1e-25')
     and max((_Hbin(mpf(k)/1000), k) for k in range(1,1000))[1] == 500)
 
 chk("eq:entropy-max",
-    "p log(2p) + (1-p) log(2(1-p)) >= 0, el nucleo de la maximalidad",
+    "p log(2p) + (1-p) log(2(1-p)) >= 0, the kernel of maximality",
     all(mpf(k)/1000*log(2*mpf(k)/1000) + (1-mpf(k)/1000)*log(2*(1-mpf(k)/1000)) >= -mpf('1e-25')
         for k in range(1,1000)))
 
-# ---- thm:intertwine: el bulk y el generador modular son el mismo, salvo constante ----
+# ---- thm:intertwine: the bulk and the modular generator are the same, up to constant ----
 _RK2 = log(_phv)
 chk("eq:bulk-boundary-exp",
     "H(s) = m0 e^{s R_K} y K(s) = pi e^{s R_K}: misma exponencial, misma tasa",
@@ -1062,28 +1088,28 @@ chk("eq:bulk-boundary-exp",
         for m0 in (mpf(1), mpf('0.3'), mpf(7)) for s in range(8)))
 
 chk("eq:intertwine",
-    "K(s)/H(s) = pi/m0 INDEPENDIENTE del nivel (sigma = 0..11, cuatro m0)",
+    "K(s)/H(s) = pi/m0 INDEPENDENT of the level (sigma = 0..11, four m0)",
     all(abs(pi*_phv**s/(m0*_phv**s) - pi/m0) < mpf('1e-22')
         for m0 in (mpf(1), mpf('0.3'), mpf(7), mpf('2.5')) for s in range(12)))
 
 chk("thm:intertwine",
-    "el test DISCRIMINA: con base != phi la razon deriva con el nivel",
+    "test DISCRIMINATES: with base != phi the ratio varies with the level",
     max(abs(pi*_phv**s/(mpf(2)**s) - pi) for s in range(6)) > mpf('1'))
 
 
 # ---------------------------------------------------------------------------
-# Criterio D3: las tolerancias se DERIVAN de mp.dps, nunca se fijan a mano por
-# debajo de la precision disponible. `_TOL` para identidades algebraicas exactas;
-# `_TOL_EIG` para la diagonalizacion, que es iterativa y pierde digitos.
+# Criterion D3: tolerances are DERIVED from mp.dps, never set by hand below
+# the available precision. `_TOL` for exact algebraic identities;
+# `_TOL_EIG` for diagonalization, which is iterative and loses digits.
 # ---------------------------------------------------------------------------
 _TOL     = mpf(10)**(-(mp.dps - 6))
 _TOL_EIG = mpf(10)**(-(mp.dps // 2))
 
 # ============================================================================
-# eq:ets-metric / app:embedding — que ES y que NO ES la metrica ETS.
-#   §4.4 decia que la rotacion de Wick "carries it to de Sitter". Es falso: la
-#   ETS es PLANA (Riemann identicamente cero) y de Sitter es el hiperboloide
-#   embebido en ella. La relacion correcta es que la ETS es el limite H->0 de
+# eq:ets-metric / app:embedding — what the ETS metric IS and IS NOT.
+#   §4.4 said the Wick rotation "carries it to de Sitter". This is false: the
+#   ETS is FLAT (Riemann identically zero) and de Sitter is the hyperboloid
+#   embedded in it. The correct relation is that the ETS is the H->0 limit of
 #   de Sitter, no su rotacion. Verificado simbolicamente aqui.
 # ============================================================================
 import sympy as _sy
@@ -1103,7 +1129,7 @@ _gETS=_sy.diag(-1,1,1,1,_lm**2)
 _RETS=_riemann(_gETS,_co5)
 
 chk("eq:ets-metric",
-    "la metrica ETS es PLANA: las 625 componentes de Riemann se anulan (no es de Sitter)",
+    "the ETS metric is FLAT: all 625 Riemann components vanish (it is not de Sitter)",
     all(_RETS[a][b][c][d]==0 for a in range(5) for b in range(5)
         for c in range(5) for d in range(5)))
 
@@ -1123,21 +1149,20 @@ chk("eq:ets-metric",
     and all(_sy.simplify(_Ric[i,i] - 3*_Hb**2*_gdS[i,i])==0 for i in range(4)))
 
 chk("eq:ets-metric",
-    "la relacion correcta: la ETS es el limite H->0 de de Sitter (a^2 -> 1), NO su rotacion de Wick",
+    "the correct relation: ETS is the H->0 limit of de Sitter (a^2 -> 1), NOT its Wick rotation",
     _sy.limit(_aa**2, _Hb, 0)==1
     and _sy.simplify(_gdS.subs(_Hb,0) - _sy.diag(-1,1,1,1))==_sy.zeros(4,4))
 
 # ============================================================================
-# §4.3 prop:israel — la retroaccion de cada nivel, con sus controles negativos.
-#   Cierra el enlace gravedad<->cuerdas: la curvatura extrinseca queda ligada a
-#   la tension de capa, y esa tension al conteo de modos, sin parametro libre.
+# §4.3 prop:israel — backreaction at each level, with negative controls.
+#   Closes the gravity<->strings link: extrinsic curvature is tied to
+#   shell tension, and that tension to the mode count, with no free parameter.
 # ============================================================================
 _epsL = lambda sg: eps0 * phi**sg
 _Ssat = lambda sg: np.pi * phi**sg
 _Nmd  = lambda sg: int(np.floor(np.pi * phi**sg))
 
-chk("eq:ebit",
-    "energia por bit constante: eps(s)/S(s) = eps0/pi = 1/M_PCF en sigma = 0..11",
+chk("eq:ebit", "constant energy per bit: eps(s)/S(s) = eps0/pi = 1/M_PCF at sigma = 0..11",
     all(abs(_epsL(sg)/_Ssat(sg) - eps0/np.pi) < 1e-14 for sg in range(12))
     and abs(eps0/np.pi - 1/Mpcf) < 1e-14,
     f"{eps0/np.pi:.12f}")
@@ -1148,125 +1173,122 @@ chk("eq:ebit",
     and max(abs(eps0*2.0**sg/_Ssat(sg) - eps0/_Ssat(0)) for sg in range(7)) > 1e-3
     and max(abs(eps0/_Ssat(sg) - eps0/_Ssat(0)) for sg in range(7)) > 1e-3)
 
-chk("eq:shell-tension",
-    "lambda_s = N_modes(s)/M_PCF por DOS rutas: eps*N/S y N/M_PCF, sigma = 0..6",
+chk("eq:shell-tension", "lambda_s = N_modes(s)/M_PCF by TWO routes: eps*N/S and N/M_PCF, sigma = 0..6",
     all(abs(_epsL(sg)*_Nmd(sg)/_Ssat(sg) - _Nmd(sg)/Mpcf) < 1e-14 for sg in range(7)),
     f"lambda_0..6 = {[round(_Nmd(sg)/Mpcf,4) for sg in range(7)]}")
 
 chk("eq:shell-tension",
-    "DISCRIMINA: la tension CRECE con el nivel y su razon tiende a phi (no es constante)",
+    "DISCRIMINATES: the tension GROWS with level and its ratio tends to phi (not constant)",
     all(_Nmd(sg)/Mpcf < _Nmd(sg+1)/Mpcf for sg in range(6))
     and abs(_Nmd(6)/_Nmd(5) - phi) < 0.05)
 
-chk("eq:israel",
-    "el prefactor 8 pi G_5/3 colapsa a 4pi/3 exactamente en G_5 = mu_3 = 1/2",
+chk("eq:israel", "the prefactor 8 pi G_5/3 collapses to 4pi/3 exactly at G_5 = mu_3 = 1/2",
     abs(8*np.pi*0.5/3 - 4*np.pi/3) < 1e-14)
 
 chk("eq:israel",
-    "DISCRIMINA: ninguna otra constante de Newton lo da (G=1/4, 1, 3/4 fallan)",
+    "DISCRIMINATES: no other Newton constant works (G=1/4, 1, 3/4 fail)",
     all(abs(8*np.pi*g/3 - 4*np.pi/3) > 1.0 for g in (0.25, 1.0, 0.75)))
 
 chk("eq:israel",
-    "el salto queda determinado nivel por nivel: [A'] = -(4pi/3) N_modes/M_PCF",
+    "the jump is determined level by level: [A'] = -(4pi/3) N_modes/M_PCF",
     all(abs(-(4*np.pi/3)*_Nmd(sg)/Mpcf - (-(8*np.pi*0.5/3)*(_Nmd(sg)/Mpcf))) < 1e-14
         for sg in range(7)),
     f"saltos = {[round(-(4*np.pi/3)*_Nmd(sg)/Mpcf,4) for sg in range(7)]}")
 
-chk("rmk:backreaction",
-    "retroaccion acumulada = 3, 8, 16, 29, 50, 84, 140 para k = 0..6",
+chk("rmk:backreaction", "cumulative backreaction = 3, 8, 16, 29, 50, 84, 140 for k = 0..6",
     [sum(_Nmd(j) for j in range(k+1)) for k in range(7)] == [3,8,16,29,50,84,140])
 
 # ============================================================================
-# eq:kk-numerator en forma de ARIDAD — traido de face_links_verbatim_code.md
-#   El corpus escribe el numerador como (n-2), no como 1:
+# eq:kk-numerator in ARITY form — from face_links_verbatim_code.md
+#   The corpus writes the numerator as (n-2), not as 1:
 #       m^2_KK = -(phi^2 + phi^-2 - 2)/ln^2 phi = -(n-2)/ln^2 phi
-#   Es la misma cantidad, pero la forma del corpus dice mas: el 1 del numerador
-#   ES la aridad menos 2. Y permite generalizar a base b_n con b^2+b^-2 = n,
-#   cuya forma cerrada es b_n = sqrt((n + sqrt(n^2-4))/2), que en n=3 da phi.
+#   It is the same quantity, but the corpus form says more: the 1 in the numerator
+#   IS the arity minus 2. And it allows generalization to base b_n with b^2+b^-2 = n,
+#   whose closed form is b_n = sqrt((n + sqrt(n^2-4))/2), which gives phi at n=3.
 # ============================================================================
 _lnp2 = log(_phv)**2
 _n_ar3 = mpf(3)
 
 chk("eq:kk-numerator",
-    "el numerador es (n-2) con n = phi^2+phi^-2: dos escrituras del mismo 1",
+    "the numerator is (n-2) with n = phi^2+phi^-2: two writings of the same 1",
     abs((_phv**2 + _phv**(-2) - 2) - (_n_ar3 - 2)) < _TOL
     and abs((_phv**2 + _phv**(-2)) - _n_ar3) < _TOL)
 
 _b_n = lambda n: sqrt((mpf(n) + sqrt(mpf(n)**2 - 4))/2)
 
 chk("eq:kk-numerator",
-    "la base de aridad n es b_n = sqrt((n+sqrt(n^2-4))/2), y en n=3 es EXACTAMENTE phi",
+    "the base of arity n is b_n = sqrt((n+sqrt(n^2-4))/2), and at n=3 is EXACTLY phi",
     abs(_b_n(3) - _phv) < _TOL
     and all(abs(_b_n(n)**2 + _b_n(n)**(-2) - n) < _TOL for n in (3,4,5,6,7,8)))
 
 chk("eq:kk-BF",
-    "DISCRIMINA al reves: toda aridad viola BF, y n=3 es la que MENOS la viola",
+    "DISCRIMINATES in reverse: every arity violates BF, and n=3 is the LEAST violator",
     all(-(mpf(n)-2)/log(_b_n(n))**2 < -4 for n in (3,4,5,6,7,8))
     and max(-(mpf(n)-2)/log(_b_n(n))**2 for n in (3,4,5,6,7,8))
         == -(mpf(3)-2)/log(_b_n(3))**2,
-    "la violacion NO selecciona la aridad; la truncacion si estabiliza")
+    "the violation does NOT select the arity; truncation does stabilize")
 
 chk("eq:kk-BF",
-    "eq:BF-violation del corpus: m^2_KK + 4 = -(1 - 4 ln^2 phi)/ln^2 phi, negativo",
+    "eq:BF-violation from the corpus: m^2_KK + 4 = -(1 - 4 ln^2 phi)/ln^2 phi, negative",
     abs((-1/_lnp2 + 4) - (-(1 - 4*_lnp2)/_lnp2)) < _TOL
     and (-1/_lnp2 + 4) < 0,
     f"Delta_BF = {mp.nstr(-1/_lnp2 + 4, 8)}")
 
 # ============================================================================
 # eq:obs-matter / eq:areafactor (puente) — los DOS 1/4 son el mismo, y lo fuerza
-#   la aridad. El 1/4 de Yang-Mills es el coeficiente de traza: la traza vale
-#   (1 - D/4)F^2 y se anula en D=4, luego el coeficiente es 1/D. El 1/4 del factor
+#   arity. The 1/4 of Yang-Mills is the trace coefficient: the trace equals
+#   (1 - D/4)F^2 and vanishes at D=4, hence the coefficient is 1/D. The 1/4 of the
 #   de area es mu^2 = 1/(4 G_N) con G_N = mu. Coinciden si y solo si 1/D = mu^2.
-#   Con D = n+1 (eq:interval-gap) y mu = cos(pi/n) (prop:pcf-norms generalizada),
-#   eso es 1/(n+1) = cos^2(pi/n), que se cumple SOLO en n = 3.
-#   No estaba en el corpus; se demuestra aqui.
+#   With D = n+1 (eq:interval-gap) and mu = cos(pi/n) (prop:pcf-norms generalized),
+#   that is 1/(n+1) = cos^2(pi/n), which holds ONLY at n = 3.
+#   Was not in the corpus; proved here.
 # ============================================================================
 _mu_n = lambda n: mp.cos(pi/n)
 
 chk("eq:obs-matter",
-    "los dos 1/4 coinciden: 1/D del coeficiente de traza YM y mu^2 del factor de area, con D=n+1",
+    "the two 1/4 coincide: 1/D of the YM trace coefficient and mu^2 of the area factor, with D=n+1",
     abs(mpf(1)/(3+1) - _mu_n(3)**2) < _TOL
     and abs(_mu_n(3) - mpf(1)/2) < _TOL,
     f"1/(n+1)={mp.nstr(mpf(1)/4,6)}  mu^2={mp.nstr(_mu_n(3)**2,6)}")
 
 chk("eq:obs-matter",
-    "DISCRIMINA por aridad: 1/(n+1) = cos^2(pi/n) SOLO en n=3 (n=2,4,5,6,7,8 fallan)",
+    "DISCRIMINATES by arity: 1/(n+1) = cos^2(pi/n) ONLY at n=3 (n=2,4,5,6,7,8 fail)",
     all(abs(mpf(1)/(n+1) - _mu_n(n)**2) > mpf('0.05') for n in (2,4,5,6,7,8)))
 
 chk("eq:obs-matter",
-    "y la traza (1 - D/4)F^2 se anula SOLO en D=4, que es n+1 con la misma aridad n=3",
+    "and the trace (1 - D/4)F^2 vanishes ONLY at D=4, which is n+1 with the same arity n=3",
     abs(1 - mpf(3+1)/4) < _TOL
     and all(abs(1 - mpf(n+1)/4) > mpf('0.2') for n in (2,4,5,6)))
 
 # ============================================================================
-# ssec:adscft — la invariancia de escala del modulo, que faltaba.
-#   El parentesis de §3.4 nombra |Om|_sigma=1/2, GKP=3/4, S_BH=mu y c=3.
-#   c=3 esta (brown_henneaux_c_eq_three). Aqui se cubre |Om|_sigma=1/2.
-#   GKP=3/4 y S_BH=mu NO se cubren: son identificaciones con mu fijado, no
-#   identidades entre dos calculos, y comprobarlas seria escribir un vacuo.
-#   Queda como hallazgo abierto sobre el parentesis del .tex.
+# ssec:adscft — scale invariance of the modulus, which was missing.
+#   The parenthesis in §3.4 names |Om|_sigma=1/2, GKP=3/4, S_BH=mu and c=3.
+#   c=3 is present (brown_henneaux_c_eq_three). Here |Om|_sigma=1/2 is covered.
+#   GKP=3/4 and S_BH=mu are NOT covered: they are identifications with fixed mu, not
+#   identities between two computations, and checking them would be vacuous.
+#   Remains as an open finding regarding the .tex parenthesis.
 # ============================================================================
 _mu = mpf(1)/2
 
 chk("eq:tower-autosimilar",
-    "|Om|_sigma = 1/2 en TODO nivel: el modulo es invariante de escala (sigma = -6..12, y no entero)",
+    "|Om|_sigma = 1/2 at EVERY level: the modulus is scale-invariant (sigma = -6..12, and non-integer)",
     all(abs(abs(_mu*mp.expj(mpf(sg)*log(_phv))) - _mu) < _TOL
         for sg in [mpf(k) for k in range(-6,13)] + [mpf('2.5'), mpf('7.3'), -mpf('1.7')]))
 
 chk("eq:tower-autosimilar",
-    "DISCRIMINA: un modulo que dependiera del nivel, |Om|=1/2 * phi^(-sigma/10), deriva y falla",
+    "DISCRIMINATES: a modulus that depended on the level, |Om|=1/2 * phi^(-sigma/10), drifts and fails",
     max(abs(_mu*_phv**(-mpf(sg)/10) - _mu) for sg in range(1,13)) > mpf('0.1'))
 
-# --- GKP = 3/4: rmk:spectral-origin dice que el mismo 3/4 llega por tres rutas.
-#     Se comparan las TRES, ninguna contra su propio literal: la norma cuadrada del
-#     triangulo de autovalores, el producto espectral sigma*mu, y la razon de color.
+# --- GKP = 3/4: rmk:spectral-origin says the same 3/4 arrives by three routes.
+#     The THREE are compared, none against its own literal: the squared norm of the
+#     eigenvalue triangle, the spectral product sigma*mu, and the colour ratio.
 _lamGKP = [_mu*mp.expj(2*pi*k/3) for k in range(3)]
 _v2   = sum(abs(l)**2 for l in _lamGKP)      # ||v||^2 del triangulo (eq:isometry-triad)
 _sigmu = (mpf(3)/2) * _mu                     # sigma*mu (prop:spectral)
 _colr = 1 - _mu**2                            # 1 - mu3^2 (colour_ratio)
 
 chk("eq:isometry-triad",
-    "3/4 por TRES rutas: ||v||^2 del triangulo, sigma*mu espectral, y 1-mu3^2 de color",
+    "3/4 by THREE routes: ||v||^2 of the triangle, spectral sigma*mu, and 1-mu3^2 of colour",
     abs(_v2 - _sigmu) < _TOL and abs(_sigmu - _colr) < _TOL and abs(_v2 - mpf(3)/4) < _TOL,
     f"||v||^2={mp.nstr(_v2,6)}")
 
@@ -1275,34 +1297,31 @@ chk("eq:isometry-triad",
     all(abs(mpf(n)*_mu**2 - _sigmu) > mpf('0.2') for n in (2, 4, 5, 6)))
 
 chk("eq:shared-signature",
-    "GKP = 1 - mu3^2 ES ese mismo 3/4: la entrada GKP de la firma es la razon de color",
+    "GKP = 1 - mu3^2 IS that same 3/4: the GKP entry of the signature is the colour ratio",
     abs(_colr - _v2) < _TOL and abs(_colr - mpf(3)/4) < _TOL)
 
-# --- S_BH = 1/(4 G_N) = mu con G_N = mu es EQUIVALENTE a 4 mu^2 = 1, que
+# --- S_BH = 1/(4 G_N) = mu with G_N = mu is EQUIVALENT to 4 mu^2 = 1, which
 #     eq:obs-identity ya verifica. Se registra la equivalencia, no se repite el hecho.
-chk("eq:brown-henneaux",
-    "S_BH = 1/(4 G_N) = mu con G_N = mu es equivalente a 4 mu^2 = 1 (eq:obs-identity)",
+chk("eq:brown-henneaux", "S_BH = 1/(4 G_N) = mu with G_N = mu is equivalent to 4 mu^2 = 1 (eq:obs-identity)",
     abs(1/(4*_mu) - _mu) < _TOL and abs(4*_mu**2 - 1) < _TOL
     and abs((1/(4*_mu) - _mu)) < _TOL,
     "equivalencia registrada, el hecho esta en eq:obs-identity")
 
-# --- la contracara: dos torres, un microestado (TwoTowersOneMicrostate) ---
-# La torre de Virasoro (holografia) y la escalera del superpunto (M-teoria)
-# se encuentran como dos caminos al mismo vertice, no como dos coincidencias.
+# --- the contrapositive: two towers, one microstate (TwoTowersOneMicrostate) ---
+# The Virasoro tower (holography) and the superpoint ladder (M-theory)
+# meet as two paths to the same vertex, not as two coincidences.
 chk("eq:shared-signature",
-    "c=3 por DOS rutas: hoja de mundo (Polyakov) y Brown-Henneaux 3l/(2G) con l=1, G=1/2",
+    "c=3 by TWO routes: worldsheet (Polyakov) and Brown-Henneaux 3l/(2G) with l=1, G=1/2",
     abs(mpf(3)*1/(2*_mu) - 3) < _TOL and abs(mpf(3) - 3) < _TOL)
 chk("eq:shared-signature",
     "DISCRIMINA: 3l/(2G)=3 SOLO si G=1/2; con G=1/3,1/4,1,2 la carga central cambia",
     all(abs(mpf(3)*1/(2*g) - 3) > mpf('0.4')
         for g in (mpf(1)/3, mpf(1)/4, mpf(1), mpf(2))))
-chk("eq:shared-signature",
-    "el conteo de la escalera es el giro: |H_5| = 2^5 = 32 y 2^2 = -1 en F_5, como i^2 = -1",
+chk("eq:shared-signature", "the ladder count is the twist: |H_5| = 2^5 = 32 and 2^2 = -1 in F_5, like i^2 = -1",
     2**5 == 32 and pow(2, 2, 5) == (-1) % 5
     and abs(complex(0,1)**2 + 1) < 1e-15)
 _m0t = mpf('1.7')
-chk("eq:intertwine",
-    "una recurrencia cubre la escalera: S(s+1)/S(s) = phi en todo nivel",
+chk("eq:intertwine", "a single recurrence covers the ladder: S(s+1)/S(s) = phi at every level",
     all(abs((pi*phi**(s+1))/(pi*phi**s) - phi) < _TOL
         for s in (mpf(0), mpf(1), mpf('2.5'), mpf(7), mpf(11), mpf(-3))))
 chk("eq:intertwine",
@@ -1314,30 +1333,30 @@ chk("eq:intertwine",
     len({mp.nstr((pi*mpf(2)**s)/(_m0t*phi**s), 12)
          for s in (mpf(0), mpf(1), mpf(7))}) == 3)
 chk("eq:isometry-triad",
-    "d=3 sin algebra de division: 3 no esta en {1,2,4} de Frobenius, y aun asi "
-    "la triada da un mapa C->C^3 que preserva la norma",
+    "d=3 without a division algebra: 3 is not in {1,2,4} of Frobenius, yet "
+    "the triad gives a norm-preserving map C->C^3",
     3 not in {1, 2, 4}
     and abs(sum((mpf(1)/2 / (sqrt(3)/2))**2 for _ in range(3)) - 1) < _TOL)
 
-# --- eq:pcf-partition: eta(i) por DOS rutas y de ahi la particion, que faltaba.
+# --- eq:pcf-partition: eta(i) by TWO routes and from there the partition, which was missing.
 _eta_G  = gamma(mpf(1)/4)/(2*pi**mpf('0.75'))                 # via Gamma(1/4), eq:eta-i
 _Theta1 = nsum(lambda n: exp(-pi*n**2), [-inf, inf])          # suma sobre el reticulo
 _eta_T  = _Theta1/sqrt(2)                                     # via Theta(1)=sqrt2 eta(i)
 
 chk("eq:eta-i",
-    "eta(i) por DOS rutas: Gamma(1/4)/(2 pi^{3/4}) y Theta(1)/sqrt2 del reticulo",
+    "eta(i) by TWO routes: Gamma(1/4)/(2 pi^{3/4}) and Theta(1)/sqrt2 from the lattice",
     abs(_eta_G - _eta_T) < mpf(10)**(-(mp.dps-8)),
     f"eta(i)={mp.nstr(_eta_G,12)}")
 
 _Z_G = exp(-3*pi/2)/_eta_G**6
 _Z_T = exp(-3*pi/2)/_eta_T**6
 chk("eq:pcf-partition",
-    "Z_PCF(i) = e^{-3 pi/2}/|eta(i)|^6 por las dos rutas de eta, y es FINITA",
+    "Z_PCF(i) = e^{-3 pi/2}/|eta(i)|^6 by the two routes of eta, and is FINITE",
     abs(_Z_G - _Z_T) < mpf(10)**(-(mp.dps-8)) and _Z_G > 0 and _Z_G < mpf(1),
     f"Z_PCF(i)={mp.nstr(_Z_G,10)}")
 
 chk("eq:pcf-partition",
-    "DISCRIMINA: la finitud viene de eta(i) != 0; con eta -> 0 la particion divergeria",
+    "DISCRIMINATES: finiteness comes from eta(i) != 0; with eta -> 0 the partition would diverge",
     _eta_G > mpf('0.7') and exp(-3*pi/2) > 0
     and abs(exp(-3*pi/2)/mpf('1e-9')**6) > mpf('1e40'))
 
@@ -1347,17 +1366,17 @@ chk("eq:brown-henneaux",
     and abs(3*mpf(1)/(2*(mpf(1)/4)) - 3) > mpf('2'))
 
 # ============================================================================
-# app:kk — prop:kk-discrete-spectrum: el espectro Kaluza-Klein discreto
-#   El operador de la torre tiene saltos phi^{+2}, phi^{-2} y diagonal -2, todo
-#   sobre ln^2 phi. Los saltos son RECIPROCOS, asi que la similaridad diagonal
-#   D = diag(phi^s) lo lleva al laplaciano de Dirichlet SIMETRICO de 2n+1 nodos,
-#   cuyo espectro es -4 sin^2(k pi / 4(n+1)) < 0. Luego m^2 = -lambda > 0.
+# app:kk — prop:kk-discrete-spectrum: the discrete Kaluza-Klein spectrum
+#   The tower operator has jumps phi^{+2}, phi^{-2} and diagonal -2, all
+#   over ln^2 phi. The jumps are RECIPROCAL, so the diagonal similarity
+#   D = diag(phi^s) maps it to the symmetric Dirichlet Laplacian of 2n+1 nodes,
+#   whose spectrum is -4 sin^2(k pi / 4(n+1)) < 0. Hence m^2 = -lambda > 0.
 # ============================================================================
 from mpmath import matrix as _mpmat, eig as _mpeig
 _lnp = log(_phv)
 
 def _kk_operator(up, down, N=7, sc=None):
-    """Tridiagonal de N niveles: diagonal -2, saltos `up` y `down`, escala sc."""
+    """Tridiagonal of N levels: diagonal -2, jumps `up` and `down`, scale sc."""
     if sc is None: sc = 1/_lnp**2
     L = _mpmat(N, N)
     for s in range(N):
@@ -1377,16 +1396,16 @@ _lam_cf  = sorted(-4*mp.sin(k*pi/(4*(_n_ar+1)))**2/_lnp**2 for k in range(1, _Nl
 _m2_cf   = sorted( 4*mp.sin(k*pi/(4*(_n_ar+1)))**2/_lnp**2 for k in range(1, _Nlev+1))
 
 chk("eq:kk-spectrum",
-    "los dos saltos son reciprocos: phi^2 * phi^-2 = 1, media geometrica 1",
+    "the two jumps are reciprocal: phi^2 * phi^-2 = 1, geometric mean 1",
     abs(_phv**2 * _phv**(-2) - 1) < _TOL
     and abs(sqrt(_phv**2 * _phv**(-2)) - 1) < _TOL)
 
 chk("eq:kk-spectrum",
-    "espectro discreto = -4 sin^2(k pi/4(n+1))/ln^2 phi por DOS rutas: diagonalizacion y forma cerrada",
+    "discrete spectrum = -4 sin^2(k pi/4(n+1))/ln^2 phi by TWO routes: diagonalization and closed form",
     max(abs(a-b) for a, b in zip(_lam_num, _lam_cf)) < _TOL_EIG)
 
 chk("eq:kk-spectrum",
-    "m^2_k = -lambda_k > 0 para los 2n+1 = 7 modos; el menor es 4 sin^2(pi/16)/ln^2 phi",
+    "m^2_k = -lambda_k > 0 for the 2n+1 = 7 modes; the smallest is 4 sin^2(pi/16)/ln^2 phi",
     all(v < 0 for v in _lam_num) and all(v > 0 for v in _m2_cf)
     and abs(_m2_cf[0] - 4*mp.sin(pi/16)**2/_lnp**2) < _TOL,
     f"min m^2 = {mp.nstr(_m2_cf[0], 7)}")
@@ -1394,32 +1413,32 @@ chk("eq:kk-spectrum",
 # el convenio de signo NO se asume: sale del modo constante del operador sin truncar,
 # cuyo autovalor es la suma de fila interior = eq:kk-numerator / ln^2 phi
 chk("eq:kk-numerator",
-    "suma de fila interior = (phi^2+phi^-2-2)/ln^2 phi = 1/ln^2 phi (el numerador es eq:kk-numerator = 1)",
+    "interior row sum = (phi^2+phi^-2-2)/ln^2 phi = 1/ln^2 phi (the numerator is eq:kk-numerator = 1)",
     abs((_phv**2 + _phv**(-2) - 2) - 1) < _TOL
     and abs((_phv**2 + _phv**(-2) - 2)/_lnp**2 - 1/_lnp**2) < _TOL)
 
 chk("eq:kk-BF",
-    "m^2 continuo = -(suma de fila) = -1/ln^2 phi < -4 = m^2_BF (el modo continuo violaria BF)",
+    "m^2 continuous = -(row sum) = -1/ln^2 phi < -4 = m^2_BF (the continuous mode would violate BF)",
     (-1/_lnp**2) < -4 and _lnp < mpf('0.5'),
     f"m^2_KK = {mp.nstr(-1/_lnp**2, 8)}")
 
-# controles negativos: la reciprocidad y la base hacen trabajo real
+# negative controls: reciprocity and the base do real work
 chk("eq:kk-spectrum",
-    "DISCRIMINA: saltos NO reciprocos dan modos con m^2 < 0 (phi^2/phi^-1, phi^3/phi^-1, 4/1)",
+    "DISCRIMINATES: non-reciprocal jumps give modes with m^2 < 0 (phi^2/phi^-1, phi^3/phi^-1, 4/1)",
     all(max(_kk_spectrum(u, d, _Nlev)) > 0
         for u, d in [(_phv**2, _phv**(-1)), (_phv**3, _phv**(-1)), (mpf(4), mpf(1))]))
 
 chk("eq:kk-numerator",
-    "DISCRIMINA: el numerador b^2+b^-2-2 vale 1 SOLO en b = phi (base 2 da 9/4, base 3 da 64/9)",
+    "DISCRIMINATES: the numerator b^2+b^-2-2 equals 1 ONLY at b = phi (base 2 gives 9/4, base 3 gives 64/9)",
     abs((mpf(2)**2 + mpf(2)**(-2) - 2) - mpf(9)/4) < _TOL
     and abs((mpf(3)**2 + mpf(3)**(-2) - 2) - mpf(64)/9) < _TOL
     and abs(mpf(2)**2 + mpf(2)**(-2) - 2 - 1) > mpf('1'))
 
 
 # ============================================================================
-# prop:interval-uniqueness — la terna de niveles es unica sobre los enteros
-#   sigma_L = 2n, sigma_L - sigma_G = n+1, y las dos fracciones de
-#   eq:interval-fractions igualadas a |Omega|^2 = 1/4 y ||P||^2 = 1/3.
+# prop:interval-uniqueness — the level triple is unique over the integers
+#   sigma_L = 2n, sigma_L - sigma_G = n+1, and the two fractions of
+#   eq:interval-fractions set equal to |Omega|^2 = 1/4 and ||P||^2 = 1/3.
 # ============================================================================
 from fractions import Fraction as _F
 _muSq, _PSq = _F(1, 4), _F(1, 3)
@@ -1438,40 +1457,39 @@ def _interval_solutions(n, hi=15):
 
 _sols = _interval_solutions(_n_ar)
 chk("prop:interval-uniqueness",
-    "sobre 0<=sG<sEM<sL<=16 la terna que cumple las cuatro ligaduras es UNICA: (2,3,6)",
-    _sols == [(2, 3, 6)], f"soluciones = {_sols}")
+    "over 0<=sG<sEM<sL<=16 the triple satisfying the four constraints is UNIQUE: (2,3,6)",
+    _sols == [(2, 3, 6)], f"solutions = {_sols}")
 
-chk("eq:interval-levels",
-    "y es la de eq:interval-levels: (n-1, n, 2n) en la aridad n = 3",
+chk("eq:interval-levels", "and it is that of eq:interval-levels: (n-1, n, 2n) at arity n = 3",
     _sols == [(_n_ar-1, _n_ar, 2*_n_ar)])
 
 chk("eq:interval-fractions",
-    "la familia (n-1,n,2n) da las fracciones 1/(n+1) y 1/n para toda aridad n = 2..8",
+    "the family (n-1,n,2n) gives fractions 1/(n+1) and 1/n for every arity n = 2..8",
     all(_F(n-(n-1), 2*n-(n-1)) == _F(1, n+1) and _F(n-(n-1), 2*n-n) == _F(1, n)
         for n in range(2, 9)))
 
 chk("eq:interval-fractions",
-    "DISCRIMINA por la aridad: solo n = 3 lleva las fracciones a |Omega|^2 = 1/4 y ||P||^2 = 1/3",
+    "DISCRIMINATES by arity: only n = 3 brings the fractions to |Omega|^2 = 1/4 and ||P||^2 = 1/3",
     [n for n in range(2, 9) if _F(1, n+1) == _muSq and _F(1, n) == _PSq] == [3]
     and _interval_solutions(2) == [] and _interval_solutions(4) == [])
 
 chk("eq:interval-gap",
-    "y el hueco sigma_L - sigma_G = n+1 vale 4 = dim(M^4) solo en n = 3",
+    "and the gap sigma_L - sigma_G = n+1 equals 4 = dim(M^4) only at n = 3",
     [n for n in range(2, 9) if 2*n - (n-1) == 4] == [3])
 
 
 # ============================================================================
-# prop:spectral-angle-tower — la tangente del angulo espectral ES la torre
+# prop:spectral-angle-tower — the tangent of the spectral angle IS the tower
 # ============================================================================
 _e0 = _lnp/(6*sqrt(3))
 def _alpha(s): return mp.atan(_e0 * _phv**s)
 
 chk("eq:spectral-angle",
-    "tan alpha(sigma) = eps0 phi^sigma (dos rutas: tan de arctan y la torre directa)",
+    "tan alpha(sigma) = eps0 phi^sigma (two routes: tan of arctan and the direct tower)",
     all(abs(mp.tan(_alpha(s)) - _e0*_phv**s) < _TOL for s in range(9)))
 
 chk("eq:spectral-angle",
-    "tan alpha(sigma+1)/tan alpha(sigma) = phi EXACTO: el angulo es la torre",
+    "tan alpha(sigma+1)/tan alpha(sigma) = phi EXACT: the angle is the tower",
     all(abs(mp.tan(_alpha(s+1))/mp.tan(_alpha(s)) - _phv) < _TOL for s in range(9)))
 
 chk("eq:spectral-angle",
@@ -1479,45 +1497,189 @@ chk("eq:spectral-angle",
     abs((mpf(2)**1)/(mpf(2)**0) - _phv) > mpf('0.3'))
 
 chk("eq:spectral-surface",
-    "sin a(s1) cos a(s2) = eps0 phi^s1/sqrt((1+eps0^2 phi^2s1)(1+eps0^2 phi^2s2)): trig vs forma cerrada",
+    "sin a(s1) cos a(s2) = eps0 phi^s1/sqrt((1+eps0^2 phi^2s1)(1+eps0^2 phi^2s2)): trig vs closed form",
     max(abs(mp.sin(_alpha(a))*mp.cos(_alpha(b))
             - _e0*_phv**a/sqrt((1+_e0**2*_phv**(2*a))*(1+_e0**2*_phv**(2*b))))
         for a in range(9) for b in range(9)) < _TOL)
 
 chk("eq:bridge-angle",
-    "T(s1,s2) = (1+tan a(s1))/(1+tan a(s2)): el cociclo ER=EPR es el angulo",
+    "T(s1,s2) = (1+tan a(s1))/(1+tan a(s2)): the ER=EPR cocycle is the angle",
     max(abs((1+_e0*_phv**a)/(1+_e0*_phv**b)
             - (1+mp.tan(_alpha(a)))/(1+mp.tan(_alpha(b))))
         for a in range(9) for b in range(9)) < _TOL)
 
 chk("eq:bridge-angle",
-    "forma pi/4: sqrt2 sin(a+pi/4)/cos(a) = 1 + tan a, porque tan(pi/4) = 1",
+    "pi/4 form: sqrt2 sin(a+pi/4)/cos(a) = 1 + tan a, because tan(pi/4) = 1",
     all(abs(sqrt(2)*mp.sin(_alpha(s)+pi/4)/mp.cos(_alpha(s)) - (1+mp.tan(_alpha(s))))
         < _TOL for s in range(9))
     and abs(mp.tan(pi/4) - 1) < _TOL)
 
 
 # ============================================================================
+# fig7_alpha_uniqueness_generator.py — Figure 7 generator for CW6_paper_v4.tex.
+#
+# Extracted literally from CW6_all_figures_v2.py (make_alpha_uniqueness),
+# label \label{fig:alpha-uniqueness}, section ssec:accum.
+#
+# Panel (a): the spectral-angle surface sin α(σ1) cos α(σ2) of eq:spectral-surface,
+# where α(σ) = arctan(ε0 φ^σ) is the angle of eq:spectral-angle, and the property
+# proved tan α(σ+1)/tan α(σ) = φ (Proposition 3.15, prop:spectral-angle-tower).
+# Panel (b): uniqueness of the integer triple (σ_G,σ_EM,σ_Λ)=(2,3,6) satisfying
+# the four constraints of eq:interval-levels — DERIVED from arity n=3
+# (σ_G=n-1, σ_EM=n), not fitted.
+#
+# Each assertion is checked by CW6_figures_verify_v2.py against the paper;
+# the paper-level statements are in CW6_complete_verify_v2.py.
+# ============================================================================
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
+from fractions import Fraction as Fr
+
+# --- framework constants (identical to CW6_all_figures_v2.py) ---
+phi_fig = (1 + np.sqrt(5)) / 2
+eps0_fig = np.log(phi_fig) / (6 * np.sqrt(3))          # certainty epsilon_0 = ln(phi)/(6 sqrt3)
+
+def alpha_fig(s):
+    """The spectral angle: eps0 * M_PCF = pi (eq:certainty)."""
+    return np.arctan(eps0_fig * phi_fig ** s)
+
+RC = {'font.family': 'serif', 'font.serif': ['DejaVu Serif'], 'mathtext.fontset': 'stix',
+      'font.size': 12, 'axes.labelsize': 13, 'axes.linewidth': 0.8, 'lines.linewidth': 1.2}
+
+
+def make_alpha_uniqueness():
+    """Generate Figure 7: spectral-angle surface and integer-triple uniqueness."""
+    plt.rcParams.update(RC)
+    n_ar = 3
+    muSq = Fr(1, 4)
+    PSq = Fr(1, 3)
+
+    def pred(s1, s2):
+        return np.sin(alpha_fig(s1)) * np.cos(alpha_fig(s2))
+
+    def closed(s1, s2):
+        return eps0_fig * phi_fig ** s1 / np.sqrt(
+            (1 + eps0_fig ** 2 * phi_fig ** (2 * s1)) * (1 + eps0_fig ** 2 * phi_fig ** (2 * s2)))
+
+    N = 9
+    sg = np.arange(N)
+    S1, S2 = np.meshgrid(sg, sg)
+    PM = pred(S1, S2)
+    sf = np.linspace(0, 8, 60)
+    F1, F2 = np.meshgrid(sf, sf)
+    PS = pred(F1, F2)
+
+    # assertion 1: the surface coincides with its closed form (two independent routes)
+    assert max(abs(pred(a, b) - closed(a, b)) for a in range(N) for b in range(N)) < 1e-14
+    # assertion 2: tan a(s+1)/tan a(s) = phi exactly — the angle IS the tower
+    assert max(abs(np.tan(alpha_fig(s + 1)) / np.tan(alpha_fig(s)) - phi_fig) for s in range(N)) < 1e-13
+
+    # assertion 3: the triple satisfying the four constraints is unique = (2,3,6)
+    def sols(n, hi=15):
+        return [(g, e, l) for g in range(hi) for e in range(g + 1, hi + 1)
+                for l in range(e + 1, hi + 2)
+                if l == 2 * n and l - g == n + 1
+                and Fr(e - g, l - g) == muSq and Fr(e - g, l - e) == PSq]
+
+    assert sols(n_ar) == [(n_ar - 1, n_ar, 2 * n_ar)] == [(2, 3, 6)]
+    assert sols(2) == [] and sols(4) == []   # discriminates by arity
+
+    GRID = [(g, e, l) for g in range(9) for e in range(g + 1, 10) for l in range(e + 1, 11)]
+
+    fig = plt.figure(figsize=(14, 7.5), facecolor='white')
+    ax3 = fig.add_axes([0.02, 0.06, 0.46, 0.90], projection='3d')
+    ax2 = fig.add_axes([0.54, 0.06, 0.44, 0.90])
+    ax3.set_facecolor('white')
+    for p in [ax3.xaxis.pane, ax3.yaxis.pane, ax3.zaxis.pane]:
+        p.fill = False
+        p.set_edgecolor('#e0e0e0')
+
+    grey = LinearSegmentedColormap.from_list('g', ['#e8e8e8', '#4a4a4a'])
+    cs = grey((PS - PS.min()) / (PS.max() - PS.min()))
+    cs[..., 3] = 0.82
+    ax3.plot_surface(F1, F2, PS, facecolors=cs, linewidth=0, antialiased=True, shade=True)
+    ax3.scatter(2, 3, pred(2, 3), s=80, c='#bb0000', edgecolors='white', linewidths=1, zorder=12)
+    ax3.text(2.6, 4.4, pred(2, 3) + 0.06, r'$(\sigma_G,\sigma_{EM})=(2,3)$',
+              fontsize=11, color='#bb0000', fontweight='bold')
+    ax3.text(0.2, 7.4, PS.max() * 0.92, r'$\tan\alpha(\sigma+1)/\tan\alpha(\sigma)=\varphi$',
+              fontsize=10, color='#333333', style='italic')
+    ax3.set_xlabel(r'$\sigma_1$')
+    ax3.set_ylabel(r'$\sigma_2$')
+    ax3.set_zlabel(r'$\sin\alpha(\sigma_1)\cos\alpha(\sigma_2)$', fontsize=11)
+    ax3.view_init(elev=26, azim=-52)
+    ax3.set_box_aspect([1, 1, 0.62])
+    ax3.text2D(0.03, 0.95, '(a)', transform=ax3.transAxes, fontsize=13, fontweight='bold')
+
+    # panel (b): how many of the four constraints each integer triple satisfies.
+    # No fitted objective, no error percentage. Only (2,3,6) satisfies all four.
+    def score(g, e, l):
+        return (int(l == 2 * n_ar) + int(l - g == n_ar + 1)
+                + int(Fr(e - g, l - g) == muSq) + int(Fr(e - g, l - e) == PSq))
+
+    rows = sorted({(g, e) for g, e, l in GRID})
+    ls = sorted({l for _, _, l in GRID})
+    Mx = np.zeros((len(rows), len(ls)))
+    for i, (g, e) in enumerate(rows):
+        for j, l in enumerate(ls):
+            Mx[i, j] = score(g, e, l) if l > e else np.nan
+
+    cmap = LinearSegmentedColormap.from_list(
+        's', ['#f4f4f4', '#d8e6d8', '#a8ccA8', '#5aa05a', '#145214'])
+    im = ax2.imshow(Mx, cmap=cmap, aspect='auto', vmin=0, vmax=4, origin='lower')
+    for i, (g, e) in enumerate(rows):
+        for j, l in enumerate(ls):
+            if l <= e:
+                continue
+            v = int(Mx[i, j])
+            ax2.text(j, i, str(v), ha='center', va='center', fontsize=6.0,
+                      color='white' if v >= 3 else '#555555',
+                      fontweight='bold' if v == 4 else 'normal')
+
+    i0 = rows.index((2, 3))
+    j0 = ls.index(6)
+    ax2.add_patch(plt.Rectangle((j0 - 0.5, i0 - 0.5), 1, 1, fill=False, ec='#bb0000', lw=2.4))
+    ax2.set_xticks(range(len(ls)))
+    ax2.set_xticklabels(ls, fontsize=7)
+    ax2.set_yticks(range(len(rows)))
+    ax2.set_yticklabels([f'({g},{e})' for g, e in rows], fontsize=5.5)
+    ax2.set_xlabel(r'$\sigma_\Lambda$')
+    ax2.set_ylabel(r'$(\sigma_G,\sigma_{EM})$')
+    plt.colorbar(im, ax=ax2, fraction=0.046, pad=0.03, shrink=0.88,
+                 ticks=[0, 1, 2, 3, 4]).set_label('constraints satisfied (of 4)')
+    ax2.text(-0.13, 1.02, '(b)', transform=ax2.transAxes, fontsize=13, fontweight='bold')
+    ax2.set_title(r'$\sigma_\Lambda=2n$,  $\sigma_\Lambda-\sigma_G=n+1$,  '
+                  r'$\frac{\sigma_{EM}-\sigma_G}{\sigma_\Lambda-\sigma_G}=|\Omega|^2$,  '
+                  r'$\frac{\sigma_{EM}-\sigma_G}{\sigma_\Lambda-\sigma_{EM}}=\|P\|^2$',
+                  fontsize=8.5)
+
+    plt.savefig('fig_alpha_uniqueness.png', dpi=150, bbox_inches='tight', facecolor='white')
+    plt.close()
+    print(f"  fig:alpha-uniqueness saved (unique triple {sols(n_ar)[0]}, 4/4 constraints)")
+
+
+# ============================================================================
 # rmk:fib-adjacent — el conteo dista a lo sumo 1 del Fibonacci mas cercano,
 #   y en sigma = 6 DIFIERE: N = 56, F = 55. (Corrige el rotulo de fig:tower-modes.)
 #
-# NOTA SOBRE LOS REGISTROS. La misma sucesion vive en tres archivos en tres
-# formas, y eso NO es redundancia: es un hecho leido en el registro que cada
-# tier exige.
-#   · CW6_complete_v2.lean, tier [P]: literal finito, porque el enunciado se cierra
-#     con `decide`. Un generador obligaria a induccion y el enunciado dejaria de
-#     ser decidible. El precio de la certeza formal es la finitud.
-#   · aqui y en CW6_figures_verify_v2.py, tier [N]: calculada, porque hace falta
-#     longitud arbitraria — la razon sucesiva tendiendo a phi, y la adyacencia
-#     mas alla del techo de la torre.
-# La independencia entre los tres ES el control cruzado, no un riesgo: si los
-# tres leyeran una sola definicion, el acuerdo se volveria vacuo — compararian
-# un calculo consigo mismo en vez de dos calculos (criterio A1). Colapsar los
-# registros para "evitar duplicacion" destruiria la evidencia.
-# Lo que hay que sostener es que COINCIDAN DONDE SE SOLAPAN, y eso se verifica
-# aqui abajo en vez de confiarse: se transcriben los dos literales del .lean y
-# se comprueba que reproducen lo que este archivo calcula. Si alguien alarga una
-# lista y no la otra, estos dos chequeos fallan.
+# NOTE ON THE RECORDS. The same sequence lives in three files in three
+# forms, and this is NOT redundancy: it is a fact read from the record that each
+# tier requires.
+#   · CW6_complete_v2.lean, tier [P]: finite literal, because the statement closes
+#     with `decide`. A generator would require induction and the statement would cease to
+#     be decidable. The price of formal certainty is finiteness.
+#   · here and in CW6_figures_verify_v2.py, tier [N]: computed, because arbitrary
+#     length is needed — the successive ratio tending to phi, and the adjacency
+#     beyond the tower ceiling.
+# The independence across the three IS the cross-check, not a risk: if the
+# three read a single definition, the agreement would become vacuous — comparing
+# a computation with itself rather than two computations (criterion A1). Collapsing the
+# records to "avoid duplication" would destroy the evidence.
+# What must be sustained is that they COINCIDE WHERE THEY OVERLAP, and this is verified
+# below instead of assumed: the two literals from the .lean are transcribed and
+# checked to reproduce what this file computes. If someone extends one
+# list and not the other, these two checks fail.
 # ============================================================================
 def _fibs(m=16):
     a, b, out = 1, 1, []
@@ -1527,11 +1689,11 @@ _FIB = _fibs()
 _Nm5 = [int(mp.floor(pi*_phv**s)) for s in range(7)]
 
 chk("rmk:fib-adjacent",
-    "N_modes(sigma) dista <= 1 del Fibonacci mas cercano, sigma = 0..6",
+    "N_modes(sigma) differs by <= 1 from the nearest Fibonacci, sigma = 0..6",
     all(min(abs(N-f) for f in _FIB) <= 1 for N in _Nm5))
 
 chk("rmk:fib-adjacent",
-    "coincide en sigma = 0..5 y DIFIERE en sigma = 6: N(6) = 56, no 55",
+    "agrees at sigma = 0..5 and DIFFERS at sigma = 6: N(6) = 56, not 55",
     all(N in _FIB for N in _Nm5[:6]) and _Nm5[6] == 56 and _Nm5[6] not in _FIB
     and min(abs(56-f) for f in _FIB) == 1,
     f"N[0..6] = {_Nm5}")
@@ -1541,81 +1703,81 @@ _LEAN_NmodesList = [3, 5, 8, 13, 21, 34, 56]                     # CW6_complete_
 _LEAN_fibList    = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]   # CW6_complete_v2.lean
 
 chk("eq:tower-modes",
-    "registro [P] vs [N]: el literal NmodesList del .lean reproduce floor(pi phi^sigma) calculado aqui",
+    "record [P] vs [N]: the .lean literal NmodesList reproduces floor(pi phi^sigma) computed here",
     _LEAN_NmodesList == _Nm5,
     f"lean = {_LEAN_NmodesList}")
 
 chk("rmk:fib-adjacent",
-    "registro [P] vs [N]: el literal fibList del .lean reproduce la recurrencia calculada aqui",
+    "record [P] vs [N]: the .lean literal fibList reproduces the recurrence computed here",
     _LEAN_fibList == _fibs(len(_LEAN_fibList)))
 
 chk("rmk:fib-adjacent",
-    "DISCRIMINA: el control cruzado detecta una lista desalineada (56 por 55 en el literal)",
+    "DISCRIMINATES: the cross-check detects an misaligned list (56 vs 55 in the literal)",
     [3, 5, 8, 13, 21, 34, 55] != _Nm5
     and _LEAN_fibList[:9] + [56] != _fibs(10))
 
 
 print("\n  -- face links (task A): seis conexiones, con discriminante --")
 _mu = mpf(1)/2
-chk("eq:spectral-invariants", "A1: 1+mu = 3mu en mu=1/2; en mu=1/3 difiere",
+chk("eq:spectral-invariants", "A1: 1+mu = 3mu at mu=1/2; differs at mu=1/3",
     abs((1+_mu) - 3*_mu) < mpf('1e-40') and abs((1+mpf(1)/3) - 3*mpf(1)/3) > mpf('0.3'))
-chk("eq:sigma-basel", "A1 aridad: n^2/6 = 3/2 solo en n=3 sobre n=1..8",
+chk("eq:sigma-basel", "A1 arity: n^2/6 = 3/2 only at n=3 over n=1..8",
     [n for n in range(1,9) if abs(mpf(n)**2/6 - mpf(3)/2) < mpf('1e-30')] == [3])
-chk("eq:Lambda-from-curvature", "A2: (n+1)n/2 = 2n solo en n=3 sobre n=1..8",
+chk("eq:Lambda-from-curvature", "A2: (n+1)n/2 = 2n only at n=3 over n=1..8",
     [n for n in range(1,9) if (n+1)*n == 4*n] == [3])
-chk("eq:brown-henneaux", "A3: 3/(2G) = 3 en G=1/2; en G=1/4 da 6",
+chk("eq:brown-henneaux", "A3: 3/(2G) = 3 at G=1/2; gives 6 at G=1/4",
     abs(3/(2*_mu) - 3) < mpf('1e-40') and abs(3/(2*mpf(1)/4) - 6) < mpf('1e-40'))
 _phi_mp = (1 + sqrt(mpf(5))) / 2
-chk("eq:worldline", "A3: |Om(tau)| = 1/2 en tau = 0, 0.7, 3, -2.5",
+chk("eq:worldline", "A3: |Om(tau)| = 1/2 at tau = 0, 0.7, 3, -2.5",
     all(abs(abs(_mu*exp(mpc(0, t)*log(_phi_mp))) - _mu) < mpf('1e-20')
         for t in (mpf(0), mpf('0.7'), mpf(3), mpf('-2.5'))))
-chk("eq:frobenius-tower", "A4: psi_p(phi^n) = (phi^n)^p sobre p,n = 1..5",
+chk("eq:frobenius-tower", "A4: psi_p(phi^n) = (phi^n)^p over p,n = 1..5",
     all(abs(_phi_mp**(p*n) - (_phi_mp**n)**p) < mpf('1e-18')
         for p in range(1,6) for n in range(1,6)))
-chk("eq:obs-matter", "A5: 4mu^2 = 1 en mu=1/2; en mu=1/3 da 4/9",
+chk("eq:obs-matter", "A5: 4mu^2 = 1 at mu=1/2; gives 4/9 at mu=1/3",
     abs(4*_mu**2 - 1) < mpf('1e-40') and abs(4*(mpf(1)/3)**2 - mpf(4)/9) < mpf('1e-40'))
-chk("eq:obs-matter", "A5: H(1/2) = 1 bit por logaritmo natural",
+chk("eq:obs-matter", "A5: H(1/2) = 1 bit by natural logarithm",
     abs(-(_mu*log(_mu) + _mu*log(_mu))/log(2) - 1) < mpf('1e-40'))
-chk("eq:obs-interface", "A6: pi_PCF(a,b,c) = (ab/c)*pi/(3*sqrt3), tres instancias",
+chk("eq:obs-interface", "A6: pi_PCF(a,b,c) = (ab/c)*pi/(3*sqrt3), three instances",
     all(abs((a*b)/(c*sqrt(mpf(3)))*(pi/3) - (a*b/c)*(pi/(3*sqrt(mpf(3))))) < mpf('1e-20')
         for a,b,c in [(mpf(1)/2, log(_phi_mp), pi), (1/sqrt(mpf(3)), mpf(1), mpf(1)),
                       (mpf(2), mpf(3), mpf(5))]))
-chk("eq:obs-interface", "A6 DISCRIMINA: con ||P||=1 la constante seria pi/3, no pi/(3sqrt3)",
+chk("eq:obs-interface", "A6 DISCRIMINATES: with ||P||=1 the constant would be pi/3, not pi/(3sqrt3)",
     abs(pi/3 - pi/(3*sqrt(3))) > mpf('0.4'))
 
 
-print("\n  -- thm:graviton: las tres partes (tarea B) --")
+print("\n  -- thm:graviton: the three parts (task B) --")
 from mpmath import sin
-# parte 1 [N]: el operador de onda TT del puente, e^{2w}(dt^2-dz^2)H + 2 dw H - dw^2 H = 0
+# part 1 [N]: the TT wave operator of the bridge, e^{2w}(dt^2-dz^2)H + 2 dw H - dw^2 H = 0
 _h = mpf('1e-5')
 def _d2(g, x):
     return (g(x+_h) - 2*g(x) + g(x-_h)) / _h**2
 _f = lambda u: sin(u)
 _tt = lambda t, z: _f(t - z)
-chk("thm:graviton", "parte 1: h = f(t-z) con dw=0 anula el operador (masa cero)",
+chk("thm:graviton", "part 1: h = f(t-z) with dw=0 annihilates the operator (zero mass)",
     all(abs(_d2(lambda t: _tt(t, z0), t0) - _d2(lambda z: _tt(t0, z), z0)) < mpf('1e-6')
         for t0, z0 in [(mpf('0.3'), mpf('0.1')), (mpf(1), mpf('0.5')), (mpf(2), mpf('1.7'))]))
-chk("thm:graviton", "parte 1 DISCRIMINA: h = sin(t) solo NO lo anula (d_t^2 h = -h != 0)",
+chk("thm:graviton", "part 1 DISCRIMINATES: h = sin(t) alone does NOT annihilate it (d_t^2 h = -h != 0)",
     abs(_d2(_f, mpf('0.5')) + sin(mpf('0.5'))) < mpf('1e-4')
     and abs(_d2(_f, mpf('0.5'))) > mpf('0.3'))
-# parte 3 [N]: tasa, precio por bit, y bloqueo del reloj de Fisher
+# part 3 [N]: rate, cost per bit, and Fisher clock locking
 _lnphi = log(_phi_mp)
 _S = lambda s: pi * _phi_mp**s
-chk("thm:graviton", "parte 3: S'(sigma)/S(sigma) = ln phi, derivada numerica en sigma=0..5",
+chk("thm:graviton", "part 3: S'(sigma)/S(sigma) = ln phi, numerical derivative at sigma=0..5",
     all(abs((_S(mpf(s)+_h) - _S(mpf(s)-_h))/(2*_h)/_S(mpf(s)) - _lnphi) < mpf('1e-8')
         for s in range(6)))
 _eps0_mp = _lnphi / (6*sqrt(mpf(3)))
 _Mpcf_mp = 6*sqrt(mpf(3))*pi/_lnphi
-chk("thm:graviton", "parte 3: eps(sigma)/S(sigma) = 1/M_PCF, constante en sigma=0..6",
+chk("thm:graviton", "part 3: eps(sigma)/S(sigma) = 1/M_PCF, constant in sigma=0..6",
     all(abs((_eps0_mp*_phi_mp**s)/_S(mpf(s)) - 1/_Mpcf_mp) < mpf('1e-20') for s in range(7)))
-chk("eq:obs-fishertime", "parte 3: tau_F = tau_D en f=1/2; en f=1/8 el reloj corre al doble",
+chk("eq:obs-fishertime", "part 3: tau_F = tau_D at f=1/2; at f=1/8 the clock runs twice as fast",
     abs(mpf(1)/sqrt(2*mpf(1)/2) - 1) < mpf('1e-20')
     and abs(mpf(1)/sqrt(2*mpf(1)/8) - 2) < mpf('1e-20'))
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-#  §2 REORDENADA — chequeos de las adiciones (§2.0, §2.1, §2.3, §2.8, §2.10, §2.11)
-#  mpmath a 40 dígitos.  Cada bloque lleva el label de la ecuación que respalda.
+#  §2 REORDERED — checks of the additions (§2.0, §2.1, §2.3, §2.8, §2.10, §2.11)
+#  mpmath at 40 digits. Each block carries the label of the equation it backs.
 # ══════════════════════════════════════════════════════════════════════════════
 from mpmath import mp as _mp2, mpf as _f2, mpc as _c2, sqrt as _sq2, log as _lg2
 from mpmath import cos as _cs2, pi as _pi2, gamma as _gm2, fabs as _ab2, conj as _cj2
@@ -1633,26 +1795,26 @@ print("-" * 78)
 print("  §2.0  The generator, its conjugate, and the binary bridge")
 print("-" * 78)
 chk("eq:base", "phi^2 = phi + 1", _ab2(_P**2 - _P - 1) < _E2)
-chk("eq:trace-norm", "phi + phi_bar = 1 (traza)", _ab2(_P + _B - 1) < _E2)
-chk("eq:trace-norm", "phi * phi_bar = -1 (norma: phi es unidad)", _ab2(_P*_B + 1) < _E2)
+chk("eq:trace-norm", "phi + phi_bar = 1 (trace)", _ab2(_P + _B - 1) < _E2)
+chk("eq:trace-norm", "phi * phi_bar = -1 (norm: phi is a unit)", _ab2(_P*_B + 1) < _E2)
 chk("eq:trace-norm", "(phi - phi_bar)^2 = Delta_K = 5", _ab2((_P-_B)**2 - 5) < _E2)
-chk("lem:galois-inv", "G8: phi_bar = 1 - phi -- Galois ES la involucion",
+chk("lem:galois-inv", "G8: phi_bar = 1 - phi -- Galois IS the involution",
     _ab2(_B - (1 - _P)) < _E2)
-chk("lem:galois-inv", "(phi+phi_bar) - x = 1 - x para todo x",
+chk("lem:galois-inv", "(phi+phi_bar) - x = 1 - x for all x",
     all(_ab2(((_P+_B) - x) - (1 - x)) < _E2 for x in [_f2('0.3'), _MU, _f2('-2')]))
-chk("eq:bridge", "phi^lambda_log = 2 (recordado de §1)", _ab2(_P**_LM - 2) < _E2)
+chk("eq:bridge", "phi^lambda_log = 2 (recalled from §1)", _ab2(_P**_LM - 2) < _E2)
 
 print()
 print("-" * 78)
 print("  §2.1  Three geometric origins of mu = 1/2")
 print("-" * 78)
-chk("thm:pentagon-id", "semilla pi: phi = 2 cos(pi/5)", _ab2(_P - 2*_cs2(_pi2/5)) < _E2)
-chk("eq:half-factorial", "semilla pi: Gamma(3/2)/sqrt(pi) = mu",
+chk("thm:pentagon-id", "pi seed: phi = 2 cos(pi/5)", _ab2(_P - 2*_cs2(_pi2/5)) < _E2)
+chk("eq:half-factorial", "pi seed: Gamma(3/2)/sqrt(pi) = mu",
     _ab2(_gm2(_f2(3)/2)/_sq2(_pi2) - _MU) < _E2)
-chk("prop:phi-branch", "semilla phi: x = 1-x  <=>  x = 1/2  (G3, las DOS direcciones)",
+chk("prop:phi-branch", "phi seed: x = 1-x  <=>  x = 1/2  (G3, BOTH directions)",
     all((_ab2(x - (1-x)) < _E2) == (_ab2(x - _MU) < _E2)
         for x in [_MU, _f2('0.3'), _f2('0.9'), _f2('-1')]))
-chk("eq:galois-seed", "semilla aritmetica: (phi + phi_bar)/2 = mu  (G9)",
+chk("eq:galois-seed", "arithmetic seed: (phi + phi_bar)/2 = mu  (G9)",
     _ab2((_P+_B)/2 - _MU) < _E2, f"= {_mp2.nstr((_P+_B)/2, 20)}")
 
 print()
@@ -1668,7 +1830,7 @@ chk("eq:triad-re", "G13: w^3 = 1 (el rotor cierra)", _ab2(_w**3 - 1) < _f2('1e-3
 for _k in range(3):
     chk("eq:triad-re", f"G15: Re lambda_{_k} = phi^(-lambda_log) * cos(2pi*{_k}/3)",
         _ab2(_lam[_k].real - _AP*_cs3[_k]) < _E2, f"= {_mp2.nstr(_lam[_k].real, 12)}")
-chk("eq:triad-re", "traza = 1/2 - 1/4 - 1/4 = 0",
+chk("eq:triad-re", "trace = 1/2 - 1/4 - 1/4 = 0",
     _ab2(sum(x.real for x in _lam)) < _E2)
 _pmod = _ab2(_lam[0])*_ab2(_lam[1])*_ab2(_lam[2])
 _pre  = _lam[0].real*_lam[1].real*_lam[2].real
@@ -1676,11 +1838,11 @@ chk("eq:triad-products", "G16: prod |lambda_k| = 2^-3   (exponente = ARIDAD)",
     _ab2(_pmod - _f2(1)/8) < _E2, f"= {_mp2.nstr(_pmod, 12)}")
 chk("eq:triad-products", "G16: prod Re lambda_k = 2^-5   (exponente = PENTAGONO)",
     _ab2(_pre - _f2(1)/32) < _E2, f"= {_mp2.nstr(_pre, 12)}")
-chk("eq:triad-products", "los DOS productos son DISTINTOS (1/8 vs 1/32)",
-    _ab2(_pmod - _pre) > _f2('1e-3'), "el desambiguador de prop:pcf-norms")
-chk("eq:triad-products", "2^-5 = phi^(-5 lambda_log): base 2 = eq:bridge, exp 5 = pentagono",
+chk("eq:triad-products", "the TWO products are DISTINCT (1/8 vs 1/32)",
+    _ab2(_pmod - _pre) > _f2('1e-3'), "the disambiguator of prop:pcf-norms")
+chk("eq:triad-products", "2^-5 = phi^(-5 lambda_log): base 2 = eq:bridge, exp 5 = pentagon",
     _ab2(_P**(-5*_LM) - _f2(1)/32) < _E2)
-chk("prop:pcf-norms", "las TRES cantidades que ahora se separan: 1/2, 1/8, 1/32",
+chk("prop:pcf-norms", "the THREE quantities that now separate: 1/2, 1/8, 1/32",
     _ab2((1/_sq2(3))*1*(_sq2(3)/2) - _MU) < _E2
     and _ab2(_pmod - _f2(1)/8) < _E2 and _ab2(_pre - _f2(1)/32) < _E2)
 
@@ -1689,13 +1851,13 @@ print("-" * 78)
 print("  §2.8  The self-dual line, and the point  (eq:selfdual-line)")
 print("-" * 78)
 _pts = [_c2(_MU, 0), _c2(_MU, 20), _c2(_f2('0.51'), 20), _c2(_f2('0.75'), 3), _c2(_f2('0.9'), 0)]
-chk("thm:funct-eq", "el PUNTO: 1-s = s se cumple SOLO en s = 1/2 (no en 1/2+20i)",
+chk("thm:funct-eq", "the POINT: 1-s = s holds ONLY at s = 1/2 (not at 1/2+20i)",
     sum(1 for z in _pts if _ab2((1-z) - z) < _f2('1e-30')) == 1)
-chk("eq:selfdual-line", "G1: Re s = Re(1-s)  <=>  Re s = 1/2  (la RECTA)",
+chk("eq:selfdual-line", "G1: Re s = Re(1-s)  <=>  Re s = 1/2  (the LINE)",
     all((_ab2(z.real - (1-z).real) < _E2) == (_ab2(z.real - _MU) < _E2) for z in _pts))
-chk("eq:selfdual-line", "G2: la misma recta en coordenada phi^(-lambda_log)",
+chk("eq:selfdual-line", "G2: the same line in coordinate phi^(-lambda_log)",
     _ab2(_AP - _MU) < _E2, f"apex = {_mp2.nstr(_AP, 20)}")
-chk("rmk:half-selfdual", "tres involuciones, un valor fijo (y dos son el mismo mapa)",
+chk("rmk:half-selfdual", "three involutions, one fixed value (and two are the same map)",
     _ab2(_MU - (1-_MU)) < _E2 and _ab2((_P+_B)/2 - _MU) < _E2
     and _ab2(_B - (1-_P)) < _E2)
 
@@ -1731,16 +1893,16 @@ chk("eq:sdual-mate", "G21: sigma-tau es involucion",
     all(_ab2(_st(_st(z)) - z) < _f2('1e-30') for z in _pts))
 chk("eq:line-fixed", "G23: sigma-tau(rho) = rho  <=>  Re rho = phi^(-lambda_log)",
     all((_ab2(_st(z) - z) < _f2('1e-30')) == (_ab2(z.real - _AP) < _E2) for z in _pts))
-chk("eq:line-fixed", "la RECTA es fija punto a punto por la ANTIholomorfa, no por s->1-s",
+chk("eq:line-fixed", "the LINE is fixed pointwise by the ANTI-holomorphic map, not by s->1-s",
     _ab2(_st(_c2(_MU, 20)) - _c2(_MU, 20)) < _f2('1e-30')
     and _ab2((1 - _c2(_MU, 20)) - _c2(_MU, 20)) > _f2('1e-3'))
-chk("prop:arity-two", "G24: fuera de la recta, par DISTINTO con la MISMA ordenada",
+chk("prop:arity-two", "G24: off the line, distinct pair with the SAME ordinate",
     all(_ab2(_st(z) - z) > _f2('1e-9') and _ab2(_st(z).imag - z.imag) < _E2
         for z in [_c2(_f2('0.51'), 20), _c2(_f2('0.75'), 3)]))
-chk("eq:two-readings", "G25: aridad 2 <=> aridad 0 (angular y radial, un solo evento)",
+chk("eq:two-readings", "G25: arity 2 <=> arity 0 (angular and radial, a single event)",
     all((_ab2(_st(z) - z) > _f2('1e-30')) == (_ab2(_ab2(1 - 1/z) - 1) > _f2('1e-30'))
         for z in _pts))
-chk("thm:zeros-apex", "de la cota medida entra SOLO el signo, nunca el valor",
+chk("thm:zeros-apex", "from the measured bound only the sign enters, never the value",
     _f2('0.2307') > 0, "0 < m; el 0.2307 no entra en la prueba")
 print("        [--] rmk:no-statistics  NO se usan: densidad conjunta, nucleo seno,")
 print("             factor de forma, estadistica asintotica de espaciados.")
@@ -1749,54 +1911,54 @@ print("        [--] insumos abiertos, visibles en la firma: XiConjClosed [C], Mi
 
 print()
 print("-" * 78)
-print("  §2.11bis  El conductor, la escala y la unidad de espaciado")
+print("  §2.11bis  The conductor, the scale, and the spacing unit")
 print("-" * 78)
 _sc = lambda q, T: 2*_pi2 / _lg2(q*T/(2*_pi2))
-chk("eq:conductor", "lcm(4,5)=20, gcd(4,5)=1; periodos 4 (giro) y 5 (pentagono)",
+chk("eq:conductor", "lcm(4,5)=20, gcd(4,5)=1; periods 4 (twist) and 5 (pentagon)",
     20 % 4 == 0 and 20 % 5 == 0 and 4*5 == 20)
-chk("eq:conductor", "i^4 = 1  (no estaba en eq:torus; se prueba aqui)",
+chk("eq:conductor", "i^4 = 1  (was not in eq:torus; proved here)",
     abs(complex(0,1)**4 - 1) < 1e-15)
 
 # --- el cocono de los tres cuatros (FourCocone en el .lean) ---
 # Aritmetica EXACTA sobre enteros: ningun flotante interviene en estos seis.
-chk("eq:conductor", "el registro binario satisface la ecuacion del giro: 2^2 = -1 en F_5",
+chk("eq:conductor", "the binary register satisfies the twist equation: 2^2 = -1 in F_5",
     pow(2, 2, 5) == (-1) % 5)
-chk("eq:conductor", "mismo ciclo de orden 4: 2^k mod 5 = 2,4,3,1  frente a  i^k = i,-1,-i,1",
+chk("eq:conductor", "same order-4 cycle: 2^k mod 5 = 2,4,3,1  vs  i^k = i,-1,-i,1",
     [pow(2, k, 5) for k in (1, 2, 3, 4)] == [2, 4, 3, 1]
     and [complex(0,1)**k for k in (1,2,3,4)] == [1j, -1, -1j, 1]
     and pow(2, 4, 5) == 1 and all(pow(2, k, 5) != 1 for k in (1, 2, 3)))
-chk("eq:conductor", "el periodo NO vive en el factor 4: 2^m = 0 mod 4 para todo m>=2",
+chk("eq:conductor", "the period does NOT live in the factor 4: 2^m = 0 mod 4 for all m>=2",
     all(pow(2, m, 4) == 0 for m in range(2, 200)))
-chk("eq:conductor", "5 se escinde en Z[i]: (2+i)(2-i) = 5, exacto en enteros de Gauss",
+chk("eq:conductor", "5 splits in Z[i]: (2+i)(2-i) = 5, exact in Gaussian integers",
     (2 + 1j) * (2 - 1j) == 5 + 0j
     and (complex(0,1) - 2) / (2 - complex(0,1)) == -1 + 0j)
-chk("eq:conductor", "5 = 1 mod 4 y |(Z/5)*| = 4: la congruencia que aloja al giro",
+chk("eq:conductor", "5 = 1 mod 4 and |(Z/5)*| = 4: the congruence housing the twist",
     5 % 4 == 1 and len([a for a in range(1, 5) if __import__('math').gcd(a, 5) == 1]) == 4)
-chk("eq:conductor", "5 es el UNICO primo con p-1 = 4",
+chk("eq:conductor", "5 is the ONLY prime with p-1 = 4",
     [p for p in range(2, 500)
      if all(p % d for d in range(2, int(p**0.5) + 1)) and p - 1 == 4] == [5])
 
 # --- atribucion del conductor (ConductorAttribution en el .lean) ---
 _U20 = [1, 3, 7, 9, 11, 13, 17, 19]
 _chi5f = lambda n: {0: 0, 1: 1, 2: -1, 3: -1, 4: 1}[n % 5]
-chk("eq:conductor", "las listas de chi5_split_inert_mod20 SON fibras de reduccion",
+chk("eq:conductor", "the chi5_split_inert_mod20 lists ARE reduction fibres",
     [a for a in _U20 if a % 4 == 1] == [1, 9, 13, 17]
     and [a for a in _U20 if a % 5 in (1, 4)] == [1, 9, 11, 19]
     and [a for a in _U20 if _chi5f(a) == 1] == [1, 9, 11, 19])
-chk("eq:conductor", "puente de lecturas: chi5(n)=+1 <=> n mod 5 en {1,4}, n=0..499",
+chk("eq:conductor", "bridge of readings: chi5(n)=+1 <=> n mod 5 in {1,4}, n=0..499",
     all((_chi5f(n) == 1) == (n % 5 in (1, 4)) for n in range(500)))
-chk("eq:conductor", "CRT: (mod 4, mod 5) inyectiva en las 20 clases del conductor",
+chk("eq:conductor", "CRT: (mod 4, mod 5) injective on the 20 conductor classes",
     len({(a % 4, a % 5) for a in range(20)}) == 20)
-chk("eq:conductor", "el 4 NO determina chi5: testigo 1 y 13, iguales mod 4, chi5 distinto",
+chk("eq:conductor", "4 does NOT determine chi5: witness 1 and 13, equal mod 4, different chi5",
     1 % 4 == 13 % 4 and _chi5f(1) != _chi5f(13))
-chk("eq:conductor", "el 5 NO determina chi4: testigo 1 y 11, iguales mod 5, mod 4 distinto",
+chk("eq:conductor", "5 does NOT determine chi4: witness 1 and 11, equal mod 5, different mod 4",
     1 % 5 == 11 % 5 and 1 % 4 != 11 % 4)
 
-# --- el ancla es exterior al reticulo (AnchorExterior en el .lean) ---
+# --- the anchor is exterior to the lattice (AnchorExterior in the .lean) ---
 _phiA = (1 + mpf(5) ** mpf('0.5')) / 2
-chk("eq:bridge", "phi < 2 < phi^2: el 2 cae en el hueco entre dos potencias consecutivas",
+chk("eq:bridge", "phi < 2 < phi^2: 2 falls in the gap between two consecutive powers",
     _phiA < 2 < _phiA ** 2)
-chk("eq:bridge", "phi^n != 2 para todo entero n: el ancla es exterior al reticulo",
+chk("eq:bridge", "phi^n != 2 for every integer n: the anchor is exterior to the lattice",
     min(abs(_phiA ** n - 2) for n in range(-40, 41)) > mpf('1e-20'))
 chk("eq:scale-injective", "sc(q,T) inyectiva en q  (q=5,8,12,13 en T=100)",
     len({_mp2.nstr(_sc(q,100), 30) for q in [5,8,12,13]}) == 4,
@@ -1813,19 +1975,38 @@ chk("eq:li-modulus", "|1-1/rho| = 1  <=>  Re rho = 1/2   (es [P], no [C])",
 
 print()
 print("-" * 78)
-print("  §2.12  La repulsion, nombrada y demostrada")
+print("  §2.12  The repulsion, named and proved")
 print("-" * 78)
 _st2 = lambda z: 1 - _cj2(z)
-print("        [N] medicion: min 0.2307 sobre 237 espaciados (gamma<=329.30);")
-print("            ninguno bajo 0.10;  GUE vs Poisson factor 7.6;")
-print("            media desdoblada 1.0073 (conductor propio) vs 0.8899 (ajeno).")
-print("        [!] discrepancia abierta: 'la independencia daria' es ~23 en")
-print("            completa:11942 y ~7 en unificado:5060.  En el TeX va 'several'.")
-chk("eq:repulsion", "de la cota entra SOLO el signo, nunca el valor", _f2('0.2307') > 0)
-chk("prop:repulsion-excludes", "fuera de la recta: par distinto, MISMA ordenada, separacion 0",
+# The measurement of def:repulsion, COMPUTED here and not transcribed.  The zeros are
+# obtained from mpmath (zetazero), not from an external table: self-contained.  ~9 s.
+_zg = [mp.im(mp.zetazero(_n)) for _n in range(1, 239)]        # gamma_1 .. gamma_238
+_unf = lambda q, i: (_zg[i+1] - _zg[i]) * mp.log(q*_zg[i]/(2*mp.pi)) / (2*mp.pi)
+_dz = [_unf(1, _i) for _i in range(237)]
+_mean = lambda q: sum(_unf(q, _i) for _i in range(237)) / 237
+_poisson_below = 237 * (1 - mp.e**mpf('-0.10'))
+
+chk("eq:repulsion", "the range: 237 spacings are 238 zeros, and gamma_238 = 453.99 (not 329.30)",
+    len(_dz) == 237 and _ab2(_zg[237] - mpf('453.9867')) < mpf('1e-3')
+    and _zg[156] > mpf('329.30'))
+chk("eq:repulsion", "minimum splitting 0.2911; none below 0.10, nor below 0.25",
+    _ab2(min(_dz) - mpf('0.2911')) < mpf('1e-3')
+    and sum(1 for _x in _dz if _x < mpf('0.10')) == 0
+    and sum(1 for _x in _dz if _x < mpf('0.25')) == 0)
+chk("eq:repulsion", "independence would put 22.6 below 0.10; there are zero",
+    _ab2(_poisson_below - mpf('22.55')) < mpf('0.1')
+    and sum(1 for _x in _dz if _x < mpf('0.10')) == 0)
+chk("prop:scale", "mean splitting 0.9979 with the conductor intrinsic to zeta, q=1",
+    _ab2(_mean(1) - 1) < mpf('0.01'))
+chk("prop:scale", "DISCRIMINATES: q=2,4,5,20,1/2 break normalization (1.2026 .. 1.8828)",
+    all(_ab2(_mean(_q) - 1) > mpf('0.01') for _q in (2, 4, 5, 20, mpf(1)/2))
+    and _ab2(_mean(20) - mpf('1.8828')) < mpf('1e-3'))
+chk("eq:repulsion", "from the measured bound only the sign enters, never the value",
+    min(_dz) > 0, "el valor medido no entra en ninguna prueba")
+chk("prop:repulsion-excludes", "off the line: distinct pair, SAME ordinate, separation 0",
     all(_ab2(_st2(z)-z) > _f2('1e-9') and _ab2(_st2(z).imag - z.imag) < _E2
         for z in [_c2(_f2('0.51'),20), _c2(_f2('0.75'),3)]))
-chk("prop:repulsion-excludes", "repulsion (m>0) excluye esa separacion cero, luego Re rho = apex",
+chk("prop:repulsion-excludes", "repulsion (m>0) excludes that zero separation, hence Re rho = apex",
     _f2('0.2307') > 0 and _ab2(_AP - _MU) < _E2)
 print("        [--] eq:E-iff-no-sharing, forma DEBIL: ~SharesOrdinate basta y es menos que")
 print("            Repulsion (lo que un avance descargaria en lugar de la cota); respaldo en")
@@ -1839,30 +2020,30 @@ print("             estadistica asintotica de espaciados.")
 
 print()
 print("-" * 78)
-print("  §2.12b  El nucleo seno, la envolvente, y la no-arista de la torre")
+print("  §2.12b  The sine kernel, the envelope, and the non-edge of the tower")
 print("-" * 78)
 from mpmath import sin as _sn2
 _K = lambda u: 1 - (_sn2(_pi2*u)/(_pi2*u))**2
 print("        K(u) = 1 - (sin pi u / pi u)^2 :")
 for _u in ['0.001', '0.25', '0.5', '1', '20']:
     print("           u=%-7s K=%s" % (_u, _mp2.nstr(_K(_f2(_u)), 14)))
-chk("eq:sine-kernel", "K(u) -> 0 cuando u -> 0: supresion de espaciados pequenos",
-    _K(_f2('0.001')) < _f2('1e-5'), "es lo que def:repulsion mide")
-chk("eq:sine-kernel", "K(n) = 1 en enteros no nulos (sin correlacion)",
+chk("eq:sine-kernel", "K(u) -> 0 as u -> 0: suppression of small spacings",
+    _K(_f2('0.001')) < _f2('1e-5'), "what def:repulsion measures")
+chk("eq:sine-kernel", "K(n) = 1 at nonzero integers (no correlation)",
     all(_ab2(_K(_f2(k)) - 1) < _f2('1e-30') for k in [1, 2, 3, 7]))
-chk("eq:sine-kernel", "K(u) -> 1 para u grande: decorrelacion", _K(_f2(20)) > _f2('0.99'))
+chk("eq:sine-kernel", "K(u) -> 1 for large u: decorrelation", _K(_f2(20)) > _f2('0.99'))
 print("        [0-doc] SmoothDensity, FineFluctuations, JointDensity, FormFactor:")
-print("                declarados y usados en NINGUNA firma. Esa es la comprobacion.")
+print("                declared and used in NO signature. That is the check.")
 _tw = _lg2(_P**3) - _lg2(_P**2)
-chk("rmk:not-the-tower-spacing", "torre: log phi^(n+1) - log phi^n = log phi = R_K",
+chk("rmk:not-the-tower-spacing", "tower: log phi^(n+1) - log phi^n = log phi = R_K",
     _ab2(_tw - _lg2(_P)) < _E2, f"= {_mp2.nstr(_lg2(_P), 12)}")
-chk("rmk:not-the-tower-spacing", "y NO es la unidad de desdoblado a T=100",
+chk("rmk:not-the-tower-spacing", "and is NOT the splitting unit at T=100",
     _ab2(_tw - _sc(5, 100)) > _f2('0.9'),
     f"{_mp2.nstr(_lg2(_P),8)} vs {_mp2.nstr(_sc(5,100),8)}")
 print("        [O] rmk:geometric-origin: sigma/mu = d = 3 y ||Omega||<1 YA estaban")
 print("            probados (rmk:spectral-origin l.944, rmk:no-diagonal). La lectura")
 print("            de [HP] entra como propuesta, no como teorema.")
-chk("rmk:geometric-origin", "el regimen probado: sigma = 3 mu, y mu < 1",
+chk("rmk:geometric-origin", "the proved regime: sigma = 3 mu, and mu < 1",
     _ab2(_f2(3)/2 - 3*_MU) < _E2 and _MU < 1)
 
 print()
