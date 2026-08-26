@@ -36,7 +36,7 @@ tensor, computed directly, all vanish:
 \]
 The ETS metric is therefore \emph{intrinsically flat}---Weyl vanishes because Riemann does---and is
 not de~Sitter (which is curved, $R=12H^2$) but the flat five-dimensional \emph{ambient} in which
-de~Sitter embeds. \Proof{ets\_constant\_block\_christoffels\_vanish}
+de~Sitter embeds. \ProofWitness{ets\_constant\_block\_christoffels\_vanish}
 
 \paragraph{The extended light cones (causal classification).} Because \eqref{eq:ets-metric}
 is Lorentzian with signature $(-,+,+,+,+)$, it carries a light-cone structure. For two events
@@ -96,7 +96,7 @@ de~Sitter accessible to the observer.
 \paragraph{Two corrections.} The same computation corrects two statements sometimes made about this
 metric: the ETS metric has $C_{abcd}=0$ (being flat, its Weyl tensor cannot be nonzero), and the
 constant-$\sigma$ slices of the ETS metric are totally geodesic, $K_{\mu\nu}=0$, not
-$K_{\mu\nu}=(\lambda/\sigma^2)g_{\mu\nu}$. \Proof{ets\_slices\_totally\_geodesic}
+$K_{\mu\nu}=(\lambda/\sigma^2)g_{\mu\nu}$. \ProofWitness{ets\_slices\_totally\_geodesic}
 
 \subsection{The gauge group $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$}\label{app:gauge}
 The internal gauge content descends from three substructures the torus already carries. The Eisenstein
@@ -197,9 +197,9 @@ Newton's constant reduces as $G_4=G_5/(2\ell)$, which at the framework values $G
 \end{equation}
 the reduced Newton constant being the squared modulus, $G_4=|\Om|^{2}=(\tfrac12)^{2}$
 The boundary Casimir $\tfrac34$ and the bulk Newton $\tfrac14$ sum to unity,
-$\tfrac34+\tfrac14=1$ \Proof{casimir\_plus\_newton}
+$\tfrac34+\tfrac14=1$ \ProofWitness{casimir\_plus\_newton}
 and the boundary density ratio is
-$\golden^{-2}-1=-\golden^{-1}$ \Proof{boundary\_density\_ratio}
+$\golden^{-2}-1=-\golden^{-1}$ \ProofWitness{boundary\_density\_ratio}
 .
 
 \paragraph{The Breitenlohner--Freedman bound and discrete stability.}
@@ -228,8 +228,8 @@ Then, with $m^{2}=-\lambda$,
 which at $n=3$ gives seven modes $m^{2}_{k}=4\sin^{2}(k\pi/16)/(\ln\golden)^{2}$, all strictly
 positive, the lowest $\approx0.657$ and the highest $\approx16.616$. Every one lies above the bound
 \eqref{eq:kk-BF}, so the discrete tower is stable.
-\Hyp{the spectrum of the Dirichlet second-difference operator enters as hypothesis}
-\ProofBlock{kk\_hopping\_reciprocal, kk\_discrete\_spectrum, kk\_discrete\_positive, kk\_above\_BF, KK\_BF\_bound}
+\HypWitness{the spectrum of the Dirichlet second-difference operator enters as hypothesis}
+\ProofWitnessBlock{kk\_hopping\_reciprocal, kk\_discrete\_spectrum, kk\_discrete\_positive, kk\_above\_BF, KK\_BF\_bound}
 \end{proposition}
 \begin{proof}
 The two hopping amplitudes are \emph{reciprocal}, $\golden^{+2}\cdot\golden^{-2}=1$, because
@@ -250,7 +250,7 @@ operator \eqref{eq:kk-operator} has eigenvalue equal to the interior row sum,
 \end{equation}
 whose numerator is exactly the golden identity \eqref{eq:kk-numerator}. With $m^{2}=-\lambda$ that
 mode carries $m^{2}=-1/(\ln\golden)^{2}\approx-4.318$: the continuous value quoted above, below the
-bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \Proof{log\_phi\_lt\_half}
+bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \ProofWitness{log\_phi\_lt\_half}
 Truncating to the
 $2n+1$ levels removes the constant mode---the boundary rows have row sums
 $(\golden^{-2}-2)$ and $(\golden^{2}-2)$ over $(\ln\golden)^{2}$, so the all-ones vector is no
@@ -263,7 +263,7 @@ amplitudes the symmetrisation is unavailable and modes of $m^{2}<0$ appear---$(\
 gives $\lambda_{\max}=+1.51$ and $(\golden^{3},\golden^{-1})$ gives $+4.27$. And the base: the
 numerator of \eqref{eq:kk-rowsum} equals $1$ only for $\golden$, since $b^{2}+b^{-2}-2$ is
 $\tfrac94$ at $b=2$ and $\tfrac{64}9$ at $b=3$; that is where the arity
-$\golden^{2}+\golden^{-2}=3$ enters. \Proof{kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates}
+$\golden^{2}+\golden^{-2}=3$ enters. \ProofWitness{kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates}
 
 \Numerical{eq:kk-rowsum, eq:kk-spectrum}
 \end{remark}
@@ -276,12 +276,12 @@ $\mathrm{U}(1)\times\mathrm{U}(1)$, abelian and of dimension $2$, so no such red
 non-abelian $A^{a}_\mu$. The torus enters instead as the \emph{maximal torus} of the gauge group---rank
 $2$, Weyl group $S_3$, root lattice $A_2$, the three data the construction already carries
 (Proposition~\ref{prop:a2})---and the gauge bosons arise by enhancement at the self-dual radius
-$R^{2}=\alpha'$\,\Proof{Tdual\_selfdual}
+$R^{2}=\alpha'$\,\ProofWitness{Tdual\_selfdual}
 where the minimal vectors of the lattice supply the root
 generators and the torus supplies the Cartan subalgebra. The dimension count is then
 $\dim\mathfrak g=\text{kissing}+\text{rank}$, satisfied at every rung of the ladder of
 Proposition~\ref{prop:ladder}: $8=6+2$, $28=24+4$, $78=72+6$, $248=240+8$. What remains open is not the
-mechanism but the explicit mode expansion realising it. \Proof{ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims, a2\_minimal\_vectors\_exactly\_six, Tdual\_selfdual}
+mechanism but the explicit mode expansion realising it. \ProofWitness{ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims, a2\_minimal\_vectors\_exactly\_six, Tdual\_selfdual}
 
 
 
@@ -303,7 +303,7 @@ The term-level content is the reindexing $n=5m+a$,
   (5m+a)^{-s}=5^{-s}(m+a/5)^{-s},
 \end{equation}
 which pulls one factor $5^{-s}$ out of every term. The rearrangement of the convergent series is
-the classical input.  (the rearrangement enters as \Hyp{}) \Proof{hurwitz\_reindex}
+the classical input.  (the rearrangement enters as \HypWitness{}) \ProofWitness{hurwitz\_reindex}
 
 \paragraph{Even values.}
 \begin{equation}\label{eq:even-L}
@@ -313,7 +313,7 @@ the rational coefficient being rational by typing: Bernoulli polynomials have ra
 coefficients and are evaluated at the rational pentagonal points $a/5$. The passage through
 $\zeta(-n,x)=-B_{n+1}(x)/(n+1)$ and the functional equation is the classical input. Verified:
 $L(2,\chi_5)=\sqrt5\pi^{2}\cdot\tfrac{4}{125}$, $L(4,\chi_5)=\sqrt5\pi^{4}\cdot\tfrac{8}{1875}$,
-$L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$.  (Bernoulli enters as \Hyp{}) \Proof{even\_L\_rationality, bernoulli\_eval\_rational}
+$L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$.  (Bernoulli enters as \HypWitness{}) \ProofWitness{even\_L\_rationality, bernoulli\_eval\_rational}
 
 
 \paragraph{The Archimedean density.}
@@ -336,6 +336,6 @@ Connes and Consani~\cite{ConnesConsaniSite}; the doubling for a real quadratic f
 An independent check that never touches Gauss--Binet: the von Mangoldt explicit formula gives
 $u\,d\psi/du=u-\sum_\rho u^{\rho}-1/(u^{2}-1)$, so
 $N_\Q-u\,d\psi/du=1+1/(u^{2}-1)=u^{2}/(u^{2}-1)$, reproducing $\kappa_\Q$.
-(Gauss--Binet enters as \Hyp{}) \Proof{kappaK\_two\_real\_places, kappaK\_alt, kappaK\_simple\_pole, kappaK\_pole\_numerator\_at\_one,
+(Gauss--Binet enters as \HypWitness{}) \ProofWitness{kappaK\_two\_real\_places, kappaK\_alt, kappaK\_simple\_pole, kappaK\_pole\_numerator\_at\_one,
 kappaK\_pos, kappaK\_exp, kappa\_per\_real\_place}
 

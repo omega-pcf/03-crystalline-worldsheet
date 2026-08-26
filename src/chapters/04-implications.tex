@@ -27,8 +27,8 @@ its modular flow---where observing turns an algebra without trace into one with 
 spacetime---without normal trace or projections: non-locality.
 
 Of these types, what the section \emph{proves} is the signature of each, not the
-technical classification: type~I as discrete spectrum (\Proof{eigenvalues\_modulus\_half, witten\_finite\_rank}); type~II as an invariant the flow preserves---the trace in
-concrete form (\Proof{omega\_flow\_invariant, tower\_scale\_group}); type~III as the
+technical classification: type~I as discrete spectrum (\ProofWitness{eigenvalues\_modulus\_half, witten\_finite\_rank}); type~II as an invariant the flow preserves---the trace in
+concrete form (\ProofWitness{omega\_flow\_invariant, tower\_scale\_group}); type~III as the
 non-factorisation of the horizon into interior${}\otimes{}$exterior
 (Proposition~\ref{prop:obs-nofirewall}). The technical names (II$_1$, III$_1$) and the
 crossed product are taken from CLPW by citation; the signatures are proved here.
@@ -77,7 +77,7 @@ closes onto the torus $T^2_{\PCF}=\C/\Lambda$ with modular parameter $\tau=i$
 fixed---the self-dual point of S-duality, not chosen---and $\golden$ generates the lattice.
 A torus is compact and boundaryless, and a boundaryless domain admits no question of what
 happens at the edge of one region against another, because there is no edge at which to
-separate (\Proof{fibre\_independent\_of\_base}). By the modulus $\tfrac12$, the loop
+separate (\ProofWitness{fibre\_independent\_of\_base}). By the modulus $\tfrac12$, the loop
 around the torus accumulates a half rotation, $e^{i\pi}=-1$: the sheet is a M\"obius band,
 non-orientable, with no privileged interior side. The particle is the bulk--boundary
 interface this field carries:
@@ -88,7 +88,7 @@ whose Hausdorff dimension is \eqref{eq:hausdorff}, established in \S\ref{ssec:co
 This $\Pi$ is the projection of the first movement: in closed form
 $\pi_{\PCF}(a,b,c)=(ab/c)\,\pi/(3\sqrt3)$ \eqref{eq:projpcf}, the one constant that fixed
 $\varepsilon_0$ \eqref{eq:eps0} and the Fibonacci sum (Proposition~\ref{prop:oplus}).
-\ProofBlock{projection\_closed\_form, M8\_epsilon0\_from\_projection}%
+\ProofWitnessBlock{projection\_closed\_form, M8\_epsilon0\_from\_projection}%
 The horizon of $\Pi$ does not factorise into interior${}\otimes{}$exterior, which is the
 type~III signature and the reason there is no firewall:
 \begin{proposition}[Holographic--relativistic horizon (no firewall)]\label{prop:obs-nofirewall}
@@ -98,14 +98,14 @@ once \emph{holographic} (information fully encoded on the boundary) and
 exchanges the two sides like the two wedges of a Rindler spacetime): $\Pi$ is
 surjective, with $\ker\Pi=\{(0,0,0)\}$ and $\Pi^{-1}(p)\neq\varnothing$ for every
 $p\in\C$. No averaging over microstates is needed: the microstate is one state and not an ensemble, as established in \S\ref{ssec:adscft} (its realisation as a self-adjoint operator being \S\ref{sec:dof})---so the AMPS firewall ambiguity~\cite{AMPS13} does not arise in this setting: with a single microstate there is no ensemble of typical states for the argument to average over (\S\ref{sssec:ensemble}).
-\ProofBlock{omega\_flow\_invariant, bridge\_cocycle, bridge\_inverse, bridge\_compose}
+\ProofWitnessBlock{omega\_flow\_invariant, bridge\_cocycle, bridge\_inverse, bridge\_compose}
 \end{proposition}
 Three independent facts confirm the non-separability, and all three fall on $\tfrac12$. At
-every scale, $|\Om|_\sigma=\tfrac12\ \forall\sigma$ (\Proof{omega\_flow\_invariant}). At
+every scale, $|\Om|_\sigma=\tfrac12\ \forall\sigma$ (\ProofWitness{omega\_flow\_invariant}). At
 every separation, the entanglement is $|\Om(\tau_A)\bar\Om(\tau_B)|=\mu_3^2=\tfrac14$, and
 this ER${=}$EPR bridge is derived, not postulated: the operators $T(\sigma_1,\sigma_2)$ form
 a group (Proposition~\ref{prop:er-epr};
-\ProofBlock{bridge\_cocycle, bridge\_inverse, bridge\_compose}).
+\ProofWitnessBlock{bridge\_cocycle, bridge\_inverse, bridge\_compose}).
 
 The conjugation $\Theta={}$CPT, the antilinear Galois map $\golden\leftrightarrow\bar\golden$,
 swaps the wedges $P\leftrightarrow F$ and fixes $C$.
@@ -115,13 +115,13 @@ non-perturbatively through an antilinear map $\Theta$ (a CPT operation) that ren
 bilinear pairing Hermitian (W01, eq.~18). It is the Galois conjugation
 $\golden\leftrightarrow\bar\golden$: $\Theta$ swaps the two Rindler wedges and fixes the
 centre, with $\Theta^2=1$; it preserves the modulus, $\lVert\Theta z\rVert=\lVert z\rVert$, hence is antiunitary. \emph{Proof:}
-\ProofBlock{cpt\_swaps\_P\_to\_F, cpt\_fixes\_C, cpt\_involution, cpt\_preserves\_modulus}.
+\ProofWitnessBlock{cpt\_swaps\_P\_to\_F, cpt\_fixes\_C, cpt\_involution, cpt\_preserves\_modulus}.
 
 \emph{W7 --- the $\mathrm{SO}(1,n{-}1)$ obstruction (W01).} With $N$ finite the de~Sitter
 isometry group cannot act on the Hilbert space; being non-compact it has no
 finite-dimensional unitary representations (W01). Its place is taken by the discrete
 $\mathbb{Z}_3$ symmetry of the cube roots of unity with the scale invariance
-$|\Om|_\sigma=\tfrac12$. \emph{Proof:} \Proof{eisenstein\_cube, omega\_conj}; \cite{Witten01dS}.
+$|\Om|_\sigma=\tfrac12$. \emph{Proof:} \ProofWitness{eisenstein\_cube, omega\_conj}; \cite{Witten01dS}.
 
 \paragraph{The whole geometry as a tensor: the warp generates curvature.}
 This spacetime is tensorial in its entirety. The throat that compactifies the scale has a
@@ -130,12 +130,12 @@ coordinate $z(\sigma)=\golden^{\sigma}$ and non-vanishing warp gradient: with $A
 $A'=-1$, the standard machinery---from $g$ to Christoffel, to Riemann, to Ricci---turns that
 gradient into curvature computed, not assumed:
 $R_{\mu\nu}=-(A''+d\,A'^2)\,g_{\mu\nu}=-4\,g_{\mu\nu}$, so the throat is an Einstein space
-(\S\ref{app:curvature}; \Proof{R\_scalar\_pcf, R\_AB\_einstein}). The densification of
+(\S\ref{app:curvature}; \ProofWitness{R\_scalar\_pcf, R\_AB\_einstein}). The densification of
 the warp \emph{is} the Ricci tensor. The extrinsic side closes it: the constant-$\sigma$
 leaves, their embedding and second fundamental form are tied to the intrinsic curvature by
 Gauss's equation---de~Sitter is the hyperboloid whose intrinsic curvature is the wedge of
 the extrinsic curvature of the embedding, $R_{\mu\nu}=3H^2 g_{\mu\nu}$, developed in full in
-\S\ref{app:embedding} (\Proof{dS\_ricci\_from\_gauss}).
+\S\ref{app:embedding} (\ProofWitness{dS\_ricci\_from\_gauss}).
 
 \paragraph{From that same geometry the particle emerges, discrete (type~I).}
 The warp is sustained by a stress--energy tensor: Einstein's equation with source balances
@@ -160,7 +160,7 @@ produced it.
 From this object follows its one-dimensional description: the worldline and its path
 integral, the Gaussian normalised by the half-factorial,
 $\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt\pi$, $(\tfrac12)!=\Gamma(\tfrac32)=\tfrac{\sqrt\pi}{2}$
-(\Proof{M2\_gamma\_half}), computed where it is stated. The particle is then a type~I
+(\ProofWitness{M2\_gamma\_half}), computed where it is stated. The particle is then a type~I
 operator: real discrete spectrum, minimal projections, integer dimension. Its internal
 structure is the spin-star,
 \begin{equation}\label{eq:obs-spinstar}
@@ -173,7 +173,7 @@ eigenvalue triangle is the Eisenstein lattice $\Z[\omega]=A_2=\mathfrak{su}(3)$;
 latitude gives $SU(2)$; the Hopf fibre, $U(1)$; the weak mixing angle at
 unification is a ratio of mode counts, $\sin^2\theta_W|_{\rm GUT}=N(0)/N(2)=\tfrac38$, which runs
 to the measured $0.231$ at $M_Z$ through the MSSM $\beta$-functions
-(\S\ref{app:gauge}; \Proof{gauge\_dim\_su3, hopf\_from\_clifford, weinberg\_angle\_gut}).
+(\S\ref{app:gauge}; \ProofWitness{gauge\_dim\_su3, hopf\_from\_clifford, weinberg\_angle\_gut}).
 \begin{figure}[!htbp]\centering\n\includegraphics[height=0.82\textheight,keepaspectratio]{fig6_cylinder_torus.pdf}
 \caption{From $\golden^{2}=\golden+1$: (a) the cylinder $C_0$ with $\mathrm{P,C,F}$ at $120^\circ$
 ($\|P\|\,\|C\|\,\|F\|=\tfrac12$) closes to (b) the torus $T^2_{\PCF}=\C/\Lambda$, $\tau=i$
@@ -201,18 +201,18 @@ observer be described by the theory, not introduced from outside. $\Pi$ is inter
 external region from which to look---and self-similar, so the observer is the geometry itself
 read at its centre. \emph{Proof:} \eqref{eq:obs-interface} with the bulk--boundary isometry
 of \S\ref{sec:derivations}; Proposition~\ref{prop:obs-nofirewall};
-\ProofBlock{cw3\_observer\_items\_core}; \cite{CLPW22}.
+\ProofWitnessBlock{cw3\_observer\_items\_core}; \cite{CLPW22}.
 
 \emph{W2 --- finite-dimensional Hilbert space (W01).} The finite horizon area requires finite
 dimension; here the spectrum is the triangle of three eigenvalues and the mode count is
-integer. \emph{Proof:} \Proof{witten\_finite\_rank}; \eqref{eq:obs-spinstar}.
+integer. \emph{Proof:} \ProofWitness{witten\_finite\_rank}; \eqref{eq:obs-spinstar}.
 
 \subsection{The particle as observer}\label{ssec:observer}
 
 What turns the particle into an observer is the accumulation of information, described
 here by an internal Wick rotation, not imposed. When the centre is taken
-as the time axis, its square changes sign, $(i\,t)^2=-t^2$ (\Proof{wick\_squares\_flip\_sign, lorentzian\_signature\_sum}), and past and future become the two light cones, with the
-apex---the present---as observer (\Proof{C\_fixed\_PF\_rotate, causal\_trichotomy}). The
+as the time axis, its square changes sign, $(i\,t)^2=-t^2$ (\ProofWitness{wick\_squares\_flip\_sign, lorentzian\_signature\_sum}), and past and future become the two light cones, with the
+apex---the present---as observer (\ProofWitness{C\_fixed\_PF\_rotate, causal\_trichotomy}). The
 full metric is formalised in \S\ref{ssec:accum}; here the algebra of the rotation, which
 is self-contained, suffices. The observer accumulates: its Fisher information grows to the
 ceiling the Cram\'er--Rao bound permits,
@@ -272,7 +272,7 @@ $|\widehat\Om|=\tfrac12$ in the balanced (maximally entangled) case
   |\Om|=\tfrac12\;>\;\tfrac14=|\Om|^{2},\qquad H(\tfrac12)=1\ \text{bit},
 \]
 the strict inequality being the signature of non-factorizability; for a product state it collapses to
-$|\Om|=|\Om|^{2}=1$, $H=0$  (the Schmidt decomposition enters as \Hyp{}) . Hence before observation there are no separable subsystems carrying \Proof{no\_separable\_parts, separable\_iff\_top\_eigenvalue\_one}
+$|\Om|=|\Om|^{2}=1$, $H=0$  (the Schmidt decomposition enters as \HypWitness{}) . Hence before observation there are no separable subsystems carrying \ProofWitness{no\_separable\_parts, separable\_iff\_top\_eigenvalue\_one}
 values: what is real is the non-local whole, recovered as $|\widehat\Om|=\tfrac12$. PCF therefore
 predetermines no parts, so it is neither a local-realist (Bell) nor a parts-realist (Leggett)
 hidden-variable model, and the no-go theorems of~\cite{Bell64} and~\cite{Leggett03} do not bind it. 
@@ -293,7 +293,7 @@ no landscape of vacua to choose from, no statistical ensemble to average. This
 homogeneity---the same structure at every point---is what the field equations require: it
 is the tensor covariance of \S\ref{ssec:hinge} now read as a constructive principle, and
 its full development comes below. The entropy of one bit per cell, $H(\tfrac12)=1$
-(\Proof{binary\_entropy\_half}), is the maximally mixed state---$\rho_{\max}=1$ in CLPW's
+(\ProofWitness{binary\_entropy\_half}), is the maximally mixed state---$\rho_{\max}=1$ in CLPW's
 language---describing the de~Sitter vacuum, and from its overflow the geometry is born.
 
 When the $\pi$-bit cell fills, the throat opens:
@@ -311,7 +311,7 @@ The UV fixed point forces the invariants:
   \beta_g(g^{*},\lambda^{*})=0\;\Longleftrightarrow\;\epsz\Mpcf=\pi .
 \end{equation}
 The right-hand side is derived and triply proved---in \S\ref*{ssec:construction} as
-\eqref{eq:certainty}, here as \Proof{eps0\_Mpcf\_pi}, and checked numerically; the equivalence itself is
+\eqref{eq:certainty}, here as \ProofWitness{eps0\_Mpcf\_pi}, and checked numerically; the equivalence itself is
 this section's one input, the bridge between the gauge running and the tower's algebra. \Conj
 \end{assumption}
 The quantisation is in powers of $\golden$, and the identity that closes it is
@@ -325,25 +325,25 @@ finite-dimensional with $S=\ln N$ (W01). The Hilbert dimension per level is the 
 part of the horizon entropy, $\dim\mathcal{H}(\sigma)=\lfloor S(\sigma)\rfloor$, with
 $N_{\rm modes}=\lfloor\pi\golden^\sigma\rfloor$---the constructive form of Witten's
 $S=\ln N$. \emph{Proof:}
-\ProofBlock{witten\_entropy\_realized, witten\_finite\_rank, witten\_two\_conjectures} (by \texttt{rfl}---the most direct realisation).
+\ProofWitnessBlock{witten\_entropy\_realized, witten\_finite\_rank, witten\_two\_conjectures} (by \texttt{rfl}---the most direct realisation).
 The entropy
 branch is asserted strongly (tight); the unitarity branch is ``realised''.
 
 The flow carrying one level to another, $\sigma\mapsto\sigma+t$, fixes $\tau=i$ and
 preserves $\tfrac12$: it is the tracial flow, the type~II signature, and it is the thermal
-flow of the static patch at the Gibbons--Hawking temperature (\Proof{tower\_scale\_group, tower\_flow\_fixes\_tau, omega\_flow\_group, omega\_flow\_invariant}).
+flow of the static patch at the Gibbons--Hawking temperature (\ProofWitness{tower\_scale\_group, tower\_flow\_fixes\_tau, omega\_flow\_group, omega\_flow\_invariant}).
 
 \emph{W11 --- the type~II algebra by crossed product (CLPW, completed).} CLPW build the
 type~II$_1$ algebra from the type~III by the crossed product with the modular flow
 (\S1.2--1.3). The scale flow preserves $\tfrac12$ as a trace, which is the type~II
 signature; the section proves the flow and takes from CLPW the name of the crossed-product
 classification. \emph{Proof:}
-\ProofBlock{omega\_flow\_invariant, tower\_scale\_group} \cite{CLPW22}.
+\ProofWitnessBlock{omega\_flow\_invariant, tower\_scale\_group} \cite{CLPW22}.
 
 \emph{W12 --- the maximally mixed vacuum state (CLPW \S2.4, developed).} CLPW identify the
 de~Sitter vacuum with the maximally mixed state, $\rho_{\max}=1$. One bit per cell,
 $H(\tfrac12)=1$, gives that $\rho=1$ of maximal entropy. \emph{Proof:}
-\ProofBlock{binary\_entropy\_half} \cite{CLPW22}.
+\ProofWitnessBlock{binary\_entropy\_half} \cite{CLPW22}.
 
 The heart of the movement is that bulk and boundary are the same thing at once. The bulk
 is the three-dimensional projection; the boundary, the two-dimensional plane; and they are
@@ -363,7 +363,7 @@ This is the relation $R\cdot(\alpha'/R)=\alpha'$ with $\alpha'=\Mpcf$: the compa
 the throat coordinate, the lattice spacing is its T-dual, and $\alpha'$ is \emph{fixed by the product}
 rather than chosen. Short and long distance are therefore the same family exchanged by duality, not two
 regimes with a limit between them---the structural reason there is no ultraviolet regulator to remove
-(Remark~\ref{rmk:residual}). \Proof{lattice\_radius\_conjugate}
+(Remark~\ref{rmk:residual}). \ProofWitness{lattice\_radius\_conjugate}
 
 \begin{equation}\label{eq:obs-identity}
   \underbrace{F_\Om\cdot\Nmodes}_{\text{bits (Shannon)}}
@@ -407,7 +407,7 @@ and here the two open branches of the identity close: the horizon entropy and Ja
 were, all along, the same number as the bits and the modes. Each mode is one bit exactly at the
 modulus: the per-eigenvalue ceiling $F_\Om=4\mu_3^{2}$ is unity iff $\mu_3=\tfrac12$, and the
 binary entropy there is $H(\tfrac12)=1$ bit.
-\ProofBlock{fisher\_unit\_iff, H\_half\_one\_bit}%
+\ProofWitnessBlock{fisher\_unit\_iff, H\_half\_one\_bit}%
 
 That matter does not merely sit on the background: it curves it. The back-reaction is fixed by the
 same modulus, with no free parameter, and it is what makes the shared root of \emph{metric} and
@@ -417,7 +417,7 @@ same modulus, with no free parameter, and it is what makes the shared root of \e
 A thin matter shell at the discrete level $w_\sigma=\sigma\log\golden$ of the throat
 \eqref{eq:throat} has \emph{tension} $\lambda_\sigma$: its energy density per unit volume of the
 constant-$w$ leaf. Its value is pinned by Proposition~\ref{prop:shell-tension}.
-\ProofBlock{prop:shell-tension}%
+\ProofWitnessBlock{prop:shell-tension}%
 \end{definition}
 
 \begin{proposition}[The energy per bit is constant along the tower]\label{prop:ebit}
@@ -426,7 +426,7 @@ For every level,
   \frac{\varepsilon(\sigma)}{S(\sigma)}=\frac{\epsz}{\pi}=\frac{1}{\Mpcf},
 \end{equation}
 equivalently $S(\sigma)=\Mpcf\,\varepsilon(\sigma)$: the first law with temperature $T=1/\Mpcf$.
-\ProofBlock{energy\_per\_bit\_constant}
+\ProofWitnessBlock{energy\_per\_bit\_constant}
 \end{proposition}
 \begin{proof}
 The per-level energy is $\varepsilon(\sigma)=\epsz\golden^{\sigma}$ \eqref{eq:obs-accum} and the
@@ -441,7 +441,7 @@ The tension of Definition~\ref{def:shell-tension} is fixed by the level's mode c
 \begin{equation}\label{eq:shell-tension}
   \lambda_\sigma=\frac{\Nmodes(\sigma)}{\Mpcf}.
 \end{equation}
-\ProofBlock{shell\_tension\_determined}
+\ProofWitnessBlock{shell\_tension\_determined}
 \end{proposition}
 \begin{proof}
 Each tower mode is one bit: $\Nmodes(\sigma)=\lfloor S(\sigma)\rfloor$ \eqref{eq:obs-matter} is one
@@ -462,7 +462,7 @@ shell of tension $\lambda_\sigma$ imposes the jump
 and with \eqref{eq:shell-tension} the jump is determined level by level,
 $[A'(w_\sigma)]=-\tfrac{4\pi}{3}\Nmodes(\sigma)/\Mpcf$. Between shells the metric is exact
 $\mathrm{AdS}_5$: a steeper warp is a deeper curvature.
-for the arithmetic; \Hyp{} for the junction condition itself~\cite{Israel66}. \Proof{israel\_prefactor, israel\_jump\_determined}
+for the arithmetic; \HypWitness{} for the junction condition itself~\cite{Israel66}. \ProofWitness{israel\_prefactor, israel\_jump\_determined}
 
 \end{proposition}
 \begin{proof}
@@ -479,7 +479,7 @@ so the cumulative back-reaction up to level $k$ is $\sum_{\sigma\le k}\Nmodes(\s
 $3,8,16,29,50,84,140$ for $k=0,\dots,6$. The gravitational side and the string side are here the
 same computation: \eqref{eq:israel} ties the extrinsic curvature to the shell tension, and
 \eqref{eq:shell-tension} ties that tension to the mode count, so what curves the geometry is the
-number of bits the level carries. \Proof{backreaction\_cumulative} \Numeric{eq:shell-tension}
+number of bits the level carries. \ProofWitness{backreaction\_cumulative} \NumericalWitness{eq:shell-tension}
 \end{remark}
 
 \noindent The cosmological constant is determined, not chosen:
@@ -489,7 +489,7 @@ general relativity must be derived from a theory that \emph{determines} the valu
 $\Lambda$. Here $\Lambda$ comes from the curvature, with zero free parameters:
 $\Lambda_5=-d(d-1)/2\ell^2=-6$, with $\ell=1$ from \eqref{eq:bridge-S} (\S\ref{sec:derivations})
 and $d=4$ from the arity (\S\ref{sec:methods}), and the G--$\Lambda$ duality
-$\golden^{-6}\cdot\golden^{6}=1$ (\Proof{G\_Lambda\_duality, R\_scalar\_pcf, BF\_value}).
+$\golden^{-6}\cdot\golden^{6}=1$ (\ProofWitness{G\_Lambda\_duality, R\_scalar\_pcf, BF\_value}).
 Between the gravity scale and the $\Lambda$ scale there is an exact interval:
 
 It remains to show the spacetime is de~Sitter. The metric obtained is Euclidean
@@ -504,7 +504,7 @@ $X_4=\lambda\ln s$ is the fifth, flat coordinate of \S\ref{app:embedding}:
   \qquad s=\golden^{\sigma},
 \end{equation}
 It is the bridge to de~Sitter that Maldacena anticipated, built here by internal analytic
-continuation rather than an imposed duality (\Proof{ets\_is\_dS\_zero\_H}). Past and future
+continuation rather than an imposed duality (\ProofWitness{ets\_is\_dS\_zero\_H}). Past and future
 are the poles of a dipole, with $C$ at the equator---the two conjugate sheets of
 de~Sitter.
 
@@ -514,21 +514,21 @@ Strominger's obstruction geometrically. \emph{Proof:} the dipole of \eqref{eq:et
 \cite{Witten01dS} (\S\ref{app:embedding}).
 
 The geometric closure is the connection the framework contributes. The 5D ambient is
-flat---its curvature, computed, vanishes, $R^{(5)}=0$ (\Proof{ets\_constant\_block\_christoffels\_vanish})---and the
+flat---its curvature, computed, vanishes, $R^{(5)}=0$ (\ProofWitness{ets\_constant\_block\_christoffels\_vanish})---and the
 fifth coordinate, the scale axis, is the extra direction an embedding needs. De~Sitter is
 the hyperboloid $-X_0^2+\cdots+X_4^2=1/H^2$ embedded in that flat ambient, with intrinsic
 curvature ${}={}$ wedge of the extrinsic by Gauss: $R_{\mu\nu}=3H^2 g_{\mu\nu}$
-(\Proof{dS\_ricci\_from\_gauss, dS\_einstein\_Lambda}). The planar patch covers exactly half
+(\ProofWitness{dS\_ricci\_from\_gauss, dS\_einstein\_Lambda}). The planar patch covers exactly half
 the hyperboloid---$X_0+X_4=\ell\,e^{t/\ell}>0$ never changes sign
-(\Proof{dS\_covers\_half\_hyperboloid})---and that half \emph{realises} the observer's half
-$|\Om|=\tfrac12$ by the shared value (\Proof{observer\_half\_from\_norms}). The assertoric
+(\ProofWitness{dS\_covers\_half\_hyperboloid})---and that half \emph{realises} the observer's half
+$|\Om|=\tfrac12$ by the shared value (\ProofWitness{observer\_half\_from\_norms}). The assertoric
 level splits: strong on the covering, ``realises'' on the identification.
 
 \emph{W9 --- the thermal nature of the static patch (Gibbons--Hawking).} This is the
 classical Gibbons--Hawking result, prior to W01 and CLPW: the de~Sitter horizon radiates
 and the static patch is a thermal state at $T=H/2\pi$. The observer's modular flow is the
 tracial flow of the tower, and the static patch is thermal at that temperature.
-\emph{Proof:} \Proof{dS\_temperature, dS\_beta\_reciprocal} (\S\ref{app:embedding}) \cite{GibbonsHawking77}.
+\emph{Proof:} \ProofWitness{dS\_temperature, dS\_beta\_reciprocal} (\S\ref{app:embedding}) \cite{GibbonsHawking77}.
 
 \medskip
 The formal statements underlying the accumulation and gravity movements follow; their
@@ -563,7 +563,7 @@ $F_{\Om}=4\muthree^{2}=1$ bit; the three eigenvalues give $3F_{\Om}=3=c$, the
 central charge of \S\ref{ssec:object}; and the objectivity threshold
 $f_{\mathrm{crit}}=\muthree=\tfrac12$ is the maximum-entropy point $H(\tfrac12)=1$ bit
 (Proposition~\ref{prop:entropy-max}).
-\ProofBlock{binary\_entropy\_half, S\_tower\_recurrence} \Numeric{prop:entropy-max}
+\ProofWitnessBlock{binary\_entropy\_half, S\_tower\_recurrence} \NumericalWitness{prop:entropy-max}
 \end{proposition}
 
 \begin{theorem}[Time--scale conjugacy]\label{thm:obs-weld}
@@ -574,7 +574,7 @@ S(\sigma)\,\tauF(\sigma)=(\pi\golden^{\sigma})\,(\Mpcf\,\golden^{-\sigma})=\pi\M
 \]
 is constant in $\sigma$: the certainty principle $\epsz\Mpcf=\pi$
 (\eqref{eq:certainty}) promoted from a single cell to the generation/clock pair.
-\ProofBlock{obs\_weld}
+\ProofWitnessBlock{obs\_weld}
 \end{theorem}\begin{proposition}[The bulk metric is an Einstein space]\label{prop:obs-einstein}
 For the warped throat \eqref{eq:throat} with $A=-\log z$ (anti-de~Sitter,
 $\ell=1$), explicit computation of the Levi-Civita curvature gives, uniformly in
@@ -588,7 +588,7 @@ stable. With a
 source, $G_{AB}+\Lambda_5\,g_{AB}=\kappa\,T_{AB}$ and $\kappa=8\pi\GN$; the PCF
 value $\GN=\muthree=\tfrac12$ gives $\kappa=4\pi$ (effective $G_4=\tfrac14$), and
 $\nabla^{A}G_{AB}=0$ holds identically, so $T_{AB}$ is conserved.
-\ProofBlock{G\_AB\_pcf, R\_AB\_einstein, R\_scalar\_pcf, einsteinCoeff, ricciCoeff, ricciScalar, BF\_value}
+\ProofWitnessBlock{G\_AB\_pcf, R\_AB\_einstein, R\_scalar\_pcf, einsteinCoeff, ricciCoeff, ricciScalar, BF\_value}
 \end{proposition}
 
 \begin{theorem}[Jacobson's construction on the bulk metric]\label{thm:obs-jacobson}
@@ -600,7 +600,7 @@ $\Fmax^{-1}=\muthree^{2}$ of Prop.~\ref{prop:obs-accum}. The normalisation
 $\eta=1/4\GN$ with $\GN=\muthree$ fixes the area factor $\muthree^{2}=\tfrac14$
 and the coupling $2\pi/\eta=8\pi\GN$; with matter, $\delta Q=T\,\delta S$ on every
 local Rindler horizon yields the Einstein equation~\cite{Jacobson1995,Jacobson2016}.
-\ProofBlock{dS\_einstein\_Lambda, R\_AB\_einstein, G\_AB\_pcf}
+\ProofWitnessBlock{dS\_einstein\_Lambda, R\_AB\_einstein, G\_AB\_pcf}
 \end{theorem}
 
 \begin{proposition}[Matter is the saturation entropy]\label{prop:obs-matter}
@@ -623,12 +623,12 @@ $1<3<8$: $\mathrm{U}(1)$ is the Hopf fibre $S^1$ at $\sigma=3$ (EM), $\mathrm{SU
 $S^3$ at $\sigma=4$ (weak), and $\mathrm{SU}(3)$ the $A_2$ roots of the Eisenstein face
 (Fig.~\ref{fig:isometry-algebra}) at $\sigma=5$ (strong), with $\dim\mathfrak{su}(3)=n^{2}-1=8$ at
 the arity $n=3$ fixed by the golden central chain $\golden^{2}+\golden^{-2}=3$
-\ProofBlock{gauge\_dim\_su3, phi\_central\_chain, central\_chain, KK\_numerator, clifford\_S3\_condition, hopf\_from\_clifford, a2\_minimal\_vectors\_exactly\_six}.
+\ProofWitnessBlock{gauge\_dim\_su3, phi\_central\_chain, central\_chain, KK\_numerator, clifford\_S3\_condition, hopf\_from\_clifford, a2\_minimal\_vectors\_exactly\_six}.
 
 The electroweak data follow from the same modulus: the weak mixing angle at unification is
-$\sin^{2}\theta_W|_{\rm GUT}=\tfrac38=N(0)/N(2)$ \Proof{weinberg\_angle\_gut}
+$\sin^{2}\theta_W|_{\rm GUT}=\tfrac38=N(0)/N(2)$ \ProofWitness{weinberg\_angle\_gut}
 running to $0.231$ at
-$M_Z$; the tower entropy ratio $S(3)/S(6)=\golden^{-3}$ \Proof{entropy\_ratio\_S3\_S6} marks the
+$M_Z$; the tower entropy ratio $S(3)/S(6)=\golden^{-3}$ \ProofWitness{entropy\_ratio\_S3\_S6} marks the
 breaking $\Z_3\to\Z_4$ at the tower midpoint $\sigma=3$, and the $G$--$\Lambda$ duality reads $\golden^{-6}\golden^{+6}=1$
 The generations are not placed radially by this $\sigma$-assignment:
 the charged-lepton ratios are not integer powers of $\pi$ ($m_\mu/m_e=\pi^{4.66}$), and a
@@ -637,7 +637,7 @@ forces; the three generations are the \emph{angular} $\omega$-triple within a se
 bridge with no free angular parameter,
 $\sqrt{m_k}=\sqrt M\,(1+\sqrt2\cos(\delta+2\pi k/3))$ with $\delta=2/n^{2}=\tfrac29$ at arity $n=3$,
 reconstructing the three charged-lepton masses to ${\sim}10^{-4}$ from the single scale $\sqrt M$.
-That scale is not an independent input: the certainty condition $\varepsilon_0 M=\pi$ \eqref{eq:obs-threshold} is the same that fixes $\Mpcf$, so $M=\Mpcf$; Theorem~\ref{thm:colour-from-M} then derives the colour scale and running from it. What remains open is only the quark spectrum and its CKM mixing, not the scale or the colour running.   (bridge)% \Proof{M\_eq\_Mpcf}
+That scale is not an independent input: the certainty condition $\varepsilon_0 M=\pi$ \eqref{eq:obs-threshold} is the same that fixes $\Mpcf$, so $M=\Mpcf$; Theorem~\ref{thm:colour-from-M} then derives the colour scale and running from it. What remains open is only the quark spectrum and its CKM mixing, not the scale or the colour running.   (bridge)% \ProofWitness{M\_eq\_Mpcf}
 Their Yang--Mills stress-energy
 $T^{\mathrm{YM}}_{AB}=F_{AC}F_{B}{}^{C}-\tfrac14\,g_{AB}F_{CD}F^{CD}$ is
 conserved ($\nabla^{A}T^{\mathrm{YM}}_{AB}=0$) and traceless on the
@@ -646,7 +646,7 @@ $D=4$ worldsheet (conformal there).
 
 \begin{theorem}[The Landau--Lifshitz energy of the field]\label{thm:LL-energy}
 On the de~Sitter background \eqref{eq:ets-metric} with $\GN=\muthree=\tfrac12$, the Landau--Lifshitz complex $(-g)(T^{\mu\nu}+t_{\mathrm{LL}}^{\mu\nu})=\tfrac1{16\pi\GN}\partial_\alpha\partial_\beta H^{\mu\alpha\nu\beta}$ has vanishing energy density---its $00$ component is zero, the net energy of matter and field balancing, the classical face of the entanglement equilibrium $\delta S=0$ of Theorem~\ref{thm:obs-jacobson}---while its spatial components $-2H^{2}e^{4Ht}/\pi$ do not vanish, as de~Sitter is not static (the standard complex differs from the physical vacuum pressure by the $\Lambda$-term the pseudotensor requires for $\Lambda\neq0$). The gravitational energy is a definite boundary charge: the energy in the Hubble volume $\rho_\Lambda V_H=1/H=T_{\mathrm{GH}}\,S_{\mathrm{GH}}$ is the first law of de~Sitter, and the Komar/Landau--Lifshitz charge of the horizon $\kappa A/(8\pi\GN)$ gives the same $1/H$. The modulus $\muthree=\tfrac12$ is the ratio $T_{\mathrm{GH}}/T_{\mathrm{local}}$ of horizon and local temperatures. The gravitational field energy---absent from $\nabla^{A}T_{AB}=0$ (Proposition~\ref{prop:obs-matter})---is thus fixed, the energy conjugate to the tower entropy $S(\sigma)$ by the first law.
-(the vanishing-$00$ and spatial values are \Numeric{eq:obs-landauer}, symbolic) \Proof{dS\_first\_law, energy\_is\_inv\_H, komar\_first\_law, mu3\_temp\_ratio, LL\_spatial\_ne\_zero}
+(the vanishing-$00$ and spatial values are \NumericalWitness{eq:obs-landauer}, symbolic) \ProofWitness{dS\_first\_law, energy\_is\_inv\_H, komar\_first\_law, mu3\_temp\_ratio, LL\_spatial\_ne\_zero}
 \end{theorem}\begin{remark}[The G--$\Lambda$ interval: $\Lambda$ is determined, not selected]
 \label{rmk:GLambda-interval}
 The cosmological constant is not an input. The scale $\ell=1$ (from the
@@ -658,7 +658,7 @@ S-duality fixed point $\tau=i$, \eqref{eq:bridge-S}) and the dimension $d=4$
 with zero free parameters. The $6$ arrives by two independent routes---the curvature magnitude
 $|\Lambda_5|=d(d-1)/2$ and the tower ceiling $\sigma_\Lambda=2n$ of \eqref{eq:interval-levels}---and
 the routes agree only at the arity: $(n{+}1)n/2=2n$ forces $n=3$.
-\ProofBlock{two\_routes\_to\_six}%
+\ProofWitnessBlock{two\_routes\_to\_six}%
 This realises precisely what
 Witten~\cite{Witten01dS} identified as necessary: a theory
 ``that determines the value of the cosmological constant.''
@@ -728,8 +728,8 @@ $1/\Lambda$, so
 Deriving the scale translation therefore derives the level, and conversely; counting them as two
 debts would be an accounting error. The scale $\sqrt M$ that sets the charged leptons (\S\ref{prop:obs-matter}) is therefore the tower reading of this de~Sitter entropy, and Theorem~\ref{thm:colour-from-M} then shows the colour sector hanging on the same scale: one scale surfaces as the string constant of \S\ref{sec:derivations} and as the entropy here, the dimensionless placement already fixed, the absolute value alone carrying the observer's $\Lambda$. What the tower does add is granularity: its step is exactly
 $\golden$ ($\log_{10}\golden=0.209$ per level), so the absolute scale is constrained to a discrete
-ladder rather than a continuum. \Numeric{eq:Lambda-from-curvature}
-\ProofBlock{lambda\_magnitude\_eq\_level, sigma\_G\_val, sigma\_EM\_val, sigma\_Lambda\_val, threshold\_ordering, interval\_gap, interval\_gap\_general, em\_holographic\_fraction, em\_asymmetry, entropy\_at\_mu\_three, tower\_step\_ratio}
+ladder rather than a continuum. \NumericalWitness{eq:Lambda-from-curvature}
+\ProofWitnessBlock{lambda\_magnitude\_eq\_level, sigma\_G\_val, sigma\_EM\_val, sigma\_Lambda\_val, threshold\_ordering, interval\_gap, interval\_gap\_general, em\_holographic\_fraction, em\_asymmetry, entropy\_at\_mu\_three, tower\_step\_ratio}
 \end{remark}
 
 \begin{proposition}[The level triple is unique over the integers]\label{prop:interval-uniqueness}
@@ -754,7 +754,7 @@ panel (a) the spectral-angle surface of \S\ref{ssec:meta} evaluated on the resul
 is what lets
 \S\ref{ssec:meta} read the spectral angle at the integer pair
 $(\sigma_G,\sigma_{\mathrm{EM}})=(2,3)$ without circularity: the levels come from the arity, and
-the angle is then evaluated on them. \Proof{interval\_uniqueness, interval\_arity\_discriminates, interval\_gap\_only\_three}
+the angle is then evaluated on them. \ProofWitness{interval\_uniqueness, interval\_arity\_discriminates, interval\_gap\_only\_three}
 
 \end{proposition}
 \begin{proof}
@@ -1019,8 +1019,8 @@ The five squares commute, and the relation they express is a \emph{limit} one: B
 continuous entropic gravity is the continuum limit of the discrete accumulation of
 \S\ref{ssec:accum}---D2 is exactly that limit, the floor removed. What the present framework adds
 to her axis is the quantity it leaves free, the \emph{rate}: the growth is golden, $\golden$ per
-level, the Fibonacci quantum dimension (Corollary~\ref{cor:golden-growth}).  (six checks); \Numeric{cor:golden-growth}
-D3 is \Proof{binary\_entropy\_half}
+level, the Fibonacci quantum dimension (Corollary~\ref{cor:golden-growth}).  (six checks); \NumericalWitness{cor:golden-growth}
+D3 is \ProofWitness{binary\_entropy\_half}
 (\S\ref*{ssec:construction}, ).
 \end{proposition}
 \begin{proof}
@@ -1048,7 +1048,7 @@ are complementary.
 \begin{corollary}[Golden growth of degrees of freedom]\label{cor:golden-growth}
 The number of degrees of freedom at scale $\sigma$ grows as $\golden^{\sigma}$: the count inherits
 the tower's rate, the successive ratio $\Nmodes(\sigma)/\Nmodes(\sigma-1)\to\golden$ of
-Fig.~\ref{fig:tower-modes}. \Proof{S\_tower, tower\_step\_ratio}
+Fig.~\ref{fig:tower-modes}. \ProofWitness{S\_tower, tower\_step\_ratio}
 
 \end{corollary}
 
@@ -1063,7 +1063,7 @@ already a state.
 A point of $\Grpos(k,n)$ with full-rank frame $C$ defines the orthogonal projector
 $P=C^{\mathsf T}(CC^{\mathsf T})^{-1}C$, with $P^2=P$ and $P^{\mathsf T}=P$, and the density
 matrix $\rho=P/k$, positive semidefinite with $\operatorname{tr}\rho=1$. For $k=2$ its nonzero
-eigenvalues equal $\tfrac12=\lvert\Om\rvert$. \Proof{projector\_idem, rho\_is\_state, rho\_k2\_eq\_half\_projector, projector\_trace\_eq\_rank}
+eigenvalues equal $\tfrac12=\lvert\Om\rvert$. \ProofWitness{projector\_idem, rho\_is\_state, rho\_k2\_eq\_half\_projector, projector\_trace\_eq\_rank}
 
 \end{proposition}
 
@@ -1078,7 +1078,7 @@ The first is automatic from idempotence and holds for \emph{any} point of the Gr
 second is the total positivity of the Pl\"ucker minors and holds only on $\Grpos$. They are therefore
 not the same condition: the second is strictly stronger, and it is the \emph{refinement}---one datum
 carrying an operator-level positivity and an amplitude-level positivity at different levels---that
-lets the state reading and the amplitude reading be taken on one object. \Proof{two\_positivities\_distinct, rho\_k2\_eq\_half\_projector}
+lets the state reading and the amplitude reading be taken on one object. \ProofWitness{two\_positivities\_distinct, rho\_k2\_eq\_half\_projector}
 
 \end{proposition}
 \begin{proof}
@@ -1105,9 +1105,9 @@ through $P$:
 \end{equation}
 the last for $C$ totally positive (Proposition~\ref{prop:fluid} below). The canonical form of the
 positive geometry is a function of the positroid cell, hence of the same point
-(\S\ref{ssec:amp}). \Proof{projector\_frame\_invariant}
+(\S\ref{ssec:amp}). \ProofWitness{projector\_frame\_invariant}
 %
-\ProofBlock{projector\_idem, projector\_trace\_eq\_rank, rho\_is\_state, positroid\_from\_kp}%
+\ProofWitnessBlock{projector\_idem, projector\_trace\_eq\_rank, rho\_is\_state, positroid\_from\_kp}%
 \end{theorem}
 \begin{proof}
 For \eqref{eq:frame-invariance}, $(gC)^{\mathsf T}\bigl(gC(gC)^{\mathsf T}\bigr)^{-1}(gC)
@@ -1131,7 +1131,7 @@ the Eisenstein lattice $\Z[\omega]=A_2$, the root system of $\su(3)$, the finite
 $\mathrm{Gr}(3,5)$, the Dirac--K\"ahler grading $0\oplus1\oplus2$, and three bits ($c=3$, the central charge the
 three eigenvalues give by Brown--Henneaux, \S\ref{ssec:adscft}; the count three itself is forced by
 the arity uniqueness of \S\ref{ssec:arity}).
-\ProofBlock{eisenstein, Omega\_eigenvalues, su3\_dim}
+\ProofWitnessBlock{eisenstein, Omega\_eigenvalues, su3\_dim}
 \end{proposition}
 \begin{proof}
 $\omega=e^{2\pi i/3}$ generates $\Z[\omega]$, whose minimal vectors form the six roots of $A_2$
@@ -1146,8 +1146,8 @@ the positive-root counts $3<12<36<120$ obey $\text{kissing}=2\cdot\text{roots}$ 
 follow from the same data by $\dim\mathfrak g=\text{kissing}+\text{rank}$, the Frenkel--Kac--Segal
 enhancement count at the self-dual point: $8=6+2$ for $\mathfrak{su}(3)$, $28=24+4$ for
 $\mathfrak{so}(8)$, $78=72+6$ for $\mathfrak e_6$ and $248=240+8$ for $\mathfrak e_8$---so the
-combinatorial ladder is, rung by rung, the ladder of gauge groups (\S\ref{app:kk}). ; the \Hyp{}
-dimension count is \Proof{ladder\_from\_scott, scott\_kissing\_eq\_two\_posroots, kissing\_eq\_two\_posroots, dims\_even\_ladder, ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims}
+combinatorial ladder is, rung by rung, the ladder of gauge groups (\S\ref{app:kk}). ; the \HypWitness{}
+dimension count is \ProofWitness{ladder\_from\_scott, scott\_kissing\_eq\_two\_posroots, kissing\_eq\_two\_posroots, dims\_even\_ladder, ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims}
 
 \end{proposition}
 
@@ -1157,7 +1157,7 @@ The amplitude is where $\zeta$ enters, and it enters already proved in \S\ref*{s
 \begin{proposition}[Veneziano, Regge, Euler]\label{prop:veneziano}
 The Veneziano amplitude~\cite{Veneziano,ArkaniHamedTrnka,GGSA} $A_4=\Gamma(-\alpha's)\Gamma(-\alpha'u)/\Gamma(1-\alpha'(s+u))$ has simple poles at
 $\alpha's=n$, the Regge tower; the pole positions index $\sum_{n\ge1}n^{-s}=\zeta(s)=\prod_p(1-p^{-s})^{-1}$
-(\S\ref*{ssec:p-tower}, \eqref{eq:euler-product}). \Proof{veneziano\_eq\_gamma\_ratio, regge\_tower\_is\_euler\_product}
+(\S\ref*{ssec:p-tower}, \eqref{eq:euler-product}). \ProofWitness{veneziano\_eq\_gamma\_ratio, regge\_tower\_is\_euler\_product}
 
 \end{proposition}
 
@@ -1165,7 +1165,7 @@ $\alpha's=n$, the Regge tower; the pole positions index $\sum_{n\ge1}n^{-s}=\zet
 $\displaystyle\lim_{\alpha'\to0^{+}}\alpha'\,B(\alpha's,\alpha't)=\tfrac1s+\tfrac1t=\Om(X)|_{n=4}$,
 and the amplitude admits two computations meeting at $\lvert\Om\rvert=\tfrac12$ and $\zeta$: a
 $2$D path integral (the $\pi$ side, $\Gamma(\tfrac12)=\sqrt\pi$) and a $3$D positive-geometry
-canonical form (the $\golden$ side). \Proof{ft\_identity, ft\_limit, pentagon\_u\_eq\_golden}
+canonical form (the $\golden$ side). \ProofWitness{ft\_identity, ft\_limit, pentagon\_u\_eq\_golden}
 \end{proposition}
 
 \subsection{Second face: particle, graviton, matter}\label{ssec:particle}
@@ -1176,7 +1176,7 @@ gauge charges the torus already gave.
 The self-conjugate midpoint of $x\mapsto1-x$ is at once $\lvert\Om\rvert$ and the fermion spin
 $\tfrac12$ (\S\ref*{ssec:hinge}). The one-loop $\beta$-coefficients are $b=(\tfrac{33}5,1,-3)$;
 each generation is anomaly-free, $\sum Y=0$; and $\sin^2\theta_W|_{\rm GUT}=N(0)/N(2)=\tfrac38$, running to $0.231$ at $M_Z$ (\S\ref*{app:gauge}).
-\ProofBlock{beta\_is\_mssm, sm\_anomaly\_free, weinberg\_angle\_gut}
+\ProofWitnessBlock{beta\_is\_mssm, sm\_anomaly\_free, weinberg\_angle\_gut}
 \end{proposition}
 
 \begin{theorem}[The graviton is the entropy-response quantum]\label{thm:graviton}
@@ -1190,7 +1190,7 @@ constant temperature $\varepsilon(\sigma)/S(\sigma)=\varepsilon_0/\pi=1/\Mpcf$, 
 is the dynamical clock exactly at the modulus, $\tau_D/\sqrt{2f}=\tau_D\iff f=\tfrac12$
 \eqref{eq:obs-fishertime}---so the $\delta S$ that sources $h_{\mu\nu}$ counts Fisher bits on the
 tower's own clock.
-; the double copy is \Hyp{} (Bern--Carrasco--Johansson) \Proof{fisher\_time\_lock, entropy\_response\_per\_bit, entropy\_response\_hasDerivAt}
+; the double copy is \HypWitness{} (Bern--Carrasco--Johansson) \ProofWitness{fisher\_time\_lock, entropy\_response\_per\_bit, entropy\_response\_hasDerivAt}
 
 \end{theorem}
 \begin{proof}
@@ -1216,7 +1216,7 @@ contribution to the running satisfies
 \begin{equation}\label{eq:susy-bridges}
   b_{\mathrm{MSSM}}=b_{\mathrm{SM}}+\Delta b_{\mathrm{bridges}},
 \end{equation}
-reproducing the MSSM one-loop coefficients with no superpartner particles. \Proof{mssm\_eq\_sm\_plus\_bridges, bridge\_cocycle}
+reproducing the MSSM one-loop coefficients with no superpartner particles. \ProofWitness{mssm\_eq\_sm\_plus\_bridges, bridge\_cocycle}
 
 \end{theorem}
 \begin{proof}
@@ -1235,7 +1235,7 @@ idempotent splits the identity into orthogonal halves:
 \end{equation}
 The first identity is $\mathrm{ER}=\mathrm{EPR}$ in the present language---the entangled state and
 the geometric projector are the same operator up to the rank---and the second exhibits the bridge as
-the decomposition of the identity that the groupoid of \S\ref{ssec:hinge} composes. \Proof{er\_epr\_state\_eq\_geometry, er\_epr\_bridge}
+the decomposition of the identity that the groupoid of \S\ref{ssec:hinge} composes. \ProofWitness{er\_epr\_state\_eq\_geometry, er\_epr\_bridge}
 
 \end{proposition}
 
@@ -1245,7 +1245,7 @@ Summing the bridge contributions over the Standard-Model content gives, componen
   \big(b_{\mathrm{SM}}+\Delta b_{\mathrm{bridges}}\big)_i=(b_1,b_2,b_3)=(\tfrac{33}5,1,-3),
 \end{equation}
 the same triple that Theorem~\ref{thm:susy} obtains from the tower content. The two computations are
-independent: one sums representations, the other sums bridges. \Proof{bridges\_reproduce\_mssm, beta\_is\_mssm}
+independent: one sums representations, the other sums bridges. \ProofWitness{bridges\_reproduce\_mssm, beta\_is\_mssm}
 
 \end{corollary}
 
@@ -1271,7 +1271,7 @@ $b_{\mathrm{SM}}+\Delta b$ & $-3$ & $1$ & $33/5$\\\hline
 The regular KP solitons~\cite{KodamaWilliams} $u=2(\log\tau)_{xx}$ correspond exactly to points of $\Grpos$ (total
 positivity $\Leftrightarrow\tau>0\Leftrightarrow$ regularity); their positroid profiles are the
 condensate profiles $D(\sigma)-1=\varepsilon_0\golden^{\sigma}$, so the confining monopoles are
-the bridges of \S\ref{ssec:susy}.  (Kodama--Williams enters as \Hyp{}) \Proof{positroid\_from\_kp, bridge\_cocycle} \Numeric{TODO}
+the bridges of \S\ref{ssec:susy}.  (Kodama--Williams enters as \HypWitness{}) \ProofWitness{positroid\_from\_kp, bridge\_cocycle} \NumericalWitness{TODO}
 \end{proposition}
 
 \subsection{The gauge operators, AdS/CFT, and the mass gap}\label{ssec:operators}
@@ -1281,7 +1281,7 @@ spectrum is read as masses and its gap is computed.
 \begin{proposition}[Self-adjoint operators]\label{prop:operators}
 The scale operator $H\lvert\sigma\rangle=m_0\golden^{\sigma}$ (\eqref{eq:mass-operator}; the golden
 tower, not the Regge mass tower---Remark~\ref{rmk:mass-operator}) and the Yang--Mills Casimir $C_2(n)=n(n+3)/3$ are real diagonal, hence self-adjoint and bounded below,
-with the vacuum at $0$. \Proof{towerHam\_isHermitian, casimirOp\_isHermitian, towerHam\_bounded\_below, casimirOp\_bounded\_below}
+with the vacuum at $0$. \ProofWitness{towerHam\_isHermitian, casimirOp\_isHermitian, towerHam\_bounded\_below, casimirOp\_bounded\_below}
 
 \end{proposition}
 
@@ -1294,7 +1294,7 @@ strictly positive, and the first excitation is separated by
   E_1-E_0=m_0>0 .
 \end{equation}
 This is a second gap, independent of the electric-Casimir gap of Theorem~\ref{thm:gap}: one is the
-tower's own spacing, the other the colour energy. \Proof{spectrum\_discrete, vacuum\_unique, mass\_gap, operators\_selfadjoint\_and\_isometry}
+tower's own spacing, the other the colour energy. \ProofWitness{spectrum\_discrete, vacuum\_unique, mass\_gap, operators\_selfadjoint\_and\_isometry}
 
 \end{proposition}
 \begin{proof}
@@ -1322,9 +1322,9 @@ The bulk--boundary map of \eqref{eq:isometry}, an isometry acting level by level
 intertwines them exactly. That $S$ is the boundary \emph{modular} generator---that the modular flow
 is the tower's own scale flow---is established below, in \S\ref{ssec:zeta-gap}; with it,
 \eqref{eq:intertwine} says the bulk Hamiltonian is that generator up to $\pi/m_0$.
-(the GKPW dictionary itself enters as \Hyp{}) \Proof{towerE\_eq\_exp\_regulator, S\_tower\_eq\_exp\_regulator}
+(the GKPW dictionary itself enters as \HypWitness{}) \ProofWitness{towerE\_eq\_exp\_regulator, S\_tower\_eq\_exp\_regulator}
 %
-\ProofBlock{modular\_bulk\_ratio\_level\_independent, bulk\_boundary\_intertwine}%
+\ProofWitnessBlock{modular\_bulk\_ratio\_level\_independent, bulk\_boundary\_intertwine}%
 \end{theorem}
 \begin{proof}
 $\golden^{\sigma}=e^{\sigma\log\golden}$ gives both displays in \eqref{eq:bulk-boundary-exp}. The
@@ -1343,7 +1343,7 @@ each level} and not at a preferred one. Had the bulk
 grown in any base other than $\golden$, the ratio would drift with $\sigma$ and no level-wise
 isometry could intertwine them.
 
-What is \emph{not} proved here is the GKPW dictionary itself; it enters cited, \Hyp{}
+What is \emph{not} proved here is the GKPW dictionary itself; it enters cited, \HypWitness{}
 (\cite{Maldacena98,GKP98,Witten98}), nor the identification of the modular flow with the
 static-patch boost, which rests on Bisognano--Wichmann and is taken up in \S\ref{ssec:zeta-gap}.
 \end{remark}
@@ -1353,7 +1353,7 @@ The potential $A_\mu$ valued in $\su(3)=A_2$ (Proposition~\ref{prop:a2}) gives t
 $F=dA+A\wedge A$ and the action $S=\tfrac1{4}\int\operatorname{tr}F^2$; the Wilson lattice measure
 $e^{-S_W}$ on the $A_2$ lattice---the Eisenstein lattice $\Z[\omega]$ in which the eigenvalue
 triangle sits (\S\ref{ssec:construction})---is gauge-invariant and reflection-positive, and generates
-$T=e^{-aH}$. \Proof{colour\_jacobi}
+$T=e^{-aH}$. \ProofWitness{colour\_jacobi}
 \end{proposition}
 
 \begin{table}[htb]\centering\footnotesize
@@ -1371,7 +1371,7 @@ The Kogut--Susskind transfer operator~\cite{KogutSusskind} built from the Wilson
 \begin{equation}\label{eq:gap}
   \Delta=\tfrac23 g^2>0. 
 \end{equation}
-\ProofBlock{strong\_coupling\_gap}
+\ProofWitnessBlock{strong\_coupling\_gap}
 \end{theorem}
 \begin{proof}
 At strong coupling the transfer operator is diagonal in the electric-flux basis; the vacuum is the
@@ -1408,7 +1408,7 @@ The transfer operator $T=e^{-aH}$ is positive, with eigenvalues $e^{-a m_0\golde
 where $\Theta$ is the antiunitary CPT/Galois involution of \S\ref*{ssec:hinge} ($\Theta^2=1$,
 $\lVert\Theta z\rVert=\lVert z\rVert$), $F=e^{-(a/2)H}f$ is the state placed at half the
 Euclidean separation from the reflection plane, and $f=\sum_\sigma c_\sigma\lvert\sigma\rangle$ is
-arbitrary. \Proof{theta\_pairing\_eq\_transfer, reflection\_positive\_general, half\_prop\_sq, theta\_involutive, theta\_preserves\_modulus\_C, theta\_commutes\_real\_diagonal, transfer\_positive, cpt\_involution, cpt\_preserves\_modulus}
+arbitrary. \ProofWitness{theta\_pairing\_eq\_transfer, reflection\_positive\_general, half\_prop\_sq, theta\_involutive, theta\_preserves\_modulus\_C, theta\_commutes\_real\_diagonal, transfer\_positive, cpt\_involution, cpt\_preserves\_modulus}
 
 \end{proposition}
 \begin{proof}
@@ -1444,7 +1444,7 @@ $C(x,y)=e^{-m|x-y|}/(2\sinh m)$, points $x_i>0$ and arbitrary coefficients $c_i$
 \end{equation}
 Equivalently the reflected covariance matrix is $(2\sinh m)^{-1}vv^{\mathsf T}$ with
 $v_i=e^{-m x_i}$: a positive multiple of a rank-one Gram matrix, hence positive semidefinite.
-\ProofBlock{reflCov\_factors, reflQuadForm\_eq\_square, reflection\_positive\_measure}
+\ProofWitnessBlock{reflCov\_factors, reflQuadForm\_eq\_square, reflection\_positive\_measure}
 \end{proposition}
 \begin{proof}
 On the half-space $|-x_i-x_j|=x_i+x_j$, so $C(-x_i,x_j)=e^{-mx_i}e^{-mx_j}/(2\sinh m)$ and the
@@ -1460,7 +1460,7 @@ From $H$ the transfer operator $T=e^{-aH}$ yields, by \eqref{eq:rp}, a GNS Hilbe
 unique vacuum $\lvert\Om\rangle$ (top eigenvalue $1$, isolated by the gap $e^{-a m_0}<1$) and
 exponential clustering $\langle A T^{n}B\rangle_c\sim e^{-a m_0 n}$. The von Neumann types of
 \S\ref*{ssec:noselect} (I discrete, II modular, III$_1$ local) supply the remaining
-Osterwalder--Schrader axioms. \Proof{os\_reconstruction\_explicit, transfer\_spectral\_data, clustering\_exponential, vacuum\_transfer\_eq\_one, transfer\_gap\_below\_vacuum}
+Osterwalder--Schrader axioms. \ProofWitness{os\_reconstruction\_explicit, transfer\_spectral\_data, clustering\_exponential, vacuum\_transfer\_eq\_one, transfer\_gap\_below\_vacuum}
 
 \end{theorem}
 \begin{proof}
@@ -1475,19 +1475,19 @@ are types I and II (\S\ref*{ssec:noselect}).
 \begin{corollary}[Cyclicity of the vacuum (W6)]\label{cor:cyclic}
 The vacuum $\lvert\Om\rangle$ is cyclic: the tower states $\lvert\sigma\rangle$ are generated from
 it by the field operators, so their span is dense in the GNS space.
-\ProofBlock{os\_reconstruction\_explicit, towerHam\_isHermitian, towerHam\_bounded\_below}
+\ProofWitnessBlock{os\_reconstruction\_explicit, towerHam\_isHermitian, towerHam\_bounded\_below}
 \end{corollary}
 
 \begin{remark}[Analyticity (OS0)]\label{rmk:os0}
 The Euclidean--Lorentzian passage is the internal Wick rotation $(it)^2=-t^2$, geometric (carried
 by the eigenvalue metric), not an external continuation; with the UV-finite worldsheet partition
-(\S\ref*{ssec:p-tower}) it is the analyticity/temperedness axiom. \Proof{internal\_wick}
+(\S\ref*{ssec:p-tower}) it is the analyticity/temperedness axiom. \ProofWitness{internal\_wick}
 \end{remark}
 
 \begin{theorem}[The bulk--boundary isometry]\label{thm:isometry}
 The bulk--boundary map $V$, $V^{\dagger}V=\mathbf1$---its norm core proved in Lemma~\ref{lem:isometry}, its holographic content \eqref{eq:isometry} of \S\ref{ssec:adscft}---together with the GKPW dictionary~\cite{Maldacena98,GKP98,Witten98}
 $Z_{\mathrm{grav}}[\phi|_\partial]=\langle e^{\int_\partial\phi_0\mathcal O}\rangle$ and its isometric (quantum error-correcting) refinement~\cite{AlmheiriDongHarlow}, identifies the OS-reconstructed theory with the four-dimensional boundary
-gauge theory. \Proof{bulkBoundary\_isometry}
+gauge theory. \ProofWitness{bulkBoundary\_isometry}
 \end{theorem}
 \begin{proof}
 $V^{\dagger}V=\mathbf1$ is Lemma~\ref{lem:isometry} (with \eqref{eq:isometry} of \S\ref{ssec:adscft}); an isometry preserves the inner product, so
@@ -1502,7 +1502,7 @@ duality that protects its gap is the reflection already proved in \S2.
 \begin{theorem}[The confining spectrum is $\zeta$]\label{thm:confining}
 The confining glueball spectrum is the closed charged bridges on the tower: the Regge tower
 $=$ Euler product $=\zeta$ (Proposition~\ref{prop:veneziano}), the charge carried by the bridges
-(\S\ref{ssec:susy}). \Proof{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta} \Numeric{prop:veneziano}
+(\S\ref{ssec:susy}). \ProofWitness{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta} \NumericalWitness{prop:veneziano}
 
 \end{theorem}
 \begin{proof}
@@ -1524,15 +1524,15 @@ with it the gap
   \sigma_{\mathrm{tension}}=q_m^{2}V>0,\qquad \Delta_{\mathrm{colour}}=\sqrt{\sigma_{\mathrm{tension}}}>0 .
 \end{equation}
 At the self-dual point $\tau=i$ the electric and magnetic gaps coincide, so the gap is invariant
-under the duality that relates strong and weak coupling. ; the dual-superconductor mechanism \Numeric{eq:string-tension}
-is  ('t~Hooft--Mandelstam). \Hyp{}
+under the duality that relates strong and weak coupling. ; the dual-superconductor mechanism \NumericalWitness{eq:string-tension}
+is  ('t~Hooft--Mandelstam). \HypWitness{}
 \end{proposition}
 \begin{proposition}[The tension is welded to the tower]\label{prop:tension-weld}
 The condensate profile and the per-level energy are the same function,
 $D(\sigma)-1=\varepsilon(\sigma)=\epsz\golden^{\sigma}$ (Proposition~\ref{prop:fluid},
 \S\ref{ssec:accum}), while the potential runs the other way: the de~Sitter swampland condition
 \eqref{eq:dS-swampland}, $|\partial_\sigma V|/V=\ln\golden$, integrates to
-$V(\sigma)=\epsz\golden^{-\sigma}$\,\Proof{swampland\_hasDerivAt}
+$V(\sigma)=\epsz\golden^{-\sigma}$\,\ProofWitness{swampland\_hasDerivAt}
 The two are therefore conjugate,
 \begin{equation}\label{eq:condensate-conjugate}
   V(\sigma)\,\big(D(\sigma)-1\big)=\epsz^{2}\qquad\text{for every }\sigma ,
@@ -1554,14 +1554,14 @@ state are one datum (Theorem~\ref{thm:faces}), so \eqref{eq:tension-weld} is an 
 that object rather than a bridge between two, and the dynamical link between the sectors is the
 double copy $\text{graviton}=\mathrm{YM}^{2}$ of Theorem~\ref{thm:graviton}, with the field equation
 itself obtained in \S\ref{app:einstein}. What \eqref{eq:tension-weld} adds is that the tension is
-fixed level by level rather than free.  (the level-invariance $\sigma_{\mathrm{tension}}(\sigma)\,S(\sigma)=4\pi^4/(q^2\Mpcf)$ is proved: the $\golden^{\sigma}$ of the entropy cancels the $\golden^{-\sigma}$ of the condensate) \Proof{swampland\_hasDerivAt}
+fixed level by level rather than free.  (the level-invariance $\sigma_{\mathrm{tension}}(\sigma)\,S(\sigma)=4\pi^4/(q^2\Mpcf)$ is proved: the $\golden^{\sigma}$ of the entropy cancels the $\golden^{-\sigma}$ of the condensate) \ProofWitness{swampland\_hasDerivAt}
 %
-\ProofBlock{eps0\_Mpcf\_pi, tension\_welded\_to\_tower, tension\_weld\_value}%
+\ProofWitnessBlock{eps0\_Mpcf\_pi, tension\_welded\_to\_tower, tension\_weld\_value}%
 \end{proposition}
 
 \begin{proposition}[The two gaps are faces of the scale operator]\label{prop:gap-faces}
 The scale operator $H\lvert\sigma\rangle=m_0\golden^{\sigma}$ (Proposition~\ref{prop:operators}) climbs the golden tower, and its saturation entropy is that spectrum up to the unit $\pi$, $S(\sigma)=\pi\golden^{\sigma}$. The welded string tension \eqref{eq:tension-weld} is the conjugate of that spectrum: $\sigma_{\mathrm{tension}}(\sigma)\propto\golden^{-\sigma}$ runs against the operator's $\golden^{\sigma}$, and the colour gap $\Delta_{\mathrm{colour}}=\sqrt{\sigma_{\mathrm{tension}}}\propto\golden^{-\sigma/2}$ descends the same tower the operator climbs. Hence the tower's own gap $E_1-E_0=m_0$ of \eqref{eq:tower-gap} and the electric--Casimir gap $\Delta=\tfrac23 g^2$ of Theorem~\ref{thm:gap} are two readings of the one operator's tower: one its spacing, the other the reciprocal-root of its conjugate.
-\ProofBlock{S\_is\_operator\_spectrum, tension\_is\_conjugate\_spectrum, tension\_welded\_to\_tower, mass\_gap}
+\ProofWitnessBlock{S\_is\_operator\_spectrum, tension\_is\_conjugate\_spectrum, tension\_welded\_to\_tower, mass\_gap}
 \end{proposition}
 
 \begin{theorem}[The modular generator is the Landau--Lifshitz boundary charge]\label{thm:modular-LL}
@@ -1570,22 +1570,22 @@ The static patch is thermal at the Gibbons--Hawking temperature, and its modular
   \hat K_{\mathrm{mod}}=\frac{A}{4\GN}=S(\sigma)=\pi\golden^{\sigma}.
 \]
 Matching the horizon entropy to the tower fixes $H(\sigma)=\sqrt2\,\golden^{-\sigma/2}$: the horizon descends the tower as the colour gap of Proposition~\ref{prop:gap-faces}, another reading of $\golden^{-\sigma/2}$. The crossed product turning the type~III algebra into type~II~\cite{CLPW22} is generated by $\hat K_{\mathrm{mod}}+q$, with $q$ the observer's energy; its gravitational part is the Landau--Lifshitz charge. The generator that makes the observer's algebra tracial is the tower entropy.
-for the proved core---the modular flow is the tower's scale group, $\hat K_{\mathrm{mod}}=S(\sigma)$, and the descent $H(\sigma)\propto\golden^{-\sigma/2}$; \Hyp{} for the Bisognano--Wichmann/KMS identification and the CLPW crossed product, which enter as hypotheses. \Proof{modular\_generator\_is\_entropy, modular\_generator\_is\_LL\_over\_T, modular\_generator\_is\_tower, scale\_flow\_is\_dilation, hubble\_descends\_tower}
+for the proved core---the modular flow is the tower's scale group, $\hat K_{\mathrm{mod}}=S(\sigma)$, and the descent $H(\sigma)\propto\golden^{-\sigma/2}$; \HypWitness{} for the Bisognano--Wichmann/KMS identification and the CLPW crossed product, which enter as hypotheses. \ProofWitness{modular\_generator\_is\_entropy, modular\_generator\_is\_LL\_over\_T, modular\_generator\_is\_tower, scale\_flow\_is\_dilation, hubble\_descends\_tower}
 \end{theorem}
 
 \begin{theorem}[The colour scale and running are derived from $M$]\label{thm:colour-from-M}
 The lepton scale $M$ and the framework scale $\Mpcf$ coincide, both fixed by $\varepsilon_0(\cdot)=\pi$ \eqref{eq:obs-threshold}; hence the welded-tension invariant $4\pi^4/(q^2\Mpcf)$ of \eqref{eq:tension-weld} is set by the same $M$ that sets the charged-lepton masses, and the colour gap runs as fixed by the tower (Proposition~\ref{prop:gap-faces}). The colour scale and running are therefore determined by $M$, not free; the quark spectrum and CKM mixing are not fixed by this and remain open.
-\ProofBlock{M\_eq\_Mpcf, colour\_scale\_from\_M, colour\_running\_fixed}
+\ProofWitnessBlock{M\_eq\_Mpcf, colour\_scale\_from\_M, colour\_running\_fixed}
 \end{theorem}
 
 \begin{remark}[The two faces of $M$: dynamical and placement]\label{rmk:M-two-faces}
 The scale $M=\Mpcf$ of Theorem~\ref{thm:colour-from-M} is the \emph{dynamical} face, exact by the certainty relation. It has a \emph{placement} face in the tower: with the proton at $\sigma=5$, five worldsheet transitions of action $\pi$ above the electron at $\sigma=0$, $m_p/m_e=\lvert S_3\rvert\,\pi^5=6\pi^5=1836.12$ (experiment $1836.15$), whence $m_p/3=312.8$~MeV. Two of the three factors are formal---$\pi=5\arccos(\golden/2)$ (Proposition~\ref{prop:pi-bridge}) and $\lvert S_3\rvert=3!=6$ (Lemma~\ref{lem:s3-orders})---while the assignment of the proton to $\sigma=5$ and the comparison of $6\pi^5$ with the measured ratio (to $1.9\times10^{-5}$) are empirical: a confrontation with data, not a theorem.
-(data comparison only) \Proof{M\_eq\_Mpcf} \Hyp{}
+(data comparison only) \ProofWitness{M\_eq\_Mpcf} \HypWitness{}
 \end{remark}
 
 \begin{theorem}[One object, four registers]\label{thm:one-object}
 Every scale in this framework is the single modulus $\lvert\Om\rvert=\mu_3=\tfrac12$ read in a different register. The hinge is that the certainty relation is that modulus: the half-turn $\pi$ that fixes the scale is $2\pi\mu_3$, so $\varepsilon_0\Mpcf=2\pi\mu_3$~\eqref{eq:certainty}. From this single identity the scale $M=\Mpcf=2\pi\mu_3/\varepsilon_0$ (Theorem~\ref{thm:colour-from-M}), the welded string tension carrying $4\pi^4/(q^2\Mpcf)$ \eqref{eq:tension-weld}, the colour scale and running that descend from it, and the proton placement $m_p/m_e=6\pi^5$ of the bridge all reduce to $\mu_3$: the phase of \S\ref{sec:methods}, the observer threshold~\eqref{eq:obs-threshold}, the welded tension, and the tower placement are one object in four registers.
-\ProofBlock{scale\_is\_modulus, one\_object}
+\ProofWitnessBlock{scale\_is\_modulus, one\_object}
 \end{theorem}
 
 \begin{figure}[htb]\centering
@@ -1657,7 +1657,7 @@ strong and weak coupling (\S\ref{ssec:web})---is the functional equation $\xi(s)
 unique fixed point $s=\tfrac12$ is the modulus $\lvert\Om\rvert$ (Remark~\ref{rmk:half-selfdual});
 $\zeta$ itself is produced by $\pi$ (even values) and $\golden$ (odd values, via $\chi_5$;
 \S\ref*{ssec:zeta}; also \cite{F1,Elvang2026}). The even values are Theorem~\ref{thm:even-zeta}, the odd ones
-Theorem~\ref{thm:zeta-odd}, and the character Proposition~\ref{prop:pentagon-chi5}. \Proof{s\_duality\_exact, functional\_equation\_fixed\_at\_half, places\_assembly}
+Theorem~\ref{thm:zeta-odd}, and the character Proposition~\ref{prop:pentagon-chi5}. \ProofWitness{s\_duality\_exact, functional\_equation\_fixed\_at\_half, places\_assembly}
 
 \end{theorem}
 
@@ -1674,7 +1674,7 @@ the argument: the reason no continuum limit of the lattice kind arises here is s
 in Remark~\ref{rmk:residual}. The scale
 is fixed by $\varepsilon_0\Mpcf=\pi$ (\S\ref*{ssec:construction}) and the flow reaches the
 ultraviolet fixed point $c(n)\to2$ (\S\ref*{ssec:accum}).
-\ProofBlock{gap\_independent\_of\_cutoff, eps0\_Mpcf\_pi, Lambda\_QCD\_eq\_Lambda, Lambda\_QCD\_pos} \Numeric{eq:transmutation}
+\ProofWitnessBlock{gap\_independent\_of\_cutoff, eps0\_Mpcf\_pi, Lambda\_QCD\_eq\_Lambda, Lambda\_QCD\_pos} \NumericalWitness{eq:transmutation}
 \end{corollary}
 
 \begin{remark}[Where the residual actually sits]\label{rmk:residual}
@@ -1683,17 +1683,17 @@ a blanket appeal to duality would suggest.
 
 The strong-coupling gap \eqref{eq:gap} is the standard rigorous lattice result---Wilson measure,
 Osterwalder--Seiler reflection positivity, Kogut--Susskind transfer operator---and does not depend on
-any holographic model. \Proof{strong\_coupling\_gap}
+any holographic model. \ProofWitness{strong\_coupling\_gap}
 
 The duality is not borrowed from $\mathcal N=4$. The framework sits at \emph{its own} self-dual point
 $\tau=i$, which is derived rather than chosen (\S\ref{ssec:construction}), and at a self-dual fixed
 point electric and magnetic coincide by construction (Proposition~\ref{prop:condensate}); no
 Montonen--Olive exactness is inherited. The duality's content is Riemann's functional equation, a
-theorem (Theorem~\ref{thm:funct-eq}, Theorem~\ref{thm:duality}). \Proof{fixed\_line\_is\_facePhi, functional\_equation\_fixed\_line, places\_assembly, s\_duality\_exact, s\_duality\_fixed\_point\_unique, theta\_from\_jacobi, functional\_equation\_fixed\_at\_half, places\_assembly, s\_duality\_exact}
+theorem (Theorem~\ref{thm:funct-eq}, Theorem~\ref{thm:duality}). \ProofWitness{fixed\_line\_is\_facePhi, functional\_equation\_fixed\_line, places\_assembly, s\_duality\_exact, s\_duality\_fixed\_point\_unique, theta\_from\_jacobi, functional\_equation\_fixed\_at\_half, places\_assembly, s\_duality\_exact}
 
 The magnetic sector is not posited either: the monopoles \emph{are} the ER=EPR bridges, whose
 groupoid laws and positroid profiles are proven (Proposition~\ref{prop:er-epr-id},
-Proposition~\ref{prop:fluid}). \Proof{er\_epr\_bridge, er\_epr\_state\_eq\_geometry, bridge\_cocycle, positroid\_from\_kp}
+Proposition~\ref{prop:fluid}). \ProofWitness{er\_epr\_bridge, er\_epr\_state\_eq\_geometry, bridge\_cocycle, positroid\_from\_kp}
 
 Finally, the continuum limit does not arise here in the form it takes for lattice gauge theory, and
 the reason is structural rather than technical. In the lattice construction the spacing $a$ is an
@@ -1728,7 +1728,7 @@ non-paradoxical self-reference---distributed recurrence requires depth $k\ge2$
 (Theorem~\ref{thm:fib-min}), and $\golden^{2}+\golden^{-2}=3$ fixes the arity
 ---the same three that gives the colour arity $\lfloor\pi\rfloor$ and the
 three eigenvalues $\tfrac12\omega^{k}$ of Proposition~\ref{prop:pcf-norms}. What the bridge supplies
-is not the number but the resolution of the spin structures onto it. \Hyp{} (bridge) \Proof{framework\_mass\_gap, gap\_survives, eps0\_Mpcf\_pi}
+is not the number but the resolution of the spin structures onto it. \HypWitness{} (bridge) \ProofWitness{framework\_mass\_gap, gap\_survives, eps0\_Mpcf\_pi}
 
 \end{remark}
 
@@ -1765,7 +1765,7 @@ Each conjunct is established above---$\golden^2=\golden+1$ in \S\ref{ssec:constr
 identity in Proposition~\ref{prop:ladder}, the $\beta$-coefficients in Proposition~\ref{prop:sm} and
 the anomaly sum with them, the bridge decomposition in Corollary~\ref{cor:bridges-mssm}, and the
 spectral gap in Proposition~\ref{prop:spectrum}---and collected here they are the arithmetic core of
-the section: each can be checked on its own without the surrounding reading. \Proof{entropy\_dof\_core, gauge\_side\_facts, transfer\_spectral\_data}
+the section: each can be checked on its own without the surrounding reading. \ProofWitness{entropy\_dof\_core, gauge\_side\_facts, transfer\_spectral\_data}
 
 \end{theorem}
 

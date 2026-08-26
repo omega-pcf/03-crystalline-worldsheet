@@ -114,15 +114,15 @@
 \newcommand{\tauF}{\tau_{F}}
 \newcommand{\epsz}{\varepsilon_{0}}
 \newcommand{\lng}{\lambda_{\log}}
-% Verification tags — consistent formatting: color letter + monospace content.
+% Verification witness tags — descriptive names, consistent formatting.
 % Inline form (mid-sentence):
-\newcommand{\Proof}[1]{{\footnotesize\textcolor{tagP}{\textbf{P}}\texttt{[#1]}}}
-\newcommand{\Numeric}[1]{{\footnotesize\textcolor{tagN}{\textbf{N}}\texttt{[#1]}}}
-\newcommand{\Hyp}[1]{{\footnotesize\textcolor{tagH}{\textbf{H}}\texttt{[#1]}}}
-% Block form (end of theorem/remark, right-aligned, word-wrapping, no \par):
-\newcommand{\ProofBlock}[1]{{\hfill\footnotesize\textcolor{tagP}{\textbf{P}}\texttt{[#1]}}}
-\newcommand{\NumericBlock}[1]{{\hfill\footnotesize\textcolor{tagN}{\textbf{N}}\texttt{[#1]}}}
-\newcommand{\HypBlock}[1]{{\hfill\footnotesize\textcolor{tagH}{\textbf{H}}\texttt{[#1]}}}
+\newcommand{\ProofWitness}[1]{{\footnotesize\textcolor{tagP}{\textbf{P}}\texttt{[#1]}}}
+\newcommand{\NumericalWitness}[1]{{\footnotesize\textcolor{tagN}{\textbf{N}}\texttt{[#1]}}}
+\newcommand{\HypWitness}[1]{{\footnotesize\textcolor{tagH}{\textbf{H}}\texttt{[#1]}}}
+% Block form (end of theorem/remark, right-aligned, word-wrapping):
+\newcommand{\ProofWitnessBlock}[1]{{\hfill\footnotesize\textcolor{tagP}{\textbf{P}}\texttt{[#1]}}}
+\newcommand{\NumericalWitnessBlock}[1]{{\hfill\footnotesize\textcolor{tagN}{\textbf{N}}\texttt{[#1]}}}
+\newcommand{\HypWitnessBlock}[1]{{\hfill\footnotesize\textcolor{tagH}{\textbf{H}}\texttt{[#1]}}}
 \newcommand{\Conj}{{\footnotesize\textcolor{tagH}{\textbf{C}}}}
 \newcommand{\Open}{{\footnotesize\textbf{O}}}
 \newcommand{\Empty}{{\footnotesize\textbf{$\varnothing$}}}
