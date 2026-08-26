@@ -227,10 +227,10 @@ Then, with $m^{2}=-\lambda$,
 \end{equation}
 which at $n=3$ gives seven modes $m^{2}_{k}=4\sin^{2}(k\pi/16)/(\ln\golden)^{2}$, all strictly
 positive, the lowest $\approx0.657$ and the highest $\approx16.616$. Every one lies above the bound
-\eqref{eq:kk-BF}, so the discrete tower is stable.  (the spectrum of the Dirichlet \Proof{KK_BF_bound}
+\eqref{eq:kk-BF}, so the discrete tower is stable.  (the spectrum of the Dirichlet \Proof{KK\_BF\_bound}
 second-difference operator enters as ) \Hyp{}
-\Proof{kk\_hopping\_reciprocal}%
-\Proof{kk\_discrete\_spectrum, kk\_discrete\_positive, kk\_above\_BF}%
+\ProofBlock{kk\_hopping\_reciprocal}%
+\ProofBlock{kk\_discrete\_spectrum, kk\_discrete\_positive, kk\_above\_BF}%
 \end{proposition}
 \begin{proof}
 The two hopping amplitudes are \emph{reciprocal}, $\golden^{+2}\cdot\golden^{-2}=1$, because
@@ -264,7 +264,7 @@ amplitudes the symmetrisation is unavailable and modes of $m^{2}<0$ appear---$(\
 gives $\lambda_{\max}=+1.51$ and $(\golden^{3},\golden^{-1})$ gives $+4.27$. And the base: the
 numerator of \eqref{eq:kk-rowsum} equals $1$ only for $\golden$, since $b^{2}+b^{-2}-2$ is
 $\tfrac94$ at $b=2$ and $\tfrac{64}9$ at $b=3$; that is where the arity
-$\golden^{2}+\golden^{-2}=3$ enters. \Proof{kk_rowsum_eq_numerator, kk_continuous_below_BF, kk_reciprocal_discriminates}
+$\golden^{2}+\golden^{-2}=3$ enters. \Proof{kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates}
 
 \Numerical{eq:kk-rowsum, eq:kk-spectrum}
 \end{remark}
@@ -282,7 +282,7 @@ where the minimal vectors of the lattice supply the root
 generators and the torus supplies the Cartan subalgebra. The dimension count is then
 $\dim\mathfrak g=\text{kissing}+\text{rank}$, satisfied at every rung of the ladder of
 Proposition~\ref{prop:ladder}: $8=6+2$, $28=24+4$, $78=72+6$, $248=240+8$. What remains open is not the
-mechanism but the explicit mode expansion realising it. \Proof{ladder_dim_eq_kissing_plus_rank, fks_ladder_dims, a2_minimal_vectors_exactly_six, Tdual_selfdual}
+mechanism but the explicit mode expansion realising it. \Proof{ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims, a2\_minimal\_vectors\_exactly\_six, Tdual\_selfdual}
 
 
 
@@ -304,7 +304,7 @@ The term-level content is the reindexing $n=5m+a$,
   (5m+a)^{-s}=5^{-s}(m+a/5)^{-s},
 \end{equation}
 which pulls one factor $5^{-s}$ out of every term. The rearrangement of the convergent series is
-the classical input.  (the rearrangement enters as \Hyp{}) \Proof{hurwitz_reindex}
+the classical input.  (the rearrangement enters as \Hyp{}) \Proof{hurwitz\_reindex}
 
 \paragraph{Even values.}
 \begin{equation}\label{eq:even-L}
@@ -314,7 +314,7 @@ the rational coefficient being rational by typing: Bernoulli polynomials have ra
 coefficients and are evaluated at the rational pentagonal points $a/5$. The passage through
 $\zeta(-n,x)=-B_{n+1}(x)/(n+1)$ and the functional equation is the classical input. Verified:
 $L(2,\chi_5)=\sqrt5\pi^{2}\cdot\tfrac{4}{125}$, $L(4,\chi_5)=\sqrt5\pi^{4}\cdot\tfrac{8}{1875}$,
-$L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$.  (Bernoulli enters as \Hyp{}) \Proof{even_L_rationality, bernoulli_eval_rational}
+$L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$.  (Bernoulli enters as \Hyp{}) \Proof{even\_L\_rationality, bernoulli\_eval\_rational}
 
 
 \paragraph{The Archimedean density.}
