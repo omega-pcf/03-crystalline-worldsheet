@@ -202,7 +202,7 @@ observer be described by the theory, not introduced from outside. $\Pi$ is inter
 external region from which to look---and self-similar, so the observer is the geometry itself
 read at its centre. \emph{Proof:} \eqref{eq:obs-interface} with the bulk--boundary isometry
 of \S\ref{sec:derivations}; Proposition~\ref{prop:obs-nofirewall};
-\ProofWitnessBlock{cw3\_observer\_items\_core}; \cite{CLPW22}.
+\cite{CLPW22}. \ProofWitnessBlock{cw3\_observer\_items\_core}
 
 \emph{W2 --- finite-dimensional Hilbert space (W01).} The finite horizon area requires finite
 dimension; here the spectrum is the triangle of three eigenvalues and the mode count is
@@ -339,12 +339,12 @@ type~II$_1$ algebra from the type~III by the crossed product with the modular fl
 (\S1.2--1.3). The scale flow preserves $\tfrac12$ as a trace, which is the type~II
 signature; the section proves the flow and takes from CLPW the name of the crossed-product
 classification. \emph{Proof:}
-\ProofWitnessBlock{omega\_flow\_invariant, tower\_scale\_group} \cite{CLPW22}.
+\ProofWitnessBlock{omega\_flow\_invariant, tower\_scale\_group}.
 
 \emph{W12 --- the maximally mixed vacuum state (CLPW \S2.4, developed).} CLPW identify the
 de~Sitter vacuum with the maximally mixed state, $\rho_{\max}=1$. One bit per cell,
 $H(\tfrac12)=1$, gives that $\rho=1$ of maximal entropy. \emph{Proof:}
-\ProofWitnessBlock{binary\_entropy\_half} \cite{CLPW22}.
+\ProofWitnessBlock{binary\_entropy\_half}.
 
 The heart of the movement is that bulk and boundary are the same thing at once. The bulk
 is the three-dimensional projection; the boundary, the two-dimensional plane; and they are
@@ -647,7 +647,8 @@ $D=4$ worldsheet (conformal there).
 
 \begin{theorem}[The Landau--Lifshitz energy of the field]\label{thm:LL-energy}
 On the de~Sitter background \eqref{eq:ets-metric} with $\GN=\muthree=\tfrac12$, the Landau--Lifshitz complex $(-g)(T^{\mu\nu}+t_{\mathrm{LL}}^{\mu\nu})=\tfrac1{16\pi\GN}\partial_\alpha\partial_\beta H^{\mu\alpha\nu\beta}$ has vanishing energy density---its $00$ component is zero, the net energy of matter and field balancing, the classical face of the entanglement equilibrium $\delta S=0$ of Theorem~\ref{thm:obs-jacobson}---while its spatial components $-2H^{2}e^{4Ht}/\pi$ do not vanish, as de~Sitter is not static (the standard complex differs from the physical vacuum pressure by the $\Lambda$-term the pseudotensor requires for $\Lambda\neq0$). The gravitational energy is a definite boundary charge: the energy in the Hubble volume $\rho_\Lambda V_H=1/H=T_{\mathrm{GH}}\,S_{\mathrm{GH}}$ is the first law of de~Sitter, and the Komar/Landau--Lifshitz charge of the horizon $\kappa A/(8\pi\GN)$ gives the same $1/H$. The modulus $\muthree=\tfrac12$ is the ratio $T_{\mathrm{GH}}/T_{\mathrm{local}}$ of horizon and local temperatures. The gravitational field energy---absent from $\nabla^{A}T_{AB}=0$ (Proposition~\ref{prop:obs-matter})---is thus fixed, the energy conjugate to the tower entropy $S(\sigma)$ by the first law.
-(the vanishing-$00$ and spatial values are \NumericalWitnessBlock{eq:obs-landauer}, symbolic) \ProofWitnessBlock{dS\_first\_law, energy\_is\_inv\_H, komar\_first\_law, mu3\_temp\_ratio, LL\_spatial\_ne\_zero}
+\ProofWitnessBlock{dS\_first\_law, energy\_is\_inv\_H, komar\_first\_law, mu3\_temp\_ratio, LL\_spatial\_ne\_zero}
+(the vanishing-$00$ and spatial values are \NumericalWitness{eq:obs-landauer}, symbolic)
 \end{theorem}\begin{remark}[The G--$\Lambda$ interval: $\Lambda$ is determined, not selected]
 \label{rmk:GLambda-interval}
 The cosmological constant is not an input. The scale $\ell=1$ (from the
@@ -1410,7 +1411,8 @@ The transfer operator $T=e^{-aH}$ is positive, with eigenvalues $e^{-a m_0\golde
 where $\Theta$ is the antiunitary CPT/Galois involution of \S\ref*{ssec:hinge} ($\Theta^2=1$,
 $\lVert\Theta z\rVert=\lVert z\rVert$), $F=e^{-(a/2)H}f$ is the state placed at half the
 Euclidean separation from the reflection plane, and $f=\sum_\sigma c_\sigma\lvert\sigma\rangle$ is
-arbitrary. \ProofWitness{theta\_pairing\_eq\_transfer, reflection\_positive\_general, half\_prop\_sq, theta\_involutive, theta\_preserves\_modulus\_C, theta\_commutes\_real\_diagonal, transfer\_positive, cpt\_involution, cpt\_preserves\_modulus}
+arbitrary.
+\ProofWitnessBlock{theta\_pairing\_eq\_transfer, reflection\_positive\_general, half\_prop\_sq, theta\_involutive, theta\_preserves\_modulus\_C, theta\_commutes\_real\_diagonal, transfer\_positive, cpt\_involution, cpt\_preserves\_modulus}
 
 \end{proposition}
 \begin{proof}
