@@ -272,7 +272,7 @@ $|\widehat\Om|=\tfrac12$ in the balanced (maximally entangled) case
   |\Om|=\tfrac12\;>\;\tfrac14=|\Om|^{2},\qquad H(\tfrac12)=1\ \text{bit},
 \]
 the strict inequality being the signature of non-factorizability; for a product state it collapses to
-$|\Om|=|\Om|^{2}=1$, $H=0$  (the Schmidt decomposition enters as \HypWitness{}) . Hence before observation there are no separable subsystems carrying \ProofWitness{no\_separable\_parts, separable\_iff\_top\_eigenvalue\_one}
+$|\Om|=|\Om|^{2}=1$, $H=0$  (the Schmidt decomposition enters as \HypWitness{\cite{Schmidt1907}}) . Hence before observation there are no separable subsystems carrying \ProofWitness{no\_separable\_parts, separable\_iff\_top\_eigenvalue\_one}
 values: what is real is the non-local whole, recovered as $|\widehat\Om|=\tfrac12$. PCF therefore
 predetermines no parts, so it is neither a local-realist (Bell) nor a parts-realist (Leggett)
 hidden-variable model, and the no-go theorems of~\cite{Bell64} and~\cite{Leggett03} do not bind it. 
@@ -462,7 +462,7 @@ shell of tension $\lambda_\sigma$ imposes the jump
 and with \eqref{eq:shell-tension} the jump is determined level by level,
 $[A'(w_\sigma)]=-\tfrac{4\pi}{3}\Nmodes(\sigma)/\Mpcf$. Between shells the metric is exact
 $\mathrm{AdS}_5$: a steeper warp is a deeper curvature.
-for the arithmetic; \HypWitness{} for the junction condition itself~\cite{Israel66}. \ProofWitness{israel\_prefactor, israel\_jump\_determined}
+for the arithmetic; \HypWitness{\cite{Israel66}} for the junction condition itself~\cite{Israel66}. \ProofWitness{israel\_prefactor, israel\_jump\_determined}
 
 \end{proposition}
 \begin{proof}
@@ -532,7 +532,7 @@ tracial flow of the tower, and the static patch is thermal at that temperature.
 
 \medskip
 The formal statements underlying the accumulation and gravity movements follow; their
-proofs are those of the corresponding \texttt{\textbackslash Lean} tags.
+proofs are those of the corresponding \ProofWitness{...} tags.
 \begin{remark}[The role of $\golden$ in the observer]
 $\mu_3=\tfrac12=\golden^{-\lng}$; the three invariants ($f_{\mathrm{crit}}=\tfrac12$,
 $\Fmax^{-1}=\tfrac14$, $n=3$) are $\golden$-facts of \S\ref{sec:methods}--\S\ref{sec:derivations},
@@ -1146,7 +1146,7 @@ the positive-root counts $3<12<36<120$ obey $\text{kissing}=2\cdot\text{roots}$ 
 follow from the same data by $\dim\mathfrak g=\text{kissing}+\text{rank}$, the Frenkel--Kac--Segal
 enhancement count at the self-dual point: $8=6+2$ for $\mathfrak{su}(3)$, $28=24+4$ for
 $\mathfrak{so}(8)$, $78=72+6$ for $\mathfrak e_6$ and $248=240+8$ for $\mathfrak e_8$---so the
-combinatorial ladder is, rung by rung, the ladder of gauge groups (\S\ref{app:kk}). ; the \HypWitness{}
+combinatorial ladder is, rung by rung, the ladder of gauge groups (\S\ref{app:kk}). ; the \HypWitness{\cite{Witten95}}
 dimension count is \ProofWitness{ladder\_from\_scott, scott\_kissing\_eq\_two\_posroots, kissing\_eq\_two\_posroots, dims\_even\_ladder, ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims}
 
 \end{proposition}
@@ -1190,7 +1190,7 @@ constant temperature $\varepsilon(\sigma)/S(\sigma)=\varepsilon_0/\pi=1/\Mpcf$, 
 is the dynamical clock exactly at the modulus, $\tau_D/\sqrt{2f}=\tau_D\iff f=\tfrac12$
 \eqref{eq:obs-fishertime}---so the $\delta S$ that sources $h_{\mu\nu}$ counts Fisher bits on the
 tower's own clock.
-; the double copy is \HypWitness{} (Bern--Carrasco--Johansson) \ProofWitness{fisher\_time\_lock, entropy\_response\_per\_bit, entropy\_response\_hasDerivAt}
+; the double copy is \HypWitness{\cite{BCJ}} (Bern--Carrasco--Johansson) \ProofWitness{fisher\_time\_lock, entropy\_response\_per\_bit, entropy\_response\_hasDerivAt}
 
 \end{theorem}
 \begin{proof}
@@ -1271,7 +1271,7 @@ $b_{\mathrm{SM}}+\Delta b$ & $-3$ & $1$ & $33/5$\\\hline
 The regular KP solitons~\cite{KodamaWilliams} $u=2(\log\tau)_{xx}$ correspond exactly to points of $\Grpos$ (total
 positivity $\Leftrightarrow\tau>0\Leftrightarrow$ regularity); their positroid profiles are the
 condensate profiles $D(\sigma)-1=\varepsilon_0\golden^{\sigma}$, so the confining monopoles are
-the bridges of \S\ref{ssec:susy}.  (Kodama--Williams enters as \HypWitness{}) \ProofWitness{positroid\_from\_kp, bridge\_cocycle} \NumericalWitness{TODO}
+the bridges of \S\ref{ssec:susy}.  (Kodama--Williams enters as \HypWitness{\cite{KodamaWilliams}}) \ProofWitness{positroid\_from\_kp, bridge\_cocycle} \NumericalWitness{TODO}
 \end{proposition}
 
 \subsection{The gauge operators, AdS/CFT, and the mass gap}\label{ssec:operators}
@@ -1322,7 +1322,7 @@ The bulk--boundary map of \eqref{eq:isometry}, an isometry acting level by level
 intertwines them exactly. That $S$ is the boundary \emph{modular} generator---that the modular flow
 is the tower's own scale flow---is established below, in \S\ref{ssec:zeta-gap}; with it,
 \eqref{eq:intertwine} says the bulk Hamiltonian is that generator up to $\pi/m_0$.
-(the GKPW dictionary itself enters as \HypWitness{}) \ProofWitness{towerE\_eq\_exp\_regulator, S\_tower\_eq\_exp\_regulator}
+(the GKPW dictionary itself enters as \HypWitness{\cite{GKP98,Witten98}}) \ProofWitness{towerE\_eq\_exp\_regulator, S\_tower\_eq\_exp\_regulator}
 %
 \ProofWitnessBlock{modular\_bulk\_ratio\_level\_independent, bulk\_boundary\_intertwine}%
 \end{theorem}
@@ -1343,7 +1343,7 @@ each level} and not at a preferred one. Had the bulk
 grown in any base other than $\golden$, the ratio would drift with $\sigma$ and no level-wise
 isometry could intertwine them.
 
-What is \emph{not} proved here is the GKPW dictionary itself; it enters cited, \HypWitness{}
+What is \emph{not} proved here is the GKPW dictionary itself; it enters cited, \HypWitness{\cite{GKP98,Witten98}}
 (\cite{Maldacena98,GKP98,Witten98}), nor the identification of the modular flow with the
 static-patch boost, which rests on Bisognano--Wichmann and is taken up in \S\ref{ssec:zeta-gap}.
 \end{remark}
@@ -1525,7 +1525,7 @@ with it the gap
 \end{equation}
 At the self-dual point $\tau=i$ the electric and magnetic gaps coincide, so the gap is invariant
 under the duality that relates strong and weak coupling. ; the dual-superconductor mechanism \NumericalWitness{eq:string-tension}
-is  ('t~Hooft--Mandelstam). \HypWitness{}
+is \HypWitness{\cite{KogutSusskind}} ('t~Hooft--Mandelstam).
 \end{proposition}
 \begin{proposition}[The tension is welded to the tower]\label{prop:tension-weld}
 The condensate profile and the per-level energy are the same function,
@@ -1570,7 +1570,7 @@ The static patch is thermal at the Gibbons--Hawking temperature, and its modular
   \hat K_{\mathrm{mod}}=\frac{A}{4\GN}=S(\sigma)=\pi\golden^{\sigma}.
 \]
 Matching the horizon entropy to the tower fixes $H(\sigma)=\sqrt2\,\golden^{-\sigma/2}$: the horizon descends the tower as the colour gap of Proposition~\ref{prop:gap-faces}, another reading of $\golden^{-\sigma/2}$. The crossed product turning the type~III algebra into type~II~\cite{CLPW22} is generated by $\hat K_{\mathrm{mod}}+q$, with $q$ the observer's energy; its gravitational part is the Landau--Lifshitz charge. The generator that makes the observer's algebra tracial is the tower entropy.
-for the proved core---the modular flow is the tower's scale group, $\hat K_{\mathrm{mod}}=S(\sigma)$, and the descent $H(\sigma)\propto\golden^{-\sigma/2}$; \HypWitness{} for the Bisognano--Wichmann/KMS identification and the CLPW crossed product, which enter as hypotheses. \ProofWitness{modular\_generator\_is\_entropy, modular\_generator\_is\_LL\_over\_T, modular\_generator\_is\_tower, scale\_flow\_is\_dilation, hubble\_descends\_tower}
+for the proved core---the modular flow is the tower's scale group, $\hat K_{\mathrm{mod}}=S(\sigma)$, and the descent $H(\sigma)\propto\golden^{-\sigma/2}$; \HypWitness{\cite{BisognanoWichmann75}} for the Bisognano--Wichmann/KMS identification and the CLPW crossed product, which enter as hypotheses. \ProofWitness{modular\_generator\_is\_entropy, modular\_generator\_is\_LL\_over\_T, modular\_generator\_is\_tower, scale\_flow\_is\_dilation, hubble\_descends\_tower}
 \end{theorem}
 
 \begin{theorem}[The colour scale and running are derived from $M$]\label{thm:colour-from-M}
@@ -1580,7 +1580,7 @@ The lepton scale $M$ and the framework scale $\Mpcf$ coincide, both fixed by $\v
 
 \begin{remark}[The two faces of $M$: dynamical and placement]\label{rmk:M-two-faces}
 The scale $M=\Mpcf$ of Theorem~\ref{thm:colour-from-M} is the \emph{dynamical} face, exact by the certainty relation. It has a \emph{placement} face in the tower: with the proton at $\sigma=5$, five worldsheet transitions of action $\pi$ above the electron at $\sigma=0$, $m_p/m_e=\lvert S_3\rvert\,\pi^5=6\pi^5=1836.12$ (experiment $1836.15$), whence $m_p/3=312.8$~MeV. Two of the three factors are formal---$\pi=5\arccos(\golden/2)$ (Proposition~\ref{prop:pi-bridge}) and $\lvert S_3\rvert=3!=6$ (Lemma~\ref{lem:s3-orders})---while the assignment of the proton to $\sigma=5$ and the comparison of $6\pi^5$ with the measured ratio (to $1.9\times10^{-5}$) are empirical: a confrontation with data, not a theorem.
-(data comparison only) \ProofWitness{M\_eq\_Mpcf} \HypWitness{}
+(data comparison only) \ProofWitness{M\_eq\_Mpcf}
 \end{remark}
 
 \begin{theorem}[One object, four registers]\label{thm:one-object}

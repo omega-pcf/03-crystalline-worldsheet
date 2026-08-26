@@ -3,7 +3,7 @@
 This appendix collects, for each physical quantity asserted in the body, the explicit derivation with its
 formally verified tag. Every quantity below is an \emph{output} of the framework---a consequence of the
 microstate $|\Om|=\tfrac12$, the golden tower $z=\golden^{\sigma}$, and the lattice/Clifford/Hopf structure of
-the torus---not an external value matched by hand. The Lean tags certify the \emph{algebraic} identities (the
+the torus---not an external value matched by hand. The \ProofWitness{...} tags certify the \emph{algebraic} identities (the
 $\golden$-arithmetic, the dimensions, the moduli); the \emph{physical} identification of each quantity is the
 argument of the body, not of Lean.
 
@@ -303,7 +303,7 @@ The term-level content is the reindexing $n=5m+a$,
   (5m+a)^{-s}=5^{-s}(m+a/5)^{-s},
 \end{equation}
 which pulls one factor $5^{-s}$ out of every term. The rearrangement of the convergent series is
-the classical input.  (the rearrangement enters as \HypWitness{}) \ProofWitness{hurwitz\_reindex}
+the classical input.  (the rearrangement enters as \HypWitness{\cite{Hurwitz1891}}) \ProofWitness{hurwitz\_reindex}
 
 \paragraph{Even values.}
 \begin{equation}\label{eq:even-L}
@@ -313,7 +313,7 @@ the rational coefficient being rational by typing: Bernoulli polynomials have ra
 coefficients and are evaluated at the rational pentagonal points $a/5$. The passage through
 $\zeta(-n,x)=-B_{n+1}(x)/(n+1)$ and the functional equation is the classical input. Verified:
 $L(2,\chi_5)=\sqrt5\pi^{2}\cdot\tfrac{4}{125}$, $L(4,\chi_5)=\sqrt5\pi^{4}\cdot\tfrac{8}{1875}$,
-$L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$.  (Bernoulli enters as \HypWitness{}) \ProofWitness{even\_L\_rationality, bernoulli\_eval\_rational}
+$L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$.  (Bernoulli enters as \HypWitness{standard result}) \ProofWitness{even\_L\_rationality, bernoulli\_eval\_rational}
 
 
 \paragraph{The Archimedean density.}
@@ -336,6 +336,6 @@ Connes and Consani~\cite{ConnesConsaniSite}; the doubling for a real quadratic f
 An independent check that never touches Gauss--Binet: the von Mangoldt explicit formula gives
 $u\,d\psi/du=u-\sum_\rho u^{\rho}-1/(u^{2}-1)$, so
 $N_\Q-u\,d\psi/du=1+1/(u^{2}-1)=u^{2}/(u^{2}-1)$, reproducing $\kappa_\Q$.
-(Gauss--Binet enters as \HypWitness{}) \ProofWitness{kappaK\_two\_real\_places, kappaK\_alt, kappaK\_simple\_pole, kappaK\_pole\_numerator\_at\_one,
+(Gauss--Binet enters as \HypWitness{standard result}) \ProofWitness{kappaK\_two\_real\_places, kappaK\_alt, kappaK\_simple\_pole, kappaK\_pole\_numerator\_at\_one,
 kappaK\_pos, kappaK\_exp, kappa\_per\_real\_place}
 

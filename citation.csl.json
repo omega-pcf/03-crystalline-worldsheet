@@ -2638,12 +2638,131 @@
     ],
     "issued": {
       "date-parts": [
-        [1785]
+        [
+          1785
+        ]
       ]
     },
     "publisher": "Schiller Institute",
     "URL": "https://archive.schillerinstitute.com/transl/trans_schil_2poems.html",
     "language": "en",
     "note": "English translation of the poem 'An die Freude' (1785) by Friedrich Schiller, translated by William F. Wertz, Jr."
+  },
+  {
+    "id": "Lucas1878",
+    "type": "article",
+    "title": "Théorie des fonctions numériques simplement périodiques",
+    "author": [
+      {
+        "family": "Lucas",
+        "given": "É."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1878
+        ]
+      ]
+    },
+    "container-title": "American Journal of Mathematics",
+    "container-title-short": "Amer. J. Math.",
+    "volume": "1",
+    "page": "289",
+    "DOI": "10.2307/2369311"
+  },
+  {
+    "id": "Minkowski1896",
+    "type": "article",
+    "title": "Sur les propriétés des nombres entiers de la forme a x^2 + b y^2 + c z^2",
+    "author": [
+      {
+        "family": "Minkowski",
+        "given": "H."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1896
+        ]
+      ]
+    },
+    "container-title": "Acta Mathematica",
+    "container-title-short": "Acta Math.",
+    "volume": "17",
+    "page": "243",
+    "DOI": "10.1007/BF02417902"
+  },
+  {
+    "id": "Polyakov1987",
+    "type": "book",
+    "title": "Gauge Fields and Strings",
+    "author": [
+      {
+        "family": "Polyakov",
+        "given": "A. M."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1987
+        ]
+      ]
+    },
+    "publisher": "Routledge",
+    "publisher-place": "New York",
+    "series": "Contemporary Concepts in Physics",
+    "volume": "3"
+  },
+  {
+    "id": "BisognanoWichmann75",
+    "type": "article",
+    "title": "On the duality condition for a Hermitian scalar field",
+    "author": [
+      {
+        "family": "Bisognano",
+        "given": "J. J."
+      },
+      {
+        "family": "Wichmann",
+        "given": "E. H."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1975
+        ]
+      ]
+    },
+    "container-title": "Journal of Mathematical Physics",
+    "container-title-short": "J. Math. Phys.",
+    "volume": "16",
+    "page": "985",
+    "DOI": "10.1063/1.522599"
+  },
+  {
+    "id": "Schmidt1907",
+    "type": "article",
+    "title": "Zur Theorie der linearen und nichtlinearen Integralgleichungen",
+    "author": [
+      {
+        "family": "Schmidt",
+        "given": "E."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1907
+        ]
+      ]
+    },
+    "container-title": "Mathematische Annalen",
+    "container-title-short": "Math. Ann.",
+    "volume": "63",
+    "page": "433"
   }
 ]

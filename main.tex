@@ -120,9 +120,9 @@
 \newcommand{\NumericalWitness}[1]{{\footnotesize\textcolor{tagN}{\textbf{N}}\texttt{[#1]}}}
 \newcommand{\HypWitness}[1]{{\footnotesize\textcolor{tagH}{\textbf{H}}\texttt{[#1]}}}
 % Block form (end of theorem/remark, right-aligned, word-wrapping):
-\newcommand{\ProofWitnessBlock}[1]{{\hfill\footnotesize\textcolor{tagP}{\textbf{P}}\texttt{[#1]}}}
-\newcommand{\NumericalWitnessBlock}[1]{{\hfill\footnotesize\textcolor{tagN}{\textbf{N}}\texttt{[#1]}}}
-\newcommand{\HypWitnessBlock}[1]{{\hfill\footnotesize\textcolor{tagH}{\textbf{H}}\texttt{[#1]}}}
+\newcommand{\ProofWitnessBlock}[1]{\par\noindent\hfill\parbox{\dimexpr\linewidth-1em}{\raggedleft\footnotesize\textcolor{tagP}{\textbf{P}}\texttt{[#1]}}\par}
+\newcommand{\NumericalWitnessBlock}[1]{\par\noindent\hfill\parbox{\dimexpr\linewidth-1em}{\raggedleft\footnotesize\textcolor{tagN}{\textbf{N}}\texttt{[#1]}}\par}
+\newcommand{\HypWitnessBlock}[1]{\par\noindent\hfill\parbox{\dimexpr\linewidth-1em}{\raggedleft\footnotesize\textcolor{tagH}{\textbf{H}}\texttt{[#1]}}\par}
 \newcommand{\Conj}{{\footnotesize\textcolor{tagH}{\textbf{C}}}}
 \newcommand{\Open}{{\footnotesize\textbf{O}}}
 \newcommand{\Empty}{{\footnotesize\textbf{$\varnothing$}}}
