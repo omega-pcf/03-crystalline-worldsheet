@@ -110,19 +110,17 @@
 \newcommand{\tauF}{\tau_{F}}
 \newcommand{\epsz}{\varepsilon_{0}}
 \newcommand{\lng}{\lambda_{\log}}
-% \Lean: right-aligned tag on its own paragraph.
-% \hfill pushes to the right; \parbox constrains width and allows word-wrap
-% at commas/spaces so long tag lists don't overflow the margin.
-\newcommand{\Lean}[1]{\par\noindent\hfill\parbox{\dimexpr\linewidth-1em}{\raggedleft\small\nolinkurl{[#1]}}\par}
-\newcommand{\LeanInline}[1]{{\small\nolinkurl{[#1]}}}
-% \LeanFor{eq-label}{decls}: the first argument names the equation the tags back,
-% for the alignment tooling (CW6_ledger.py); rendering delegates to \Lean, so the
-% PDF is identical to a plain \Lean{decls}.
-\newcommand{\LeanFor}[2]{\Lean{#2}}
-% \Numerical: right-aligned numerical-witness tag (block form, for tier{N} declarations).
-% Cites equation labels (stable), not test file paths (implementation).
-\newcommand{\Numerical}[1]{\par\noindent\hfill\parbox{\dimexpr\linewidth-1em}{\raggedleft\small\itshape[#1]}}
-% \PytestInline: inline test path (used once, in the status section only).
+% Verification tags: \P{...} = formal proof (Lean), \N{...} = numerical check,
+% \Hyp{...} = hypothesis from literature, \Conj = proposed, \Open = open question.
+% Block form: right-aligned on own paragraph (for end of theorem/remark).
+% Inline form: just use the command mid-sentence.
+\newcommand{\P}[1]{{\footnotesize\textbf{P[$#1$]}}}
+\newcommand{\N}[1]{{\footnotesize\textbf{N[$#1$]}}}
+\newcommand{\Hyp}[1]{{\footnotesize\textbf{H[$#1$]}}}
+\newcommand{\Conj}{{\footnotesize\textbf{C}}}
+\newcommand{\Open}{{\footnotesize\textbf{O}}}
+\newcommand{\Empty}{{\footnotesize\textbf{$\varnothing$}}}
+% Legacy (used once, in status section):
 \newcommand{\PytestInline}[1]{{\small\ttfamily#1}}
 \newcommand{\pcfrepo}{https://github.com/omega-pcf/03-crystalline-worldsheet}
 

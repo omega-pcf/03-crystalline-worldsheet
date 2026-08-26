@@ -19,14 +19,12 @@ The throat is therefore an Einstein space $R_{AB}=-4g_{AB}$ with $\Lambda_5=-d(d
 The remaining curvature invariants $R_{ab}R^{ab}=80$, $R_{abcd}R^{abcd}=40$, $\mathrm{GB}=120$ and the
 Gauss--Bonnet Lanczos tensor $H_{AB}=-12g_{AB}$ follow from Lovelock's theorem, so the second-order field
 equation is Einstein${}+\Lambda$, solved by the torus metric at $\Lambda_5=-6$, $G_N=\tfrac12$.
-\Lean{ricciCoeff, ricciScalar, einsteinCoeff, R\_AB\_einstein, R\_scalar\_pcf, G\_AB\_pcf}
 
 \paragraph{Independent check.} Beyond the modulus and the dimensional counting, the same data pass two
 checks that are independent of either: the scalar mass saturates the Breitenlohner--Freedman stability bound,
 $m^2_{\mathrm{BF}}=-d^2/4=-4$, so the discrete tower is stable; and the free-energy ratio of the
 correspondence takes the Gubser--Klebanov--Polyakov value $\mathrm{GKP}=\tfrac34$. Neither follows from
 $|\Om|=\tfrac12$ by counting; both are nontrivial AdS/CFT data reproduced by the microstate.
-\Lean{BFbound, BF\_value}
 
 \subsection{The ETS metric is flat; de~Sitter is its embedded hyperboloid}\label{app:embedding}
 Written with the scale coordinate $\sigma$, the Lorentzian metric \eqref{eq:ets-metric} is
@@ -38,7 +36,7 @@ tensor, computed directly, all vanish:
 \]
 The ETS metric is therefore \emph{intrinsically flat}---Weyl vanishes because Riemann does---and is
 not de~Sitter (which is curved, $R=12H^2$) but the flat five-dimensional \emph{ambient} in which
-de~Sitter embeds. \Lean{ets\_constant\_block\_christoffels\_vanish}
+de~Sitter embeds. \P{ets\_constant\_block\_christoffels\_vanish}
 
 \paragraph{The extended light cones (causal classification).} Because \eqref{eq:ets-metric}
 is Lorentzian with signature $(-,+,+,+,+)$, it carries a light-cone structure. For two events
@@ -56,7 +54,6 @@ spacelike, never toward timelike, so the extended cone contains the Minkowski co
 separation is timelike and the null condition $\Delta t^2=\Delta x^2+\Delta y^2+\Delta z^2+
 \lambda^2\Delta u^2$ is the extended light cone that makes $C$ the apex (the observer's present)
 and $P,F$ the past/future cones.
-\Lean{causal\_trichotomy, ets\_null\_cone, time\_separation\_timelike, space\_separation\_spacelike, scale\_separation\_spacelike, scale\_pushes\_spacelike}
 
 \paragraph{de~Sitter as the hyperboloid (Gauss).} The observer's de~Sitter geometry is the
 hyperboloid $-X_0^2+X_1^2+X_2^2+X_3^2+X_4^2=\ell^2$ ($\ell=1/H$) inside the flat ambient
@@ -73,7 +70,6 @@ de~Sitter constant of the observer's slice, distinct from the five-dimensional b
 $\Lambda_5=-6$ of Appendix~\ref{app:curvature}). Direct computation of the FLRW form
 $ds^2=-dt^2+e^{2Ht}(dx^2+dy^2+dz^2)+\lambda^2 d(\ln\sigma)^2$ reproduces these values, and the metric
 induced on the hyperboloid equals exactly this FLRW form.
-\Lean{dS\_ricci\_from\_gauss, dS\_einstein\_Lambda, dS\_hubble\_from\_Lambda}
 
 \paragraph{The static patch is thermal (Gibbons--Hawking).} The de~Sitter horizon radiates: the
 static patch is a thermal state at the Gibbons--Hawking temperature $T=H/2\pi$, with inverse
@@ -83,7 +79,6 @@ observer~\cite{Witten01dS,CLPW22}: the observer's modular flow is the KMS flow o
 state, and it is exactly the tracial scale flow $\sigma\mapsto\sigma+t$ of the tower
 (\S\ref{sssec:disc-vacuum}), which fixes $\tau=i$ and preserves $|\Om|=\tfrac12$. With
 $H=\sqrt{\Lambda/3}$ the temperature is fixed by the same $\golden$-determined $\Lambda$.
-\Lean{dS\_temperature, dS\_temperature\_pos, dS\_beta\_reciprocal}
 
 \paragraph{The observer sees exactly half.} In the planar (inflationary) slicing that gives the FLRW
 form, the embedding is
@@ -101,7 +96,7 @@ de~Sitter accessible to the observer.
 \paragraph{Two corrections.} The same computation corrects two statements sometimes made about this
 metric: the ETS metric has $C_{abcd}=0$ (being flat, its Weyl tensor cannot be nonzero), and the
 constant-$\sigma$ slices of the ETS metric are totally geodesic, $K_{\mu\nu}=0$, not
-$K_{\mu\nu}=(\lambda/\sigma^2)g_{\mu\nu}$. \Lean{ets\_slices\_totally\_geodesic}
+$K_{\mu\nu}=(\lambda/\sigma^2)g_{\mu\nu}$. \P{ets\_slices\_totally\_geodesic}
 
 \subsection{The gauge group $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$}\label{app:gauge}
 The internal gauge content descends from three substructures the torus already carries. The Eisenstein
@@ -131,7 +126,6 @@ Proposition~\ref{prop:ladder}). The Eisenstein face is the one that carries that
 vectors give $6+2=8=\dim\mathfrak{su}(3)$, whereas the Gauss face $\tau=i$ has four, giving $4+2=6$---the
 algebra of $\mathrm{SU}(2)\times\mathrm{SU}(2)$, not of $\mathrm{SU}(3)$. The assignment is forced, not
 chosen. What remains open here is the explicit mode expansion.
-\Lean{ladder\_dim\_eq\_kissing\_plus\_rank, a2\_roots\_give\_su3\_dim, gauge\_dim\_su3, weinberg\_angle\_gut, Nmodes\_zero\_eq\_three, Nmodes\_two\_eq\_eight, entropy\_ratio\_S3\_S6, beta\_is\_mssm, hopf\_from\_clifford, G\_Lambda\_duality}
 
 \subsection{The M-theory type duality web from its two corners}\label{app:web}
 The web this paper uses has exactly two corners---Huerta--Schreiber M-theory and Maldacena's AdS/CFT---and both
@@ -146,7 +140,6 @@ $\tau\to-1/\tau\Leftrightarrow\golden\to-1/\golden$, which fixes $\tau=i$ and pr
 T-duality is $R\to\alpha'/R$; IIA strong coupling is the dimensional lift $\sigma=10\to11$. The two corners are
 thus projections of one microstate related by symmetries that fix its modulus---the web reconstructed from this
 paper's own objects, with no external framework required.
-\Lean{s\_duality\_fixes\_i, modulus\_Omega}
 
 \subsection{The superpoint ladder and the $32$ supercharges}\label{app:superpoint}
 M-theory's eleven-dimensional content is reached as the chain of maximal invariant central extensions of the
@@ -160,7 +153,6 @@ $32$ real supercharges are the cardinality of the binary hypercube $H_5=\{0,1\}^
   |H_k|=2^{k},\qquad |H_5|=2^{5}=32 ,
 \end{equation}
 and the base mode count is $N(0)=\lfloor\pi\rfloor=3$, fixing $c=3$ at the colour level.
-\Lean{hypercube\_card}
 
 \subsection{Einstein's equations from observation}\label{app:einstein}
 The accumulated information of the observer is the tower entropy, the matter content, the horizon entropy, and
@@ -194,24 +186,20 @@ The numerator of the interior Kaluza--Klein mass is the golden identity
 \begin{equation}\label{eq:kk-numerator}
   \golden^{2}+\golden^{-2}-2=1 ,
 \end{equation}
-\Lean{KK\_numerator}
 a direct consequence of $\golden^{2}+\golden^{-2}=3$. The same identity fixes, at one stroke, the arity
 $n=3$ (gauge), this Kaluza--Klein numerator (gravity), and the dimension $d=n+1=4$
 \eqref{eq:dim-chain}.
-\Lean{central\_chain}
 
 \paragraph{Dimensional reduction $G_5\to G_4$.}
 Newton's constant reduces as $G_4=G_5/(2\ell)$, which at the framework values $G_5=\tfrac12$, $\ell=1$ gives
 \begin{equation}\label{eq:kk-G4}
   G_4=\frac{G_5}{2\ell}=\frac{1}{4} ,
 \end{equation}
-\Lean{kk\_reduction, kk\_at\_PCF}
 the reduced Newton constant being the squared modulus, $G_4=|\Om|^{2}=(\tfrac12)^{2}$
-\Lean{G4\_eq\_omega\_sq}
 The boundary Casimir $\tfrac34$ and the bulk Newton $\tfrac14$ sum to unity,
-$\tfrac34+\tfrac14=1$ \Lean{casimir\_plus\_newton}
+$\tfrac34+\tfrac14=1$ \P{casimir\_plus\_newton}
 and the boundary density ratio is
-$\golden^{-2}-1=-\golden^{-1}$ \Lean{boundary\_density\_ratio}
+$\golden^{-2}-1=-\golden^{-1}$ \P{boundary\_density\_ratio}
 .
 
 \paragraph{The Breitenlohner--Freedman bound and discrete stability.}
@@ -219,7 +207,6 @@ For $\mathrm{AdS}_5$ the Breitenlohner--Freedman bound is $m^2_{BF}=-d^2/4=-4$ (
 \begin{equation}\label{eq:kk-BF}
   m^2_{BF}=-\frac{d^{2}}{4}=-4 ,
 \end{equation}
-\Lean{KK\_BF\_bound}
 The continuous interior Kaluza--Klein mass $m^2_{KK}\approx-4.318$ lies below this bound; a continuous mode
 of that mass would be unstable. The physical spectrum is not continuous but the discrete tower
 $\sigma=0,\dots,2n$, and its spectrum is computable in closed form.
@@ -240,10 +227,10 @@ Then, with $m^{2}=-\lambda$,
 \end{equation}
 which at $n=3$ gives seven modes $m^{2}_{k}=4\sin^{2}(k\pi/16)/(\ln\golden)^{2}$, all strictly
 positive, the lowest $\approx0.657$ and the highest $\approx16.616$. Every one lies above the bound
-\eqref{eq:kk-BF}, so the discrete tower is stable. \tier{P} (the spectrum of the Dirichlet
-second-difference operator enters as \tier{L})
-\LeanFor{eq:kk-operator}{kk\_hopping\_reciprocal}%
-\LeanFor{eq:kk-spectrum}{kk\_discrete\_spectrum, kk\_discrete\_positive, kk\_above\_BF}%
+\eqref{eq:kk-BF}, so the discrete tower is stable.  (the spectrum of the Dirichlet \P{KK_BF_bound}
+second-difference operator enters as ) \Hyp{}
+\P{kk\_hopping\_reciprocal}%
+\P{kk\_discrete\_spectrum, kk\_discrete\_positive, kk\_above\_BF}%
 \end{proposition}
 \begin{proof}
 The two hopping amplitudes are \emph{reciprocal}, $\golden^{+2}\cdot\golden^{-2}=1$, because
@@ -264,7 +251,7 @@ operator \eqref{eq:kk-operator} has eigenvalue equal to the interior row sum,
 \end{equation}
 whose numerator is exactly the golden identity \eqref{eq:kk-numerator}. With $m^{2}=-\lambda$ that
 mode carries $m^{2}=-1/(\ln\golden)^{2}\approx-4.318$: the continuous value quoted above, below the
-bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \Lean{log\_phi\_lt\_half}
+bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \P{log\_phi\_lt\_half}
 Truncating to the
 $2n+1$ levels removes the constant mode---the boundary rows have row sums
 $(\golden^{-2}-2)$ and $(\golden^{2}-2)$ over $(\ln\golden)^{2}$, so the all-ones vector is no
@@ -277,8 +264,8 @@ amplitudes the symmetrisation is unavailable and modes of $m^{2}<0$ appear---$(\
 gives $\lambda_{\max}=+1.51$ and $(\golden^{3},\golden^{-1})$ gives $+4.27$. And the base: the
 numerator of \eqref{eq:kk-rowsum} equals $1$ only for $\golden$, since $b^{2}+b^{-2}-2$ is
 $\tfrac94$ at $b=2$ and $\tfrac{64}9$ at $b=3$; that is where the arity
-$\golden^{2}+\golden^{-2}=3$ enters. \tier{P/N}
-\Lean{kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates}
+$\golden^{2}+\golden^{-2}=3$ enters. \P{kk_rowsum_eq_numerator, kk_continuous_below_BF, kk_reciprocal_discriminates}
+
 \Numerical{eq:kk-rowsum, eq:kk-spectrum}
 \end{remark}
 
@@ -290,13 +277,13 @@ $\mathrm{U}(1)\times\mathrm{U}(1)$, abelian and of dimension $2$, so no such red
 non-abelian $A^{a}_\mu$. The torus enters instead as the \emph{maximal torus} of the gauge group---rank
 $2$, Weyl group $S_3$, root lattice $A_2$, the three data the construction already carries
 (Proposition~\ref{prop:a2})---and the gauge bosons arise by enhancement at the self-dual radius
-$R^{2}=\alpha'$\,\Lean{Tdual\_selfdual}
+$R^{2}=\alpha'$\,\P{Tdual\_selfdual}
 where the minimal vectors of the lattice supply the root
 generators and the torus supplies the Cartan subalgebra. The dimension count is then
 $\dim\mathfrak g=\text{kissing}+\text{rank}$, satisfied at every rung of the ladder of
 Proposition~\ref{prop:ladder}: $8=6+2$, $28=24+4$, $78=72+6$, $248=240+8$. What remains open is not the
-mechanism but the explicit mode expansion realising it. \tier{P}
-\Lean{ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims, a2\_minimal\_vectors\_exactly\_six, Tdual\_selfdual}
+mechanism but the explicit mode expansion realising it. \P{ladder_dim_eq_kissing_plus_rank, fks_ladder_dims, a2_minimal_vectors_exactly_six, Tdual_selfdual}
+
 
 
 
@@ -317,7 +304,7 @@ The term-level content is the reindexing $n=5m+a$,
   (5m+a)^{-s}=5^{-s}(m+a/5)^{-s},
 \end{equation}
 which pulls one factor $5^{-s}$ out of every term. The rearrangement of the convergent series is
-the classical input. \tier{P} (the rearrangement enters as \tier{L}) \Lean{hurwitz\_reindex}
+the classical input.  (the rearrangement enters as \Hyp{}) \P{hurwitz_reindex}
 
 \paragraph{Even values.}
 \begin{equation}\label{eq:even-L}
@@ -327,8 +314,8 @@ the rational coefficient being rational by typing: Bernoulli polynomials have ra
 coefficients and are evaluated at the rational pentagonal points $a/5$. The passage through
 $\zeta(-n,x)=-B_{n+1}(x)/(n+1)$ and the functional equation is the classical input. Verified:
 $L(2,\chi_5)=\sqrt5\pi^{2}\cdot\tfrac{4}{125}$, $L(4,\chi_5)=\sqrt5\pi^{4}\cdot\tfrac{8}{1875}$,
-$L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$. \tier{P} (Bernoulli enters as \tier{L})
-\Lean{even\_L\_rationality, bernoulli\_eval\_rational}
+$L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$.  (Bernoulli enters as \Hyp{}) \P{even_L_rationality, bernoulli_eval_rational}
+
 
 \paragraph{The Archimedean density.}
 Since $K$ is totally real, $r_1=2$ and $r_2=0$, so the completed zeta carries $\Gamma_\R(s)^{2}$
@@ -350,7 +337,7 @@ Connes and Consani~\cite{ConnesConsaniSite}; the doubling for a real quadratic f
 An independent check that never touches Gauss--Binet: the von Mangoldt explicit formula gives
 $u\,d\psi/du=u-\sum_\rho u^{\rho}-1/(u^{2}-1)$, so
 $N_\Q-u\,d\psi/du=1+1/(u^{2}-1)=u^{2}/(u^{2}-1)$, reproducing $\kappa_\Q$.
-\tier{P} (Gauss--Binet enters as \tier{L})
-\Lean{kappaK\_two\_real\_places, kappaK\_alt, kappaK\_simple\_pole, kappaK\_pole\_numerator\_at\_one,
+(Gauss--Binet enters as \Hyp{}) \P{}
+\P{kappaK\_two\_real\_places, kappaK\_alt, kappaK\_simple\_pole, kappaK\_pole\_numerator\_at\_one,
 kappaK\_pos, kappaK\_exp, kappa\_per\_real\_place}
 
