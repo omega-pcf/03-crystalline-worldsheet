@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.9](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.8...v1.0.9) (2026-08-26)
+
+### Bug Fixes
+
+* correct GUE measurement, add level-repulsion figures, remove unjustified 0.35% ([2ca7511](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/2ca75113511afcc4a3f4640671188e89ed966e52))
+
+### Styles
+
+* **figures:** improve layout, remove overflow, fix labels ([79231e5](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/79231e5f886706848731cd014e0660f749e40b38))
+
 ## [1.0.8](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.7...v1.0.8) (2026-08-25)
 
 ### Bug Fixes
