@@ -151,6 +151,7 @@ def make_fig8():
     ax.set_ylabel(r'$K(u)$')
     ax.set_xlim(-0.15, 5.2)
     ax.set_ylim(-0.10, 1.20)
+    # ticks kept for readability
 
     # Legend outside axes, right side — no overlap with any data
     ax.legend(loc='center left', fontsize=9.5, framealpha=0.95,

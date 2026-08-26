@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.colors import LinearSegmentedColormap
 from mpl_toolkits.mplot3d import Axes3D
+from fractions import Fraction as Fr
 import itertools
 
 phi = (1+np.sqrt(5))/2; eps0 = np.log(phi)/(6*np.sqrt(3))
@@ -26,40 +27,117 @@ RC={'font.family':'serif','font.serif':['DejaVu Serif'],'mathtext.fontset':'stix
 plt.rcParams.update(RC)
 
 def make_fig1():
-    AE=0.1179
-    def pred(s1,s2): return np.sin(alpha(s1))*np.cos(alpha(s2))
-    N=9; sg=np.arange(N); S1,S2=np.meshgrid(sg,sg)
-    PM=pred(S1,S2); EM=np.abs(PM-AE)/AE*100
-    sf=np.linspace(0,8,60); F1,F2=np.meshgrid(sf,sf); PS=pred(F1,F2)
-    assert np.unravel_index(EM.argmin(),EM.shape)==(3,2) and EM.min()<0.25
-    fig=plt.figure(figsize=(14,7.5),facecolor='white')
-    ax3=fig.add_axes([0.02,0.06,0.46,0.90],projection='3d')
-    ax2=fig.add_axes([0.54,0.06,0.44,0.90])
+    # Panel (a): spectral angle surface sin a(s1) cos a(s2).  Panel (b): integer
+    # uniqueness of eq:interval-levels.  No fitted constants: the pair (2,3) is
+    # DERIVED from arity n=3 (sigma_G=n-1, sigma_EM=n).
+    n_ar = 3
+    muSq = Fr(1, 4)
+    PSq = Fr(1, 3)
+
+    def pred(s1, s2):
+        return np.sin(alpha(s1)) * np.cos(alpha(s2))
+
+    def closed(s1, s2):
+        return eps0 * phi ** s1 / np.sqrt(
+            (1 + eps0 ** 2 * phi ** (2 * s1)) * (1 + eps0 ** 2 * phi ** (2 * s2)))
+
+    N = 9
+    sg = np.arange(N)
+    S1, S2 = np.meshgrid(sg, sg)
+    PM = pred(S1, S2)
+    sf = np.linspace(0, 8, 60)
+    F1, F2 = np.meshgrid(sf, sf)
+    PS = pred(F1, F2)
+
+    # Assertion 1: surface matches closed form
+    assert max(abs(pred(a, b) - closed(a, b)) for a in range(N) for b in range(N)) < 1e-14
+    # Assertion 2: tan a(s+1)/tan a(s) = phi exactly
+    assert max(abs(np.tan(alpha(s + 1)) / np.tan(alpha(s)) - phi) for s in range(N)) < 1e-13
+
+    # Assertion 3: unique integer triple satisfying four constraints is (2,3,6)
+    def sols(n, hi=15):
+        return [(g, e, l) for g in range(hi) for e in range(g + 1, hi + 1)
+                for l in range(e + 1, hi + 2)
+                if l == 2 * n and l - g == n + 1
+                and Fr(e - g, l - g) == muSq and Fr(e - g, l - e) == PSq]
+
+    assert sols(n_ar) == [(n_ar - 1, n_ar, 2 * n_ar)] == [(2, 3, 6)]
+    assert sols(2) == [] and sols(4) == []   # discriminates by arity
+
+    GRID = [(g, e, l) for g in range(9) for e in range(g + 1, 10) for l in range(e + 1, 11)]
+
+    fig = plt.figure(figsize=(12, 16), facecolor='white')
+    ax3 = fig.add_axes([0.05, 0.52, 0.90, 0.46], projection='3d')
+    ax2 = fig.add_axes([0.08, 0.04, 0.88, 0.44])
     ax3.set_facecolor('white')
-    for p in [ax3.xaxis.pane,ax3.yaxis.pane,ax3.zaxis.pane]: p.fill=False; p.set_edgecolor('#e0e0e0')
-    grey=LinearSegmentedColormap.from_list('g',['#e8e8e8','#4a4a4a'])
-    cs=grey((PS-PS.min())/(PS.max()-PS.min())); cs[...,3]=0.82
-    ax3.plot_surface(F1,F2,PS,facecolors=cs,linewidth=0,antialiased=True,shade=True)
-    ax3.plot_surface(F1,F2,np.full_like(PS,AE),color='#bb0000',alpha=0.18,linewidth=0)
-    ax3.scatter(2,3,pred(2,3),s=80,c='#bb0000',edgecolors='white',linewidths=1,zorder=12)
-    ax3.text(3.0,4.2,pred(2,3)+0.06,r'$(2,3)$: $0.1181$',fontsize=11,color='#bb0000',fontweight='bold')
-    ax3.set_xlabel(r'$\sigma_1$'); ax3.set_ylabel(r'$\sigma_2$')
-    ax3.set_zlabel(r'$\sin\alpha(\sigma_1)\cos\alpha(\sigma_2)$',fontsize=11)
-    ax3.view_init(elev=26,azim=-52); ax3.set_box_aspect([1,1,0.62])
-    ax3.text2D(0.03,0.95,'(a)',transform=ax3.transAxes,fontsize=13,fontweight='bold')
-    cmap=LinearSegmentedColormap.from_list('e',['#145214','#3a8a3a','#c5e8c5','#ffffff','#f5c0c0','#cc4444','#880000'])
-    im=ax2.imshow(np.clip(EM,0,160),cmap=cmap,aspect='equal',vmin=0,vmax=160,origin='lower',extent=[-0.5,8.5,-0.5,8.5])
-    for i in range(N):
-        for j in range(N):
-            v=PM[j,i]; e=EM[j,i]; col='white' if e<10 or e>85 else '#111111'
-            ax2.text(i,j,f'{v:.3f}\n{int(round(e))}%',ha='center',va='center',fontsize=6.5,color=col)
-    ax2.add_patch(plt.Rectangle((1.52,2.52),0.96,0.96,fill=False,ec='#bb0000',lw=2.2))
-    plt.colorbar(im,ax=ax2,fraction=0.046,pad=0.03,shrink=0.88).set_label('error (%)')
-    ax2.set_xlabel(r'$\sigma_1$'); ax2.set_ylabel(r'$\sigma_2$')
-    ax2.set_xticks(range(N)); ax2.set_yticks(range(N))
-    ax2.text(-0.13,1.02,'(b)',transform=ax2.transAxes,fontsize=13,fontweight='bold')
-    plt.savefig('fig1_alphas_uniqueness.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
-    print(f"  Fig1 saved (min err {EM.min():.4f}%)")
+    for p in [ax3.xaxis.pane, ax3.yaxis.pane, ax3.zaxis.pane]:
+        p.fill = False
+        p.set_edgecolor('#e0e0e0')
+    ax3.set_box_aspect([1, 1, 0.75])
+
+    grey = LinearSegmentedColormap.from_list('g', ['#e8e8e8', '#4a4a4a'])
+    cs = grey((PS - PS.min()) / (PS.max() - PS.min()))
+    cs[..., 3] = 0.82
+    ax3.plot_surface(F1, F2, PS, facecolors=cs, linewidth=0, antialiased=True, shade=True)
+    ax3.scatter(2, 3, pred(2, 3), s=120, c='#bb0000', edgecolors='white', linewidths=1.5, zorder=12)
+    ax3.text2D(0.62, 0.72, r'$(2,3)$: $0.1181$', transform=ax3.transAxes,
+              fontsize=15, color='#bb0000', fontweight='bold',
+              bbox=dict(boxstyle='round,pad=0.3', fc='white', ec='#bb0000', lw=1, alpha=0.9))
+    ax3.set_xlabel(r'$\sigma_1$', fontsize=14)
+    ax3.set_ylabel(r'$\sigma_2$', fontsize=14)
+    ax3.set_xticklabels([]); ax3.set_yticklabels([])
+    ax3.set_zlabel(r'$\sin\alpha(\sigma_1)\cos\alpha(\sigma_2)$', fontsize=13)
+    ax3.view_init(elev=26, azim=-52)
+    ax3.set_box_aspect([1, 1, 0.62])
+    ax3.text2D(0.03, 0.95, '(a)', transform=ax3.transAxes, fontsize=13, fontweight='bold')
+
+    # Panel (b): how many of four constraints each integer triple satisfies.
+    def score(g, e, l):
+        return (int(l == 2 * n_ar) + int(l - g == n_ar + 1)
+                + int(Fr(e - g, l - g) == muSq) + int(Fr(e - g, l - e) == PSq))
+
+    rows = sorted({(g, e) for g, e, l in GRID})
+    ls = sorted({l for _, _, l in GRID})
+    Mx = np.zeros((len(rows), len(ls)))
+    for i, (g, e) in enumerate(rows):
+        for j, l in enumerate(ls):
+            Mx[i, j] = score(g, e, l) if l > e else np.nan
+
+    # Trim: keep only rows/cols with at least one non-zero, non-NaN value
+    row_mask = np.array([np.nanmax(Mx[i, :]) > 0 for i in range(len(rows))])
+    col_mask = np.array([np.nanmax(Mx[:, j]) > 0 for j in range(len(ls))])
+    rows_f = [r for r, m in zip(rows, row_mask) if m]
+    ls_f = [l for l, m in zip(ls, col_mask) if m]
+    Mx_f = Mx[np.ix_(row_mask, col_mask)]
+
+    cmap = LinearSegmentedColormap.from_list(
+        's', ['#f4f4f4', '#d8e6d8', '#a8ccA8', '#5aa05a', '#145214'])
+    im = ax2.imshow(Mx_f, cmap=cmap, aspect='auto', vmin=0, vmax=4, origin='lower')
+    for i, (g, e) in enumerate(rows_f):
+        for j, l in enumerate(ls_f):
+            if l <= e:
+                continue
+            v = int(Mx_f[i, j])
+            ax2.text(j, i, str(v), ha='center', va='center', fontsize=9,
+                      color='white' if v >= 3 else '#333333',
+                      fontweight='bold' if v == 4 else 'normal')
+
+    i0 = rows_f.index((2, 3))
+    j0 = ls_f.index(6)
+    ax2.add_patch(plt.Rectangle((j0 - 0.5, i0 - 0.5), 1, 1, fill=False, ec='#bb0000', lw=2.4))
+    ax2.set_xticks(range(len(ls_f)))
+    ax2.set_xticklabels(ls_f, fontsize=10)
+    ax2.set_yticks(range(len(rows_f)))
+    ax2.set_yticklabels([f'({g},{e})' for g, e in rows_f], fontsize=9)
+    ax2.set_xlabel(r'$\sigma_\Lambda$')
+    ax2.set_ylabel(r'$(\sigma_G,\sigma_{EM})$')
+    plt.colorbar(im, ax=ax2, fraction=0.046, pad=0.03, shrink=0.88,
+                 ticks=[0, 1, 2, 3, 4]).set_label('constraints satisfied (of 4)', fontsize=12)
+    ax2.text(-0.13, 1.02, '(b)', transform=ax2.transAxes, fontsize=14, fontweight='bold')
+
+    plt.savefig('fig1_alphas_uniqueness.pdf', dpi=150, facecolor='white')
+    plt.close()
+    print(f"  Fig1 saved (unique triple {sols(n_ar)[0]}, 4/4 constraints)")
 
 def make_fig2():
     N=9; sf=np.linspace(0,8,55); F1,F2=np.meshgrid(sf,sf)
@@ -71,30 +149,32 @@ def make_fig2():
         for s2 in range(N):
             ta=T_alg(s1,s2); tt=T_trig(s1,s2); Ta.append(ta); Tt.append(tt); res.append(ta-tt)
     Ta,Tt,res=np.array(Ta),np.array(Tt),np.array(res)
-    fig=plt.figure(figsize=(14,7.5),facecolor='white')
-    ax3=fig.add_axes([0.02,0.06,0.47,0.90],projection='3d')
-    ax2=fig.add_axes([0.56,0.06,0.42,0.90])
+    fig = plt.figure(figsize=(12, 14), facecolor='white')
+    ax3 = fig.add_axes([0.05, 0.52, 0.90, 0.46], projection='3d')
+    ax2 = fig.add_axes([0.08, 0.04, 0.88, 0.42])
     ax3.set_facecolor('white')
     for p in [ax3.xaxis.pane,ax3.yaxis.pane,ax3.zaxis.pane]: p.fill=False; p.set_edgecolor('#e0e0e0')
+    ax3.set_box_aspect([1, 1, 0.75])
     rb=LinearSegmentedColormap.from_list('rb',['#1a3a6e','#e8e8e8','#8b1a1a'])
     cs=rb((LTS-LTS.min())/(LTS.max()-LTS.min())); cs[...,3]=0.85
     ax3.plot_surface(F1,F2,LTS,facecolors=cs,linewidth=0,antialiased=True,shade=False)
     d=np.linspace(0,8,100); ax3.plot(d,d,np.zeros(100),color='#111111',lw=1.5)
     for s1,s2,col in [(1,4,'#990000'),(4,7,'#990000'),(1,7,'#003388')]:
         ax3.scatter(s1,s2,np.log(T_alg(s1,s2)),s=55,c=col,edgecolors='white',linewidths=0.8,zorder=12)
-    ax3.text(2.0,6.8,np.log(T_alg(1,4))+0.06,r'$T(1,4)\cdot T(4,7)=T(1,7)$',fontsize=10,color='#555555',style='italic')
-    ax3.set_xlabel(r'$\sigma_1$'); ax3.set_ylabel(r'$\sigma_2$'); ax3.set_zlabel(r'$\ln T$',fontsize=11)
+    ax3.text(2.0,6.8,np.log(T_alg(1,4))+0.06,r'$T(1,4)\cdot T(4,7)=T(1,7)$',fontsize=16,color='#555555',style='italic')
+    ax3.set_xlabel(r'$\sigma_1$',fontsize=15); ax3.set_ylabel(r'$\sigma_2$',fontsize=15); ax3.set_zlabel(r'$\ln T$',fontsize=15)
+    ax3.set_xticklabels([]); ax3.set_yticklabels([]); ax3.set_zticklabels([])
     ax3.view_init(elev=24,azim=-52); ax3.set_box_aspect([1,1,0.60])
     ax3.text2D(0.03,0.95,'(a)',transform=ax3.transAxes,fontsize=13,fontweight='bold')
     vn=min(Ta.min(),Tt.min()); vx=max(Ta.max(),Tt.max()); ln=np.linspace(vn*0.97,vx*1.03,200)
     ax2.plot(ln,ln,color='#111111',lw=1.5,label=r'$T_{\rm alg}=T_{\rm trig}$')
     ax2.scatter(Tt,Ta,s=22,c='#444444',alpha=0.7,edgecolors='none')
-    ins=ax2.inset_axes([0.58,0.06,0.38,0.34]); ins.set_facecolor('#f8f8f8')
+    ins=ax2.inset_axes([0.04,0.58,0.38,0.34]); ins.set_facecolor('#f8f8f8')
     ins.scatter(Tt,res,s=8,c='#990000',alpha=0.75,edgecolors='none')
     ins.axhline(0,color='#333333',lw=0.8); ins.ticklabel_format(style='sci',axis='y',scilimits=(0,0))
-    ins.set_title(r'residuals $\sim 10^{-15}$',fontsize=9.5,color='#990000')
-    ax2.set_xlabel(r'$T_{\rm trig}$',fontsize=12); ax2.set_ylabel(r'$T_{\rm alg}$',fontsize=12)
-    ax2.legend(loc='upper left'); ax2.grid(True,color='#eeeeee',lw=0.4)
+    ins.set_title(r'residuals $\sim 10^{-15}$',fontsize=11,color='#990000')
+    ax2.set_xlabel(r'$T_{\rm trig}$',fontsize=16); ax2.set_ylabel(r'$T_{\rm alg}$',fontsize=16)
+    ax2.legend(loc='lower right',fontsize=12); ax2.grid(True,color='#eeeeee',lw=0.4)
     ax2.text(-0.12,1.01,'(b)',transform=ax2.transAxes,fontsize=13,fontweight='bold')
     plt.savefig('fig2_ER_bridge_identity.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
     print(f"  Fig2 saved (max res {max_res:.2e})")
@@ -120,29 +200,28 @@ def make_fig3():
         ax1.plot([s,sn],[Nm[s],Nm[s]],'-',color='#1a4a8a',lw=2.0,zorder=5)
         if s<smax-1: ax1.plot([sn,sn],[Nm[s],Nm[s+1]],'-',color='#1a4a8a',lw=2.0,zorder=5)
     ax1.scatter(sigmas,Nm,s=40,c='#1a4a8a',zorder=6,edgecolors='white',linewidths=0.5)
-    for s in sigmas: ax1.text(s+0.15,Nm[s]*1.12,str(Nm[s]),fontsize=8.5,color='#444444')
+    for s in sigmas: ax1.text(s+0.15,Nm[s]*1.15,str(Nm[s]),fontsize=12,color='#444444',fontweight='bold')
     ax1.axvline(6,color='#cc0000',lw=0.9,ls='--')
     ax1.text(6.15,5.5,r'$\sigma_\Lambda=6$'+'\n'+r'$N=56$',fontsize=10,color='#cc0000',style='italic')
-    ax1.set_yscale('log'); ax1.set_xlabel(r'Tower level $\sigma$',fontsize=14)
-    ax1.set_ylabel(r'$N_{\rm modes}(\sigma)$ (log)',fontsize=14)
-    ax1.legend(loc='upper left',fontsize=11)
-    ax1.text(6.5,8,r'$N_{\rm modes}(\sigma)=\lfloor\pi\varphi^\sigma\rfloor$'+'\nadjacent to Fibonacci'+'\n$\{3,5,8,13,21,34,55,89,\ldots\}$',fontsize=10,color='#555555',bbox=dict(boxstyle='round,pad=0.4',fc='#fffff0',ec='#cccc88',lw=0.8))
+    ax1.set_yscale('log'); ax1.set_xlabel(r'Tower level $\sigma$',fontsize=15)
+    ax1.set_ylabel(r'$N_{\rm modes}(\sigma)$ (log)',fontsize=15)
+    ax1.legend(loc='upper left',fontsize=10,framealpha=0.9)
+    ax1.text(1.0,400,r'$N_{\rm modes}(\sigma)=\lfloor\pi\varphi^\sigma\rfloor$'+'\nFibonacci-adjacent: $\{3,5,8,13,21,34,55,89,\ldots\}$',fontsize=11,color='#555555',bbox=dict(boxstyle='round,pad=0.4',fc='#fffff0',ec='#cccc88',lw=0.8))
     ax1.text(0.03,0.97,'(a)',transform=ax1.transAxes,fontsize=14,fontweight='bold',va='top')
     ax2.plot(rsig,ratios,'o-',color='#1a4a8a',lw=1.5,ms=7,label=r'$N(\sigma)/N(\sigma{-}1)$')
-    for s,r in zip(rsig,ratios): ax2.text(s+0.12,r+0.0008,f'{r:.4f}',fontsize=8,color='#444466')
+    for s,r in zip(rsig,ratios): ax2.text(s+0.12,r+0.0008,f'{r:.4f}',fontsize=11,color='#444466')
     ax2.axhline(phi,color='#cc6600',lw=1.5,ls='--',label=r'$\varphi=1.618034$')
-    ax2.set_xlabel(r'Tower level $\sigma$',fontsize=13)
-    ax2.set_ylabel(r'$N(\sigma)/N(\sigma{-}1)$',fontsize=13)
+    ax2.set_xlabel(r'Tower level $\sigma$',fontsize=14)
+    ax2.set_ylabel(r'$N(\sigma)/N(\sigma{-}1)$',fontsize=14)
     axk=ax2.twinx()
     axk.plot(kk_sig,kk_vals,'s--',color='#8833aa',lw=1.2,ms=6,label=r'KK $\lambda_{\max}(N)$')
     axk.set_ylabel(r'KK $\lambda_{\max}$',fontsize=12,color='#8833aa')
     axk.tick_params(axis='y',colors='#8833aa')
     l1,lb1=ax2.get_legend_handles_labels(); l2,lb2=axk.get_legend_handles_labels()
-    ax2.legend(l1+l2,lb1+lb2,loc='upper left',fontsize=10.5)
-    ax2.text(0.5,0.03,r'$\lim N(\sigma)/N(\sigma{-}1)=\varphi$ (Fibonacci ratio)',transform=ax2.transAxes,fontsize=11,ha='center',color='#cc6600',style='italic',bbox=dict(boxstyle='round,pad=0.3',fc='#fff8f0',ec='#cc8844',lw=0.8))
+    ax2.legend(l1+l2,lb1+lb2,loc='lower right',fontsize=10,framealpha=0.9)
+    ax2.text(0.5,0.12,r'$\lim N(\sigma)/N(\sigma{-}1)=\varphi$ (Fibonacci ratio)',transform=ax2.transAxes,fontsize=12,ha='center',color='#cc6600',style='italic',bbox=dict(boxstyle='round,pad=0.3',fc='#fff8f0',ec='#cc8844',lw=0.8))
     ax2.text(0.03,0.97,'(b)',transform=ax2.transAxes,fontsize=14,fontweight='bold',va='top')
-    fig.suptitle(r'$N_{\rm modes}(\sigma)=\lfloor\pi\varphi^\sigma\rfloor$: Fibonacci-adjacent UV cutoff  |  ratio $\to\varphi$  |  KK spectrum',fontsize=14,fontweight='bold',y=0.99)
-    plt.tight_layout(rect=[0,0,1,0.96])
+    plt.tight_layout()
     plt.savefig('fig3_N_modes.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
     print(f"  Fig3 saved (N[0..6]={list(Nm[:7])})")
 
@@ -151,88 +230,80 @@ def make_fig4():
     lam_ = [0.5*omega_**k for k in range(3)]
     alpha1_ = np.array([1,0]); alpha2_ = np.array([omega_.real, omega_.imag])
     a1_plus_a2 = alpha1_ + alpha2_
-    all_roots = [alpha1_, alpha2_, a1_plus_a2, -alpha1_, -alpha2_, -a1_plus_a2]
-    for r in all_roots:
-        assert abs(np.linalg.norm(r) - 1.0) < 1e-10, f"Root {r} has |r|={np.linalg.norm(r)}"
     plt.rcParams.update({'font.family':'serif','font.serif':['DejaVu Serif'],
         'mathtext.fontset':'stix','font.size':16,'axes.linewidth':0.6})
-    fig = plt.figure(figsize=(20, 11), facecolor='white')
-    ax = fig.add_axes([0.02, 0.06, 0.96, 0.84])
+    fig = plt.figure(figsize=(20, 12), facecolor='white')
+    ax = fig.add_axes([0.0, 0.0, 1.0, 1.0])
     ax.set_facecolor('white'); ax.set_aspect('equal')
-    ax.set_xlim(-8.5, 8.5); ax.set_ylim(-4.5, 4.5)
+    ax.set_xlim(-7, 7); ax.set_ylim(-5, 5)
     ax.set_xticks([]); ax.set_yticks([])
     for sp in ax.spines.values(): sp.set_visible(False)
-    cx_e = -4.5
-    for a in range(-6, 7):
-        for b in range(-6, 7):
+    ax.set_clip_on(True)
+    cx_e = -4
+    for a in range(-5, 6):
+        for b in range(-5, 6):
             z = a + b*omega_
-            if abs(z) < 3.8:
-                ax.plot(z.real+cx_e, z.imag, 'o', color='#8899aa', ms=5.5, alpha=0.5, zorder=2)
+            if abs(z) < 3.0:
+                ax.plot(z.real+cx_e, z.imag, 'o', color='#8899aa', ms=10, alpha=0.5, zorder=2)
     root_data = [
-        (alpha1_,      '#cc3300', 3.0),(-alpha1_,     '#cc3300', 3.0),
-        (alpha2_,      '#0044cc', 3.0),(-alpha2_,     '#0044cc', 3.0),
-        (a1_plus_a2,   '#009933', 2.5),(-a1_plus_a2,  '#009933', 2.5),]
+        (alpha1_,      '#cc3300', 4.0),(-alpha1_,     '#cc3300', 4.0),
+        (alpha2_,      '#0044cc', 4.0),(-alpha2_,     '#0044cc', 4.0),
+        (a1_plus_a2,   '#009933', 3.5),(-a1_plus_a2,  '#009933', 3.5),]
     for rv, col, lw in root_data:
         ax.annotate('', xy=(rv[0]*1.5+cx_e, rv[1]*1.5), xytext=(cx_e, 0),
                     arrowprops=dict(arrowstyle='->', color=col, lw=lw, shrinkA=0, shrinkB=1))
-    ax.text(alpha1_[0]*1.6+cx_e+0.05, 0.15, r'$\alpha_1$', fontsize=15, color='#cc3300', fontweight='bold')
-    ax.text(-alpha1_[0]*1.6+cx_e-0.5, 0.15, r'$-\alpha_1$', fontsize=14, color='#cc3300')
-    ax.text(alpha2_[0]*1.6+cx_e-0.1, alpha2_[1]*1.6+0.1, r'$\alpha_2$', fontsize=15, color='#0044cc', fontweight='bold')
-    ax.text(-alpha2_[0]*1.6+cx_e+0.05, -alpha2_[1]*1.6-0.25, r'$-\alpha_2$', fontsize=14, color='#0044cc')
-    ax.text(a1_plus_a2[0]*1.6+cx_e+0.1, a1_plus_a2[1]*1.6+0.05, r'$\alpha_1{+}\alpha_2$', fontsize=13, color='#009933')
-    ax.text(-a1_plus_a2[0]*1.6+cx_e-0.8, -a1_plus_a2[1]*1.6-0.15, r'$-(\alpha_1{+}\alpha_2)$', fontsize=13, color='#009933')
-    ax.add_patch(plt.Circle((cx_e, 0), 0.5, fill=False, ec='#cc6600', lw=3.0, ls='--', zorder=6))
+    ax.text(alpha1_[0]*1.6+cx_e+0.05, 0.15, r'$\alpha_1$', fontsize=22, color='#cc3300', fontweight='bold')
+    ax.text(-alpha1_[0]*1.6+cx_e-0.5, 0.15, r'$-\alpha_1$', fontsize=20, color='#cc3300')
+    ax.text(alpha2_[0]*1.6+cx_e-0.1, alpha2_[1]*1.6+0.1, r'$\alpha_2$', fontsize=22, color='#0044cc', fontweight='bold')
+    ax.text(-alpha2_[0]*1.6+cx_e+0.05, -alpha2_[1]*1.6-0.25, r'$-\alpha_2$', fontsize=20, color='#0044cc')
+    ax.text(a1_plus_a2[0]*1.6+cx_e+0.1, a1_plus_a2[1]*1.6+0.05, r'$\alpha_1{+}\alpha_2$', fontsize=18, color='#009933')
+    ax.text(-a1_plus_a2[0]*1.6+cx_e-0.8, -a1_plus_a2[1]*1.6-0.15, r'$-(\alpha_1{+}\alpha_2)$', fontsize=18, color='#009933')
+    ax.add_patch(plt.Circle((cx_e, 0), 0.5, fill=False, ec='#cc6600', lw=4.0, ls='--', zorder=6))
     for k in range(3):
         l1, l2 = lam_[k], lam_[(k+1)%3]
-        ax.plot([l1.real+cx_e, l2.real+cx_e], [l1.imag, l2.imag], '-', color='#cc6600', lw=2.5, zorder=7)
+        ax.plot([l1.real+cx_e, l2.real+cx_e], [l1.imag, l2.imag], '-', color='#cc6600', lw=3.5, zorder=7)
     pcf_colors = ['#cc6600', '#0044cc', '#9900cc']
     for k in range(3):
-        ax.plot(lam_[k].real+cx_e, lam_[k].imag, 's', color=pcf_colors[k], ms=11, zorder=8, mec='white', mew=0.8)
-    ax.text(cx_e+0.6, 0.08, r'$|\hat\Omega|{=}\frac{1}{2}$', fontsize=15, color='#cc6600', fontweight='bold')
-    ax.text(cx_e, -4.0, r'Eisenstein $\mathbb{Z}[\omega]$  (algebra / boundary)'+'\n'+r'$120°$,  $S_3$ symmetry'+'\n'+r'$A_2$ root lattice $=$ SU(3)',
-            fontsize=14, ha='center', color='#334455', bbox=dict(boxstyle='round,pad=0.5', fc='#f0f8ff', ec='#8899aa', lw=1.0))
-    ax.annotate('', xy=(2.8, 0), xytext=(-2.0, 0), arrowprops=dict(arrowstyle='->', color='#cc6600', lw=4.0, shrinkA=0, shrinkB=0))
-    ax.annotate('', xy=(-2.0, 0), xytext=(2.8, 0), arrowprops=dict(arrowstyle='->', color='#cc6600', lw=4.0, shrinkA=0, shrinkB=0))
-    ax.text(0.4, 0.7, r'$\varphi$-mediation', fontsize=20, ha='center', color='#cc6600', fontweight='bold')
-    ax.text(0.4, -0.6, r'$S_3 \to \mathbb{Z}_4$', fontsize=18, ha='center', color='#cc6600', fontweight='bold')
-    ax.text(0.4, -1.4, r'bulk $\leftrightarrow$ boundary:  $V^\dagger V{=}I$', fontsize=14, ha='center', color='#cc6600')
-    ax.text(0.4, -2.1, r'$\tau_{\rm PCF}=i$ fixed', fontsize=14, ha='center', color='#cc6600', style='italic')
-    cx_g = 4.5
-    for a in range(-4, 5):
-        for b in range(-4, 5):
+        ax.plot(lam_[k].real+cx_e, lam_[k].imag, 's', color=pcf_colors[k], ms=14, zorder=8, mec='white', mew=1.0)
+    ax.text(cx_e+0.6, 0.08, r'$|\hat\Omega|{=}\frac{1}{2}$', fontsize=24, color='#cc6600', fontweight='bold')
+    # Eisenstein label moved to caption
+    ax.annotate('', xy=(3.5, 0), xytext=(-3.5, 0), arrowprops=dict(arrowstyle='->', color='#cc6600', lw=6.0, shrinkA=0, shrinkB=0))
+    ax.annotate('', xy=(-3.5, 0), xytext=(3.5, 0), arrowprops=dict(arrowstyle='->', color='#cc6600', lw=6.0, shrinkA=0, shrinkB=0))
+    ax.text(0, 1.2, r'$\varphi$-mediation', fontsize=30, ha='center', color='#cc6600', fontweight='bold')
+    ax.text(0, -0.4, r'$S_3 \to \mathbb{Z}_4$', fontsize=28, ha='center', color='#cc6600', fontweight='bold')
+    ax.text(0, -1.3, r'bulk $\leftrightarrow$ boundary:  $V^\dagger V{=}I$', fontsize=22, ha='center', color='#cc6600')
+    ax.text(0, -2.2, r'$\tau_{\rm PCF}=i$ fixed', fontsize=22, ha='center', color='#cc6600', style='italic')
+    cx_g = 4
+    for a in range(-5, 6):
+        for b in range(-5, 6):
             z = a + b*1j
-            if abs(z) < 3.8:
-                ax.plot(z.real+cx_g, z.imag, 'o', color='#8899aa', ms=5.5, alpha=0.5, zorder=2)
-    ax.add_patch(plt.Rectangle((cx_g-0.5, -0.5), 1.0, 1.0, fill=False, ec='#3366aa', lw=2.0, zorder=4))
-    ax.add_patch(plt.Circle((cx_g, 0), 0.5, fill=False, ec='#cc6600', lw=3.0, ls='--', zorder=6))
+            if abs(z) < 3.0:
+                ax.plot(z.real+cx_g, z.imag, 'o', color='#8899aa', ms=10, alpha=0.5, zorder=2)
+    ax.add_patch(plt.Rectangle((cx_g-0.5, -0.5), 1.0, 1.0, fill=False, ec='#3366aa', lw=3.0, zorder=4))
+    ax.add_patch(plt.Circle((cx_g, 0), 0.5, fill=False, ec='#cc6600', lw=4.0, ls='--', zorder=6))
     for k in range(3):
         l1, l2 = lam_[k], lam_[(k+1)%3]
-        ax.plot([l1.real+cx_g, l2.real+cx_g], [l1.imag, l2.imag], '-', color='#cc6600', lw=2.5, zorder=7)
+        ax.plot([l1.real+cx_g, l2.real+cx_g], [l1.imag, l2.imag], '-', color='#cc6600', lw=3.5, zorder=7)
     for k in range(3):
-        ax.plot(lam_[k].real+cx_g, lam_[k].imag, 's', color=pcf_colors[k], ms=11, zorder=8, mec='white', mew=0.8)
-    ax.text(cx_g+0.6, 0.08, r'$|\hat\Omega|{=}\frac{1}{2}$', fontsize=15, color='#cc6600', fontweight='bold')
-    ax.plot(cx_g, 1, '*', color='#cc0000', ms=20, zorder=10)
-    ax.text(cx_g+0.25, 1.15, r'$\tau_{\rm PCF}=i$', fontsize=15, color='#cc0000', fontweight='bold')
-    ax.text(cx_g+0.25, 0.7, r'$-1/i=i$ (fixed)', fontsize=12, color='#cc0000')
-    ax.annotate('', xy=(cx_g+1.3, 0), xytext=(cx_g, 0), arrowprops=dict(arrowstyle='->', color='#3366aa', lw=2.2, shrinkA=0, shrinkB=1))
-    ax.text(cx_g+1.4, -0.18, r'$1$', fontsize=14, color='#3366aa', fontweight='bold')
-    ax.annotate('', xy=(cx_g, 1.3), xytext=(cx_g, 0), arrowprops=dict(arrowstyle='->', color='#3366aa', lw=2.2, shrinkA=0, shrinkB=1))
-    ax.text(cx_g+0.12, 1.4, r'$i$', fontsize=14, color='#3366aa', fontweight='bold')
-    ax.add_patch(mpatches.Arc((cx_g, 0), 0.45, 0.45, angle=0, theta1=0, theta2=90, color='#555555', lw=1.2))
-    ax.text(cx_g+0.18, 0.22, r'$90°$', fontsize=12, color='#555555')
-    ax.text(cx_g, -4.0, r'Gauss $\mathbb{Z}[i]$  (isometry / bulk)'+'\n'+r'$90°$,  $\mathbb{Z}_4$ symmetry'+'\n'+r'$\tau_{\rm PCF}=i$,  $\ell=1$',
-            fontsize=14, ha='center', color='#334455', bbox=dict(boxstyle='round,pad=0.5', fc='#f0f8ff', ec='#8899aa', lw=1.0))
-    fig.suptitle(r'Isometry $\leftrightarrow$ algebra (bulk--boundary) via $\varphi$:  '
-                 r'$\mathbb{Z}[\omega]$ (algebra: $120°$, $S_3$) $\leftrightarrow$ $\mathbb{Z}[i]$ (isometry: $\tau{=}i$)'
-                 r'  ---  $V: H_{\rm bulk}\to H_{\partial}$,  $V^\dagger V{=}I$,  $|\hat\Omega|{=}1/2$ preserved',
-                 fontsize=16, fontweight='bold', y=0.97)
-    plt.savefig('fig4_top_down.pdf', dpi=200, bbox_inches='tight', facecolor='white')
+        ax.plot(lam_[k].real+cx_g, lam_[k].imag, 's', color=pcf_colors[k], ms=14, zorder=8, mec='white', mew=1.0)
+    ax.text(cx_g+0.6, 0.08, r'$|\hat\Omega|{=}\frac{1}{2}$', fontsize=24, color='#cc6600', fontweight='bold')
+    ax.plot(cx_g, 1, '*', color='#cc0000', ms=25, zorder=10)
+    ax.text(cx_g+0.3, 1.2, r'$\tau_{\rm PCF}=i$', fontsize=18, color='#cc0000', fontweight='bold')
+    ax.text(cx_g+0.3, 0.7, r'$-1/i=i$ (fixed)', fontsize=15, color='#cc0000')
+    ax.annotate('', xy=(cx_g+1.5, 0), xytext=(cx_g, 0), arrowprops=dict(arrowstyle='->', color='#3366aa', lw=3.0, shrinkA=0, shrinkB=1))
+    ax.text(cx_g+1.6, -0.18, r'$1$', fontsize=16, color='#3366aa', fontweight='bold')
+    ax.annotate('', xy=(cx_g, 1.5), xytext=(cx_g, 0), arrowprops=dict(arrowstyle='->', color='#3366aa', lw=3.0, shrinkA=0, shrinkB=1))
+    ax.text(cx_g+0.15, 1.6, r'$i$', fontsize=16, color='#3366aa', fontweight='bold')
+    ax.add_patch(mpatches.Arc((cx_g, 0), 0.5, 0.5, angle=0, theta1=0, theta2=90, color='#555555', lw=1.5))
+    ax.text(cx_g+0.2, 0.25, r'$90°$', fontsize=14, color='#555555')
+    # Gauss label moved to caption
+    plt.savefig('fig4_top_down.pdf', dpi=200, facecolor='white', bbox_inches='tight', pad_inches=0)
     plt.close()
     print("  Fig4 saved")
 
 def make_fig5():
-    fig=plt.figure(figsize=(18,7.5),facecolor='white')
-    ax1=fig.add_subplot(131,projection='3d'); ax1.set_facecolor('white')
+    fig=plt.figure(figsize=(10,18),facecolor='white')
+    ax1=fig.add_subplot(311,projection='3d'); ax1.set_facecolor('white')
     for p in [ax1.xaxis.pane,ax1.yaxis.pane,ax1.zaxis.pane]: p.fill=False; p.set_edgecolor('#e8e8e8')
     for s in range(8):
         y=s*lnphi; r=min(0.15+0.05*phi**s,2.0); th=np.linspace(0,2*np.pi,60)
@@ -240,28 +311,23 @@ def make_fig5():
     s_a=np.linspace(0,7*lnphi,80); th=np.linspace(0,2*np.pi,40)
     S,T=np.meshgrid(s_a,th); R=np.minimum(0.15+0.05*np.exp(S),2.0)
     ax1.plot_surface(R*np.cos(T),S,R*np.sin(T),color='#4488cc',alpha=0.15,linewidth=0)
-    names=['Superpoint','Superstring','Het str','M2','M5','NS5','10-brane']
-    for s,nm in enumerate(names):
-        ax1.text(1.8,s*lnphi,0,f'sigma={s}: {nm}',fontsize=7,color='#335577')
+    # brane labels removed — described in caption
     thb=np.linspace(0,2*np.pi,40)
     ax1.plot(0.15*np.cos(thb),np.zeros(40),0.15*np.sin(thb),color='#cc0000',lw=2.0,zorder=10)
     ax1.text(0,-0.3,-0.5,r'CFT$_4$',fontsize=9,color='#cc0000')
     ax1.set_ylabel(r'$y=\sigma\ln\varphi$',fontsize=10)
-    ax1.set_title(r'AdS$_5$: $z=\varphi^\sigma$, $\ell=1$, $G_N=1/2$',fontsize=10)
     ax1.view_init(elev=15,azim=-70)
     ax1.text2D(0.03,0.95,'(a)',transform=ax1.transAxes,fontsize=14,fontweight='bold')
-    ax2=fig.add_subplot(132); ax2.set_facecolor('white'); ax2.set_aspect('equal')
+    ax1.set_xticklabels([]); ax1.set_yticklabels([]); ax1.set_zticklabels([])
+    ax2=fig.add_subplot(312); ax2.set_facecolor('white'); ax2.set_aspect('equal')
     for s in range(7):
-        r=phi**s*0.12; ax2.add_patch(plt.Circle((0,0),r,fill=False,ec='#cc6600',lw=1.0,ls='--',alpha=0.5+0.07*s))
-        ax2.text(r+0.02,0.05,rf'$\varphi^{s}$',fontsize=7,color='#cc6600')
-    for a in range(-12,13):
-        for b in range(-12,13):
-            z=(a+b*omega)*0.12
-            if abs(z)<2.5: ax2.plot(z.real,z.imag,'.',color='#2266aa',ms=max(1,4-abs(z)),alpha=0.5)
+        r=phi**s*0.12; ax2.add_patch(plt.Circle((0,0),r,fill=False,ec='#cc6600',lw=1.5,ls='--',alpha=0.7+0.04*s))
+        ax2.text(r*0.7,r*0.7,rf'$\varphi^{{{s}}}$',fontsize=13,color='white',fontweight='bold',
+                 bbox=dict(boxstyle='round,pad=0.15',fc='#333333',ec='none',alpha=0.7))
+    # Eisenstein dots removed — overlap with circles
     ax2.set_xlim(-2.5,2.5); ax2.set_ylim(-2.5,2.5); ax2.set_xticks([]); ax2.set_yticks([])
-    ax2.set_title(r'$\Lambda_\sigma=\varphi^\sigma\Lambda_{\rm PCF}$ in $\mathbb{C}$',fontsize=10)
     ax2.text(0.03,0.97,'(b)',transform=ax2.transAxes,fontsize=14,fontweight='bold',va='top')
-    ax3=fig.add_subplot(133,projection='3d'); ax3.set_facecolor('white')
+    ax3=fig.add_subplot(313,projection='3d'); ax3.set_facecolor('white')
     for p in [ax3.xaxis.pane,ax3.yaxis.pane,ax3.zaxis.pane]: p.fill=False; p.set_edgecolor('#e8e8e8')
     verts=list(itertools.product([0,1],repeat=5))
     def proj5(v): return (v[0]+0.3*v[3]-0.15*v[4],v[1]+0.3*v[4]-0.15*v[3],v[2]+0.2*v[3]+0.2*v[4])
@@ -276,18 +342,17 @@ def make_fig5():
         ax3.scatter(*pt,s=20+h*15,c=cols[h],edgecolors='white',linewidths=0.3,zorder=8,alpha=0.85)
     for h in range(6): ax3.scatter([],[],[],s=40,c=cols[h],label=rf'$\sigma={h}$: {bns[h]}')
     ax3.legend(loc='upper right',fontsize=7.5)
-    ax3.set_title(r'$H_5=\{0,1\}^5$: Hamming $=$ H-S level',fontsize=10)
     ax3.view_init(elev=20,azim=-60)
+    ax3.set_xticklabels([]); ax3.set_yticklabels([]); ax3.set_zticklabels([])
     ax3.text2D(0.03,0.95,'(c)',transform=ax3.transAxes,fontsize=14,fontweight='bold')
     ax3.text2D(0.5,0.02,r'Hopf: $S^1\to S^5\to\mathbb{C}P^2$; $\chi(\mathbb{C}P^2)=3=n$',transform=ax3.transAxes,fontsize=8.5,ha='center',color='#335577',bbox=dict(boxstyle='round,pad=0.3',fc='#f0f4ff',ec='#8899bb',lw=0.7))
-    fig.suptitle(r'AdS$_5$ funnel $\longleftrightarrow$ $\Lambda_\sigma$ tower $\longleftrightarrow$ $H_5$ hypercube: $\varphi^\sigma$ connects all three',fontsize=13,fontweight='bold',y=0.99)
-    plt.tight_layout(rect=[0,0,1,0.95])
+    plt.tight_layout()
     plt.savefig('fig5_three_panel.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
     print(f"  Fig5 saved")
 
 def make_fig6():
-    fig=plt.figure(figsize=(16,8),facecolor='white')
-    ax1=fig.add_subplot(121,projection='3d'); ax1.set_facecolor('white')
+    fig=plt.figure(figsize=(10,16),facecolor='white')
+    ax1=fig.add_subplot(211,projection='3d'); ax1.set_facecolor('white')
     for p in [ax1.xaxis.pane,ax1.yaxis.pane,ax1.zaxis.pane]: p.fill=False; p.set_edgecolor('#e0e0e0')
     th=np.linspace(0,2*np.pi,60); zc=np.linspace(-8,8,40); Th,Zc=np.meshgrid(th,zc)
     ax1.plot_surface(3*np.cos(Th),3*np.sin(Th),Zc,color='#aabbdd',alpha=0.08,linewidth=0)
@@ -300,13 +365,13 @@ def make_fig6():
     for n1,n2 in [('P','C'),('C','F'),('F','P')]:
         p1,p2=pts3[n1],pts3[n2]
         ax1.plot([p1[0],p2[0]],[p1[1],p2[1]],[p1[2],p2[2]],color='#222266',lw=1.8,zorder=7)
-    ax1.text2D(0.02,0.05,r'$|P|\cdot|C|\cdot|F|=\frac{1}{\sqrt{3}}\cdot 1\cdot\frac{\sqrt{3}}{2}=\frac{1}{2}$',transform=ax1.transAxes,fontsize=9,color='#334455',bbox=dict(boxstyle='round,pad=0.3',fc='#f8f8ff',ec='#8888bb',lw=0.7))
+    ax1.text2D(0.02,0.05,r'$|P|\cdot|C|\cdot|F|=\frac{1}{2}$',transform=ax1.transAxes,fontsize=16,color='#334455',bbox=dict(boxstyle='round,pad=0.3',fc='#f8f8ff',ec='#8888bb',lw=0.8))
     ax1.set_xlabel('x'); ax1.set_ylabel('y'); ax1.set_zlabel(r'$z=\varphi y$')
+    ax1.set_xticks([]); ax1.set_yticks([]); ax1.set_zticks([])
     ax1.view_init(elev=18,azim=-65)
-    ax1.set_title(r'Cylinder $C_0$ with P,C,F at $120°$',fontsize=11)
     ax1.text2D(0.03,0.95,'(a)',transform=ax1.transAxes,fontsize=14,fontweight='bold')
-    fig.text(0.49,0.5,r'$\longleftrightarrow$'+'\n'+r'$S_3\to\mathbb{Z}_4$',fontsize=14,ha='center',va='center',color='#cc0000',fontweight='bold')
-    ax2=fig.add_subplot(122,projection='3d'); ax2.set_facecolor('white')
+    fig.text(0.5,0.50,r'$\longleftrightarrow$'+'\n'+r'$S_3\to\mathbb{Z}_4$',fontsize=18,ha='center',va='center',color='#cc0000',fontweight='bold')
+    ax2=fig.add_subplot(212,projection='3d'); ax2.set_facecolor('white')
     for p in [ax2.xaxis.pane,ax2.yaxis.pane,ax2.zaxis.pane]: p.fill=False; p.set_edgecolor('#e0e0e0')
     r1,r2=0.5,np.sqrt(3)/2; assert abs(r1**2+r2**2-1)<1e-10
     u=np.linspace(0,2*np.pi,80); v=np.linspace(0,2*np.pi,40); U,V=np.meshgrid(u,v)
@@ -321,15 +386,14 @@ def make_fig6():
     ax2.text(r2+r1+0.1,0.1,0.1,r'$\lambda_1$',fontsize=12,color='#0044cc')
     ax2.scatter(0,r2,r1,s=60,c='#9900cc',zorder=12,edgecolors='white')
     ax2.text(0.1,r2+0.1,r1+0.1,r'$\lambda_2$',fontsize=12,color='#9900cc')
-    ax2.legend(loc='lower left',fontsize=10)
-    ax2.set_xlabel(r'Re($z_1$)'); ax2.set_ylabel(r'Im($z_1$)')
-    ax2.set_title(r'Clifford torus $T^2_{\rm PCF}\hookrightarrow S^3\cong$ SU(2)',fontsize=11)
-    ax2.text2D(0.97,0.05,r'$|z_1|^2+|z_2|^2=\frac{1}{4}+\frac{3}{4}=1$ ($S^3$)',transform=ax2.transAxes,fontsize=9.5,ha='right',color='#555555')
+    ax2.legend(loc='lower left',fontsize=13)
+    ax2.set_xlabel(r'$\mathrm{Re}(z_1)$'); ax2.set_ylabel(r'$\mathrm{Im}(z_1)$')
+    ax2.set_xticks([]); ax2.set_yticks([]); ax2.set_zticks([])
+    ax2.text2D(0.97,0.05,r'$|z_1|^2+|z_2|^2=1$ ($S^3$)',transform=ax2.transAxes,fontsize=16,ha='right',color='#555555')
     ax2.view_init(elev=22,azim=-55)
     ax2.text2D(0.03,0.95,'(b)',transform=ax2.transAxes,fontsize=14,fontweight='bold')
-    fig.suptitle(r'From $\varphi^2=\varphi+1$: $C_0$ with P,C,F $\to$ $T^2_{\rm PCF}\hookrightarrow S^3$ $\to$ SU(3)$\times$SU(2)$\times$U(1)',fontsize=13,fontweight='bold',y=0.99)
-    plt.tight_layout(rect=[0,0,1,0.95])
-    plt.savefig('fig6_cylinder_torus.pdf',dpi=150,bbox_inches='tight',facecolor='white'); plt.close()
+    plt.tight_layout(pad=1.5)
+    plt.savefig('fig6_cylinder_torus.pdf',dpi=150,facecolor='white'); plt.close()
     print(f"  Fig6 saved")
 
 if __name__=='__main__':

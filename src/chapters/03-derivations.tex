@@ -246,8 +246,7 @@ the Regge tower $\alpha'M_n^{2}=n$ of \eqref{eq:veneziano}, whose integer pole p
 Dirichlet series \eqref{eq:euler-product} and hence $\zeta$; its mass ratios are therefore
 $M_n/M_1=\sqrt n$, not $\golden^{\sigma}$. The two are distinct spectra but not unrelated: the constant of the confining tower is the Regge slope $\alpha'$, the string tension $T=1/2\pi\alpha'$, and \S\ref{sec:dof} shows this tension welded to the golden tower level by level---so the radial and confining towers are two readings of one scale, related through the tension rather than conflated.
 \end{remark}
-\begin{figure}[htb]\centering
-\includegraphics[width=\linewidth]{fig3_N_modes.pdf}
+\begin{figure}[!htbp]\centering\n\includegraphics[width=\linewidth]{fig3_N_modes.pdf}
 \caption{The mode tower $\Nmodes(\sigma)=\lfloor\pi\golden^{\sigma}\rfloor$ \eqref{eq:tower-modes}:
 (a) the Fibonacci-adjacent staircase $\{3,5,8,13,21,34,56,\dots\}$, equal to the Fibonacci values
 for $\sigma\le5$ and departing at $\sigma=6$ where $56\neq55$
@@ -383,11 +382,15 @@ $H_5=\{0,1\}^5$, $|H_5|=2^{5}$ \Lean{hypercube\_card}
 with
 $\Lambda_\sigma=\golden^{\sigma}\Lambda_{\PCF}$ and the saturation entropy
 $S(\sigma)=\pi\golden^{\sigma}$ \eqref{eq:tower-modes}. \tier{P}
-\begin{figure}[htb]\centering
-\includegraphics[width=\linewidth]{fig5_three_panel.pdf}
+\begin{figure}[!htbp]\centering\n\resizebox{!}{0.85\textheight}{\includegraphics{fig5_three_panel.pdf}}
 \caption{$\mathrm{AdS}_5$ funnel $z=\golden^{\sigma}$ \eqref{eq:throat} $\leftrightarrow$ the
 lattice tower $\Lambda_\sigma$ $\leftrightarrow$ the Hamming hypercube $H_5$ of the M-theory
-ladder (superpoint~$\to$~NS5); $\golden^{\sigma}$ connects all three.}
+ladder (superpoint~$\to$~NS5); $\golden^{\sigma}$ connects all three:
+(a) the funnel with $\ell=1$, $G_N=\tfrac12$; levels bottom-to-top are
+superpoint ($\sigma{=}0$), superstring ($\sigma{=}1$), het string ($\sigma{=}2$),
+M2-brane ($\sigma{=}3$), M5-brane ($\sigma{=}4$), NS5-brane ($\sigma{=}5$), 10-brane ($\sigma{=}6$);
+(b) the Eisenstein lattice $\Lambda_\sigma=\golden^{\sigma}\Lambda_{\rm PCF}$ in $\C$ with concentric $\golden$-rings;
+(c) the Hamming cube $H_5=\{0,1\}^5$ coloured by Hamming weight $=$ H-S level.}
 \label{fig:ads-ladder}
 \end{figure}
 The bulk--boundary map is an isometry---proved here as Lemma~\ref{lem:isometry}, and independently in the companion~\cite{HP}---used in \S\ref{sec:dof}, and it obeys the GKPW dictionary~\cite{Maldacena98,GKP98,Witten98},
@@ -410,11 +413,12 @@ this is $V^{\dagger}V=\mathbf 1$ read on the lattice --- bulk (geometry, $\Z[i]$
 (algebra, $\Z[\omega]$) are two readings of one triangle, neither privileged, exactly as
 \eqref{eq:isometry} requires. \tier{P} for the two lattices and the mediation; the GKPW dictionary
 of \eqref{eq:isometry} enters cited, \tier{L}~\cite{Maldacena98,GKP98,Witten98}.
-\begin{figure}[htb]\centering
-\includegraphics[width=\linewidth]{fig4_top_down.pdf}
-\caption{Isometry $\leftrightarrow$ algebra (bulk--boundary): the Eisenstein lattice $\Z[\omega]$
-($A_2=\mathfrak{su}(3)$, algebra/boundary) and the Gauss lattice $\Z[i]$ ($\tau=i$,
-isometry/bulk) are $\golden$-mediated ($S_3\to\Z_4$) with $|\Om|=\tfrac12$ preserved --- the
+\begin{figure}[!htbp]\centering\n\includegraphics[width=\linewidth,trim={0 5cm 0 5cm},clip]{fig4_top_down.pdf}
+\caption{Isometry $\leftrightarrow$ algebra (bulk--boundary): left, the Eisenstein lattice $\Z[\omega]$
+($120^\circ$, $S_3$ symmetry, $A_2=\mathfrak{su}(3)$, algebra/boundary);
+right, the Gauss lattice $\Z[i]$
+($90^\circ$, $\Z_4$ symmetry, $\tau=i$, $\ell=1$, isometry/bulk).
+They are $\golden$-mediated ($S_3\to\Z_4$) with $|\Om|=\tfrac12$ preserved --- the
 lattice realisation of $V:\mathcal H_{\mathrm{bulk}}\to\mathcal H_{\partial}$,
 $V^{\dagger}V=\mathbf 1$ \eqref{eq:isometry}.}
 \label{fig:isometry-algebra}
@@ -611,8 +615,7 @@ $|\Om|_\sigma=\tfrac12$ is scale-invariant \eqref{eq:tower-autosimilar}; the ent
 $\mu_3^{2}$ and the bridge group thus share one origin.
 \end{proof}
 
-\begin{figure}[htb]\centering
-\includegraphics[width=\linewidth]{fig2_ER_bridge_identity.pdf}
+\begin{figure}[!htbp]\centering\n\includegraphics[width=\linewidth]{fig2_ER_bridge_identity.pdf}
 \caption{$\mathrm{ER}=\mathrm{EPR}$ from the modulus (Prop.~\ref{prop:er-epr}): (a) the bridge
 amplitude $T(\sigma_1,\sigma_2)$ as a cocycle, $T(1,4)\,T(4,7)=T(1,7)$; (b) the algebraic and
 trigonometric forms agree, $T_{\mathrm{alg}}=T_{\mathrm{trig}}$, to machine precision --- which is
