@@ -119,6 +119,11 @@
 % for the alignment tooling (CW6_ledger.py); rendering delegates to \Lean, so the
 % PDF is identical to a plain \Lean{decls}.
 \newcommand{\LeanFor}[2]{\Lean{#2}}
+% \Pytest: right-aligned test tag (block form, for tier{N} declarations).
+% Uses \texttt instead of \nolinkurl because test paths are not URLs.
+\newcommand{\Pytest}[1]{\par\noindent\hfill\parbox{\dimexpr\linewidth-1em}{\raggedleft\small\ttfamily[#1]}\par}
+% \PytestInline: inline test path (for parenthetical verification notes).
+\newcommand{\PytestInline}[1]{{\small\ttfamily#1}}
 \newcommand{\pcfrepo}{https://github.com/omega-pcf/03-crystalline-worldsheet}
 
 \begin{document}

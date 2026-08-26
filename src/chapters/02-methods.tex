@@ -1565,7 +1565,7 @@ passing silently:
 \end{itemize}
 \noindent Since \texttt{lake build} completes, any renaming or removal of these lemmas in a
 future Mathlib breaks the build rather than passing silently. The numerical companion is the
-pytest suite in \texttt{tests/} (run via \texttt{pnpm run verify:py}),
+pytest suite in \PytestInline{tests/} (run via \texttt{pnpm run verify:py}),
 whose tests are keyed by the \TeX{} labels of this file: of the $162$ labelled equations,
 $148$ carry a Lean proof and $119$ a numerical check, $102$ carrying both---the tests evaluating
 identities at up to $25$-digit precision and, where a claim is a correspondence with measurement,
