@@ -31,7 +31,8 @@ The Gaussian weight of \eqref{eq:gaussian} is the self-dual one fixed in
 Fourier transform, $g(x)=e^{-\pi x^{2}}$ \eqref{eq:selfdual-gaussian}. The physical reading added
 here is that this $g$ is the worldline wavefunction of the microstate; the width is not a
 modelling choice but the fixed point of the Fourier transform, the same self-duality that
-\S\ref{ssec:construction} used to fix $\tau=i$. \ProofWitness{selfdual\_gaussian\_unique}
+\S\ref{ssec:construction} used to fix $\tau=i$.
+\ProofWitnessBlock{selfdual\_gaussian\_unique}
 
 \end{remark}
 
@@ -118,7 +119,8 @@ What the certainty principle $\epsz\Mpcf=\pi$ \eqref{eq:certainty} contributes i
 $\alpha(\sigma)<\pi/2$ is a property of $\arctan$ and holds for every real argument, so it is
 not the certainty relation that keeps the angle off the right angle. The bound is used for one
 thing---it gives $\cos\alpha(\sigma)>0$, the hypothesis under which
-Corollary~\ref{cor:bridge-angle} divides by $\cos\alpha$. \ProofWitness{spectral\_angle\_tan, spectral\_angle\_tower\_ratio}
+Corollary~\ref{cor:bridge-angle} divides by $\cos\alpha$.
+\ProofWitnessBlock{spectral\_angle\_tan, spectral\_angle\_tower\_ratio}
 
 \end{proposition}
 \begin{proof}
@@ -196,8 +198,9 @@ Mediation by $\mu=\tfrac12$ produces the two registers,
 \ProofWitnessBlock{sqrt2\_mediation, sqrt3\_mediation}
 The tower and its mode count are
 \begin{equation}\label{eq:tower-modes}
-  z(\sigma)=\golden^{\sigma},\qquad \Nmodes(\sigma)=\big\lfloor\pi\,\golden^{\sigma}\big\rfloor . \NumericalWitness{eq:tower-modes}
+  z(\sigma)=\golden^{\sigma},\qquad \Nmodes(\sigma)=\big\lfloor\pi\,\golden^{\sigma}\big\rfloor
 \end{equation}
+\NumericalWitnessBlock{eq:tower-modes}
 This is where the geometric encoding replaces the Fourier expansion of the string as the
 device that fixes the mode content: \eqref{eq:tower-modes} counts modes by the cell capacity
 $\pi$ of \eqref{eq:certainty} at each level of the tower rather than by harmonic order. The
@@ -212,7 +215,9 @@ the tower ceiling, where $\Nmodes(6)=\lfloor\pi\golden^{6}\rfloor=56$ while the 
 $55$. The distinction matters: the factor $\pi$ of \eqref{eq:tower-modes} is the cell capacity of
 \eqref{eq:certainty} and not a Fibonacci index, so the staircase is $\pi$-scaled and only
 \emph{shadows} the recurrence of Theorem~\ref{thm:fib-min}. Reading the tower as Fibonacci would
-put $55$ at the tower ceiling $\sigma=2n$, where the saturation entropy is largest. \ProofWitness{fib\_adjacent\_le\_one, Nmodes\_six\_ne\_fib} \NumericalWitness{thm:fib-min}
+put $55$ at the tower ceiling $\sigma=2n$, where the saturation entropy is largest.
+\ProofWitnessBlock{fib\_adjacent\_le\_one, nmodes\_six\_ne\_fib}
+\NumericalWitnessBlock{thm:fib-min}
 
 \end{remark}
 
@@ -223,7 +228,8 @@ The tower $z=\golden^{\sigma}$ of \eqref{eq:tower-modes} defines the diagonal sc
   \mathrm{spec}\,H=\{0\}\cup\{m_0\golden^{\sigma}\}_{\sigma\ge0},
 \end{equation}
 self-adjoint (real diagonal) and bounded below, with the vacuum at $0$; its gap and the reconstruction
-it supports are established in \S\ref{sec:dof}. \ProofWitness{tower\_ham\_is\_hermitian, tower\_ham\_bounded\_below}
+it supports are established in \S\ref{sec:dof}.
+\ProofWitnessBlock{tower\_ham\_is\_hermitian, tower\_ham\_bounded\_below}
 
 Two spectra must be kept apart here, and the framework supplies both from the same pair $\pi,\golden$.
 The golden tower \eqref{eq:tower-modes} is the \emph{radial and scale} tower: its successive ratio
@@ -271,8 +277,8 @@ Regge tower.
 The Euler product \eqref{eq:euler-product} of \S\ref{ssec:zeta} is here read on
 the string side. The arithmetic supplies the identity; the amplitude supplies that the pole positions
 $\alpha's=n$ of \eqref{eq:veneziano} are exactly its index set, with nonzero residue at every level.
-The physical content is the identification of the index set, not the arithmetic identity. \ProofWitness{regge\_dirichlet\_eq\_zeta, regge\_tower\_is\_euler\_product}
-
+The physical content is the identification of the index set, not the arithmetic identity.
+\ProofWitnessBlock{regge\_dirichlet\_eq\_zeta, regge\_tower\_is\_euler\_product}
 \end{remark}
 
 The pentagonal origin $\golden=2\cos(\pi/5)$ generates this structure: the Regge
