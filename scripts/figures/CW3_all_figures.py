@@ -207,7 +207,7 @@ def make_fig3():
     ax1.set_ylabel(r'$N_{\rm modes}(\sigma)$ (log)',fontsize=15)
     ax1.legend(loc='upper left',fontsize=10,framealpha=0.9)
     ax1.text(1.0,400,r'$N_{\rm modes}(\sigma)=\lfloor\pi\varphi^\sigma\rfloor$'+'\nFibonacci-adjacent: $\{3,5,8,13,21,34,55,89,\ldots\}$',fontsize=11,color='#555555',bbox=dict(boxstyle='round,pad=0.4',fc='#fffff0',ec='#cccc88',lw=0.8))
-    ax1.text(0.03,0.97,'(a)',transform=ax1.transAxes,fontsize=14,fontweight='bold',va='top')
+    ax1.text(0.97,0.03,'(a)',transform=ax1.transAxes,fontsize=14,fontweight='bold',va='bottom',ha='right')
     ax2.plot(rsig,ratios,'o-',color='#1a4a8a',lw=1.5,ms=7,label=r'$N(\sigma)/N(\sigma{-}1)$')
     for s,r in zip(rsig,ratios): ax2.text(s+0.12,r+0.0008,f'{r:.4f}',fontsize=11,color='#444466')
     ax2.axhline(phi,color='#cc6600',lw=1.5,ls='--',label=r'$\varphi=1.618034$')

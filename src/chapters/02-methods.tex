@@ -823,10 +823,8 @@ which is the involution $\tau\to-1/\tau$ of the torus \eqref{eq:torus} written i
 variable $t$, with unique fixed point $t=1$, i.e.\ $\tau=i$; \eqref{eq:theta-lattice} is
 Jacobi's theta transformation~\cite{Jacobi1829}, and reading $\Gamma_{\R}$ as the local zeta
 integral at the real place is Tate's~\cite{Tate1967}. The Boltzmann weight $e^{-nt}$ of the primon gas fails
-\eqref{eq:theta-lattice} and is therefore excluded by that involution.
-\ProofWitnessBlock{gamma\_r\_from\_tate}
-%
-\ProofWitnessBlock{theta\_from\_jacobi, theta\_fixed\_point\_unique}%
+\eqref{eq:theta-lattice} and is therefore excluded by that involution.%
+\ProofWitnessBlock{gamma\_r\_from\_tate, theta\_from\_jacobi, theta\_fixed\_point\_unique}%
 \end{proposition}
 \begin{proof}
 Substituting $u=\pi x^{2}$ in \eqref{eq:gammaR-mellin} gives
@@ -848,8 +846,7 @@ see~\cite{Jacobi1829}) together with the reflection formula $\Gamma(\tfrac14)\Ga
   \eta(i)=\frac{\Gamma(\tfrac14)}{2\,\pi^{3/4}},\qquad
   \Gamma_{\R}(\tfrac12)=2\sqrt\pi\,\eta(i),
 \end{equation}
-with $\golden^{\mu\lng}=\sqrt2$ of Proposition~\ref{prop:mediation}.  (the two classical \ProofWitness{sqrt2\_mediation, sqrt3\_mediation}
-evaluations enter as classical~\cite{Jacobi1829}
+with $\golden^{\mu\lng}=\sqrt2$ of Proposition~\ref{prop:mediation}. (the two classical evaluations enter as classical~\cite{Jacobi1829})
 \end{remark}
 
 \begin{theorem}[The partition is the product over all places]\label{thm:places}
@@ -1316,7 +1313,7 @@ ordinates unfolded by the unit of \S\ref{ssec:spacings}:
   \forall\,\rho\neq\tau\in Z:\quad \lvert\Im\tau-\Im\rho\rvert\ \geq\ m .
 \end{equation}
 This is \emph{level repulsion}: the suppression of small spacings that GUE statistics describe and
-Poisson statistics do not. It is measured, not proved : over the $237$ spacings of $\gamma_1=14.13$ to \NumericalWitness{eq:repulsion}
+Poisson statistics do not. It is measured, not proved: over the $237$ spacings of $\gamma_1=14.13$ to
 $\gamma_{238}=453.99$, unfolded by the unit of \S\ref{ssec:spacings}, the minimum is $0.2911$ and
 none falls below $0.25$, let alone $0.10$, where independence would put $22.6$ and the Gaussian
 ensemble $0.25$. The unfolded mean is $0.9979$ with $\zeta$'s own conductor $q=1$ against $1.8828$
@@ -1366,7 +1363,7 @@ apex of Theorem~\ref{thm:mu-diagram}.
 
 Two inputs are open and are named here rather than hidden. Closure needs the conjugation half of
 \eqref{eq:sdual-mate}, $\xi(\bar s)=\overline{\xi(s)}$, not established in this paper; and
-the repulsion is measured . Everything between them is proved, and of the measurement only \NumericalWitness{eq:sdual-mate}
+the repulsion is measured. Everything between them is proved, and of the measurement only
 the \emph{sign} enters.
 \end{theorem}
 
@@ -1455,7 +1452,7 @@ the reader can see them---rather than as axioms; the classical analytic inputs
 subsection: \texttt{XiConjClosed}, the closure $\xi(\bar s)=\overline{\xi(s)}$ of the zeros
 under conjugation, which is \emph{not} established in this paper; and
 \texttt{MinSpacing}, a positive minimal ordinate separation, which is measured rather than
-proved . Of the second only its sign is used. Neither is an axiom: both are hypothesis \NumericalWitness{thm:zeros-apex}
+proved. Of the second only its sign is used. Neither is an axiom: both are hypothesis
 arguments in the type of Theorem~\ref{thm:zeros-apex}. One decision procedure uses
 \texttt{native\_decide} rather than \texttt{decide}---the sweep of $16\times17\times18$ triples behind
 Proposition~\ref{prop:interval-uniqueness}---which extends the trusted base to Lean's compiler
