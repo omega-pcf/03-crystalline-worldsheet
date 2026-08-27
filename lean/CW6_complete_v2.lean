@@ -214,7 +214,7 @@ theorem M4_sqrt3 : φ ^ (μ * (Real.log 3 / Real.log φ)) = Real.sqrt 3 := by
 -- ════════════════════════════════════════════════════════════════════
 
 /-- [M5] distributed self-reference: depth k ≥ 2. -/
-def DistributedSelfReference (k : ℕ) : Prop := 2 ≤ k
+def distributed_self_reference (k : ℕ) : Prop := 2 ≤ k
 
 def fib : ℕ → ℝ
   | 0 => 0
@@ -223,7 +223,7 @@ def fib : ℕ → ℝ
 
 /-- [M6] minimality (core): the positive root of r²=r+1 is φ; k=2 minimal. -/
 theorem M6_characteristic_root_is_phi :
-    DistributedSelfReference 2 ∧ (∀ r : ℝ, 0 < r → r ^ 2 = 1 * r + 1 → r = φ) := by
+    distributed_self_reference 2 ∧ (∀ r : ℝ, 0 < r → r ^ 2 = 1 * r + 1 → r = φ) := by
   refine ⟨le_refl 2, ?_⟩
   intro r hr hroot
   have hr' : r ^ 2 = r + 1 := by linarith [hroot]
@@ -376,30 +376,30 @@ theorem binet_general {R : Type*} [CommRing R] (α : R) (hα : α ^ 2 = α + 1) 
 
 /-- **`def:frobenius`.** The Frobenius lifting on the golden monoid:
     ψ_p(φⁿ) = φ^{pn}. It is an endomorphism of the MONOID ⟨φ⟩, not of the ring R_PCF. -/
-noncomputable def psiGolden (p : ℕ) (x : ℝ) : ℝ := x ^ (p : ℕ)
+noncomputable def psi_golden (p : ℕ) (x : ℝ) : ℝ := x ^ (p : ℕ)
 
 /-- **[P]** Action on generators: ψ_p(φⁿ) = φ^{pn}. -/
-theorem psi_on_powers (p n : ℕ) : psiGolden p (φ ^ n) = φ ^ (p * n) := by
-  unfold psiGolden; rw [← pow_mul, Nat.mul_comm]
+theorem psi_on_powers (p n : ℕ) : psi_golden p (φ ^ n) = φ ^ (p * n) := by
+  unfold psi_golden; rw [← pow_mul, Nat.mul_comm]
 
 /-- **[P]** ψ_p(φ) = φ^p = F_p·φ + F_{p−1}, the form of `eq:frobenius-tower`. -/
 theorem psi_golden_fib (p : ℕ) (hp : 1 ≤ p) :
-    psiGolden p φ = (Nat.fib p : ℝ) * φ + (Nat.fib (p - 1) : ℝ) := by
-  unfold psiGolden; exact phi_pow_fib p hp
+    psi_golden p φ = (Nat.fib p : ℝ) * φ + (Nat.fib (p - 1) : ℝ) := by
+  unfold psi_golden; exact phi_pow_fib p hp
 
 /-- **[P] `eq:psi-functorial`.** Liftings compose as primes multiply:
     ψ_p ∘ ψ_q = ψ_{pq}. This is the Borger axiom in multiplicative form. -/
 theorem psi_functorial (p q : ℕ) (x : ℝ) :
-    psiGolden p (psiGolden q x) = psiGolden (p * q) x := by
-  unfold psiGolden; rw [← pow_mul, Nat.mul_comm]
+    psi_golden p (psi_golden q x) = psi_golden (p * q) x := by
+  unfold psi_golden; rw [← pow_mul, Nat.mul_comm]
 
 /-- **[P]** ψ₁ = id. -/
-theorem psi_one (x : ℝ) : psiGolden 1 x = x := by unfold psiGolden; simp
+theorem psi_one (x : ℝ) : psi_golden 1 x = x := by unfold psi_golden; simp
 
 /-- **[P] `rmk:psi-two`.** ψ_p is NOT additive: ψ_p(φ+1) = ψ_p(φ²) = φ^{2p} ≠ φ^p + 1
     for p ≥ 2. This confines descent to the multiplicative level. -/
-theorem psi_not_additive : psiGolden 2 (φ + 1) ≠ psiGolden 2 φ + 1 := by
-  unfold psiGolden
+theorem psi_not_additive : psi_golden 2 (φ + 1) ≠ psi_golden 2 φ + 1 := by
+  unfold psi_golden
   have h : φ + 1 = φ ^ 2 := phi_sq.symm
   rw [h]
   have hp : 1 < φ := by
@@ -3896,14 +3896,14 @@ theorem field_part_distinguishes {q₁ q₂ : ℝ}
   hne (Real.log_injOn_pos (Set.mem_Ioi.mpr h₁) (Set.mem_Ioi.mpr h₂) hc)
 
 /-- **[C] THE COUNTING LAW.**  `N(T) = env(T) + S(T)`.  Asymptotics: hypothesis.
-    (`CountingLaw` PCF_sesion_completa:6958.) -/
-def CountingLaw (N env S : ℝ → ℝ) : Prop :=
+    (`counting_law` PCF_sesion_completa:6958.) -/
+def counting_law (N env S : ℝ → ℝ) : Prop :=
   ∀ T : ℝ, 0 < T → N T = env T + S T
 
 /-- **[C] THE DERIVED UNIT.**  `uₙ = gapₙ · densityₙ`: it is not chosen, it comes from the
     leading term, which comes from the conductor.
-    (`DerivedUnit` ibid:6965.) -/
-def DerivedUnit (u gap density : ℕ → ℝ) : Prop :=
+    (`derived_unit` ibid:6965.) -/
+def derived_unit (u gap density : ℕ → ℝ) : Prop :=
   ∀ n : ℕ, u n = gap n * density n
 
 /-- **[P] THE UNIT IS DERIVED, WITH NO CHOSEN LINK.** -/
@@ -5663,7 +5663,7 @@ theorem hinge_central_charge (G : ℝ) (hG : 0 < G) : 3 / (2 * G) = 3 ↔ G = 1/
 /-- **[P] A4 `eq:tower-autosimilar`↔`eq:frobenius-tower`, the common factor.**
     Tower self-similarity and the Frobenius lift instantiate one composition law
     on exponents: `ψ_p(φⁿ) = (φⁿ)ᵖ`. -/
-theorem tower_frobenius_common (p n : ℕ) : psiGolden p (φ ^ n) = (φ ^ n) ^ p := by
+theorem tower_frobenius_common (p n : ℕ) : psi_golden p (φ ^ n) = (φ ^ n) ^ p := by
   rw [psi_on_powers, mul_comm, pow_mul]
 
 /-- **[P] A5 `eq:obs-matter`↔`eq:tower-modes`, discriminant.**
