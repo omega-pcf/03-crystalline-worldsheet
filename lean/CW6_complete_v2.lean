@@ -798,7 +798,7 @@ theorem swampland_has_deriv_at (σ : ℝ) :
   rw [heq]; exact h3
 
 /-- T-dualidad: el radio autodual cumple R = α'/R, i.e. R² = α'. -/
-theorem Tdual_selfdual {α' : ℝ} (hα : 0 ≤ α') : Real.sqrt α' ^ 2 = α' :=
+theorem tdual_selfdual {α' : ℝ} (hα : 0 ≤ α') : Real.sqrt α' ^ 2 = α' :=
   Real.sq_sqrt hα
 
 /-- Firma compartida (P18) — todos los invariantes se siguen de μ = 1/2. -/
@@ -900,7 +900,7 @@ theorem R_scalar_pcf : ricci_scalar 4 (-1) 0 = -20 := by simp [ricci_scalar]; no
 theorem G_AB_pcf : einstein_coeff 4 (-1) 0 = 6 := by
   simp [einstein_coeff, ricci_coeff, ricci_scalar]; norm_num
 /-- Cosmological constant from `G_AB + Λ g_AB = 0`. -/
-theorem Lambda5_pcf : -(einstein_coeff 4 (-1) 0) = -6 := by rw [G_AB_pcf]
+theorem lambda5_pcf : -(einstein_coeff 4 (-1) 0) = -6 := by rw [G_AB_pcf]
 
 /-- rmk:cwfix — the fifth-direction entry is `R_ww = -4` (the same coefficient,
     uniform in all five components), not `0`. -/
@@ -1168,7 +1168,7 @@ theorem phi_sq_bounds : (2.6180339:ℝ) < φ^2 ∧ φ^2 < 2.6180340 := by
 
 /-- [P] ⌊π⌋ = 3, i.e. the tower's mode count at level 0 is 3.
     Uses 3 ≤ π < 4 from Mathlib's π bounds. -/
-theorem Nmodes_zero_eq_three : N_modes 0 = 3 := by
+theorem nmodes_zero_eq_three : N_modes 0 = 3 := by
   unfold N_modes S_tower
   simp only [Real.rpow_zero, mul_one]
   -- goal: ⌊Real.pi⌋ = 3
@@ -1177,7 +1177,7 @@ theorem Nmodes_zero_eq_three : N_modes 0 = 3 := by
 /-- [P] ⌊π φ²⌋ = 8, i.e. the tower's mode count at level 2 is 8.
     π ∈ (3.1415926, 3.1415927) and φ² ∈ (2.6180339, 2.6180340) give
     π φ² ∈ (8.22479, 8.22481) ⊂ [8, 9). -/
-theorem Nmodes_two_eq_eight : N_modes 2 = 8 := by
+theorem nmodes_two_eq_eight : N_modes 2 = 8 := by
   have hphi := phi_sq_bounds
   have hprod : (8:ℝ) ≤ Real.pi * φ^2 ∧ Real.pi * φ^2 < 9 := by
     constructor
@@ -1192,7 +1192,7 @@ theorem Nmodes_two_eq_eight : N_modes 2 = 8 := by
     Unconditional: the two mode counts are discharged by the two theorems above.
     (`sin2_gut_tower` in the §5 development states the same ratio taking them as hypotheses.) -/
 theorem weinberg_angle_gut : (N_modes 0 : ℚ) / (N_modes 2 : ℚ) = 3 / 8 := by
-  rw [Nmodes_zero_eq_three, Nmodes_two_eq_eight]; norm_num
+  rw [nmodes_zero_eq_three, nmodes_two_eq_eight]; norm_num
 
 -- The β-coefficients are computed field by field in the §5 development
 -- (`beta_is_mssm`, with `mssmContent`, `T3`, `T2`, `b1`, `b2`, `b3`): b = (33/5, 1, −3).
@@ -2166,7 +2166,7 @@ theorem holographic_area_factor : ((1:ℝ)/2)^2 = 1/4 := by norm_num
 namespace PCFEntropyDOF
 open Real Matrix
 open PaperS3a (S_tower N_modes S_tower_recurrence)
-open CWfig (Nmodes_zero_eq_three binary_entropy_half)
+open CWfig (nmodes_zero_eq_three binary_entropy_half)
 
 /-! ## §2-3  Golden ratio, the microstate, the tower, Basel -/
 
@@ -2495,8 +2495,8 @@ theorem triad_trace_zero :
   rw [h0, h1, h2, hf, Real.cos_zero, cos_two_thirds, cos_four_thirds]
   norm_num
 
-/-- [P] `Omega_eigenvalues`: the triad λ_k = ½ ω^k all have modulus ½ (|ω|=1). -/
-theorem Omega_eigenvalues (k : ℕ) : ‖(1 / 2 : ℂ) * ωc ^ k‖ = 1 / 2 := by
+/-- [P] `omega_eigenvalues`: the triad λ_k = ½ ω^k all have modulus ½ (|ω|=1). -/
+theorem omega_eigenvalues (k : ℕ) : ‖(1 / 2 : ℂ) * ωc ^ k‖ = 1 / 2 := by
   rw [norm_mul]
   have hω : ‖ωc ^ k‖ = 1 := by
     rw [norm_pow, show ωc = Complex.exp (((2 * Real.pi / 3 : ℝ) : ℂ) * Complex.I) by
@@ -2513,7 +2513,7 @@ theorem Omega_eigenvalues (k : ℕ) : ‖(1 / 2 : ℂ) * ωc ^ k‖ = 1 / 2 := b
 
     The base 2 is the same in both and comes from `mersenne_bridge`; what changes is
     the exponent, and it changes by the correct ratio. Without this statement,
-    "det = 2⁻⁵" coexists with `Omega_eigenvalues` (‖λ_k‖ = ½ each)
+    "det = 2⁻⁵" coexists with `omega_eigenvalues` (‖λ_k‖ = ½ each)
     inviting one to read 2⁻³ where it says 2⁻⁵. -/
 theorem triad_two_products :
     (‖(1/2 : ℂ) * ωc ^ 0‖ * ‖(1/2 : ℂ) * ωc ^ 1‖ * ‖(1/2 : ℂ) * ωc ^ 2‖
@@ -2521,7 +2521,7 @@ theorem triad_two_products :
     (((1/2 : ℂ) * ωc ^ 0).re * ((1/2 : ℂ) * ωc ^ 1).re
         * ((1/2 : ℂ) * ωc ^ 2).re = (2 : ℝ) ^ (-5 : ℤ)) := by
   constructor
-  · rw [Omega_eigenvalues 0, Omega_eigenvalues 1, Omega_eigenvalues 2]; norm_num
+  · rw [omega_eigenvalues 0, omega_eigenvalues 1, omega_eigenvalues 2]; norm_num
   · obtain ⟨h0, h1, h2⟩ := triad_re
     have hf : PaperS2.facePhi = 1/2 := by
       rw [PaperS2.facePhi_apex]; unfold PaperS2.μ; rfl
@@ -2715,7 +2715,7 @@ theorem scott_kissing_eq_two_posroots :
 
     The gauge bosons do NOT come from a Kaluza–Klein reduction on the torus: Isom(T²)=U(1)²
     is abelian, so no such reduction yields a non-abelian A^a_μ. They come from enhancement
-    at the self-dual point (`Tdual_selfdual`), where the minimal vectors of the lattice supply
+    at the self-dual point (`tdual_selfdual`), where the minimal vectors of the lattice supply
     the root generators and the torus supplies the Cartan subalgebra. The dimension count is
     then dim g = kissing + rank, satisfied at every rung of the Scott ladder. -/
 
@@ -3126,7 +3126,7 @@ theorem spectrum_discrete (m0 : ℝ) (hm : 0 < m0) :
 theorem reflection_positive : (1 : ℝ) / 2 < 1 := by norm_num
 
 theorem colour_modulus_half (k : ℕ) : ‖(1 / 2 : ℂ) * ωc ^ k‖ = 1 / 2 :=
-  Omega_eigenvalues k
+  omega_eigenvalues k
 
 /-! ### The strong-coupling mass gap from the Yang–Mills dynamics -/
 
@@ -3183,9 +3183,9 @@ theorem entropy_dof_core :
    mssm_eq_sm_plus_bridges.1, fun m0 hm => mass_gap m0 hm⟩
 
 end PCFEntropyDOF
-open PCFEntropyDOF (ωc Omega_eigenvalues)
+open PCFEntropyDOF (ωc omega_eigenvalues)
 open PaperS3a (S_tower N_modes S_tower_recurrence)
-open CWfig (Nmodes_zero_eq_three binary_entropy_half)
+open CWfig (nmodes_zero_eq_three binary_entropy_half)
 
 /-! ## The continuum-limit closure (the mass gap, within the framework)
 
@@ -3204,16 +3204,16 @@ open CWfig (Nmodes_zero_eq_three binary_entropy_half)
     golden tower φ^σ.
     The physical mass gap in the continuum equals the dynamically generated scale Λ
     (dimensional transmutation): finite and positive, independent of the lattice spacing. -/
-noncomputable def Lambda_QCD (a b0 g2 : ℝ) : ℝ := (1/a) * Real.exp (-1/(b0 * g2))
+noncomputable def lambda_qcd (a b0 g2 : ℝ) : ℝ := (1/a) * Real.exp (-1/(b0 * g2))
 
 /-- The physical gap is a positive multiple of the transmuted scale. -/
-noncomputable def Delta_phys (a b0 g2 : ℝ) : ℝ := Lambda_QCD a b0 g2
+noncomputable def Delta_phys (a b0 g2 : ℝ) : ℝ := lambda_qcd a b0 g2
 
 /-- [P] Given a positive scale Λ (fixed by ε₀·M_PCF = π), the physical gap is that scale,
     positive and a→0-independent — the strong-coupling gap survives by transmutation. -/
-theorem Lambda_QCD_pos {a b0 g2 : ℝ} (ha : 0 < a) (_hb : 0 < b0) (_hg : 0 < g2) :
-    0 < Lambda_QCD a b0 g2 := by
-  unfold Lambda_QCD
+theorem lambda_qcd_pos {a b0 g2 : ℝ} (ha : 0 < a) (_hb : 0 < b0) (_hg : 0 < g2) :
+    0 < lambda_qcd a b0 g2 := by
+  unfold lambda_qcd
   have h1 : 0 < 1/a := by positivity
   have h2 : 0 < Real.exp (-1/(b0*g2)) := Real.exp_pos _
   exact mul_pos h1 h2
@@ -3228,10 +3228,10 @@ noncomputable def gSq_AF (a b0 Λ : ℝ) : ℝ := 1 / (b0 * Real.log (1/(a*Λ)))
       Λ_QCD(a, b₀, g²_AF(a)) = a⁻¹·exp(−log(1/(aΛ))) = a⁻¹·(aΛ) = Λ.
     So Λ_QCD is independent of `a`; the a → 0 limit is trivially Λ > 0. This replaces the
     earlier `0 < Λ → 0 < Λ`, which assumed what it concluded. -/
-theorem Lambda_QCD_eq_Lambda {a b0 Λ : ℝ} (ha : 0 < a) (hb : 0 < b0) (hΛ : 0 < Λ)
+theorem lambda_qcd_eq_lambda {a b0 Λ : ℝ} (ha : 0 < a) (hb : 0 < b0) (hΛ : 0 < Λ)
     (haΛ : a * Λ < 1) :
-    Lambda_QCD a b0 (gSq_AF a b0 Λ) = Λ := by
-  unfold Lambda_QCD gSq_AF
+    lambda_qcd a b0 (gSq_AF a b0 Λ) = Λ := by
+  unfold lambda_qcd gSq_AF
   have haΛ0 : 0 < a * Λ := mul_pos ha hΛ
   have hb0 : b0 ≠ 0 := ne_of_gt hb
   have hlogneg : Real.log (a * Λ) < 0 := Real.log_neg haΛ0 haΛ
@@ -3247,15 +3247,15 @@ theorem Lambda_QCD_eq_Lambda {a b0 Λ : ℝ} (ha : 0 < a) (hb : 0 < b0) (hΛ : 0
 theorem gap_independent_of_cutoff {a b0 Λ : ℝ} (ha : 0 < a) (hb : 0 < b0) (hΛ : 0 < Λ)
     (haΛ : a * Λ < 1) :
     Delta_phys a b0 (gSq_AF a b0 Λ) = Λ ∧ 0 < Delta_phys a b0 (gSq_AF a b0 Λ) :=
-  ⟨Lambda_QCD_eq_Lambda ha hb hΛ haΛ, by rw [Delta_phys, Lambda_QCD_eq_Lambda ha hb hΛ haΛ]; exact hΛ⟩
+  ⟨lambda_qcd_eq_lambda ha hb hΛ haΛ, by rw [Delta_phys, lambda_qcd_eq_lambda ha hb hΛ haΛ]; exact hΛ⟩
 
 /-- [P] The gap survives the continuum limit: it is a positive multiple of Λ_QCD, which is
     strictly positive for any positive lattice spacing and coupling on the asymptotically free
     trajectory. Unlike the earlier `Delta_phys := Λ` (which returned its own hypothesis), this
     carries the transmutation formula. -/
 theorem gap_survives {a b0 g2 : ℝ} (ha : 0 < a) (hb : 0 < b0) (hg : 0 < g2) :
-    Delta_phys a b0 g2 = Lambda_QCD a b0 g2 ∧ 0 < Delta_phys a b0 g2 :=
-  ⟨rfl, Lambda_QCD_pos ha hb hg⟩
+    Delta_phys a b0 g2 = lambda_qcd a b0 g2 ∧ 0 < Delta_phys a b0 g2 :=
+  ⟨rfl, lambda_qcd_pos ha hb hg⟩
 /-! ### The Archimedean place and the product over places
     (CW5 §2 `ssec:origins` and `ssec:zeta`: prop:selfdual-gaussian, prop:archimedean, thm:places) -/
 
@@ -4325,7 +4325,7 @@ theorem os_reconstruction_explicit (a m0 : ℝ) (ha : 0 < a) (hm : 0 < m0) :
 theorem bulk_boundary_isometry :
     ∑ k : Fin 3, (‖(1/2 : ℂ) * ωc ^ (k:ℕ)‖ / (Real.sqrt 3 / 2)) ^ 2 = 1 := by
   have h : ∀ k : Fin 3, ‖(1/2 : ℂ) * ωc ^ (k:ℕ)‖ = 1/2 :=
-    fun k => Omega_eigenvalues (k:ℕ)
+    fun k => omega_eigenvalues (k:ℕ)
   simp_rw [h]
   rw [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul]
   have h3 : (Real.sqrt 3) ^ 2 = 3 := Real.sq_sqrt (by norm_num)
@@ -4460,7 +4460,7 @@ theorem gap_self_dual_invariant (V : ℝ) :
     proves, not for the claim it supports. -/
 theorem tower_matter_ingredients (σ : ℝ) :
     (S_tower (σ + 1) = φ * S_tower σ) ∧ (N_modes 0 = 3) ∧ (H (1/2) = 1) :=
-  ⟨S_tower_recurrence σ, Nmodes_zero_eq_three, PCFEntropyDOF.binary_entropy_half⟩
+  ⟨S_tower_recurrence σ, nmodes_zero_eq_three, PCFEntropyDOF.binary_entropy_half⟩
 
 /-- [P] **The first law of the tower** (`prop:landauer`): with ε(σ)=ε₀φ^σ and ε₀·M_PCF = π, the
     energy per bit is constant across the tower, ε(σ)/S(σ) = ε₀/π = 1/M_PCF, i.e.
@@ -4751,7 +4751,7 @@ open Real
 namespace GravitySectorPCF
 open PCFEntropyDOF (clusterRank clusterPosRoots clusterKissing totalPositive H projector projector_idem projector_trace_eq_rank rho rho_is_state)
 open PaperS3a (S_tower N_modes S_tower_recurrence)
-open CWfig (Nmodes_zero_eq_three binary_entropy_half)
+open CWfig (nmodes_zero_eq_three binary_entropy_half)
 
 /-! ## Core constants -/
 
@@ -5771,7 +5771,7 @@ end CW5FaceLinks
 --  (Polyakov, Maldacena, ER=EPR, Huerta–Schreiber, Kiely) plus the PCF_core,
 --  whose fields come from theorems ALREADY proved in this file
 --  (modulus_Omega, holographic_area, kk_at_PCF, normP/C/F,
---  Omega_eigenvalues). Self-contained: no external dependencies.
+--  omega_eigenvalues). Self-contained: no external dependencies.
 --  Each object is a partial spectral signature; the vertex T_PCF receives
 --  all of them (cocone_property) and is the only cocone
 --  (colimit_universal): the shared signature is not a numerical coincidence
@@ -5940,7 +5940,7 @@ noncomputable def Kiely : SpectralData := {
   obj_threshold := some (1/2) }
 
 /-- The PCF core, with internal provenance: every field is a theorem from
-    THIS file. arity=3 (`Omega_eigenvalues`), |Ω|=1/2 (`modulus_Omega`,
+    THIS file. arity=3 (`omega_eigenvalues`), |Ω|=1/2 (`modulus_Omega`,
     `norm_product_half`), |Ω|²=1/4 (`holographic_area`), d_H (`two_pow_hausdorff`),
     G_4=1/4 (`kk_at_PCF`), and the norms P/C/F (`norm_p_eq_tan`,
     `norm_f_eq_cos`, `collapse_norm_product`). -/
@@ -6009,11 +6009,11 @@ theorem core_norms_collapse_to_modulus :
   PaperS2.norm_product_half
 
 /-- The core's arity 3 is that of the eigenvalue triad: the three λ_k = ½ω^k
-    share modulus 1/2 (`Omega_eigenvalues`), and there are three. -/
+    share modulus 1/2 (`omega_eigenvalues`), and there are three. -/
 theorem core_arity_from_triad :
     PCF_core.arity = some 3 ∧
     ∀ k : ℕ, ‖(1 / 2 : ℂ) * PCFEntropyDOF.ωc ^ k‖ = 1 / 2 :=
-  ⟨rfl, PCFEntropyDOF.Omega_eigenvalues⟩
+  ⟨rfl, PCFEntropyDOF.omega_eigenvalues⟩
 
 /-- c of the vertex = Brown–Henneaux 3ℓ/(2G_N) at ℓ=1, G_N=1/2
     (`brown_henneaux_c_eq_three`). -/

@@ -472,7 +472,7 @@
    "line": 879,
    "tier": [],
    "lean_decls": [
-    "PCFEntropyDOF.Omega_eigenvalues",
+    "PCFEntropyDOF.omega_eigenvalues",
     "PaperS2.normP",
     "PaperS2.normP_eq_tan"
    ],
@@ -493,7 +493,7 @@
     "P"
    ],
    "lean_decls": [
-    "PCFEntropyDOF.Omega_eigenvalues",
+    "PCFEntropyDOF.omega_eigenvalues",
     "PaperS2.normF_eq_cos",
     "PaperS2.normP_eq_tan"
    ],
@@ -2618,13 +2618,13 @@
     "CWfig.hopf_from_clifford",
     "CWfig.hopf_latitude",
     "CurvatureCoeffs.G_AB_pcf",
-    "CurvatureCoeffs.Lambda5_pcf",
+    "CurvatureCoeffs.lambda5_pcf",
     "CurvatureCoeffs.R_scalar_pcf",
     "CurvatureCoeffs.einsteinCoeff",
     "CurvatureCoeffs.ricciCoeff",
     "CurvatureCoeffs.ricciScalar",
     "GravitySectorPCF.BF_value",
-    "PCFEntropyDOF.Omega_eigenvalues",
+    "PCFEntropyDOF.omega_eigenvalues",
     "PCFEntropyDOF.a2_minimal_vectors_exactly_six",
     "V11fig.eisenstein_omega",
     "V11fig.hypercube_card"
@@ -2662,10 +2662,10 @@
     "CWfig.hopf_from_clifford",
     "CWfig.hopf_latitude",
     "CurvatureCoeffs.G_AB_pcf",
-    "CurvatureCoeffs.Lambda5_pcf",
+    "CurvatureCoeffs.lambda5_pcf",
     "CurvatureCoeffs.R_scalar_pcf",
     "GravitySectorPCF.BF_value",
-    "PCFEntropyDOF.Omega_eigenvalues",
+    "PCFEntropyDOF.omega_eigenvalues",
     "PCFEntropyDOF.a2_minimal_vectors_exactly_six",
     "V11fig.eisenstein_omega",
     "V11fig.hypercube_card"
@@ -2695,10 +2695,10 @@
     "CWfig.hopf_from_clifford",
     "CWfig.hopf_latitude",
     "CurvatureCoeffs.G_AB_pcf",
-    "CurvatureCoeffs.Lambda5_pcf",
+    "CurvatureCoeffs.lambda5_pcf",
     "CurvatureCoeffs.R_scalar_pcf",
     "GravitySectorPCF.BF_value",
-    "PCFEntropyDOF.Omega_eigenvalues",
+    "PCFEntropyDOF.omega_eigenvalues",
     "PCFEntropyDOF.a2_minimal_vectors_exactly_six",
     "V11fig.eisenstein_omega",
     "V11fig.hypercube_card"
@@ -2738,10 +2738,10 @@
     "CWfig.hopf_from_clifford",
     "CWfig.hopf_latitude",
     "CurvatureCoeffs.G_AB_pcf",
-    "CurvatureCoeffs.Lambda5_pcf",
+    "CurvatureCoeffs.lambda5_pcf",
     "CurvatureCoeffs.R_scalar_pcf",
     "GravitySectorPCF.BF_value",
-    "PCFEntropyDOF.Omega_eigenvalues",
+    "PCFEntropyDOF.omega_eigenvalues",
     "PCFEntropyDOF.a2_minimal_vectors_exactly_six",
     "V11fig.eisenstein_omega",
     "V11fig.hypercube_card"
@@ -3724,7 +3724,7 @@
     "BH_factor_modes",
     "CWfig.G_Lambda_duality",
     "CWfig.binary_entropy_half",
-    "CurvatureCoeffs.Lambda5_pcf",
+    "CurvatureCoeffs.lambda5_pcf",
     "holographic_area_factor"
    ],
    "numeric_checks": [],
@@ -3842,7 +3842,7 @@
     "P"
    ],
    "lean_decls": [
-    "PCFEntropyDOF.Omega_eigenvalues",
+    "PCFEntropyDOF.omega_eigenvalues",
     "PCFEntropyDOF.eisenstein",
     "PCFEntropyDOF.su3_dim"
    ],
@@ -4599,8 +4599,8 @@
     "P/N"
    ],
    "lean_decls": [
-    "Lambda_QCD_eq_Lambda",
-    "Lambda_QCD_pos",
+    "lambda_qcd_eq_lambda",
+    "lambda_qcd_pos",
     "PCFEntropyDOF.eps0_Mpcf_pi",
     "gap_independent_of_cutoff"
    ],
@@ -4925,8 +4925,8 @@
   "CW5FaceLinks.worldline_modulus_const",
   "CWfig.Hbin",
   "CWfig.Lambda5_value",
-  "CWfig.Nmodes_two_eq_eight",
-  "CWfig.Nmodes_zero_eq_three",
+  "CWfig.nmodes_two_eq_eight",
+  "CWfig.nmodes_zero_eq_three",
   "CWfig.a2_screen_embedding_unit",
   "CWfig.alpha_decomposition",
   "CWfig.dimSU2",
@@ -5021,7 +5021,7 @@
   "GravitySectorPCF.sigmaTension",
   "GravitySectorPCF.sqrt5_sq",
   "IsLieStructureConstants",
-  "Lambda_QCD",
+  "lambda_qcd",
   "PCF.CW5.cw3_observer_items_core",
   "PCF.CW5.gamma_recursion",
   "PCF.CW5.monic_linear",
@@ -5204,7 +5204,7 @@
   "PaperS3a.HS_modulus_shared",
   "PaperS3a.N_modes",
   "PaperS3a.T",
-  "PaperS3a.Tdual_selfdual",
+  "PaperS3a.tdual_selfdual",
   "PaperS3a.Z_PCF_finite_pos",
   "PaperS3a.bridge_denom_ne",
   "PaperS3a.bridge_denom_pos",
