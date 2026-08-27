@@ -314,7 +314,7 @@ The UV fixed point forces the invariants:
 \end{equation}
 The right-hand side is derived and triply proved---in \S\ref*{ssec:construction} as
 \eqref{eq:certainty}, here as \ProofWitness{eps0\_Mpcf\_pi}, and checked numerically \NumericalWitness{eq:certainty}; the equivalence itself is
-this section's one input, the bridge between the gauge running and the tower's algebra. \Conj
+this section's one input, the bridge between the gauge running and the tower's algebra.
 \end{assumption}
 The quantisation is in powers of $\golden$, and the identity that closes it is
 $\golden^{-\lambda}=\tfrac12\Leftrightarrow\golden^\lambda=2$: the binary base comes out of
@@ -1011,14 +1011,14 @@ $\xi(s)=\xi(1-s)$ & S-duality & \ref{ssec:zeta-gap}\\\hline
 \S\ref*{ssec:accum} let the observer's information overflow into the tower $S(\sigma)=\pi\golden^{\sigma}$
 and, by Jacobson, into curved spacetime. Read the same overflow not as area but as \emph{count}:
 each cell that the tower opens is a degree of freedom, and their number grows at the rate the
-tower grows. Bianconi's entropic gravity~\cite{Bianconi}, in which a relative entropy of the metric sources the field, is the classical and continuous limit of this count; measured against CW6 it reduces on
+tower grows. Bianconi's entropic gravity~\cite{Bianconi}, in which a relative entropy of the metric sources the field, is the classical and continuous limit of this count; measured against the framework it reduces on
 five object-level squares.
 
 \begin{proposition}[Five reduction squares]\label{prop:bianconi}
-Under the reduction $R$ (divide by $4$, $\mathrm{Berry}\to0$, discrete$\to$continuous), the CW6
+Under the reduction $R$ (divide by $4$, $\mathrm{Berry}\to0$, discrete$\to$continuous), the present framework
 data map to Bianconi's:
 \begin{align*}
-\text{(D1)}\ & \mathrm{QFI}_{\mathrm{CW6}}/4=M_{\mathrm{Bianconi}}, & \text{(Fisher; the }4\text{ from }\mu=\tfrac12)\\
+\text{(D1)}\ & \mathrm{QFI}_{\mathrm{PCF}}/4=M_{\mathrm{Bianconi}}, & \text{(Fisher; the }4\text{ from }\mu=\tfrac12)\\
 \text{(D2)}\ & \Nmodes=\lfloor\pi\golden^{\sigma}\rfloor\ \xrightarrow{R}\ S=\pi\golden^{\sigma}, & (|\ln\Nmodes-\ln S|\to1.4\times10^{-7})\\
 \text{(D3)}\ & S=kA,\ k=\tfrac1{4G_N}=\mu=\tfrac12, & \text{(area law)}\\
 \text{(D4)}\ & \Lambda_G\approx\tfrac1{4\beta}\varepsilon^2\ \Rightarrow\ \beta=\tfrac{\ln2}{8}, & \text{($\Lambda$ scale, cf.\ }\Lambda_5=-6\text{, \S\ref{ssec:adscft})}\\
@@ -1032,10 +1032,10 @@ level, the Fibonacci quantum dimension (Corollary~\ref{cor:golden-growth}). \Num
 D3 (\S\ref*{ssec:construction}). \ProofWitnessBlock{binary\_entropy\_half}
 \end{proposition}
 \begin{proof}
-D3 is \eqref{eq:bridge-BH}. For D1, the CW6 quantum Fisher information at the operating point
+D3 is \eqref{eq:bridge-BH}. For D1, the quantum Fisher information of the framework at the operating point
 $\mu=\tfrac12$ is $F=4(M-|\mathrm{Berry}|^2)$; setting $\mathrm{Berry}\to0$ and dividing by $4$
 gives $M$. D2 is the discrete-to-continuous limit of \eqref{eq:tower-modes}, the floor removed.
-D4 matches the coefficient of the small-parameter expansion of $\Lambda_G$ to CW6's
+D4 matches the coefficient of the small-parameter expansion of $\Lambda_G$ to the framework's
 $1-H\approx(2/\ln2)\delta^2$, fixing $\beta$; here $\varepsilon$ and $\delta$ are identified as the
 same dimensionless deviation from the maximally mixed point ($\hat G=\mathbf 1$ on that side,
 $p=\tfrac12$ on this one), which is what makes the two quadratics comparable. D5 identifies the three eigenvalues of
@@ -1113,9 +1113,9 @@ through $P$:
 \end{equation}
 the last for $C$ totally positive (Proposition~\ref{prop:fluid} below). The canonical form of the
 positive geometry is a function of the positroid cell, hence of the same point
-(\S\ref{ssec:amp}). \ProofWitness{projector\_frame\_invariant}
+(\S\ref{ssec:amp}).
 %
-\ProofWitnessBlock{projector\_idem, projector\_trace\_eq\_rank, rho\_is\_state, positroid\_from\_kp}%
+\ProofWitnessBlock{projector\_idem, projector\_trace\_eq\_rank, rho\_is\_state, positroid\_from\_kp, projector\_frame\_invariant}%
 \end{theorem}
 \begin{proof}
 For \eqref{eq:frame-invariance}, $(gC)^{\mathsf T}\bigl(gC(gC)^{\mathsf T}\bigr)^{-1}(gC)
