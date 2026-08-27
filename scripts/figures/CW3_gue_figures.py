@@ -137,6 +137,12 @@ def make_fig8():
                label=r'Decorrelation ($K\to 1$)')
     ax.axhline(0.0, color='#333333', lw=0.6, zorder=3)
 
+    # ── Rug plot: measured unfolded spacings ──────────────────────────
+    spacings, _ = _compute_spacings()
+    ax.plot(spacings, np.full_like(spacings, -0.03), '|',
+            color='#555555', ms=8, mew=0.5, zorder=4, alpha=0.7,
+            label=rf'$\{{\delta_n\}}$ (237 spacings)')
+
     # K(0) = 0 — repulsion (red)
     ax.plot(0, 0, 'o', color=C_MIN, ms=10, zorder=7, mec='white', mew=1.2)
     ax.plot([], [], 'o', color=C_MIN, ms=8, label=r'$K(0)=0$ (repulsion)')
@@ -161,7 +167,7 @@ def make_fig8():
     plt.savefig('fig8_sine_kernel.pdf', dpi=150, bbox_inches='tight',
                 facecolor='white')
     plt.close()
-    print("  Fig8 saved")
+    print(f"  Fig8 saved ({len(spacings)} spacings as rug plot)")
 
 
 if __name__ == '__main__':
