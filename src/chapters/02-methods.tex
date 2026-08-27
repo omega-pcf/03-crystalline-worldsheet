@@ -164,7 +164,7 @@ the Lawvere--Yanofsky diagonal is contracted (not prohibited).
 
 \begin{definition}[Distributed self-reference]\label{def:dsr}
 A recurrence of depth $k$ is \emph{distributed} when $k\ge 2$ (no component
-depends directly on itself). \ProofWitnessBlock{DistributedSelfReference}
+depends directly on itself). \ProofWitnessBlock{distributed\_self\_reference}
 \end{definition}
 
 \begin{theorem}[Fibonacci minimality]\label{thm:fib-min}
@@ -661,7 +661,7 @@ For each prime $p$ define
   \qquad\text{so}\qquad
   \psi_p(\golden)=\golden^{\,p}=F_p\,\golden+F_{p-1}
 \end{equation}
-by \eqref{eq:binet}. \ProofWitnessBlock{psiGolden, psi\_on\_powers, psi\_golden\_fib}
+by \eqref{eq:binet}. \ProofWitnessBlock{psi\_golden, psi\_on\_powers, psi\_golden\_fib}
 \end{definition}
 
 \begin{remark}[Two maps, one symbol]\label{rmk:psi-two}
@@ -1241,7 +1241,7 @@ and only the field part distinguishes: $q_1\neq q_2\Rightarrow\log q_1\neq\log q
 first term is the $\golden$-face of \S\ref{ssec:commute} and the third the $\pi$-face. The counting
 law $N(T)=\mathrm{env}(T)+S(T)$ and the unit $u_n$ it derives are asymptotic and enter as hypothesis
 arguments \Conj; what is proved is that the conductor entering them is forced.
-\ProofWitnessBlock{envelope, envelope\_splits, field\_part\_distinguishes, CountingLaw, DerivedUnit, the\_unit\_is\_derived}
+\ProofWitnessBlock{envelope, envelope\_splits, field\_part\_distinguishes, counting\_law, derived\_unit, the\_unit\_is\_derived}
 \end{proposition}
 
 \begin{proposition}[The radial reading]\label{prop:li-modulus}
