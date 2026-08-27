@@ -88,7 +88,7 @@ Since $\golden=2\cos(\pi/5)$ (Theorem~\ref{thm:pentagon-id}),
 \begin{equation}\label{eq:pi-arccos}
 \pi = 5\arccos(\golden/2).
 \end{equation}
-\ProofWitnessBlock{M13\_pi\_eq\_five\_arccos}
+\ProofWitnessBlock{pi\_eq\_five\_arccos}
 \end{proposition}
 
 \begin{proposition}[Gamma as an infinite integral (Euler)]\label{prop:gamma-int}
@@ -96,12 +96,12 @@ For $s>0$,
 \begin{equation}\label{eq:gamma-int}
 \Gamma(s)=\int_0^\infty t^{\,s-1}e^{-t}\,dt .
 \end{equation}
-\ProofWitnessBlock{M1\_gamma\_integral}
+\ProofWitnessBlock{gamma\_integral}
 \end{proposition}
 
 \begin{lemma}[Gaussian value]\label{lem:gamma-half}
 $\Gamma(\tfrac12)=\sqrt\pi$ (classical; from the Gaussian integral $\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt\pi$).
-\ProofWitnessBlock{M2\_gamma\_half, gaussian\_integral\_value, gaussian\_weight\_phi}
+\ProofWitnessBlock{gamma\_half, gaussian\_integral\_value, gaussian\_weight\_phi}
 \end{lemma}
 \medskip
 \begin{theorem}[Half-factorial (classical)]\label{thm:half-factorial}
@@ -109,7 +109,7 @@ $\Gamma(\tfrac12)=\sqrt\pi$ (classical; from the Gaussian integral $\int_{-\inft
 (\tfrac12)! \;=\; \Gamma(\tfrac32) \;=\; \mu\sqrt\pi,
 \qquad\text{equivalently}\qquad \mu=\frac{(\tfrac12)!}{\sqrt\pi}.
 \end{equation}
-\ProofWitnessBlock{M3\_half\_factorial}
+\ProofWitnessBlock{half\_factorial}
 \end{theorem}
 The Gaussian of Lemma~\ref{lem:gamma-half} enters with its width still free; three separate
 conditions close it.
@@ -136,7 +136,7 @@ $a+\pi>0$, hence again $a=\pi$. The three conditions are distinct and coincide.
 \golden^{\mu\lng}=\sqrt2,\qquad
 \golden^{\mu\log_\golden 3}=\sqrt3 .
 \end{equation}
-\ProofWitnessBlock{M4\_sqrt2, M4\_sqrt3}
+\ProofWitnessBlock{sqrt2\_mediation, sqrt3\_mediation}
 \end{proposition}
 
 \begin{proposition}[$\golden$-branch: the involution and its unique fixed point]\label{prop:phi-branch}
@@ -172,7 +172,7 @@ Depth $k=2$ is minimal, and the unique positive root of $r^2=r+1$ is
 $\golden$. Among natural-coefficient depth-$2$ recurrences
 $F_{n+2}=c_1F_{n+1}+c_2F_n$, the pair $c_1=c_2=1$ is the unique one whose
 characteristic root---hence growth ratio---is $\golden$.
-\ProofWitnessBlock{M6\_phi\_root\_unique, M6\_characteristic\_root\_is\_phi}
+\ProofWitnessBlock{phi\_root\_unique, characteristic\_root\_is\_phi}
 \NumericalWitnessBlock{eq:phisq}
 \end{theorem}
 
@@ -321,12 +321,12 @@ same equilateral triangle---the half-angle between adjacent eigenvalues $\lambda
 already used as the normalising angle in Proposition~\ref{prop:angle}, where
 $\sigma=\zeta(2)/(\pi/3)^2$ and $\cos(\pi/3)=\mu$. So \eqref{eq:projpcf} is not a fitted form: it is
 ``ratio, projected on $P$, in units of $\pi/3$'', and both constants come from
-\eqref{eq:norms-derived}. \ProofWitnessBlock{M7\_oplus\_formula}
+\eqref{eq:norms-derived}. \ProofWitnessBlock{oplus\_formula}
 \end{remark}
 
 \begin{proposition}[Fibonacci sum as projection]\label{prop:oplus}
 $F=P\oplus C:=\pi_{\PCF}(P,C,1)=\dfrac{(PC)\,\pi}{3\sqrt3}$.
-\ProofWitnessBlock{M7\_oplus\_formula}
+\ProofWitnessBlock{oplus\_formula}
 \end{proposition}
 
 \begin{theorem}[Derivation of $\varepsilon_0$]\label{thm:eps0}
@@ -338,7 +338,7 @@ once around the fundamental domain (Proposition~\ref{prop:mobius-torus}):
 \varepsilon_0=\pi_{\PCF}\!\bigl(\sin(\tfrac{\pi}{6}),\,\ln\golden,\,\pi\bigr)
 =\frac{\ln\golden}{6\sqrt3}.
 \end{equation}
-\ProofWitnessBlock{M8\_epsilon0\_from\_projection}
+\ProofWitnessBlock{epsilon0\_from\_projection}
 \end{theorem}
 \begin{proof}
 By \eqref{eq:projpcf} with $a=\sin(\pi/6)=\tfrac12$, $b=\ln\golden$ and $c=\pi$,
@@ -446,7 +446,7 @@ $\Rpcf$ on the torus:
 with $d=3$ the arity of \S\ref{ssec:arity}, $\mu=\tfrac12$ the modulus, $\lVert P\rVert=1/\sqrt3$
 the projection norm and $\lVert v\rVert=\sqrt3/2$ the norm by which Lemma~\ref{lem:isometry}
 divides the eigenvalue triad to make $V^{\dagger}V=\mathbf1$, and $\ln\golden$ the logarithmic rate
-of the generator of \eqref{eq:base}. \ProofWitnessBlock{M\_PCF\_eq\_pi\_div\_eps0, M8\_epsilon0\_from\_projection, bulk\_boundary\_isometry}
+of the generator of \eqref{eq:base}. \ProofWitnessBlock{M\_PCF\_eq\_pi\_div\_eps0, epsilon0\_from\_projection, bulk\_boundary\_isometry}
 \end{proposition}
 \begin{proof}
 The monodromy is $e^{i\theta}$ with $\theta=\varepsilon_0\Mpcf$ the angle accumulated over one
@@ -537,7 +537,7 @@ its anchoring to the critical line, and the factorial as connector.
 =\tan(\tfrac{\pi}{6})\cdot 1\cdot\cos(\tfrac{\pi}{6})
 =\sin(\tfrac{\pi}{6})=\tfrac12 .
 \end{equation}
-\ProofWitnessBlock{M9\_collapse, M9\_eq\_half}
+\ProofWitnessBlock{collapse\_norm\_product, norm\_product\_half}
 \end{theorem}
 
 \begin{proposition}[Angle $\pi/3$ gives both invariants]\label{prop:angle}
@@ -545,13 +545,13 @@ $\sin(\tfrac{\pi}{6})=\cos(\tfrac{\pi}{3})=\mu$, and
 \begin{equation}\label{eq:sigma-basel}
 \sigma=\frac{\zeta(2)}{(\pi/3)^2}=\frac{\pi^2/6}{\pi^2/9}=\frac{9}{6}=\frac32 .
 \end{equation}
-\ProofWitnessBlock{M10\_sigma\_from\_basel, M10\_sin\_cos\_mu}
+\ProofWitnessBlock{sigma\_from\_basel, sin\_cos\_mu}
 \end{proposition}
 
 \begin{proposition}[Factorial as connector]\label{prop:connector}
 $\dfrac{(\tfrac12)!}{\sqrt\pi}=\mu=\tfrac12$ \ (half face), and
 $3!=6=|S_3|$ \ (integer face).
-\ProofWitnessBlock{M11\_factorial\_face, M11\_factorial\_six}
+\ProofWitnessBlock{factorial\_face, factorial\_six}
 \end{proposition}
 
 \begin{remark}[$\tfrac12\leftrightarrow$ Euler product]\label{rmk:half-euler}
@@ -574,7 +574,7 @@ that makes the classification of the primes effective.
 \end{equation}
 
 \begin{proposition}[Mediated Mersenne]\label{prop:mersenne-med}
-$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \ProofWitnessBlock{M12\_mersenne\_mediated}
+$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \ProofWitnessBlock{mersenne\_mediated}
 \end{proposition}
 
 \begin{definition}[The quadratic character]\label{def:chi5}
@@ -709,7 +709,7 @@ L(1,\chi_5)=\frac{2\log\golden}{\sqrt5}.
 \ProofWitnessBlock{eq:local-dedekind}%
 
 \begin{theorem}[Basel value]\label{thm:basel}
-$\zeta(2)=\pi^2/6$ (Euler). \ProofWitnessBlock{M14\_basel}
+$\zeta(2)=\pi^2/6$ (Euler). \ProofWitnessBlock{basel\_value}
 \end{theorem}
 
 \begin{theorem}[General even zeta value (Euler)]\label{thm:even-zeta}
@@ -849,7 +849,7 @@ see~\cite{Jacobi1829}) together with the reflection formula $\Gamma(\tfrac14)\Ga
   \eta(i)=\frac{\Gamma(\tfrac14)}{2\,\pi^{3/4}},\qquad
   \Gamma_{\R}(\tfrac12)=2\sqrt\pi\,\eta(i),
 \end{equation}
-with $\golden^{\mu\lng}=\sqrt2$ of Proposition~\ref{prop:mediation}.  (the two classical \ProofWitness{M4\_sqrt2, M4\_sqrt3}
+with $\golden^{\mu\lng}=\sqrt2$ of Proposition~\ref{prop:mediation}.  (the two classical \ProofWitness{sqrt2\_mediation, sqrt3\_mediation}
 evaluations enter as classical~\cite{Jacobi1829}
 \end{remark}
 
@@ -973,7 +973,8 @@ Granting the Dirichlet class-number formula~\cite{dirichlet},
 with $h_K=1$ \eqref{eq:hK}, $R_K=\log\golden$ \eqref{eq:regulator}, $w=2$, $\Delta_K=5$
 \eqref{eq:trace-norm}, $r_1=2$, $r_2=0$; then \eqref{eq:dedekind} and
 $\lim_{s\to1}(s-1)\zeta(s)=1$ give \eqref{eq:L1}. The arithmetic downstream of the formula is
-proved; the formula itself is the input.  (the class-number formula enters as \HypWitness{class\_number\_formula}) \ProofWitness{L1\_from\_class\_number\_formula, L1\_eq\_period\_over\_pi\_sqrt5}
+proved; the formula itself is the input.  (the class-number formula enters as \HypWitness{class\_number\_formula})
+\ProofWitnessBlock{L1\_from\_class\_number\_formula, L1\_eq\_period\_over\_pi\_sqrt5}
 %
 \end{theorem}
 
@@ -989,7 +990,8 @@ $\golden^{-\lambda_{\log}}=\tfrac12$,
 The regulator cancels exactly: $\lambda_{\log}\log\golden=\log2$, and
 $(\sqrt5/2)L(1,\chi_5)=\log\golden=R_K$ by \eqref{eq:L1}. The one bit per Planck area that
 \S\ref{ssec:meta} and \S\ref{ssec:accum} carry is therefore not a coincidence with $\mu_3=\tfrac12$:
-it is the regulator of $\Q(\sqrt5)$, measured in the unit $\lambda_{\log}$. \ProofWitness{lambda\_log\_mul\_regulator, sqrt5\_half\_L1\_eq\_regulator, entropy\_bridge}
+it is the regulator of $\Q(\sqrt5)$, measured in the unit $\lambda_{\log}$.
+\ProofWitnessBlock{lambda\_log\_mul\_regulator, sqrt5\_half\_L1\_eq\_regulator, entropy\_bridge}
 
 \end{theorem}
 
@@ -1117,7 +1119,7 @@ cyclic group $C_3=\{1,r,r^2\}$ of order $|{\rm rot}\,S_3|=3$. Hence
 \frac{|{\rm rot}\,S_3|^2}{|S_3|}=\frac{3^2}{6}=\frac{9}{6}=\tfrac32 ,
 \end{equation}
 so the geometric leg equals $\sigma$ rather than defining it.
-\ProofWitnessBlock{M11\_factorial\_six, s3\_orders, sigma\_geom\_from\_S3}
+\ProofWitnessBlock{factorial\_six, s3\_orders, sigma\_geom\_from\_S3}
 \end{lemma}
 
 \begin{theorem}[Sum diagram commutes]\label{thm:sigma-diagram}

@@ -170,7 +170,7 @@ theorem phi_eq_two_cos_pi_fifth : φ = 2 * Real.cos (π / 5) := by
 
 /-- [M13] π = 5·arccos(φ/2). The pentagonal identity
     (`phi_eq_two_cos_pi_fifth`) is used, not assumed. -/
-theorem M13_pi_eq_five_arccos :
+theorem pi_eq_five_arccos :
     5 * Real.arccos (φ / 2) = π := by
   have hhalf : φ / 2 = Real.cos (π / 5) := by
     rw [phi_eq_two_cos_pi_fifth]; ring
@@ -180,27 +180,27 @@ theorem M13_pi_eq_five_arccos :
   · linarith [Real.pi_pos]
 
 /-- [M1] Γ as an integral (Mathlib `Real.Gamma_eq_integral`). -/
-theorem M1_gamma_integral {s : ℝ} (hs : 0 < s) :
+theorem gamma_integral {s : ℝ} (hs : 0 < s) :
     Real.Gamma s = ∫ t in Set.Ioi (0:ℝ), Real.exp (-t) * t ^ (s - 1) :=
   Real.Gamma_eq_integral hs
 
 /-- [M2] Γ(1/2) = √π (Gaussian). -/
-theorem M2_gamma_half : Real.Gamma (1/2) = Real.sqrt π :=
+theorem gamma_half : Real.Gamma (1/2) = Real.sqrt π :=
   Real.Gamma_one_half_eq
 
 /-- [M3] half factorial: (1/2)! = Γ(3/2) = μ·√π. -/
-theorem M3_half_factorial : Real.Gamma (3/2) = μ * Real.sqrt π := by
+theorem half_factorial : Real.Gamma (3/2) = μ * Real.sqrt π := by
   have h : (3:ℝ)/2 = 1/2 + 1 := by norm_num
-  rw [h, Real.Gamma_add_one (by norm_num : (1:ℝ)/2 ≠ 0), M2_gamma_half]
+  rw [h, Real.Gamma_add_one (by norm_num : (1:ℝ)/2 ≠ 0), gamma_half]
   unfold μ; ring
 
 /-- [M4a] √2 mediation: φ^{μ·λ_log} = √2. -/
-theorem M4_sqrt2 : φ ^ (μ * lambda_log) = Real.sqrt 2 := by
+theorem sqrt2_mediation : φ ^ (μ * lambda_log) = Real.sqrt 2 := by
   rw [mul_comm, Real.rpow_mul (le_of_lt φ_pos), mersenne_bridge]
   unfold μ; rw [Real.sqrt_eq_rpow]
 
 /-- [M4b] √3 mediation: φ^{μ·log_φ 3} = √3. -/
-theorem M4_sqrt3 : φ ^ (μ * (Real.log 3 / Real.log φ)) = Real.sqrt 3 := by
+theorem sqrt3_mediation : φ ^ (μ * (Real.log 3 / Real.log φ)) = Real.sqrt 3 := by
   have hternary : φ ^ (Real.log 3 / Real.log φ) = 3 := by
     have hlog : Real.log φ ≠ 0 := ne_of_gt log_φ_pos
     have hkey : (Real.log 3 / Real.log φ) * Real.log φ = Real.log 3 := by field_simp
@@ -222,7 +222,7 @@ def fib : ℕ → ℝ
   | n + 2 => fib (n + 1) + fib n
 
 /-- [M6] minimality (core): the positive root of r²=r+1 is φ; k=2 minimal. -/
-theorem M6_characteristic_root_is_phi :
+theorem characteristic_root_is_phi :
     distributed_self_reference 2 ∧ (∀ r : ℝ, 0 < r → r ^ 2 = 1 * r + 1 → r = φ) := by
   refine ⟨le_refl 2, ?_⟩
   intro r hr hroot
@@ -248,14 +248,14 @@ theorem sqrt3_pos : (0:ℝ) < Real.sqrt 3 := Real.sqrt_pos.mpr (by norm_num)
 /-- [M7] Fibonacci sum as a projection: F = P ⊕ C := projection_PCF P C 1. -/
 noncomputable def fibOplus (P C : ℝ) : ℝ := projection_PCF P C 1
 
-theorem M7_oplus_formula (P C : ℝ) :
+theorem oplus_formula (P C : ℝ) :
     fibOplus P C = (P * C) * π / (3 * Real.sqrt 3) := by
   unfold fibOplus projection_PCF
   have h3 : Real.sqrt 3 ≠ 0 := ne_of_gt sqrt3_pos
   field_simp
 
 /-- [M8] derivation of ε₀ from the projection (uses sin(π/6)=1/2). -/
-theorem M8_epsilon0_from_projection :
+theorem epsilon0_from_projection :
     projection_PCF (Real.sin (π/6)) (Real.log φ) π = epsilon_0 := by
   unfold projection_PCF epsilon_0
   rw [Real.sin_pi_div_six]
@@ -279,34 +279,34 @@ theorem norm_f_eq_cos : normF = Real.cos (π/6) := by
   unfold normF; rw [Real.cos_pi_div_six]
 
 /-- [M9] collapse: |P||C||F| = tan(π/6)·1·cos(π/6) = sin(π/6). -/
-theorem M9_collapse : normP * normC * normF = Real.sin (π/6) := by
+theorem collapse_norm_product : normP * normC * normF = Real.sin (π/6) := by
   rw [norm_p_eq_tan, norm_f_eq_cos]; unfold normC
   rw [mul_one, Real.tan_eq_sin_div_cos]
   have hcos : Real.cos (π/6) ≠ 0 := by rw [Real.cos_pi_div_six]; positivity
   field_simp
 
-theorem M9_eq_half : normP * normC * normF = 1 / 2 := by
-  rw [M9_collapse, Real.sin_pi_div_six]
+theorem norm_product_half : normP * normC * normF = 1 / 2 := by
+  rw [collapse_norm_product, Real.sin_pi_div_six]
 
 /-- [M10a] sin(π/6) = cos(π/3) = μ. -/
-theorem M10_sin_cos_mu :
+theorem sin_cos_mu :
     Real.sin (π/6) = Real.cos (π/3) ∧ Real.cos (π/3) = μ := by
   refine ⟨by rw [Real.sin_pi_div_six, Real.cos_pi_div_three], ?_⟩
   unfold μ; rw [Real.cos_pi_div_three]
 
 /-- [M10b] σ from Basel: ζ(2)/(π/3)² = (π²/6)/(π²/9) = 3/2 = σ. -/
-theorem M10_sigma_from_basel : (π ^ 2 / 6) / (π / 3) ^ 2 = σ := by
+theorem sigma_from_basel : (π ^ 2 / 6) / (π / 3) ^ 2 = σ := by
   have hπ : π ≠ 0 := ne_of_gt Real.pi_pos
   unfold σ; field_simp; ring
 
 /-- [M11a] factorial connector (middle face): (1/2)!/√π = μ. -/
-theorem M11_factorial_face : Real.Gamma (3/2) / Real.sqrt π = μ := by
-  rw [M3_half_factorial]
+theorem factorial_face : Real.Gamma (3/2) / Real.sqrt π = μ := by
+  rw [half_factorial]
   have hπ : Real.sqrt π ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr Real.pi_pos)
   field_simp
 
 /-- [M11b] factorial connector (integer face): 3! = 6 = |S₃|. -/
-theorem M11_factorial_six : Nat.factorial 3 = 6 := by decide
+theorem factorial_six : Nat.factorial 3 = 6 := by decide
 
 /-- **[P] `lem:s3-orders`.** The orders read FROM THE GROUP, not written by hand:
     |S₃| = 3! = 6 and |rot S₃| = |A₃| = 3. -/
@@ -409,7 +409,7 @@ theorem psi_not_additive : psi_golden 2 (φ + 1) ≠ psi_golden 2 φ + 1 := by
   nlinarith [hp, pow_pos φ_pos 2, pow_pos φ_pos 4]
 
 /-- [M12] 3·φ^{μ·p·λ_log} = 3·(√2)^p. -/
-theorem M12_mersenne_mediated (p : ℝ) :
+theorem mersenne_mediated (p : ℝ) :
     3 * φ ^ (μ * p * lambda_log) = 3 * (Real.sqrt 2) ^ p := by
   congr 1
   have h1 : μ * p * lambda_log = lambda_log * (μ * p) := by ring
@@ -422,7 +422,7 @@ theorem M12_mersenne_mediated (p : ℝ) :
 -- ════════════════════════════════════════════════════════════════════
 
 /-- [M14] ζ(2)=π²/6 (Basel; Mathlib `riemannZeta_two`). -/
-theorem M14_basel : riemannZeta 2 = (π : ℂ) ^ 2 / 6 := riemannZeta_two
+theorem basel_value : riemannZeta 2 = (π : ℂ) ^ 2 / 6 := riemannZeta_two
 
 /-- **[P] `thm:even-zeta`.** Even values of ζ in the form of `eq:even-zeta`:
       ζ(2k) = (−1)^{k+1} B_{2k} (2π)^{2k} / (2·(2k)!) ,  k ≥ 1.
@@ -473,10 +473,10 @@ noncomputable def faceGammaRatio : ℝ := Real.Gamma (3/2) / Real.Gamma (1/2)
     the same x² = x + 1. -/
 noncomputable def faceGalois : ℝ := (φ + φ_bar) / 2
 
-theorem faceFact_apex : faceFact = μ := M11_factorial_face
+theorem faceFact_apex : faceFact = μ := factorial_face
 theorem faceNorm_apex : faceNorm = μ := by
-  unfold faceNorm μ; rw [M9_eq_half]
-theorem faceCos_apex : faceCos = μ := (M10_sin_cos_mu).2
+  unfold faceNorm μ; rw [norm_product_half]
+theorem faceCos_apex : faceCos = μ := (sin_cos_mu).2
 theorem facePhi_apex : facePhi = μ := by
   unfold facePhi
   rw [Real.rpow_neg (le_of_lt φ_pos), mersenne_bridge]; unfold μ; norm_num
@@ -545,7 +545,7 @@ noncomputable def sigmaBasel : ℝ := (π ^ 2 / 6) / (π / 3) ^ 2
 /-- Geometric S₃ route: |rot S₃|²/|S₃| = 3²/6. -/
 noncomputable def sigmaGeom : ℝ := (3 : ℝ) ^ 2 / 6
 
-theorem sigmaBasel_apex : sigmaBasel = σ := M10_sigma_from_basel
+theorem sigmaBasel_apex : sigmaBasel = σ := sigma_from_basel
 theorem sigmaGeom_apex : sigmaGeom = σ := by unfold sigmaGeom σ; norm_num
 
 /-- COMMUTATIVE DIAGRAM (sum): both routes meet at σ=3/2. -/
@@ -596,9 +596,9 @@ def genRec (c₁ c₂ : ℕ) (a₀ a₁ : ℝ) : ℕ → ℝ
 
 /-- **M6 (uniqueness).**  Among depth-2 natural-coefficient recurrences,
     `φ` is the characteristic root — equivalently the growth ratio — iff
-    `c₁ = c₂ = 1`.  This strengthens `M6_characteristic_root_is_phi`
+    `c₁ = c₂ = 1`.  This strengthens `characteristic_root_is_phi`
     from "c₁=c₂=1 gives root φ" to "c₁=c₂=1 is the *only* pair giving root φ". -/
-theorem M6_phi_root_unique (c₁ c₂ : ℕ) :
+theorem phi_root_unique (c₁ c₂ : ℕ) :
     φ ^ 2 = (c₁ : ℝ) * φ + (c₂ : ℝ) ↔ c₁ = 1 ∧ c₂ = 1 := by
   constructor
   · intro h
@@ -635,8 +635,8 @@ theorem M6_phi_root_unique (c₁ c₂ : ℕ) :
     rw [phi_sq]; ring
 
 /-- The `c₁ = c₂ = 1` direction in isolation: the Fibonacci characteristic
-    identity `φ² = 1·φ + 1` (matches the existing `M6_characteristic_root_is_phi`). -/
-theorem M6_fibonacci_root : φ ^ 2 = (1 : ℝ) * φ + (1 : ℝ) := by
+    identity `φ² = 1·φ + 1` (matches the existing `characteristic_root_is_phi`). -/
+theorem fibonacci_root : φ ^ 2 = (1 : ℝ) * φ + (1 : ℝ) := by
   rw [phi_sq]; ring
 
 /- Restatement: φ is the dominant root of `x² − x − 1`, and `(1,1)` is the
@@ -645,7 +645,7 @@ theorem M6_fibonacci_root : φ ^ 2 = (1 : ℝ) * φ + (1 : ℝ) := by
     roots, never φ.) -/
 example : ∀ c₁ c₂ : ℕ, (φ ^ 2 = (c₁ : ℝ) * φ + c₂) → (c₁, c₂) = (1, 1) := by
   intro c₁ c₂ h
-  obtain ⟨h1, h2⟩ := (M6_phi_root_unique c₁ c₂).mp h
+  obtain ⟨h1, h2⟩ := (phi_root_unique c₁ c₂).mp h
   subst h1; subst h2; rfl
 end PaperM6
 
@@ -2136,9 +2136,9 @@ theorem ds_covers_half_hyperboloid {ℓ t : ℝ} (hℓ : 0 < ℓ) :
 
 /-- **The observer's half is the shared value |Ω|=½ from the triangle norms.**
     The half the planar patch realises equals the ½ carried by ‖P‖‖C‖‖F‖
-    (M9_eq_half): geometric half and observer modulus coincide in value. -/
+    (norm_product_half): geometric half and observer modulus coincide in value. -/
 theorem observer_half_from_norms : normP * normC * normF = 1 / 2 :=
-  M9_eq_half
+  norm_product_half
 
 end PCF_W10_Antipodal
 
@@ -4148,7 +4148,7 @@ theorem cw3_gravity_and_duality : φ^(-(6:ℤ)) * φ^(6:ℤ) = 1 := by
   rw [← zpow_add₀ hφ]; norm_num
 /- [F1 `zeta_odd_pentagonal_determination`, `thm:even-zeta`] The whole ζ arises from π and φ:
     even ζ(2k)=ℚ·π^{2k} (π); odd ζ(2k+1)=ζ_{ℚ(√5)}/L(·,χ₅) (φ, via 2cos(π/5)=φ and χ₅). -/
--- [P, CW5 §2 `ssec:zeta`] ζ from π (even values) is PROVED via Basel `M14_basel` (ζ(2)=π²/6)
+-- [P, CW5 §2 `ssec:zeta`] ζ from π (even values) is PROVED via Basel `basel_value` (ζ(2)=π²/6)
 -- and `functional_equation_fixed_at_half`. ζ from φ (odd values, χ₅-twisted Dedekind) is the F₁
 
 /-- [P] The functional-equation involution ρ ↦ 1−ρ has the framework's modulus ½ = |Ω| as its
@@ -5693,7 +5693,7 @@ theorem H_half_one_bit :
 
 /-- **[P] A6 `eq:obs-interface`↔`eq:projpcf`, the shared constant.**
     The projection in closed form: `π_PCF(a,b,c) = (ab/c)·π/(3√3)` — the one
-    constant behind ε₀ (`M8_epsilon0_from_projection`) and the Fibonacci sum. -/
+    constant behind ε₀ (`epsilon0_from_projection`) and the Fibonacci sum. -/
 theorem projection_closed_form (a b c : ℝ) (hc : c ≠ 0) :
     projection_PCF a b c = (a * b / c) * (π / (3 * Real.sqrt 3)) := by
   unfold projection_PCF
@@ -5941,9 +5941,9 @@ noncomputable def Kiely : SpectralData := {
 
 /-- The PCF core, with internal provenance: every field is a theorem from
     THIS file. arity=3 (`Omega_eigenvalues`), |Ω|=1/2 (`modulus_Omega`,
-    `M9_eq_half`), |Ω|²=1/4 (`holographic_area`), d_H (`two_pow_hausdorff`),
+    `norm_product_half`), |Ω|²=1/4 (`holographic_area`), d_H (`two_pow_hausdorff`),
     G_4=1/4 (`kk_at_PCF`), and the norms P/C/F (`norm_p_eq_tan`,
-    `norm_f_eq_cos`, `M9_collapse`). -/
+    `norm_f_eq_cos`, `collapse_norm_product`). -/
 noncomputable def PCF_core : SpectralData := {
   arity := some 3,
   modulus := some (1/2),
@@ -6003,10 +6003,10 @@ theorem core_norms_from_triangle :
   · rw [show PCF_core.F_norm = some PaperS2.normF from rfl, PaperS2.norm_f_eq_cos]
 
 /-- The product of the three core norms collapses to the modulus (eq:collapse,
-    `M9_eq_half`): the core's arity 3 is that of the triangle whose product gives 1/2. -/
+    `norm_product_half`): the core's arity 3 is that of the triangle whose product gives 1/2. -/
 theorem core_norms_collapse_to_modulus :
     PaperS2.normP * PaperS2.normC * PaperS2.normF = 1 / 2 :=
-  PaperS2.M9_eq_half
+  PaperS2.norm_product_half
 
 /-- The core's arity 3 is that of the eigenvalue triad: the three λ_k = ½ω^k
     share modulus 1/2 (`Omega_eigenvalues`), and there are three. -/
