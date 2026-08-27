@@ -1,8 +1,8 @@
 {
   "title": "The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁ for the de Sitter observer problem",
   "description": "Holography and the Riemann hypothesis are missing the same kind of object. The pair correlation of the zeros of ζ follows GUE statistics; so does the boundary side of low-dimensional holography, where the bulk of JT gravity is recovered only as an average over an ensemble of theories. An ensemble is what one writes for want of an individual—the Hermitian operator of Hilbert–Pólya in one case, a single microstate in the other—and an average is a fact about the description, not about what exists. Based on this reading, and on other known connections between the primes and black holes, and between the odd zeta values and string and particle amplitudes, we propose that the obstruction in de Sitter is <b>epistemological</b>—a circumstance of mathematical circularity—rather than <b>ontological</b>—a matter of vacuum selection. At this intersection the obstruction takes one form: how to describe the object without referring to the object, which the 𝔽₁ program seeks to circumvent in arithmetic and the Hilbert–Pólya problem poses for the operator. We trace it to the non-paradoxical self-reference of binary language, in the precise sense of the Lawvere fixed-point theorem and the Yanofsky diagonal g(t)=α(f(t,t)), as one of the most studied cases of self-referential circularity; and we analyse the strategies for confronting this circularity and their relation to the 𝔽₁ program for proving the Riemann hypothesis—particularly Yuri Manin's proposed use of the same noncommutative tori that M-theory uses, but to approach that program. From our own use of this torus we construct a string cocone, from which we later derive previously proposed criteria for holography in de Sitter, as well as the operator we propose as the microstate.",
-  "version": "1.0.9",
-  "publication_date": "2026-08-26",
+  "version": "1.2.0",
+  "publication_date": "2026-08-27",
   "creators": [
     {
       "name": "González García, Jorge Armando",
@@ -57,6 +57,7 @@
     "Bengtsson, I.; Życzkowski, K. (2006). Geometry of Quantum States: An Introduction to Quantum Entanglement. Cambridge University Press.",
     "Bern, Z.; Carrasco, J. J. M.; Johansson, H. (2010). Perturbative Quantum Gravity as a Double Copy of Gauge Theory. Physical Review Letters. 105, 061602. https://doi.org/10.1103/PhysRevLett.105.061602",
     "Bianconi, G. (2025). Gravity from entropy. Physical Review D. 111, 066001. https://doi.org/10.1103/PhysRevD.111.066001",
+    "Bisognano, J. J.; Wichmann, E. H. (1975). On the duality condition for a Hermitian scalar field. Journal of Mathematical Physics. 16, 985. https://doi.org/10.1063/1.522599",
     "Borger, J. (2009). Lambda-rings and the field with one element. https://doi.org/10.1016/j.jalgebra.2009.05.008 https://arxiv.org/abs/0906.3146",
     "Bousso, R.; Polchinski, J. (2000). Quantization of four-form fluxes and dynamical neutralization of the cosmological constant. Journal of High Energy Physics. 06, 006. https://doi.org/10.1088/1126-6708/2000/06/006 https://arxiv.org/abs/hep-th/0004134",
     "Bousso, R.; Susskind, L. (2012). The multiverse interpretation of quantum mechanics. Physical Review D. 85. https://doi.org/10.1103/PhysRevD.85.045007 https://arxiv.org/abs/1105.3796",
@@ -109,6 +110,7 @@
     "Lawvere, F. W. (1996). Unity and identity of opposites in calculus and physics. Applied Categorical Structures. 4, 167.",
     "Leggett, A. J. (2003). Nonlocal hidden-variable theories and quantum mechanics: an incompatibility theorem. Foundations of Physics. 33, 1469. https://doi.org/10.1023/A:1026096313729",
     "López Peña, J.; Lorscheid, O. (2011). Torified varieties and their geometries over $\\F_1$. Mathematische Zeitschrift. 267, 605. https://doi.org/10.1007/s00209-009-0638-0",
+    "Lucas, É. (1878). Théorie des fonctions numériques simplement périodiques. American Journal of Mathematics. 1, 289. https://doi.org/10.2307/2369311",
     "Maldacena, J. M. (1998). The large N limit of superconformal field theories and supergravity. Advances in Theoretical and Mathematical Physics. 2, 231. https://doi.org/10.1023/A:1026654312961",
     "Maldacena, J.; Susskind, L. (2013). Cool horizons for entangled black holes. Fortschritte der Physik. 61, 781. https://arxiv.org/abs/1306.0533",
     "Manin, Yu. I. (2004). Real multiplication and noncommutative geometry (ein Alterstraum). The Legacy of Niels Henrik Abel., 685–727.",
@@ -116,6 +118,7 @@
     "Martin-Löf, P. (1975). An intuitionistic theory of types: predicative part. Logic Colloquium '73., 73–118.",
     "Martin, S. P. (1997). A Supersymmetry Primer. https://doi.org/10.1142/S0217751X09033232 https://arxiv.org/abs/hep-ph/9709356",
     "Maturana, H. R.; Varela, F. J. (1980). Autopoiesis and Cognition: The Realization of the Living. D. Reidel.",
+    "Minkowski, H. (1896). Sur les propriétés des nombres entiers de la forme a x^2 + b y^2 + c z^2. Acta Mathematica. 17, 243. https://doi.org/10.1007/BF02417902",
     "Montgomery, H. L. (1973). The pair correlation of zeros of the zeta function. Proceedings of Symposia in Pure Mathematics. 24, 181.",
     "O. Jedrkiewicz et al. (2018). Golden Ratio Gain Enhancement in Coherently Coupled Parametric Processes. Scientific Reports.",
     "Oberarzbacher, F. P. (2013). Los postulados básicos de la filosofía no-dualista del Shaivismo de Cachemira. Estudios. 104, 81–91.",
@@ -125,6 +128,7 @@
     "Pacioli, L. (1509). De Divina Proportione.",
     "Pletser, V. (). Fibonacci numbers and the golden ratio in biology, physics, astrophysics, chemistry and technology: a non-exhaustive review. https://arxiv.org/abs/1801.01369",
     "Polchinski, J. (1998). String Theory. Cambridge University Press. 1.",
+    "Polyakov, A. M. (1987). Gauge Fields and Strings. Routledge. 3.",
     "Postnikov, A. (2006). Total positivity, Grassmannians, and networks. https://arxiv.org/abs/math/0609764",
     "Priest, G. (1979). The logic of paradox. Journal of Philosophical Logic. 8, 219. https://doi.org/10.1007/BF00258428",
     "Riemann, B. (1859). Ueber die Anzahl der Primzahlen unter einer gegebenen Größe. Monatsberichte der Berliner Akademie., 671.",
@@ -132,6 +136,7 @@
     "Ryu, S.; Takayanagi, T. (2006). Holographic derivation of entanglement entropy from the AdS/CFT correspondence. Physical Review Letters. 96.",
     "Saad, P.; Shenker, S. H.; Stanford, D. (2019). JT gravity as a matrix integral. https://arxiv.org/abs/1903.11115",
     "Schiller, Friedrich (1785). Ode to Joy (An die Freude). Schiller Institute. https://archive.schillerinstitute.com/transl/trans_schil_2poems.html",
+    "Schmidt, E. (1907). Zur Theorie der linearen und nichtlinearen Integralgleichungen. Mathematische Annalen. 63, 433.",
     "Schreiber, U. (2013). Differential cohomology in a cohesive ∞-topos. https://arxiv.org/abs/1310.7930",
     "Scott, J. (2006). Grassmannians and cluster algebras. Proceedings of the London Mathematical Society. 92, 345. https://doi.org/10.1112/S0024611506015747",
     "Strominger, A. (2001). The dS/CFT correspondence. Journal of High Energy Physics. 10, 034. https://doi.org/10.1088/1126-6708/2001/10/034",
@@ -430,6 +435,21 @@
     },
     {
       "identifier": "10.1103/PhysRevD.10.2445",
+      "relation": "cites",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.2307/2369311",
+      "relation": "cites",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1007/BF02417902",
+      "relation": "cites",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1063/1.522599",
       "relation": "cites",
       "resource_type": "publication-article"
     }

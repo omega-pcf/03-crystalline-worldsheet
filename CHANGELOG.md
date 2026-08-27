@@ -1,5 +1,68 @@
 # Changelog
 
+## [1.2.0](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.9...v1.2.0) (2026-08-27)
+
+### Features
+
+* **fig:** add rug plot of measured spacings to sine kernel figure ([d86f320](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/d86f3201e949f5cb4adbfad5f7710e8a30abd86b))
+* **lean:** rebuild ledger JSON v3.0 (flat, lean+tex+numerical), move propgraph to lean/, simplify compilation note ([7c067c2](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/7c067c29fd50622b9c3e3afbb9c45f61361d2a36))
+* **tests:** migrate verification to pytest suite ([af588cb](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/af588cb210e71183bfb64d2e13fd433473a32fcc))
+* **tex:** add \Pytest/\PytestInline macros for test references ([a39ea72](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/a39ea72bdb5275c6b7704178a150347e89f4def6))
+* **tex:** replace \Pytest with \Numerical, cite eq labels not file paths ([8b076f2](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8b076f24f2b150f11df170b62d434283fd57b88e))
+* **tex:** replace tier system with P/N/Hyp verification tags ([18a37a1](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/18a37a1d772cd877899278fbfa57cc5e9dd5c4c4))
+
+### Bug Fixes
+
+* **lean,tex:** rename ALL camelCase declarations to snake_case ([9e208de](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/9e208de0a31d518b5427ca0a2e86c4d180db3031))
+* **lean,tex:** rename all camelCase decls to snake_case across lean, ledger, and tex witnesses ([45e74ec](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/45e74ecc924c8a6658292fd2a885766fa71e1559))
+* **lean,tex:** rename M-prefixed migration artifacts to descriptive names ([d7c7a35](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/d7c7a35a6c814f5ab1cf4fbd3be9de012056b9d8))
+* **lean:** rename camelCase declarations to snake_case ([95aeabe](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/95aeabe887a9a1bfe114ba45aa0f9613db21b527))
+* **lean:** rename Nmodes_six_ne_fib to snake_case ([7d13cd2](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/7d13cd2de972a849f190919cb8f55e8916ce7a97))
+* **tex,fig:** academic figure reference, panel (a) to bottom-right, D3 sentence fix ([14eb1bf](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/14eb1bf48bbed2028db2388f2a516cd8ed382089))
+* **tex,lean:** orphaned ProofWitness→Block, broken sentences, rebuild ledger JSON ([664ae43](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/664ae43b62191c3961622c1a79a2a11f54ab330e))
+* **tex:** add citations to all HypWitness, add missing bib entries ([cf05b8d](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/cf05b8d696e5cc3eefe57fb7a0120fbfe5257017))
+* **tex:** add N[] tags to key numerically verified equations ([baed703](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/baed70339d734649319f90cbd67092b95bb48e0a))
+* **tex:** add N[] tags where text explicitly claims numerical verification ([99d62b5](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/99d62b5e58e1cd20d95f0e431c6cbf5d9f64c55c))
+* **tex:** audit and fix all H[] witness tags ([879f822](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/879f822707f646aca7395f042cfb3bca65a0b199))
+* **tex:** convert end-of-line \ProofWitness to \ProofWitnessBlock across all chapters ([10ef5df](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/10ef5df0ab83a52dc829db33e7c0f2c866d87583))
+* **tex:** correct figure generation reference — no pytest for figures, just main.py ([17c9220](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/17c922016215c7abcdef55b9f3b3c37c9d941c3a))
+* **tex:** merge consecutive P[] blocks, fix orphaned inline ([1e1a840](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/1e1a8409637fd083c00a79cd5688e4fdfb653387))
+* **tex:** merge consecutive ProofBlock, fix stray brace, add colors ([01bfb4c](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/01bfb4cfae8d0ea6717aa0f6cc3f94b039498e65))
+* **tex:** orphaned cites, merged blocks, inline/block corrections ([b114968](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/b1149689891ec86d84132708d3c5c6090e5d2f91))
+* **tex:** P[]+N[] inline pairing, standalone P→block ([efcca69](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/efcca69f33bda41db2829d7ea10bec7bdd63b708))
+* **tex:** prose fixes from pdftotext audit — missing period, orphaned semicolon, tag typo, capitalization, subject-verb, parallelism ([935ec03](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/935ec0382480be9b54df859fa73fc33f5c6391f8))
+* **tex:** remove \Conj from verification legend — tag unused, description was unclear ([7bb9d93](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/7bb9d935e2b4dbe875b6490c0a98c4811a8c74bc))
+* **tex:** remove \HypWitness{\cite{...}} — renders as H[[65,66]] ([37f4538](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/37f4538cfbb0ddb4a8e6b7e322b26ddec91bf474)), closes [#1](https://github.com/omega-pcf/03-crystalline-worldsheet/issues/1)
+* **tex:** remove duplicate P[oplus_formula] ([f3a0d63](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/f3a0d63b75c55ee1e0bb3d3266fb277acfe80a48))
+* **tex:** remove inline title from fig:spine5, keep legend labels only ([4cfff5e](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/4cfff5ec5a4c13b82053b1caef2b83f92a8435ef))
+* **tex:** remove orphaned \Conj tags, replace CW6 shorthands with 'framework', fix stale py filenames ([ca13a48](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/ca13a480e4d972c7c18082189c2f3fd68a399484))
+* **tex:** remove orphaned \Open, deduplicate HypWitness cites ([7dfe1cc](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/7dfe1ccf74e84630c6109a2f68d0d2659b8dd90c))
+* **tex:** remove orphaned HypWitnessBlock{class_number_formula} ([122ed20](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/122ed2058e37ddbbbd4a8a351ad8b9ca885b3ba1))
+* **tex:** remove orphaned Minkowski citation, integrate into text ([c613b39](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/c613b390138cd104dbb19555a76526fc4b10f982))
+* **tex:** remove orphaned Proof:, dots, and parentheses around ProofWitnessBlocks ([01f8e35](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/01f8e3523d5fc941b7375985f881133e54a8aaa9))
+* **tex:** remove stale HypWitness{dedekind_factorisation} ([cc051cb](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/cc051cb3d668fed1636f70994acd9d753c89e152))
+* **tex:** remove stale HypWitness{poisson_summation} ([13c87db](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/13c87dbc995754f0eb43a509b77bb61568c74460))
+* **tex:** rename verification macros to avoid LaTeX conflicts ([467b744](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/467b744ec866e5ba4d6c50810db979cf5f813a2c))
+* **tex:** resolve undefined control sequence in figure lines ([8fb0ffd](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8fb0ffd879accd6d29c49b80bc2e550c88410d5f))
+* **tex:** resolve undefined ref and macro formatting issues ([8eb4328](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8eb4328322285c5dc0974c66c3b3a5e253fb5607))
+* **tex:** restore orphaned 'dimension count' as proper sentence before Block ([0daeda4](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/0daeda4b574965ca696628b716631de76ac02515))
+* **tex:** revert inline→block for all end-of-theorem witnesses ([5b47ccf](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/5b47ccfed80c7bdae475b4d97dfabb7d23888987))
+* **tex:** standardize all witness names to snake_case ([7664ec8](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/7664ec86272bc0cc3ee7ce5297f71db94d6e4eba))
+* **tex:** update Nmodes\_six\_ne\_fib witness to snake_case in ProofWitnessBlock ([c1d8808](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/c1d8808964ea953c27b58d6600a7acd5ab5d4e28))
+* **tex:** verification tags — escape underscores, fix bracket syntax ([8822544](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8822544560ce9762ba03fd5527519fa6f131c99d))
+* **tex:** wrap inline macros in \mbox{} to fix \Small in math mode ([24a91aa](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/24a91aa451f8d5a18a262b708c3986aa1263385a))
+
+### Refinements
+
+* **tex:** inline→block conversion for end-of-environment witnesses ([f736595](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/f7365954162a1768a5adf31bce9b9b6aa2f867e4))
+* **tex:** rename verification tags to descriptive witness names ([d09672d](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/d09672d9429dca53f2e24432f40551d82223c331))
+
+### Chores
+
+* **lean:** remove unused lean_lib entries (CW3_Backing, CW6_complete_v1, CW6_complete_v1_clean) ([c0218c0](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/c0218c0395e2517e202cae12b737f6eaaaf7060d))
+* remove fig3_N_modes.pdf from scripts/figures (lives in images/) ([364bcf8](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/364bcf8bcd0d324315215cec81ad5ed8700997c9))
+* remove stale CW6_ledger_run.txt ([0d1c71b](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/0d1c71b101ee1cb6fd9ef10c9ddc3e634b44cfd7))
+
 ## [1.0.9](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.8...v1.0.9) (2026-08-26)
 
 ### Bug Fixes

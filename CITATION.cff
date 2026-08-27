@@ -3,8 +3,8 @@ message: If you use this software, please cite it using these metadata.
 title: "The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁
   for the de Sitter observer problem"
 type: software
-version: 1.0.9
-date-released: 2026-08-26
+version: 1.2.0
+date-released: 2026-08-27
 authors:
   - family-names: González García
     given-names: Jorge Armando
@@ -1592,4 +1592,68 @@ references:
         given-names: William F.
         name-suffix: Jr.
     type: article
+  - authors:
+      - family-names: Lucas
+        given-names: É.
+    doi: 10.2307/2369311
+    identifiers:
+      - type: doi
+        value: 10.2307/2369311
+    title: Théorie des fonctions numériques simplement périodiques
+    date-published: 1878-01-01
+    year: 1878
+    journal: American Journal of Mathematics
+    start: "289"
+    type: article
+    volume: "1"
+  - authors:
+      - family-names: Minkowski
+        given-names: H.
+    doi: 10.1007/BF02417902
+    identifiers:
+      - type: doi
+        value: 10.1007/BF02417902
+    title: Sur les propriétés des nombres entiers de la forme a x^2 + b y^2 + c z^2
+    date-published: 1896-01-01
+    year: 1896
+    journal: Acta Mathematica
+    start: "243"
+    type: article
+    volume: "17"
+  - authors:
+      - family-names: Polyakov
+        given-names: A. M.
+    title: Gauge Fields and Strings
+    date-published: 1987-01-01
+    year: 1987
+    publisher:
+      name: Routledge
+    type: book
+    volume: "3"
+  - authors:
+      - family-names: Bisognano
+        given-names: J. J.
+      - family-names: Wichmann
+        given-names: E. H.
+    doi: 10.1063/1.522599
+    identifiers:
+      - type: doi
+        value: 10.1063/1.522599
+    title: On the duality condition for a Hermitian scalar field
+    date-published: 1975-01-01
+    year: 1975
+    journal: Journal of Mathematical Physics
+    start: "985"
+    type: article
+    volume: "16"
+  - authors:
+      - family-names: Schmidt
+        given-names: E.
+    title: Zur Theorie der linearen und nichtlinearen Integralgleichungen
+    date-published: 1907-01-01
+    year: 1907
+    journal: Mathematische Annalen
+    start: "433"
+    type: article
+    volume: "63"
 doi: 10.5281/zenodo.21343602
