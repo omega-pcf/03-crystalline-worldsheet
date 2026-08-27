@@ -3448,7 +3448,7 @@ theorem kappa_k_pole_numerator_at_one :
 
 /-- **[P]** `κ_K > 0` on `(1,∞)`: it is a genuine density there, and the only issue is the
     endpoint. -/
-theorem kappaK_pos (u : ℝ) (hu : 1 < u) : 0 < kappaK u := by
+theorem kappa_k_pos (u : ℝ) (hu : 1 < u) : 0 < kappaK u := by
   unfold kappaK
   have : 0 < u^2 - 1 := by nlinarith
   positivity
@@ -3456,7 +3456,7 @@ theorem kappaK_pos (u : ℝ) (hu : 1 < u) : 0 < kappaK u := by
 /-- **[P] `eq:kappa-exp`.**  The substitution `u = e^v` that converts the Gauss–Binet
     integrand into `κ_K`. It is a pointwise identity: it requires no integration
     theory to state, and it is where the identification lies. -/
-theorem kappaK_exp (v : ℝ) (hv : 0 < v) :
+theorem kappa_k_exp (v : ℝ) (hv : 0 < v) :
     kappaK (Real.exp v) = 2 / (1 - Real.exp (-(2*v))) := by
   have hsq : Real.exp v ^ 2 = Real.exp (2*v) := by rw [sq, ← Real.exp_add]; ring_nf
   have hne : Real.exp (2*v) - 1 ≠ 0 := by

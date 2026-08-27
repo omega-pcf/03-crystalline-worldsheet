@@ -121,7 +121,7 @@ centre, with $\Theta^2=1$; it preserves the modulus, $\lVert\Theta z\rVert=\lVer
 isometry group cannot act on the Hilbert space; being non-compact it has no
 finite-dimensional unitary representations (W01). Its place is taken by the discrete
 $\mathbb{Z}_3$ symmetry of the cube roots of unity with the scale invariance
-$|\Om|_\sigma=\tfrac12$. \emph{Proof:} \ProofWitnessBlock{eisenstein\_cube, omega\_conj}; \cite{Witten01dS}.
+$|\Om|_\sigma=\tfrac12$. \cite{Witten01dS}. \ProofWitnessBlock{eisenstein\_cube, omega\_conj}
 
 \paragraph{The whole geometry as a tensor: the warp generates curvature.}
 This spacetime is tensorial in its entirety. The throat that compactifies the scale has a
@@ -135,7 +135,7 @@ the warp \emph{is} the Ricci tensor. The extrinsic side closes it: the constant-
 leaves, their embedding and second fundamental form are tied to the intrinsic curvature by
 Gauss's equation---de~Sitter is the hyperboloid whose intrinsic curvature is the wedge of
 the extrinsic curvature of the embedding, $R_{\mu\nu}=3H^2 g_{\mu\nu}$, developed in full in
-\S\ref{app:embedding} (\ProofWitnessBlock{ds\_ricci\_from\_gauss}).
+\S\ref{app:embedding} (\ProofWitness{ds\_ricci\_from\_gauss}).
 
 \paragraph{From that same geometry the particle emerges, discrete (type~I).}
 The warp is sustained by a stress--energy tensor: Einstein's equation with source balances
@@ -206,7 +206,7 @@ of \S\ref{sec:derivations}; Proposition~\ref{prop:obs-nofirewall};
 
 \emph{W2 --- finite-dimensional Hilbert space (W01).} The finite horizon area requires finite
 dimension; here the spectrum is the triangle of three eigenvalues and the mode count is
-integer. \emph{Proof:} \ProofWitnessBlock{witten\_finite\_rank}; \eqref{eq:obs-spinstar}.
+integer. \eqref{eq:obs-spinstar}. \ProofWitnessBlock{witten\_finite\_rank}
 
 \subsection{The particle as observer}\label{ssec:observer}
 
@@ -332,7 +332,8 @@ branch is asserted strongly (tight); the unitarity branch is ``realised''.
 
 The flow carrying one level to another, $\sigma\mapsto\sigma+t$, fixes $\tau=i$ and
 preserves $\tfrac12$: it is the tracial flow, the type~II signature, and it is the thermal
-flow of the static patch at the Gibbons--Hawking temperature (\ProofWitnessBlock{tower\_scale\_group, tower\_flow\_fixes\_tau, omega\_flow\_group, omega\_flow\_invariant}).
+flow of the static patch at the Gibbons--Hawking temperature.
+\ProofWitnessBlock{tower\_scale\_group, tower\_flow\_fixes\_tau, omega\_flow\_group, omega\_flow\_invariant}
 
 \emph{W11 --- the type~II algebra by crossed product (CLPW, completed).} CLPW build the
 type~II$_1$ algebra from the type~III by the crossed product with the modular flow
@@ -531,7 +532,7 @@ level splits: strong on the covering, ``realises'' on the identification.
 classical Gibbons--Hawking result, prior to W01 and CLPW: the de~Sitter horizon radiates
 and the static patch is a thermal state at $T=H/2\pi$. The observer's modular flow is the
 tracial flow of the tower, and the static patch is thermal at that temperature.
-\emph{Proof:} \ProofWitnessBlock{dS\_temperature, ds\_beta\_reciprocal} (\S\ref{app:embedding}) \cite{GibbonsHawking77}.
+ (\S\ref{app:embedding}) \cite{GibbonsHawking77}. \ProofWitnessBlock{dS\_temperature, ds\_beta\_reciprocal}
 
 \medskip
 The formal statements underlying the accumulation and gravity movements follow; their
@@ -733,7 +734,8 @@ $1/\Lambda$, so
 Deriving the scale translation therefore derives the level, and conversely; counting them as two
 debts would be an accounting error. The scale $\sqrt M$ that sets the charged leptons (\S\ref{prop:obs-matter}) is therefore the tower reading of this de~Sitter entropy, and Theorem~\ref{thm:colour-from-M} then shows the colour sector hanging on the same scale: one scale surfaces as the string constant of \S\ref{sec:derivations} and as the entropy here, the dimensionless placement already fixed, the absolute value alone carrying the observer's $\Lambda$. What the tower does add is granularity: its step is exactly
 $\golden$ ($\log_{10}\golden=0.209$ per level), so the absolute scale is constrained to a discrete
-ladder rather than a continuum. \NumericalWitness{eq:Lambda-from-curvature}
+ladder rather than a continuum.
+\NumericalWitnessBlock{eq:Lambda-from-curvature}
 \ProofWitnessBlock{lambda\_magnitude\_eq\_level, sigma\_G\_val, sigma\_EM\_val, sigma\_Lambda\_val, threshold\_ordering, interval\_gap, interval\_gap\_general, em\_holographic\_fraction, em\_asymmetry, entropy\_at\_mu\_three, tower\_step\_ratio}
 \end{remark}
 
@@ -1025,9 +1027,8 @@ The five squares commute, and the relation they express is a \emph{limit} one: B
 continuous entropic gravity is the continuum limit of the discrete accumulation of
 \S\ref{ssec:accum}---D2 is exactly that limit, the floor removed. What the present framework adds
 to her axis is the quantity it leaves free, the \emph{rate}: the growth is golden, $\golden$ per
-level, the Fibonacci quantum dimension (Corollary~\ref{cor:golden-growth}).  (six checks); \NumericalWitness{cor:golden-growth}
-D3 is \ProofWitness{binary\_entropy\_half}
-(\S\ref*{ssec:construction}, ).
+level, the Fibonacci quantum dimension (Corollary~\ref{cor:golden-growth}). \NumericalWitnessBlock{cor:golden-growth}
+D3 (\S\ref*{ssec:construction}). \ProofWitnessBlock{binary\_entropy\_half}
 \end{proposition}
 \begin{proof}
 D3 is \eqref{eq:bridge-BH}. For D1, the CW6 quantum Fisher information at the operating point
@@ -1279,7 +1280,7 @@ positivity $\Leftrightarrow\tau>0\Leftrightarrow$ regularity); their positroid p
 condensate profiles $D(\sigma)-1=\varepsilon_0\golden^{\sigma}$, so the confining monopoles are
 the bridges of \S\ref{ssec:susy}.  (Kodama--Williams~\cite{KodamaWilliams})
 \ProofWitnessBlock{positroid\_from\_kp, bridge\_cocycle}
-\NumericalWitnessBlock{TODO}
+% TODO: no numerical test for positroid_from_kp, bridge_cocycle yet
 \end{proposition}
 
 \subsection{The gauge operators, AdS/CFT, and the mass gap}\label{ssec:operators}
@@ -1330,9 +1331,8 @@ The bulk--boundary map of \eqref{eq:isometry}, an isometry acting level by level
 intertwines them exactly. That $S$ is the boundary \emph{modular} generator---that the modular flow
 is the tower's own scale flow---is established below, in \S\ref{ssec:zeta-gap}; with it,
 \eqref{eq:intertwine} says the bulk Hamiltonian is that generator up to $\pi/m_0$.
-(the GKPW dictionary~\cite{GKP98,Witten98}) \ProofWitness{tower\_e\_eq\_exp\_regulator, S\_tower\_eq\_exp\_regulator}
-%
-\ProofWitnessBlock{modular\_bulk\_ratio\_level\_independent, bulk\_boundary\_intertwine}%
+(the GKPW dictionary~\cite{GKP98,Witten98})%
+\ProofWitnessBlock{modular\_bulk\_ratio\_level\_independent, bulk\_boundary\_intertwine, ower\_e\_eq\_exp\_regulator, S\_tower\_eq\_exp\_regulator}%
 \end{theorem}
 \begin{proof}
 $\golden^{\sigma}=e^{\sigma\log\golden}$ gives both displays in \eqref{eq:bulk-boundary-exp}. The
@@ -1511,7 +1511,9 @@ duality that protects its gap is the reflection already proved in \S2.
 \begin{theorem}[The confining spectrum is $\zeta$]\label{thm:confining}
 The confining glueball spectrum is the closed charged bridges on the tower: the Regge tower
 $=$ Euler product $=\zeta$ (Proposition~\ref{prop:veneziano}), the charge carried by the bridges
-(\S\ref{ssec:susy}). \ProofWitnessBlock{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta} \NumericalWitness{prop:veneziano}
+(\S\ref{ssec:susy}).
+\ProofWitnessBlock{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta}
+\NumericalWitnessBlock{prop:veneziano}
 
 \end{theorem}
 \begin{proof}

@@ -195,12 +195,10 @@ Newton's constant reduces as $G_4=G_5/(2\ell)$, which at the framework values $G
 \begin{equation}\label{eq:kk-G4}
   G_4=\frac{G_5}{2\ell}=\frac{1}{4} ,
 \end{equation}
-the reduced Newton constant being the squared modulus, $G_4=|\Om|^{2}=(\tfrac12)^{2}$
+the reduced Newton constant being the squared modulus, $G_4=|\Om|^{2}=(\tfrac12)^{2}$.
 The boundary Casimir $\tfrac34$ and the bulk Newton $\tfrac14$ sum to unity,
-$\tfrac34+\tfrac14=1$ \ProofWitness{casimir\_plus\_newton}
-and the boundary density ratio is
-$\golden^{-2}-1=-\golden^{-1}$ \ProofWitnessBlock{boundary\_density\_ratio}
-.
+$\tfrac34+\tfrac14=1$ and the boundary density ratio is $\golden^{-2}-1=-\golden^{-1}$.
+\ProofWitnessBlock{boundary\_density\_ratio, casimir\_plus\_newton}
 
 \paragraph{The Breitenlohner--Freedman bound and discrete stability.}
 For $\mathrm{AdS}_5$ the Breitenlohner--Freedman bound is $m^2_{BF}=-d^2/4=-4$ ($d=4$),
@@ -249,7 +247,8 @@ operator \eqref{eq:kk-operator} has eigenvalue equal to the interior row sum,
 \end{equation}
 whose numerator is exactly the golden identity \eqref{eq:kk-numerator}. With $m^{2}=-\lambda$ that
 mode carries $m^{2}=-1/(\ln\golden)^{2}\approx-4.318$: the continuous value quoted above, below the
-bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \ProofWitness{log\_phi\_lt\_half}
+bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$.
+\ProofWitnessBlock{log\_phi\_lt\_half}
 Truncating to the
 $2n+1$ levels removes the constant mode---the boundary rows have row sums
 $(\golden^{-2}-2)$ and $(\golden^{2}-2)$ over $(\ln\golden)^{2}$, so the all-ones vector is no
@@ -262,9 +261,8 @@ amplitudes the symmetrisation is unavailable and modes of $m^{2}<0$ appear---$(\
 gives $\lambda_{\max}=+1.51$ and $(\golden^{3},\golden^{-1})$ gives $+4.27$. And the base: the
 numerator of \eqref{eq:kk-rowsum} equals $1$ only for $\golden$, since $b^{2}+b^{-2}-2$ is
 $\tfrac94$ at $b=2$ and $\tfrac{64}9$ at $b=3$; that is where the arity
-$\golden^{2}+\golden^{-2}=3$ enters. \ProofWitnessBlock{kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates}
-
-\NumericalWitness{eq:kk-rowsum, eq:kk-spectrum}
+$\golden^{2}+\golden^{-2}=3$ enters.
+\ProofWitnessBlock{kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates}\NumericalWitnessBlock{eq:kk-rowsum, eq:kk-spectrum}
 \end{remark}
 
 \paragraph{The mechanism, and what remains.}
@@ -335,6 +333,5 @@ Connes and Consani~\cite{ConnesConsaniSite}; the doubling for a real quadratic f
 An independent check that never touches Gauss--Binet: the von Mangoldt explicit formula gives
 $u\,d\psi/du=u-\sum_\rho u^{\rho}-1/(u^{2}-1)$, so
 $N_\Q-u\,d\psi/du=1+1/(u^{2}-1)=u^{2}/(u^{2}-1)$, reproducing $\kappa_\Q$.
-\ProofWitnessBlock{kappa\_k\_two\_real\_places, kappa\_k\_alt, kappa\_k\_simple\_pole, kappa\_k\_pole\_numerator\_at\_one,}
-kappaK\_pos, kappaK\_exp, kappa\_per\_real\_place}
+\ProofWitnessBlock{kappa\_k\_two\_real\_places, kappa\_k\_alt, kappa\_k\_simple\_pole, kappa\_k\_pole\_numerator\_at\_one, kappa\_k\_pos, kappa\_k\_exp, kappa\_per\_real\_place}
 

@@ -364,15 +364,16 @@ by the modulus: $R=-20$, $\Lambda_5=-6$, $G_{\mu\nu}=6$, saturating the
 Breitenlohner--Freedman bound (Fig.~\ref{fig:ads-ladder}); computed in \S\ref{app:curvature}.
 \ProofWitnessBlock{R\_scalar\_pcf, lambda5\_pcf, G\_AB\_pcf, BF\_value}
 Its companion five-sphere carries the Hopf chain $S^1\hookrightarrow S^5\to\mathbb{CP}^2$ with
-$\chi(\mathbb{CP}^2)=3=n$ \ProofWitness{hopf\_latitude, hopf\_from\_clifford}
+$\chi(\mathbb{CP}^2)=3=n$
+\ProofWitnessBlock{hopf\_latitude, hopf\_from\_clifford}
 The same arity-$3$ of
 \S\ref{ssec:arity}; the five-dimensional case is precisely the one requiring the Gaussian and
 Eisenstein primes (\S\ref{sec:intro}). The discrete levels $\sigma=0,\dots,5$
 (superpoint~$\to$~NS5, \S\ref{sssec:superpoint}) sit on the Hamming hypercube
-$H_5=\{0,1\}^5$, $|H_5|=2^{5}$ \ProofWitness{hypercube\_card}
-with
+$H_5=\{0,1\}^5$, $|H_5|=2^{5}$, with
 $\Lambda_\sigma=\golden^{\sigma}\Lambda_{\PCF}$ and the saturation entropy
-$S(\sigma)=\pi\golden^{\sigma}$ \eqref{eq:tower-modes}. \ProofWitnessBlock{conductor\_attribution, four\_cocone, S\_tower}
+$S(\sigma)=\pi\golden^{\sigma}$ \eqref{eq:tower-modes}.
+\ProofWitnessBlock{hypercube\_card, conductor\_attribution, four\_cocone, S\_tower}
 \begin{figure}[!htbp]\centering
 \resizebox{!}{0.85\textheight}{\includegraphics{fig5_three_panel.pdf}}
 \caption{$\mathrm{AdS}_5$ funnel $z=\golden^{\sigma}$ \eqref{eq:throat} $\leftrightarrow$ the
@@ -395,15 +396,15 @@ The bulk--boundary map is an isometry---proved here as Lemma~\ref{lem:isometry},
 The embedding $V$ \eqref{eq:isometry} is realised on the two faces of one modulus. The eigenvalue
 triangle $\lambda_k=\tfrac12\omega^{k}$ ($\omega=e^{2\pi i/3}$) of Prop.~\ref{prop:pcf-norms}
 \eqref{eq:norms-derived} is the Eisenstein lattice $\Z[\omega]$ (\emph{algebra} face: $120^\circ$,
-$S_3$ symmetry, $A_2$ root system $=\mathfrak{su}(3)$)
-\ProofWitnessBlock{eisenstein\_omega, omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six};
-the same modulus on the
+$S_3$ symmetry, $A_2$ root system $=\mathfrak{su}(3)$); the same modulus on the
 $i/\pi$ side, where $(\tfrac12)!=\tfrac12\sqrt\pi$ fixes $\mu=\tfrac12$ (\S\ref{ssec:construction}),
-is the Gauss lattice $\Z[i]$ (\emph{isometry} face: $\tau=i$, $\ell=1$). The $\golden$-mediation
-$S_3\to\Z_4$ between them preserves $|\Om|=\tfrac12$ \ProofWitness{holographic\_area} and fixes $\tau=i$:
+is the Gauss lattice $\Z[i]$ (\emph{isometry} face: $\tau=i$, $\ell=1$).
+\ProofWitnessBlock{eisenstein\_omega, omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six}
+The $\golden$-mediation
+$S_3\to\Z_4$ between them preserves $|\Om|=\tfrac12$ and fixes $\tau=i$:
 this is $V^{\dagger}V=\mathbf 1$ read on the lattice --- bulk (geometry, $\Z[i]$) and boundary
 (algebra, $\Z[\omega]$) are two readings of one triangle, neither privileged, exactly as
-\eqref{eq:isometry} requires.  for the two lattices and the mediation; the GKPW dictionary
+\eqref{eq:isometry} requires. The GKPW dictionary
 of \eqref{eq:isometry} enters cited~\cite{Maldacena98,GKP98,Witten98}. \ProofWitnessBlock{holographic\_area, hopf\_from\_clifford, hopf\_latitude, G\_AB\_pcf, lambda5\_pcf, R\_scalar\_pcf, BF\_value, omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six, eisenstein\_omega, hypercube\_card}
 \begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth,trim={0 5cm 0 5cm},clip]{fig4_top_down.pdf}
