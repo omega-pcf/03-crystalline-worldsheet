@@ -141,7 +141,7 @@ $a+\pi>0$, hence again $a=\pi$. The three conditions are distinct and coincide.
 
 \begin{proposition}[$\golden$-branch: the involution and its unique fixed point]\label{prop:phi-branch}
 $\mu=\tfrac12$ is the \emph{unique} fixed point of $x\mapsto1-x$: for real $x$, $x=1-x$ if and
-only if $x=\tfrac12$. \ProofWitnessBlock{faceInv\_apex}
+only if $x=\tfrac12$. \ProofWitnessBlock{face\_inv\_apex}
 \end{proposition}
 
 \begin{proposition}[Arithmetic branch: the midpoint of the Galois pair]\label{prop:galois-seed}
@@ -153,7 +153,7 @@ the same map; the midpoint of the pair $\{\golden,\bar\golden\}$ is therefore it
 by the trace of \eqref{eq:trace-norm}. This is the third seed, and it is the one that is
 \emph{arithmetic}: the other two are analytic and elementary, whereas this one is an invariant
 of the field $K$ itself.
-\ProofWitnessBlock{faceGalois\_apex}
+\ProofWitnessBlock{face\_galois\_apex}
 \end{proposition}
 
 % ---------------------------------------------------------------------
@@ -239,7 +239,7 @@ common modulus $|\lambda_k|$ of each eigenvalue. Three quantities coincide here 
 distinguished in Proposition~\ref{prop:triad-invariants}, where they cease to: the product of
 the three \emph{component} norms, the product of the three eigenvalue \emph{moduli}, and the
 product of their \emph{real parts}.
-\ProofWitnessBlock{normP\_eq\_tan, normF\_eq\_cos, Omega\_eigenvalues}
+\ProofWitnessBlock{norm\_p\_eq\_tan, norm\_f\_eq\_cos, Omega\_eigenvalues}
 \end{proposition}
 \begin{proof}
 \emph{(C)} $C$ is the real eigenvalue $\lambda_0=\tfrac12$, normalised by the
@@ -284,7 +284,7 @@ $V_k=v_k/\lVert v\rVert$. Then
   \sum_{k=0}^{2}\lVert V_k\rVert^2=1,
 \end{equation}
 so the column map $V\colon\C\to\C^3$, $z\mapsto(V_0,V_1,V_2)\,z$, is norm preserving:
-$V^{\dagger}V=\mathbf1$. \ProofWitnessBlock{bulkBoundary\_isometry}
+$V^{\dagger}V=\mathbf1$. \ProofWitnessBlock{bulk\_boundary\_isometry}
 \end{lemma}
 \begin{proof}
 Each $|v_k|=\tfrac12$ (Proposition~\ref{prop:pcf-norms}), so $\lVert v\rVert^2=3\cdot\tfrac14=\tfrac34$
@@ -300,7 +300,7 @@ $\sigma/\mu=d=3$ (\S\ref{ssec:arity}). Eliminating $\sigma=3\mu$ gives $3\mu^{2}
 $\mu=\tfrac12$ and $\sigma=\tfrac32$, and only then $\sigma+\mu=2$. The same $\tfrac34$ reappears
 as the colour ratio $1-\muthree^{2}$ and as the GKP entry of the shared signature
 (\S\ref{ssec:web}), which is why it is an invariant of the object and not a fitted value.
-\ProofWitnessBlock{spectral\_uniqueness, bulkBoundary\_isometry}
+\ProofWitnessBlock{spectral\_uniqueness, bulk\_boundary\_isometry}
 \end{remark}
 
 \begin{definition}[PCF projection]\label{def:projpcf}
@@ -446,7 +446,7 @@ $\Rpcf$ on the torus:
 with $d=3$ the arity of \S\ref{ssec:arity}, $\mu=\tfrac12$ the modulus, $\lVert P\rVert=1/\sqrt3$
 the projection norm and $\lVert v\rVert=\sqrt3/2$ the norm by which Lemma~\ref{lem:isometry}
 divides the eigenvalue triad to make $V^{\dagger}V=\mathbf1$, and $\ln\golden$ the logarithmic rate
-of the generator of \eqref{eq:base}. \ProofWitnessBlock{M\_PCF\_eq\_pi\_div\_eps0, M8\_epsilon0\_from\_projection, bulkBoundary\_isometry}
+of the generator of \eqref{eq:base}. \ProofWitnessBlock{M\_PCF\_eq\_pi\_div\_eps0, M8\_epsilon0\_from\_projection, bulk\_boundary\_isometry}
 \end{proposition}
 \begin{proof}
 The monodromy is $e^{i\theta}$ with $\theta=\varepsilon_0\Mpcf$ the angle accumulated over one
@@ -756,7 +756,7 @@ by unique factorisation in $\Z$. \ProofWitnessBlock{regge\_dirichlet\_eq\_zeta, 
 \end{equation}
 the sum over integral ideals of $\OK=\Z[\golden]$ \eqref{eq:OK-vs-Rpcf} and the product over prime
 ideals, $N$ the absolute norm. This is the object \eqref{eq:dedekind} factorises; it is defined
-here rather than assumed. \ProofWitnessBlock{idealNormK, idealEulerK, euler\_from\_ideals\_K}
+here rather than assumed. \ProofWitnessBlock{ideal\_norm\_k, ideal\_euler\_k, euler\_from\_ideals\_K}
 
 \end{definition}
 
@@ -789,7 +789,7 @@ local factor factors as
   f_p(s)=(1-u)^{-1}\cdot\bigl(1-\chi_5(p)u\bigr)^{-1},
 \end{equation}
 which is \eqref{eq:dedekind} place by place. The inert case is the identity $(1-u)(1+u)=1-u^{2}$.
-\ProofWitnessBlock{degree\_formula\_K, ideal\_norm\_values\_K, euler\_from\_ideals\_K, vonMangoldtK\_values, local\_dedekind\_ramified\_K, local\_dedekind\_split\_K, local\_dedekind\_inert\_K}
+\ProofWitnessBlock{degree\_formula\_K, ideal\_norm\_values\_K, euler\_from\_ideals\_K, von\_mangoldt\_k\_values, local\_dedekind\_ramified\_K, local\_dedekind\_split\_K, local\_dedekind\_inert\_K}
 \end{proposition}
 
 \begin{proposition}[The Euler product as a colimit]\label{prop:euler-colimit}
@@ -825,7 +825,7 @@ variable $t$, with unique fixed point $t=1$, i.e.\ $\tau=i$; \eqref{eq:theta-lat
 Jacobi's theta transformation~\cite{Jacobi1829}, and reading $\Gamma_{\R}$ as the local zeta
 integral at the real place is Tate's~\cite{Tate1967}. The Boltzmann weight $e^{-nt}$ of the primon gas fails
 \eqref{eq:theta-lattice} and is therefore excluded by that involution.
-(Poisson summation enters as \HypWitness{poisson\_summation}) \ProofWitness{gammaR\_from\_tate}
+(Poisson summation enters as \HypWitness{poisson\_summation}) \ProofWitness{gamma\_r\_from\_tate}
 %
 \ProofWitnessBlock{theta\_from\_jacobi, theta\_fixed\_point\_unique}%
 \end{proposition}
@@ -905,7 +905,7 @@ and the reflection $s\mapsto 1-s$ fixes the single point $s=\tfrac12$ of $\C$, w
 is the locus on which it preserves the real part. The point and the line are distinct statements
 about the same involution, and it is the line that the cocone of \S\ref{ssec:commute} takes as a
 leg.
-\ProofWitnessBlock{functional\_equation\_fixed\_line, fixed\_line\_is\_facePhi, places\_assembly}
+\ProofWitnessBlock{functional\_equation\_fixed\_line, fixed\_line\_is\_face\_phi, places\_assembly}
 \end{theorem}
 \begin{proof}
 By Theorem~\ref{thm:places}, $\xi(s)=\int_{0}^{\infty}t^{s/2-1}\omega(t)\,dt$ for $\Re s>1$, with
@@ -1007,7 +1007,8 @@ For every $p\in(0,1)$ the binary entropy satisfies
   H(p)=-p\log_2p-(1-p)\log_2(1-p)\;\le\;1,
 \end{equation}
 with equality exactly at $p=\tfrac12$. The modulus is therefore not merely a point where the
-entropy happens to equal one bit: it is the point where it is \emph{largest}. \ProofWitness{entropy\_slack\_nonneg, binary\_entropy\_le\_one, binary\_entropy\_half}
+entropy happens to equal one bit: it is the point where it is \emph{largest}.
+\ProofWitnessBlock{entropy\_slack\_nonneg, binary\_entropy\_le\_one, binary\_entropy\_half}
 
 \end{proposition}
 \begin{proof}
@@ -1132,7 +1133,7 @@ Both diagrams commute and the spectral invariants follow:
 $\sigma+\mu=2$, $\sigma/\mu=3$; and the arithmetic they carry closes on the same modulus, the
 completed zeta $\xi=\Gamma_{\R}\zeta$ of Theorem~\ref{thm:places} being self-dual exactly on
 $\Re s=\mu$ (Theorem~\ref{thm:funct-eq}).
-\ProofWitnessBlock{section2\_master, places\_assembly, fixed\_line\_is\_facePhi, functional\_equation\_fixed\_line, s\_duality\_exact, s\_duality\_fixed\_point\_unique, theta\_from\_jacobi}
+\ProofWitnessBlock{section2\_master, places\_assembly, fixed\_line\_is\_face\_phi, functional\_equation\_fixed\_line, s\_duality\_exact, s\_duality\_fixed\_point\_unique, theta\_from\_jacobi}
 \end{theorem}
 
 \begin{remark}[The sum and the real places]\label{rmk:sum-places}
@@ -1227,7 +1228,7 @@ distinct scales at the same height:
 Hence ``the unfolded spacings have mean one'' selects one conductor: it is a statement about the
 zeros, not about a choice of units. Without it the bound of
 Definition~\ref{def:repulsion} would say nothing.
-\ProofWitnessBlock{spacingScale, scale\_injective\_in\_conductor}
+\ProofWitnessBlock{spacing\_scale, scale\_injective\_in\_conductor}
 \end{proposition}
 
 \begin{proposition}[The envelope carries both faces]\label{prop:envelope}
@@ -1270,7 +1271,7 @@ For $\rho\in\C$ set
 the reflection $s\mapsto1-s$ of Theorem~\ref{thm:funct-eq} composed with complex conjugation.
 The two commute---$1$ is real---so $\sigma\tau$ is an involution, and it is
 \emph{antiholomorphic}.
-\ProofWitnessBlock{sdualMate, sdual\_conj\_commute, sdualMate\_involutive}
+\ProofWitnessBlock{sdual\_mate, sdual\_conj\_commute, sdual\_mate\_involutive}
 \end{definition}
 
 \begin{proposition}[The self-dual line, as a fixed set]\label{prop:line-fixed}
@@ -1284,7 +1285,7 @@ locus where $s\mapsto1-s$ preserves the real part, but the set fixed pointwise b
 involution---the antiholomorphic one. The holomorphic reflection fixes a single point of $\C$;
 the line is what its composition with conjugation fixes. Its abscissa is the apex of
 Theorem~\ref{thm:mu-diagram}.
-\ProofWitnessBlock{sdualMate\_im, sdualMate\_re, sdualMate\_fixed\_iff}
+\ProofWitnessBlock{sdual\_mate\_im, sdual\_mate\_re, sdual\_mate\_fixed\_iff}
 \end{proposition}
 
 \begin{proposition}[The extreme case has arity two]\label{prop:arity-two}
@@ -1447,7 +1448,7 @@ together with the PCF core, whose fields are populated by theorems of this same 
 The external results the file uses
 enter as explicit hypothesis arguments in the types of the theorems that consume them---where
 the reader can see them---rather than as axioms; the classical analytic inputs
-(\texttt{gammaR\_from\_tate}, \texttt{theta\_from\_jacobi}) and the combinatorial ones
+(\texttt{gamma\_r\_from\_tate}, \texttt{theta\_from\_jacobi}) and the combinatorial ones
 (\texttt{ladder\_from\_scott}, \texttt{e8\_dim\_from\_kissing}, \texttt{positroid\_from\_kp},
 \texttt{no\_separable\_parts}) are carried that way. Two further inputs enter the same way in
 \S\ref{ssec:extreme} and are recorded here because they are the only open ones in that

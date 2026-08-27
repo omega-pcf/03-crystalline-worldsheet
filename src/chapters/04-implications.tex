@@ -135,7 +135,7 @@ the warp \emph{is} the Ricci tensor. The extrinsic side closes it: the constant-
 leaves, their embedding and second fundamental form are tied to the intrinsic curvature by
 Gauss's equation---de~Sitter is the hyperboloid whose intrinsic curvature is the wedge of
 the extrinsic curvature of the embedding, $R_{\mu\nu}=3H^2 g_{\mu\nu}$, developed in full in
-\S\ref{app:embedding} (\ProofWitness{dS\_ricci\_from\_gauss}).
+\S\ref{app:embedding} (\ProofWitness{ds\_ricci\_from\_gauss}).
 
 \paragraph{From that same geometry the particle emerges, discrete (type~I).}
 The warp is sustained by a stress--energy tensor: Einstein's equation with source balances
@@ -507,7 +507,7 @@ $X_4=\lambda\ln s$ is the fifth, flat coordinate of \S\ref{app:embedding}:
   \qquad s=\golden^{\sigma},
 \end{equation}
 It is the bridge to de~Sitter that Maldacena anticipated, built here by internal analytic
-continuation rather than an imposed duality (\ProofWitness{ets\_is\_dS\_zero\_H}). Past and future
+continuation rather than an imposed duality (\ProofWitness{ets\_is\_ds\_zero\_h}). Past and future
 are the poles of a dipole, with $C$ at the equator---the two conjugate sheets of
 de~Sitter.
 
@@ -521,9 +521,9 @@ flat---its curvature, computed, vanishes, $R^{(5)}=0$ (\ProofWitness{ets\_consta
 fifth coordinate, the scale axis, is the extra direction an embedding needs. De~Sitter is
 the hyperboloid $-X_0^2+\cdots+X_4^2=1/H^2$ embedded in that flat ambient, with intrinsic
 curvature ${}={}$ wedge of the extrinsic by Gauss: $R_{\mu\nu}=3H^2 g_{\mu\nu}$
-(\ProofWitness{dS\_ricci\_from\_gauss, dS\_einstein\_Lambda}). The planar patch covers exactly half
+(\ProofWitness{ds\_ricci\_from\_gauss, ds\_einstein\_lambda}). The planar patch covers exactly half
 the hyperboloid---$X_0+X_4=\ell\,e^{t/\ell}>0$ never changes sign
-(\ProofWitness{dS\_covers\_half\_hyperboloid})---and that half \emph{realises} the observer's half
+(\ProofWitness{ds\_covers\_half\_hyperboloid})---and that half \emph{realises} the observer's half
 $|\Om|=\tfrac12$ by the shared value (\ProofWitness{observer\_half\_from\_norms}). The assertoric
 level splits: strong on the covering, ``realises'' on the identification.
 
@@ -531,7 +531,7 @@ level splits: strong on the covering, ``realises'' on the identification.
 classical Gibbons--Hawking result, prior to W01 and CLPW: the de~Sitter horizon radiates
 and the static patch is a thermal state at $T=H/2\pi$. The observer's modular flow is the
 tracial flow of the tower, and the static patch is thermal at that temperature.
-\emph{Proof:} \ProofWitness{dS\_temperature, dS\_beta\_reciprocal} (\S\ref{app:embedding}) \cite{GibbonsHawking77}.
+\emph{Proof:} \ProofWitness{dS\_temperature, ds\_beta\_reciprocal} (\S\ref{app:embedding}) \cite{GibbonsHawking77}.
 
 \medskip
 The formal statements underlying the accumulation and gravity movements follow; their
@@ -592,7 +592,7 @@ stable. With a
 source, $G_{AB}+\Lambda_5\,g_{AB}=\kappa\,T_{AB}$ and $\kappa=8\pi\GN$; the PCF
 value $\GN=\muthree=\tfrac12$ gives $\kappa=4\pi$ (effective $G_4=\tfrac14$), and
 $\nabla^{A}G_{AB}=0$ holds identically, so $T_{AB}$ is conserved.
-\ProofWitnessBlock{G\_AB\_pcf, R\_AB\_einstein, R\_scalar\_pcf, einsteinCoeff, ricciCoeff, ricciScalar, BF\_value}
+\ProofWitnessBlock{G\_AB\_pcf, R\_AB\_einstein, R\_scalar\_pcf, einstein\_coeff, ricci\_coeff, ricci\_scalar, BF\_value}
 \end{proposition}
 
 \begin{theorem}[Jacobson's construction on the bulk metric]\label{thm:obs-jacobson}
@@ -604,7 +604,7 @@ $\Fmax^{-1}=\muthree^{2}$ of Prop.~\ref{prop:obs-accum}. The normalisation
 $\eta=1/4\GN$ with $\GN=\muthree$ fixes the area factor $\muthree^{2}=\tfrac14$
 and the coupling $2\pi/\eta=8\pi\GN$; with matter, $\delta Q=T\,\delta S$ on every
 local Rindler horizon yields the Einstein equation~\cite{Jacobson1995,Jacobson2016}.
-\ProofWitnessBlock{dS\_einstein\_Lambda, R\_AB\_einstein, G\_AB\_pcf}
+\ProofWitnessBlock{ds\_einstein\_lambda, R\_AB\_einstein, G\_AB\_pcf}
 \end{theorem}
 
 \begin{proposition}[Matter is the saturation entropy]\label{prop:obs-matter}
@@ -650,7 +650,7 @@ $D=4$ worldsheet (conformal there).
 
 \begin{theorem}[The Landau--Lifshitz energy of the field]\label{thm:LL-energy}
 On the de~Sitter background \eqref{eq:ets-metric} with $\GN=\muthree=\tfrac12$, the Landau--Lifshitz complex $(-g)(T^{\mu\nu}+t_{\mathrm{LL}}^{\mu\nu})=\tfrac1{16\pi\GN}\partial_\alpha\partial_\beta H^{\mu\alpha\nu\beta}$ has vanishing energy density---its $00$ component is zero, the net energy of matter and field balancing, the classical face of the entanglement equilibrium $\delta S=0$ of Theorem~\ref{thm:obs-jacobson}---while its spatial components $-2H^{2}e^{4Ht}/\pi$ do not vanish, as de~Sitter is not static (the standard complex differs from the physical vacuum pressure by the $\Lambda$-term the pseudotensor requires for $\Lambda\neq0$). The gravitational energy is a definite boundary charge: the energy in the Hubble volume $\rho_\Lambda V_H=1/H=T_{\mathrm{GH}}\,S_{\mathrm{GH}}$ is the first law of de~Sitter, and the Komar/Landau--Lifshitz charge of the horizon $\kappa A/(8\pi\GN)$ gives the same $1/H$. The modulus $\muthree=\tfrac12$ is the ratio $T_{\mathrm{GH}}/T_{\mathrm{local}}$ of horizon and local temperatures. The gravitational field energy---absent from $\nabla^{A}T_{AB}=0$ (Proposition~\ref{prop:obs-matter})---is thus fixed, the energy conjugate to the tower entropy $S(\sigma)$ by the first law.
-\ProofWitnessBlock{dS\_first\_law, energy\_is\_inv\_H, komar\_first\_law, mu3\_temp\_ratio, LL\_spatial\_ne\_zero}
+\ProofWitnessBlock{ds\_first\_law, energy\_is\_inv\_H, komar\_first\_law, mu3\_temp\_ratio, LL\_spatial\_ne\_zero}
 \NumericalWitnessBlock{eq:obs-landauer}
 \end{theorem}\begin{remark}[The G--$\Lambda$ interval: $\Lambda$ is determined, not selected]
 \label{rmk:GLambda-interval}
@@ -1196,7 +1196,7 @@ constant temperature $\varepsilon(\sigma)/S(\sigma)=\varepsilon_0/\pi=1/\Mpcf$, 
 is the dynamical clock exactly at the modulus, $\tau_D/\sqrt{2f}=\tau_D\iff f=\tfrac12$
 \eqref{eq:obs-fishertime}---so the $\delta S$ that sources $h_{\mu\nu}$ counts Fisher bits on the
 tower's own clock.
-; the double copy~\cite{BCJ} (Bern--Carrasco--Johansson) \ProofWitness{fisher\_time\_lock, entropy\_response\_per\_bit, entropy\_response\_hasDerivAt}
+; the double copy~\cite{BCJ} (Bern--Carrasco--Johansson) \ProofWitness{fisher\_time\_lock, entropy\_response\_per\_bit, entropy\_response\_has\_deriv\_at}
 
 \end{theorem}
 \begin{proof}
@@ -1289,7 +1289,7 @@ spectrum is read as masses and its gap is computed.
 \begin{proposition}[Self-adjoint operators]\label{prop:operators}
 The scale operator $H\lvert\sigma\rangle=m_0\golden^{\sigma}$ (\eqref{eq:mass-operator}; the golden
 tower, not the Regge mass tower---Remark~\ref{rmk:mass-operator}) and the Yang--Mills Casimir $C_2(n)=n(n+3)/3$ are real diagonal, hence self-adjoint and bounded below,
-with the vacuum at $0$. \ProofWitness{towerHam\_isHermitian, casimirOp\_isHermitian, towerHam\_bounded\_below, casimirOp\_bounded\_below}
+with the vacuum at $0$. \ProofWitness{tower\_ham\_is\_hermitian, casimir\_op\_is\_hermitian, tower\_ham\_bounded\_below, casimir\_op\_bounded\_below}
 
 \end{proposition}
 
@@ -1330,7 +1330,7 @@ The bulk--boundary map of \eqref{eq:isometry}, an isometry acting level by level
 intertwines them exactly. That $S$ is the boundary \emph{modular} generator---that the modular flow
 is the tower's own scale flow---is established below, in \S\ref{ssec:zeta-gap}; with it,
 \eqref{eq:intertwine} says the bulk Hamiltonian is that generator up to $\pi/m_0$.
-(the GKPW dictionary~\cite{GKP98,Witten98}) \ProofWitness{towerE\_eq\_exp\_regulator, S\_tower\_eq\_exp\_regulator}
+(the GKPW dictionary~\cite{GKP98,Witten98}) \ProofWitness{tower\_e\_eq\_exp\_regulator, S\_tower\_eq\_exp\_regulator}
 %
 \ProofWitnessBlock{modular\_bulk\_ratio\_level\_independent, bulk\_boundary\_intertwine}%
 \end{theorem}
@@ -1453,7 +1453,7 @@ $C(x,y)=e^{-m|x-y|}/(2\sinh m)$, points $x_i>0$ and arbitrary coefficients $c_i$
 \end{equation}
 Equivalently the reflected covariance matrix is $(2\sinh m)^{-1}vv^{\mathsf T}$ with
 $v_i=e^{-m x_i}$: a positive multiple of a rank-one Gram matrix, hence positive semidefinite.
-\ProofWitnessBlock{reflCov\_factors, reflQuadForm\_eq\_square, reflection\_positive\_measure}
+\ProofWitnessBlock{refl\_cov\_factors, refl\_quad\_form\_eq\_square, reflection\_positive\_measure}
 \end{proposition}
 \begin{proof}
 On the half-space $|-x_i-x_j|=x_i+x_j$, so $C(-x_i,x_j)=e^{-mx_i}e^{-mx_j}/(2\sinh m)$ and the
@@ -1484,7 +1484,7 @@ are types I and II (\S\ref*{ssec:noselect}).
 \begin{corollary}[Cyclicity of the vacuum (W6)]\label{cor:cyclic}
 The vacuum $\lvert\Om\rangle$ is cyclic: the tower states $\lvert\sigma\rangle$ are generated from
 it by the field operators, so their span is dense in the GNS space.
-\ProofWitnessBlock{os\_reconstruction\_explicit, towerHam\_isHermitian, towerHam\_bounded\_below}
+\ProofWitnessBlock{os\_reconstruction\_explicit, tower\_ham\_is\_hermitian, tower\_ham\_bounded\_below}
 \end{corollary}
 
 \begin{remark}[Analyticity (OS0)]\label{rmk:os0}
@@ -1496,7 +1496,7 @@ by the eigenvalue metric), not an external continuation; with the UV-finite worl
 \begin{theorem}[The bulk--boundary isometry]\label{thm:isometry}
 The bulk--boundary map $V$, $V^{\dagger}V=\mathbf1$---its norm core proved in Lemma~\ref{lem:isometry}, its holographic content \eqref{eq:isometry} of \S\ref{ssec:adscft}---together with the GKPW dictionary~\cite{Maldacena98,GKP98,Witten98}
 $Z_{\mathrm{grav}}[\phi|_\partial]=\langle e^{\int_\partial\phi_0\mathcal O}\rangle$ and its isometric (quantum error-correcting) refinement~\cite{AlmheiriDongHarlow}, identifies the OS-reconstructed theory with the four-dimensional boundary
-gauge theory. \ProofWitnessBlock{bulkBoundary\_isometry}
+gauge theory. \ProofWitnessBlock{bulk\_boundary\_isometry}
 \end{theorem}
 \begin{proof}
 $V^{\dagger}V=\mathbf1$ is Lemma~\ref{lem:isometry} (with \eqref{eq:isometry} of \S\ref{ssec:adscft}); an isometry preserves the inner product, so
@@ -1541,7 +1541,7 @@ The condensate profile and the per-level energy are the same function,
 $D(\sigma)-1=\varepsilon(\sigma)=\epsz\golden^{\sigma}$ (Proposition~\ref{prop:fluid},
 \S\ref{ssec:accum}), while the potential runs the other way: the de~Sitter swampland condition
 \eqref{eq:dS-swampland}, $|\partial_\sigma V|/V=\ln\golden$, integrates to
-$V(\sigma)=\epsz\golden^{-\sigma}$\,\ProofWitness{swampland\_hasDerivAt}
+$V(\sigma)=\epsz\golden^{-\sigma}$\,\ProofWitness{swampland\_has\_deriv\_at}
 The two are therefore conjugate,
 \begin{equation}\label{eq:condensate-conjugate}
   V(\sigma)\,\big(D(\sigma)-1\big)=\epsz^{2}\qquad\text{for every }\sigma ,
@@ -1564,7 +1564,7 @@ that object rather than a bridge between two, and the dynamical link between the
 double copy $\text{graviton}=\mathrm{YM}^{2}$ of Theorem~\ref{thm:graviton}, with the field equation
 itself obtained in \S\ref{app:einstein}. What \eqref{eq:tension-weld} adds is that the tension is
 fixed level by level rather than free.
-\ProofWitnessBlock{swampland\_hasDerivAt, eps0\_Mpcf\_pi, tension\_welded\_to\_tower, tension\_weld\_value}
+\ProofWitnessBlock{swampland\_has\_deriv\_at, eps0\_Mpcf\_pi, tension\_welded\_to\_tower, tension\_weld\_value}
 \end{proposition}
 
 \begin{proposition}[The two gaps are faces of the scale operator]\label{prop:gap-faces}
@@ -1698,7 +1698,7 @@ The duality is not borrowed from $\mathcal N=4$. The framework sits at \emph{its
 $\tau=i$, which is derived rather than chosen (\S\ref{ssec:construction}), and at a self-dual fixed
 point electric and magnetic coincide by construction (Proposition~\ref{prop:condensate}); no
 Montonen--Olive exactness is inherited. The duality's content is Riemann's functional equation, a
-theorem (Theorem~\ref{thm:funct-eq}, Theorem~\ref{thm:duality}). \ProofWitness{fixed\_line\_is\_facePhi, functional\_equation\_fixed\_line, places\_assembly, s\_duality\_exact, s\_duality\_fixed\_point\_unique, theta\_from\_jacobi, functional\_equation\_fixed\_at\_half, places\_assembly, s\_duality\_exact}
+theorem (Theorem~\ref{thm:funct-eq}, Theorem~\ref{thm:duality}). \ProofWitness{fixed\_line\_is\_face\_phi, functional\_equation\_fixed\_line, places\_assembly, s\_duality\_exact, s\_duality\_fixed\_point\_unique, theta\_from\_jacobi, functional\_equation\_fixed\_at\_half, places\_assembly, s\_duality\_exact}
 
 The magnetic sector is not posited either: the monopoles \emph{are} the ER=EPR bridges, whose
 groupoid laws and positroid profiles are proven (Proposition~\ref{prop:er-epr-id},

@@ -268,19 +268,19 @@ theorem M8_epsilon0_from_projection :
 -- ════════════════════════════════════════════════════════════════════
 
 /-- |P| = tan(π/6). -/
-theorem normP_eq_tan : normP = Real.tan (π/6) := by
+theorem norm_p_eq_tan : normP = Real.tan (π/6) := by
   unfold normP
   rw [Real.tan_eq_sin_div_cos, Real.sin_pi_div_six, Real.cos_pi_div_six]
   have h3 : Real.sqrt 3 ≠ 0 := ne_of_gt sqrt3_pos
   field_simp
 
 /-- |F| = cos(π/6). -/
-theorem normF_eq_cos : normF = Real.cos (π/6) := by
+theorem norm_f_eq_cos : normF = Real.cos (π/6) := by
   unfold normF; rw [Real.cos_pi_div_six]
 
 /-- [M9] collapse: |P||C||F| = tan(π/6)·1·cos(π/6) = sin(π/6). -/
 theorem M9_collapse : normP * normC * normF = Real.sin (π/6) := by
-  rw [normP_eq_tan, normF_eq_cos]; unfold normC
+  rw [norm_p_eq_tan, norm_f_eq_cos]; unfold normC
   rw [mul_one, Real.tan_eq_sin_div_cos]
   have hcos : Real.cos (π/6) ≠ 0 := by rw [Real.cos_pi_div_six]; positivity
   field_simp
@@ -491,13 +491,13 @@ theorem faceGammaRatio_apex : faceGammaRatio = μ := by
 /-- **[P] ARITHMETIC ROUTE TO THE APEX (G9).**  By `galois_conj_is_one_sub` the
     conjugation of ℚ(√5) and x ↦ 1−x are the same map; their midpoint is their
     fixed point, and it equals μ. -/
-theorem faceGalois_apex : faceGalois = μ := by
+theorem face_galois_apex : faceGalois = μ := by
   unfold faceGalois μ; rw [phi_trace]
 
 /-- **[P] Involution route, IFF ↔ (G3).**  μ is the UNIQUE fixed point of
     x ↦ 1−x.  The ↔ is what the cocone consumes: a leg is an
     identification, not an implication.  Closes D14. -/
-theorem faceInv_apex : ∀ x : ℝ, x = 1 - x ↔ x = μ := by
+theorem face_inv_apex : ∀ x : ℝ, x = 1 - x ↔ x = μ := by
   intro x; unfold μ; constructor <;> intro h <;> linarith
 
 /-- Functional equation route: the SELF-DUAL LINE, not the point.  It is `Prop`
@@ -518,7 +518,7 @@ theorem mu_diagram_commutes :
     facePhi = μ ∧ faceGalois = μ ∧
     (∀ x : ℝ, x = 1 - x ↔ x = μ) ∧ faceLine ∧ μ = (1/2 : ℝ) :=
   ⟨faceFact_apex, faceGammaRatio_apex, faceNorm_apex, faceCos_apex,
-   facePhi_apex, faceGalois_apex, faceInv_apex, faceLine_apex, rfl⟩
+   facePhi_apex, face_galois_apex, face_inv_apex, faceLine_apex, rfl⟩
 
 /-- Pairwise commutativity over the SIX that are real values. -/
 theorem mu_faces_pairwise_eq :
@@ -529,7 +529,7 @@ theorem mu_faces_pairwise_eq :
   · rw [faceGammaRatio_apex, faceNorm_apex]
   · rw [faceNorm_apex, faceCos_apex]
   · rw [faceCos_apex, facePhi_apex]
-  · rw [facePhi_apex, faceGalois_apex]
+  · rw [facePhi_apex, face_galois_apex]
 
 -- ════════════════════════════════════════════════════════════════════
 --  COMMUTATIVE DIAGRAM — vertex σ=3/2  (cocone of two routes)
@@ -700,7 +700,7 @@ noncomputable def towerE (m0 σ : ℝ) : ℝ := m0 * φ ^ σ
 
 /-- **[P] `eq:bulk-exp`.**  The bulk Hamiltonian is the exponential of the dilation
     generator, with rate the regulator: `H(σ) = m₀ e^{σ R_K}`. -/
-theorem towerE_eq_exp_regulator (m0 σ : ℝ) (_hm : 0 < m0) :
+theorem tower_e_eq_exp_regulator (m0 σ : ℝ) (_hm : 0 < m0) :
     towerE m0 σ = m0 * Real.exp (σ * Real.log φ) := by
   unfold towerE
   rw [Real.rpow_def_of_pos φ_pos]
@@ -731,7 +731,7 @@ theorem modular_bulk_ratio_level_independent (m0 σ : ℝ) (hm : 0 < m0) :
 /-- **[P] `eq:intertwine`, intertwining form.** At each level, the bulk Hamiltonian
     and the boundary modular generator are the same operator up to the constant
     `m₀/π`: `m₀ · K̂(σ) = π · H(σ)`.  An isometry acting level-by-level —the `V†V = 1` of
-    `bulkBoundary_isometry`— therefore intertwines them exactly. -/
+    `bulk_boundary_isometry`— therefore intertwines them exactly. -/
 theorem bulk_boundary_intertwine (m0 σ : ℝ) :
     m0 * S_tower σ = Real.pi * towerE m0 σ := by
   unfold S_tower towerE; ring
@@ -787,7 +787,7 @@ theorem φbar_eq_neg_inv : φbar = -(1 / φ) := by
 
 /-- Swampland dS: for V(σ) = φ^{-σ},  V'(σ) = -(ln φ)·V(σ),
     hence |V'|/V = ln φ.  (Constant-base derivative.) -/
-theorem swampland_hasDerivAt (σ : ℝ) :
+theorem swampland_has_deriv_at (σ : ℝ) :
     HasDerivAt (fun s => φ ^ (-s)) (-(Real.log φ) * φ ^ (-σ)) σ := by
   have h2 : HasDerivAt (fun x : ℝ => φ ^ x) (φ ^ (-σ) * Real.log φ) (-σ) :=
     (Real.hasStrictDerivAt_const_rpow φ_pos (-σ)).hasDerivAt
@@ -885,28 +885,28 @@ namespace CurvatureCoeffs
 /-! ## Curvature: the Einstein space (prop:einstein, rmk:cwfix) -/
 
 /-- Ricci coefficient of the warped throat: `R_AB / g_AB = -(A'' + d * A'^2)`. -/
-def ricciCoeff (d Ap App : ℝ) : ℝ := -(App + d * Ap ^ 2)
+def ricci_coeff (d Ap App : ℝ) : ℝ := -(App + d * Ap ^ 2)
 /-- Ricci scalar of the warped throat:
     `R = -(2 d A'' + d (d+1) A'^2)`. -/
-def ricciScalar (d Ap App : ℝ) : ℝ := -(2 * d * App + d * (d + 1) * Ap ^ 2)
-/-- Einstein coefficient: `G_AB / g_AB = ricciCoeff - (1/2) R`. -/
-noncomputable def einsteinCoeff (d Ap App : ℝ) : ℝ := ricciCoeff d Ap App - (1 / 2) * ricciScalar d Ap App
+def ricci_scalar (d Ap App : ℝ) : ℝ := -(2 * d * App + d * (d + 1) * Ap ^ 2)
+/-- Einstein coefficient: `G_AB / g_AB = ricci_coeff - (1/2) R`. -/
+noncomputable def einstein_coeff (d Ap App : ℝ) : ℝ := ricci_coeff d Ap App - (1 / 2) * ricci_scalar d Ap App
 
 /-- At `A' = -1, A'' = 0, d = 4`: `R_AB = -4 g_AB`. -/
-theorem R_AB_einstein : ricciCoeff 4 (-1) 0 = -4 := by simp [ricciCoeff]
+theorem R_AB_einstein : ricci_coeff 4 (-1) 0 = -4 := by simp [ricci_coeff]
 /-- Ricci scalar `R = -20`. -/
-theorem R_scalar_pcf : ricciScalar 4 (-1) 0 = -20 := by simp [ricciScalar]; norm_num
+theorem R_scalar_pcf : ricci_scalar 4 (-1) 0 = -20 := by simp [ricci_scalar]; norm_num
 /-- Einstein tensor `G_AB = 6 g_AB`. -/
-theorem G_AB_pcf : einsteinCoeff 4 (-1) 0 = 6 := by
-  simp [einsteinCoeff, ricciCoeff, ricciScalar]; norm_num
+theorem G_AB_pcf : einstein_coeff 4 (-1) 0 = 6 := by
+  simp [einstein_coeff, ricci_coeff, ricci_scalar]; norm_num
 /-- Cosmological constant from `G_AB + Λ g_AB = 0`. -/
-theorem Lambda5_pcf : -(einsteinCoeff 4 (-1) 0) = -6 := by rw [G_AB_pcf]
+theorem Lambda5_pcf : -(einstein_coeff 4 (-1) 0) = -6 := by rw [G_AB_pcf]
 
 /-- rmk:cwfix — the fifth-direction entry is `R_ww = -4` (the same coefficient,
     uniform in all five components), not `0`. -/
-theorem R_ww_correct : ricciCoeff 4 (-1) 0 = -4 := R_AB_einstein
+theorem R_ww_correct : ricci_coeff 4 (-1) 0 = -4 := R_AB_einstein
 /-- rmk:cwfix — `G_ww = 6`, not `10`. -/
-theorem G_ww_correct : einsteinCoeff 4 (-1) 0 = 6 := G_AB_pcf
+theorem G_ww_correct : einstein_coeff 4 (-1) 0 = 6 := G_AB_pcf
 
 end CurvatureCoeffs
 
@@ -1069,7 +1069,7 @@ end ReggeEuler
    A) dim su(3)=8 ;  B) colour ratio 1−μ₃²=3/4 ;
    C) Regge tower = Euler product (Re s>1) ;
    D) the scalar curvature of the throat at (d,A',A'')=(4,−1,0) equals −20, cited as
-      `CurvatureCoeffs.ricciScalar`. (The curvature block lives before
+      `CurvatureCoeffs.ricci_scalar`. (The curvature block lives before
       this namespace; the proof is the block's theorem, not a repetition.)
    (A and B are STRUCTURAL; C and D are PROVED.)
    ════════════════════════════════════════════════════════════════════════════════ -/
@@ -1079,7 +1079,7 @@ theorem cw3_observer_items_core (s : ℂ) (hs : 1 < s.re) :
     (1 - muThree ^ 2 = 3 / 4) ∧
     (∑' n : ℕ, 1 / (n : ℂ) ^ s = ∏' p : Nat.Primes, (1 - (p : ℂ) ^ (-s))⁻¹) ∧
     (∀ d Ap App : ℝ, d = 4 → Ap = -1 → App = 0 →
-        CurvatureCoeffs.ricciScalar d Ap App = -20) :=
+        CurvatureCoeffs.ricci_scalar d Ap App = -20) :=
   ⟨gauge_dim_su3, colour_ratio, regge_tower_is_euler_product hs,
    by rintro d Ap App rfl rfl rfl; exact CurvatureCoeffs.R_scalar_pcf⟩
 
@@ -1986,7 +1986,7 @@ theorem ets_slices_totally_geodesic (c : ℝ) :
 /-- **(A) is the H → 0 limit of (B).**  The de Sitter spatial coefficient e^{2Ht}
     → 1 as H → 0, recovering the flat ETS spatial block: (B) is a one-parameter
     (H) deformation of (A) that turns on expansion. -/
-theorem ets_is_dS_zero_H (t : ℝ) : Real.exp (2 * (0:ℝ) * t) = 1 := by simp
+theorem ets_is_ds_zero_h (t : ℝ) : Real.exp (2 * (0:ℝ) * t) = 1 := by simp
 
 /-- **de Sitter is a curved hyperboloid embedded in the flat ETS space (A).**
     Writing the scale axis as X₄ = λ·ln σ, metric (A) is flat 5D Minkowski of
@@ -1996,7 +1996,7 @@ theorem ets_is_dS_zero_H (t : ℝ) : Real.exp (2 * (0:ℝ) * t) = 1 := by simp
     R_μνρσ = K_μρK_νσ − K_μσK_νρ = H²(g_μρg_νσ − g_μσg_νρ), whose Ricci in d = 4 is
     R_μν = (d−1)H² g_μν = 3H² g_μν.  So (B)'s intrinsic curvature IS the extrinsic
     curvature of its embedding in (A).  Coefficient identity (d−1 = 3 at d = 4): -/
-theorem dS_ricci_from_gauss (H : ℝ) : ((4:ℝ) - 1) * H^2 = 3 * H^2 := by ring
+theorem ds_ricci_from_gauss (H : ℝ) : ((4:ℝ) - 1) * H^2 = 3 * H^2 := by ring
 
 
 -- ═══════════════════════════════════════════════════════════════
@@ -2007,7 +2007,7 @@ theorem dS_ricci_from_gauss (H : ℝ) : ((4:ℝ) - 1) * H^2 = 3 * H^2 := by ring
 /-- **Einstein's equation (vacuum + Λ) closes to Λ = 3H².**  With R_μν = 3H² g_μν
     and R = 12H² (both sympy-confirmed), the coefficient of g_μν in
     R_μν − ½R g_μν + Λ g_μν = 0 gives 3H² − 6H² + Λ = 0, i.e. Λ = 3H². -/
-theorem dS_einstein_Lambda (H Λ : ℝ) (h : 3*H^2 - (1/2)*(12*H^2) + Λ = 0) :
+theorem ds_einstein_lambda (H Λ : ℝ) (h : 3*H^2 - (1/2)*(12*H^2) + Λ = 0) :
     Λ = 3 * H^2 := by linarith
 
 /-- de Sitter: the Ricci scalar equals 4Λ (R = 12H² and Λ = 3H²). -/
@@ -2103,18 +2103,18 @@ theorem scale_pushes_spacelike (dt dx dy dz du : ℝ) :
     modular (tracial) flow of the observer's algebra is the KMS flow at inverse
     temperature β = 1/T.  This is the thermal condition Witten and CLPW require of
     the de Sitter observer. -/
-noncomputable def dS_temperature (H : ℝ) : ℝ := H / (2 * Real.pi)
+noncomputable def ds_temperature (H : ℝ) : ℝ := H / (2 * Real.pi)
 
 /-- The Gibbons–Hawking temperature is positive for H > 0. -/
-theorem dS_temperature_pos {H : ℝ} (hH : 0 < H) : 0 < dS_temperature H := by
-  unfold dS_temperature
+theorem ds_temperature_pos {H : ℝ} (hH : 0 < H) : 0 < ds_temperature H := by
+  unfold ds_temperature
   have : (0:ℝ) < 2 * Real.pi := by positivity
   positivity
 
 /-- The KMS inverse temperature (period in imaginary time) is β = 1/T = 2π/H. -/
-theorem dS_beta_reciprocal {H : ℝ} (_hH : 0 < H) :
-    (dS_temperature H)⁻¹ = 2 * Real.pi / H := by
-  unfold dS_temperature
+theorem ds_beta_reciprocal {H : ℝ} (_hH : 0 < H) :
+    (ds_temperature H)⁻¹ = 2 * Real.pi / H := by
+  unfold ds_temperature
   rw [inv_div]
 
 end SitterPCF
@@ -2130,7 +2130,7 @@ open PaperS2
 /-- **The planar patch covers exactly half the de Sitter hyperboloid.**
     On the planar slicing X₀+X₄ = ℓ·e^{t/ℓ} > 0 for all t (ℓ>0): never changes
     sign, so the patch covers the half X₀+X₄>0, never the antipodal half. -/
-theorem dS_covers_half_hyperboloid {ℓ t : ℝ} (hℓ : 0 < ℓ) :
+theorem ds_covers_half_hyperboloid {ℓ t : ℝ} (hℓ : 0 < ℓ) :
     0 < ℓ * Real.exp (t / ℓ) :=
   mul_pos hℓ (Real.exp_pos _)
 
@@ -3420,18 +3420,18 @@ noncomputable def kappaK (u : ℝ) : ℝ := 2 * u^2 / (u^2 - 1)
 
 /-- **[P] `eq:kappa-two-places`.**  `κ_K = 2κ_ℚ`: un factor por plaza real.  El `2` no es
     una elección: es `r₁ = 2` para un cuerpo cuadrático real. -/
-theorem kappaK_two_real_places (u : ℝ) : kappaK u = 2 * kappaQ u := by
+theorem kappa_k_two_real_places (u : ℝ) : kappaK u = 2 * kappaQ u := by
   unfold kappaK kappaQ; ring
 
 /-- **[P] `eq:kappa-alt`.**  How it arises from the substitution `u = e^v`. -/
-theorem kappaK_alt (u : ℝ) (hu : 1 < u) : kappaK u = 2 / (1 - (u⁻¹)^2) := by
+theorem kappa_k_alt (u : ℝ) (hu : 1 < u) : kappaK u = 2 / (1 - (u⁻¹)^2) := by
   have h0 : u ≠ 0 := by positivity
   have h1 : u^2 - 1 ≠ 0 := by nlinarith
   unfold kappaK; field_simp
 
 /-- **[P] `eq:kappa-pole`.**  `(u−1)κ_K(u) = 2u²/(u+1)`: el polo en `u = 1` es SIMPLE, y
     de residuo 1.  Es lo que obliga al valor principal, y lo que F₁ deja implícito. -/
-theorem kappaK_simple_pole (u : ℝ) (h1 : u ≠ 1) (h2 : u ≠ -1) :
+theorem kappa_k_simple_pole (u : ℝ) (h1 : u ≠ 1) (h2 : u ≠ -1) :
     (u - 1) * kappaK u = 2 * u^2 / (u + 1) := by
   have hne : u^2 - 1 ≠ 0 := by
     have hfac : u^2 - 1 = (u - 1) * (u + 1) := by ring
@@ -3442,9 +3442,9 @@ theorem kappaK_simple_pole (u : ℝ) (h1 : u ≠ 1) (h2 : u ≠ -1) :
   field_simp
   ring
 
-theorem kappaK_pole_numerator_at_one :
+theorem kappa_k_pole_numerator_at_one :
     ∀ u : ℝ, u ≠ 1 → u ≠ -1 → (u - 1) * kappaK u = 2 * u^2 / (u + 1) := by
-  intro u h1 h2; exact kappaK_simple_pole u h1 h2
+  intro u h1 h2; exact kappa_k_simple_pole u h1 h2
 
 /-- **[P]** `κ_K > 0` on `(1,∞)`: it is a genuine density there, and the only issue is the
     endpoint. -/
@@ -3611,13 +3611,13 @@ theorem degree_formula_K (t : SplitTypeK) :
     numAboveK t * (ramIndexK t * resDegreeK t) = 2 := by cases t <;> rfl
 
 /-- Absolute norm of a prime above `p`: `N(𝔭) = p^f`. -/
-noncomputable def idealNormK (t : SplitTypeK) (p : ℝ) : ℝ := p ^ (resDegreeK t)
+noncomputable def ideal_norm_k (t : SplitTypeK) (p : ℝ) : ℝ := p ^ (resDegreeK t)
 
 /-- **[P] `eq:ideal-norms`.**  Split `N(𝔭)=p`, inerte `N(𝔭)=p²`, ramificado `N(𝔭)=p`. -/
 theorem ideal_norm_values_K (p : ℝ) :
-    idealNormK .split p = p ∧ idealNormK .inert p = p ^ 2 ∧
-    idealNormK .ramified p = p := by
-  refine ⟨?_, ?_, ?_⟩ <;> simp [idealNormK, resDegreeK]
+    ideal_norm_k .split p = p ∧ ideal_norm_k .inert p = p ^ 2 ∧
+    ideal_norm_k .ramified p = p := by
+  refine ⟨?_, ?_, ?_⟩ <;> simp [ideal_norm_k, resDegreeK]
 
 /-- Factor local of `ζ_K` according to the character value, with `u = p^{-s}`. -/
 noncomputable def eulerFactorK (c : ℤ) (u : ℝ) : ℝ :=
@@ -3627,18 +3627,18 @@ noncomputable def eulerFactorZ (u : ℝ) : ℝ := (1 - u)⁻¹
 noncomputable def eulerFactorL (c : ℤ) (u : ℝ) : ℝ := (1 - (c : ℝ) * u)⁻¹
 
 /-- **[P]** Product over the primes of `O_K` lying above `p`, with `u = p^{-s}`. -/
-noncomputable def idealEulerK (t : SplitTypeK) (u : ℝ) : ℝ :=
+noncomputable def ideal_euler_k (t : SplitTypeK) (u : ℝ) : ℝ :=
   ((1 - u ^ (resDegreeK t))⁻¹) ^ (numAboveK t)
 
 /-- **[P] `eq:local-K`.**  El producto sobre los IDEALES primos sobre `p` es el factor
     local `eulerFactorK`.  Esto es lo que hace de la factorización un enunciado sobre
     ideales y no sobre una familia elegida de funciones racionales. -/
 theorem euler_from_ideals_K (u : ℝ) :
-    idealEulerK .ramified u = eulerFactorK 0 u ∧
-    idealEulerK .split u = eulerFactorK 1 u ∧
-    idealEulerK .inert u = eulerFactorK (-1) u := by
+    ideal_euler_k .ramified u = eulerFactorK 0 u ∧
+    ideal_euler_k .split u = eulerFactorK 1 u ∧
+    ideal_euler_k .inert u = eulerFactorK (-1) u := by
   refine ⟨?_, ?_, ?_⟩ <;>
-    simp [idealEulerK, eulerFactorK, resDegreeK, numAboveK, pow_succ]
+    simp [ideal_euler_k, eulerFactorK, resDegreeK, numAboveK, pow_succ]
 
 /-- **[P] `eq:local-dedekind`, caso ramificado. -/
 theorem local_dedekind_ramified_K (u : ℝ) :
@@ -3661,14 +3661,14 @@ theorem local_dedekind_inert_K (u : ℝ) (_h1 : 1 - u ≠ 0) (_h2 : 1 + u ≠ 0)
 /-- **[P] `eq:LambdaK`.**  The von Mangoldt function of `K`: `Λ_K(𝔭^k) = log N(𝔭)`, so
     the weight is `log p` at a split prime and `2 log p` at an inert one. This is what
     parametrizes the support of the counting function. -/
-noncomputable def vonMangoldtK (t : SplitTypeK) (p : ℝ) : ℝ := Real.log (idealNormK t p)
+noncomputable def vonMangoldtK (t : SplitTypeK) (p : ℝ) : ℝ := Real.log (ideal_norm_k t p)
 
-theorem vonMangoldtK_values (p : ℝ) (_hp : 0 < p) :
+theorem von_mangoldt_k_values (p : ℝ) (_hp : 0 < p) :
     vonMangoldtK .split p = Real.log p ∧
     vonMangoldtK .inert p = 2 * Real.log p := by
   constructor
-  · simp [vonMangoldtK, idealNormK, resDegreeK]
-  · simp [vonMangoldtK, idealNormK, resDegreeK, Real.log_pow]
+  · simp [vonMangoldtK, ideal_norm_k, resDegreeK]
+  · simp [vonMangoldtK, ideal_norm_k, resDegreeK, Real.log_pow]
 
 /-- `n` is `S`-smooth: every prime dividing `n` lies in `S`. -/
 def SmoothK (S : Finset ℕ) (n : ℕ) : Prop := ∀ p, p.Prime → p ∣ n → p ∈ S
@@ -3807,7 +3807,7 @@ theorem functional_equation_fixed_line (s : ℂ) :
 /-- **[P] G2 — THE CONNECTIVE TO THE COCONE.** The same line, in the coordinate of
     §2.0: `φ^(−λ_log)`. Without this statement G1 remains parallel and the leg of the
     cocone is still the point. -/
-theorem fixed_line_is_facePhi (s : ℂ) :
+theorem fixed_line_is_face_phi (s : ℂ) :
     s.re = (1 - s).re ↔ s.re = PaperS2.facePhi := by
   rw [functional_equation_fixed_line s, PaperS2.facePhi_apex]; rfl
 
@@ -3816,7 +3816,7 @@ theorem fixed_line_is_facePhi (s : ℂ) :
 theorem point_and_line (s : ℂ) :
     (1 - s = s ↔ s = 1 / 2) ∧
     (s.re = (1 - s).re ↔ s.re = PaperS2.facePhi) :=
-  ⟨s_duality_fixed_point_unique s, fixed_line_is_facePhi s⟩
+  ⟨s_duality_fixed_point_unique s, fixed_line_is_face_phi s⟩
 
 /-! ### §2.11bis  The conductor, the scale, and the spacing unit
 
@@ -3837,7 +3837,7 @@ theorem conductor_is_derived :
   rw [this, Complex.I_mul_I]; ring
 
 /-- The local spacing scale at height `T` for conductor `q`. -/
-noncomputable def spacingScale (q T : ℝ) : ℝ :=
+noncomputable def spacing_scale (q T : ℝ) : ℝ :=
   2 * Real.pi / Real.log (q * T / (2 * Real.pi))
 
 /-- **[P] THE SCALE IS INJECTIVE IN THE CONDUCTOR.** Different conductors give
@@ -3847,7 +3847,7 @@ noncomputable def spacingScale (q T : ℝ) : ℝ :=
 theorem scale_injective_in_conductor {q₁ q₂ T : ℝ}
     (hT : 0 < T) (h₁ : 2 * Real.pi < q₁ * T) (hne : q₁ ≠ q₂)
     (h₂ : 2 * Real.pi < q₂ * T) :
-    spacingScale q₁ T ≠ spacingScale q₂ T := by
+    spacing_scale q₁ T ≠ spacing_scale q₂ T := by
   have hpi : (0:ℝ) < 2 * Real.pi := by positivity
   have hq₁ : 0 < q₁ := by nlinarith [Real.pi_pos]
   have hq₂ : 0 < q₂ := by nlinarith [Real.pi_pos]
@@ -3858,7 +3858,7 @@ theorem scale_injective_in_conductor {q₁ q₂ T : ℝ}
   have hl₂ : 0 < Real.log (q₂ * T / (2 * Real.pi)) :=
     Real.log_pos (by rw [lt_div_iff₀ hpi]; linarith)
   intro hc
-  unfold spacingScale at hc
+  unfold spacing_scale at hc
   have hmul := (div_eq_div_iff (ne_of_gt hl₁) (ne_of_gt hl₂)).mp hc
   have hL : Real.log (q₁ * T / (2 * Real.pi)) = Real.log (q₂ * T / (2 * Real.pi)) :=
     (mul_left_cancel₀ (ne_of_gt hpi) hmul).symm
@@ -3910,7 +3910,7 @@ def derived_unit (u gap density : ℕ → ℝ) : Prop :=
 theorem the_unit_is_derived :
     (Nat.lcm 4 5 = 20 ∧ Nat.gcd 4 5 = 1) ∧
     (∀ q₁ q₂ T : ℝ, 0 < T → 2*Real.pi < q₁*T → 2*Real.pi < q₂*T → q₁ ≠ q₂ →
-        spacingScale q₁ T ≠ spacingScale q₂ T) ∧
+        spacing_scale q₁ T ≠ spacing_scale q₂ T) ∧
     (∀ q T : ℝ, 0 < q → 0 < T →
         Real.log (q * T / (2*Real.pi*Real.exp 1))
           = Real.log q + Real.log T - Real.log (2*Real.pi*Real.exp 1)) :=
@@ -3945,7 +3945,7 @@ theorem li_modulus_on_line (ρ : ℂ) (hρ : ρ ≠ 0) :
 /-- **G19.** The companion: the functional equation's reflection composed
     with conjugation. It is the ANTIholomorphic involution whose fixed set is
     the line — the strong sense in which that line is self-dual. -/
-def sdualMate (ρ : ℂ) : ℂ := 1 - (starRingEnd ℂ) ρ
+def sdual_mate (ρ : ℂ) : ℂ := 1 - (starRingEnd ℂ) ρ
 
 /-- **[P] G20.** The two involutions commute, because `1` is real. -/
 theorem sdual_conj_commute (ρ : ℂ) :
@@ -3953,24 +3953,24 @@ theorem sdual_conj_commute (ρ : ℂ) :
   simp [map_sub, map_one]
 
 /-- **[P] G21.** Hence the companion is an involution. -/
-theorem sdualMate_involutive (ρ : ℂ) : sdualMate (sdualMate ρ) = ρ := by
-  unfold sdualMate; rw [sdual_conj_commute]; simp
+theorem sdual_mate_involutive (ρ : ℂ) : sdual_mate (sdual_mate ρ) = ρ := by
+  unfold sdual_mate; rw [sdual_conj_commute]; simp
 
 /-- **[P] G22.** It preserves the imaginary part. -/
-theorem sdualMate_im (ρ : ℂ) : (sdualMate ρ).im = ρ.im := by
-  simp [sdualMate, Complex.sub_im, Complex.conj_im]
+theorem sdual_mate_im (ρ : ℂ) : (sdual_mate ρ).im = ρ.im := by
+  simp [sdual_mate, Complex.sub_im, Complex.conj_im]
 
 /-- **[P] G22.** It reflects the real part. -/
-theorem sdualMate_re (ρ : ℂ) : (sdualMate ρ).re = 1 - ρ.re := by
-  simp [sdualMate, Complex.sub_re, Complex.conj_re]
+theorem sdual_mate_re (ρ : ℂ) : (sdual_mate ρ).re = 1 - ρ.re := by
+  simp [sdual_mate, Complex.sub_re, Complex.conj_re]
 
 /-- **[P] G23 — THE LINE AS A FIXED SET, IN THE §2.0 COORDINATE.**
     This is what the title of `thm:funct-eq` asked for: the self-dual line in the
     strong sense. The holomorphic reflection fixes ONE point of ℂ; the line is
     what its composition with conjugation fixes. -/
-theorem sdualMate_fixed_iff (ρ : ℂ) :
-    sdualMate ρ = ρ ↔ ρ.re = PaperS2.facePhi := by
-  rw [Complex.ext_iff, sdualMate_re, sdualMate_im, PaperS2.facePhi_apex]
+theorem sdual_mate_fixed_iff (ρ : ℂ) :
+    sdual_mate ρ = ρ ↔ ρ.re = PaperS2.facePhi := by
+  rw [Complex.ext_iff, sdual_mate_re, sdual_mate_im, PaperS2.facePhi_apex]
   unfold PaperS2.μ
   exact ⟨fun h => by have := h.1; linarith, fun h => ⟨by linarith, rfl⟩⟩
 
@@ -3978,16 +3978,16 @@ theorem sdualMate_fixed_iff (ρ : ℂ) :
     companion is a DISTINCT zero with the SAME imaginary part: a concrete pair with
     null separation, not a statistical statement. -/
 theorem extreme_case_is_binary (ρ : ℂ) (h : ρ.re ≠ PaperS2.facePhi) :
-    sdualMate ρ ≠ ρ ∧ (sdualMate ρ).im - ρ.im = 0 := by
-  refine ⟨fun hc => h ((sdualMate_fixed_iff ρ).mp hc), ?_⟩
-  rw [sdualMate_im]; ring
+    sdual_mate ρ ≠ ρ ∧ (sdual_mate ρ).im - ρ.im = 0 := by
+  refine ⟨fun hc => h ((sdual_mate_fixed_iff ρ).mp hc), ?_⟩
+  rw [sdual_mate_im]; ring
 
 /-- **[P] ARITY 2 ⟺ ARITY 0.**  The null-separation pair exists if and only if
     the Li modulus deviates: the angular and radial readings bound the
     SAME event. **Individual and ensemble, as a theorem.** -/
 theorem binary_iff_radial (ρ : ℂ) (hρ : ρ ≠ 0) :
-    (sdualMate ρ ≠ ρ) ↔ (‖1 - 1 / ρ‖ ≠ 1) := by
-  simp only [sdualMate_fixed_iff, PaperS2.facePhi_apex, li_modulus_on_line ρ hρ,
+    (sdual_mate ρ ≠ ρ) ↔ (‖1 - 1 / ρ‖ ≠ 1) := by
+  simp only [sdual_mate_fixed_iff, PaperS2.facePhi_apex, li_modulus_on_line ρ hρ,
     not_iff_not, PaperS2.μ]
 
 /-! ### §2.12b  What the ensemble describes, and what this framework does not reproduce -/
@@ -4069,19 +4069,19 @@ theorem repulsion_excludes_zero_spacing (Z : Set ℂ) (m : ℝ)
     **The configuration the ensemble makes improbable and the one repulsion
     excludes are the same — and here it is a concrete pair, not a statistic.** -/
 theorem repulsion_excludes_the_extreme_case (Z : Set ℂ) (m : ℝ)
-    (h : Repulsion Z m) (hc : ∀ ρ ∈ Z, sdualMate ρ ∈ Z)
+    (h : Repulsion Z m) (hc : ∀ ρ ∈ Z, sdual_mate ρ ∈ Z)
     (ρ : ℂ) (hρ : ρ ∈ Z) : ρ.re = PaperS2.facePhi := by
   by_contra hδ
   obtain ⟨hne, _⟩ := extreme_case_is_binary ρ hδ
   exact repulsion_excludes_zero_spacing Z m h
-    ⟨ρ, hρ, sdualMate ρ, hc ρ hρ, Ne.symm hne, (sdualMate_im ρ).symm⟩
+    ⟨ρ, hρ, sdual_mate ρ, hc ρ hρ, Ne.symm hne, (sdual_mate_im ρ).symm⟩
 
 /-- **[P] `E ⟺ NO DISTINCT PAIR SHARES IMAGINARY PART`.** THE WEAK FORM:
     `¬SharesOrdinate` is strictly less than `Repulsion`, and suffices.
     This is what a future advance would discharge instead of the metric bound.
     (`E_iff_no_shared_ordinate` completa:13035.) -/
 theorem E_iff_no_shared_ordinate (Z : Set ℂ)
-    (hc : ∀ ρ ∈ Z, sdualMate ρ ∈ Z) :
+    (hc : ∀ ρ ∈ Z, sdual_mate ρ ∈ Z) :
     (∀ ρ ∈ Z, ρ.re = PaperS2.facePhi) ↔ ¬ SharesOrdinate Z := by
   constructor
   · rintro hon ⟨ρ, hρ, τ, hτ, hne, him⟩
@@ -4089,18 +4089,18 @@ theorem E_iff_no_shared_ordinate (Z : Set ℂ)
   · intro hns ρ hρ
     by_contra hδ
     obtain ⟨hne, _⟩ := extreme_case_is_binary ρ hδ
-    exact hns ⟨ρ, hρ, sdualMate ρ, hc ρ hρ, Ne.symm hne, (sdualMate_im ρ).symm⟩
+    exact hns ⟨ρ, hρ, sdual_mate ρ, hc ρ hρ, Ne.symm hne, (sdual_mate_im ρ).symm⟩
 
 /-- **[P] REPULSION GIVES THE MODULUS.** Without repeated imaginary parts there are no free
     orbits, so `στρ = ρ`, hence the Li modulus equals `1` EXACTLY.
     **Measured repulsion does not bound the modulus: it produces it.** That is `N(70)=33`.
     (`repulsion_gives_the_modulus` completa:12350.) -/
 theorem repulsion_gives_the_modulus (Z : Set ℂ) (m : ℝ)
-    (h : Repulsion Z m) (hc : ∀ ρ ∈ Z, sdualMate ρ ∈ Z)
+    (h : Repulsion Z m) (hc : ∀ ρ ∈ Z, sdual_mate ρ ∈ Z)
     (ρ : ℂ) (hρ : ρ ∈ Z) (hρ0 : ρ ≠ 0) : ‖1 - 1 / ρ‖ = 1 := by
   by_contra hne
   exact (binary_iff_radial ρ hρ0).mpr hne
-    ((sdualMate_fixed_iff ρ).mpr
+    ((sdual_mate_fixed_iff ρ).mpr
       (repulsion_excludes_the_extreme_case Z m h hc ρ hρ))
 
 /-- **[P] with the inputs in the signature.** If the zero set is closed
@@ -4111,7 +4111,7 @@ theorem repulsion_gives_the_modulus (Z : Set ℂ) (m : ℝ)
     asymptotic statistics: it uses the geometry of ℂ and the SIGN of a bound.
     From `hmin` only `0 < m` enters, never the value. -/
 theorem zeros_on_the_apex (Z : Set ℂ) (m : ℝ)
-    (hclosed : ∀ ρ ∈ Z, sdualMate ρ ∈ Z)
+    (hclosed : ∀ ρ ∈ Z, sdual_mate ρ ∈ Z)
     (hrep : Repulsion Z m) :
     ∀ ρ ∈ Z, ρ.re = PaperS2.facePhi :=
   repulsion_excludes_the_extreme_case Z m hrep hclosed
@@ -4138,7 +4138,7 @@ theorem framework_mass_gap {a b0 g2 : ℝ} (ha : 0 < a) (hb : 0 < b0) (hg : 0 < 
 /-- [P, CW5 App. A.3] The gauge algebra is derived, not posited: dim su(3) = 3²−1 = 8 from the
     Eisenstein triangle (`gauge_dim_su3` in the CW5 backing). -/
 theorem cw3_gauge_derived : (3:ℕ)^2 - 1 = 8 := by norm_num
-/- [CW5 `s_duality_fixes_i`, `ets_riemann_flat`, `dS_ricci_from_gauss`, `app:einstein`] The
+/- [CW5 `s_duality_fixes_i`, `ets_riemann_flat`, `ds_ricci_from_gauss`, `app:einstein`] The
     S-duality is the Galois φ→−1/φ fixing τ=i; de Sitter is BOTH the flat ETS ambient and its
     curved embedded hyperboloid; Einstein's equation follows from the tower entropy. -/
 /-- [P, CW5 §4 + App.] The gravity/duality data: the G–Λ duality φ⁻⁶·φ⁺⁶ = 1 and the fixed
@@ -4322,7 +4322,7 @@ theorem os_reconstruction_explicit (a m0 : ℝ) (ha : 0 < a) (hm : 0 < m0) :
 /-- **[P] The bulk→boundary map is an isometry V†V=1** (HPPS `eq:adh-isometry`, ADH). The
     normalized eigenvalue triad V_k = (½ωᵏ)/‖·‖ has Σₖ ‖V_k‖² = 1: the embedding of the bulk
     microstate into the boundary triad preserves the norm — the holographic dictionary, exact. -/
-theorem bulkBoundary_isometry :
+theorem bulk_boundary_isometry :
     ∑ k : Fin 3, (‖(1/2 : ℂ) * ωc ^ (k:ℕ)‖ / (Real.sqrt 3 / 2)) ^ 2 = 1 := by
   have h : ∀ k : Fin 3, ‖(1/2 : ℂ) * ωc ^ (k:ℕ)‖ = 1/2 :=
     fun k => Omega_eigenvalues (k:ℕ)
@@ -4339,13 +4339,13 @@ noncomputable def towerHam (m0 : ℝ) (N : ℕ) : Matrix (Fin N) (Fin N) ℂ :=
   Matrix.diagonal (fun i => ((m0 * φ ^ (i:ℕ) : ℝ) : ℂ))
 
 /-- **[P] Self-adjointness of the gauge tower Hamiltonian**: real diagonal ⇒ Hermitian. -/
-theorem towerHam_isHermitian (m0 : ℝ) (N : ℕ) : (towerHam m0 N).IsHermitian := by
+theorem tower_ham_is_hermitian (m0 : ℝ) (N : ℕ) : (towerHam m0 N).IsHermitian := by
   rw [towerHam, Matrix.isHermitian_diagonal_iff]
   intro i
   rw [isSelfAdjoint_iff, Complex.star_def, Complex.conj_ofReal]
 
 /-- [P] Bounded below: the spectrum m₀φ^σ ≥ 0 for m₀ ≥ 0 (φ>0). -/
-theorem towerHam_bounded_below (m0 : ℝ) (hm : 0 ≤ m0) (N : ℕ) (i : Fin N) :
+theorem tower_ham_bounded_below (m0 : ℝ) (hm : 0 ≤ m0) (N : ℕ) (i : Fin N) :
     0 ≤ m0 * φ ^ (i:ℕ) := by
   have hφ : (0:ℝ) < φ := by
     have : (0:ℝ) < Real.sqrt 5 := Real.sqrt_pos.2 (by norm_num); simp only [φ]; linarith
@@ -4358,13 +4358,13 @@ noncomputable def casimirOp (N : ℕ) : Matrix (Fin N) (Fin N) ℂ :=
   Matrix.diagonal (fun i => (((i:ℕ) * ((i:ℕ) + 3) / 3 : ℝ) : ℂ))
 
 /-- **[P] Self-adjointness of the Yang–Mills Casimir operator**: real diagonal ⇒ Hermitian. -/
-theorem casimirOp_isHermitian (N : ℕ) : (casimirOp N).IsHermitian := by
+theorem casimir_op_is_hermitian (N : ℕ) : (casimirOp N).IsHermitian := by
   rw [casimirOp, Matrix.isHermitian_diagonal_iff]
   intro i
   rw [isSelfAdjoint_iff, Complex.star_def, Complex.conj_ofReal]
 
 /-- [P] The Casimir spectrum is ≥0 (bounded below), with the vacuum (n=0) at 0. -/
-theorem casimirOp_bounded_below (N : ℕ) (i : Fin N) :
+theorem casimir_op_bounded_below (N : ℕ) (i : Fin N) :
     0 ≤ ((i:ℕ) * ((i:ℕ) + 3) / 3 : ℝ) := by positivity
 
 /-- [P] The transfer operator diagonal e^{-a·spec} is real and positive ⇒ its diagonal
@@ -4373,14 +4373,14 @@ theorem transferOp_diag_pos (a m0 : ℝ) (σ : ℕ) :
     0 < Real.exp (-(a * m0 * φ ^ σ)) := Real.exp_pos _
 
 /-- **[P] Master: both operators are self-adjoint and the bulk→boundary map is an isometry.**
-    The gauge tower Hamiltonian (`towerHam_isHermitian`) and the YM Casimir (`casimirOp_isHermitian`)
+    The gauge tower Hamiltonian (`tower_ham_is_hermitian`) and the YM Casimir (`casimir_op_is_hermitian`)
     are self-adjoint by construction (real diagonal), both bounded below; the isometry V†V=1 holds
-    (`bulkBoundary_isometry`). This closes self-adjointness for the gauge side; with the isometry
+    (`bulk_boundary_isometry`). This closes self-adjointness for the gauge side; with the isometry
     (HPPS) the OS reconstruction (`os_reconstruction_explicit`) is complete for the gauge theory. -/
 theorem operators_selfadjoint_and_isometry (m0 : ℝ) (N : ℕ) :
     (towerHam m0 N).IsHermitian ∧ (casimirOp N).IsHermitian ∧
     (∑ k : Fin 3, (‖(1/2 : ℂ) * ωc ^ (k:ℕ)‖ / (Real.sqrt 3 / 2)) ^ 2 = 1) :=
-  ⟨towerHam_isHermitian m0 N, casimirOp_isHermitian N, bulkBoundary_isometry⟩
+  ⟨tower_ham_is_hermitian m0 N, casimir_op_is_hermitian N, bulk_boundary_isometry⟩
 
 /-! ### Confinement: the magnetic condensate and the colour gap (exp47) -/
 
@@ -4576,7 +4576,7 @@ noncomputable def reflCov (m x y : ℝ) : ℝ :=
 
 /-- **[P]** En el semiespacio, `|-x - y| = x + y`, de modo que la covarianza reflejada
     se factoriza: un factor por cada punto.  Ésta es toda la geometría del asunto. -/
-theorem reflCov_factors (m x y : ℝ) (hx : 0 < x) (hy : 0 < y) :
+theorem refl_cov_factors (m x y : ℝ) (hx : 0 < x) (hy : 0 < y) :
     reflCov m x y = Real.exp (-m * x) * Real.exp (-m * y) / (2 * Real.sinh m) := by
   unfold reflCov
   have habs : |(-x) - y| = x + y := by
@@ -4589,14 +4589,14 @@ theorem reflCov_factors (m x y : ℝ) (hx : 0 < x) (hy : 0 < y) :
     coincide con `(Σ c_i e^{-m x_i})² / (2 sinh m)`.  La matriz reflejada es
     `(2 sinh m)^{-1} v vᵀ` con `v_i = e^{-m x_i}`: un múltiplo positivo de un Gram de
     rango uno. -/
-theorem reflQuadForm_eq_square (m : ℝ) (N : ℕ) (x c : Fin N → ℝ)
+theorem refl_quad_form_eq_square (m : ℝ) (N : ℕ) (x c : Fin N → ℝ)
     (hx : ∀ i, 0 < x i) :
     ∑ i, ∑ j, c i * c j * reflCov m (x i) (x j)
       = (∑ i, c i * Real.exp (-m * x i)) ^ 2 / (2 * Real.sinh m) := by
   have hfac : ∀ i j, c i * c j * reflCov m (x i) (x j)
       = (c i * Real.exp (-m * x i)) * (c j * Real.exp (-m * x j)) / (2 * Real.sinh m) := by
     intro i j
-    rw [reflCov_factors m (x i) (x j) (hx i) (hx j)]
+    rw [refl_cov_factors m (x i) (x j) (hx i) (hx j)]
     ring
   simp only [hfac]
   have hsum : ∑ i, ∑ j,
@@ -4618,7 +4618,7 @@ theorem reflQuadForm_eq_square (m : ℝ) (N : ℕ) (x c : Fin N → ℝ)
 theorem reflection_positive_measure (m : ℝ) (hm : 0 < m) (N : ℕ)
     (x c : Fin N → ℝ) (hx : ∀ i, 0 < x i) :
     0 ≤ ∑ i, ∑ j, c i * c j * reflCov m (x i) (x j) := by
-  rw [reflQuadForm_eq_square m N x c hx]
+  rw [refl_quad_form_eq_square m N x c hx]
   have hs : 0 < 2 * Real.sinh m := by
     have : 0 < Real.sinh m := Real.sinh_pos_iff.mpr hm; linarith
   exact div_nonneg (sq_nonneg _) (le_of_lt hs)
@@ -4666,7 +4666,7 @@ theorem positroid_from_kp
 /-- **[P given L]** The local Archimedean factor as the Mellin transform of the self-dual
     test function, and its value on the self-dual line.  Classical entry: **Riemann 1859;
     Tate 1950**, `hTate`. -/
-theorem gammaR_from_tate
+theorem gamma_r_from_tate
     (hTate : ∀ s : ℂ, 0 < s.re →
       Gammaℝ s = 2 * ∫ x in Set.Ioi (0:ℝ), ((g x : ℝ) : ℂ) * (x : ℂ) ^ (s - 1))
     (s : ℂ) (hs : 0 < s.re) :
@@ -5030,7 +5030,7 @@ theorem mu3_temp_ratio (H : ℝ) : T_GH H = mu3 * T_local H := by
   unfold T_GH mu3 T_local; ring
 
 /-- **[P] de Sitter first law: ρ_Λ·V_H = T_GH·S_GH.** Both equal 1/H (H≠0). -/
-theorem dS_first_law (H : ℝ) (hH : H ≠ 0) :
+theorem ds_first_law (H : ℝ) (hH : H ≠ 0) :
     rhoLambda H * V_H H = T_GH H * S_GH H := by
   unfold rhoLambda V_H T_GH S_GH area GN
   have hpi : Real.pi ≠ 0 := Real.pi_ne_zero
@@ -5750,9 +5750,9 @@ theorem entropy_response_per_bit (σ : ℝ) :
   field_simp
 
 /-- **[P] part 3, the response rate.**  `S′(σ) = (ln φ)·S(σ)`: the tower entropy
-    responds at the regulator rate — the mirror of `swampland_hasDerivAt` for the
+    responds at the regulator rate — the mirror of `swampland_has_deriv_at` for the
     conjugate `φ^{-σ}`, and the rate at which `h_{μν}` sources entropy change. -/
-theorem entropy_response_hasDerivAt (σ : ℝ) :
+theorem entropy_response_has_deriv_at (σ : ℝ) :
     HasDerivAt PaperS2.S_tower (Real.log φ * PaperS2.S_tower σ) σ := by
   have h : HasDerivAt (fun x : ℝ => φ ^ x) (φ ^ σ * Real.log φ) σ :=
     (Real.hasStrictDerivAt_const_rpow φ_pos σ).hasDerivAt
@@ -5942,8 +5942,8 @@ noncomputable def Kiely : SpectralData := {
 /-- The PCF core, with internal provenance: every field is a theorem from
     THIS file. arity=3 (`Omega_eigenvalues`), |Ω|=1/2 (`modulus_Omega`,
     `M9_eq_half`), |Ω|²=1/4 (`holographic_area`), d_H (`two_pow_hausdorff`),
-    G_4=1/4 (`kk_at_PCF`), and the norms P/C/F (`normP_eq_tan`,
-    `normF_eq_cos`, `M9_collapse`). -/
+    G_4=1/4 (`kk_at_PCF`), and the norms P/C/F (`norm_p_eq_tan`,
+    `norm_f_eq_cos`, `M9_collapse`). -/
 noncomputable def PCF_core : SpectralData := {
   arity := some 3,
   modulus := some (1/2),
@@ -5992,15 +5992,15 @@ theorem core_Newton4D_from_kk :
 
 /-- The core norms are those of the eigenvalue triangle (eq:norms-derived):
     |P| = tan(π/6), |C| = 1, |F| = cos(π/6) — geometric content, not definitional
-    (`normP_eq_tan`, `normF_eq_cos`). -/
+    (`norm_p_eq_tan`, `norm_f_eq_cos`). -/
 theorem core_norms_from_triangle :
     PCF_core.P_norm = some (Real.tan (Real.pi/6)) ∧
     PCF_core.C_norm = some 1 ∧
     PCF_core.F_norm = some (Real.cos (Real.pi/6)) := by
   refine ⟨?_, ?_, ?_⟩
-  · rw [show PCF_core.P_norm = some PaperS2.normP from rfl, PaperS2.normP_eq_tan]
+  · rw [show PCF_core.P_norm = some PaperS2.normP from rfl, PaperS2.norm_p_eq_tan]
   · rw [show PCF_core.C_norm = some PaperS2.normC from rfl]; rfl
-  · rw [show PCF_core.F_norm = some PaperS2.normF from rfl, PaperS2.normF_eq_cos]
+  · rw [show PCF_core.F_norm = some PaperS2.normF from rfl, PaperS2.norm_f_eq_cos]
 
 /-- The product of the three core norms collapses to the modulus (eq:collapse,
     `M9_eq_half`): the core's arity 3 is that of the triangle whose product gives 1/2. -/
@@ -6533,7 +6533,7 @@ theorem three_not_frobenius_dim : (3 : ℕ) ∉ frobeniusDims := by decide
 
 /-- **AND YET 3 IS REACHED.** The eigenvalue triad gives a map
     `ℂ → ℂ³` that preserves the norm: the sum of normalized squares is
-    `1` (`bulkBoundary_isometry`). A norm-preserving map is injective, hence
+    `1` (`bulk_boundary_isometry`). A norm-preserving map is injective, hence
     FAITHFUL: it carries ℂ to dimension 3 without loss.
 
     What Frobenius forbids is MULTIPLYING in dimension 3. Here no product is
@@ -6543,7 +6543,7 @@ theorem three_reached_by_faithful_isometry :
     (3 : ℕ) ∉ frobeniusDims ∧
     ∑ k : Fin 3, (‖(1/2 : ℂ) * PCFEntropyDOF.ωc ^ (k:ℕ)‖ / (Real.sqrt 3 / 2)) ^ 2 = 1 ∧
     (∀ z w : ℂ, ‖z‖ = ‖w‖ → ‖z‖ - ‖w‖ = 0) :=
-  ⟨three_not_frobenius_dim, bulkBoundary_isometry, fun _ _ h => by rw [h]; ring⟩
+  ⟨three_not_frobenius_dim, bulk_boundary_isometry, fun _ _ h => by rw [h]; ring⟩
 
 /-- **THE OBFACE, REUNITED.** The two towers the literature needs
     — the Virasoro tower in holography, the superpoint tower in M-theory —
@@ -6570,6 +6570,6 @@ theorem the_reverse_face (m0 : ℝ) (hm : 0 < m0) :
    SitterPCF.brown_henneaux_c_eq_three 1 (1/2) rfl rfl,
    ⟨by decide, FourCocone.two_sq_eq_neg_one_mod_five⟩,
    fun σ => PaperS3a.modular_bulk_ratio_level_independent m0 σ hm,
-   ⟨three_not_frobenius_dim, bulkBoundary_isometry⟩⟩
+   ⟨three_not_frobenius_dim, bulk_boundary_isometry⟩⟩
 
 end TwoTowersOneMicrostate
