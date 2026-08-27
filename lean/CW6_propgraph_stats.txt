@@ -1,0 +1,11 @@
+
+  entries: 156
+  edges (shared lean decls): 404
+  unique lean declarations referenced: 484
+  with lean proof: 155
+  with numerical check: 31
+  with both: 31
+  with neither: 1
+  isolated (no edges): 62
+  by chapter: {'1': 8, '2': 69, '3': 19, '4': 26, '5': 34}
+

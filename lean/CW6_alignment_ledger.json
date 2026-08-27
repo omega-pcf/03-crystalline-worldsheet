@@ -1,691 +1,677 @@
 {
-  "format": "cw6.lea/2.0",
-  "note": "CW6 alignment ledger rebuilt 2026-08-26. Maps paper ProofWitness tags to Lean 4 declarations and Python numerical checks.",
-  "sources": {
-    "paper": {
-      "chapters": [
-        "01-introduction",
-        "02-methods",
-        "03-derivations",
-        "04-implications",
-        "05-discussion",
-        "appendix"
-      ]
-    },
-    "lean": {
-      "file": "CW6_complete_v2.lean",
-      "total_declarations": 807
-    },
-    "tests": {
-      "directory": "tests/",
-      "files": [
-        "test_arithmetic.py",
-        "test_core_identities.py",
-        "test_fks.py",
-        "test_gauge.py",
-        "test_gravity.py",
-        "test_kk.py",
-        "test_observer.py",
-        "test_places.py",
-        "test_repulsion.py",
-        "test_spectral.py",
-        "test_tower.py",
-        "test_transmutation.py"
-      ]
-    }
-  },
+  "format": "cw6.lea/3.0",
   "entries": [
     {
-      "chapter": "01-introduction",
-      "line": 315,
       "label": "eq:phisq",
-      "section": "The framework",
-      "claim": "Proof block in 01-introduction",
+      "equation": "\\Rpcf=\\Z[\\golden,\\golden^{-1},\\tfrac12],",
+      "section": "1.7",
       "lean_decls": [
-        "PaperS2.phi_sq"
+        "CW5Additions.phi_sq"
       ],
-      "numeric_checks": [
-        "test_arithmetic.py:test_phi_is_root"
+      "tex_tags": [
+        "\\ProofWitnessBlock{phi\\_sq}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "01-introduction",
-      "line": 359,
       "label": "eq:bridge",
-      "section": "Powers on one side, the arithmetic spectrum of $\\golden$ on the other",
-      "claim": "Proof block in 01-introduction",
+      "equation": "\\golden^{\\lambda_{\\log}}=2,\\qquad \\lambda_{\\log}=\\frac{\\log 2}{\\log\\golden}=\\log_{\\golden}2,",
+      "section": "1.7",
       "lean_decls": [
-        "PaperS2.lambda_log",
+        "PaperS3b.lambda_log",
         "lambda_log_mul_regulator",
-        "PaperS2.mersenne_bridge"
+        "PaperS3b.mersenne_bridge"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{lambda\\_log, lambda\\_log\\_mul\\_regulator, mersenne\\_bridge}"
+      ],
+      "numerical": "test_tower.py::test_cumulative"
     },
     {
-      "chapter": "02-methods",
-      "line": 8,
-      "label": "sec:methods",
-      "section": "Methods",
-      "claim": "\\noindent $$ formal proof (Lean), $$ numerical check,",
+      "label": "eq:kk-BF",
+      "equation": "G_4=\\frac{G_5}{2\\ell}=\\frac{1}{4} ,",
+      "section": "1.7",
       "lean_decls": [
-        "UNMAPPED:..."
+        "CWfig.boundary_density_ratio",
+        "CWfig.casimir_plus_newton"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{boundary\\_density\\_ratio, casimir\\_plus\\_newton}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 10,
-      "label": "sec:methods",
-      "section": "Methods",
-      "claim": "($\\;$) mark a claim resting on more than one, and each input is named where it enters.",
+      "label": "eq:kk-spectrum",
+      "equation": "m^{2}_{k}=\\frac{4}{(\\ln\\golden)^{2}}\\,\\sin^{2}\\!\\frac{k\\pi}{4(n+1)}, \\qquad k=1,\\dots,2n+1 ,",
+      "section": "1.7",
       "lean_decls": [
-        "UNMAPPED:..."
+        "CW5Additions.kk_hopping_reciprocal",
+        "CW5Additions.kk_discrete_spectrum",
+        "CW5Additions.kk_discrete_positive",
+        "CW5Additions.kk_above_BF",
+        "CWfig.KK_BF_bound"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{kk\\_hopping\\_reciprocal, kk\\_discrete\\_spectrum, kk\\_discrete\\_positive, kk\\_above\\_BF, KK\\_BF\\_bound}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 36,
-      "label": "def:K-arith",
-      "section": "Methods",
-      "claim": "Proof block in 02-methods",
+      "label": "eq:kk-rowsum",
+      "equation": "\\frac{\\golden^{2}+\\golden^{-2}-2}{(\\ln\\golden)^{2}}=\\frac{1}{(\\ln\\golden)^{2}}\\approx4.3184 ,",
+      "section": "1.7",
       "lean_decls": [
-        "PaperS2.phi_trace",
-        "PaperS2.phi_norm",
-        "PCFEntropyDOF.galois_pair",
-        "PCFEntropyDOF.phi_discriminant"
+        "CW5Additions.log_phi_lt_half",
+        "CW5Additions.kk_rowsum_eq_numerator",
+        "CW5Additions.kk_continuous_below_BF",
+        "CW5Additions.kk_reciprocal_discriminates",
+        "PaperS3a.T"
       ],
-      "numeric_checks": [
-        "test_arithmetic.py:test_sum",
-        "test_arithmetic.py:test_product",
-        "test_arithmetic.py:test_discriminant"
+      "tex_tags": [
+        "\\ProofWitnessBlock{log\\_phi\\_lt\\_half}",
+        "\\ProofWitnessBlock{kk\\_rowsum\\_eq\\_numerator, kk\\_continuous\\_below\\_BF, kk\\_reciprocal\\_discriminates}",
+        "\\NumericalWitnessBlock{eq:kk-rowsum, eq:kk-spectrum}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 43,
+      "label": "eq:hurwitz",
+      "equation": "",
+      "section": "1.7",
+      "lean_decls": [
+        "PaperS3a.tdual_selfdual",
+        "PCFEntropyDOF.ladder_dim_eq_kissing_plus_rank",
+        "PCFEntropyDOF.fks_ladder_dims",
+        "PCFEntropyDOF.a2_minimal_vectors_exactly_six"
+      ],
+      "tex_tags": [
+        "\\ProofWitness{tdual\\_selfdual}",
+        "\\ProofWitnessBlock{ladder\\_dim\\_eq\\_kissing\\_plus\\_rank, fks\\_ladder\\_dims, a2\\_minimal\\_vectors\\_exactly\\_six, tdual\\_selfdual}"
+      ],
+      "numerical": ""
+    },
+    {
+      "label": "eq:even-L",
+      "equation": "(5m+a)^{-s}=5^{-s}(m+a/5)^{-s},",
+      "section": "1.8",
+      "lean_decls": [
+        "hurwitz_reindex",
+        "even_L_rationality",
+        "bernoulli_eval_rational"
+      ],
+      "tex_tags": [
+        "\\ProofWitnessBlock{hurwitz\\_reindex}",
+        "\\ProofWitnessBlock{even\\_L\\_rationality, bernoulli\\_eval\\_rational}"
+      ],
+      "numerical": ""
+    },
+    {
+      "label": "eq:kappa",
+      "equation": "",
+      "section": "1.8",
+      "lean_decls": [
+        "kappa_k_two_real_places",
+        "kappa_k_alt",
+        "kappa_k_simple_pole",
+        "kappa_k_pole_numerator_at_one",
+        "kappa_k_pos",
+        "kappa_k_exp",
+        "kappa_per_real_place"
+      ],
+      "tex_tags": [
+        "\\ProofWitnessBlock{kappa\\_k\\_two\\_real\\_places, kappa\\_k\\_alt, kappa\\_k\\_simple\\_pole, kappa\\_k\\_pole\\_numerator\\_at\\_one, kappa\\_k\\_pos, kappa\\_k\\_exp, kappa\\_per\\_real\\_place}"
+      ],
+      "numerical": ""
+    },
+    {
       "label": "lem:galois-inv",
-      "section": "Methods",
-      "claim": "Proof block in 02-methods",
+      "equation": "",
+      "section": "2.1",
       "lean_decls": [
+        "CWfig.phi_trace",
+        "CWfig.phi_norm",
+        "PCFEntropyDOF.galois_pair",
+        "PCFEntropyDOF.phi_discriminant",
         "PaperS2.galois_conj_is_one_sub",
         "PaperS2.galois_involution_is_one_sub"
       ],
-      "numeric_checks": [
-        "test_arithmetic.py:test_from_generator"
+      "tex_tags": [
+        "\\ProofWitnessBlock{phi\\_trace, phi\\_norm, galois\\_pair, phi\\_discriminant}",
+        "\\ProofWitnessBlock{galois\\_conj\\_is\\_one\\_sub, galois\\_involution\\_is\\_one\\_sub}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 48,
-      "label": "lem:galois-inv",
-      "section": "Methods",
-      "claim": "the present section consumes.",
-      "lean_decls": [
-        "PaperS2.mersenne_bridge"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "02-methods",
-      "line": 61,
       "label": "prop:anchor-exterior",
-      "section": "The generator, its conjugate, and the binary bridge",
-      "claim": "Proof block in 02-methods",
+      "equation": "",
+      "section": "2.1",
+      "lean_decls": [
+        "PaperS3b.mersenne_bridge"
+      ],
+      "tex_tags": [
+        "\\ProofWitnessBlock{mersenne\\_bridge}"
+      ],
+      "numerical": ""
+    },
+    {
+      "label": "eq:anchor-exterior",
+      "equation": "\\golden<2<\\golden^{2}=\\golden+1,",
+      "section": "2.1",
       "lean_decls": [
         "AnchorExterior.phi_lt_two",
         "AnchorExterior.two_lt_phi_sq",
         "AnchorExterior.two_not_in_golden_lattice",
         "AnchorExterior.anchor_is_exterior"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{phi\\_lt\\_two, two\\_lt\\_phi\\_sq, two\\_not\\_in\\_golden\\_lattice, anchor\\_is\\_exterior}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 72,
-      "label": "ssec:origins",
-      "section": "Three geometric origins of $\\mu=\\tfrac12$",
-      "claim": "$\\golden=2\\cos(\\pi/5)$.",
+      "label": "thm:pentagon-id",
+      "equation": "",
+      "section": "2.2",
       "lean_decls": [
         "PaperS2.phi_eq_two_cos_pi_fifth"
       ],
-      "numeric_checks": [
-        "test_core_identities.py:test_phi_identity"
+      "tex_tags": [
+        "\\ProofWitnessBlock{phi\\_eq\\_two\\_cos\\_pi\\_fifth}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 91,
-      "label": "prop:pi-bridge",
-      "section": "Three geometric origins of $\\mu=\\tfrac12$",
-      "claim": "Proof block in 02-methods",
+      "label": "eq:pi-arccos",
+      "equation": "\\pi = 5\\arccos(\\golden/2).",
+      "section": "2.2",
       "lean_decls": [
         "PaperS2.pi_eq_five_arccos"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{pi\\_eq\\_five\\_arccos}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 99,
-      "label": "prop:pi-bridge",
-      "section": "Three geometric origins of $\\mu=\\tfrac12$",
-      "claim": "Proof block in 02-methods",
+      "label": "eq:gamma-int",
+      "equation": "\\Gamma(s)=\\int_0^\\infty t^{\\,s-1}e^{-t}\\,dt .",
+      "section": "2.2",
       "lean_decls": [
         "PaperS2.gamma_integral"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{gamma\\_integral}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 104,
-      "label": "prop:gamma-int",
-      "section": "Three geometric origins of $\\mu=\\tfrac12$",
-      "claim": "Proof block in 02-methods",
+      "label": "lem:gamma-half",
+      "equation": "\\Gamma(s)=\\int_0^\\infty t^{\\,s-1}e^{-t}\\,dt .",
+      "section": "2.2",
       "lean_decls": [
         "PaperS2.gamma_half",
         "PaperS3b.gaussian_integral_value",
         "PaperS3b.gaussian_weight_phi"
       ],
-      "numeric_checks": [
-        "test_core_identities.py:test_gaussian_integral_route"
+      "tex_tags": [
+        "\\ProofWitnessBlock{gamma\\_half, gaussian\\_integral\\_value, gaussian\\_weight\\_phi}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 112,
-      "label": "lem:gamma-half",
-      "section": "Three geometric origins of $\\mu=\\tfrac12$",
-      "claim": "Proof block in 02-methods",
+      "label": "eq:half-factorial",
+      "equation": "(\\tfrac12)! \\;=\\; \\Gamma(\\tfrac32) \\;=\\; \\mu\\sqrt\\pi, \\qquad\\text{equivalently}\\qquad \\mu=\\frac{(\\tfrac12)!}{\\sqrt\\pi}.",
+      "section": "2.2",
       "lean_decls": [
         "PaperS2.half_factorial"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{half\\_factorial}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 126,
-      "label": "prop:selfdual-gaussian",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:selfdual-gaussian",
+      "equation": "g(x)=e^{-\\pi x^{2}},\\qquad \\widehat g=g,\\qquad \\int_{\\R}g=1 .",
+      "section": "2.2",
       "lean_decls": [
         "gauss_normalised_iff",
         "fourier_amplitude_iff",
         "fourier_width_iff",
         "selfdual_gaussian_unique"
       ],
-      "numeric_checks": [
-        "test_places.py:test_self_dual_at_pi"
+      "tex_tags": [
+        "\\ProofWitnessBlock{gauss\\_normalised\\_iff, fourier\\_amplitude\\_iff, fourier\\_width\\_iff, selfdual\\_gaussian\\_unique}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 139,
-      "label": "prop:mediation",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "prop:phi-branch",
+      "equation": "\\golden^{\\mu\\lng}=\\sqrt2,\\qquad \\golden^{\\mu\\log_\\golden 3}=\\sqrt3 .",
+      "section": "2.2",
       "lean_decls": [
         "PaperS2.sqrt2_mediation",
-        "PaperS2.sqrt3_mediation"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "02-methods",
-      "line": 144,
-      "label": "prop:mediation",
-      "section": null,
-      "claim": "only if $x=\\tfrac12$.",
-      "lean_decls": [
+        "PaperS2.sqrt3_mediation",
         "PaperS2.face_inv_apex"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{sqrt2\\_mediation, sqrt3\\_mediation}",
+        "\\ProofWitnessBlock{face\\_inv\\_apex}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 156,
-      "label": "prop:phi-branch",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:galois-seed",
+      "equation": "\\frac{\\golden+\\bar\\golden}{2}=\\frac12=\\mu ,",
+      "section": "2.2",
       "lean_decls": [
         "PaperS2.face_galois_apex"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{face\\_galois\\_apex}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 167,
-      "label": "ssec:arity",
-      "section": "Arity uniqueness and the blocking of the diagonal",
-      "claim": "depends directly on itself).",
+      "label": "def:dsr",
+      "equation": "",
+      "section": "2.3",
       "lean_decls": [
         "PaperS2.distributed_self_reference"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{distributed\\_self\\_reference}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 175,
-      "label": "def:dsr",
-      "section": "Arity uniqueness and the blocking of the diagonal",
-      "claim": "Proof block in 02-methods",
+      "label": "prop:spectral",
+      "equation": "",
+      "section": "2.3",
       "lean_decls": [
         "PaperM6.phi_root_unique",
-        "PaperS2.characteristic_root_is_phi"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "02-methods",
-      "line": 182,
-      "label": "thm:fib-min",
-      "section": "Arity uniqueness and the blocking of the diagonal",
-      "claim": "Proof block in 02-methods",
-      "lean_decls": [
+        "PaperS2.characteristic_root_is_phi",
+        "PCFEntropyDOF.H",
         "V11fig.spectral_uniqueness"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{phi\\_root\\_unique, characteristic\\_root\\_is\\_phi}",
+        "\\NumericalWitnessBlock{eq:phisq}",
+        "\\ProofWitnessBlock{spectral\\_uniqueness}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 206,
-      "label": "prop:rings",
-      "section": "Arity uniqueness and the blocking of the diagonal",
-      "claim": "of $\\Rpcf$ and not of $\\OK$.",
+      "label": "def:regulator",
+      "equation": "",
+      "section": "2.4",
       "lean_decls": [
         "PCFEntropyDOF.phi_is_algebraic_integer",
         "PCFEntropyDOF.half_not_algebraic_integer"
       ],
-      "numeric_checks": [
-        "test_arithmetic.py:test_half_is_not"
+      "tex_tags": [
+        "\\ProofWitnessBlock{phi\\_is\\_algebraic\\_integer, half\\_not\\_algebraic\\_integer}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 220,
-      "label": "def:regulator",
-      "section": "Construction of PCF and the base ring on the torus",
-      "claim": "should have the invariant named before it is used.",
+      "label": "eq:omega-norms",
+      "equation": "",
+      "section": "2.4",
       "lean_decls": [
         "PCFEntropyDOF.regulator_K_pos",
         "PCFEntropyDOF.period_eq_two_pi_regulator"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{regulator\\_K\\_pos, period\\_eq\\_two\\_pi\\_regulator}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 242,
-      "label": "prop:pcf-norms",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:norms-derived",
+      "equation": "\\|C\\|=1,\\qquad \\|F\\|=\\tfrac{\\sqrt3}{2},\\qquad \\|P\\|=\\tfrac{1}{\\sqrt3},",
+      "section": "2.4",
       "lean_decls": [
         "PaperS2.norm_p_eq_tan",
         "PaperS2.norm_f_eq_cos",
         "PCFEntropyDOF.omega_eigenvalues"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{norm\\_p\\_eq\\_tan, norm\\_f\\_eq\\_cos, omega\\_eigenvalues}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 275,
-      "label": "eq:triad-products",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "lem:isometry",
+      "equation": "",
+      "section": "2.4",
       "lean_decls": [
         "PCFEntropyDOF.triad_re",
         "PCFEntropyDOF.triad_trace_zero",
         "PCFEntropyDOF.triad_two_products",
         "PCFEntropyDOF.triad_det_is_phi_pow"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{triad\\_re, triad\\_trace\\_zero, triad\\_two\\_products, triad\\_det\\_is\\_phi\\_pow}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 287,
-      "label": "lem:isometry",
-      "section": null,
-      "claim": "$V^{\\dagger}V=\\mathbf1$.",
+      "label": "eq:isometry-triad",
+      "equation": "\\lVert v\\rVert^2=3\\cdot\\tfrac14=\\tfrac34,\\qquad \\lVert v\\rVert=\\tfrac{\\sqrt3}{2},\\qquad \\sum_{k=0}^{2}\\lVert V_k\\rVert^2=1,",
+      "section": "2.4",
       "lean_decls": [
         "bulk_boundary_isometry"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{bulk\\_boundary\\_isometry}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 303,
-      "label": "rmk:spectral-origin",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "def:projpcf",
+      "equation": "",
+      "section": "2.4",
       "lean_decls": [
         "V11fig.spectral_uniqueness",
         "bulk_boundary_isometry"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{spectral\\_uniqueness, bulk\\_boundary\\_isometry}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 314,
-      "label": "def:projpcf",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "rmk:projpcf-constants",
+      "equation": "\\pi_{\\PCF}(a,b,c)\\;=\\;\\frac{ab}{c}\\cdot\\underbrace{\\lVert P\\rVert}_{1/\\sqrt3} \\cdot\\underbrace{\\frac{\\pi}{3}}_{\\text{angular unit}} \\;=\\;\\frac{ab}{c\\sqrt3}\\cdot\\frac{\\pi}{3}.",
+      "section": "2.4",
       "lean_decls": [
         "PaperS2.projection_PCF"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{projection\\_PCF}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 324,
-      "label": "rmk:projpcf-constants",
-      "section": null,
-      "claim": ".",
+      "label": "prop:oplus",
+      "equation": "",
+      "section": "2.4",
       "lean_decls": [
         "PaperS2.oplus_formula"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{oplus\\_formula}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 340,
-      "label": "prop:oplus",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:eps0",
+      "equation": "\\varepsilon_0=\\pi_{\\PCF}\\!\\bigl(\\sin(\\tfrac{\\pi}{6}),\\,\\ln\\golden,\\,\\pi\\bigr) =\\frac{\\ln\\golden}{6\\sqrt3}.",
+      "section": "2.4",
       "lean_decls": [
         "PaperS2.epsilon0_from_projection"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{epsilon0\\_from\\_projection}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 418,
+      "label": "eq:certainty",
+      "equation": "\\Mpcf=\\frac{6\\sqrt3\\,\\pi}{\\ln\\golden}=\\frac{\\pi}{\\varepsilon_0}\\approx 67.846 .",
+      "section": "2.4",
+      "lean_decls": [
+        "PaperS3a.T"
+      ],
+      "tex_tags": [
+        "\\NumericalWitness{eq:certainty}"
+      ],
+      "numerical": "test_core_identities.py::test_imaginary_unit"
+    },
+    {
       "label": "prop:mobius-torus",
-      "section": "The non-orientable fibre is independent of the torus",
-      "claim": "Proof block in 02-methods",
+      "equation": "",
+      "section": "2.5",
       "lean_decls": [
         "PaperMobius.fibre_independent_of_base",
         "PaperMobius.fibre_monodromy",
         "PaperMobius.fibre_reflection_order_two"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{fibre\\_independent\\_of\\_base, fibre\\_monodromy, fibre\\_reflection\\_order\\_two}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 422,
-      "label": "prop:mobius-torus",
-      "section": "The non-orientable fibre is independent of the torus",
-      "claim": "no condition on $\\theta$ (); the base commutes for",
+      "label": "prop:mpcf-forced",
+      "equation": "",
+      "section": "2.5",
       "lean_decls": [
         "PaperMobius.fibre_independent_of_base"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitness{fibre\\_independent\\_of\\_base}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 448,
-      "label": "eq:closure",
-      "section": null,
-      "claim": "of the generator of .",
+      "label": "eq:mpcf-invariants",
+      "equation": "",
+      "section": "2.5",
       "lean_decls": [
         "PaperS2.M_PCF_eq_pi_div_eps0",
         "PaperS2.epsilon0_from_projection",
         "bulk_boundary_isometry"
       ],
-      "numeric_checks": [
-        "test_core_identities.py:test_certainty_inverse"
+      "tex_tags": [
+        "\\ProofWitnessBlock{M\\_PCF\\_eq\\_pi\\_div\\_eps0, epsilon0\\_from\\_projection, bulk\\_boundary\\_isometry}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 539,
-      "label": "ssec:microstate",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "prop:angle",
+      "equation": "\\|P\\|\\,\\|C\\|\\,\\|F\\| =\\tan(\\tfrac{\\pi}{6})\\cdot 1\\cdot\\cos(\\tfrac{\\pi}{6}) =\\sin(\\tfrac{\\pi}{6})=\\tfrac12 .",
+      "section": "2.5",
       "lean_decls": [
         "PaperS2.collapse_norm_product",
         "PaperS2.norm_product_half"
       ],
-      "numeric_checks": [
-        "test_core_identities.py:test_product_is_mu"
+      "tex_tags": [
+        "\\ProofWitnessBlock{collapse\\_norm\\_product, norm\\_product\\_half}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 547,
-      "label": "thm:collapse",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:sigma-basel",
+      "equation": "\\sigma=\\frac{\\zeta(2)}{(\\pi/3)^2}=\\frac{\\pi^2/6}{\\pi^2/9}=\\frac{9}{6}=\\frac32 .",
+      "section": "2.5",
       "lean_decls": [
         "PaperS2.sigma_from_basel",
         "PaperS2.sin_cos_mu"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{sigma\\_from\\_basel, sin\\_cos\\_mu}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 553,
-      "label": "prop:angle",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "prop:connector",
+      "equation": "",
+      "section": "2.5",
       "lean_decls": [
         "PaperS2.factorial_face",
         "PaperS2.factorial_six"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{factorial\\_face, factorial\\_six}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 576,
-      "label": "ssec:spectrum",
-      "section": "Expansion of the spectrum mediated between $i$ and $\\golden$",
-      "claim": "$3\\,\\golden^{\\mu p\\lng}=3\\,(\\sqrt2)^{p}$.",
+      "label": "prop:mersenne-med",
+      "equation": "\\golden^n=F_n\\golden+F_{n-1}\\quad(\\text{additive}),\\qquad 3\\,\\golden^{\\sigma(p)}=2^{p}\\quad(\\text{Mersenne}).",
+      "section": "2.7",
       "lean_decls": [
         "PaperS2.mersenne_mediated"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{mersenne\\_mediated}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 584,
-      "label": "eq:additive-mult",
-      "section": "Expansion of the spectrum mediated between $i$ and $\\golden$",
-      "claim": "multiplicative on $(\\Z/5\\Z)^{\\times}$, with $\\sum_{a=0}^{4}\\chi_5(a)=0$.",
+      "label": "eq:chi5-values",
+      "equation": "\\chi_5(0)=0,\\qquad \\chi_5(1)=\\chi_5(4)=+1,\\qquad \\chi_5(2)=\\chi_5(3)=-1,",
+      "section": "2.7",
       "lean_decls": [
         "chi5",
         "chi5_even",
         "chi5_mul_on_units",
         "chi5_sum_zero"
       ],
-      "numeric_checks": [
-        "test_arithmetic.py:test_multiplicative",
-        "test_arithmetic.py:test_zero_sum"
+      "tex_tags": [
+        "\\ProofWitnessBlock{chi5, chi5\\_even, chi5\\_mul\\_on\\_units, chi5\\_sum\\_zero}"
       ],
-      "lit_refs": []
+      "numerical": "test_arithmetic.py::test_sum"
     },
     {
-      "chapter": "02-methods",
-      "line": 598,
-      "label": "prop:pentagon-chi5",
-      "section": "Expansion of the spectrum mediated between $i$ and $\\golden$",
-      "claim": "Proof block in 02-methods",
+      "label": "eq:chi5-pentagon",
+      "equation": "\\bigl|2\\cos(\\pi a/5)\\bigr|=\\golden^{\\chi_5(a)}, \\qquad\\text{equivalently}\\qquad \\chi_5(a)=\\frac{\\log\\bigl|2\\cos(\\pi a/5)\\bigr|}{\\log\\golden}, \\qquad a=1,2,3,4 .",
+      "section": "2.7",
       "lean_decls": [
         "norm_cosine_phi",
         "PaperS2.phi_eq_two_cos_pi_fifth"
       ],
-      "numeric_checks": [
-        "test_core_identities.py:test_phi_identity"
+      "tex_tags": [
+        "\\ProofWitnessBlock{norm\\_cosine\\_phi, phi\\_eq\\_two\\_cos\\_pi\\_fifth}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 615,
-      "label": "prop:log-signature",
-      "section": null,
-      "claim": "read in , and $\\golden$ is the value in both.",
+      "label": "prop:fib-criterion",
+      "equation": "\\sum_{a=1}^{4}\\chi_5(a)\\,\\log\\bigl(2\\sin(\\pi a/5)\\bigr)=-2\\log\\golden .",
+      "section": "2.7",
       "lean_decls": [
         "sin_ratio_eq_two_cos",
         "pentagon_log_signature"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{sin\\_ratio\\_eq\\_two\\_cos, pentagon\\_log\\_signature}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 629,
-      "label": "prop:fib-criterion",
-      "section": null,
-      "claim": "$\\OK$.  for the thirteen primes decided in Lean and the twenty-three verified numerically;",
+      "label": "eq:fib-criterion",
+      "equation": "F_q\\;\\equiv\\;\\Bigl(\\frac{q}{5}\\Bigr)\\;=\\;\\chi_5(q)\\pmod q ,",
+      "section": "2.7",
       "lean_decls": [
-        "PaperS2.mersenne_bridge",
+        "PaperS3b.mersenne_bridge",
         "PaperS2.phi_pow_fib"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{mersenne\\_bridge, phi\\_pow\\_fib}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 652,
-      "label": "def:golden-monoid",
-      "section": "The rings as a tower (our reinterpretation of the $\\Lambda$-structure of Borger)",
-      "claim": "Proposition~ exploits.",
+      "label": "def:frobenius",
+      "equation": "\\alpha^{\\,n+1}=F_{n+1}\\,\\alpha+F_n\\qquad(n\\ge0),",
+      "section": "2.8",
       "lean_decls": [
         "PaperS2.binet_general",
         "PaperS2.phi_pow_fib"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{binet\\_general, phi\\_pow\\_fib}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 663,
-      "label": "def:frobenius",
-      "section": "The rings as a tower (our reinterpretation of the $\\Lambda$-structure of Borger)",
-      "claim": "by .",
+      "label": "rmk:psi-two",
+      "equation": "\\psi_p:\\langle\\golden\\rangle\\to\\langle\\golden\\rangle,\\qquad \\psi_p(\\golden^{\\,n})=\\golden^{\\,pn}, \\qquad\\text{so}\\qquad \\psi_p(\\golden)=\\golden^{\\,p}=F_p\\,\\golden+F_{p-1}",
+      "section": "2.8",
       "lean_decls": [
         "PaperS2.psi_golden",
         "PaperS2.psi_on_powers",
         "PaperS2.psi_golden_fib"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{psi\\_golden, psi\\_on\\_powers, psi\\_golden\\_fib}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 684,
-      "label": "prop:psi-functorial",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:psi-functorial",
+      "equation": "\\psi_p\\circ\\psi_q=\\psi_{pq},\\qquad \\psi_1=\\mathrm{id},",
+      "section": "2.8",
       "lean_decls": [
         "PaperS2.psi_functorial",
         "PaperS2.psi_one"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "02-methods",
-      "line": 708,
-      "label": "ssec:zeta",
-      "section": "The zeta values, the Euler product, and the completed zeta",
-      "claim": "%",
-      "lean_decls": [
-        "UNMAPPED:eq:local-dedekind"
+      "tex_tags": [
+        "\\ProofWitnessBlock{psi\\_functorial, psi\\_one}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": "test_arithmetic.py::test_sum"
     },
     {
-      "chapter": "02-methods",
-      "line": 711,
-      "label": "ssec:zeta",
-      "section": "The zeta values, the Euler product, and the completed zeta",
-      "claim": "$\\zeta(2)=\\pi^2/6$ (Euler).",
+      "label": "thm:basel",
+      "equation": "\\zeta(s)=\\frac{\\zeta_{\\Q(\\sqrt5)}(s)}{L(s,\\chi_5)},\\qquad L(1,\\chi_5)=\\frac{2\\log\\golden}{\\sqrt5}.",
+      "section": "2.9",
       "lean_decls": [
         "PaperS2.basel_value"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "02-methods",
-      "line": 721,
-      "label": "thm:basel",
-      "section": "The zeta values, the Euler product, and the completed zeta",
-      "claim": "Proof block in 02-methods",
-      "lean_decls": [
-        "PaperS2.even_zeta_bernoulli"
+      "tex_tags": [
+        "\\ProofWitnessBlock{eq:local-dedekind}",
+        "\\ProofWitnessBlock{basel\\_value}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 746,
-      "label": "prop:euler-product",
-      "section": "The zeta values, the Euler product, and the completed zeta",
-      "claim": "by unique factorisation in $\\Z$.",
+      "label": "eq:even-zeta",
+      "equation": "\\zeta(2k)=(-1)^{k+1}\\frac{B_{2k}\\,(2\\pi)^{2k}}{2\\,(2k)!},",
+      "section": "2.9",
+      "lean_decls": [
+        "PaperS2.even_zeta_bernoulli",
+        "PaperS3a.T"
+      ],
+      "tex_tags": [
+        "\\ProofWitnessBlock{even\\_zeta\\_bernoulli}",
+        "\\NumericalWitnessBlock{thm:basel}"
+      ],
+      "numerical": ""
+    },
+    {
+      "label": "eq:euler-product",
+      "equation": "\\sum_{n\\ge1}n^{-s}=\\zeta(s)=\\prod_{p}\\big(1-p^{-s}\\big)^{-1},",
+      "section": "2.9",
       "lean_decls": [
         "PCF.CW5.regge_dirichlet_eq_zeta",
         "PCF.CW5.regge_tower_is_euler_product"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{regge\\_dirichlet\\_eq\\_zeta, regge\\_tower\\_is\\_euler\\_product}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 758,
-      "label": "def:zetaK",
-      "section": null,
-      "claim": "here rather than assumed.",
+      "label": "prop:local-factors",
+      "equation": "\\zeta_K(s)\\;=\\;\\sum_{\\mathfrak a}N(\\mathfrak a)^{-s} \\;=\\;\\prod_{\\mathfrak p}\\bigl(1-N(\\mathfrak p)^{-s}\\bigr)^{-1}, \\qquad \\Re s>1,",
+      "section": "2.9",
       "lean_decls": [
         "ideal_norm_k",
-        "UNMAPPED:ideal_euler_k",
+        "ideal_euler_k",
         "euler_from_ideals_K"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{ideal\\_norm\\_k, ideal\\_euler\\_k, euler\\_from\\_ideals\\_K}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 791,
-      "label": "eq:LambdaK",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "prop:euler-colimit",
+      "equation": "f_p(s)=(1-u)^{-1}\\cdot\\bigl(1-\\chi_5(p)u\\bigr)^{-1},",
+      "section": "2.9",
       "lean_decls": [
         "degree_formula_K",
         "ideal_norm_values_K",
@@ -695,200 +681,174 @@
         "local_dedekind_split_K",
         "local_dedekind_inert_K"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "02-methods",
-      "line": 827,
-      "label": "eq:theta-lattice",
-      "section": null,
-      "claim": "Proof block in 02-methods",
-      "lean_decls": [
-        "gamma_r_from_tate"
+      "tex_tags": [
+        "\\ProofWitnessBlock{degree\\_formula\\_K, ideal\\_norm\\_values\\_K, euler\\_from\\_ideals\\_K, von\\_mangoldt\\_k\\_values, local\\_dedekind\\_ramified\\_K, local\\_dedekind\\_split\\_K, local\\_dedekind\\_inert\\_K}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 829,
       "label": "eq:theta-lattice",
-      "section": null,
-      "claim": "%",
+      "equation": "",
+      "section": "2.9",
       "lean_decls": [
+        "gamma_r_from_tate",
         "theta_from_jacobi",
         "theta_fixed_point_unique"
       ],
-      "numeric_checks": [
-        "test_places.py:test_theta_fixed_point"
+      "tex_tags": [
+        "\\ProofWitnessBlock{gamma\\_r\\_from\\_tate, theta\\_from\\_jacobi, theta\\_fixed\\_point\\_unique}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 851,
-      "label": "rmk:eta-i",
-      "section": null,
-      "claim": "with $\\golden^{\\mu\\lng}=\\sqrt2$ of Proposition~.  (the two classical",
-      "lean_decls": [
-        "PaperS2.sqrt2_mediation",
-        "PaperS2.sqrt3_mediation"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "02-methods",
-      "line": 871,
-      "label": "eq:places-product",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "rmk:places-F1",
+      "equation": "",
+      "section": "2.9",
       "lean_decls": [
         "framework_partition",
         "framework_partition_eq_completed_zeta",
         "places_assembly"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{framework\\_partition, framework\\_partition\\_eq\\_completed\\_zeta, places\\_assembly}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 889,
-      "label": "rmk:places-F1",
-      "section": null,
-      "claim": "type~. Proposition~ supplies it.",
+      "label": "thm:funct-eq",
+      "equation": "",
+      "section": "2.9",
       "lean_decls": [
         "chi5_even"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{chi5\\_even}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 907,
-      "label": "eq:funct-eq",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:selfdual-line",
+      "equation": "\\{s\\in\\C:\\ \\Re s=\\Re(1-s)\\}=\\{s\\in\\C:\\ \\Re s=\\tfrac12\\}",
+      "section": "2.9",
       "lean_decls": [
         "functional_equation_fixed_line",
         "fixed_line_is_face_phi",
         "places_assembly"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{functional\\_equation\\_fixed\\_line, fixed\\_line\\_is\\_face\\_phi, places\\_assembly}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 958,
-      "label": "prop:class-number",
-      "section": "The fundamental formula and the entropy bridge",
-      "claim": "Proof block in 02-methods",
+      "label": "eq:hK",
+      "equation": "h_K=1 .",
+      "section": "2.10",
       "lean_decls": [
         "class_number_one_K",
         "minkowski_bound_lt_two"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{class\\_number\\_one\\_K, minkowski\\_bound\\_lt\\_two}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 974,
-      "label": "thm:L1",
-      "section": "The fundamental formula and the entropy bridge",
-      "claim": "Proof block in 02-methods",
+      "label": "thm:entropy-bridge",
+      "equation": "\\lim_{s\\to1}(s-1)\\zeta_K(s)=\\frac{2^{r_1}(2\\pi)^{r_2}h_KR_K}{w\\sqrt{\\Delta_K}} =\\frac{4\\cdot1\\cdot\\log\\golden}{2\\sqrt5}=\\frac{2\\log\\golden}{\\sqrt5},",
+      "section": "2.10",
       "lean_decls": [
         "L1_from_class_number_formula",
         "L1_eq_period_over_pi_sqrt5"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{L1\\_from\\_class\\_number\\_formula, L1\\_eq\\_period\\_over\\_pi\\_sqrt5}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 991,
-      "label": "thm:entropy-bridge",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "rmk:regulator-roles",
+      "equation": "",
+      "section": "2.10",
       "lean_decls": [
         "lambda_log_mul_regulator",
         "sqrt5_half_L1_eq_regulator",
         "entropy_bridge"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{lambda\\_log\\_mul\\_regulator, sqrt5\\_half\\_L1\\_eq\\_regulator, entropy\\_bridge}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1010,
-      "label": "prop:entropy-max",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:entropy-max",
+      "equation": "H(p)=-p\\log_2p-(1-p)\\log_2(1-p)\\;\\le\\;1,",
+      "section": "2.10",
       "lean_decls": [
         "PCFEntropyDOF.entropy_slack_nonneg",
         "PCFEntropyDOF.binary_entropy_le_one",
-        "CWfig.binary_entropy_half"
+        "PCFEntropyDOF.binary_entropy_half"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{entropy\\_slack\\_nonneg, binary\\_entropy\\_le\\_one, binary\\_entropy\\_half}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1029,
-      "label": "thm:zeta-odd",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:zeta-odd",
+      "equation": "\\zeta(2k+1)=\\frac{\\zeta_K(2k+1)}{L(2k+1,\\chi_5)} .",
+      "section": "2.10",
       "lean_decls": [
         "odd_zeta_ratio"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{odd\\_zeta\\_ratio}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1092,
       "label": "rmk:no-landscape",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "equation": "",
+      "section": "2.10",
       "lean_decls": [
         "PaperS2.mu_diagram_commutes",
         "PaperS2.mu_faces_pairwise_eq"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{mu\\_diagram\\_commutes, mu\\_faces\\_pairwise\\_eq}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1120,
-      "label": "lem:s3-orders",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "thm:sigma-diagram",
+      "equation": "\\frac{|{\\rm rot}\\,S_3|^2}{|S_3|}=\\frac{3^2}{6}=\\frac{9}{6}=\\tfrac32 ,",
+      "section": "2.10",
       "lean_decls": [
         "PaperS2.factorial_six",
         "PaperS2.s3_orders",
         "PaperS2.sigma_geom_from_S3"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{factorial\\_six, s3\\_orders, sigma\\_geom\\_from\\_S3}"
+      ],
+      "numerical": "test_arithmetic.py::test_sum"
     },
     {
-      "chapter": "02-methods",
-      "line": 1128,
-      "label": "eq:sigma-geom",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "thm:master",
+      "equation": "",
+      "section": "2.10",
       "lean_decls": [
         "PaperS2.sigma_diagram_commutes"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{sigma\\_diagram\\_commutes}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1136,
-      "label": "thm:sigma-diagram",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "rmk:sum-places",
+      "equation": "",
+      "section": "2.10",
       "lean_decls": [
         "PaperS2.section2_master",
         "places_assembly",
@@ -898,27 +858,27 @@
         "s_duality_fixed_point_unique",
         "theta_from_jacobi"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{section2\\_master, places\\_assembly, fixed\\_line\\_is\\_face\\_phi, functional\\_equation\\_fixed\\_line, s\\_duality\\_exact, s\\_duality\\_fixed\\_point\\_unique, theta\\_from\\_jacobi}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1185,
-      "label": "ssec:spacings",
-      "section": "The conductor, the scale, and the unit of spacing",
-      "claim": "Proof block in 02-methods",
+      "label": "eq:conductor",
+      "equation": "\\operatorname{lcm}(4,5)=20,\\qquad \\gcd(4,5)=1 .",
+      "section": "2.12",
       "lean_decls": [
         "conductor_is_derived"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{conductor\\_is\\_derived}"
+      ],
+      "numerical": "test_spectral.py::test_tan_equals_tower"
     },
     {
-      "chapter": "02-methods",
-      "line": 1203,
-      "label": "eq:two-is-i",
-      "section": "The conductor, the scale, and the unit of spacing",
-      "claim": "Proof block in 02-methods",
+      "label": "prop:attribution",
+      "equation": "",
+      "section": "2.12",
       "lean_decls": [
         "FourCocone.two_sq_eq_neg_one_mod_five",
         "FourCocone.five_splits_gaussian",
@@ -926,15 +886,15 @@
         "FourCocone.binary_period_lives_in_the_five_component",
         "FourCocone.four_cocone"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{two\\_sq\\_eq\\_neg\\_one\\_mod\\_five, five\\_splits\\_gaussian, conductor\\_four\\_is\\_order\\_of\\_turn, binary\\_period\\_lives\\_in\\_the\\_five\\_component, four\\_cocone}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1219,
-      "label": "prop:attribution",
-      "section": "The conductor, the scale, and the unit of spacing",
-      "claim": "Proof block in 02-methods",
+      "label": "prop:scale",
+      "equation": "",
+      "section": "2.12",
       "lean_decls": [
         "ConductorAttribution.conductor_splits",
         "ConductorAttribution.fiber_mod4",
@@ -944,28 +904,28 @@
         "ConductorAttribution.mod5_does_not_determine_chi4",
         "ConductorAttribution.conductor_attribution"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{conductor\\_splits, fiber\\_mod4, fiber\\_mod5, chi5\\_is\\_the\\_mod5\\_fiber, mod4\\_does\\_not\\_determine\\_chi5, mod5\\_does\\_not\\_determine\\_chi4, conductor\\_attribution}"
+      ],
+      "numerical": "test_repulsion.py::test_count"
     },
     {
-      "chapter": "02-methods",
-      "line": 1231,
-      "label": "prop:scale",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "prop:envelope",
+      "equation": "q_1\\neq q_2 \\implies \\mathrm{sc}(q_1,T)\\neq \\mathrm{sc}(q_2,T).",
+      "section": "2.12",
       "lean_decls": [
         "spacing_scale",
         "scale_injective_in_conductor"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{spacing\\_scale, scale\\_injective\\_in\\_conductor}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1245,
-      "label": "prop:envelope",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "prop:li-modulus",
+      "equation": "\\log\\frac{qT}{2\\pi e}=\\underbrace{\\log q}_{\\text{field}}+\\log T -\\underbrace{\\log 2\\pi e}_{\\text{universal}},",
+      "section": "2.12",
       "lean_decls": [
         "envelope",
         "envelope_splits",
@@ -974,341 +934,300 @@
         "derived_unit",
         "the_unit_is_derived"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{envelope, envelope\\_splits, field\\_part\\_distinguishes, counting\\_law, derived\\_unit, the\\_unit\\_is\\_derived}"
+      ],
+      "numerical": "test_spectral.py::test_gap"
     },
     {
-      "chapter": "02-methods",
-      "line": 1254,
-      "label": "prop:li-modulus",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "eq:li-modulus",
+      "equation": "\\Bigl\\lvert 1-\\tfrac1\\rho\\Bigr\\rvert=1 \\iff \\Re\\rho=\\tfrac12 :",
+      "section": "2.12",
       "lean_decls": [
         "li_modulus_on_line"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{li\\_modulus\\_on\\_line}"
+      ],
+      "numerical": "test_spectral.py::test_gap"
     },
     {
-      "chapter": "02-methods",
-      "line": 1274,
-      "label": "def:sdual-mate",
-      "section": "The extreme case, and the individual the ensemble replaces",
-      "claim": "Proof block in 02-methods",
+      "label": "prop:line-fixed",
+      "equation": "\\sigma\\tau(\\rho)=1-\\bar\\rho ,",
+      "section": "2.13",
       "lean_decls": [
         "sdual_mate",
         "sdual_conj_commute",
         "sdual_mate_involutive"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{sdual\\_mate, sdual\\_conj\\_commute, sdual\\_mate\\_involutive}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1288,
-      "label": "prop:line-fixed",
-      "section": "The extreme case, and the individual the ensemble replaces",
-      "claim": "Proof block in 02-methods",
+      "label": "prop:arity-two",
+      "equation": "\\sigma\\tau(\\rho)=\\rho \\iff \\Re\\rho=\\golden^{-\\lng}.",
+      "section": "2.13",
       "lean_decls": [
         "sdual_mate_im",
         "sdual_mate_re",
         "sdual_mate_fixed_iff"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{sdual\\_mate\\_im, sdual\\_mate\\_re, sdual\\_mate\\_fixed\\_iff}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1298,
-      "label": "prop:arity-two",
-      "section": "The extreme case, and the individual the ensemble replaces",
-      "claim": "Proof block in 02-methods",
+      "label": "prop:two-readings",
+      "equation": "",
+      "section": "2.13",
       "lean_decls": [
         "extreme_case_is_binary"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{extreme\\_case\\_is\\_binary}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1309,
-      "label": "prop:two-readings",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "def:repulsion",
+      "equation": "\\sigma\\tau(\\rho)\\neq\\rho \\iff \\bigl\\lvert1-\\tfrac1\\rho\\bigr\\rvert\\neq1 .",
+      "section": "2.13",
       "lean_decls": [
         "binary_iff_radial"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{binary\\_iff\\_radial}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1341,
-      "label": "fig:spacing-histogram",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "thm:weak-form",
+      "equation": "",
+      "section": "2.13",
       "lean_decls": [
         "repulsion_excludes_zero_spacing",
         "repulsion_excludes_the_extreme_case"
       ],
-      "numeric_checks": [
-        "test_repulsion.py:test_no_very_small_spacings"
+      "tex_tags": [
+        "\\ProofWitnessBlock{repulsion\\_excludes\\_zero\\_spacing, repulsion\\_excludes\\_the\\_extreme\\_case}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1352,
-      "label": "thm:weak-form",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "label": "prop:repulsion-modulus",
+      "equation": "\\bigl(\\forall\\rho\\in Z:\\ \\Re\\rho=\\golden^{-\\lng}\\bigr) \\iff \\text{no two distinct elements of } Z \\text{ share an ordinate}.",
+      "section": "2.13",
       "lean_decls": [
-        "E_iff_no_shared_ordinate"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "02-methods",
-      "line": 1358,
-      "label": "thm:weak-form",
-      "section": null,
-      "claim": "Proof block in 02-methods",
-      "lean_decls": [
+        "E_iff_no_shared_ordinate",
         "repulsion_gives_the_modulus"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{E\\_iff\\_no\\_shared\\_ordinate}",
+        "\\ProofWitnessBlock{repulsion\\_gives\\_the\\_modulus}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "02-methods",
-      "line": 1430,
+      "label": "thm:zeros-apex",
+      "equation": "",
+      "section": "2.13",
+      "lean_decls": [
+        "Repulsion"
+      ],
+      "tex_tags": [
+        "\\NumericalWitnessBlock{prop:repulsion-modulus}"
+      ],
+      "numerical": ""
+    },
+    {
       "label": "rmk:not-the-tower-spacing",
-      "section": null,
-      "claim": "Proof block in 02-methods",
+      "equation": "",
+      "section": "2.13",
       "lean_decls": [
         "tower_spacing_is_the_regulator"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{tower\\_spacing\\_is\\_the\\_regulator}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 35,
-      "label": "eq:gaussian",
-      "section": "Derivations",
-      "claim": "Proof block in 03-derivations",
+      "label": "eq:polyakov",
+      "equation": "",
+      "section": "3.1",
       "lean_decls": [
         "selfdual_gaussian_unique"
       ],
-      "numeric_checks": [
-        "test_places.py:test_self_dual_at_pi"
+      "tex_tags": [
+        "\\ProofWitnessBlock{selfdual\\_gaussian\\_unique}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 55,
-      "label": "eq:polyakov",
-      "section": "The fundamental object in physics",
-      "claim": "Proof block in 03-derivations",
+      "label": "eq:schwinger",
+      "equation": "",
+      "section": "3.1",
       "lean_decls": [
         "PaperMobius.fibre_monodromy",
         "PaperMobius.fibre_reflection_order_two",
         "PaperMobius.fibre_independent_of_base"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{fibre\\_monodromy, fibre\\_reflection\\_order\\_two, fibre\\_independent\\_of\\_base}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 88,
       "label": "eq:spectral-invariants",
-      "section": "The meta-invariant: the holographic quantum",
-      "claim": "route  gives $n^{2}/6$, which meets $\\tfrac32$ only at $n=3$.",
+      "equation": "d=3\\;(=|S_{3}|=3!=6),\\qquad \\mu=\\tfrac12,\\qquad \\sigma=\\tfrac32,\\qquad \\sigma+\\mu=2 .",
+      "section": "3.2",
       "lean_decls": [
         "CW5FaceLinks.three_halves_unique",
         "CW5FaceLinks.arity_control_three"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{three\\_halves\\_unique, arity\\_control\\_three}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 123,
       "label": "eq:spectral-surface",
-      "section": null,
-      "claim": "Proof block in 03-derivations",
+      "equation": "",
+      "section": "3.2",
       "lean_decls": [
         "CW5Additions.spectral_angle_tan",
         "CW5Additions.spectral_angle_tower_ratio"
       ],
-      "numeric_checks": [
-        "test_spectral.py:test_tan_equals_tower",
-        "test_spectral.py:test_ratio_is_phi"
+      "tex_tags": [
+        "\\ProofWitnessBlock{spectral\\_angle\\_tan, spectral\\_angle\\_tower\\_ratio}"
       ],
-      "lit_refs": []
+      "numerical": "test_spectral.py::test_tan_equals_tower"
     },
     {
-      "chapter": "03-derivations",
-      "line": 198,
-      "label": "eq:dim-chain",
-      "section": "The object as generator of the tower and the amplitudes",
-      "claim": "Proof block in 03-derivations",
+      "label": "eq:tower-modes",
+      "equation": "\\golden^{\\,\\mu\\lng}=\\sqrt{2}\\ \\ (\\text{binary}),\\qquad \\golden^{\\,\\mu\\log_{\\golden}3}=\\sqrt{3}\\ \\ (\\text{ternary}).",
+      "section": "3.3",
       "lean_decls": [
         "PaperS2.sqrt2_mediation",
-        "PaperS2.sqrt3_mediation"
+        "PaperS2.sqrt3_mediation",
+        "PaperS3a.T"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{sqrt2\\_mediation, sqrt3\\_mediation}",
+        "\\NumericalWitnessBlock{eq:tower-modes}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 219,
-      "label": "rmk:fib-adjacent",
-      "section": null,
-      "claim": "Proof block in 03-derivations",
+      "label": "rmk:mass-operator",
+      "equation": "",
+      "section": "3.3",
       "lean_decls": [
         "CW5Additions.fib_adjacent_le_one",
-        "CW5Additions.nmodes_six_ne_fib"
+        "CW5Additions.nmodes_six_ne_fib",
+        "PaperS2.fib"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{fib\\_adjacent\\_le\\_one, nmodes\\_six\\_ne\\_fib}",
+        "\\NumericalWitnessBlock{thm:fib-min}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 232,
-      "label": "rmk:mass-operator",
-      "section": null,
-      "claim": "Proof block in 03-derivations",
+      "label": "eq:mass-operator",
+      "equation": "H\\lvert\\sigma\\rangle=m_0\\,\\golden^{\\sigma},\\qquad \\mathrm{spec}\\,H=\\{0\\}\\cup\\{m_0\\golden^{\\sigma}\\}_{\\sigma\\ge0},",
+      "section": "3.3",
       "lean_decls": [
         "tower_ham_is_hermitian",
         "tower_ham_bounded_below"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{tower\\_ham\\_is\\_hermitian, tower\\_ham\\_bounded\\_below}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 281,
       "label": "rmk:tower-euler",
-      "section": null,
-      "claim": "Proof block in 03-derivations",
+      "equation": "",
+      "section": "3.3",
       "lean_decls": [
         "PCF.CW5.regge_dirichlet_eq_zeta",
         "PCF.CW5.regge_tower_is_euler_product"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{regge\\_dirichlet\\_eq\\_zeta, regge\\_tower\\_is\\_euler\\_product}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 301,
-      "label": "eq:pcf-partition",
-      "section": null,
-      "claim": "read at $\\tau=i$ and at general $t$.",
+      "label": "rmk:eta-loop",
+      "equation": "",
+      "section": "3.3",
       "lean_decls": [
         "theta_from_jacobi",
         "theta_fixed_point_unique"
       ],
-      "numeric_checks": [
-        "test_places.py:test_theta_fixed_point"
+      "tex_tags": [
+        "\\ProofWitnessBlock{theta\\_from\\_jacobi, theta\\_fixed\\_point\\_unique}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 310,
       "label": "eq:gamma-pole",
-      "section": null,
-      "claim": "generations---which remains structural.  The ultraviolet is regulated in two complementary",
+      "equation": "",
+      "section": "3.3",
       "lean_decls": [
         "PCF.CW5.colour_ratio"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{colour\\_ratio}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 365,
       "label": "eq:throat",
-      "section": "All AdS/CFT from a single microstate, at each level",
-      "claim": "Proof block in 03-derivations",
+      "equation": "ds^{2}=e^{2A(z)}\\,\\eta_{\\mu\\nu}\\,dx^{\\mu}dx^{\\nu}+dz^{2}, \\qquad z(\\sigma)=\\golden^{\\sigma}\\ \\text{of \\eqref{eq:tower-modes}}.",
+      "section": "3.4",
       "lean_decls": [
         "CurvatureCoeffs.R_scalar_pcf",
         "CurvatureCoeffs.lambda5_pcf",
         "CurvatureCoeffs.G_AB_pcf",
-        "GravitySectorPCF.BF_value"
-      ],
-      "numeric_checks": [
-        "test_gravity.py:test_ricci_scalar",
-        "test_gravity.py:test_lambda5",
-        "test_gravity.py:test_einstein_tensor",
-        "test_gravity.py:test_bf_value"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "03-derivations",
-      "line": 368,
-      "label": "eq:throat",
-      "section": "All AdS/CFT from a single microstate, at each level",
-      "claim": "Proof block in 03-derivations",
-      "lean_decls": [
+        "GravitySectorPCF.BF_value",
         "CWfig.hopf_latitude",
         "CWfig.hopf_from_clifford"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "03-derivations",
-      "line": 373,
-      "label": null,
-      "section": "All AdS/CFT from a single microstate, at each level",
-      "claim": "$H_5=\\{0,1\\}^5$, $|H_5|=2^{5}$",
-      "lean_decls": [
-        "V11fig.hypercube_card"
+      "tex_tags": [
+        "\\ProofWitnessBlock{R\\_scalar\\_pcf, lambda5\\_pcf, G\\_AB\\_pcf, BF\\_value}",
+        "\\ProofWitnessBlock{hopf\\_latitude, hopf\\_from\\_clifford}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 376,
-      "label": null,
-      "section": "All AdS/CFT from a single microstate, at each level",
-      "claim": "$S(\\sigma)=\\pi\\golden^{\\sigma}$ .",
+      "label": "eq:isometry",
+      "equation": "",
+      "section": "3.4",
       "lean_decls": [
+        "V11fig.hypercube_card",
         "ConductorAttribution.conductor_attribution",
         "FourCocone.four_cocone",
-        "PaperS3a.S_tower"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "03-derivations",
-      "line": 400,
-      "label": "fig:ads-ladder",
-      "section": null,
-      "claim": ";",
-      "lean_decls": [
+        "PaperS2.S_tower",
         "V11fig.eisenstein_omega",
         "PCFEntropyDOF.omega_eigenvalues",
         "PCFEntropyDOF.a2_minimal_vectors_exactly_six"
       ],
-      "numeric_checks": [
-        "test_fks.py:test_exactly_six"
+      "tex_tags": [
+        "\\ProofWitnessBlock{hypercube\\_card, conductor\\_attribution, four\\_cocone, S\\_tower}",
+        "\\ProofWitnessBlock{eisenstein\\_omega, omega\\_eigenvalues, a2\\_minimal\\_vectors\\_exactly\\_six}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 408,
-      "label": null,
-      "section": null,
-      "claim": "of  enters cited~.",
+      "label": "eq:tower-autosimilar",
+      "equation": "",
+      "section": "3.4",
       "lean_decls": [
         "CWfig.holographic_area",
         "CWfig.hopf_from_clifford",
@@ -1322,657 +1241,390 @@
         "V11fig.eisenstein_omega",
         "V11fig.hypercube_card"
       ],
-      "numeric_checks": [
-        "test_gravity.py:test_einstein_tensor",
-        "test_gravity.py:test_lambda5",
-        "test_gravity.py:test_ricci_scalar",
-        "test_gravity.py:test_bf_value",
-        "test_fks.py:test_exactly_six"
+      "tex_tags": [
+        "\\ProofWitnessBlock{holographic\\_area, hopf\\_from\\_clifford, hopf\\_latitude, G\\_AB\\_pcf, lambda5\\_pcf, R\\_scalar\\_pcf, BF\\_value, omega\\_eigenvalues, a2\\_minimal\\_vectors\\_exactly\\_six, eisenstein\\_omega, hypercube\\_card}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 432,
-      "label": "fig:isometry-algebra",
-      "section": null,
-      "claim": "(Remark~):",
+      "label": "eq:brown-henneaux",
+      "equation": "|\\Om|_{\\sigma}=\\tfrac12\\qquad\\forall\\,\\sigma .",
+      "section": "3.4",
       "lean_decls": [
         "bulk_boundary_isometry",
         "V11fig.spectral_uniqueness"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{bulk\\_boundary\\_isometry, spectral\\_uniqueness, bulk\\_boundary\\_isometry}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 468,
-      "label": "ssec:web",
-      "section": null,
-      "claim": "Proof block in 03-derivations",
+      "label": "eq:shared-signature",
+      "equation": "",
+      "section": "3.4",
       "lean_decls": [
         "PaperS2.certainty_principle"
       ],
-      "numeric_checks": [
-        "test_core_identities.py:test_certainty_product"
+      "tex_tags": [
+        "\\ProofWitnessBlock{certainty\\_principle}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 500,
-      "label": "eq:bridge-S",
-      "section": "The M-theory type duality web from the microstate",
-      "claim": "\\quad & .",
+      "label": "eq:bridge-fixed",
+      "equation": "",
+      "section": "3.5",
       "lean_decls": [
         "SpectralFlowPCF.c_tendsto_two"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitness{c\\_tendsto\\_two}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 510,
-      "label": "eq:bridge-T",
-      "section": "The M-theory type duality web from the microstate",
-      "claim": "Proof block in 03-derivations",
+      "label": "rmk:S-is-involution",
+      "equation": "",
+      "section": "3.5",
       "lean_decls": [
         "theta_from_jacobi",
         "theta_fixed_point_unique"
       ],
-      "numeric_checks": [
-        "test_places.py:test_theta_fixed_point"
+      "tex_tags": [
+        "\\ProofWitnessBlock{theta\\_from\\_jacobi, theta\\_fixed\\_point\\_unique}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 589,
-      "label": null,
-      "section": null,
-      "claim": "% ADD fase 1: respaldo Lean del cociclo",
+      "label": "prop:er-epr",
+      "equation": "",
+      "section": "3.5",
       "lean_decls": [
         "PaperS3a.bridge_cocycle",
         "PaperS3a.bridge_inverse",
         "PaperS3a.bridge_compose"
       ],
-      "numeric_checks": [
-        "test_tower.py:test_cumulative",
-        "test_tower.py:test_inverse",
-        "test_tower.py:test_composition"
+      "tex_tags": [
+        "\\NumericalWitness{eq:obs-swampland}",
+        "\\NumericalWitness{eq:obs-jacobson}",
+        "\\ProofWitnessBlock{bridge\\_cocycle, bridge\\_inverse, bridge\\_compose}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "03-derivations",
-      "line": 628,
-      "label": "cor:bridge-angle",
-      "section": null,
-      "claim": "coincidence.",
+      "label": "eq:bridge-angle",
+      "equation": "",
+      "section": "3.5",
       "lean_decls": [
         "CW5Additions.bridge_eq_tan_form",
         "CW5Additions.bridge_pi_quarter",
         "CW5Additions.spectral_angle_tan"
       ],
-      "numeric_checks": [
-        "test_spectral.py:test_bridge_is_angle",
-        "test_spectral.py:test_tan_equals_tower"
+      "tex_tags": [
+        "\\ProofWitnessBlock{bridge\\_eq\\_tan\\_form, bridge\\_pi\\_quarter, spectral\\_angle\\_tan}"
       ],
-      "lit_refs": []
+      "numerical": "test_spectral.py::test_tan_equals_tower"
     },
     {
-      "chapter": "04-implications",
-      "line": 30,
-      "label": null,
-      "section": "Implications for holography in de Sitter space",
-      "claim": "technical classification: type~I as discrete spectrum (); type~II as an invariant the flow preserves---the trace in",
-      "lean_decls": [
-        "V11fig.eigenvalues_modulus_half",
-        "V11fig.witten_finite_rank"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 31,
-      "label": null,
-      "section": "Implications for holography in de Sitter space",
-      "claim": "concrete form (); type~III as the",
-      "lean_decls": [
-        "V11fig.omega_flow_invariant",
-        "V11fig.tower_scale_group"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 80,
       "label": "eq:obs-interface",
-      "section": "The non-local field and the particle that emerges from it",
-      "claim": "separate (). By the modulus $\\tfrac12$, the loop",
+      "equation": "",
+      "section": "4.2",
       "lean_decls": [
         "PaperMobius.fibre_independent_of_base"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitness{fibre\\_independent\\_of\\_base}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 91,
-      "label": "eq:obs-interface",
-      "section": "The non-local field and the particle that emerges from it",
-      "claim": "%",
+      "label": "prop:obs-nofirewall",
+      "equation": "\\Pi\\colon\\E^{3}\\longrightarrow\\C ,",
+      "section": "4.2",
       "lean_decls": [
         "CW5FaceLinks.projection_closed_form",
-        "PaperS2.epsilon0_from_projection"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 101,
-      "label": "prop:obs-nofirewall",
-      "section": "The non-local field and the particle that emerges from it",
-      "claim": "Proof block in 04-implications",
-      "lean_decls": [
+        "PaperS2.epsilon0_from_projection",
         "V11fig.omega_flow_invariant",
         "PaperS3a.bridge_cocycle",
         "PaperS3a.bridge_inverse",
-        "PaperS3a.bridge_compose"
-      ],
-      "numeric_checks": [
-        "test_tower.py:test_cumulative",
-        "test_tower.py:test_inverse",
-        "test_tower.py:test_composition"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 104,
-      "label": "prop:obs-nofirewall",
-      "section": "The non-local field and the particle that emerges from it",
-      "claim": "every scale, $|\\Om|_\\sigma=\\tfrac12\\ \\forall\\sigma$ (). At",
-      "lean_decls": [
-        "V11fig.omega_flow_invariant"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 108,
-      "label": "prop:obs-nofirewall",
-      "section": "The non-local field and the particle that emerges from it",
-      "claim": ").",
-      "lean_decls": [
-        "PaperS3a.bridge_cocycle",
-        "PaperS3a.bridge_inverse",
-        "PaperS3a.bridge_compose"
-      ],
-      "numeric_checks": [
-        "test_tower.py:test_cumulative",
-        "test_tower.py:test_inverse",
-        "test_tower.py:test_composition"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 118,
-      "label": null,
-      "section": null,
-      "claim": ".",
-      "lean_decls": [
+        "PaperS3a.bridge_compose",
         "V11fig.cpt_swaps_P_to_F",
         "V11fig.cpt_fixes_C",
         "V11fig.cpt_involution",
-        "V11fig.cpt_preserves_modulus"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 124,
-      "label": null,
-      "section": null,
-      "claim": "$|\\Om|_\\sigma=\\tfrac12$. .",
-      "lean_decls": [
+        "V11fig.cpt_preserves_modulus",
         "V11fig.eisenstein_cube",
         "V11fig.omega_conj"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{projection\\_closed\\_form, epsilon0\\_from\\_projection}",
+        "\\ProofWitnessBlock{omega\\_flow\\_invariant, bridge\\_cocycle, bridge\\_inverse, bridge\\_compose}",
+        "\\ProofWitness{omega\\_flow\\_invariant}",
+        "\\ProofWitnessBlock{bridge\\_cocycle, bridge\\_inverse, bridge\\_compose}",
+        "\\ProofWitnessBlock{cpt\\_swaps\\_P\\_to\\_F, cpt\\_fixes\\_C, cpt\\_involution, cpt\\_preserves\\_modulus}",
+        "\\ProofWitnessBlock{eisenstein\\_cube, omega\\_conj}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 133,
-      "label": null,
-      "section": null,
-      "claim": "(\\S; ). The densification of",
+      "label": "eq:obs-spinstar",
+      "equation": "",
+      "section": "4.2",
       "lean_decls": [
         "CurvatureCoeffs.R_scalar_pcf",
-        "CurvatureCoeffs.R_AB_einstein"
-      ],
-      "numeric_checks": [
-        "test_gravity.py:test_ricci_scalar",
-        "test_gravity.py:test_ricci_tensor"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 138,
-      "label": null,
-      "section": null,
-      "claim": "\\S ().",
-      "lean_decls": [
-        "SitterPCF.ds_ricci_from_gauss"
-      ],
-      "numeric_checks": [
-        "test_spectral.py:test_desitter_is_curved"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 163,
-      "label": "eq:obs-spinstar",
-      "section": null,
-      "claim": "(), computed where it is stated. The particle is then a type~I",
-      "lean_decls": [
-        "PaperS2.gamma_half"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 176,
-      "label": "eq:obs-spinstar",
-      "section": null,
-      "claim": "(\\S; ).",
-      "lean_decls": [
+        "CurvatureCoeffs.R_AB_einstein",
+        "SitterPCF.ds_ricci_from_gauss",
+        "PaperS2.gamma_half",
         "PCF.CW5.gauge_dim_su3",
         "CWfig.hopf_from_clifford",
         "CWfig.weinberg_angle_gut"
       ],
-      "numeric_checks": [
-        "test_gauge.py:test_ratio"
+      "tex_tags": [
+        "\\ProofWitness{R\\_scalar\\_pcf, R\\_AB\\_einstein}",
+        "\\ProofWitness{ds\\_ricci\\_from\\_gauss}",
+        "\\ProofWitness{gamma\\_half}",
+        "\\ProofWitnessBlock{gauge\\_dim\\_su3, hopf\\_from\\_clifford, weinberg\\_angle\\_gut}"
       ],
-      "lit_refs": []
+      "numerical": "test_observer.py::test_moran_equation"
     },
     {
-      "chapter": "04-implications",
-      "line": 205,
-      "label": null,
-      "section": null,
-      "claim": ".",
+      "label": "eq:obs-fishertime",
+      "equation": "",
+      "section": "4.3",
       "lean_decls": [
-        "PCF.CW5.cw3_observer_items_core"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 209,
-      "label": "ssec:observer",
-      "section": null,
-      "claim": "integer.  ; .",
-      "lean_decls": [
-        "V11fig.witten_finite_rank"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 215,
-      "label": "ssec:observer",
-      "section": "The particle as observer",
-      "claim": "as the time axis, its square changes sign, $(i\\,t)^2=-t^2$ (), and past and future become the two light cones, with the",
-      "lean_decls": [
+        "cw3_observer_items_core",
+        "V11fig.witten_finite_rank",
         "V11fig.wick_squares_flip_sign",
-        "V11fig.lorentzian_signature_sum"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 216,
-      "label": "ssec:observer",
-      "section": "The particle as observer",
-      "claim": "apex---the present---as observer (). The",
-      "lean_decls": [
+        "V11fig.lorentzian_signature_sum",
         "V11fig.C_fixed_PF_rotate",
         "SitterPCF.causal_trichotomy"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{cw3\\_observer\\_items\\_core}",
+        "\\ProofWitnessBlock{witten\\_finite\\_rank}",
+        "\\ProofWitness{wick\\_squares\\_flip\\_sign, lorentzian\\_signature\\_sum}",
+        "\\ProofWitness{C\\_fixed\\_PF\\_rotate, causal\\_trichotomy}"
+      ],
+      "numerical": "test_observer.py::test_central_charge"
     },
     {
-      "chapter": "04-implications",
-      "line": 276,
       "label": "prop:no-parts",
-      "section": null,
-      "claim": "$|\\Om|=|\\Om|^{2}=1$, $H=0$  (the Schmidt decomposition~) . Hence before observation there are no separable subsystems carrying",
+      "equation": "",
+      "section": "4.3",
       "lean_decls": [
         "no_separable_parts",
         "separable_iff_top_eigenvalue_one"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 297,
-      "label": "ssec:accum",
-      "section": "The tower of information, and the emergence of curved spacetime",
-      "claim": "(), is the maximally mixed state---$\\rho_{\\max}=1$ in CLPW's",
-      "lean_decls": [
-        "CWfig.binary_entropy_half"
+      "tex_tags": [
+        "\\ProofWitness{no\\_separable\\_parts, separable\\_iff\\_top\\_eigenvalue\\_one}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 315,
       "label": "eq:obs-throat",
-      "section": "The tower of information, and the emergence of curved spacetime",
-      "claim": ", here as , and checked numerically ; the equivalence itself is",
+      "equation": "",
+      "section": "4.4",
       "lean_decls": [
-        "PCFEntropyDOF.eps0_Mpcf_pi"
+        "PCFEntropyDOF.binary_entropy_half"
       ],
-      "numeric_checks": [
-        "test_observer.py:test_normalized"
+      "tex_tags": [
+        "\\ProofWitness{binary\\_entropy\\_half}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 329,
-      "label": null,
-      "section": "The tower of information, and the emergence of curved spacetime",
-      "claim": "(by ---the most direct realisation).",
+      "label": "eq:obs-fixedpoint",
+      "equation": "\\beta_g(g^{*},\\lambda^{*})=0\\;\\Longleftrightarrow\\;\\epsz\\Mpcf=\\pi .",
+      "section": "4.4",
       "lean_decls": [
+        "PCFEntropyDOF.eps0_Mpcf_pi",
+        "PaperS3a.T",
         "V11fig.witten_entropy_realized",
         "V11fig.witten_finite_rank",
         "V11fig.witten_two_conjectures"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitness{eps0\\_Mpcf\\_pi}",
+        "\\NumericalWitness{eq:certainty}",
+        "\\ProofWitnessBlock{witten\\_entropy\\_realized, witten\\_finite\\_rank, witten\\_two\\_conjectures}"
+      ],
+      "numerical": "test_observer.py::test_product"
     },
     {
-      "chapter": "04-implications",
-      "line": 335,
-      "label": null,
-      "section": "The tower of information, and the emergence of curved spacetime",
-      "claim": "flow of the static patch at the Gibbons--Hawking temperature ().",
+      "label": "eq:obs-weld",
+      "equation": "",
+      "section": "4.4",
       "lean_decls": [
         "V11fig.tower_scale_group",
         "V11fig.tower_flow_fixes_tau",
         "V11fig.omega_flow_group",
-        "V11fig.omega_flow_invariant"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 342,
-      "label": null,
-      "section": null,
-      "claim": ".",
-      "lean_decls": [
         "V11fig.omega_flow_invariant",
-        "V11fig.tower_scale_group"
+        "PCFEntropyDOF.binary_entropy_half"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{tower\\_scale\\_group, tower\\_flow\\_fixes\\_tau, omega\\_flow\\_group, omega\\_flow\\_invariant}",
+        "\\ProofWitnessBlock{omega\\_flow\\_invariant, tower\\_scale\\_group}",
+        "\\ProofWitnessBlock{binary\\_entropy\\_half}"
+      ],
+      "numerical": "test_observer.py::test_product"
     },
     {
-      "chapter": "04-implications",
-      "line": 347,
-      "label": null,
-      "section": null,
-      "claim": ".",
-      "lean_decls": [
-        "CWfig.binary_entropy_half"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 367,
-      "label": "eq:obs-weld",
-      "section": null,
-      "claim": "(Remark~).",
+      "label": "eq:obs-identity",
+      "equation": "z(\\sigma)\\,\\tau(\\sigma)=\\Mpcf\\qquad\\text{for every }\\sigma .",
+      "section": "4.4",
       "lean_decls": [
         "PCFEntropyDOF.lattice_radius_conjugate"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{lattice\\_radius\\_conjugate}"
+      ],
+      "numerical": "test_observer.py::test_product"
     },
     {
-      "chapter": "04-implications",
-      "line": 411,
-      "label": "eq:obs-matter",
-      "section": null,
-      "claim": "%",
+      "label": "def:shell-tension",
+      "equation": "T^{\\mathrm{YM}}_{AB}=F_{AC}F_B{}^{C}-\\tfrac14\\,g_{AB}F_{CD}F^{CD},\\qquad \\text{matter}=\\Nmodes=\\lfloor S(\\sigma)\\rfloor .",
+      "section": "4.4",
       "lean_decls": [
         "CW5FaceLinks.fisher_unit_iff",
         "CW5FaceLinks.H_half_one_bit"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 421,
-      "label": "def:shell-tension",
-      "section": null,
-      "claim": "%",
-      "lean_decls": [
-        "CW5Additions.shell_tension_determined"
+      "tex_tags": [
+        "\\ProofWitnessBlock{fisher\\_unit\\_iff, H\\_half\\_one\\_bit}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 430,
-      "label": "def:shell-tension",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "prop:ebit",
+      "equation": "",
+      "section": "4.4",
+      "lean_decls": [
+        "PaperS3a.T"
+      ],
+      "tex_tags": [
+        "\\ProofWitnessBlock{prop:shell-tension}"
+      ],
+      "numerical": ""
+    },
+    {
+      "label": "eq:ebit",
+      "equation": "\\frac{\\varepsilon(\\sigma)}{S(\\sigma)}=\\frac{\\epsz}{\\pi}=\\frac{1}{\\Mpcf},",
+      "section": "4.4",
       "lean_decls": [
         "CW5Additions.energy_per_bit_constant"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{energy\\_per\\_bit\\_constant}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 445,
-      "label": "prop:shell-tension",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "eq:shell-tension",
+      "equation": "\\lambda_\\sigma=\\frac{\\Nmodes(\\sigma)}{\\Mpcf}.",
+      "section": "4.4",
       "lean_decls": [
         "CW5Additions.shell_tension_determined"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{shell\\_tension\\_determined}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 466,
-      "label": "prop:israel",
-      "section": null,
-      "claim": "for the arithmetic; the junction condition itself~.",
+      "label": "eq:israel",
+      "equation": "[A'(w_\\sigma)]=-\\frac{8\\pi G_5}{3}\\,\\lambda_\\sigma=-\\frac{4\\pi}{3}\\,\\lambda_\\sigma, \\qquad G_5=\\muthree,",
+      "section": "4.4",
       "lean_decls": [
         "CW5Additions.israel_prefactor",
         "CW5Additions.israel_jump_determined"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 484,
-      "label": "rmk:backreaction",
-      "section": null,
-      "claim": "Proof block in 04-implications",
-      "lean_decls": [
-        "CW5Additions.backreaction_cumulative"
+      "tex_tags": [
+        "\\ProofWitnessBlock{israel\\_prefactor, israel\\_jump\\_determined}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": "test_gravity.py::test_ricci_tensor"
     },
     {
-      "chapter": "04-implications",
-      "line": 495,
-      "label": null,
-      "section": null,
-      "claim": "$\\golden^{-6}\\cdot\\golden^{6}=1$ ().",
+      "label": "rmk:backreaction",
+      "equation": "",
+      "section": "4.4",
+      "lean_decls": [
+        "CW5Additions.backreaction_cumulative",
+        "PaperS3a.T"
+      ],
+      "tex_tags": [
+        "\\ProofWitnessBlock{backreaction\\_cumulative}",
+        "\\NumericalWitnessBlock{eq:shell-tension}"
+      ],
+      "numerical": ""
+    },
+    {
+      "label": "eq:ets-metric",
+      "equation": "ds^{2}=\\underbrace{(dx^{2}+dy^{2}+dz^{2})}_{\\E^{3}} -\\underbrace{c^{2}\\,dt^{2}}_{\\text{Wick }(C)} +\\underbrace{\\lambda^{2}\\,d(\\ln s)^{2}}_{\\golden^{\\sigma}\\text{-tower}}, \\qquad s=\\golden^{\\sigma},",
+      "section": "4.4",
       "lean_decls": [
         "CWfig.G_Lambda_duality",
         "CurvatureCoeffs.R_scalar_pcf",
-        "GravitySectorPCF.BF_value"
-      ],
-      "numeric_checks": [
-        "test_gravity.py:test_ricci_scalar",
-        "test_gravity.py:test_bf_value"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 510,
-      "label": "eq:ets-metric",
-      "section": null,
-      "claim": "continuation rather than an imposed duality (). Past and future",
-      "lean_decls": [
-        "SitterPCF.ets_is_ds_zero_h"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 520,
-      "label": null,
-      "section": null,
-      "claim": "flat---its curvature, computed, vanishes, $R^{(5)}=0$ ()---and the",
-      "lean_decls": [
-        "SitterPCF.ets_constant_block_christoffels_vanish"
-      ],
-      "numeric_checks": [
-        "test_spectral.py:test_ets_is_flat"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 524,
-      "label": null,
-      "section": null,
-      "claim": "(). The planar patch covers exactly half",
-      "lean_decls": [
+        "GravitySectorPCF.BF_value",
+        "SitterPCF.ets_is_ds_zero_h",
+        "SitterPCF.ets_constant_block_christoffels_vanish",
         "SitterPCF.ds_ricci_from_gauss",
-        "SitterPCF.ds_einstein_lambda"
-      ],
-      "numeric_checks": [
-        "test_spectral.py:test_desitter_is_curved"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 526,
-      "label": null,
-      "section": null,
-      "claim": "()---and that half  the observer's half",
-      "lean_decls": [
-        "ds_covers_half_hyperboloid"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 527,
-      "label": null,
-      "section": null,
-      "claim": "$|\\Om|=\\tfrac12$ by the shared value (). The assertoric",
-      "lean_decls": [
+        "SitterPCF.ds_einstein_lambda",
+        "ds_covers_half_hyperboloid",
         "observer_half_from_norms"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitness{G\\_Lambda\\_duality, R\\_scalar\\_pcf, BF\\_value}",
+        "\\ProofWitness{ets\\_is\\_ds\\_zero\\_h}",
+        "\\ProofWitness{ets\\_constant\\_block\\_christoffels\\_vanish}",
+        "\\ProofWitness{ds\\_ricci\\_from\\_gauss, ds\\_einstein\\_lambda}",
+        "\\ProofWitness{ds\\_covers\\_half\\_hyperboloid}",
+        "\\ProofWitness{observer\\_half\\_from\\_norms}"
+      ],
+      "numerical": "test_spectral.py::test_tan_equals_tower"
     },
     {
-      "chapter": "04-implications",
-      "line": 534,
-      "label": null,
-      "section": null,
-      "claim": "(\\S) .",
+      "label": "prop:obs-accum",
+      "equation": "",
+      "section": "4.4",
       "lean_decls": [
         "SitterPCF.ds_temperature",
         "SitterPCF.ds_beta_reciprocal"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 538,
-      "label": null,
-      "section": null,
-      "claim": "proofs are those of the corresponding  tags.",
-      "lean_decls": [
-        "UNMAPPED:..."
+      "tex_tags": [
+        "\\ProofWitnessBlock{dS\\_temperature, ds\\_beta\\_reciprocal}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 569,
-      "label": "prop:obs-accum",
-      "section": null,
-      "claim": "Proof block in 04-implications",
-      "lean_decls": [
-        "CWfig.binary_entropy_half",
-        "PaperS3a.S_tower_recurrence"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 581,
       "label": "thm:obs-weld",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "equation": "",
+      "section": "4.4",
+      "lean_decls": [
+        "PCFEntropyDOF.binary_entropy_half",
+        "PaperS3a.S_tower_recurrence",
+        "PaperS3a.T"
+      ],
+      "tex_tags": [
+        "\\ProofWitnessBlock{binary\\_entropy\\_half, S\\_tower\\_recurrence}",
+        "\\NumericalWitnessBlock{prop:entropy-max}"
+      ],
+      "numerical": "test_observer.py::test_product"
+    },
+    {
+      "label": "prop:obs-einstein",
+      "equation": "",
+      "section": "4.4",
       "lean_decls": [
         "PaperS2.obs_weld"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{obs\\_weld}"
+      ],
+      "numerical": "test_observer.py::test_product"
     },
     {
-      "chapter": "04-implications",
-      "line": 595,
-      "label": "prop:obs-einstein",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "thm:obs-jacobson",
+      "equation": "",
+      "section": "4.4",
       "lean_decls": [
         "CurvatureCoeffs.G_AB_pcf",
         "CurvatureCoeffs.R_AB_einstein",
@@ -1982,38 +1634,19 @@
         "CurvatureCoeffs.ricci_scalar",
         "GravitySectorPCF.BF_value"
       ],
-      "numeric_checks": [
-        "test_gravity.py:test_einstein_tensor",
-        "test_gravity.py:test_ricci_tensor",
-        "test_gravity.py:test_ricci_scalar",
-        "test_gravity.py:test_bf_value"
+      "tex_tags": [
+        "\\ProofWitnessBlock{G\\_AB\\_pcf, R\\_AB\\_einstein, R\\_scalar\\_pcf, einstein\\_coeff, ricci\\_coeff, ricci\\_scalar, BF\\_value}"
       ],
-      "lit_refs": []
+      "numerical": "test_observer.py::test_product"
     },
     {
-      "chapter": "04-implications",
-      "line": 607,
-      "label": "thm:obs-jacobson",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "prop:obs-matter",
+      "equation": "",
+      "section": "4.4",
       "lean_decls": [
         "SitterPCF.ds_einstein_lambda",
         "CurvatureCoeffs.R_AB_einstein",
-        "CurvatureCoeffs.G_AB_pcf"
-      ],
-      "numeric_checks": [
-        "test_gravity.py:test_ricci_tensor",
-        "test_gravity.py:test_einstein_tensor"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 630,
-      "label": null,
-      "section": null,
-      "claim": ".",
-      "lean_decls": [
+        "CurvatureCoeffs.G_AB_pcf",
         "PCF.CW5.gauge_dim_su3",
         "PCF.CW5.phi_central_chain",
         "CWfig.central_chain",
@@ -2022,84 +1655,62 @@
         "CWfig.hopf_from_clifford",
         "PCFEntropyDOF.a2_minimal_vectors_exactly_six"
       ],
-      "numeric_checks": [
-        "test_fks.py:test_exactly_six"
+      "tex_tags": [
+        "\\ProofWitnessBlock{ds\\_einstein\\_lambda, R\\_AB\\_einstein, G\\_AB\\_pcf}",
+        "\\ProofWitnessBlock{gauge\\_dim\\_su3, phi\\_central\\_chain, central\\_chain, KK\\_numerator, clifford\\_S3\\_condition, hopf\\_from\\_clifford, a2\\_minimal\\_vectors\\_exactly\\_six}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 633,
-      "label": null,
-      "section": null,
-      "claim": "$\\sin^{2}\\theta_W|_{\\rm GUT}=\\tfrac38=N(0)/N(2)$",
-      "lean_decls": [
-        "CWfig.weinberg_angle_gut"
-      ],
-      "numeric_checks": [
-        "test_gauge.py:test_ratio"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 635,
-      "label": null,
-      "section": null,
-      "claim": "$M_Z$; the tower entropy ratio $S(3)/S(6)=\\golden^{-3}$  marks the",
-      "lean_decls": [
-        "CWfig.entropy_ratio_S3_S6"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 644,
-      "label": null,
-      "section": null,
-      "claim": "That scale is not an independent input: the certainty condition $\\varepsilon_0 M=\\pi$  is the same that fixes $\\Mpcf$, so $M=\\Mpcf$; Theorem~ then der...",
-      "lean_decls": [
-        "GravitySectorPCF.M_eq_Mpcf"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 653,
       "label": "thm:LL-energy",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "equation": "",
+      "section": "4.4",
       "lean_decls": [
+        "CWfig.weinberg_angle_gut",
+        "CWfig.entropy_ratio_S3_S6",
+        "GravitySectorPCF.M_eq_Mpcf",
         "GravitySectorPCF.ds_first_law",
         "GravitySectorPCF.energy_is_inv_H",
         "GravitySectorPCF.komar_first_law",
         "GravitySectorPCF.mu3_temp_ratio",
         "GravitySectorPCF.LL_spatial_ne_zero"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitness{weinberg\\_angle\\_gut}",
+        "\\ProofWitness{entropy\\_ratio\\_S3\\_S6}",
+        "\\ProofWitnessBlock{M\\_eq\\_Mpcf}",
+        "\\ProofWitnessBlock{ds\\_first\\_law, energy\\_is\\_inv\\_H, komar\\_first\\_law, mu3\\_temp\\_ratio, LL\\_spatial\\_ne\\_zero}"
+      ],
+      "numerical": "test_gravity.py::test_ricci_tensor"
     },
     {
-      "chapter": "04-implications",
-      "line": 666,
       "label": "rmk:GLambda-interval",
-      "section": null,
-      "claim": "%",
+      "equation": "",
+      "section": "4.4",
+      "lean_decls": [],
+      "tex_tags": [
+        "\\NumericalWitnessBlock{eq:obs-landauer}"
+      ],
+      "numerical": ""
+    },
+    {
+      "label": "eq:Lambda-from-curvature",
+      "equation": "\\Lambda_5=-\\frac{d(d-1)}{2\\ell^{2}}=-6 ,",
+      "section": "4.4",
       "lean_decls": [
         "CW5FaceLinks.two_routes_to_six"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{two\\_routes\\_to\\_six}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 738,
-      "label": "eq:sigma-obs",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "prop:interval-uniqueness",
+      "equation": "",
+      "section": "4.4",
       "lean_decls": [
+        "PaperS3a.T",
         "CWfig.lambda_magnitude_eq_level",
         "CWfig.sigma_G_val",
         "CWfig.sigma_EM_val",
@@ -2112,330 +1723,288 @@
         "CWfig.entropy_at_mu_three",
         "PCFEntropyDOF.tower_step_ratio"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\NumericalWitnessBlock{eq:Lambda-from-curvature}",
+        "\\ProofWitnessBlock{lambda\\_magnitude\\_eq\\_level, sigma\\_G\\_val, sigma\\_EM\\_val, sigma\\_Lambda\\_val, threshold\\_ordering, interval\\_gap, interval\\_gap\\_general, em\\_holographic\\_fraction, em\\_asymmetry, entropy\\_at\\_mu\\_three, tower\\_step\\_ratio}"
+      ],
+      "numerical": "test_fks.py::test_ladder"
     },
     {
-      "chapter": "04-implications",
-      "line": 763,
-      "label": null,
-      "section": null,
-      "claim": "the angle is then evaluated on them.",
+      "label": "eq:interval-unique",
+      "equation": "",
+      "section": "4.4",
       "lean_decls": [
         "CW5Additions.interval_uniqueness",
         "CW5Additions.interval_arity_discriminates",
         "CW5Additions.interval_gap_only_three"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1030,
-      "label": null,
-      "section": "The entropy\\texorpdfstring{$\\to$",
-      "claim": "D3 is",
-      "lean_decls": [
-        "CWfig.binary_entropy_half"
+      "tex_tags": [
+        "\\ProofWitnessBlock{interval\\_uniqueness, interval\\_arity\\_discriminates, interval\\_gap\\_only\\_three}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1058,
-      "label": "cor:golden-growth",
-      "section": null,
-      "claim": "Fig.~.",
+      "label": "prop:bianconi",
+      "equation": "",
+      "section": "5",
       "lean_decls": [
-        "PaperS3a.S_tower",
+        "PaperS3a.T",
+        "PCFEntropyDOF.binary_entropy_half"
+      ],
+      "tex_tags": [
+        "\\NumericalWitnessBlock{cor:golden-growth}",
+        "\\ProofWitnessBlock{binary\\_entropy\\_half}"
+      ],
+      "numerical": ""
+    },
+    {
+      "label": "cor:golden-growth",
+      "equation": "",
+      "section": "5",
+      "lean_decls": [
+        "PaperS2.S_tower",
         "PCFEntropyDOF.tower_step_ratio"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{S\\_tower, tower\\_step\\_ratio}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1073,
-      "label": "ssec:grass",
-      "section": "The positive Grassmannian",
-      "claim": "eigenvalues equal $\\tfrac12=\\lvert\\Om\\rvert$.",
+      "label": "prop:rho",
+      "equation": "",
+      "section": "5.2",
       "lean_decls": [
         "PCFEntropyDOF.projector_idem",
         "PCFEntropyDOF.rho_is_state",
         "PCFEntropyDOF.rho_k2_eq_half_projector",
         "PCFEntropyDOF.projector_trace_eq_rank"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{projector\\_idem, rho\\_is\\_state, rho\\_k2\\_eq\\_half\\_projector, projector\\_trace\\_eq\\_rank}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1088,
-      "label": "prop:two-pos",
-      "section": "The positive Grassmannian",
-      "claim": "lets the state reading and the amplitude reading be taken on one object.",
+      "label": "eq:two-pos",
+      "equation": "\\rho=P/k\\succeq0,\\qquad\\text{and}\\qquad C\\in\\Grpos \\Longrightarrow \\Delta_I(C)\\ge0 \\ \\text{ for every ordered } I .",
+      "section": "5.2",
       "lean_decls": [
         "PCFEntropyDOF.two_positivities_distinct",
         "PCFEntropyDOF.rho_k2_eq_half_projector"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1115,
-      "label": "eq:frame-invariance",
-      "section": null,
-      "claim": "(\\S).",
-      "lean_decls": [
-        "projector_frame_invariant"
+      "tex_tags": [
+        "\\ProofWitnessBlock{two\\_positivities\\_distinct, rho\\_k2\\_eq\\_half\\_projector}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1117,
       "label": "eq:four-faces",
-      "section": null,
-      "claim": "%",
+      "equation": "",
+      "section": "5.2",
       "lean_decls": [
         "PCFEntropyDOF.projector_idem",
         "PCFEntropyDOF.projector_trace_eq_rank",
         "PCFEntropyDOF.rho_is_state",
-        "positroid_from_kp"
+        "positroid_from_kp",
+        "projector_frame_invariant"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{projector\\_idem, projector\\_trace\\_eq\\_rank, rho\\_is\\_state, positroid\\_from\\_kp, projector\\_frame\\_invariant}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1141,
-      "label": "ssec:ladder",
-      "section": "The ladder \\texorpdfstring{$A_2\\to E_8$",
-      "claim": "Proof block in 04-implications",
+      "label": "prop:a2",
+      "equation": "",
+      "section": "5.2",
       "lean_decls": [
         "PCFEntropyDOF.eisenstein",
         "PCFEntropyDOF.omega_eigenvalues",
         "PCFEntropyDOF.su3_dim"
       ],
-      "numeric_checks": [
-        "test_gauge.py:test_dimension"
+      "tex_tags": [
+        "\\ProofWitnessBlock{eisenstein, omega\\_eigenvalues, su3\\_dim}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1157,
-      "label": "prop:ladder",
-      "section": "The ladder \\texorpdfstring{$A_2\\to E_8$",
-      "claim": "dimension count is",
+      "label": "prop:veneziano",
+      "equation": "",
+      "section": "5.4",
       "lean_decls": [
         "ladder_from_scott",
         "PCFEntropyDOF.scott_kissing_eq_two_posroots",
         "PCFEntropyDOF.kissing_eq_two_posroots",
         "PCFEntropyDOF.dims_even_ladder",
         "PCFEntropyDOF.ladder_dim_eq_kissing_plus_rank",
-        "PCFEntropyDOF.fks_ladder_dims"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1167,
-      "label": "ssec:amp",
-      "section": "The ladder \\texorpdfstring{$A_2\\to E_8$",
-      "claim": "(\\S\\ref*{ssec:p-tower}, ).",
-      "lean_decls": [
+        "PCFEntropyDOF.fks_ladder_dims",
         "PCFEntropyDOF.veneziano_eq_gamma_ratio",
         "PCF.CW5.regge_tower_is_euler_product"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{ladder\\_from\\_scott, scott\\_kissing\\_eq\\_two\\_posroots, kissing\\_eq\\_two\\_posroots, dims\\_even\\_ladder, ladder\\_dim\\_eq\\_kissing\\_plus\\_rank, fks\\_ladder\\_dims}",
+        "\\ProofWitnessBlock{veneziano\\_eq\\_gamma\\_ratio, regge\\_tower\\_is\\_euler\\_product}"
+      ],
+      "numerical": "test_places.py::test_self_dual_at_pi"
     },
     {
-      "chapter": "04-implications",
-      "line": 1175,
-      "label": "ssec:amp",
-      "section": "The ladder \\texorpdfstring{$A_2\\to E_8$",
-      "claim": "canonical form (the $\\golden$ side).",
+      "label": "prop:ftlimit",
+      "equation": "",
+      "section": "5.4",
       "lean_decls": [
         "PCFEntropyDOF.ft_identity",
         "PCFEntropyDOF.ft_limit",
         "PCFEntropyDOF.pentagon_u_eq_golden"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{ft\\_identity, ft\\_limit, pentagon\\_u\\_eq\\_golden}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1186,
-      "label": "ssec:particle",
-      "section": "First face: amplitude",
-      "claim": "Proof block in 04-implications",
+      "label": "thm:graviton",
+      "equation": "",
+      "section": "5.5",
       "lean_decls": [
         "PCFEntropyDOF.beta_is_mssm",
         "PCFEntropyDOF.sm_anomaly_free",
-        "CWfig.weinberg_angle_gut"
-      ],
-      "numeric_checks": [
-        "test_gauge.py:test_beta_coefficients",
-        "test_gauge.py:test_mssm_unifies",
-        "test_gauge.py:test_ratio"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1200,
-      "label": "thm:graviton",
-      "section": "First face: amplitude",
-      "claim": "; the double copy~ (Bern--Carrasco--Johansson)",
-      "lean_decls": [
+        "CWfig.weinberg_angle_gut",
         "CW5FaceLinks.fisher_time_lock",
         "CW5FaceLinks.entropy_response_per_bit",
         "CW5FaceLinks.entropy_response_has_deriv_at"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{beta\\_is\\_mssm, sm\\_anomaly\\_free, weinberg\\_angle\\_gut}",
+        "\\ProofWitnessBlock{fisher\\_time\\_lock, entropy\\_response\\_per\\_bit, entropy\\_response\\_has\\_deriv\\_at}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1226,
-      "label": "ssec:susy",
-      "section": "Second face: particle, graviton, matter",
-      "claim": "reproducing the MSSM one-loop coefficients with no superpartner particles.",
+      "label": "eq:susy-bridges",
+      "equation": "b_{\\mathrm{MSSM}}=b_{\\mathrm{SM}}+\\Delta b_{\\mathrm{bridges}},",
+      "section": "5.6",
       "lean_decls": [
         "PCFEntropyDOF.mssm_eq_sm_plus_bridges",
         "PaperS3a.bridge_cocycle"
       ],
-      "numeric_checks": [
-        "test_tower.py:test_cumulative"
+      "tex_tags": [
+        "\\ProofWitnessBlock{mssm\\_eq\\_sm\\_plus\\_bridges, bridge\\_cocycle}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1245,
-      "label": "prop:er-epr-id",
-      "section": "Supersymmetry as ER=EPR bridges",
-      "claim": "the decomposition of the identity that the groupoid of \\S composes.",
+      "label": "cor:bridges-mssm",
+      "equation": "k\\,\\rho = P,\\qquad P+(\\mathbf1-P)=\\mathbf1,\\qquad P(\\mathbf1-P)=0 .",
+      "section": "5.6",
       "lean_decls": [
         "PCFEntropyDOF.er_epr_state_eq_geometry",
         "PCFEntropyDOF.er_epr_bridge"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{er\\_epr\\_state\\_eq\\_geometry, er\\_epr\\_bridge}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1255,
-      "label": "cor:bridges-mssm",
-      "section": "Supersymmetry as ER=EPR bridges",
-      "claim": "independent: one sums representations, the other sums bridges.",
+      "label": "eq:bridges-mssm",
+      "equation": "\\big(b_{\\mathrm{SM}}+\\Delta b_{\\mathrm{bridges}}\\big)_i=(b_1,b_2,b_3)=(\\tfrac{33}5,1,-3),",
+      "section": "5.6",
       "lean_decls": [
         "PCFEntropyDOF.bridges_reproduce_mssm",
         "PCFEntropyDOF.beta_is_mssm"
       ],
-      "numeric_checks": [
-        "test_gauge.py:test_beta_coefficients"
+      "tex_tags": [
+        "\\ProofWitnessBlock{bridges\\_reproduce\\_mssm, beta\\_is\\_mssm}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1282,
-      "label": "ssec:fluid",
-      "section": "Third face: fluid",
-      "claim": "Proof block in 04-implications",
+      "label": "prop:fluid",
+      "equation": "",
+      "section": "5.7",
       "lean_decls": [
         "positroid_from_kp",
         "PaperS3a.bridge_cocycle"
       ],
-      "numeric_checks": [
-        "test_tower.py:test_cumulative"
+      "tex_tags": [
+        "\\ProofWitnessBlock{positroid\\_from\\_kp, bridge\\_cocycle}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1293,
-      "label": "ssec:operators",
-      "section": "Third face: fluid",
-      "claim": "with the vacuum at $0$.",
+      "label": "prop:operators",
+      "equation": "",
+      "section": "5.8",
       "lean_decls": [
         "tower_ham_is_hermitian",
         "casimir_op_is_hermitian",
         "tower_ham_bounded_below",
         "casimir_op_bounded_below"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{tower\\_ham\\_is\\_hermitian, casimir\\_op\\_is\\_hermitian, tower\\_ham\\_bounded\\_below, casimir\\_op\\_bounded\\_below}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1306,
-      "label": "prop:spectrum",
-      "section": "Third face: fluid",
-      "claim": "tower's own spacing, the other the colour energy.",
+      "label": "eq:tower-gap",
+      "equation": "E_1-E_0=m_0>0 .",
+      "section": "5.8",
       "lean_decls": [
         "PCFEntropyDOF.spectrum_discrete",
         "PCFEntropyDOF.vacuum_unique",
         "PCFEntropyDOF.mass_gap",
         "operators_selfadjoint_and_isometry"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{spectrum\\_discrete, vacuum\\_unique, mass\\_gap, operators\\_selfadjoint\\_and\\_isometry}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1335,
-      "label": "eq:intertwine",
-      "section": "The gauge operators, AdS/CFT, and the mass gap",
-      "claim": "%",
+      "label": "rmk:intertwine-scope",
+      "equation": "",
+      "section": "5.8",
       "lean_decls": [
         "PaperS3a.modular_bulk_ratio_level_independent",
         "PaperS3a.bulk_boundary_intertwine",
-        "UNMAPPED:ower_e_eq_exp_regulator",
+        "PaperS3a.tower_e_eq_exp_regulator",
         "PaperS3a.S_tower_eq_exp_regulator"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{modular\\_bulk\\_ratio\\_level\\_independent, bulk\\_boundary\\_intertwine, tower\\_e\\_eq\\_exp\\_regulator, S\\_tower\\_eq\\_exp\\_regulator}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1364,
       "label": "prop:localfield",
-      "section": null,
-      "claim": "$T=e^{-aH}$.",
+      "equation": "",
+      "section": "5.8",
       "lean_decls": [
         "colour_jacobi"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{colour\\_jacobi}"
+      ],
+      "numerical": "test_fks.py::test_ladder"
     },
     {
-      "chapter": "04-implications",
-      "line": 1382,
-      "label": "tab:spectra",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "eq:gap",
+      "equation": "\\Delta=\\tfrac23 g^2>0.",
+      "section": "5.8",
       "lean_decls": [
         "PCFEntropyDOF.strong_coupling_gap"
       ],
-      "numeric_checks": [
-        "test_transmutation.py:test_positive"
+      "tex_tags": [
+        "\\ProofWitnessBlock{strong\\_coupling\\_gap}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1420,
-      "label": "fig:pipeline",
-      "section": "Reflection positivity and the OS reconstruction",
-      "claim": "Proof block in 04-implications",
+      "label": "eq:rp",
+      "equation": "\\langle\\Theta f,f\\rangle=\\langle f,Tf\\rangle=\\sum_{\\sigma}|c_\\sigma|^2\\,e^{-a m_0\\golden^{\\sigma}}\\ge0,",
+      "section": "5.9",
       "lean_decls": [
         "theta_pairing_eq_transfer",
         "reflection_positive_general",
@@ -2447,29 +2016,29 @@
         "V11fig.cpt_involution",
         "V11fig.cpt_preserves_modulus"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{theta\\_pairing\\_eq\\_transfer, reflection\\_positive\\_general, half\\_prop\\_sq, theta\\_involutive, theta\\_preserves\\_modulus\\_C, theta\\_commutes\\_real\\_diagonal, transfer\\_positive, cpt\\_involution, cpt\\_preserves\\_modulus}"
+      ],
+      "numerical": "test_places.py::test_self_dual_at_pi"
     },
     {
-      "chapter": "04-implications",
-      "line": 1456,
-      "label": "prop:rp-measure",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "eq:rp-measure",
+      "equation": "\\sum_{i,j}c_ic_j\\,C(-x_i,x_j) =\\frac{1}{2\\sinh m}\\Bigl(\\sum_i c_i e^{-m x_i}\\Bigr)^{2}\\;\\ge\\;0 .",
+      "section": "5.9",
       "lean_decls": [
         "refl_cov_factors",
         "refl_quad_form_eq_square",
         "reflection_positive_measure"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{refl\\_cov\\_factors, refl\\_quad\\_form\\_eq\\_square, reflection\\_positive\\_measure}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1472,
       "label": "thm:os",
-      "section": null,
-      "claim": "Osterwalder--Schrader axioms.",
+      "equation": "",
+      "section": "5.9",
       "lean_decls": [
         "os_reconstruction_explicit",
         "transfer_spectral_data",
@@ -2477,460 +2046,214 @@
         "vacuum_transfer_eq_one",
         "transfer_gap_below_vacuum"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{os\\_reconstruction\\_explicit, transfer\\_spectral\\_data, clustering\\_exponential, vacuum\\_transfer\\_eq\\_one, transfer\\_gap\\_below\\_vacuum}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1487,
       "label": "cor:cyclic",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "equation": "",
+      "section": "5.9",
       "lean_decls": [
         "os_reconstruction_explicit",
         "tower_ham_is_hermitian",
         "tower_ham_bounded_below"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1493,
-      "label": "cor:cyclic",
-      "section": null,
-      "claim": "(\\S\\ref*{ssec:p-tower}) it is the analyticity/temperedness axiom.",
-      "lean_decls": [
-        "PCFEntropyDOF.internal_wick"
+      "tex_tags": [
+        "\\ProofWitnessBlock{os\\_reconstruction\\_explicit, tower\\_ham\\_is\\_hermitian, tower\\_ham\\_bounded\\_below}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1499,
-      "label": "rmk:os0",
-      "section": null,
-      "claim": "gauge theory.",
+      "label": "thm:isometry",
+      "equation": "",
+      "section": "5.9",
       "lean_decls": [
+        "PCFEntropyDOF.internal_wick",
         "bulk_boundary_isometry"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{internal\\_wick}",
+        "\\ProofWitnessBlock{bulk\\_boundary\\_isometry}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1515,
-      "label": "ssec:zeta-gap",
-      "section": "Confining spectrum, S-duality, and the surviving gap",
-      "claim": "Proof block in 04-implications",
+      "label": "thm:confining",
+      "equation": "",
+      "section": "5.10",
       "lean_decls": [
         "PCF.CW5.regge_tower_is_euler_product",
         "PCF.CW5.regge_dirichlet_eq_zeta"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{regge\\_tower\\_is\\_euler\\_product, regge\\_dirichlet\\_eq\\_zeta}",
+        "\\NumericalWitnessBlock{prop:veneziano}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1546,
-      "label": "eq:string-tension",
-      "section": "Confining spectrum, S-duality, and the surviving gap",
-      "claim": "$V(\\sigma)=\\epsz\\golden^{-\\sigma}$\\,",
+      "label": "prop:tension-weld",
+      "equation": "\\sigma_{\\mathrm{tension}}=q_m^{2}V>0,\\qquad \\Delta_{\\mathrm{colour}}=\\sqrt{\\sigma_{\\mathrm{tension}}}>0 .",
+      "section": "5.10",
+      "lean_decls": [
+        "PaperS3a.T"
+      ],
+      "tex_tags": [
+        "\\NumericalWitness{eq:string-tension}"
+      ],
+      "numerical": "test_gravity.py::test_ricci_tensor"
+    },
+    {
+      "label": "eq:condensate-conjugate",
+      "equation": "V(\\sigma)\\,\\big(D(\\sigma)-1\\big)=\\epsz^{2}\\qquad\\text{for every }\\sigma ,",
+      "section": "5.10",
       "lean_decls": [
         "PaperS3a.swampland_has_deriv_at"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitness{swampland\\_has\\_deriv\\_at}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1569,
       "label": "prop:gap-faces",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "equation": "",
+      "section": "5.10",
       "lean_decls": [
         "PaperS3a.swampland_has_deriv_at",
         "PCFEntropyDOF.eps0_Mpcf_pi",
         "GravitySectorPCF.tension_welded_to_tower",
-        "GravitySectorPCF.tension_weld_value"
-      ],
-      "numeric_checks": [
-        "test_observer.py:test_normalized"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1574,
-      "label": "prop:gap-faces",
-      "section": null,
-      "claim": "Proof block in 04-implications",
-      "lean_decls": [
+        "GravitySectorPCF.tension_weld_value",
         "GravitySectorPCF.S_is_operator_spectrum",
         "GravitySectorPCF.tension_is_conjugate_spectrum",
-        "GravitySectorPCF.tension_welded_to_tower",
         "PCFEntropyDOF.mass_gap"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{swampland\\_has\\_deriv\\_at, eps0\\_Mpcf\\_pi, tension\\_welded\\_to\\_tower, tension\\_weld\\_value}",
+        "\\ProofWitnessBlock{S\\_is\\_operator\\_spectrum, tension\\_is\\_conjugate\\_spectrum, tension\\_welded\\_to\\_tower, mass\\_gap}"
+      ],
+      "numerical": "test_gravity.py::test_ricci_tensor"
     },
     {
-      "chapter": "04-implications",
-      "line": 1583,
-      "label": "prop:gap-faces",
-      "section": null,
-      "claim": "for the proved core---the modular flow is the tower's scale group, $\\hat K_{}=S(\\sigma)$, and the descent $H(\\sigma)\\propto\\golden^{-\\sigma/2}$; Bisog...",
+      "label": "thm:colour-from-M",
+      "equation": "",
+      "section": "5.10",
       "lean_decls": [
         "GravitySectorPCF.modular_generator_is_entropy",
         "GravitySectorPCF.modular_generator_is_LL_over_T",
         "GravitySectorPCF.modular_generator_is_tower",
         "GravitySectorPCF.scale_flow_is_dilation",
-        "GravitySectorPCF.hubble_descends_tower"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1588,
-      "label": "thm:modular-LL",
-      "section": null,
-      "claim": "Proof block in 04-implications",
-      "lean_decls": [
+        "GravitySectorPCF.hubble_descends_tower",
         "GravitySectorPCF.M_eq_Mpcf",
         "GravitySectorPCF.colour_scale_from_M",
         "GravitySectorPCF.colour_running_fixed"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{modular\\_generator\\_is\\_entropy, modular\\_generator\\_is\\_LL\\_over\\_T, modular\\_generator\\_is\\_tower, scale\\_flow\\_is\\_dilation, hubble\\_descends\\_tower}",
+        "\\ProofWitnessBlock{M\\_eq\\_Mpcf, colour\\_scale\\_from\\_M, colour\\_running\\_fixed}"
+      ],
+      "numerical": "test_gravity.py::test_ricci_tensor"
     },
     {
-      "chapter": "04-implications",
-      "line": 1593,
-      "label": "thm:colour-from-M",
-      "section": null,
-      "claim": "(data comparison only)",
+      "label": "rmk:M-two-faces",
+      "equation": "",
+      "section": "5.10",
       "lean_decls": [
         "GravitySectorPCF.M_eq_Mpcf"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{M\\_eq\\_Mpcf}"
+      ],
+      "numerical": "test_gravity.py::test_ricci_tensor"
     },
     {
-      "chapter": "04-implications",
-      "line": 1598,
-      "label": "thm:colour-from-M",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "thm:one-object",
+      "equation": "",
+      "section": "5.10",
       "lean_decls": [
         "GravitySectorPCF.scale_is_modulus",
         "GravitySectorPCF.one_object"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{scale\\_is\\_modulus, one\\_object}"
+      ],
+      "numerical": "test_gravity.py::test_ricci_tensor"
     },
     {
-      "chapter": "04-implications",
-      "line": 1670,
-      "label": "thm:duality",
-      "section": null,
-      "claim": "Theorem~, and the character Proposition~.",
+      "label": "cor:survive",
+      "equation": "",
+      "section": "5.10",
       "lean_decls": [
         "s_duality_exact",
         "functional_equation_fixed_at_half",
         "places_assembly"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "tex_tags": [
+        "\\ProofWitnessBlock{s\\_duality\\_exact, functional\\_equation\\_fixed\\_at\\_half, places\\_assembly}"
+      ],
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1687,
-      "label": "cor:survive",
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "rmk:residual",
+      "equation": "",
+      "section": "5.10",
       "lean_decls": [
         "gap_independent_of_cutoff",
         "PCFEntropyDOF.eps0_Mpcf_pi",
         "lambda_qcd_eq_lambda",
-        "lambda_qcd_pos"
-      ],
-      "numeric_checks": [
-        "test_transmutation.py:test_finite",
-        "test_observer.py:test_normalized"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1697,
-      "label": "rmk:residual",
-      "section": null,
-      "claim": "any holographic model.",
-      "lean_decls": [
-        "PCFEntropyDOF.strong_coupling_gap"
-      ],
-      "numeric_checks": [
-        "test_transmutation.py:test_positive"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1703,
-      "label": "rmk:residual",
-      "section": null,
-      "claim": "theorem (Theorem~, Theorem~).",
-      "lean_decls": [
+        "lambda_qcd_pos",
+        "PaperS3a.T",
+        "PCFEntropyDOF.strong_coupling_gap",
         "fixed_line_is_face_phi",
         "functional_equation_fixed_line",
         "places_assembly",
         "s_duality_exact",
         "s_duality_fixed_point_unique",
         "theta_from_jacobi",
-        "functional_equation_fixed_at_half"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "04-implications",
-      "line": 1707,
-      "label": null,
-      "section": null,
-      "claim": "Proposition~).",
-      "lean_decls": [
+        "functional_equation_fixed_at_half",
         "PCFEntropyDOF.er_epr_bridge",
         "PCFEntropyDOF.er_epr_state_eq_geometry",
         "PaperS3a.bridge_cocycle",
         "positroid_from_kp"
       ],
-      "numeric_checks": [
-        "test_tower.py:test_cumulative"
+      "tex_tags": [
+        "\\ProofWitnessBlock{gap\\_independent\\_of\\_cutoff, eps0\\_Mpcf\\_pi, lambda\\_qcd\\_eq\\_lambda, lambda\\_qcd\\_pos}",
+        "\\NumericalWitnessBlock{eq:transmutation}",
+        "\\ProofWitnessBlock{strong\\_coupling\\_gap}",
+        "\\ProofWitnessBlock{fixed\\_line\\_is\\_face\\_phi, functional\\_equation\\_fixed\\_line, places\\_assembly, s\\_duality\\_exact, s\\_duality\\_fixed\\_point\\_unique, theta\\_from\\_jacobi, functional\\_equation\\_fixed\\_at\\_half, places\\_assembly, s\\_duality\\_exact}",
+        "\\ProofWitnessBlock{er\\_epr\\_bridge, er\\_epr\\_state\\_eq\\_geometry, bridge\\_cocycle, positroid\\_from\\_kp}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1743,
-      "label": null,
-      "section": null,
-      "claim": "Proof block in 04-implications",
+      "label": "thm:core",
+      "equation": "",
+      "section": "5.10",
       "lean_decls": [
         "framework_mass_gap",
         "gap_survives",
         "PCFEntropyDOF.eps0_Mpcf_pi"
       ],
-      "numeric_checks": [
-        "test_transmutation.py:test_value",
-        "test_observer.py:test_normalized"
+      "tex_tags": [
+        "\\ProofWitnessBlock{framework\\_mass\\_gap, gap\\_survives, eps0\\_Mpcf\\_pi}"
       ],
-      "lit_refs": []
+      "numerical": ""
     },
     {
-      "chapter": "04-implications",
-      "line": 1780,
-      "label": "thm:core",
-      "section": "Why this is a single demonstration",
-      "claim": "the section: each can be checked on its own without the surrounding reading.",
+      "label": "eq:core",
+      "equation": "",
+      "section": "5.11",
       "lean_decls": [
         "PCFEntropyDOF.entropy_dof_core",
         "gauge_side_facts",
         "transfer_spectral_data"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "05-discussion",
-      "line": 92,
-      "label": "ssec:disc-string",
-      "section": "Our theoretical proposal",
-      "claim": "The same torus carries the rest of the M-theory duality web, and each duality is here a symmetry of the golden tower rather than a separate postulate....",
-      "lean_decls": [
-        "PaperS3a.tdual_selfdual"
+      "tex_tags": [
+        "\\ProofWitnessBlock{entropy\\_dof\\_core, gauge\\_side\\_facts, transfer\\_spectral\\_data}"
       ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 6,
-      "label": "app:derivations",
-      "section": "Explicit derivations and formal tags",
-      "claim": "the torus---not an external value matched by hand. The  tags certify the  identities (the",
-      "lean_decls": [
-        "UNMAPPED:..."
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 39,
-      "label": "app:embedding",
-      "section": "Explicit derivations and formal tags",
-      "claim": "de~Sitter embeds.",
-      "lean_decls": [
-        "SitterPCF.ets_constant_block_christoffels_vanish"
-      ],
-      "numeric_checks": [
-        "test_spectral.py:test_ets_is_flat"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 99,
-      "label": "app:gauge",
-      "section": null,
-      "claim": "$K_{\\mu\\nu}=(\\lambda/\\sigma^2)g_{\\mu\\nu}$.",
-      "lean_decls": [
-        "SitterPCF.ets_slices_totally_geodesic"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 200,
-      "label": "eq:kk-numerator",
-      "section": "Einstein's equations from observation",
-      "claim": "$\\tfrac34+\\tfrac14=1$",
-      "lean_decls": [
-        "CWfig.casimir_plus_newton"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 202,
-      "label": "eq:kk-G4",
-      "section": "Einstein's equations from observation",
-      "claim": "$\\golden^{-2}-1=-\\golden^{-1}$",
-      "lean_decls": [
-        "CWfig.boundary_density_ratio"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 231,
-      "label": "eq:kk-operator",
-      "section": null,
-      "claim": "Proof block in appendix",
-      "lean_decls": [
-        "CW5Additions.kk_hopping_reciprocal",
-        "CW5Additions.kk_discrete_spectrum",
-        "CW5Additions.kk_discrete_positive",
-        "CW5Additions.kk_above_BF",
-        "CWfig.KK_BF_bound"
-      ],
-      "numeric_checks": [
-        "test_kk.py:test_reciprocal",
-        "test_kk.py:test_mass_squared_positive"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 252,
-      "label": "rmk:kk-sign",
-      "section": null,
-      "claim": "bound  because $\\ln\\golden<\\tfrac12$",
-      "lean_decls": [
-        "CW5Additions.log_phi_lt_half"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 265,
-      "label": null,
-      "section": null,
-      "claim": "$\\golden^{2}+\\golden^{-2}=3$ enters.",
-      "lean_decls": [
-        "CW5Additions.kk_rowsum_eq_numerator",
-        "CW5Additions.kk_continuous_below_BF",
-        "CW5Additions.kk_reciprocal_discriminates"
-      ],
-      "numeric_checks": [
-        "test_kk.py:test_numerator_value"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 278,
-      "label": null,
-      "section": null,
-      "claim": "$R^{2}=\\alpha'$\\,",
-      "lean_decls": [
-        "PaperS3a.tdual_selfdual"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 283,
-      "label": null,
-      "section": null,
-      "claim": "mechanism but the explicit mode expansion realising it.",
-      "lean_decls": [
-        "PCFEntropyDOF.ladder_dim_eq_kissing_plus_rank",
-        "PCFEntropyDOF.fks_ladder_dims",
-        "PCFEntropyDOF.a2_minimal_vectors_exactly_six",
-        "PaperS3a.tdual_selfdual"
-      ],
-      "numeric_checks": [
-        "test_fks.py:test_exactly_six"
-      ],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 305,
-      "label": "eq:hurwitz",
-      "section": "Arithmetic machinery: Hurwitz, even values, and the Archimedean density",
-      "claim": "the classical input.  (the rearrangement~)",
-      "lean_decls": [
-        "hurwitz_reindex"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 315,
-      "label": "eq:reindex",
-      "section": "Arithmetic machinery: Hurwitz, even values, and the Archimedean density",
-      "claim": "$L(6,\\chi_5)=\\sqrt5\\pi^{6}\\cdot{1171875}$.",
-      "lean_decls": [
-        "even_L_rationality",
-        "bernoulli_eval_rational"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
-    },
-    {
-      "chapter": "appendix",
-      "line": 338,
-      "label": "eq:kappa",
-      "section": "Arithmetic machinery: Hurwitz, even values, and the Archimedean density",
-      "claim": "Proof block in appendix",
-      "lean_decls": [
-        "kappa_k_two_real_places",
-        "kappa_k_alt",
-        "kappa_k_simple_pole",
-        "kappa_k_pole_numerator_at_one"
-      ],
-      "numeric_checks": [],
-      "lit_refs": []
+      "numerical": ""
     }
   ]
 }
