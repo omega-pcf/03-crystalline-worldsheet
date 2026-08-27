@@ -5364,7 +5364,7 @@ theorem fib_adjacent_le_one : ∀ N ∈ NmodesList, fibDist N ≤ 1 := by decide
 
 /-- **[P] `rmk:fib-adjacent`, second half.**  Equality for σ ≤ 5, and a genuine departure at
     the ceiling: `N(6) = 56` is not a Fibonacci number, and `55` is the nearest. -/
-theorem Nmodes_six_ne_fib :
+theorem nmodes_six_ne_fib :
     (NmodesList.take 6).all (fun N => fibList.contains N) = true
     ∧ NmodesList.getLast? = some 56
     ∧ fibList.contains 56 = false

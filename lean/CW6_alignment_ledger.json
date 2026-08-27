@@ -2452,7 +2452,7 @@
     "P/N"
    ],
    "lean_decls": [
-    "CW5Additions.Nmodes_six_ne_fib",
+    "CW5Additions.nmodes_six_ne_fib",
     "CW5Additions.fib_adjacent_le_one"
    ],
    "numeric_checks": [
