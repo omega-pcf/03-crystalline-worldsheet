@@ -3,8 +3,8 @@ message: If you use this software, please cite it using these metadata.
 title: "The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁
   for the de Sitter observer problem"
 type: software
-version: 1.2.0
-date-released: 2026-08-27
+version: 1.2.1
+date-released: 2026-09-01
 authors:
   - family-names: González García
     given-names: Jorge Armando
@@ -913,6 +913,109 @@ references:
     type: article
     volume: "4"
   - authors:
+      - family-names: Lawvere
+        given-names: F. W.
+    title: Quantifiers and sheaves
+    date-published: 1971-01-01
+    year: 1971
+    journal: Actes du Congrès International des Mathématiciens (Nice, 1970)
+    publisher:
+      name: Gauthier-Villars
+    start: 329–334
+    type: generic
+  - authors:
+      - name: The Univalent Foundations Program
+    title: "Homotopy Type Theory: Univalent Foundations of Mathematics"
+    date-published: 2013-01-01
+    year: 2013
+    publisher:
+      name: Institute for Advanced Study
+    type: book
+  - authors:
+      - family-names: Ahrens
+        given-names: B.
+      - family-names: Kapulkin
+        given-names: K.
+      - family-names: Shulman
+        given-names: M.
+    doi: 10.1017/S0960129514000486
+    identifiers:
+      - type: doi
+        value: 10.1017/S0960129514000486
+    title: Univalent categories and the Rezk completion
+    date-published: 2015-01-01
+    year: 2015
+    journal: Mathematical Structures in Computer Science
+    start: "1010"
+    type: article
+    volume: "25"
+  - authors:
+      - family-names: Gilbert
+        given-names: G.
+      - family-names: Cockx
+        given-names: J.
+      - family-names: Sozeau
+        given-names: M.
+      - family-names: Tabareau
+        given-names: N.
+    doi: 10.1145/3290316
+    identifiers:
+      - type: doi
+        value: 10.1145/3290316
+    title: Definitional proof-irrelevance without K
+    date-published: 2019-01-01
+    year: 2019
+    journal: Proceedings of the ACM on Programming Languages
+    start: 3:1
+    type: article
+    volume: "3"
+  - authors:
+      - family-names: van Doorn
+        given-names: F.
+    identifiers:
+      - type: url
+        value: https://arxiv.org/abs/1808.10690
+    title: On the Formalization of Higher Inductive Types and Synthetic Homotopy
+      Theory
+    url: https://arxiv.org/abs/1808.10690
+    date-published: 2018-01-01
+    year: 2018
+    thesis-type: Ph.D. thesis
+    institution:
+      name: Carnegie Mellon University
+    type: thesis
+  - authors:
+      - family-names: de Moura
+        given-names: L.
+      - family-names: Ullrich
+        given-names: S.
+    doi: 10.1007/978-3-030-79876-5_37
+    identifiers:
+      - type: doi
+        value: 10.1007/978-3-030-79876-5_37
+    title: The Lean 4 theorem prover and programming language
+    date-published: 2021-01-01
+    year: 2021
+    journal: Lecture Notes in Computer Science
+    publisher:
+      name: Springer
+    start: "625"
+    type: article
+    volume: "12699"
+  - authors:
+      - name: The mathlib Community
+    doi: 10.1145/3372885.3373824
+    identifiers:
+      - type: doi
+        value: 10.1145/3372885.3373824
+    title: The Lean mathematical library
+    date-published: 2020-01-01
+    year: 2020
+    journal: Proceedings of the 9th ACM SIGPLAN International Conference on
+      Certified Programs and Proofs
+    start: "367"
+    type: conference-paper
+  - authors:
       - family-names: Schreiber
         given-names: U.
     identifiers:
@@ -1656,4 +1759,19 @@ references:
     start: "433"
     type: article
     volume: "63"
+  - authors:
+      - family-names: Vaishnav
+        given-names: R.
+    doi: 10.1007/978-3-032-11176-0_13
+    identifiers:
+      - type: doi
+        value: 10.1007/978-3-032-11176-0_13
+    title: "Lean4Less: eliminating definitional equalities from Lean via an
+      extensional-to-intensional translation"
+    date-published: 2025-01-01
+    year: 2025
+    journal: Lecture Notes in Computer Science
+    start: 202–219
+    type: article
+    volume: "16237"
 doi: 10.5281/zenodo.21343602

@@ -1,8 +1,8 @@
 {
   "title": "The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁ for the de Sitter observer problem",
   "description": "Holography and the Riemann hypothesis are missing the same kind of object. The pair correlation of the zeros of ζ follows GUE statistics; so does the boundary side of low-dimensional holography, where the bulk of JT gravity is recovered only as an average over an ensemble of theories. An ensemble is what one writes for want of an individual—the Hermitian operator of Hilbert–Pólya in one case, a single microstate in the other—and an average is a fact about the description, not about what exists. Based on this reading, and on other known connections between the primes and black holes, and between the odd zeta values and string and particle amplitudes, we propose that the obstruction in de Sitter is <b>epistemological</b>—a circumstance of mathematical circularity—rather than <b>ontological</b>—a matter of vacuum selection. At this intersection the obstruction takes one form: how to describe the object without referring to the object, which the 𝔽₁ program seeks to circumvent in arithmetic and the Hilbert–Pólya problem poses for the operator. We trace it to the non-paradoxical self-reference of binary language, in the precise sense of the Lawvere fixed-point theorem and the Yanofsky diagonal g(t)=α(f(t,t)), as one of the most studied cases of self-referential circularity; and we analyse the strategies for confronting this circularity and their relation to the 𝔽₁ program for proving the Riemann hypothesis—particularly Yuri Manin's proposed use of the same noncommutative tori that M-theory uses, but to approach that program. From our own use of this torus we construct a string cocone, from which we later derive previously proposed criteria for holography in de Sitter, as well as the operator we propose as the microstate.",
-  "version": "1.2.0",
-  "publication_date": "2026-08-27",
+  "version": "1.2.1",
+  "publication_date": "2026-09-01",
   "creators": [
     {
       "name": "González García, Jorge Armando",
@@ -43,6 +43,7 @@
   "language": "eng",
   "doi": "10.5281/zenodo.21343602",
   "references": [
+    "Ahrens, B.; Kapulkin, K.; Shulman, M. (2015). Univalent categories and the Rezk completion. Mathematical Structures in Computer Science. 25, 1010. https://doi.org/10.1017/S0960129514000486",
     "Almheiri, A.; Dong, X.; Harlow, D. (2015). Bulk locality and quantum error correction in AdS/CFT. Journal of High Energy Physics. 04, 163. https://doi.org/10.1007/JHEP04(2015)163",
     "Almheiri, A.; Marolf, D.; Polchinski, J.; Sully, J. (2013). Black holes: complementarity or firewalls?. Journal of High Energy Physics. 02, 062. https://arxiv.org/abs/1207.3123",
     "Apéry, R. (1979). Irrationalité de ζ(2) et ζ(3). Astérisque. 61, 11.",
@@ -70,6 +71,7 @@
     "Conway, J. H.; Sloane, N. J. A. (1988). Sphere Packings, Lattices and Groups. Springer. https://doi.org/10.1007/978-1-4757-6568-7",
     "Cooper, N. (2026). Holographic equidistribution. https://arxiv.org/abs/2602.12265",
     "De Clerck, M.; Hartnoll, S. A.; Yang, M. (2025). Wheeler–DeWitt wavefunctions for 5d BKL dynamics, automorphic L-functions and complex primon gases. Journal of High Energy Physics. 11, 160. https://arxiv.org/abs/2507.08788",
+    "de Moura, L.; Ullrich, S. (2021). The Lean 4 theorem prover and programming language. Lecture Notes in Computer Science. 12699, 625. https://doi.org/10.1007/978-3-030-79876-5_37",
     "Dirichlet, P. G. L. (1837). Beweis des Satzes, dass jede unbegrenzte arithmetische Progression, deren erstes Glied und Differenz ganzzahlig sind, unendlich viele Primzahlen enthält. Abhandlungen der Königlichen Preußischen Akademie der Wissenschaften., 33.",
     "dos Santos, G. C. (2020). Arquitetura vitruviana e retórica antiga. Archai. 28. https://doi.org/10.14195/1984-249X_28_4",
     "Douglas, M. R. (2003). The statistics of string/M theory vacua. Journal of High Energy Physics. 05, 046. https://doi.org/10.1088/1126-6708/2003/05/046 https://arxiv.org/abs/hep-th/0303194",
@@ -82,6 +84,7 @@
     "Frobenius, G. (1878). Ueber lineare Substitutionen und bilineare Formen. Journal für die reine und angewandte Mathematik. 84, 1.",
     "G. Sonnino et al. (2024). The golden ratio family of extremal Kerr–Newman black holes and its implications for the cosmological constant. Axioms. 13.",
     "Gibbons, G. W.; Hawking, S. W. (1977). Cosmological event horizons, thermodynamics, and particle creation. Physical Review D. 15, 2738. https://doi.org/10.1103/PhysRevD.15.2738",
+    "Gilbert, G.; Cockx, J.; Sozeau, M.; Tabareau, N. (2019). Definitional proof-irrelevance without K. Proceedings of the ACM on Programming Languages. 3, 3:1. https://doi.org/10.1145/3290316",
     "Grisales Herrera, J. (2023). Golden Prime Symmetry.",
     "Gröblacher, S.; Paterek, T.; Kaltenbaek, R.; Brukner, Č.; Żukowski, M.; Aspelmeyer, M.; Zeilinger, A. (2007). An experimental test of non-local realism. Nature. 446, 871. https://doi.org/10.1038/nature05677 https://arxiv.org/abs/0704.2529",
     "Gubser, S. S.; Klebanov, I. R.; Polyakov, A. M. (1998). Gauge theory correlators from non-critical string theory. Physics Letters B. 428, 105. https://doi.org/10.1016/S0370-2693(98)00377-3",
@@ -107,6 +110,7 @@
     "Landauer, R. (1961). Irreversibility and heat generation in the computing process. IBM Journal of Research and Development. 5, 183. https://doi.org/10.1147/rd.53.0183",
     "Laporta, S.; Remiddi, E. (1996). The analytical value of the electron (g-2) at order α<sup>3</sup> in QED. Physics Letters B. 379, 283. https://doi.org/10.1016/0370-2693(96)00439-X",
     "Lawvere, F. W. (1969). Diagonal arguments and cartesian closed categories. Lecture Notes in Mathematics. 92, 134. https://doi.org/10.1007/BFb0080769",
+    "Lawvere, F. W. (1971). Quantifiers and sheaves. Actes du Congrès International des Mathématiciens (Nice, 1970)., 329–334.",
     "Lawvere, F. W. (1996). Unity and identity of opposites in calculus and physics. Applied Categorical Structures. 4, 167.",
     "Leggett, A. J. (2003). Nonlocal hidden-variable theories and quantum mechanics: an incompatibility theorem. Foundations of Physics. 33, 1469. https://doi.org/10.1023/A:1026096313729",
     "López Peña, J.; Lorscheid, O. (2011). Torified varieties and their geometries over $\\F_1$. Mathematische Zeitschrift. 267, 605. https://doi.org/10.1007/s00209-009-0638-0",
@@ -145,7 +149,11 @@
     "Susskind, L.; Witten, E. (1998). The holographic bound in anti-de Sitter space. https://arxiv.org/abs/hep-th/9805114",
     "Tarski, A. (1951). A Decision Method for Elementary Algebra and Geometry. University of California Press.",
     "Tate, J. T. (1950). Fourier analysis in number fields and Hecke's zeta-functions.",
+    "The mathlib Community (2020). The Lean mathematical library. Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs., 367. https://doi.org/10.1145/3372885.3373824",
     "The Royal Swedish Academy of Sciences (2022). The Nobel Prize in Physics 2022: A. Aspect, J. F. Clauser, A. Zeilinger, for experiments with entangled photons, establishing the violation of Bell inequalities and pioneering quantum information science.",
+    "The Univalent Foundations Program (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study.",
+    "Vaishnav, R. (2025). Lean4Less: eliminating definitional equalities from Lean via an extensional-to-intensional translation. Lecture Notes in Computer Science. 16237, 202–219. https://doi.org/10.1007/978-3-032-11176-0_13",
+    "van Doorn, F. (2018). On the Formalization of Higher Inductive Types and Synthetic Homotopy Theory. https://arxiv.org/abs/1808.10690",
     "Veneziano, G. (1968). Construction of a crossing-symmetric, Regge-behaved amplitude for linearly rising trajectories. Il Nuovo Cimento A. 57, 190. https://doi.org/10.1007/BF02824451",
     "Verlinde, E. (2011). On the origin of gravity and the laws of Newton. Journal of High Energy Physics. 04, 029. https://arxiv.org/abs/1001.0785",
     "Verlinde, E. (2017). Emergent gravity and the dark universe. SciPost Physics. 2. https://arxiv.org/abs/1611.02269",
@@ -299,6 +307,26 @@
       "resource_type": "publication-article"
     },
     {
+      "identifier": "10.1017/S0960129514000486",
+      "relation": "cites",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1145/3290316",
+      "relation": "cites",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1007/978-3-030-79876-5_37",
+      "relation": "cites",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1145/3372885.3373824",
+      "relation": "cites",
+      "resource_type": "publication-conferencepaper"
+    },
+    {
       "identifier": "10.14195/1984-249X_28_4",
       "relation": "cites",
       "resource_type": "publication-article"
@@ -450,6 +478,11 @@
     },
     {
       "identifier": "10.1063/1.522599",
+      "relation": "cites",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1007/978-3-032-11176-0_13",
       "relation": "cites",
       "resource_type": "publication-article"
     }

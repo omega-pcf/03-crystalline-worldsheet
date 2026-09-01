@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.2.0...v1.2.1) (2026-09-01)
+
+### Bug Fixes
+
+* **tex:** add univalence and Lawvere paragraphs with verified CSL entries ([80cee0b](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/80cee0bb08bb8d687c56f5461a5b77f59e0b8674))
+
 ## [1.2.0](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.0.9...v1.2.0) (2026-08-27)
 
 ### Features
