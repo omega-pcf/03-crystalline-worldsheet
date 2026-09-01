@@ -1474,6 +1474,182 @@
     "page": "167"
   },
   {
+    "id": "lawvere70quantifiers",
+    "type": "chapter",
+    "title": "Quantifiers and sheaves",
+    "author": [
+      {
+        "family": "Lawvere",
+        "given": "F. W."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1971
+        ]
+      ]
+    },
+    "container-title": "Actes du Congrès International des Mathématiciens (Nice, 1970)",
+    "publisher": "Gauthier-Villars",
+    "publisher-place": "Paris",
+    "page": "329–334"
+  },
+  {
+    "id": "HoTTbook",
+    "type": "book",
+    "title": "Homotopy Type Theory: Univalent Foundations of Mathematics",
+    "author": [
+      {
+        "literal": "The Univalent Foundations Program"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "publisher": "Institute for Advanced Study",
+    "publisher-place": "Princeton"
+  },
+  {
+    "id": "AhrensKapulkinShulman15",
+    "type": "article",
+    "title": "Univalent categories and the Rezk completion",
+    "author": [
+      {
+        "family": "Ahrens",
+        "given": "B."
+      },
+      {
+        "family": "Kapulkin",
+        "given": "K."
+      },
+      {
+        "family": "Shulman",
+        "given": "M."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "container-title": "Mathematical Structures in Computer Science",
+    "container-title-short": "Math. Struct. Comput. Sci.",
+    "volume": "25",
+    "page": "1010",
+    "DOI": "10.1017/S0960129514000486"
+  },
+  {
+    "id": "Gilbert19",
+    "type": "article",
+    "title": "Definitional proof-irrelevance without K",
+    "author": [
+      {
+        "family": "Gilbert",
+        "given": "G."
+      },
+      {
+        "family": "Cockx",
+        "given": "J."
+      },
+      {
+        "family": "Sozeau",
+        "given": "M."
+      },
+      {
+        "family": "Tabareau",
+        "given": "N."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the ACM on Programming Languages",
+    "container-title-short": "Proc. ACM Program. Lang.",
+    "volume": "3",
+    "page": "3:1",
+    "DOI": "10.1145/3290316"
+  },
+  {
+    "id": "vanDoorn18",
+    "type": "thesis",
+    "title": "On the Formalization of Higher Inductive Types and Synthetic Homotopy Theory",
+    "author": [
+      {
+        "family": "van Doorn",
+        "given": "F."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "publisher": "Carnegie Mellon University",
+    "genre": "Ph.D. thesis",
+    "URL": "https://arxiv.org/abs/1808.10690"
+  },
+  {
+    "id": "deMouraUllrich21",
+    "type": "article",
+    "title": "The Lean 4 theorem prover and programming language",
+    "author": [
+      {
+        "family": "de Moura",
+        "given": "L."
+      },
+      {
+        "family": "Ullrich",
+        "given": "S."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "container-title": "Lecture Notes in Computer Science",
+    "container-title-short": "Lect. Notes Comput. Sci.",
+    "volume": "12699",
+    "page": "625",
+    "DOI": "10.1007/978-3-030-79876-5_37",
+    "publisher": "Springer"
+  },
+  {
+    "id": "mathlib20",
+    "type": "paper-conference",
+    "title": "The Lean mathematical library",
+    "author": [
+      {
+        "literal": "The mathlib Community"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "container-title": "Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs",
+    "page": "367",
+    "DOI": "10.1145/3372885.3373824"
+  },
+  {
     "id": "Schreiber13cohesive",
     "type": "article",
     "title": "Differential cohomology in a cohesive ∞-topos",
@@ -2764,5 +2940,28 @@
     "container-title-short": "Math. Ann.",
     "volume": "63",
     "page": "433"
+  },
+  {
+    "id": "Vaishnav25",
+    "type": "article",
+    "title": "Lean4Less: eliminating definitional equalities from Lean via an extensional-to-intensional translation",
+    "author": [
+      {
+        "family": "Vaishnav",
+        "given": "R."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "container-title": "Lecture Notes in Computer Science",
+    "container-title-short": "Lect. Notes Comput. Sci.",
+    "volume": "16237",
+    "page": "202–219",
+    "DOI": "10.1007/978-3-032-11176-0_13"
   }
 ]
