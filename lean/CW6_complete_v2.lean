@@ -314,11 +314,15 @@ theorem s3_orders :
     Fintype.card (Equiv.Perm (Fin 3)) = 6 ∧
     Fintype.card (alternatingGroup (Fin 3)) = 3 := by
   constructor
-  · simpa [Fintype.card_fin] using (Fintype.card_perm (α := Fin 3))
+  · have h := Fintype.card_perm (α := Fin 3)
+    rw [h, Fintype.card_fin]
+    norm_num
   · have h := two_mul_card_alternatingGroup (α := Fin 3)
     -- h : 2 * card(alternatingGroup) = (Fintype.card (Fin 3))! = 3! = 6
-    have h6 : 2 * Fintype.card (alternatingGroup (Fin 3)) = 6 := by
-      simpa [Fintype.card_fin, Nat.factorial] using h
+    have h6 : 2 * Fintype.card (alternatingGroup (Fin 3))
+        = Nat.factorial (Fintype.card (Fin 3)) := h
+    rw [show Fintype.card (Fin 3) = 3 from Fintype.card_fin 3,
+        show Nat.factorial 3 = 6 from rfl] at h6
     omega
 
 /-- **[P] `eq:sigma-geom`.** The geometric leg of σ, obtained from the group orders:
@@ -2447,21 +2451,30 @@ theorem omega_re : ωc.re = -(1/2) := by
       show (2 * Real.pi / 3 : ℝ) = Real.pi - Real.pi / 3 by ring,
       Real.cos_pi_sub, Real.cos_pi_div_three]
 
-set_option linter.flexible false in
 /-- **[P] G12.**  Re ω² = −1/2: the triangle is equilateral. -/
 theorem omega_sq_re : (ωc ^ 2).re = -(1/2) := by
-  rw [show ωc ^ 2 = Complex.exp (((4 * Real.pi / 3 : ℝ)) * Complex.I) by
-        simp [ωc]; rw [← Complex.exp_nat_mul]; ring_nf,
-      Complex.exp_ofReal_mul_I_re,
-      show (4 * Real.pi / 3 : ℝ) = Real.pi / 3 + Real.pi by ring,
-      Real.cos_add_pi, Real.cos_pi_div_three]
+  have hw : ωc ^ 2 = Complex.exp (((4 * Real.pi / 3 : ℝ)) * Complex.I) := by
+    change (Complex.exp (2 * Real.pi * Complex.I / 3)) ^ 2 = _
+    rw [pow_two, ← Complex.exp_add]
+    congr 1
+    push_cast
+    ring
+  rw [hw, Complex.exp_ofReal_mul_I_re,
+      show (4 * Real.pi / 3 : ℝ) = Real.pi + Real.pi / 3 by ring,
+      Real.cos_add, Real.cos_pi]
+  norm_num
 
-set_option linter.flexible false in
 /-- **[P] G13.**  ω³ = 1: the rotor closes. -/
 theorem omega_cubed : ωc ^ 3 = 1 := by
-  rw [show ωc ^ 3 = Complex.exp ((3 : ℂ) * (2 * Real.pi * Complex.I / 3)) by
-        simp [ωc]; rw [← Complex.exp_nat_mul]; norm_cast]
-  rw [show (3 : ℂ) * (2 * Real.pi * Complex.I / 3) = 2 * Real.pi * Complex.I by ring]
+  have hw : ωc ^ 3 = Complex.exp ((3 : ℂ) * (2 * Real.pi * Complex.I / 3)) := by
+    change (Complex.exp (2 * Real.pi * Complex.I / 3)) ^ 3 = _
+    rw [pow_three, ← Complex.exp_add, ← Complex.exp_add]
+    congr 1
+    ring
+  rw [hw]
+  have h3 : (3 : ℂ) * (2 * Real.pi * Complex.I / 3) = 2 * Real.pi * Complex.I := by
+    ring
+  rw [h3]
   exact Complex.exp_two_pi_mul_I
 
 private theorem cos_two_thirds : Real.cos (2 * Real.pi / 3) = -(1/2) := by
@@ -2470,7 +2483,8 @@ private theorem cos_two_thirds : Real.cos (2 * Real.pi / 3) = -(1/2) := by
 
 private theorem cos_four_thirds : Real.cos (4 * Real.pi / 3) = -(1/2) := by
   rw [show (4:ℝ) * Real.pi / 3 = Real.pi / 3 + Real.pi by ring,
-      Real.cos_add_pi, Real.cos_pi_div_three]
+      Real.cos_add, Real.cos_pi]
+  norm_num
 
 /-- **[P] G15 — `eq:triad-re`.**  Re λ_k = φ^(−λ_log)·cos(2πk/3): the real spectrum
     of the triad is the apex of §2.10 multiplied by the ternary. -/
@@ -2935,14 +2949,12 @@ def b3 : ℚ := (mssmContent.map (fun c => T3 c * (c.n2:ℚ) * (c.ng:ℚ))).sum 
 def b2 : ℚ := (mssmContent.map (fun c => T2 c * (c.nc:ℚ) * (c.ng:ℚ))).sum - 3 * 2
 def b1 : ℚ := (mssmContent.map (fun c => (3/5) * c.Y^2 * (c.nc:ℚ) * (c.n2:ℚ) * (c.ng:ℚ))).sum
 
--- Suppress: <;> distributes simp+norm_num across 3 goals from refine;
--- using ; alone would only close the first goal.
-set_option linter.unnecessarySeqFocus false in
+-- Closed with plain `<;>` chain (linter-clean; the `·` focus was redundant).
 /-- [P] The β coefficients computed from the (assumed) MSSM chiral content are exactly
     the MSSM values (33/5,1,-3). The computation is [P]; whether the tower supplies this
     content is the open input [C] (see `sin2_gut_tower`, `mssm_unification`). -/
 theorem beta_is_mssm : b1 = 33/5 ∧ b2 = 1 ∧ b3 = -3 := by
-  refine ⟨?_, ?_, ?_⟩ <;> · simp [b1, b2, b3, mssmContent, T3, T2] <;> norm_num
+  refine ⟨?_, ?_, ?_⟩ <;> simp [b1, b2, b3, mssmContent, T3, T2] <;> norm_num
 
 -- [C, Georgi–Quinn–Weinberg] MSSM one-loop unification (b=(33/5,1,-3); 3/8 runs to
 -- sin²θ_W(M_Z)≈0.231) is a phenomenological input, NOT derived here. The framework's own part —
@@ -2956,15 +2968,14 @@ def A2 (YQ _Yu _Yd YL _Ye : ℚ) : ℚ := 3*YQ + YL
 def A3 (YQ Yu Yd YL Ye : ℚ) : ℚ := 6*YQ + 3*Yu + 3*Yd + 2*YL + Ye
 def A4 (YQ Yu Yd YL Ye : ℚ) : ℚ := 6*YQ^3 + 3*Yu^3 + 3*Yd^3 + 2*YL^3 + Ye^3
 
--- Suppress: <;> distributes simp+norm_num across 4 goals from refine.
-set_option linter.unnecessarySeqFocus false in
+-- Closed with plain `<;>` chain (linter-clean; the `·` focus was redundant).
 /-- [P] The SM hypercharges cancel all four anomalies (derived, not fitted). -/
 theorem sm_anomaly_free :
     A1 (1/6) (-2/3) (1/3) (-1/2) 1 = 0 ∧
     A2 (1/6) (-2/3) (1/3) (-1/2) 1 = 0 ∧
     A3 (1/6) (-2/3) (1/3) (-1/2) 1 = 0 ∧
     A4 (1/6) (-2/3) (1/3) (-1/2) 1 = 0 := by
-  refine ⟨?_, ?_, ?_, ?_⟩ <;> · simp [A1, A2, A3, A4] <;> norm_num
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> simp [A1, A2, A3, A4] <;> norm_num
 
 /-! ## §7.1  Supersymmetry as ER=EPR -/
 
@@ -5386,19 +5397,18 @@ def intervalTriples : List (ℕ × ℕ × ℕ) :=
     (List.range 17).flatMap (fun e =>
       (List.range 18).map (fun l => (g, e, l))))
 
--- Suppress: `decide` times out on 4896 triples (kernel-level enumeration).
--- `native_decide` uses compiled code and terminates in ~0.5s; the proposition
--- is a concrete decidable filter on a finite list, so correctness is verifiable
--- by inspection of the predicate `intervalOK`.
-set_option linter.style.nativeDecide false in
+-- Closed by KERNEL-LEVEL `decide` (maxRecDepth 8000; 4896 triples): no
+-- `native_decide`, no suppression — the proof is a genuine kernel computation.
 /-- **[P] `prop:interval-uniqueness`.**  At the arity `n = 3` exactly one triple satisfies all
     four conditions, and it is `(2,3,6)` — the assignment of `eq:interval-levels`.
     The search box (`g ≤ 15`, `e ≤ 16`, `l ≤ 17`) is more than sufficient and the finiteness
     is not what carries the result: two of the three coordinates are pinned before any search,
     `σ_Λ = 2n = 6` by the ceiling and `σ_G = σ_Λ − (n+1) = 2` by the gap, so only `σ_EM`
-    ranges and the two fractions fix it. Closed by `native_decide` (4896 triples). -/
+    ranges and the two fractions fix it. -/
 theorem interval_uniqueness :
-    intervalTriples.filter (fun t => intervalOK 3 t.1 t.2.1 t.2.2) = [(2, 3, 6)] := by native_decide
+    intervalTriples.filter (fun t => intervalOK 3 t.1 t.2.1 t.2.2) = [(2, 3, 6)] := by
+  set_option maxRecDepth 8000 in
+  decide
 
 /-- **[P] the four conditions hold at `(2,3,6)`, and within the family `(n−1, n, 2n)` of
     `eq:interval-levels` the microstate invariants discriminate the arity: only `n = 3`
