@@ -326,10 +326,10 @@ $\dim\mathcal{H}(\sigma)=\lfloor S(\sigma)\rfloor$.
 finite-dimensional with $S=\ln N$ (W01). The Hilbert dimension per level is the integer
 part of the horizon entropy, $\dim\mathcal{H}(\sigma)=\lfloor S(\sigma)\rfloor$, with
 $N_{\rm modes}=\lfloor\pi\golden^\sigma\rfloor$---the constructive form of Witten's
-$S=\ln N$.
-(by \texttt{rfl}---the most direct realisation). \ProofWitnessBlock{witten\_entropy\_realized, witten\_finite\_rank, witten\_two\_conjectures}
+$S=\ln N$ (by \texttt{rfl}---the most direct realisation).
 The entropy
 branch is asserted strongly (tight); the unitarity branch is ``realised''.
+\ProofWitnessBlock{witten\_entropy\_realized, witten\_finite\_rank, witten\_two\_conjectures}
 
 The flow carrying one level to another, $\sigma\mapsto\sigma+t$, fixes $\tau=i$ and
 preserves $\tfrac12$: it is the tracial flow, the type~II signature, and it is the thermal
@@ -420,7 +420,7 @@ same modulus, with no free parameter, and it is what makes the shared root of \e
 A thin matter shell at the discrete level $w_\sigma=\sigma\log\golden$ of the throat
 \eqref{eq:throat} has \emph{tension} $\lambda_\sigma$: its energy density per unit volume of the
 constant-$w$ leaf. Its value is pinned by Proposition~\ref{prop:shell-tension}.
-\ProofWitnessBlock{prop:shell-tension}%
+\ProofWitnessBlock{shell\_tension\_determined}%
 \end{definition}
 
 \begin{proposition}[The energy per bit is constant along the tower]\label{prop:ebit}
@@ -533,7 +533,7 @@ level splits: strong on the covering, ``realises'' on the identification.
 classical Gibbons--Hawking result, prior to W01 and CLPW: the de~Sitter horizon radiates
 and the static patch is a thermal state at $T=H/2\pi$. The observer's modular flow is the
 tracial flow of the tower, and the static patch is thermal at that temperature.
- (\S\ref{app:embedding}) \cite{GibbonsHawking77}. \ProofWitnessBlock{dS\_temperature, ds\_beta\_reciprocal}
+(\S\ref{app:embedding}) \cite{GibbonsHawking77}. \ProofWitnessBlock{ds\_temperature, ds\_beta\_reciprocal}
 
 \medskip
 The formal statements underlying the accumulation and gravity movements follow; their
@@ -736,8 +736,8 @@ Deriving the scale translation therefore derives the level, and conversely; coun
 debts would be an accounting error. The scale $\sqrt M$ that sets the charged leptons (\S\ref{prop:obs-matter}) is therefore the tower reading of this de~Sitter entropy, and Theorem~\ref{thm:colour-from-M} then shows the colour sector hanging on the same scale: one scale surfaces as the string constant of \S\ref{sec:derivations} and as the entropy here, the dimensionless placement already fixed, the absolute value alone carrying the observer's $\Lambda$. What the tower does add is granularity: its step is exactly
 $\golden$ ($\log_{10}\golden=0.209$ per level), so the absolute scale is constrained to a discrete
 ladder rather than a continuum.
-\NumericalWitnessBlock{eq:Lambda-from-curvature}
 \ProofWitnessBlock{lambda\_magnitude\_eq\_level, sigma\_G\_val, sigma\_EM\_val, sigma\_Lambda\_val, threshold\_ordering, interval\_gap, interval\_gap\_general, em\_holographic\_fraction, em\_asymmetry, entropy\_at\_mu\_three, tower\_step\_ratio}
+\NumericalWitnessBlock{eq:Lambda-from-curvature}
 \end{remark}
 
 \begin{proposition}[The level triple is unique over the integers]\label{prop:interval-uniqueness}

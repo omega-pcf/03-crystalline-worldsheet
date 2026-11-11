@@ -367,7 +367,7 @@ Equivalently, the \emph{Certainty Principle}
 \begin{equation}\label{eq:certainty}
 \varepsilon_0\,\Mpcf=\pi .
 \end{equation}
-\NumericalWitness{eq:certainty}
+\NumericalWitnessBlock{eq:certainty}
 The three eigenvalues $\lambda_k=\tfrac12\omega^{k}$ define an iterated function
 system of three contractions of ratio $\tfrac12$,
 \begin{equation}\label{eq:IFS}
@@ -626,8 +626,9 @@ $q\equiv1,9,11,19$, $\chi_5(q)=-1$ (inert) for $q\equiv3,7,13,17$, and $\chi_5(5
 $5$ being the only ramified prime by $\Delta_K=5$ \eqref{eq:trace-norm}. This is what makes
 $\chi_5$ an \emph{effective} classification of the primes of $\Q(\sqrt5)$: the class of $q$ is
 computed from the Fibonacci sequence of \eqref{eq:additive-mult}, without factoring anything in
-$\OK$.  for the thirteen primes decided in Lean and the twenty-three verified numerically; \ProofWitnessBlock{mersenne\_bridge, phi\_pow\_fib}
+$\OK$.  for the thirteen primes decided in Lean and the twenty-three verified numerically;
 the general congruence for every $q\neq2,5$ is Lucas'~\cite{Lucas1878}
+\ProofWitnessBlock{mersenne\_bridge, phi\_pow\_fib}
 \end{proposition}
 
 % ---------------------------------------------------------------------
@@ -705,7 +706,7 @@ evaluates it at $s=1$. The bridge \eqref{eq:pi-arccos} ties $\pi$ to $\golden$ t
 \zeta(s)=\frac{\zeta_{\Q(\sqrt5)}(s)}{L(s,\chi_5)},\qquad
 L(1,\chi_5)=\frac{2\log\golden}{\sqrt5}.
 \end{equation}
-\ProofWitnessBlock{eq:local-dedekind}%
+\ProofWitnessBlock{local\_dedekind\_ramified\_K, local\_dedekind\_split\_K, local\_dedekind\_inert\_K}%
 
 \begin{theorem}[Basel value]\label{thm:basel}
 $\zeta(2)=\pi^2/6$ (Euler). \ProofWitnessBlock{basel\_value}
