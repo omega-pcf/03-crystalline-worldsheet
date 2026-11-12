@@ -26,8 +26,29 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
+# Deterministic, text-extractable PDFs (see docs/figures.md): matplotlib
+# writes the wall clock into /CreationDate unless SOURCE_DATE_EPOCH is set,
+# and Type 3 fonts on matplotlib 3.10 carry no /ToUnicode, so pdftotext
+# loses the math glyphs.  Pinned to the timestamp of the figure round that
+# produced images/ (2026-11-09 19:31:03 -06:00); an explicitly exported
+# SOURCE_DATE_EPOCH still wins.  Set before matplotlib is imported.
+os.environ.setdefault("SOURCE_DATE_EPOCH", "1794274263")
+
+import matplotlib  # noqa: E402
 import CW3_all_figures  # noqa: E402
 import CW3_gue_figures  # noqa: E402
+
+
+def apply_rc() -> None:
+    """Re-pin the rcParams that decide what the PDF bytes look like.
+
+    ``CW3_all_figures`` sets its own ``RC`` at import time; this runs again
+    before every generator so nothing can reset the font embedding.
+    """
+    matplotlib.rcParams.update({
+        "pdf.fonttype": 42,          # CID TrueType carries /ToUnicode
+        "pdf.use14corefonts": False,
+    })
 
 GENERATORS = [
     ("fig1_alphas_uniqueness", CW3_all_figures.make_fig1),
@@ -70,6 +91,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         for name, fn in GENERATORS:
             print(f"  -> {name}")
+            apply_rc()  # font embedding stays deterministic across generators
             fn()  # each generator writes to CWD (the images/ dir)
     finally:
         os.chdir(start_cwd)
