@@ -1568,7 +1568,7 @@
         "SitterPCF.ets_constant_block_christoffels_vanish",
         "SitterPCF.ds_ricci_from_gauss",
         "SitterPCF.ds_einstein_lambda",
-        "ds_covers_half_hyperboloid",
+        "dS_covers_half_hyperboloid",
         "observer_half_from_norms"
       ],
       "tex_tags": [
@@ -1576,7 +1576,7 @@
         "\\ProofWitness{ets\\_is\\_ds\\_zero\\_h}",
         "\\ProofWitness{ets\\_constant\\_block\\_christoffels\\_vanish}",
         "\\ProofWitness{ds\\_ricci\\_from\\_gauss, ds\\_einstein\\_lambda}",
-        "\\ProofWitness{ds\\_covers\\_half\\_hyperboloid}",
+        "\\ProofWitness{dS\\_covers\\_half\\_hyperboloid}",
         "\\ProofWitness{observer\\_half\\_from\\_norms}"
       ],
       "numerical": "test_spectral.py::test_tan_equals_tower"

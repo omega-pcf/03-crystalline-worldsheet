@@ -2134,7 +2134,7 @@ open PaperS2
 /-- **The planar patch covers exactly half the de Sitter hyperboloid.**
     On the planar slicing X₀+X₄ = ℓ·e^{t/ℓ} > 0 for all t (ℓ>0): never changes
     sign, so the patch covers the half X₀+X₄>0, never the antipodal half. -/
-theorem ds_covers_half_hyperboloid {ℓ t : ℝ} (hℓ : 0 < ℓ) :
+theorem dS_covers_half_hyperboloid {ℓ t : ℝ} (hℓ : 0 < ℓ) :
     0 < ℓ * Real.exp (t / ℓ) :=
   mul_pos hℓ (Real.exp_pos _)
 
