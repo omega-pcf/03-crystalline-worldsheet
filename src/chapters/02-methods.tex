@@ -1,13 +1,8 @@
 \section{Methods}\label{sec:methods}
 
 This section develops the mathematical core of the framework, our approach to the frameworks of \S\ref{sec:manin}: Manin's quantum tori $\F_1$ program with Borger's $\Lambda$-algebraic ring. Here we develop only what is pertinent to the string; not the whole of the $\F_1$ program, which is developed in a companion paper~\cite{F1}. What we develop here is presented as a single thread, from $i$ to the two vertices $\mu=\tfrac12$ and $\sigma=\tfrac32$,
-each step formally verified in Lean~4 (theorem names in brackets); each
+each step formally verified in Lean~4 or checked numerically (names in brackets); each
 subsection uses only objects already introduced.
-
-% ---------------------------------------------------------------------
-\noindent\emph{Verification tags:} $\ProofWitness{...}$ formal proof (Lean), $\NumericalWitness{...}$ numerical check,
-$\HypWitness{...}$ hypothesis from the literature. Compound tags
-($\ProofWitness{...}\;\NumericalWitness{...}$) mark a claim resting on more than one, and each input is named where it enters.
 
 \subsection{The generator, its conjugate, and the binary bridge}\label{ssec:generator}
 
