@@ -14,11 +14,11 @@
 | 1 | `N` focus — a real test id for every `\NumericalWitness*` argument | 19 | (i) use exact id ×16 · (ii) new test ×2 · (iii) reformulate ×1 |
 | 2 | Redundancy: tag key = `\ref` key in the same paragraph | 12 | replace the duplicated key with the witness id (×10) · accept as documented rule (×2) |
 | 3 | Tag whose key has no `\ref` in its paragraph | 7 | add `\eqref` (×5) · accept — equation displayed in the same paragraph (×2) |
-| 4 | Class `H` — "hypothesis from the literature", 0 uses on claims | 1 (3 edits) | remove the class (same precedent as `L` in 05-kk) |
+| 4 | Class `H` — "hypothesis from the literature", 0 uses on claims | 1 (3 edits) | **applied 2026-11-16**: remove the class (same precedent as `L` in 05-kk) — see §4 |
 | 5 | Dead macros `\tier`, `\HypWitnessBlock`, `\Conj` | 3 | delete `\Conj` · tie `\HypWitnessBlock` to §4 · tie `\tier` to §6 |
 | 6 | Family alignment with 05-kk grammar (`\tier{X}` / `\tier[KEY]{X}`) | 1 | adopt in a later pass (not now) |
 | 7 | Prose uniformity, orphan fragments, tag-vs-phrase contradictions, census test | 8 | unify verbs (×1), repair 2 orphan fragments, 1 environment line, add census test (×1), resolve 3 tag-vs-phrase contradictions |
-| | **Total open gates** | **51** | (52 checkboxes: §6 is one decision with two mutually exclusive ticks) |
+| | **Total open gates** | **50** | (51 checkboxes: §6 is one decision with two mutually exclusive ticks; §4 closed 2026-11-16) |
 
 Counts behind §1: 19 `N` keys over 18 `\NumericalWitness*` calls (`appendix.tex:266` carries two keys). 3 further calls are legend/meta uses with `{...}` and are *not* gates (§1.0).
 
@@ -163,7 +163,9 @@ If §1 ends up choosing **(iv)** for a row, its §2 row closes automatically (no
 
 | ✓ | Recommendation |
 |---|----------------|
-| [ ] | **(R) remove.** Exact edits: `02-methods.tex:9` drop `$\HypWitness{...}$ hypothesis from the literature.` (legend becomes "…$N$ numerical check. Compound tags …"); `06-conclusions.tex:32` drop `$\HypWitness{...}/`; `03-derivations.tex:45` delete the commented `% \HypWitness{}`; then §5's `\HypWitnessBlock` gate closes automatically. Reason for (R) over (K): a zero-use class costs a legend sentence and a macro, and the 05-kk precedent says the alphabet should list only what the text prints. |
+| [x] | **(R) remove.** Exact edits: `02-methods.tex:9` drop `$\HypWitness{...}$ hypothesis from the literature.` (legend becomes "…$N$ numerical check. Compound tags …"); `06-conclusions.tex:32` drop `$\HypWitness{...}/`; `03-derivations.tex:45` delete the commented `% \HypWitness{}`; then §5's `\HypWitnessBlock` gate closes automatically. Reason for (R) over (K): a zero-use class costs a legend sentence and a macro, and the 05-kk precedent says the alphabet should list only what the text prints. |
+
+**Applied (2026-11-16).** The legend had moved to `01-introduction.tex:302-304` since the audit, so the three edits landed there: the gloss clause was dropped (the sentence now closes at "…numerical check."), the conclusions list at `06-conclusions.tex:32` now reads `$\ProofWitness{...}$/$\NumericalWitness{...}$`, the comment `% \HypWitness{}` was deleted from `03-derivations.tex:45`, and both macros (`\HypWitness`, `\HypWitnessBlock`) were deleted from `main.tex`. Verification: `grep -rn 'HypWitness' src/ main.tex` → **0**. The only remaining mentions in the repository are this decision record and the generated `CHANGELOG.md` history, which describe the removal rather than use the class.
 
 ---
 
@@ -172,7 +174,7 @@ If §1 ends up choosing **(iv)** for a row, its §2 row closes automatically (no
 | ✓ | Macro | Line | Uses | Recommendation |
 |---|-------|------|-----:|----------------|
 | [ ] | `\Conj` | `main.tex:126` | 0 (already removed from the legend by commit `7bb9d93`) | **delete** — a class the printed text cannot show; leaving it invites an unreachable tag |
-| [ ] | `\HypWitnessBlock` | `main.tex:125` | 0 | **delete iff §4 = (R)**; otherwise keep for symmetry with `\HypWitness` |
+| [ ] | `\HypWitnessBlock` | `main.tex:125` | 0 | **delete iff §4 = (R)**; otherwise keep for symmetry with `\HypWitness`. *Factual note: §4 was ticked (R) on 2026-11-16, so the macro was deleted with it — the box is left for the author.* |
 | [ ] | `\tier` | `main.tex:79` | 0 | **decide with §6**: if you adopt the family grammar, `\tier` becomes the core macro (keep/extend); if you keep 03's own system, **delete** it. It is the only one of the three whose fate is genuinely a family question |
 
 *(Colours `tagP/tagN/tagH` at `main.tex:86-88` are all in use except `tagH`, which follows §4.)*
@@ -249,4 +251,4 @@ Nothing of the decision itself has moved: the checkbox stays `[ ]`. Aligning the
 5. **§7** is prose; every row ships a ready-made sentence.
 6. Nothing here has been committed. After you tick, the edits are mechanical again and can be applied in one pass.
 
-**Executive counts:** 51 open gates (52 checkboxes) — §1: 19 (16 × gate (i), 2 × (ii), 1 × (iii)) · §2: 12 · §3: 7 · §4: 1 · §5: 3 · §6: 1 decision with 2 mutually exclusive ticks · §7: 8.
+**Executive counts:** 50 open gates (51 checkboxes) — §1: 19 (16 × gate (i), 2 × (ii), 1 × (iii)) · §2: 12 · §3: 7 · §4: **closed 2026-11-16** · §5: 3 · §6: 1 decision with 2 mutually exclusive ticks · §7: 8.
