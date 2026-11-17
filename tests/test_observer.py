@@ -207,6 +207,24 @@ class TestIntervalLevels:
         assert abs(MU_3**2 - 0.25) < 1e-12
 
 
+class TestSigmaObs:
+    """eq:sigma-obs: sigma_obs = ln(S_dS/pi)/ln phi with S_dS = 3 pi/(G_N Lambda)
+    = 6 pi/Lambda at G_N = 1/2, i.e. ln(6/Lambda_obs)/ln phi.
+    05-discussion prints sigma_obs = 585.3 for Lambda_obs l_P^2 = 2.888e-122."""
+
+    def test_sigma_obs(self):
+        S_dS = 3 * np.pi / (G_N * LAMBDA_OBS)
+        assert abs(S_dS / np.pi - 6 / LAMBDA_OBS) < 1e-6 * (6 / LAMBDA_OBS)
+        sigma = np.log(S_dS / np.pi) / np.log(PHI)
+        assert abs(sigma - 585.3) < 0.1               # manuscript value
+
+    def test_level_is_not_a_free_parameter(self):
+        """One bit of the tower at sigma_obs carries S(sigma) ~ S_dS/pi."""
+        S_dS = 3 * np.pi / (G_N * LAMBDA_OBS)
+        sigma = np.log(S_dS / np.pi) / np.log(PHI)
+        assert abs(np.pi * PHI**sigma - S_dS) < 1e-6 * S_dS
+
+
 class TestDeSitterGeometry:
     """de Sitter: R = 12 H^2, Ricci = 3 H^2 g, vacuum Einstein R = 4 Lambda.
     

@@ -207,12 +207,17 @@ class TestEntropyBridge:
 
 
 class TestEvenZeta:
-    """zeta(2k) = (-1)^{k+1} B_{2k} (2pi)^{2k} / (2(2k)!)."""
+    """zeta(2k) = (-1)^{k+1} B_{2k} (2pi)^{2k} / (2(2k)!); k = 1 is thm:basel,
+    zeta(2) = pi^2/6."""
 
     @pytest.mark.parametrize("k", range(1, 7))
     def test_formula(self, k):
         from mpmath import bernoulli as bern, factorial as fact
         assert abs(zeta(2*k) - (-1)**(k+1) * bern(2*k) * (2*pi)**(2*k) / (2 * fact(2*k))) < mpf('1e-20')
+
+    def test_basel(self):
+        """thm:basel: zeta(2) = pi^2/6, the k = 1 case of the even-zeta formula."""
+        assert abs(zeta(2) - pi**2 / 6) < mpf('1e-20')
 
 
 class TestOddZeta:

@@ -259,28 +259,42 @@ class TestIsraelJunction:
             assert abs(8 * np.pi * g / 3 - 4 * np.pi / 3) > 1.0
 
     def test_level_jumps(self):
-        """[A'] = -(4pi/3) N_modes / M_PCF."""
+        """eq:israel: [A'] = -(8 pi G_5/3) N_modes / M_PCF with G_5 = mu_3 = 1/2
+        collapses to -(4 pi/3) N_modes / M_PCF, as the manuscript states."""
         for s in range(7):
-            N = int(np.floor(np.pi * PHI**s))
-            expected = -(4 * np.pi / 3) * N / M_PCF
-            actual = -(8 * np.pi * 0.5 / 3) * (N / M_PCF)
-            assert abs(expected - actual) < 1e-14
+            N = nmodes(s)
+            reduced = -(4 * np.pi / 3) * N / M_PCF
+            full = -(8 * np.pi * G_N / 3) * (N / M_PCF)
+            assert abs(reduced - full) < 1e-14
 
-    def test_cumulative_backreaction(self):
-        """[3, 8, 16, 29, 50, 84, 140] for k = 0..6."""
-        N = [int(np.floor(np.pi * PHI**s)) for s in range(7)]
-        cum = [sum(N[: k + 1]) for k in range(7)]
-        assert cum == [3, 8, 16, 29, 50, 84, 140]
+
+class TestShellTension:
+    """eq:shell-tension: lambda_sigma = N_modes(sigma) / M_PCF (prop:shell-tension),
+    feeding the cumulative back-reaction of rmk:backreaction."""
+
+    def test_lambda_eq_nmodes_over_mpcf(self):
+        for s in range(7):
+            lam = nmodes(s) / M_PCF
+            assert lam > 0
+            # floor error is below one bit / M_PCF
+            assert abs(lam - np.pi * PHI**s / M_PCF) < 1 / M_PCF
+
+    def test_lambda_increases_along_tower(self):
+        lams = [nmodes(s) / M_PCF for s in range(7)]
+        assert all(b > a for a, b in zip(lams, lams[1:]))
 
 
 class TestGapFaces:
     """prop:gap-faces: spectral form and colour ratio."""
 
     def test_spectral_ratio(self):
-        """S(σ)/(m0 φ^σ) = π/m0 constant in σ."""
+        """S(σ)/(m0 φ^σ) = π/m0 constant in σ (S(σ) = π φ^σ), while a
+        differently scaled denominator is NOT constant in σ."""
         m0 = 1.7  # AD_HOC: any m0 > 0 works
         for s in [0.0, 2.0, 4.0]:
             assert abs((np.pi * PHI**s) / (m0 * PHI**s) - np.pi / m0) < 1e-12
+        wrong = [(np.pi * PHI**s) / (m0 * PHI**(2 * s)) for s in [0.0, 2.0, 4.0]]
+        assert max(wrong) - min(wrong) > 1.0
 
     def test_colour_ratio(self):
         """Δ_colour(σ+1)/Δ_colour(σ) = φ^{-1/2}."""

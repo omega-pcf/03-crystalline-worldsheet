@@ -18,11 +18,31 @@ class TestTowerModes:
     def test_individual(self, sigma, expected):
         assert nmodes(sigma) == expected
 
+    def test_six_not_fib(self):
+        """thm:fib-min: N_modes(6) = 56 while the Fibonacci value is 55.
+
+        03-derivations: the pi-scaled staircase equals the Fibonacci values for
+        sigma <= 5 and departs at sigma = 6, where 56 != 55.
+        """
+        def fib(k):
+            a, b = 0, 1
+            for _ in range(k):
+                a, b = b, a + b
+            return a
+        assert nmodes(6) == 56
+        assert fib(10) == 55
+        assert nmodes(6) != fib(10)
+        assert [nmodes(s) for s in range(6)] == [fib(s + 4) for s in range(6)]
+
     def test_ratio_is_phi(self):
-        """Tower step ratio is exactly phi."""
-        assert abs(
-            (np.pi * PHI**(3.3 + 1)) / (np.pi * PHI**3.3) - PHI
-        ) < 1e-12
+        """cor:golden-growth: the tower grows by phi per level.
+
+        Checked on the mode counts of eq:tower-modes themselves (the
+        manuscript's N_modes), not on the un-floored formula: each step of the
+        staircase is phi within the rounding the floor introduces.
+        """
+        ratios = [nmodes(s + 1) / nmodes(s) for s in range(6)]
+        assert max(abs(r - PHI) for r in ratios) < 0.05
 
     def test_cumulative(self):
         """Cumulative mode counts: [3, 8, 16, 29, 50, 84, 140]."""
