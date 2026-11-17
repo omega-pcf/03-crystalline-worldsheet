@@ -299,9 +299,9 @@ As discussed in \S\ref{sec:discussion}, this approach is related to Lawvere's re
 
 \subsubsection{Exactness: from the drawn point to the ring on the torus}
 
-\noindent\emph{Verification tags:} $\ProofWitness{...}$ formal proof (Lean), $\NumericalWitness{...}$ numerical check.
+\noindent\emph{Verification tags:} $\tier[...]{P}$ formal proof (Lean), $\tier[...]{N}$ numerical check.
 Compound tags
-($\ProofWitness{...}\;\NumericalWitness{...}$) mark a claim resting on more than one input, and each input is named in the bracket at the claim it supports.
+($\tier[...]{P}\;\tier[...]{N}$) mark a claim resting on more than one input, and each input is named in the bracket at the claim it supports.
 
 The difficulty is that a vanishing point, to be formalised, must be exact. The classical
 vanishing point of drawing is composed with $\pi$, trigonometry, polygons, magnitudes and
@@ -344,7 +344,7 @@ Conceptually it is a self-similar, interdimensional fractal that contains, is pa
 unifies---within a single lattice---the symmetries of $e^{i\pi}$, $\N$, $\E^3$, the primes,
 the half-integers and $\C$, working as a contemporary Vitruvian module that uses $\golden$,
 trigonometry and cyclotomic pentagons, mounted on a torus.
-\ProofWitnessBlock{phi\_sq}
+\witness{P}{phi\_sq}
 
 The choice of $\golden$ rests on a non-paradoxical
 self-reference:\label{sssec:selectphi} \eqref{eq:phisq} is the unique positive solution of
@@ -375,7 +375,7 @@ Herrera~\cite{GrisalesHerrera} this yields a classification of the primes by $\g
 realised below through the Dedekind zeta of $\Q(\sqrt5)$. This is the machinery used in the
 companion Hilbert--P\'olya paper~\cite{HP} to reproduce the multiplicative and additive
 spectrum of the primes.
-\ProofWitnessBlock{lambda\_log, lambda\_log\_mul\_regulator, mersenne\_bridge}
+\witness{P}{lambda\_log, lambda\_log\_mul\_regulator, mersenne\_bridge}
 
 \subsubsection{Primes, $\golden$ and black holes}
 Here we do not approach the relation with the primes from number theory, but the relation
