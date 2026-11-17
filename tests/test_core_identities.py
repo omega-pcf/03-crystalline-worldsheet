@@ -58,6 +58,10 @@ class TestCertainty:
         """1 / (eps_0 / pi) = M_PCF."""
         assert abs(np.pi / EPS_0 - M_PCF) < 1e-10
 
+    def test_mpcf_value(self):
+        """eq:Mpcf prints M_PCF = 6 sqrt3 pi / ln phi ~ 67.846."""
+        assert abs(M_PCF - 67.846) < 1e-3
+
 
 class TestGammaHalf:
     """Gamma(1/2) = sqrt(pi) by TWO routes."""
