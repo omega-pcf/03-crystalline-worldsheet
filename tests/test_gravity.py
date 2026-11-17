@@ -11,6 +11,7 @@ import sympy as sp
 from cw6.constants import (
     PHI, EPS_0, M_PCF, MU_3, G_N, LAMBDA_5,
     SIGMA_G, SIGMA_EM, SIGMA_L, ARITY,
+    ME_MEV, MP_MEV,
 )
 from cw6.helpers import random_null_vectors
 
@@ -297,23 +298,25 @@ class TestOneObject:
 
 
 class TestMTwoFaces:
-    """rmk:M-two-faces: m_p/m_e ≈ 6π^5."""
+    """rmk:M-two-faces: m_p/m_e = 6 pi^5 = 1836.12 (experiment 1836.15)."""
 
     def test_ratio_approx(self):
-        assert abs(6 * np.pi**5 - 1836.15) < 0.1
+        """04-implications prints 6 pi^5 = 1836.12 against the measured 1836.15."""
+        assert abs(6 * np.pi**5 - 1836.12) < 0.01       # theory value in the text
+        assert abs(6 * np.pi**5 - 1836.15) < 0.1        # measured value in the text
 
     def test_placement_face(self):
-        me = 0.51099895069
-        mp = 938.27208816
-        mp_plac = 6 * np.pi**5 * me
-        assert abs(mp_plac / 3 - 312.7515) < 1e-3
+        """04-implications (rmk:M-two-faces): 6 pi^5 m_e / 3 = 312.8 MeV."""
+        mp_plac = 6 * np.pi**5 * ME_MEV
+        assert abs(mp_plac / 3 - 312.8) < 0.1        # manuscript prints 312.8
 
     def test_residue(self):
-        me = 0.51099895069
-        mp = 938.27208816
-        mp_plac = 6 * np.pi**5 * me
-        assert abs((mp - mp_plac) / mp - 1.8823e-5) < 1e-7
-        assert abs((mp / me - 6 * np.pi**5) / (mp / me) - 1.8823e-5) < 1e-7
+        """04-implications (rmk:M-two-faces): the placement agrees with the
+        measured m_p/m_e to 1.9e-5, as the manuscript states."""
+        mp_plac = 6 * np.pi**5 * ME_MEV
+        rel = (MP_MEV - mp_plac) / MP_MEV
+        assert abs(rel - 1.9e-5) < 1e-6              # manuscript: 1.9e-5
+        assert abs((MP_MEV / ME_MEV - 6 * np.pi**5) / (MP_MEV / ME_MEV) - 1.9e-5) < 1e-6
 
 
 class TestTensionWeld:

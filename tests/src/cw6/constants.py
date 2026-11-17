@@ -11,7 +11,7 @@ Every constant carries its ORIGIN tag:
 When a constant is AD_HOC, the check MUST document why the specific value
 does not affect the conclusion (e.g., "holds for ALL m0 > 0").
 
-References are to CW6_paper_v4.tex labels.
+References are to the labels printed in the manuscript (main.tex + src/chapters/*.tex).
 """
 from __future__ import annotations
 
@@ -44,11 +44,37 @@ NORM_F: float = np.sqrt(3) / 2                       # prop:pcf-norms
 EPS_0: float = LN_PHI / (6 * np.sqrt(3))            # eq:certainty
 """Epsilon_0 = ln(phi) / (6 sqrt 3).  The certainty constant."""
 
-M_PCF: float = np.pi / EPS_0                         # eq:certainty
-"""M_PCF = pi / eps_0 = 6 sqrt(3) pi / ln(phi)."""
+M_PCF: float = 6 * np.sqrt(3) * np.pi / np.log(PHI)  # eq:Mpcf (67.846)
+"""M_PCF = 6 sqrt(3) pi / ln(phi) = pi / eps_0 (eq:Mpcf, eq:certainty).
+Defined by the closed form of eq:Mpcf so that eps_0 * M_PCF = pi is a
+computed identity between two independently written constants, not a
+tautology of the definition."""
 
 OMEGA: complex = np.exp(2j * np.pi / 3)             # prop:eisenstein-cube
 """Primitive cube root of unity: omega^3 = 1, 1+omega+omega^2 = 0."""
+
+# ── Precision views of the same three constants (single origin) ──────────
+# The suite works at three precisions (float64 numpy, mpmath, sympy).  The
+# definitions above are the origin; the views below are generated from the
+# same manuscript formulas (eq:base, eq:bridge, eq:eps0, eq:Mpcf) so that no
+# test module re-derives PHI / LN_PHI / EPS_0 / M_PCF on its own.
+
+from mpmath import mp as _mp, mpf as _mpf, sqrt as _mpsqrt, log as _mplog, pi as _mpi
+import sympy as _sp
+
+_old_dps = _mp.dps
+_mp.dps = 50                                   # create the views at 50 digits
+PHI_MP: _mpf = (1 + _mpsqrt(5)) / 2
+LN_PHI_MP: _mpf = _mplog(PHI_MP)
+EPS_0_MP: _mpf = LN_PHI_MP / (6 * _mpsqrt(3))
+M_PCF_MP: _mpf = 6 * _mpsqrt(3) * _mpi / LN_PHI_MP
+_mp.dps = _old_dps
+
+PHI_SYM = (1 + _sp.sqrt(5)) / 2                 # sympy, exact
+LN_PHI_SYM = _sp.log(PHI_SYM)
+EPS_0_SYM = LN_PHI_SYM / (6 * _sp.sqrt(3))
+M_PCF_SYM = 6 * _sp.sqrt(3) * _sp.pi / LN_PHI_SYM
+
 
 # ── §4 Gravity (DERIVED) ─────────────────────────────────────────────────
 
@@ -102,10 +128,10 @@ MP_MEV: float = 938.27208816                          # CODATA 2018
 MMU_MEV: float = 105.6583755                          # CODATA 2018  (105.658 MeV)
 MTAU_MEV: float = 1776.86                             # CODATA 2018  (1776.86 MeV)
 LAMBDA_OBS: float = 2.888e-122                        # Planck 2018 (Lambda * l_P^2)
-"""Cosmological constant in Planck units.
-Used in eq:sigma-obs to derive sigma_obs = ln(6pi/Lambda) / ln(phi).
-The manuscript (§4.5) states this value; the test backing is in
-test_observer.py::TestSigmaObs."""
+"""Cosmological constant in Planck units (05-discussion:175 prints it as
+Lambda_obs l_P^2 = 2.888e-122).  eq:sigma-obs reads
+sigma_obs = ln(6/Lambda_obs) / ln(phi) = 585.3 for this value; the backing is
+test_observer.py::TestSigmaObs.test_sigma_obs."""
 
 # ── AD_HOC (documented per check) ────────────────────────────────────────
 

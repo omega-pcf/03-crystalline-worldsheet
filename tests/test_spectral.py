@@ -10,9 +10,9 @@ from mpmath import mp, mpf, mpc, pi, exp, sqrt, log, cos as mpcos, atan as mpata
 
 mp.dps = 40
 
-PHI = (1 + sqrt(5)) / 2
-LN_PHI = log(PHI)
-EPS_0 = LN_PHI / (6 * sqrt(3))
+# Single numerical origin: tests/src/cw6/constants.py (mpmath views).
+from cw6.constants import PHI_MP as PHI, LN_PHI_MP as LN_PHI, EPS_0_MP as EPS_0
+from cw6.helpers import chi5, projector
 
 
 # ── Spectral angle ───────────────────────────────────────────────────────
@@ -191,14 +191,18 @@ class TestConductor:
         assert len({(a % 4, a % 5) for a in range(20)}) == 20
 
     def test_chi5_not_determined_by_4(self):
-        """4 does NOT determine chi5: witness 1 and 13."""
-        def chi5(k):
-            return {0: 0, 1: 1, 2: -1, 3: -1, 4: 1}[k % 5]
+        """mod4 does not determine chi5 (02-methods, prop:attribution): witness 1 and 13."""
         assert 1 % 4 == 13 % 4 and chi5(1) != chi5(13)
 
     def test_chi4_not_determined_by_5(self):
-        """5 does NOT determine chi4: witness 1 and 11."""
-        assert 1 % 5 == 11 % 5 and 1 % 4 != 11 % 4
+        """mod5 does not determine chi4 (02-methods, prop:attribution): witness 1 and 11.
+
+        chi4 is the nontrivial character mod 4 (r_4 determines it): chi4(n) = +1
+        for n = 1 mod 4, -1 for n = 3 mod 4.
+        """
+        def chi4(n):
+            return 1 if n % 4 == 1 else -1
+        assert 1 % 5 == 11 % 5 and chi4(1) != chi4(11)
 
 
 class TestAnchorExterior:
@@ -217,11 +221,9 @@ class TestProjectorFrameInvariance:
 
     def test_invariance(self):
         rng = np.random.RandomState(3)
-        _phic = float(PHI)
         R = np.array([[0, 1, 0], [0, 0, 1], [1, 0, 0]], dtype=float)
 
-        def P(X):
-            return X.T @ np.linalg.inv(X @ X.T) @ X
+        P = projector   # cw6.helpers, single origin
 
         ok = True
         for _ in range(300):
@@ -238,8 +240,7 @@ class TestProjectorFrameInvariance:
         """P^2=P, P^T=P, tr P = k, tr(P/k) = 1."""
         rng = np.random.RandomState(5)
 
-        def P(X):
-            return X.T @ np.linalg.inv(X @ X.T) @ X
+        P = projector   # cw6.helpers, single origin
 
         C = rng.randn(3, 7)
         Pm = P(C)

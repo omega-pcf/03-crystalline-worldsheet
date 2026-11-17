@@ -11,8 +11,8 @@ from mpmath import (
 
 mp.dps = 25
 
-PHI = (1 + sqrt(5)) / 2
-LN_PHI = log(PHI)
+# Single numerical origin: tests/src/cw6/constants.py (mpmath views).
+from cw6.constants import PHI_MP as PHI, LN_PHI_MP as LN_PHI
 
 
 # ── Operator construction ────────────────────────────────────────────────
@@ -42,12 +42,10 @@ class TestKKReciprocity:
     """The two jumps are reciprocal: phi^2 * phi^{-2} = 1."""
 
     def test_reciprocal(self):
-        phi_curr = (1 + sqrt(mpf(5))) / 2
-        assert abs(phi_curr**2 * phi_curr**(-2) - 1) < mpf('1e-20')
+        assert abs(PHI**2 * PHI**(-2) - 1) < mpf('1e-20')
 
     def test_geometric_mean(self):
-        phi_curr = (1 + sqrt(mpf(5))) / 2
-        assert abs(sqrt(phi_curr**2 * phi_curr**(-2)) - 1) < mpf('1e-20')
+        assert abs(sqrt(PHI**2 * PHI**(-2)) - 1) < mpf('1e-20')
 
 
 class TestKKSpectrum:
@@ -93,9 +91,7 @@ class TestKKNumerator:
         """b_n = sqrt((n+sqrt(n^2-4))/2), and at n=3 is EXACTLY phi."""
         def b_n(n):
             return sqrt((mpf(n) + sqrt(mpf(n)**2 - 4)) / 2)
-        # Compute phi at current precision (not at import time)
-        phi_curr = (1 + sqrt(mpf(5))) / 2
-        assert abs(b_n(3) - phi_curr) < mpf('1e-20')
+        assert abs(b_n(3) - PHI) < mpf('1e-20')
         for n in range(3, 9):
             assert abs(b_n(n)**2 + b_n(n)**(-2) - n) < mpf('1e-20')
 

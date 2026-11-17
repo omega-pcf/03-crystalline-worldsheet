@@ -53,51 +53,13 @@ def Lambda_riemann(s):
     return 1 / (s * (s - 1)) + I
 
 
-def chi5(a):
-    """Dirichlet character mod 5."""
-    return {0: 0, 1: 1, 2: -1, 3: -1, 4: 1}[a % 5]
+# Single numerical origin: tests/src/cw6/{constants,helpers}.py
+# (chi5, L_chi5, primes_up_to and the Euler/Dedekind products live there;
+#  this module keeps only the place-specific objects below.)
+from cw6.constants import PHI_MP as PHI
+from cw6.helpers import chi5, L_chi5, primes_up_to, euler_partial
 
-
-def L_chi5(s):
-    """Hurwitz L-function: L(s, chi5) = 5^{-s} sum chi5(a) zeta(s, a/5)."""
-    return sum(chi5(a) * zeta(s, mpf(a) / 5) for a in range(1, 5)) / power(5, s)
-
-
-PHI = (1 + sqrt(5)) / 2
 ETA_I = gamma(mpf(1) / 4) / (2 * power(pi, mpf(3) / 4))
-
-
-def primes_upto(N):
-    """Sieve of Eratosthenes."""
-    sieve = bytearray([1]) * (N + 1)
-    sieve[0:2] = b'\x00\x00'
-    for i in range(2, int(N**0.5) + 1):
-        if sieve[i]:
-            sieve[i*i::i] = bytearray(len(sieve[i*i::i]))
-    return [i for i in range(2, N + 1) if sieve[i]]
-
-
-def euler_partial(s, N=20000):
-    """Partial Euler product up to primes < N."""
-    p = mpc(1)
-    for q in primes_upto(N):
-        p *= 1 / (1 - mpc(q)**(-s))
-    return p
-
-
-def zetaK_euler(s, N=20000):
-    """Dedekind zeta via Euler product over ideals."""
-    def fK(p, s):
-        c = chi5(p)
-        if c == 0:
-            return (1 - mpf(p)**(-s))**(-1)
-        if c == 1:
-            return (1 - mpf(p)**(-s))**(-2)
-        return (1 - mpf(p)**(-2 * s))**(-1)
-    r = mpf(1)
-    for p in primes_upto(N):
-        r *= fK(p, s)
-    return r
 
 
 # ── Tests ────────────────────────────────────────────────────────────────

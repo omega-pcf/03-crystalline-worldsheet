@@ -13,22 +13,17 @@ from mpmath import (
 
 mp.dps = 25
 
-PHI = (1 + sqrt(5)) / 2
-PHI_BAR = (1 - sqrt(5)) / 2
+# Single numerical origin: tests/src/cw6/{constants,helpers}.py
+from cw6.constants import PHI_MP as PHI
+from cw6.helpers import chi5, fib, primes_up_to, dedekind_local_factor, dedekind_zeta_euler, L_chi5
+
+PHI_BAR = 1 - PHI          # eq:trace-norm: trace(phi) = 1
 DELTA_K = 5
 
 
 # ── Chi5 character ───────────────────────────────────────────────────────
 
-def chi5(k):
-    return {0: 0, 1: 1, 2: -1, 3: -1, 4: 1}[k % 5]
-
-
-def fib(k):
-    a, b = 0, 1
-    for _ in range(k):
-        a, b = b, a + b
-    return a
+# chi5 and fib are imported from cw6.helpers above (single origin).
 
 
 # ── Tests ────────────────────────────────────────────────────────────────
@@ -126,35 +121,19 @@ class TestBinetFormula:
 
     @pytest.mark.parametrize("n", range(26))
     def test_both_roots(self, n):
-        def fib2(k):
-            a, b = 0, 1
-            for _ in range(k):
-                a, b = b, a + b
-            return a
+        # Fibonacci comes from cw6.helpers (single origin).
         for a in self.ALPHAS:
-            assert abs(a**(n + 1) - (fib2(n + 1) * a + fib2(n))) < mpf('1e-15')
+            assert abs(a**(n + 1) - (fib(n + 1) * a + fib(n))) < mpf('1e-15')
 
     @pytest.mark.parametrize("q", [7, 11, 13, 19, 23])
     def test_modular_recurrence(self, q):
-        def fib2(k):
-            a, b = 0, 1
-            for _ in range(k):
-                a, b = b, a + b
-            return a
+        # Fibonacci comes from cw6.helpers (single origin).
         for k in range(20):
-            assert (fib2(k + 1) + fib2(k)) % q == fib2(k + 2) % q
+            assert (fib(k + 1) + fib(k)) % q == fib(k + 2) % q
 
 
 class TestDedekindZeta:
     """eq:local-dedekind: f_p^K = f_p^zeta * f_p^L in three cases."""
-
-    def _fK(self, p, s):
-        c = chi5(p)
-        if c == 0:
-            return (1 - mpf(p)**(-s))**(-1)
-        if c == 1:
-            return (1 - mpf(p)**(-s))**(-2)
-        return (1 - mpf(p)**(-2 * s))**(-1)
 
     def _fZ(self, p, s):
         return (1 - mpf(p)**(-s))**(-1)
@@ -165,16 +144,8 @@ class TestDedekindZeta:
     @pytest.mark.slow
     @pytest.mark.parametrize("s", [mpf(2), mpf(3), mpf('2.5'), mpf(5)])
     def test_local_factorization(self, s):
-        def primes_upto(N):
-            sieve = bytearray([1]) * (N + 1)
-            sieve[0:2] = b'\x00\x00'
-            for i in range(2, int(N**0.5) + 1):
-                if sieve[i]:
-                    sieve[i*i::i] = bytearray(len(sieve[i*i::i]))
-            return [i for i in range(2, N + 1) if sieve[i]]
-
-        for p in primes_upto(200):
-            assert abs(self._fK(p, s) - self._fZ(p, s) * self._fL(p, s)) < mpf('1e-22')
+        for p in primes_up_to(200):
+            assert abs(dedekind_local_factor(p, s) - self._fZ(p, s) * self._fL(p, s)) < mpf('1e-22')
 
     def test_splitting_types(self):
         """g*e*f = 2 in the three types."""
@@ -244,35 +215,12 @@ class TestEvenZeta:
 class TestOddZeta:
     """zeta(2k+1) = zeta_K / L with zeta_K by Euler product."""
 
-    def _Lchi5(self, s):
-        return sum(chi5(a) * zeta(s, mpf(a) / 5) for a in range(1, 5)) * mpf(5)**(-s)
-
-    def _zetaK_euler(self, s, N=20000):
-        def fK(p, s):
-            c = chi5(p)
-            if c == 0:
-                return (1 - mpf(p)**(-s))**(-1)
-            if c == 1:
-                return (1 - mpf(p)**(-s))**(-2)
-            return (1 - mpf(p)**(-2 * s))**(-1)
-        def primes_upto(N):
-            sieve = bytearray([1]) * (N + 1)
-            sieve[0:2] = b'\x00\x00'
-            for i in range(2, int(N**0.5) + 1):
-                if sieve[i]:
-                    sieve[i*i::i] = bytearray(len(sieve[i*i::i]))
-            return [i for i in range(2, N + 1) if sieve[i]]
-        r = mpf(1)
-        for p in primes_upto(N):
-            r *= fK(p, s)
-        return r
-
     @pytest.mark.slow
     @pytest.mark.parametrize("k", [1, 2])
     def test_odd(self, k):
         s = mpf(2 * k + 1)
-        assert abs(self._zetaK_euler(s) / self._Lchi5(s) - zeta(s)) < mpf('1e-8')
-        assert abs(self._Lchi5(s)) > mpf('0.5')
+        assert abs(dedekind_zeta_euler(s) / L_chi5(s) - zeta(s)) < mpf('1e-8')
+        assert abs(L_chi5(s)) > mpf('0.5')
 
 
 class TestEntropyMax:

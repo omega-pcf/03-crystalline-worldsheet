@@ -110,10 +110,75 @@ def projector(C: np.ndarray) -> np.ndarray:
 
 # ── Riemann zeta zeros (computed, not transcribed) ───────────────────────
 
-def zeta_zeros_imaginary(count: int) -> list:
-    """Return imaginary parts of the first `count` Riemann zeta zeros via mpmath."""
+_zeta_zero_cache: dict = {}   # (dps, count) -> list of imaginary parts
+
+
+def zeta_zeros(count: int, dps: int) -> list:
+    """First `count` Riemann zeta zero imaginary parts at `dps` digits.
+
+    Cached by (dps, count): the repulsion suite calls this from several
+    classes and the zeros are the expensive part of the run.
+    """
     from mpmath import mp
-    return [float(mp.im(mp.zetazero(n))) for n in range(1, count + 1)]
+    key = (dps, count)
+    if key not in _zeta_zero_cache:
+        old_dps = mp.dps
+        mp.dps = dps
+        _zeta_zero_cache[key] = [mp.im(mp.zetazero(n)) for n in range(1, count + 1)]
+        mp.dps = old_dps
+    return _zeta_zero_cache[key]
+
+
+# ── Characters and Fibonacci (shared by the arithmetic/place modules) ────
+
+def chi5(a: int) -> int:
+    """Dirichlet character mod 5: eq:chi5-values (0, 1, -1, -1, 1)."""
+    return {0: 0, 1: 1, 2: -1, 3: -1, 4: 1}[a % 5]
+
+
+def fib(k: int) -> int:
+    """Fibonacci F_k with F_0 = 0, F_1 = 1."""
+    a, b = 0, 1
+    for _ in range(k):
+        a, b = b, a + b
+    return a
+
+
+# ── Euler / Dedekind products (were duplicated per test module) ──────────
+
+def euler_partial(s, N: int = 20000):
+    """Partial Euler product of zeta(s) over primes < N."""
+    from mpmath import mpf, mpc
+    p = mpc(1)
+    for q in primes_up_to(N):
+        p *= 1 / (1 - mpc(q) ** (-s))
+    return p
+
+
+def dedekind_local_factor(p, s):
+    """f_p^K = f_p^zeta * f_p^L for K = Q(sqrt5) (eq:local-dedekind)."""
+    from mpmath import mpf
+    c = chi5(p)
+    if c == 0:
+        return (1 - mpf(p) ** (-s)) ** (-1)
+    if c == 1:
+        return (1 - mpf(p) ** (-s)) ** (-2)
+    return (1 - mpf(p) ** (-2 * s)) ** (-1)
+
+
+def dedekind_zeta_euler(s, N: int = 20000):
+    """Dedekind zeta of Q(sqrt5) via the Euler product over primes."""
+    from mpmath import mpf
+    r = mpf(1)
+    for p in primes_up_to(N):
+        r *= dedekind_local_factor(p, s)
+    return r
+
+
+def L_chi5(s):
+    """Hurwitz L-function: L(s, chi5) = 5^{-s} sum_a chi5(a) zeta(s, a/5)."""
+    from mpmath import mpf, power, zeta
+    return sum(chi5(a) * zeta(s, mpf(a) / 5) for a in range(1, 5)) / power(5, s)
 
 
 # ── Null vectors for Einstein check ──────────────────────────────────────

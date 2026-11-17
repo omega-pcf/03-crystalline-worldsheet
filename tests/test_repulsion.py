@@ -12,6 +12,8 @@ The academic content is identical: repulsion exists, Poisson fails, sine kernel 
 import pytest
 from mpmath import mp, mpf, pi, e as mpe, sin as mpsin
 
+from cw6.helpers import zeta_zeros
+
 # ── Precision tiers ──────────────────────────────────────────────────────
 
 FULL_DPS = 25
@@ -29,19 +31,7 @@ def _get_tier(request):
 
 
 # ── Shared helpers ───────────────────────────────────────────────────────
-
-_cache: dict = {}  # (dps, count) -> list of gamma values
-
-
-def zeta_zeros(count, dps):
-    """First `count` Riemann zeta zero imaginary parts, cached by (dps, count)."""
-    key = (dps, count)
-    if key not in _cache:
-        old_dps = mp.dps
-        mp.dps = dps
-        _cache[key] = [mp.im(mp.zetazero(n)) for n in range(1, count + 1)]
-        mp.dps = old_dps
-    return _cache[key]
+# zeta_zeros lives in cw6.helpers (single numerical origin).
 
 
 def unfolded_spacing(q, i, gamma_list, dps):
