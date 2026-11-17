@@ -1,7 +1,10 @@
 """
 §4  Dimensional Transmutation & Continuum Limit
 ================================================
-Lambda_QCD, gap invariance, projector properties, Koide formula.
+Lambda_QCD and its continuum limit, the self-dual charge and the string gap
+(eq:string-tension), the two towers kept distinct, Brown-Henneaux, the
+beta-function identity and the Koide placement of the lepton masses.
+(The projector checks live in test_spectral.py / test_gravity.py.)
 """
 import numpy as np
 import pytest
@@ -12,7 +15,7 @@ from cw6.constants import (
     LAMBDA_QCD_SCALE, B0_QCD,
     ME_MEV, MMU_MEV, MTAU_MEV,
 )
-from cw6.helpers import lambda_qcd, g_sq_af, projector
+from cw6.helpers import lambda_qcd, g_sq_af
 
 
 class TestLambdaQCDPositivity:

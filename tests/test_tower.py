@@ -1,7 +1,9 @@
 """
 §3  Tower Modes & Bridge Cocycle
 =================================
-Tower step ratio, bridge cocycle composition/inverse, KK golden identity.
+Tower mode counts and their golden growth (eq:tower-modes, cor:golden-growth,
+thm:fib-min), bridge cocycle composition/inverse (eq:bridge), KK golden
+identity, and the Regge residue behind eq:veneziano (degree n-1, spin <= n-1).
 """
 import numpy as np
 import pytest
