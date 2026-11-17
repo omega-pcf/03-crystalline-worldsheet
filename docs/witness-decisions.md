@@ -202,8 +202,8 @@ the repository contains.
 
 **Documentary progress (the gate stays open).** Both references F1 depends on are now reachable from inside this repository:
 
-- the family witness contract, `05-kkgt/docs/citations.md` §8: <https://github.com/omega-pcf/05-kkgt/blob/main/docs/citations.md>;
-- the family style guide, ported to this repository as [`style-guide.md`](style-guide.md) (port of `05-kkgt/docs/style-guide.md` v2.2), whose header links that §8 instead of copying it — this repository's own [`citations.md`](citations.md) still ends at §7.
+- the family witness contract, §8 of this repository's own [`citations.md`](citations.md) (propagated 2026-11-17, together with the portable rationale [`witness-contract.md`](witness-contract.md));
+- the family style guide, ported to this repository as [`style-guide.md`](style-guide.md) (port of `05-kkgt/docs/style-guide.md` v2.2), whose header links that §8 instead of copying it.
 
 Nothing of the decision itself has moved: the checkbox stays `[ ]`. Aligning the alphabet, the compound-tag form (`\tier[KEY]{X}`) and the quantified criterion is still the author's decision, and no macro, gloss, `.tex` file, test or `lean/` file was touched in recording this.
 

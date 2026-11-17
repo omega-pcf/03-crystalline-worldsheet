@@ -1,8 +1,9 @@
 # Witness compliance — 03-crystalline-worldsheet
 
 **For:** the main author · **Applied:** 2026-11-16 · **Contract:** the family
-witness standard, `05-kkgt/docs/citations.md` §8 (grammar §8.1, rules §8.2,
-alphabet §8.3, conventions §8.4, placement criterion §8.5), linked from
+witness standard, §8 of this repository's own [`citations.md`](citations.md)
+(grammar §8.1, rules §8.2, alphabet §8.3, conventions §8.4, placement
+criterion §8.5; propagated 2026-11-17), linked from
 [`style-guide.md`](style-guide.md).
 
 This file is the applied inventory of §8.5 for this repository — the
@@ -38,7 +39,7 @@ Per chapter, before → after (block / inline):
 
 ## 2. The rules of §8.2, checked here
 
-| # | Rule (05-kkgt §8.2) | State in this manuscript |
+| # | Rule (`citations.md` §8.2) | State in this manuscript |
 |---|---|---|
 | 1 | **One claim, one tag** — no two tags adjacent | **0 violations.** Every pair of marks in the document is separated by a sentence terminator (198 pairs), an environment or display (8), a paragraph break (2) or the paragraph break a `\witness` block issues (3). The five lines that used to carry two tags on one claim were split (§4). |
 | 2 | **An external source is the citation, not a tag — and never the key of one** | **0 tag keys hold a `\cite` or a bibliography key** (checked against `src/bibliography.bib`); external sources stay outside the bracket as `in~\cite{key}` / `~\cite{key}` next to the tag. The preamble raises `\PackageError` if a `\cite` is ever written inside the optional argument of `\tier` (the guard of `05-kkgt/main.tex`, ported with the grammar). |
