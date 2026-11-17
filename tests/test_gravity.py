@@ -11,7 +11,7 @@ import sympy as sp
 from cw6.constants import (
     PHI, EPS_0, M_PCF, MU_3, G_N, LAMBDA_5,
     SIGMA_G, SIGMA_EM, SIGMA_L, ARITY,
-    ME_MEV, MP_MEV,
+    ME_MEV, MP_MEV, nmodes,
 )
 from cw6.helpers import random_null_vectors
 
@@ -41,12 +41,19 @@ class TestEinsteinCurvature:
         assert G == 6
 
     def test_lambda5(self):
+        """eq:Lambda-from-curvature: Lambda_5 = -d(d-1)/2 = -6 at d = 4."""
         assert LAMBDA_5 == -6
 
     def test_sectional_curvature(self):
-        """K = -1/l^2 = -1."""
-        l = 1
-        assert -1 / l**2 == -1
+        """K = R / (n(n-1)) = -1 for the n = d+1 = 5 dimensional AdS space with
+        R = -20, i.e. K = -1/l^2 with l = 1 (05-discussion fixes l = 1)."""
+        d = 4
+        Ap, App = -1, 0
+        R = -(2 * d * App + d * (d + 1) * Ap**2)     # = -d(d+1) = -20
+        n = d + 1
+        K = R / (n * (n - 1))
+        assert K == -1
+        assert abs(K - (-1 / 1**2)) < 1e-12
 
 
 class TestBFBound:
@@ -206,11 +213,17 @@ class TestModularLL:
         assert sp.simplify(Kt - sp.pi * self.phi**self.sig) == 0
 
     def test_dilatation_scaling(self):
-        """S(s+t) = phi^t S(s)."""
+        """S(s+t) = phi^t S(s), read through the de Sitter entropy
+        S_GH(H) = pi/H^2 evaluated at the level scale H(sigma) = sqrt2 phi^{-sigma/2}."""
         tt = sp.Symbol('tt')
-        assert sp.simplify(
-            sp.pi * self.phi**(self.sig + tt) - self.phi**tt * (sp.pi * self.phi**self.sig)
-        ) == 0
+
+        def S_GH(sig):
+            H = sp.sqrt(2) * self.phi**(-sig / 2)
+            area = 4 * sp.pi / H**2
+            return sp.simplify(area / (4 * self.GN))   # A / 4G_N
+
+        assert sp.simplify(S_GH(self.sig + tt) - self.phi**tt * S_GH(self.sig)) == 0
+        assert sp.simplify(S_GH(self.sig) - sp.pi * self.phi**self.sig) == 0
 
     def test_H_sigma(self):
         """H(sigma) = sqrt(2) phi^{-sigma/2}."""
@@ -355,5 +368,8 @@ class TestConjugatePair:
     """V(σ) · (D(σ) - 1) = eps_0^2."""
 
     def test_conjugate(self):
+        """V(sigma) (D(sigma) - 1) = eps_0^2 for every level ..."""
         for s in range(9):
             assert abs((EPS_0 * PHI**(-s)) * (EPS_0 * PHI**s) - EPS_0**2) < 1e-12
+        # ... and NOT for a partner taken from a different level
+        assert abs((EPS_0 * PHI**(-2)) * (EPS_0 * PHI**(-3)) - EPS_0**2) > 1e-3

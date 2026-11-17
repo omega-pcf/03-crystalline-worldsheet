@@ -76,6 +76,11 @@ EPS_0_SYM = LN_PHI_SYM / (6 * _sp.sqrt(3))
 M_PCF_SYM = 6 * _sp.sqrt(3) * _sp.pi / LN_PHI_SYM
 
 
+def bridge_T_MP(s1, s2):
+    """eq:bridge in mpmath: T(s1, s2) = (1 + eps_0 phi^{s1}) / (1 + eps_0 phi^{s2})."""
+    return (1 + EPS_0_MP * PHI_MP**s1) / (1 + EPS_0_MP * PHI_MP**s2)
+
+
 # ── §4 Gravity (DERIVED) ─────────────────────────────────────────────────
 
 LAMBDA_5: float = -4 * (4 - 1) / 2                    # eq:Lambda-from-curvature

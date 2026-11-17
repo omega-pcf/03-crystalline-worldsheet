@@ -50,19 +50,68 @@ class TestKKGoldenIdentity:
 
 
 class TestReggeSpin:
-    """Level n carries spin <= n-1, hence J=2 requires n>=3 (not n=2).
-    
-    This is a structural constraint from the Regge trajectory: the maximum spin
-    at level n is n-1. J=2 is allowed at n=3 (spin 0,1,2) but NOT at n=2 (spin 0,1 only).
+    """03-derivations (eq:veneziano): the residues of the Veneziano amplitude at
+    alpha' s = n are Regge polynomials of degree n-1 (carrying spin <= n-1),
+    nonzero at every level.
+
+    The residue is computed numerically, by contour integration of the
+    amplitude the manuscript prints,
+        A4 = Gamma(-alpha's) Gamma(-alpha'u) / Gamma(1 - alpha'(s+u)),
+    with s + t + u = 0, i.e. A(x, tau) = Gamma(-x) Gamma(x+tau)/Gamma(1+tau)
+    at x = alpha's and tau = alpha't.  The degree of a polynomial is read off
+    from finite differences of its values, so nothing about the answer is
+    assumed.
     """
 
-    @pytest.mark.parametrize("n,max_spin", [(1, 0), (2, 1), (3, 2), (4, 3), (10, 9)])
-    def test_max_spin_at_level(self, n, max_spin):
-        """Level n carries spin 0..n-1."""
-        assert max_spin == n - 1
+    MPS_DPS = 25
+
+    @staticmethod
+    def _residue(n, tau):
+        from mpmath import mp, mpf, gamma, quad, pi, exp
+        old = mp.dps
+        mp.dps = TestReggeSpin.MPS_DPS
+        r = mpf('0.1')                       # no other pole within the contour
+        A = lambda x: gamma(-x) * gamma(x + tau) / gamma(1 + tau)
+        f = lambda th: A(n + r * exp(1j * th)) * r * exp(1j * th)
+        val = quad(f, [0, 2 * pi]) / (2 * pi)
+        mp.dps = old
+        return val
+
+    @classmethod
+    def _values(cls, n, count):
+        from mpmath import mpf
+        return [cls._residue(n, mpf(k)) for k in range(count)]
+
+    @classmethod
+    def _difference(cls, vals, order):
+        v = list(vals)
+        for _ in range(order):
+            v = [v[i + 1] - v[i] for i in range(len(v) - 1)]
+        return v
+
+    @pytest.mark.parametrize("n", [1, 2, 3, 4, 5])
+    def test_residue_degree_is_n_minus_1(self, n):
+        """degree = n-1: the n-th difference vanishes, the (n-1)-th does not."""
+        from mpmath import mpf
+        vals = self._values(n, n + 2)                 # n+2 sample points
+        n_th = self._difference(vals, n)
+        scale = max(abs(v) for v in vals)
+        assert max(abs(v) for v in n_th) < mpf('1e-12') * scale
+        nm1_th = self._difference(vals, n - 1)
+        assert min(abs(v) for v in nm1_th) > mpf('1e-6')
+
+    @pytest.mark.parametrize("n", [1, 2, 3, 4, 5])
+    def test_residue_nonzero_at_every_level(self, n):
+        """Nonzero at every level: every integer level is populated."""
+        from mpmath import mpf
+        assert abs(self._residue(n, mpf(7))) > mpf('1e-6')
 
     def test_j2_requires_n3(self):
-        """J=2 requires n >= 3."""
-        J = 2
-        assert J <= 3 - 1   # allowed at n=3
-        assert not (J <= 2 - 1)  # NOT allowed at n=2
+        """Consequence of spin <= n-1: J=2 needs n >= 3, not n = 2."""
+        from mpmath import mpf
+        vals2 = self._values(2, 4)
+        vals3 = self._values(3, 5)
+        # level 2: second difference must vanish -> degree <= 1 (spin 0,1)
+        assert max(abs(v) for v in self._difference(vals2, 2)) < mpf('1e-12') * max(abs(v) for v in vals2)
+        # level 3: second difference must NOT vanish -> degree = 2 (spin 0,1,2)
+        assert min(abs(v) for v in self._difference(vals3, 2)) > mpf('1e-6')

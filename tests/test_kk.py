@@ -39,13 +39,23 @@ def kk_spectrum(up, down, N=7):
 # ── Tests ────────────────────────────────────────────────────────────────
 
 class TestKKReciprocity:
-    """The two jumps are reciprocal: phi^2 * phi^{-2} = 1."""
+    """The two jumps are reciprocal: phi^2 * phi^{-2} = 1.
+
+    Reciprocity is read off the operator itself: swapping the two jumps leaves
+    the spectrum unchanged, and the geometric mean of the jumps as they appear
+    in the matrix equals the unit of the scale, 1/ln^2 phi.
+    """
 
     def test_reciprocal(self):
-        assert abs(PHI**2 * PHI**(-2) - 1) < mpf('1e-20')
+        up, down = PHI**2, PHI**(-2)
+        lam_ud = kk_spectrum(up, down, 7)
+        lam_du = kk_spectrum(down, up, 7)
+        assert max(abs(a - b) for a, b in zip(lam_ud, lam_du)) < mpf('1e-20')
 
     def test_geometric_mean(self):
-        assert abs(sqrt(PHI**2 * PHI**(-2)) - 1) < mpf('1e-20')
+        L = kk_operator(PHI**2, PHI**(-2), 7)
+        jump_up, jump_down = L[1, 0], L[0, 1]          # off-diagonal entries
+        assert abs(sqrt(jump_up * jump_down) - 1 / LN_PHI**2) < mpf('1e-20')
 
 
 class TestKKSpectrum:
@@ -55,6 +65,8 @@ class TestKKSpectrum:
     NLEV = 2 * N_AR + 1  # 7
 
     def test_numerical_equals_closed(self):
+        """eq:kk-spectrum: the numerically diagonalised spectrum equals the
+        closed form -4 sin^2(k pi / 4(n+1)) / ln^2 phi."""
         lam_num = kk_spectrum(PHI**2, PHI**(-2), self.NLEV)
         lam_cf = sorted(
             -4 * mpsin(k * pi / (4 * (self.N_AR + 1)))**2 / LN_PHI**2
@@ -64,17 +76,25 @@ class TestKKSpectrum:
         assert max(abs(a - b) for a, b in zip(lam_num, lam_cf)) < tol
 
     def test_mass_squared_positive(self):
-        """m^2_k = -lambda_k > 0 for the 7 modes."""
+        """m^2_k = -lambda_k > 0 for the 7 modes; the closed form agrees with
+        the numerically diagonalised operator."""
         lam = kk_spectrum(PHI**2, PHI**(-2), self.NLEV)
         m2 = sorted(4 * mpsin(k * pi / (4 * (self.N_AR + 1)))**2 / LN_PHI**2
                     for k in range(1, self.NLEV + 1))
         assert all(v < 0 for v in lam)
         assert all(v > 0 for v in m2)
-        assert abs(m2[0] - 4 * mpsin(pi / 16)**2 / LN_PHI**2) < mpf('1e-30')
+        tol = mpf(10)**(-(mp.dps // 2))
+        # lam is ascending (most negative first), m2 ascending (smallest first)
+        assert max(abs(m2[k] + lam[self.NLEV - 1 - k]) for k in range(self.NLEV)) < tol
 
     def test_interior_row_sum(self):
-        """Interior row sum = 1/ln^2 phi (the numerator is 1)."""
+        """eq:kk-rowsum: the interior row of the operator sums to 1/ln^2 phi,
+        because its numerator phi^2 + phi^{-2} - 2 equals 1."""
+        L = kk_operator(PHI**2, PHI**(-2), self.NLEV)
+        interior = self.NLEV // 2
+        row_sum = sum(L[interior, j] for j in range(self.NLEV))
         assert abs(PHI**2 + PHI**(-2) - 2 - 1) < mpf('1e-20')
+        assert abs(row_sum - 1 / LN_PHI**2) < mpf('1e-20')
 
 
 class TestKKNumerator:

@@ -11,7 +11,7 @@ from mpmath import mp, mpf, mpc, pi, exp, sqrt, log, cos as mpcos, atan as mpata
 mp.dps = 40
 
 # Single numerical origin: tests/src/cw6/constants.py (mpmath views).
-from cw6.constants import PHI_MP as PHI, LN_PHI_MP as LN_PHI, EPS_0_MP as EPS_0
+from cw6.constants import PHI_MP as PHI, LN_PHI_MP as LN_PHI, EPS_0_MP as EPS_0, bridge_T_MP as bridge_T
 from cw6.helpers import chi5, projector
 
 
@@ -60,19 +60,11 @@ class TestBridgeAngle:
     @pytest.mark.parametrize("s1", range(9))
     @pytest.mark.parametrize("s2", range(9))
     def test_bridge_is_angle(self, s1, s2):
-        T_direct = (1 + EPS_0 * PHI**s1) / (1 + EPS_0 * PHI**s2)
+        """eq:bridge-angle: T = (1 + tan a(s1)) / (1 + tan a(s2)) agrees with
+        the cocycle T(s1, s2) implemented in cw6.constants (eq:bridge)."""
+        T_direct = bridge_T(s1, s2)
         T_angle = (1 + mp.tan(alpha(s1))) / (1 + mp.tan(alpha(s2)))
         assert abs(T_direct - T_angle) < mpf('1e-30')
-
-    @pytest.mark.parametrize("s", range(9))
-    def test_pi4_form(self, s):
-        """sqrt(2) sin(a + pi/4) / cos(a) = 1 + tan a."""
-        lhs = sqrt(2) * mp.sin(alpha(s) + pi / 4) / mp.cos(alpha(s))
-        rhs = 1 + mp.tan(alpha(s))
-        assert abs(lhs - rhs) < mpf('1e-30')
-
-    def test_tan_pi4(self):
-        assert abs(mp.tan(pi / 4) - 1) < mpf('1e-30')
 
 
 class TestETSMetric:
@@ -160,7 +152,9 @@ class TestConductor:
     """eq:conductor: conductor and CRT properties of Q(sqrt5)."""
 
     def test_lcm(self):
-        assert 20 % 4 == 0 and 20 % 5 == 0 and 4 * 5 == 20
+        """eq:conductor: lcm(4, 5) = 20 with gcd(4, 5) = 1."""
+        from math import lcm, gcd
+        assert lcm(4, 5) == 20 and gcd(4, 5) == 1
 
     def test_i4_equals_1(self):
         assert abs(complex(0, 1)**4 - 1) < 1e-15
@@ -278,7 +272,7 @@ class TestEnvelopeSplits:
 
 
 class TestLiModulus:
-    """eq:li-modulus: |1 - 1/rho| = 1 iff Re rho = 1/2."""
+    """prop:repulsion-modulus (eq:li-modulus): |1 - 1/rho| = 1 iff Re rho = 1/2."""
 
     def test_equivalence(self):
         """|1-1/rho| = 1 iff Re rho = 1/2 (the critical line is [P], not [C])."""

@@ -12,10 +12,14 @@ from cw6.helpers import mssm_spread
 
 
 class TestEntropyRatio:
-    """S(3)/S(6) = phi^{-3}."""
+    """04-implications / appendix: the tower entropy ratio
+    S(3)/S(6) = phi^{-3} ~ 0.236, where S(sigma) = pi phi^sigma is the
+    saturation entropy of 03-derivations (eq:tower-modes)."""
 
     def test_ratio(self):
-        assert abs(PHI**3 / PHI**6 - PHI**-3) < 1e-12
+        S = lambda s: np.pi * PHI**s
+        assert abs(S(3) / S(6) - PHI**-3) < 1e-12
+        assert abs(S(3) / S(6) - 0.236) < 1e-3          # appendix prints 0.236
 
 
 class TestWeinbergAngleGUT:
@@ -72,7 +76,13 @@ class TestMSSMUnification:
 
     @pytest.mark.slow
     def test_running_3_8_to_0231(self):
-        """The GUT 3/8 descends to ~0.231 because MSSM unifies and SM does not."""
+        """The tower ratio 3/8 with the MSSM/SM unification contrast.
+
+        The manuscript's further step --- that the GUT value runs down to the
+        measured sin^2 theta_W(M_Z) ~ 0.231 --- is an RG statement computed in
+        the literature, not recomputed here; what is checked is its premise
+        (MSSM unifies, SM does not) and the GUT ratio itself.
+        """
         assert mssm_spread([33/5, 1, -3]) < 0.5
         assert mssm_spread([41/10, -19/6, -7]) > 3
         assert abs(nmodes(0) / nmodes(2) - 0.375) < 1e-12
@@ -89,4 +99,10 @@ class TestGaugeDimSU3:
     """dim su(3) = 3^2 - 1 = 8."""
 
     def test_dimension(self):
-        assert 3**2 - 1 == 8
+        """dim su(3) = 8: the eight Gell-Mann matrices are linearly
+        independent and traceless, i.e. they span the su(3) basis."""
+        from cw6.helpers import build_gellmann_matrices
+        gens = build_gellmann_matrices()
+        assert len(gens) == 8
+        stacked = [np.eye(3).ravel()] + [g.ravel() for g in gens]
+        assert np.linalg.matrix_rank(np.array(stacked)) == 9   # 1 + 8

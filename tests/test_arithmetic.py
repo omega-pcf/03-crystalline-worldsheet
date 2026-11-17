@@ -48,8 +48,11 @@ class TestOKVsRpcf:
         assert abs(PHI**2 - PHI - 1) < mpf('1e-25')
 
     def test_half_is_not(self):
-        """1/2 is a root of 2x-1, which is not monic in the same sense."""
-        assert abs(2 * (mpf(1) / 2) - 1) < mpf('1e-25')
+        """1/2 is NOT a root of x^2 - x - 1, though it is a root of 2x-1:
+        the two equations have no root in common at 1/2."""
+        assert abs(PHI**2 - PHI - 1) < mpf('1e-25')            # phi is a root
+        assert abs((mpf(1) / 2)**2 - (mpf(1) / 2) - 1) > mpf('1')  # 1/2 is not
+        assert abs(2 * (mpf(1) / 2) - 1) < mpf('1e-25')        # it roots 2x-1
 
 
 class TestRegulator:
@@ -224,7 +227,8 @@ class TestOddZeta:
 
 
 class TestEntropyMax:
-    """H(p) <= 1 on (0,1) with equality ONLY at p=1/2."""
+    """prop:entropy-max (eq:entropy-max): H(p) <= 1 on (0,1) with equality ONLY
+    at p = 1/2, the maximum-entropy point f_crit = mu_3 = 1/2."""
 
     def test_max_at_half(self):
         def Hbin(p):

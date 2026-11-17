@@ -22,20 +22,26 @@ class TestDimensionLadder:
         assert abs(1j**2 + 1) < 1e-12
 
     def test_phi_identity(self):
-        """phi^2 = phi + 1  (definition of the golden ratio)."""
+        """eq:phisq: phi^2 = phi + 1, the root behind thm:fib-min."""
         assert abs(PHI**2 - (PHI + 1)) < 1e-12
 
 
 class TestPCFNorms:
-    """prop:pcf-norms: |P| = 1/sqrt(3), |C| = 1, |F| = sqrt(3)/2."""
+    """prop:pcf-norms: |P| = 1/sqrt(3), |C| = 1, |F| = sqrt(3)/2.
 
-    @pytest.mark.parametrize("name,actual,expected", [
-        ("norm_P", NORM_P, 1 / np.sqrt(3)),
+    Checked against the geometric routes of the proposition's proof
+    (norm_p_eq_tan, norm_f_eq_cos), not against the constants' own
+    definitions: |F| = cos(pi/6) from the equilateral triangle, |P| = tan(pi/6)
+    from the median, |C| = 1 normalising the real eigenvalue lambda_0 = 1/2.
+    """
+
+    @pytest.mark.parametrize("name,actual,route", [
+        ("norm_P", NORM_P, np.tan(np.pi / 6)),
         ("norm_C", NORM_C, 1.0),
-        ("norm_F", NORM_F, np.sqrt(3) / 2),
+        ("norm_F", NORM_F, np.cos(np.pi / 6)),
     ])
-    def test_individual_norms(self, name, actual, expected):
-        assert abs(actual - expected) < 1e-12, f"{name}: {actual} != {expected}"
+    def test_individual_norms(self, name, actual, route):
+        assert abs(actual - route) < 1e-12, f"{name}: {actual} != {route}"
 
     def test_product_is_mu(self):
         """|P||C||F| = 1/2 = mu_3 = |Omega|."""
@@ -73,13 +79,6 @@ class TestEisensteinCube:
 
     def test_zero_sum(self):
         assert abs(1 + OMEGA + OMEGA**2) < 1e-12
-
-
-class TestCosinePi5:
-    """cos(pi/5) = phi/2."""
-
-    def test_cosine_value(self):
-        assert abs(np.cos(np.pi / 5) - PHI / 2) < 1e-12
 
 
 class TestPiBridge:

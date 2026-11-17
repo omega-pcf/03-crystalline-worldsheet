@@ -18,16 +18,24 @@ from cw6.helpers import (
 
 
 class TestFKSLadder:
-    """dim g = kissing + rank at the four rungs."""
+    """prop:ladder: kissing = 2 * (positive roots) and dim g = kissing + rank,
+    rung by rung, for the four root systems of 04-implications (A2, D4, E6, E8).
 
-    @pytest.mark.parametrize("name,kiss,rank,dim", [
-        ("A2", 6, 2, 8),
-        ("D4", 24, 4, 28),
-        ("E6", 72, 6, 78),
-        ("E8", 240, 8, 248),
-    ])
-    def test_ladder(self, name, kiss, rank, dim):
-        assert kiss + rank == dim
+    Only the positive-root counts and the ranks are taken from the text; the
+    kissing number and the dimension are what the two manuscript relations
+    predict, and both are compared against the dimensions the text prints
+    (8 = 6+2, 28 = 24+4, 78 = 72+6, 248 = 240+8)."""
+
+    POSROOTS = {"A2": 3, "D4": 12, "E6": 36, "E8": 120}
+    RANKS = {"A2": 2, "D4": 4, "E6": 6, "E8": 8}
+    DIMS = {"A2": 8, "D4": 28, "E6": 78, "E8": 248}
+
+    @pytest.mark.parametrize("name", ["A2", "D4", "E6", "E8"])
+    def test_ladder(self, name):
+        roots = self.POSROOTS[name]
+        kiss = 2 * roots                                  # kissing = 2 * roots
+        assert kiss == {"A2": 6, "D4": 24, "E6": 72, "E8": 240}[name]
+        assert kiss + self.RANKS[name] == self.DIMS[name]  # dim = kissing + rank
 
 
 class TestA2Hexagon:
@@ -54,8 +62,12 @@ class TestA2Hexagon:
         assert sum(1 for a, b in box if a2n2(a, b) == 2) == 6
 
     def test_roots_rank_dim(self):
-        """#roots + rank = dim su(3)."""
-        assert 6 + 2 == 3**2 - 1
+        """#roots + rank = dim su(3) = 8, computed from the Gell-Mann basis:
+        eight linearly independent traceless 3x3 generators."""
+        lam = build_gellmann_matrices()
+        assert len(lam) == 8
+        stacked = np.array([np.eye(3).ravel()] + [L.ravel() for L in lam])
+        assert np.linalg.matrix_rank(stacked) == 9       # identity + 8 generators
 
 
 class TestJacobi:
@@ -67,9 +79,12 @@ class TestJacobi:
         assert jacobi_worst(f) < 1e-12
 
     def test_fails_for_arbitrary(self):
-        """Jacobi FAILS for arbitrary f — the old axiom was FALSE."""
-        bad = sum(1.0 * 1.0 + 1.0 * 1.0 + 1.0 * 1.0 for _ in range(8))
-        assert abs(bad) > 1e-6
+        """Jacobi FAILS for an arbitrary antisymmetric f — the old axiom was
+        FALSE.  A random antisymmetric tensor violates it by a wide margin."""
+        rng = np.random.RandomState(11)
+        bad = rng.randn(8, 8, 8)
+        bad = bad - bad.transpose(1, 0, 2)               # antisymmetric in (a,b)
+        assert jacobi_worst(bad) > 1e-3
 
 
 class TestArity:
@@ -138,12 +153,17 @@ class TestSchmidtRank:
     """schmidt_rank_one_iff_product: p1 = p1^2 <=> p1 in {0, 1}."""
 
     def test_equivalence(self):
-        assert all((p == p**2) == (p in (0, 1)) for p in (0, 1))
-        assert 0.3 != 0.3**2
+        """p1 = p1^2 holds exactly at the two idempotents 0 and 1, and nowhere
+        else on a grid of candidates."""
+        grid = [0.0, 0.3, 0.5, 0.7, 1.0, -1.0, 2.0]
+        assert all((p == p**2) == (p in (0, 1)) for p in grid)
+        assert [p for p in grid if p == p**2] == [0.0, 1.0]
 
 
 class TestScottFiniteType:
     """kissing = 2 * posroots."""
 
     def test_relation(self):
-        assert [2 * r for r in [3, 12, 36, 120]] == [6, 24, 72, 240]
+        """kissing = 2 * positive roots, on the same data the ladder uses."""
+        roots = [TestFKSLadder.POSROOTS[k] for k in ("A2", "D4", "E6", "E8")]
+        assert [2 * r for r in roots] == [6, 24, 72, 240]

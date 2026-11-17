@@ -84,7 +84,7 @@ class TestSelfDualGaussian:
         assert abs(quad(lambda x: g(x), [-inf, inf]) - 1) < mpf('1e-20')
         assert abs(quad(lambda x: exp(-x**2), [-inf, inf]) - sqrt(pi)) < mpf('1e-20')
 
-    @pytest.mark.parametrize("s", [mpf(2), mpc(3, 1), mpf(1)/2, mpc(3, 1)])
+    @pytest.mark.parametrize("s", [mpf(2), mpc(3, 1), mpf(1)/2])
     def test_gammaR_is_mellin(self, s):
         """GammaR(s) = 2 int_0^inf e^{-pi x^2} x^{s-1} dx."""
         assert abs(2 * quad(lambda x: g(x) * power(x, s - 1), [0, inf]) - GammaR(s)) < mpf('1e-12')
@@ -151,8 +151,11 @@ class TestAssembly:
         assert abs(Lambda_riemann(s) - Lambda_riemann(1 - s)) < mpf('1e-20')
 
     def test_selfdual_line(self):
-        """Fixed point of s -> 1-s is s = 1/2."""
-        assert abs(mpf(1) / 2 - (1 - mpf(1) / 2)) < mpf('1e-30')
+        """s = 1/2 is the UNIQUE fixed point of s -> 1-s on the line."""
+        grid = [mpf(k) / 100 for k in range(101)]
+        fixed = [s for s in grid if abs(s - (1 - s)) < mpf('1e-30')]
+        assert fixed == [mpf(1) / 2]
+        assert all(abs(s - (1 - s)) > mpf('1e-3') for s in grid if s != mpf(1) / 2)
 
 
 class TestF1Consistency:
@@ -222,11 +225,15 @@ class TestReflectionPositivity:
             assert abs(lhs - rhs) <= mpf('1e-20') * max(mpf(1), abs(rhs))
 
     def test_rp_positive(self):
-        """<f,T f> >= 0 for all f (random states)."""
+        """<f,T f> >= 0 for all f: the transfer weights e^{-a E_s} are positive
+        and contractive for every sampled (a, m0, s), which is what makes the
+        quadratic form positive rather than the sampling."""
         import random
         rng = random.Random(11)
         for _ in range(2000):
             a = mpf(rng.uniform(0.05, 3))
             m0 = mpf(rng.uniform(0.1, 3))
-            val = sum(mpf(rng.uniform(-5, 5))**2 * self._T(a, m0, s) for s in range(10))
+            w = [self._T(a, m0, s) for s in range(10)]
+            assert all(mpf('0') < v <= 1 for v in w)
+            val = sum(mpf(rng.uniform(-5, 5))**2 * v for v in w)
             assert val >= 0

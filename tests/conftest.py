@@ -120,5 +120,7 @@ def lepton_masses():
 
 # ── Section markers ──────────────────────────────────────────────────────
 
-# These are applied via @pytest.mark.<name> in test files.
-# Defined here so pytest discovers them.
+# Markers are applied via @pytest.mark.<name> in test files and DECLARED in
+# pyproject.toml under [tool.pytest.ini_options] markers, which is where pytest
+# reads them from (this file only provides fixtures and the --repulsion-full
+# option).

@@ -26,7 +26,8 @@ class TestLambdaQCDPositivity:
 
 
 class TestGapSurvivesTransmutation:
-    """Physical gap is a positive multiple of Lambda_QCD."""
+    """eq:transmutation: the gap is a positive multiple of Lambda_QCD and
+    survives the continuum limit (Lambda_QCD > 0, finite)."""
 
     def test_finite(self):
         val = lambda_qcd(1e-3, 1.0, 1.0)
@@ -34,21 +35,29 @@ class TestGapSurvivesTransmutation:
 
 
 class TestSelfDualCharges:
-    """At the self-dual point q = q_m = sqrt(2 pi)."""
+    """At the self-dual point q = q_m = sqrt(2 pi): the Dirac map q -> 2 pi/q
+    fixes exactly that value."""
 
     def test_dirac_condition(self):
         q = np.sqrt(2 * np.pi)
-        assert abs(q * q - 2 * np.pi) < 1e-12
+        assert abs(q * q - 2 * np.pi) < 1e-12           # q q_m = 2 pi
+        assert abs(q - 2 * np.pi / q) < 1e-12           # fixed point of the duality
+        for other in (1.0, 2.0, 4.0):                   # no other fixed point
+            assert abs(other - 2 * np.pi / other) > 1e-3
 
 
 class TestColourGap:
-    """sigma = q_m^2 V > 0 (Meissner dual)."""
+    """eq:string-tension: sigma_tension = q_m^2 V > 0 and
+    Delta_colour = sqrt(sigma_tension) > 0 (dual Meissner)."""
 
     def test_positive(self):
         q = np.sqrt(2 * np.pi)
         sigma = q**2 * V_MEISSNER
         assert sigma > 0
         assert np.sqrt(sigma) > 0
+        assert abs(np.sqrt(sigma)**2 - sigma) < 1e-12   # Delta^2 = sigma
+        # the sign comes from V > 0: a negative condensate flips the gap
+        assert q**2 * (-V_MEISSNER) < 0
 
     def test_self_dual_invariant(self):
         q = np.sqrt(2 * np.pi)
@@ -116,9 +125,13 @@ class TestBetaFunctionIdentity:
             assert ident(a, 1.3, 2.1) < 1e-12
 
     def test_limit_value(self):
-        """Limit is (s+t)/(st) = 1/s + 1/t."""
-        s, t = 1.3, 2.1
-        assert abs((s + t) / (s * t) - (1 / s + 1 / t)) < 1e-12
+        """The a -> 0 limit of the identity's left-hand side is (s+t)/(st)."""
+        import sympy as sp
+        a, s, t = sp.symbols('a s t', positive=True)
+        lhs = a * sp.gamma(a * s) * sp.gamma(a * t) / sp.gamma(a * (s + t))
+        limit = sp.limit(lhs, a, 0)
+        assert sp.simplify(limit - (s + t) / (s * t)) == 0
+        assert sp.simplify(limit - (1 / s + 1 / t)) == 0
 
 
 class TestKoideFormula:
@@ -141,4 +154,4 @@ class TestKoideFormula:
         d = 2 / 3**2
         pred = [M * (1 + np.sqrt(2) * np.cos(d + 2 * np.pi * k / 3))**2 for k in (1, 2, 0)]
         err = max(abs(p - o) / o for p, o in zip(pred, [self.me, self.mmu, self.mtau]))
-        assert err < 1e-3
+        assert err < 1e-4        # 04-implications: reconstructed to ~1e-4

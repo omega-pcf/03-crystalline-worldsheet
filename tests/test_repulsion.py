@@ -10,7 +10,7 @@ Both verify the SAME properties at their respective precision levels.
 The academic content is identical: repulsion exists, Poisson fails, sine kernel holds.
 """
 import pytest
-from mpmath import mp, mpf, pi, e as mpe, sin as mpsin
+from mpmath import mp, mpf, mpc, pi, e as mpe, sin as mpsin
 
 from cw6.helpers import zeta_zeros
 
@@ -59,7 +59,15 @@ class TestRepulsionRange:
         self.zg = zeta_zeros(self.count, self.dps)
 
     def test_count(self):
+        """`count` zeros --- and they really are zeros of zeta, checked by
+        evaluating zeta on the critical line at the last one."""
         assert len(self.zg) == self.count
+        from mpmath import zeta
+        old = mp.dps
+        mp.dps = self.dps
+        residual = abs(zeta(mpc(mpf(1) / 2, self.zg[-1])))
+        mp.dps = old
+        assert residual < mpf('1e-8')
 
     def test_last_zero_above_threshold(self):
         """Last zero should be well above 100 (structural, not precision-dependent)."""
@@ -93,12 +101,14 @@ class TestRepulsionMeasurement:
         assert sum(1 for x in self.dz if x < mpf('0.10')) == 0
 
     def test_poisson_independent_would_give_small(self):
-        """Independence would put many below 0.10; there are zero."""
+        """Independence would put ~9% of the spacings below 0.10; the measured
+        sequence puts none there (the count itself is checked in
+        test_no_very_small_spacings)."""
         n = len(self.dz)
         poisson_below = n * (1 - mpe**mpf('-0.10'))
-        # Poisson predicts ~9% below 0.10; GUE gives 0%
-        assert poisson_below > n * 0.05  # sanity: Poisson would give >5%
-        assert sum(1 for x in self.dz if x < mpf('0.10')) == 0
+        assert poisson_below > n * 0.05               # Poisson would give >5%
+        assert poisson_below > 0
+        assert min(self.dz) > mpf('0.10')             # measured: none below
 
 
 class TestScaleNormalization:
