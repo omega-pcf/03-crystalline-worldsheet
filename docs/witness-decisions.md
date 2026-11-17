@@ -190,6 +190,13 @@ If §1 ends up choosing **(iv)** for a row, its §2 row closes automatically (no
 
 **Recommendation: (F1), in a later pass of its own** — the semantics gates (§1–§4) should land first, because they change *what* the tags say, and only then should a migration change *how* they are spelled. Not applied here, as instructed.
 
+**Documentary progress (the gate stays open).** Both references F1 depends on are now reachable from inside this repository:
+
+- the family witness contract, `05-kkgt/docs/citations.md` §8: <https://github.com/omega-pcf/05-kkgt/blob/main/docs/citations.md>;
+- the family style guide, ported to this repository as [`style-guide.md`](style-guide.md) (port of `05-kkgt/docs/style-guide.md` v2.2), whose header links that §8 instead of copying it — this repository's own [`citations.md`](citations.md) still ends at §7.
+
+Nothing of the decision itself has moved: the checkbox stays `[ ]`. Aligning the alphabet, the compound-tag form (`\tier[KEY]{X}`) and the quantified criterion is still the author's decision, and no macro, gloss, `.tex` file, test or `lean/` file was touched in recording this.
+
 ---
 
 ## §7 — Prose consistency after the mechanical pass
