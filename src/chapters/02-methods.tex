@@ -40,7 +40,7 @@ two analogous symmetries but one map, read on the orbit $\{\golden,\bar\golden\}
 
 Finally we record, without reproving it, the identity established at \eqref{eq:bridge}:
 $\golden^{\lng}=2$ with $\lng=\log_{\golden}2$. It is the only result of \S\ref{sec:intro} that
-the present section consumes. \witness{P}{mersenne\_bridge}
+the present section consumes \tier[mersenne\_bridge]{P}.
 
 \begin{proposition}[The bridge anchors from outside the lattice]\label{prop:anchor-exterior}
 The exponent $\lng$ is not reachable by descent on the lattice of integer exponents. For no integer
@@ -64,7 +64,7 @@ The constant $\mu=\tfrac12$ arises from three independent origins on the generat
 $x=1-x$), and an arithmetic branch (the Galois pair of $K$). These are the seeds.
 
 \begin{theorem}[Pentagonal identity]\label{thm:pentagon-id}
-$\golden=2\cos(\pi/5)$. \witness{P}{phi\_eq\_two\_cos\_pi\_fifth}
+$\golden=2\cos(\pi/5)$ \tier[phi\_eq\_two\_cos\_pi\_fifth]{P}.
 \end{theorem}
 \medskip
 \begin{proof}
@@ -83,7 +83,7 @@ Since $\golden=2\cos(\pi/5)$ (Theorem~\ref{thm:pentagon-id}),
 \begin{equation}\label{eq:pi-arccos}
 \pi = 5\arccos(\golden/2).
 \end{equation}
-\witness{P}{pi\_eq\_five\_arccos}
+\tier[pi\_eq\_five\_arccos]{P}
 \end{proposition}
 
 \begin{proposition}[Gamma as an infinite integral (Euler)]\label{prop:gamma-int}
@@ -91,7 +91,7 @@ For $s>0$,
 \begin{equation}\label{eq:gamma-int}
 \Gamma(s)=\int_0^\infty t^{\,s-1}e^{-t}\,dt .
 \end{equation}
-\witness{P}{gamma\_integral}
+\tier[gamma\_integral]{P}
 \end{proposition}
 
 \begin{lemma}[Gaussian value]\label{lem:gamma-half}
@@ -104,7 +104,7 @@ $\Gamma(\tfrac12)=\sqrt\pi$ (classical; from the Gaussian integral $\int_{-\inft
 (\tfrac12)! \;=\; \Gamma(\tfrac32) \;=\; \mu\sqrt\pi,
 \qquad\text{equivalently}\qquad \mu=\frac{(\tfrac12)!}{\sqrt\pi}.
 \end{equation}
-\witness{P}{half\_factorial}
+\tier[half\_factorial]{P}
 \end{theorem}
 The Gaussian of Lemma~\ref{lem:gamma-half} enters with its width still free; three separate
 conditions close it.
@@ -136,7 +136,7 @@ $a+\pi>0$, hence again $a=\pi$. The three conditions are distinct and coincide.
 
 \begin{proposition}[$\golden$-branch: the involution and its unique fixed point]\label{prop:phi-branch}
 $\mu=\tfrac12$ is the \emph{unique} fixed point of $x\mapsto1-x$: for real $x$, $x=1-x$ if and
-only if $x=\tfrac12$. \witness{P}{face\_inv\_apex}
+only if $x=\tfrac12$ \tier[face\_inv\_apex]{P}.
 \end{proposition}
 
 \begin{proposition}[Arithmetic branch: the midpoint of the Galois pair]\label{prop:galois-seed}
@@ -147,8 +147,7 @@ the same map; the midpoint of the pair $\{\golden,\bar\golden\}$ is therefore it
 \end{equation}
 by the trace of \eqref{eq:trace-norm}. This is the third seed, and it is the one that is
 \emph{arithmetic}: the other two are analytic and elementary, whereas this one is an invariant
-of the field $K$ itself.
-\witness{P}{face\_galois\_apex}
+of the field $K$ itself \tier[face\_galois\_apex]{P}.
 \end{proposition}
 
 % ---------------------------------------------------------------------
@@ -159,22 +158,20 @@ the Lawvere--Yanofsky diagonal is contracted (not prohibited).
 
 \begin{definition}[Distributed self-reference]\label{def:dsr}
 A recurrence of depth $k$ is \emph{distributed} when $k\ge 2$ (no component
-depends directly on itself). \witness{P}{distributed\_self\_reference}
+depends directly on itself) \tier[distributed\_self\_reference]{P}.
 \end{definition}
 
 \begin{theorem}[Fibonacci minimality]\label{thm:fib-min}
 Depth $k=2$ is minimal, and the unique positive root of $r^2=r+1$ is
 $\golden$. Among natural-coefficient depth-$2$ recurrences
 $F_{n+2}=c_1F_{n+1}+c_2F_n$, the pair $c_1=c_2=1$ is the unique one whose
-characteristic root---hence growth ratio---is $\golden$.
+characteristic root---hence growth ratio---is $\golden$ \tier[eq:phisq]{N}.
 \witness{P}{phi\_root\_unique, characteristic\_root\_is\_phi}
-\witness{N}{eq:phisq}
 \end{theorem}
 
 \begin{proposition}[Spectral constraints force $(\sigma,\mu)=(\tfrac32,\tfrac12)$]\label{prop:spectral}
 $\sigma+\mu=2$, $\sigma\mu=\tfrac34$, with unique solution
-$0<\mu<1$ giving $\mu=\tfrac12$, $\sigma=\tfrac32$.
-\witness{P}{spectral\_uniqueness}
+$0<\mu<1$ giving $\mu=\tfrac12$, $\sigma=\tfrac32$ \tier[spectral\_uniqueness]{P}.
 \end{proposition}
 
 \begin{remark}[No-diagonal]\label{rmk:no-diagonal}
@@ -279,7 +276,7 @@ $V_k=v_k/\lVert v\rVert$. Then
   \sum_{k=0}^{2}\lVert V_k\rVert^2=1,
 \end{equation}
 so the column map $V\colon\C\to\C^3$, $z\mapsto(V_0,V_1,V_2)\,z$, is norm preserving:
-$V^{\dagger}V=\mathbf1$. \witness{P}{bulk\_boundary\_isometry}
+$V^{\dagger}V=\mathbf1$ \tier[bulk\_boundary\_isometry]{P}.
 \end{lemma}
 \begin{proof}
 Each $|v_k|=\tfrac12$ (Proposition~\ref{prop:pcf-norms}), so $\lVert v\rVert^2=3\cdot\tfrac14=\tfrac34$
@@ -306,7 +303,7 @@ $P$-component of the triad and measures it in the angular unit of the eigenvalue
   \cdot\underbrace{\frac{\pi}{3}}_{\text{angular unit}}
   \;=\;\frac{ab}{c\sqrt3}\cdot\frac{\pi}{3}.
 \end{equation}
-\witness{P}{projection\_PCF}
+\tier[projection\_PCF]{P}
 \end{definition}
 
 \begin{remark}[The two constants of \eqref{eq:projpcf} are already fixed]\label{rmk:projpcf-constants}
@@ -316,7 +313,7 @@ same equilateral triangle---the half-angle between adjacent eigenvalues $\lambda
 already used as the normalising angle in Proposition~\ref{prop:angle}, where
 $\sigma=\zeta(2)/(\pi/3)^2$ and $\cos(\pi/3)=\mu$. So \eqref{eq:projpcf} is not a fitted form: it is
 ``ratio, projected on $P$, in units of $\pi/3$'', and both constants come from
-\eqref{eq:norms-derived}. \witness{P}{oplus\_formula}
+\eqref{eq:norms-derived} \tier[oplus\_formula]{P}.
 \end{remark}
 
 \begin{proposition}[Fibonacci sum as projection]\label{prop:oplus}
@@ -332,7 +329,7 @@ once around the fundamental domain (Proposition~\ref{prop:mobius-torus}):
 \varepsilon_0=\pi_{\PCF}\!\bigl(\sin(\tfrac{\pi}{6}),\,\ln\golden,\,\pi\bigr)
 =\frac{\ln\golden}{6\sqrt3}.
 \end{equation}
-\witness{P}{epsilon0\_from\_projection}
+\tier[epsilon0\_from\_projection]{P}
 \end{theorem}
 \begin{proof}
 By \eqref{eq:projpcf} with $a=\sin(\pi/6)=\tfrac12$, $b=\ln\golden$ and $c=\pi$,
@@ -362,7 +359,7 @@ Equivalently, the \emph{Certainty Principle}
 \begin{equation}\label{eq:certainty}
 \varepsilon_0\,\Mpcf=\pi .
 \end{equation}
-\witness{N}{eq:certainty}
+\tier[eq:certainty]{N}
 The three eigenvalues $\lambda_k=\tfrac12\omega^{k}$ define an iterated function
 system of three contractions of ratio $\tfrac12$,
 \begin{equation}\label{eq:IFS}
@@ -568,7 +565,7 @@ that makes the classification of the primes effective.
 \end{equation}
 
 \begin{proposition}[Mediated Mersenne]\label{prop:mersenne-med}
-$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$. \witness{P}{mersenne\_mediated}
+$3\,\golden^{\mu p\lng}=3\,(\sqrt2)^{p}$ \tier[mersenne\_mediated]{P}.
 \end{proposition}
 
 \begin{definition}[The quadratic character]\label{def:chi5}
@@ -704,7 +701,7 @@ L(1,\chi_5)=\frac{2\log\golden}{\sqrt5}.
 \witness{P}{local\_dedekind\_ramified\_K, local\_dedekind\_split\_K, local\_dedekind\_inert\_K}%
 
 \begin{theorem}[Basel value]\label{thm:basel}
-$\zeta(2)=\pi^2/6$ (Euler). \witness{P}{basel\_value}
+$\zeta(2)=\pi^2/6$ (Euler) \tier[basel\_value]{P}.
 \end{theorem}
 
 \begin{theorem}[General even zeta value (Euler)]\label{thm:even-zeta}
@@ -712,10 +709,9 @@ For every integer $k\ge1$,
 \begin{equation}\label{eq:even-zeta}
 \zeta(2k)=(-1)^{k+1}\frac{B_{2k}\,(2\pi)^{2k}}{2\,(2k)!},
 \end{equation}
+\tier[even\_zeta\_bernoulli]{P}
 with $B_{2k}$ the Bernoulli numbers; $k=1$ recovers $\zeta(2)=\pi^2/6$
-(Theorem~\ref{thm:basel}).
-\witness{P}{even\_zeta\_bernoulli}
-\witness{N}{thm:basel}
+(Theorem~\ref{thm:basel}) \tier[thm:basel]{N}.
 \end{theorem}
 \begin{proof}
 Euler's cotangent expansion
@@ -879,7 +875,7 @@ Proposition~\ref{prop:local-factors} therefore distributes one $\Gamma_{\R}$ to 
 attached to $\zeta$ is exactly \eqref{eq:gammaR-mellin}. The companion's Euler colimit
 is indexed by finite sets of \emph{primes}; the Archimedean place is the one it leaves
 out, absorbed there into the counting correction $\kappa_K$ of the Connes--Consani
-type~\cite{ConnesConsaniSite}. Proposition~\ref{prop:archimedean} supplies it. \witness{P}{chi5\_even}
+type~\cite{ConnesConsaniSite}. Proposition~\ref{prop:archimedean} supplies it \tier[chi5\_even]{P}.
 \end{remark}
 \begin{theorem}[Functional equation and the self-dual line]\label{thm:funct-eq}
 The completed zeta,
@@ -1018,8 +1014,7 @@ For $k\ge1$, $L(2k+1,\chi_5)\neq0$ and
 Together with Theorem~\ref{thm:even-zeta} this closes the two families: $\pi$ produces the even
 values, and $\golden$ through $\chi_5$ produces the odd ones, both over the same pentagonal points
 $\{a/5\}$. It is what the loop hierarchy of \S\ref{ssec:p-tower} rests on, and it is derived here
-rather than deferred.
-\witness{P}{odd\_zeta\_ratio}
+rather than deferred \tier[odd\_zeta\_ratio]{P}.
 
 \end{theorem}
 
@@ -1117,8 +1112,7 @@ so the geometric leg equals $\sigma$ rather than defining it.
 Both routes coincide on $\sigma=\tfrac32$: the analytic leg gives
 $\dfrac{\zeta(2)}{(\pi/3)^2}=\dfrac{\pi^2/6}{\pi^2/9}=\dfrac{9}{6}$~\eqref{eq:sigma-basel}, and the
 geometric leg gives $\dfrac{|{\rm rot}\,S_3|^2}{|S_3|}=\dfrac{9}{6}$
-(Lemma~\ref{lem:s3-orders}); both equal $\sigma=\tfrac32$.
-\witness{P}{sigma\_diagram\_commutes}
+(Lemma~\ref{lem:s3-orders}); both equal $\sigma=\tfrac32$ \tier[sigma\_diagram\_commutes]{P}.
 \end{theorem}
 
 \begin{theorem}[Methods master]\label{thm:master}
@@ -1175,7 +1169,7 @@ framework---the $4$ of the turn, $i^{4}=1$, and the $5$ of the pentagon
 \begin{equation}\label{eq:conductor}
   \operatorname{lcm}(4,5)=20,\qquad \gcd(4,5)=1 .
 \end{equation}
-\witness{P}{conductor\_is\_derived}
+\tier[conductor\_is\_derived]{P}
 \end{proposition}
 
 \begin{proposition}[The two factors are one four and one five]\label{prop:four-cocone}
@@ -1243,8 +1237,7 @@ For $\rho\neq0$,
 \begin{equation}\label{eq:li-modulus}
   \Bigl\lvert 1-\tfrac1\rho\Bigr\rvert=1 \iff \Re\rho=\tfrac12 :
 \end{equation}
-the critical line is exactly the preimage of the unit circle under $\rho\mapsto1-1/\rho$.
-\witness{P}{li\_modulus\_on\_line}
+the critical line is exactly the preimage of the unit circle under $\rho\mapsto1-1/\rho$ \tier[li\_modulus\_on\_line]{P}.
 \end{proposition}
 
 % ---------------------------------------------------------------------
@@ -1287,8 +1280,7 @@ $\Im\sigma\tau(\rho)-\Im\rho=0$: off the line there are \emph{two} distinct poin
 ordinate, at separation exactly zero. The configuration that GUE statistics make improbable is
 therefore not a statistic here but a concrete pair. The phenomenon the ensemble
 describes---\emph{level repulsion}, the suppression of small spacings---is on this side a
-statement of arity two, decided pointwise on one pair.
-\witness{P}{extreme\_case\_is\_binary}
+statement of arity two, decided pointwise on one pair \tier[extreme\_case\_is\_binary]{P}.
 \end{proposition}
 
 \begin{proposition}[Angular and radial bound the same event]\label{prop:two-readings}
@@ -1298,8 +1290,7 @@ For $\rho\neq0$, by \eqref{eq:li-modulus},
 \end{equation}
 The angular reading (arity two: a pair with zero separation) and the radial one (arity zero: a
 modulus off unity) are two descriptions of one event. No hypothesis is needed: the radial reading
-is Proposition~\ref{prop:li-modulus}.
-\witness{P}{binary\_iff\_radial}
+is Proposition~\ref{prop:li-modulus} \tier[binary\_iff\_radial]{P}.
 \end{proposition}
 
 \begin{definition}[Measured repulsion]\label{def:repulsion}
@@ -1341,15 +1332,12 @@ Closure under $\sigma\tau$ alone gives
   \iff \text{no two distinct elements of } Z \text{ share an ordinate}.
 \end{equation}
 The right-hand side is strictly weaker than Definition~\ref{def:repulsion}: repulsion implies it,
-not conversely. It is what any future argument would discharge in place of the metric bound.
-\witness{P}{E\_iff\_no\_shared\_ordinate}
+not conversely. It is what any future argument would discharge in place of the metric bound \tier[E\_iff\_no\_shared\_ordinate]{P}.
 \end{theorem}
 
 \begin{proposition}[Repulsion gives the modulus]\label{prop:repulsion-modulus}
-Under the same hypotheses, $\lvert1-1/\rho\rvert=1$ exactly. The measured repulsion does not merely
-constrain the modulus: it \emph{produces} it.
-\witness{P}{repulsion\_gives\_the\_modulus}
-\witness{N}{prop:repulsion-modulus}
+Under the same hypotheses, $\lvert1-1/\rho\rvert=1$ exactly \tier[prop:repulsion-modulus]{N}. The measured repulsion does not merely
+constrain the modulus: it \emph{produces} it \tier[repulsion\_gives\_the\_modulus]{P}.
 \end{proposition}
 
 \begin{theorem}[Zeros on the apex, with its inputs in view]\label{thm:zeros-apex}
@@ -1419,8 +1407,7 @@ this section is the regime, not the reading.
 One caution, now that spacings are in play: the tower has its own spacing, the regulator
 $R_K=\log\golden$ of \eqref{eq:regulator}, numerically $0.481212$, while the unit that unfolds
 ordinates at $T=100$ is $1.435589$ (Proposition~\ref{prop:scale}). They share the symbol $\golden$
-and are different objects.
-\witness{P}{tower\_spacing\_is\_the\_regulator}
+and are different objects \tier[tower\_spacing\_is\_the\_regulator]{P}.
 \end{remark}
 
 % ---------------------------------------------------------------------

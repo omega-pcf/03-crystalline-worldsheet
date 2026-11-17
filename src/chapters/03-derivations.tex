@@ -31,8 +31,7 @@ The Gaussian weight of \eqref{eq:gaussian} is the self-dual one fixed in
 Fourier transform, $g(x)=e^{-\pi x^{2}}$ \eqref{eq:selfdual-gaussian}. The physical reading added
 here is that this $g$ is the worldline wavefunction of the microstate; the width is not a
 modelling choice but the fixed point of the Fourier transform, the same self-duality that
-\S\ref{ssec:construction} used to fix $\tau=i$.
-\witness{P}{selfdual\_gaussian\_unique}
+\S\ref{ssec:construction} used to fix $\tau=i$ \tier[selfdual\_gaussian\_unique]{P}.
 
 \end{remark}
 
@@ -194,12 +193,12 @@ Mediation by $\mu=\tfrac12$ produces the two registers,
   \golden^{\,\mu\lng}=\sqrt{2}\ \ (\text{binary}),\qquad
   \golden^{\,\mu\log_{\golden}3}=\sqrt{3}\ \ (\text{ternary}).
 \end{equation}
-\witness{P}{sqrt2\_mediation, sqrt3\_mediation}
+\tier[sqrt2\_mediation, sqrt3\_mediation]{P}
 The tower and its mode count are
 \begin{equation}\label{eq:tower-modes}
   z(\sigma)=\golden^{\sigma},\qquad \Nmodes(\sigma)=\big\lfloor\pi\,\golden^{\sigma}\big\rfloor
 \end{equation}
-\witness{N}{eq:tower-modes}
+\tier[eq:tower-modes]{N}
 This is where the geometric encoding replaces the Fourier expansion of the string as the
 device that fixes the mode content: \eqref{eq:tower-modes} counts modes by the cell capacity
 $\pi$ of \eqref{eq:certainty} at each level of the tower rather than by harmonic order. The
@@ -214,9 +213,8 @@ the tower ceiling, where $\Nmodes(6)=\lfloor\pi\golden^{6}\rfloor=56$ while the 
 $55$. The distinction matters: the factor $\pi$ of \eqref{eq:tower-modes} is the cell capacity of
 \eqref{eq:certainty} and not a Fibonacci index, so the staircase is $\pi$-scaled and only
 \emph{shadows} the recurrence of Theorem~\ref{thm:fib-min}. Reading the tower as Fibonacci would
-put $55$ at the tower ceiling $\sigma=2n$, where the saturation entropy is largest.
+put $55$ at the tower ceiling $\sigma=2n$, where the saturation entropy is largest \tier[thm:fib-min]{N}.
 \witness{P}{fib\_adjacent\_le\_one, nmodes\_six\_ne\_fib}
-\witness{N}{thm:fib-min}
 
 \end{remark}
 
@@ -306,8 +304,7 @@ two proved anchors:
 the colour ratio $1-\muthree^{2}=\tfrac34$, and the odd zeta values over the tower
 (Theorem~\ref{thm:zeta-odd}), with Ap\'ery's $\zeta(3)$~\cite{Apery} as the two-loop constant.
 What is \emph{not} derived is the assignment itself---that one loop reads as colour and two as
-generations---which remains structural.
-\witness{P}{colour\_ratio}
+generations---which remains structural \tier[colour\_ratio]{P}.
 The ultraviolet is regulated in two complementary
 ways: the modular partition \eqref{eq:pcf-partition} (global, on the torus) and dimensional
 regularisation at the vertex (local),
@@ -362,8 +359,7 @@ The throat and its warped metric are
 \paragraph{The five-dimensional throat: $\mathrm{AdS}_5$, $S^5$ and the ladder.}
 The throat \eqref{eq:throat} is the $\mathrm{AdS}_5$ geometry whose curvature invariants are fixed
 by the modulus: $R=-20$, $\Lambda_5=-6$, $G_{\mu\nu}=6$, saturating the
-Breitenlohner--Freedman bound (Fig.~\ref{fig:ads-ladder}); computed in \S\ref{app:curvature}.
-\witness{P}{R\_scalar\_pcf, lambda5\_pcf, G\_AB\_pcf, BF\_value}
+Breitenlohner--Freedman bound (Fig.~\ref{fig:ads-ladder}); computed in \S\ref{app:curvature} \tier[R\_scalar\_pcf, lambda5\_pcf, G\_AB\_pcf, BF\_value]{P}.
 Its companion five-sphere carries the Hopf chain $S^1\hookrightarrow S^5\to\mathbb{CP}^2$ with
 $\chi(\mathbb{CP}^2)=3=n$
 The same arity-$3$ of
@@ -399,8 +395,7 @@ triangle $\lambda_k=\tfrac12\omega^{k}$ ($\omega=e^{2\pi i/3}$) of Prop.~\ref{pr
 \eqref{eq:norms-derived} is the Eisenstein lattice $\Z[\omega]$ (\emph{algebra} face: $120^\circ$,
 $S_3$ symmetry, $A_2$ root system $=\mathfrak{su}(3)$); the same modulus on the
 $i/\pi$ side, where $(\tfrac12)!=\tfrac12\sqrt\pi$ fixes $\mu=\tfrac12$ (\S\ref{ssec:construction}),
-is the Gauss lattice $\Z[i]$ (\emph{isometry} face: $\tau=i$, $\ell=1$).
-\witness{P}{eisenstein\_omega, omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six}
+is the Gauss lattice $\Z[i]$ (\emph{isometry} face: $\tau=i$, $\ell=1$) \tier[eisenstein\_omega, omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six]{P}.
 The $\golden$-mediation
 $S_3\to\Z_4$ between them preserves $|\Om|=\tfrac12$ and fixes $\tau=i$:
 this is $V^{\dagger}V=\mathbf 1$ read on the lattice --- bulk (geometry, $\Z[i]$) and boundary
@@ -465,8 +460,7 @@ Maldacena left the AdS boundary conditions unspecified---``we leave this interes
 for the future''~\cite{Maldacena98}. Here they are determined: the modular parameter is fixed
 at $\tau=i$, the fixed point of S-duality
 and the scale by the
-certainty principle $\varepsilon_0 M_{\PCF}=\pi$.
-\witness{P}{certainty\_principle}
+certainty principle $\varepsilon_0 M_{\PCF}=\pi$ \tier[certainty\_principle]{P}.
 
 % --- 3.5 ---
 
@@ -500,7 +494,7 @@ the non-orientable fibre it carries is independent of that algebra (Prop.~\ref{p
   \text{(de Sitter swampland)}\quad & \frac{|\partial_{\sigma}V|}{V}=\ln\golden, \label{eq:dS-swampland}\\
   \text{(asymptotic safety)}\quad & \text{UV fixed point}. \label{eq:bridge-fixed}
 \end{align}
-\witness{P}{c\_tendsto\_two}
+\tier[c\_tendsto\_two]{P}
 
 \begin{remark}[S-duality is the involution of \S\ref{ssec:zeta}]\label{rmk:S-is-involution}
 The S-duality \eqref{eq:bridge-S} is, in the Schwinger variable, the involution $t\mapsto1/t$ under

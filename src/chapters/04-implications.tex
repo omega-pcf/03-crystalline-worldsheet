@@ -204,19 +204,20 @@ observer be described by the theory, not introduced from outside. $\Pi$ is inter
 external region from which to look---and self-similar, so the observer is the geometry itself
 read at its centre. \emph{Proof:} \eqref{eq:obs-interface} with the bulk--boundary isometry
 of \S\ref{sec:derivations}; Proposition~\ref{prop:obs-nofirewall};
-\cite{CLPW22}. \witness{P}{cw3\_observer\_items\_core}
+\cite{CLPW22} \tier[cw3\_observer\_items\_core]{P}.
 
 \emph{W2 --- finite-dimensional Hilbert space (W01).} The finite horizon area requires finite
 dimension; here the spectrum is the triangle of three eigenvalues and the mode count is
-integer. \eqref{eq:obs-spinstar}. \witness{P}{witten\_finite\_rank}
+integer. \eqref{eq:obs-spinstar} \tier[witten\_finite\_rank]{P}.
 
 \subsection{The particle as observer}\label{ssec:observer}
 
 What turns the particle into an observer is the accumulation of information, described
 here by an internal Wick rotation, not imposed. When the centre is taken
 as the time axis, its square changes sign, $(i\,t)^2=-t^2$ (\tier[wick\_squares\_flip\_sign, lorentzian\_signature\_sum]{P}), and past and future become the two light cones, with the
-apex---the present---as observer (\tier[C\_fixed\_PF\_rotate, causal\_trichotomy]{P}). The
-full metric is formalised in \S\ref{ssec:accum}; here the algebra of the rotation, which
+apex---the present---as observer.
+\witness{P}{C\_fixed\_PF\_rotate, causal\_trichotomy}
+The full metric is formalised in \S\ref{ssec:accum}; here the algebra of the rotation, which
 is self-contained, suffices. The observer accumulates: its Fisher information grows to the
 ceiling the Cram\'er--Rao bound permits,
 \begin{equation}\label{eq:obs-fishertime}
@@ -345,8 +346,7 @@ classification.
 
 \emph{W12 --- the maximally mixed vacuum state (CLPW \S2.4, developed).} CLPW identify the
 de~Sitter vacuum with the maximally mixed state, $\rho_{\max}=1$. One bit per cell,
-$H(\tfrac12)=1$, gives that $\rho=1$ of maximal entropy.
-\witness{P}{binary\_entropy\_half}
+$H(\tfrac12)=1$, gives that $\rho=1$ of maximal entropy \tier[binary\_entropy\_half]{P}.
 
 The heart of the movement is that bulk and boundary are the same thing at once. The bulk
 is the three-dimensional projection; the boundary, the two-dimensional plane; and they are
@@ -366,7 +366,7 @@ This is the relation $R\cdot(\alpha'/R)=\alpha'$ with $\alpha'=\Mpcf$: the compa
 the throat coordinate, the lattice spacing is its T-dual, and $\alpha'$ is \emph{fixed by the product}
 rather than chosen. Short and long distance are therefore the same family exchanged by duality, not two
 regimes with a limit between them---the structural reason there is no ultraviolet regulator to remove
-(Remark~\ref{rmk:residual}). \witness{P}{lattice\_radius\_conjugate}
+(Remark~\ref{rmk:residual}) \tier[lattice\_radius\_conjugate]{P}.
 
 \begin{equation}\label{eq:obs-identity}
   \underbrace{F_\Om\cdot\Nmodes}_{\text{bits (Shannon)}}
@@ -419,8 +419,7 @@ same modulus, with no free parameter, and it is what makes the shared root of \e
 \begin{definition}[Shell tension]\label{def:shell-tension}
 A thin matter shell at the discrete level $w_\sigma=\sigma\log\golden$ of the throat
 \eqref{eq:throat} has \emph{tension} $\lambda_\sigma$: its energy density per unit volume of the
-constant-$w$ leaf. Its value is pinned by Proposition~\ref{prop:shell-tension}.
-\witness{P}{shell\_tension\_determined}%
+constant-$w$ leaf. Its value is pinned by Proposition~\ref{prop:shell-tension} \tier[shell\_tension\_determined]{P}.
 \end{definition}
 
 \begin{proposition}[The energy per bit is constant along the tower]\label{prop:ebit}
@@ -428,8 +427,7 @@ For every level,
 \begin{equation}\label{eq:ebit}
   \frac{\varepsilon(\sigma)}{S(\sigma)}=\frac{\epsz}{\pi}=\frac{1}{\Mpcf},
 \end{equation}
-equivalently $S(\sigma)=\Mpcf\,\varepsilon(\sigma)$: the first law with temperature $T=1/\Mpcf$.
-\witness{P}{energy\_per\_bit\_constant}
+equivalently $S(\sigma)=\Mpcf\,\varepsilon(\sigma)$: the first law with temperature $T=1/\Mpcf$ \tier[energy\_per\_bit\_constant]{P}.
 \end{proposition}
 \begin{proof}
 The per-level energy is $\varepsilon(\sigma)=\epsz\golden^{\sigma}$ \eqref{eq:obs-accum} and the
@@ -444,7 +442,7 @@ The tension of Definition~\ref{def:shell-tension} is fixed by the level's mode c
 \begin{equation}\label{eq:shell-tension}
   \lambda_\sigma=\frac{\Nmodes(\sigma)}{\Mpcf}.
 \end{equation}
-\witness{P}{shell\_tension\_determined}
+\tier[shell\_tension\_determined]{P}
 \end{proposition}
 \begin{proof}
 Each tower mode is one bit: $\Nmodes(\sigma)=\lfloor S(\sigma)\rfloor$ \eqref{eq:obs-matter} is one
@@ -479,12 +477,10 @@ other Newton constant leaves $8\pi G_5/3\neq4\pi/3$.
 \begin{remark}[The cumulative back-reaction]\label{rmk:backreaction}
 Each level kinks the warp---and deepens the local $|\Lambda|$---by an amount set by its mode count,
 so the cumulative back-reaction up to level $k$ is $\sum_{\sigma\le k}\Nmodes(\sigma)$, giving
-$3,8,16,29,50,84,140$ for $k=0,\dots,6$. The gravitational side and the string side are here the
+$3,8,16,29,50,84,140$ for $k=0,\dots,6$ \tier[backreaction\_cumulative]{P}. The gravitational side and the string side are here the
 same computation: \eqref{eq:israel} ties the extrinsic curvature to the shell tension, and
 \eqref{eq:shell-tension} ties that tension to the mode count, so what curves the geometry is the
-number of bits the level carries.
-\witness{P}{backreaction\_cumulative}
-\witness{N}{eq:shell-tension}
+number of bits the level carries \tier[eq:shell-tension]{N}.
 \end{remark}
 
 \noindent The cosmological constant is determined, not chosen:
@@ -494,7 +490,8 @@ general relativity must be derived from a theory that \emph{determines} the valu
 $\Lambda$. Here $\Lambda$ comes from the curvature, with zero free parameters:
 $\Lambda_5=-d(d-1)/2\ell^2=-6$, with $\ell=1$ from \eqref{eq:bridge-S} (\S\ref{sec:derivations})
 and $d=4$ from the arity (\S\ref{sec:methods}), and the G--$\Lambda$ duality
-$\golden^{-6}\cdot\golden^{6}=1$ (\tier[G\_Lambda\_duality, R\_scalar\_pcf, BF\_value]{P}).
+$\golden^{-6}\cdot\golden^{6}=1$.
+\witness{P}{G\_Lambda\_duality, R\_scalar\_pcf, BF\_value}
 Between the gravity scale and the $\Lambda$ scale there is an exact interval:
 
 It remains to show the spacetime is de~Sitter. The metric obtained is Euclidean
@@ -522,8 +519,9 @@ The geometric closure is the connection the framework contributes. The 5D ambien
 flat---its curvature, computed, vanishes, $R^{(5)}=0$ (\tier[ets\_constant\_block\_christoffels\_vanish]{P})---and the
 fifth coordinate, the scale axis, is the extra direction an embedding needs. De~Sitter is
 the hyperboloid $-X_0^2+\cdots+X_4^2=1/H^2$ embedded in that flat ambient, with intrinsic
-curvature ${}={}$ wedge of the extrinsic by Gauss: $R_{\mu\nu}=3H^2 g_{\mu\nu}$
-(\tier[ds\_ricci\_from\_gauss, ds\_einstein\_lambda]{P}). The planar patch covers exactly half
+curvature ${}={}$ wedge of the extrinsic by Gauss: $R_{\mu\nu}=3H^2 g_{\mu\nu}$.
+\witness{P}{ds\_ricci\_from\_gauss, ds\_einstein\_lambda}
+The planar patch covers exactly half
 the hyperboloid---$X_0+X_4=\ell\,e^{t/\ell}>0$ never changes sign
 (\tier[dS\_covers\_half\_hyperboloid]{P})---and that half \emph{realises} the observer's half
 $|\Om|=\tfrac12$ by the shared value (\tier[observer\_half\_from\_norms]{P}). The assertoric
@@ -567,9 +565,8 @@ holographic area factor. The Fisher information per eigenvalue is
 $F_{\Om}=4\muthree^{2}=1$ bit; the three eigenvalues give $3F_{\Om}=3=c$, the
 central charge of \S\ref{ssec:object}; and the objectivity threshold
 $f_{\mathrm{crit}}=\muthree=\tfrac12$ is the maximum-entropy point $H(\tfrac12)=1$ bit
-(Proposition~\ref{prop:entropy-max}).
+(Proposition~\ref{prop:entropy-max}) \tier[prop:entropy-max]{N}.
 \witness{P}{binary\_entropy\_half, S\_tower\_recurrence}
-\witness{N}{prop:entropy-max}
 \end{proposition}
 
 \begin{theorem}[Time--scale conjugacy]\label{thm:obs-weld}
@@ -579,8 +576,7 @@ tower period, $\tauF(\sigma)=\tau(\sigma)=\Mpcf\,\golden^{-\sigma}$. Hence
 S(\sigma)\,\tauF(\sigma)=(\pi\golden^{\sigma})\,(\Mpcf\,\golden^{-\sigma})=\pi\Mpcf
 \]
 is constant in $\sigma$: the certainty principle $\epsz\Mpcf=\pi$
-(\eqref{eq:certainty}) promoted from a single cell to the generation/clock pair.
-\witness{P}{obs\_weld}
+(\eqref{eq:certainty}) promoted from a single cell to the generation/clock pair \tier[obs\_weld]{P}.
 \end{theorem}\begin{proposition}[The bulk metric is an Einstein space]\label{prop:obs-einstein}
 For the warped throat \eqref{eq:throat} with $A=-\log z$ (anti-de~Sitter,
 $\ell=1$), explicit computation of the Levi-Civita curvature gives, uniformly in
@@ -643,7 +639,7 @@ forces; the three generations are the \emph{angular} $\omega$-triple within a se
 bridge with no free angular parameter,
 $\sqrt{m_k}=\sqrt M\,(1+\sqrt2\cos(\delta+2\pi k/3))$ with $\delta=2/n^{2}=\tfrac29$ at arity $n=3$,
 reconstructing the three charged-lepton masses to ${\sim}10^{-4}$ from the single scale $\sqrt M$.
-That scale is not an independent input: the certainty condition $\varepsilon_0 M=\pi$ \eqref{eq:obs-threshold} is the same that fixes $\Mpcf$, so $M=\Mpcf$; Theorem~\ref{thm:colour-from-M} then derives the colour scale and running from it. What remains open is only the quark spectrum and its CKM mixing, not the scale or the colour running. \witness{P}{M\_eq\_Mpcf}
+That scale is not an independent input: the certainty condition $\varepsilon_0 M=\pi$ \eqref{eq:obs-threshold} is the same that fixes $\Mpcf$, so $M=\Mpcf$; Theorem~\ref{thm:colour-from-M} then derives the colour scale and running from it. What remains open is only the quark spectrum and its CKM mixing, not the scale or the colour running \tier[M\_eq\_Mpcf]{P}.
 Their Yang--Mills stress-energy
 $T^{\mathrm{YM}}_{AB}=F_{AC}F_{B}{}^{C}-\tfrac14\,g_{AB}F_{CD}F^{CD}$ is
 conserved ($\nabla^{A}T^{\mathrm{YM}}_{AB}=0$) and traceless on the
@@ -651,9 +647,8 @@ $D=4$ worldsheet (conformal there).
 \end{proposition}
 
 \begin{theorem}[The Landau--Lifshitz energy of the field]\label{thm:LL-energy}
-On the de~Sitter background \eqref{eq:ets-metric} with $\GN=\muthree=\tfrac12$, the Landau--Lifshitz complex $(-g)(T^{\mu\nu}+t_{\mathrm{LL}}^{\mu\nu})=\tfrac1{16\pi\GN}\partial_\alpha\partial_\beta H^{\mu\alpha\nu\beta}$ has vanishing energy density---its $00$ component is zero, the net energy of matter and field balancing, the classical face of the entanglement equilibrium $\delta S=0$ of Theorem~\ref{thm:obs-jacobson}---while its spatial components $-2H^{2}e^{4Ht}/\pi$ do not vanish, as de~Sitter is not static (the standard complex differs from the physical vacuum pressure by the $\Lambda$-term the pseudotensor requires for $\Lambda\neq0$). The gravitational energy is a definite boundary charge: the energy in the Hubble volume $\rho_\Lambda V_H=1/H=T_{\mathrm{GH}}\,S_{\mathrm{GH}}$ is the first law of de~Sitter, and the Komar/Landau--Lifshitz charge of the horizon $\kappa A/(8\pi\GN)$ gives the same $1/H$. The modulus $\muthree=\tfrac12$ is the ratio $T_{\mathrm{GH}}/T_{\mathrm{local}}$ of horizon and local temperatures. The gravitational field energy---absent from $\nabla^{A}T_{AB}=0$ (Proposition~\ref{prop:obs-matter})---is thus fixed, the energy conjugate to the tower entropy $S(\sigma)$ by the first law.
+On the de~Sitter background \eqref{eq:ets-metric} with $\GN=\muthree=\tfrac12$, the Landau--Lifshitz complex $(-g)(T^{\mu\nu}+t_{\mathrm{LL}}^{\mu\nu})=\tfrac1{16\pi\GN}\partial_\alpha\partial_\beta H^{\mu\alpha\nu\beta}$ has vanishing energy density---its $00$ component is zero, the net energy of matter and field balancing, the classical face of the entanglement equilibrium $\delta S=0$ of Theorem~\ref{thm:obs-jacobson}---while its spatial components $-2H^{2}e^{4Ht}/\pi$ do not vanish, as de~Sitter is not static (the standard complex differs from the physical vacuum pressure by the $\Lambda$-term the pseudotensor requires for $\Lambda\neq0$). The gravitational energy is a definite boundary charge: the energy in the Hubble volume $\rho_\Lambda V_H=1/H=T_{\mathrm{GH}}\,S_{\mathrm{GH}}$ is the first law of de~Sitter, and the Komar/Landau--Lifshitz charge of the horizon $\kappa A/(8\pi\GN)$ gives the same $1/H$. The modulus $\muthree=\tfrac12$ is the ratio $T_{\mathrm{GH}}/T_{\mathrm{local}}$ of horizon and local temperatures. The gravitational field energy---absent from $\nabla^{A}T_{AB}=0$ (Proposition~\ref{prop:obs-matter})---is thus fixed, the energy conjugate to the tower entropy $S(\sigma)$ by the first law \tier[eq:obs-landauer]{N}.
 \witness{P}{ds\_first\_law, energy\_is\_inv\_H, komar\_first\_law, mu3\_temp\_ratio, LL\_spatial\_ne\_zero}
-\witness{N}{eq:obs-landauer}
 \end{theorem}\begin{remark}[The G--$\Lambda$ interval: $\Lambda$ is determined, not selected]
 \label{rmk:GLambda-interval}
 The cosmological constant is not an input. The scale $\ell=1$ (from the
@@ -664,8 +659,7 @@ S-duality fixed point $\tau=i$, \eqref{eq:bridge-S}) and the dimension $d=4$
 \end{equation}
 with zero free parameters. The $6$ arrives by two independent routes---the curvature magnitude
 $|\Lambda_5|=d(d-1)/2$ and the tower ceiling $\sigma_\Lambda=2n$ of \eqref{eq:interval-levels}---and
-the routes agree only at the arity: $(n{+}1)n/2=2n$ forces $n=3$.
-\witness{P}{two\_routes\_to\_six}%
+the routes agree only at the arity: $(n{+}1)n/2=2n$ forces $n=3$ \tier[two\_routes\_to\_six]{P}.
 This realises precisely what
 Witten~\cite{Witten01dS} identified as necessary: a theory
 ``that determines the value of the cosmological constant.''
@@ -735,9 +729,8 @@ $1/\Lambda$, so
 Deriving the scale translation therefore derives the level, and conversely; counting them as two
 debts would be an accounting error. The scale $\sqrt M$ that sets the charged leptons (\S\ref{prop:obs-matter}) is therefore the tower reading of this de~Sitter entropy, and Theorem~\ref{thm:colour-from-M} then shows the colour sector hanging on the same scale: one scale surfaces as the string constant of \S\ref{sec:derivations} and as the entropy here, the dimensionless placement already fixed, the absolute value alone carrying the observer's $\Lambda$. What the tower does add is granularity: its step is exactly
 $\golden$ ($\log_{10}\golden=0.209$ per level), so the absolute scale is constrained to a discrete
-ladder rather than a continuum.
+ladder rather than a continuum \tier[eq:Lambda-from-curvature]{N}.
 \witness{P}{lambda\_magnitude\_eq\_level, sigma\_G\_val, sigma\_EM\_val, sigma\_Lambda\_val, threshold\_ordering, interval\_gap, interval\_gap\_general, em\_holographic\_fraction, em\_asymmetry, entropy\_at\_mu\_three, tower\_step\_ratio}
-\witness{N}{eq:Lambda-from-curvature}
 \end{remark}
 
 \begin{proposition}[The level triple is unique over the integers]\label{prop:interval-uniqueness}
@@ -1028,8 +1021,8 @@ The five squares commute, and the relation they express is a \emph{limit} one: B
 continuous entropic gravity is the continuum limit of the discrete accumulation of
 \S\ref{ssec:accum}---D2 is exactly that limit, the floor removed. What the present framework adds
 to her axis is the quantity it leaves free, the \emph{rate}: the growth is golden, $\golden$ per
-level, the Fibonacci quantum dimension (Corollary~\ref{cor:golden-growth}). \witness{N}{cor:golden-growth}
-D3 follows from \S\ref{ssec:construction}. \witness{P}{binary\_entropy\_half}
+level, the Fibonacci quantum dimension (Corollary~\ref{cor:golden-growth}) \tier[cor:golden-growth]{N}.
+D3 follows from \S\ref{ssec:construction} \tier[binary\_entropy\_half]{P}.
 \end{proposition}
 \begin{proof}
 D3 is \eqref{eq:bridge-BH}. For D1, the quantum Fisher information of the framework at the operating point
@@ -1363,7 +1356,7 @@ The potential $A_\mu$ valued in $\su(3)=A_2$ (Proposition~\ref{prop:a2}) gives t
 $F=dA+A\wedge A$ and the action $S=\tfrac1{4}\int\operatorname{tr}F^2$; the Wilson lattice measure
 $e^{-S_W}$ on the $A_2$ lattice---the Eisenstein lattice $\Z[\omega]$ in which the eigenvalue
 triangle sits (\S\ref{ssec:construction})---is gauge-invariant and reflection-positive, and generates
-$T=e^{-aH}$. \witness{P}{colour\_jacobi}
+$T=e^{-aH}$ \tier[colour\_jacobi]{P}.
 \end{proposition}
 
 \begin{table}[htb]\centering\footnotesize
@@ -1381,7 +1374,7 @@ The Kogut--Susskind transfer operator~\cite{KogutSusskind} built from the Wilson
 \begin{equation}\label{eq:gap}
   \Delta=\tfrac23 g^2>0. 
 \end{equation}
-\witness{P}{strong\_coupling\_gap}
+\tier[strong\_coupling\_gap]{P}
 \end{theorem}
 \begin{proof}
 At strong coupling the transfer operator is diagonal in the electric-flux basis; the vacuum is the
@@ -1492,14 +1485,13 @@ it by the field operators, so their span is dense in the GNS space.
 \begin{remark}[Analyticity (OS0)]\label{rmk:os0}
 The Euclidean--Lorentzian passage is the internal Wick rotation $(it)^2=-t^2$, geometric (carried
 by the eigenvalue metric), not an external continuation; with the UV-finite worldsheet partition
-(\S\ref*{ssec:p-tower}) it is the analyticity/temperedness axiom.
-\witness{P}{internal\_wick}
+(\S\ref*{ssec:p-tower}) it is the analyticity/temperedness axiom \tier[internal\_wick]{P}.
 \end{remark}
 
 \begin{theorem}[The bulk--boundary isometry]\label{thm:isometry}
 The bulk--boundary map $V$, $V^{\dagger}V=\mathbf1$---its norm core proved in Lemma~\ref{lem:isometry}, its holographic content \eqref{eq:isometry} of \S\ref{ssec:adscft}---together with the GKPW dictionary~\cite{Maldacena98,GKP98,Witten98}
 $Z_{\mathrm{grav}}[\phi|_\partial]=\langle e^{\int_\partial\phi_0\mathcal O}\rangle$ and its isometric (quantum error-correcting) refinement~\cite{AlmheiriDongHarlow}, identifies the OS-reconstructed theory with the four-dimensional boundary
-gauge theory. \witness{P}{bulk\_boundary\_isometry}
+gauge theory \tier[bulk\_boundary\_isometry]{P}.
 \end{theorem}
 \begin{proof}
 $V^{\dagger}V=\mathbf1$ is Lemma~\ref{lem:isometry} (with \eqref{eq:isometry} of \S\ref{ssec:adscft}); an isometry preserves the inner product, so
@@ -1514,9 +1506,8 @@ duality that protects its gap is the reflection already proved in \S2.
 \begin{theorem}[The confining spectrum is $\zeta$]\label{thm:confining}
 The confining glueball spectrum is the closed charged bridges on the tower: the Regge tower
 $=$ Euler product $=\zeta$ (Proposition~\ref{prop:veneziano}), the charge carried by the bridges
-(\S\ref{ssec:susy}).
+(\S\ref{ssec:susy}) \tier[prop:veneziano]{N}.
 \witness{P}{regge\_tower\_is\_euler\_product, regge\_dirichlet\_eq\_zeta}
-\witness{N}{prop:veneziano}
 
 \end{theorem}
 \begin{proof}
@@ -1593,7 +1584,7 @@ The lepton scale $M$ and the framework scale $\Mpcf$ coincide, both fixed by $\v
 
 \begin{remark}[The two faces of $M$: dynamical and placement]\label{rmk:M-two-faces}
 The scale $M=\Mpcf$ of Theorem~\ref{thm:colour-from-M} is the \emph{dynamical} face, exact by the certainty relation. It has a \emph{placement} face in the tower: with the proton at $\sigma=5$, five worldsheet transitions of action $\pi$ above the electron at $\sigma=0$, $m_p/m_e=\lvert S_3\rvert\,\pi^5=6\pi^5=1836.12$ (experiment $1836.15$), whence $m_p/3=312.8$~MeV. Two of the three factors are formal---$\pi=5\arccos(\golden/2)$ (Proposition~\ref{prop:pi-bridge}) and $\lvert S_3\rvert=3!=6$ (Lemma~\ref{lem:s3-orders})---while the assignment of the proton to $\sigma=5$ and the comparison of $6\pi^5$ with the measured ratio (to $1.9\times10^{-5}$) are empirical: a confrontation with data, not a theorem.
-(data comparison only) \witness{P}{M\_eq\_Mpcf}
+(data comparison only) \tier[M\_eq\_Mpcf]{P}
 \end{remark}
 
 \begin{theorem}[One object, four registers]\label{thm:one-object}
@@ -1686,9 +1677,8 @@ $\Delta_{\mathrm{phys}}=\Lambda>0$. This is a consistency check on the one-loop 
 the argument: the reason no continuum limit of the lattice kind arises here is structural and is given
 in Remark~\ref{rmk:residual}. The scale
 is fixed by $\varepsilon_0\Mpcf=\pi$ (\S\ref*{ssec:construction}) and the flow reaches the
-ultraviolet fixed point $c(n)\to2$ (\S\ref*{ssec:accum}).
+ultraviolet fixed point $c(n)\to2$ (\S\ref*{ssec:accum}) \tier[eq:transmutation]{N}.
 \witness{P}{gap\_independent\_of\_cutoff, eps0\_Mpcf\_pi, lambda\_qcd\_eq\_lambda, lambda\_qcd\_pos}
-\witness{N}{eq:transmutation}
 \end{corollary}
 
 \begin{remark}[Where the residual actually sits]\label{rmk:residual}
@@ -1697,7 +1687,7 @@ a blanket appeal to duality would suggest.
 
 The strong-coupling gap \eqref{eq:gap} is the standard rigorous lattice result---Wilson measure,
 Osterwalder--Seiler reflection positivity, Kogut--Susskind transfer operator---and does not depend on
-any holographic model. \witness{P}{strong\_coupling\_gap}
+any holographic model \tier[strong\_coupling\_gap]{P}.
 
 The duality is not borrowed from $\mathcal N=4$. The framework sits at \emph{its own} self-dual point
 $\tau=i$, which is derived rather than chosen (\S\ref{ssec:construction}), and at a self-dual fixed

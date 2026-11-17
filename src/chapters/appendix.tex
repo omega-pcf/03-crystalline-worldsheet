@@ -36,7 +36,7 @@ tensor, computed directly, all vanish:
 \]
 The ETS metric is therefore \emph{intrinsically flat}---Weyl vanishes because Riemann does---and is
 not de~Sitter (which is curved, $R=12H^2$) but the flat five-dimensional \emph{ambient} in which
-de~Sitter embeds. \witness{P}{ets\_constant\_block\_christoffels\_vanish}
+de~Sitter embeds \tier[ets\_constant\_block\_christoffels\_vanish]{P}.
 
 \paragraph{The extended light cones (causal classification).} Because \eqref{eq:ets-metric}
 is Lorentzian with signature $(-,+,+,+,+)$, it carries a light-cone structure. For two events
@@ -96,7 +96,7 @@ de~Sitter accessible to the observer.
 \paragraph{Two corrections.} The same computation corrects two statements sometimes made about this
 metric: the ETS metric has $C_{abcd}=0$ (being flat, its Weyl tensor cannot be nonzero), and the
 constant-$\sigma$ slices of the ETS metric are totally geodesic, $K_{\mu\nu}=0$, not
-$K_{\mu\nu}=(\lambda/\sigma^2)g_{\mu\nu}$. \witness{P}{ets\_slices\_totally\_geodesic}
+$K_{\mu\nu}=(\lambda/\sigma^2)g_{\mu\nu}$ \tier[ets\_slices\_totally\_geodesic]{P}.
 
 \subsection{The gauge group $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$}\label{app:gauge}
 The internal gauge content descends from three substructures the torus already carries. The Eisenstein
@@ -247,8 +247,7 @@ operator \eqref{eq:kk-operator} has eigenvalue equal to the interior row sum,
 \end{equation}
 whose numerator is exactly the golden identity \eqref{eq:kk-numerator}. With $m^{2}=-\lambda$ that
 mode carries $m^{2}=-1/(\ln\golden)^{2}\approx-4.318$: the continuous value quoted above, below the
-bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$.
-\witness{P}{log\_phi\_lt\_half}
+bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \tier[log\_phi\_lt\_half]{P}.
 Truncating to the
 $2n+1$ levels removes the constant mode---the boundary rows have row sums
 $(\golden^{-2}-2)$ and $(\golden^{2}-2)$ over $(\ln\golden)^{2}$, so the all-ones vector is no
@@ -301,7 +300,7 @@ The term-level content is the reindexing $n=5m+a$,
   (5m+a)^{-s}=5^{-s}(m+a/5)^{-s},
 \end{equation}
 which pulls one factor $5^{-s}$ out of every term. The rearrangement of the convergent series is
-the classical input.  (the rearrangement~\cite{Hurwitz1891}) \witness{P}{hurwitz\_reindex}
+the classical input.  (the rearrangement~\cite{Hurwitz1891}) \tier[hurwitz\_reindex]{P}
 
 \paragraph{Even values.}
 \begin{equation}\label{eq:even-L}
