@@ -15,7 +15,7 @@ docs/
 ├── style-guide.md         # Family style guide v2.2 (port of `05-kkgt/docs/style-guide.md`)
 ├── style/
 │   └── grammar.md         # Grammar and usage rules of human language (ES/EN/FR/IT examples)
-├── usage.md               # Build and release commands
+├── usage.md               # Build, release, commit and version conventions (semver + Zenodo)
 ├── witness-contract.md    # Why the marks exist (portable rationale of the witness device, EN)
 ├── witness-compliance.md  # Applied §8.5 inventory: every witness site with its quantities
 ├── witness-decisions.md   # Witness decision gates for the author (§0 and §4 applied; §1–§3, §5–§7 open)
@@ -42,7 +42,7 @@ docs/
 - **style/grammar.md**: The grammar and usage rules extracted from `style-guide.md` §1.5 —
   language-neutral, worked in Spanish, English, French and Italian, with the RAE-checked Spanish
   `se` verbs and their sources.
-- **usage.md**: Daily workflow, conventional commits, build and release commands.
+- **usage.md**: Daily workflow, conventional commits, the version standard (semver + Zenodo), build and release commands.
 - **witness-contract.md**: The rationale of the witness marks — why they exist, the inline /
   own-line shape rule, the compactness method, the colour and accessibility rules, and what the
   marks do not assert. Portable across the family; the applied state of a repository lives in its
@@ -60,10 +60,6 @@ docs/
 
 ## Conventions
 
-All commits follow [Conventional Commits](https://www.conventionalcommits.org/):
-
-```
-<type>(<scope>): <description>
-```
-
-**Common types:** `feat`, `fix`, `docs`, `refactor`, `chore`.
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/);
+format, common types, examples and the English-subject rule:
+[usage.md](usage.md) §Commits.
