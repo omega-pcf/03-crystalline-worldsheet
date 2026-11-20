@@ -1,6 +1,9 @@
 # The Crystalline Worldsheet: A String Theoretical Framework based on $\mathbb{F}_1$ for the de Sitter observer problem
 
+<!-- selfcite:begin id="badge" -->
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21343602.svg)](https://doi.org/10.5281/zenodo.21343602)
+<!-- selfcite:end id="badge" -->
+
 [![Project Page](https://img.shields.io/badge/Project%20Page-omega--pcf.com-blue)](https://omega-pcf.com/crystalline-worldsheet)
 
 ## Authors
@@ -22,20 +25,22 @@ From our own use of this torus we construct a string cocone, from which we later
 
 **Keywords:** Holography; de Sitter; M-theory; string theory; field with one element ($\mathbb{F}_1$); $\lambda$-rings; golden ratio; moduli spaces; formal verification.
 
+<!-- selfcite:begin id="citation" -->
 ## Citation
 
-González García, J. A., González García, V. M., Dressler Pérez, I. M., & García Ordóñez, L. M. (2026). *The Crystalline Worldsheet: A String Theoretical Framework based on $\mathbb{F}_1$ for the de Sitter observer problem*. Zenodo. DOI: [10.5281/zenodo.21343602](https://doi.org/10.5281/zenodo.21343602).
+González García, J. A., González García, V. M., García Ordóñez, L. M., & Dressler Pérez, I. M. (2026). *The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁ for the de Sitter observer problem*. Preprint. DOI: [10.5281/zenodo.21343602](https://doi.org/10.5281/zenodo.21343602).
 
 ```bibtex
 @article{CW6,
-  author  = {González García, J. A. and González García, V. M. and Dressler Pérez, I. M. and García Ordóñez, L. M.},
-  title   = {The Crystalline Worldsheet: A String Theoretical Framework based on $\mathbb{F}_1$ for the de Sitter observer problem},
-  journal = {Zenodo},
+  author  = {González García, J. A. and González García, V. M. and García Ordóñez, L. M. and Dressler Pérez, I. M.},
+  title   = {The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁ for the de Sitter observer problem},
+  journal = {Preprint},
   year    = {2026},
   doi     = {10.5281/zenodo.21343602},
   url     = {https://doi.org/10.5281/zenodo.21343602}
 }
 ```
+<!-- selfcite:end id="citation" -->
 
 ## Repository Structure
 
