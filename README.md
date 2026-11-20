@@ -74,7 +74,7 @@ This repository contains the LaTeX source files for the manuscript and the compu
 This project uses a rigorous dual-verification approach. Run from the project root:
 
 ```bash
-pnpm run verify       # both numerical + Lean
+pnpm run verify       # numerical + Lean + type-check
 pnpm run verify:py    # only numerical (344 checks)
 pnpm run verify:lean  # only Lean (lake build CW6_complete_v2)
 ```

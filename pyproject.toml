@@ -22,9 +22,10 @@ test = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["tests/src"]
-addopts = "-v --tb=short -p no:cacheprovider"
+addopts = "--tb=short -p no:cacheprovider"
 markers = [
     "slow: marks tests that take >5s (deselect with '-m \"not slow\"')",
+    "figure: marks tests that render a figure committed under images/",
     "symbolic: tests using sympy symbolic computation",
     "numerical: tests using mpmath high-precision arithmetic",
     "gauge: gauge sector tests (Weinberg, MSSM, unification)",
