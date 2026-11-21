@@ -7,12 +7,13 @@
 
 | counter | value | measured from | quoted in |
 |---|---:|---|---|
-| `pytest.collected` | 571 | `uv run python -m pytest tests/ -q --collect-only` | `tests/README.md` (`suite-total`) |
-| `pytest.not_slow` | 543 | `uv run python -m pytest tests/ -q -m 'not slow' --collect-only` | `tests/README.md` (`verify-py`) |
-| `pytest.census` | 4 | `uv run python -m pytest tests/test_witness_census.py -q --collect-only` | — |
-| `lean.theorems` | 591 | declarations in `lean/CW6_complete_v2.lean` (comments stripped) | — |
-| `lean.axioms` | 0 | axioms in `lean/CW6_complete_v2.lean` (comments stripped) | — |
-| `lean.sorry` | 0 | `sorry` in `lean/CW6_complete_v2.lean` (comments stripped) | — |
+| `pytest.collected` | 571 | `uv run python -m pytest tests/ -q --collect-only` | `tests/README.md` (`suite-total`), `README.md` (`readme-suite`) |
+| `pytest.not_slow` | 543 | `uv run python -m pytest tests/ -q -m 'not slow' --collect-only` | `tests/README.md` (`verify-py`), `README.md` (`readme-verify-py`), `README.md` (`readme-verify-py-cmd`) |
+| `pytest.census` | 4 | `uv run python -m pytest tests/test_witness_census.py -q --collect-only` | `README.md` (`readme-census`) |
+| `lean.theorems` | 591 | declarations in `lean/CW6_complete_v2.lean` (comments stripped) | `README.md` (`readme-lean-theorems`) |
+| `lean.axioms` | 0 | axioms in `lean/CW6_complete_v2.lean` (comments stripped) | `README.md` (`readme-lean-axioms`) |
+| `lean.sorry` | 0 | `sorry` in `lean/CW6_complete_v2.lean` (comments stripped) | `README.md` (`readme-lean-sorry`) |
+| `tex.lean_tags` | 0 | `\Lean{…}` / `\LeanCW{…}` tags in `main.tex` and `src/**/*.tex` | `README.md` (`readme-lean-tags`) |
 | `images.files` | 8 | file inventory of `images/` | — |
 
-The marked regions live in the documents that state the numbers: [`tests/README.md`](../tests/README.md) `suite-total`, [`tests/README.md`](../tests/README.md) `verify-py`.  Regenerate everything with `pnpm run counts`; `validate` runs `pnpm run counts:check` after `parity`.
+The marked regions live in the documents that state the numbers: [`tests/README.md`](../tests/README.md) `suite-total`, [`tests/README.md`](../tests/README.md) `verify-py`, [`README.md`](../README.md) `readme-suite`, [`README.md`](../README.md) `readme-verify-py`, [`README.md`](../README.md) `readme-census`, [`README.md`](../README.md) `readme-lean-theorems`, [`README.md`](../README.md) `readme-lean-axioms`, [`README.md`](../README.md) `readme-lean-sorry`, [`README.md`](../README.md) `readme-lean-tags`, [`README.md`](../README.md) `readme-verify-py-cmd`.  Regenerate everything with `pnpm run counts`; `validate` runs `pnpm run counts:check` after `parity`.

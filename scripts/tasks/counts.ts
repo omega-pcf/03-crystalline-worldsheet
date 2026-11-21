@@ -94,6 +94,26 @@ function stripLeanComments(src: string): string {
   return out;
 }
 
+/** Every `.tex` source of the manuscript (`main.tex` and everything it pulls in from `src/`). */
+function texSources(): string[] {
+  const files = ['main.tex'];
+  if (existsSync('src')) {
+    const stack = ['src'];
+    while (stack.length > 0) {
+      const dir = stack.pop() as string;
+      for (const name of readdirSync(dir)) {
+        const full = `${dir}/${name}`;
+        if (statSync(full).isDirectory()) stack.push(full);
+        else if (full.endsWith('.tex')) files.push(full);
+      }
+    }
+  }
+  return files;
+}
+
+/** `\Lean{…}` / `\LeanCW{…}` name tags the manuscript carries (README's Lean bullet). */
+const LEAN_TAG = /\\Lean(?:CW)?\{/g;
+
 const DECLARATION = /^[ \t]*(?:@\S+[ \t]+)*(?:private[ \t]+|protected[ \t]+|noncomputable[ \t]+|noncommutative[ \t]+)*(?:theorem|lemma)[ \t]/gm;
 const AXIOM = /^[ \t]*(?:@\S+[ \t]+)*axiom[ \t]/gm;
 const SORRY = /\bsorry\b/g;
@@ -160,6 +180,11 @@ const COUNTERS: Counter[] = [
     measure: () => LEAN_FILES.reduce((n, f) => n + matches(stripLeanComments(readFileSync(f, 'utf8')), SORRY), 0),
   },
   {
+    id: 'tex.lean_tags',
+    source: '`\\Lean{…}` / `\\LeanCW{…}` tags in `main.tex` and `src/**/*.tex`',
+    measure: () => texSources().reduce((n, f) => n + matches(readFileSync(f, 'utf8'), LEAN_TAG), 0),
+  },
+  {
     id: 'images.files',
     source: 'file inventory of `images/`',
     measure: () => countFiles('images'),
@@ -196,6 +221,65 @@ const REGIONS: Region[] = [
     uses: ['pytest.not_slow'],
     render: (c) =>
       `pnpm run verify:py                         # same, minus the \`slow\`-marked tests (${c['pytest.not_slow']})`,
+  },
+  // README.md — the claims of the Verification Suite bullet list and the
+  // Verification Execution fence (the stale `344 checks` / `207 tags` figures
+  // were retired here in favour of these measurements).
+  {
+    file: 'README.md',
+    id: 'readme-suite',
+    kind: 'inline',
+    uses: ['pytest.collected'],
+    render: (c) => String(c['pytest.collected']),
+  },
+  {
+    file: 'README.md',
+    id: 'readme-verify-py',
+    kind: 'inline',
+    uses: ['pytest.not_slow'],
+    render: (c) => String(c['pytest.not_slow']),
+  },
+  {
+    file: 'README.md',
+    id: 'readme-census',
+    kind: 'inline',
+    uses: ['pytest.census'],
+    render: (c) => String(c['pytest.census']),
+  },
+  {
+    file: 'README.md',
+    id: 'readme-lean-theorems',
+    kind: 'inline',
+    uses: ['lean.theorems'],
+    render: (c) => String(c['lean.theorems']),
+  },
+  {
+    file: 'README.md',
+    id: 'readme-lean-axioms',
+    kind: 'inline',
+    uses: ['lean.axioms'],
+    render: (c) => String(c['lean.axioms']),
+  },
+  {
+    file: 'README.md',
+    id: 'readme-lean-sorry',
+    kind: 'inline',
+    uses: ['lean.sorry'],
+    render: (c) => String(c['lean.sorry']),
+  },
+  {
+    file: 'README.md',
+    id: 'readme-lean-tags',
+    kind: 'inline',
+    uses: ['tex.lean_tags'],
+    render: (c) => String(c['tex.lean_tags']),
+  },
+  {
+    file: 'README.md',
+    id: 'readme-verify-py-cmd',
+    kind: 'block',
+    uses: ['pytest.not_slow'],
+    render: (c) => `pnpm run verify:py    # only numerical (${c['pytest.not_slow']} tests; \`slow\` deselected)`,
   },
 ];
 
