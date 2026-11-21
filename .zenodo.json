@@ -2,7 +2,7 @@
   "title": "The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁ for the de Sitter observer problem",
   "description": "Holography and the Riemann hypothesis are missing the same kind of object. The pair correlation of the zeros of ζ follows GUE statistics; so does the boundary side of low-dimensional holography, where the bulk of JT gravity is recovered only as an average over an ensemble of theories. An ensemble is what one writes for want of an individual—the Hermitian operator of Hilbert–Pólya in one case, a single microstate in the other—and an average is a fact about the description, not about what exists. Based on this reading, and on other known connections between the primes and black holes, and between the odd zeta values and string and particle amplitudes, we propose that the obstruction in de Sitter is <b>epistemological</b>—a circumstance of mathematical circularity—rather than <b>ontological</b>—a matter of vacuum selection. At this intersection the obstruction takes one form: how to describe the object without referring to the object, which the 𝔽₁ program seeks to circumvent in arithmetic and the Hilbert–Pólya problem poses for the operator. We trace it to the non-paradoxical self-reference of binary language, in the precise sense of the Lawvere fixed-point theorem and the Yanofsky diagonal g(t)=α(f(t,t)), as one of the most studied cases of self-referential circularity; and we analyse the strategies for confronting this circularity and their relation to the 𝔽₁ program for proving the Riemann hypothesis—particularly Yuri Manin's proposed use of the same noncommutative tori that M-theory uses, but to approach that program. From our own use of this torus we construct a string cocone, from which we later derive previously proposed criteria for holography in de Sitter, as well as the operator we propose as the microstate.",
   "version": "1.2.1",
-  "publication_date": "2026-11-20",
+  "publication_date": "2026-11-21",
   "creators": [
     {
       "name": "González García, Jorge Armando",
@@ -113,7 +113,7 @@
     "Lawvere, F. W. (1971). Quantifiers and sheaves. Actes du Congrès International des Mathématiciens (Nice, 1970)., 329–334.",
     "Lawvere, F. W. (1996). Unity and identity of opposites in calculus and physics. Applied Categorical Structures. 4, 167.",
     "Leggett, A. J. (2003). Nonlocal hidden-variable theories and quantum mechanics: an incompatibility theorem. Foundations of Physics. 33, 1469. https://doi.org/10.1023/A:1026096313729",
-    "López Peña, J.; Lorscheid, O. (2011). Torified varieties and their geometries over $\\F_1$. Mathematische Zeitschrift. 267, 605. https://doi.org/10.1007/s00209-009-0638-0",
+    "López Peña, J.; Lorscheid, O. (2011). Torified varieties and their geometries over 𝔽₁. Mathematische Zeitschrift. 267, 605. https://doi.org/10.1007/s00209-009-0638-0",
     "Lucas, É. (1878). Théorie des fonctions numériques simplement périodiques. American Journal of Mathematics. 1, 289. https://doi.org/10.2307/2369311",
     "Maldacena, J. M. (1998). The large N limit of superconformal field theories and supergravity. Advances in Theoretical and Mathematical Physics. 2, 231. https://doi.org/10.1023/A:1026654312961",
     "Maldacena, J.; Susskind, L. (2013). Cool horizons for entangled black holes. Fortschritte der Physik. 61, 781. https://arxiv.org/abs/1306.0533",
