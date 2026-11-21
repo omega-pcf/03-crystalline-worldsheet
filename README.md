@@ -63,8 +63,8 @@ This repository contains the LaTeX source files for the manuscript and the compu
 
 ### Verification Suite
 
-- **`tests/CW6_complete_verify_v2.py`**: Numerical validation (344 checks). Every equation cited in the paper is checked by its exact label (`[OK]/[FAIL]` per line).
-- **`lean/CW6_complete_v2.lean`**: Single-file Lean 4 / Mathlib backing covering every `\Lean{…}` tag in the manuscript (207 tags; 0 sorry, 0 axioms, 0 warnings). Namespaces: `PaperS2`, `PaperM6`, `PaperS3a`, `PaperS3b`, `PCF.CW5`, `CWfig`, `PCFEntropyDOF`, `SpectralFlowPCF`, `GravitySectorPCF`, `CW5Additions`, `CW5FaceLinks`, `PCFColimit`, `FourCocone`, `ConductorAttribution`, `AnchorExterior`, `TwoTowersOneMicrostate`.
+- **`tests/`**: the numerical verification suite behind `pnpm run verify:py` (pytest) — <!-- counts:begin id="readme-suite" -->571<!-- counts:end id="readme-suite" --> tests collected, <!-- counts:begin id="readme-verify-py" -->543<!-- counts:end id="readme-verify-py" --> of them run by `verify:py` (the `slow`-marked tests deselected). It backs the manuscript's numerical witnesses: every `\tier[...]{N}` and `\witness{N}{...}` key must name a real `\label` that at least one test refers to, with no key repeated — the contract the witness census enforces (<!-- counts:begin id="readme-census" -->4<!-- counts:end id="readme-census" --> tests), so a retag or an unbacked claim fails the suite.
+- **`lean/CW6_complete_v2.lean`**: single-file Lean 4 / Mathlib backing for the manuscript's proof witnesses — <!-- counts:begin id="readme-lean-theorems" -->591<!-- counts:end id="readme-lean-theorems" --> theorem/lemma declarations, <!-- counts:begin id="readme-lean-axioms" -->0<!-- counts:end id="readme-lean-axioms" --> axioms, <!-- counts:begin id="readme-lean-sorry" -->0<!-- counts:end id="readme-lean-sorry" --> `sorry` (comments stripped; built by `pnpm run verify:lean`). The manuscript itself carries <!-- counts:begin id="readme-lean-tags" -->0<!-- counts:end id="readme-lean-tags" --> `\Lean{…}` name tags, so it links to this file through its proof witnesses (`\witness{P}{...}`), which the Lean build resolves. Namespaces: `PaperS2`, `PaperM6`, `PaperS3a`, `PaperS3b`, `PCF.CW5`, `CWfig`, `PCFEntropyDOF`, `SpectralFlowPCF`, `GravitySectorPCF`, `CW5Additions`, `CW5FaceLinks`, `PCFColimit`, `FourCocone`, `ConductorAttribution`, `AnchorExterior`, `TwoTowersOneMicrostate`.
 - **`lean/CW6_alignment_ledger.json`**: Alignment ledger (paper ↔ Lean ↔ numeric) in span-lea format.
 - **`scripts/schemas/CW6_propgraph.dot`**: Proposition dependency graph (DOT format).
 - **`scripts/figures/CW3_all_figures.py`**: Generates the six publication figures (`fig1_alphas_uniqueness.pdf`, `fig2_ER_bridge_identity.pdf`, `fig3_N_modes.pdf`, `fig4_top_down.pdf`, `fig5_three_panel.pdf`, `fig6_cylinder_torus.pdf`).
@@ -75,7 +75,9 @@ This project uses a rigorous dual-verification approach. Run from the project ro
 
 ```bash
 pnpm run verify       # numerical + Lean + type-check
-pnpm run verify:py    # only numerical (344 checks)
+# counts:begin id="readme-verify-py-cmd"
+pnpm run verify:py    # only numerical (543 tests; `slow` deselected)
+# counts:end id="readme-verify-py-cmd"
 pnpm run verify:lean  # only Lean (lake build CW6_complete_v2)
 ```
 
