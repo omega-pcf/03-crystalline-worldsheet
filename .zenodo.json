@@ -2,7 +2,7 @@
   "title": "The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁ for the de Sitter observer problem",
   "description": "Holography and the Riemann hypothesis are missing the same kind of object. The pair correlation of the zeros of ζ follows GUE statistics; so does the boundary side of low-dimensional holography, where the bulk of JT gravity is recovered only as an average over an ensemble of theories. An ensemble is what one writes for want of an individual—the Hermitian operator of Hilbert–Pólya in one case, a single microstate in the other—and an average is a fact about the description, not about what exists. Based on this reading, and on other known connections between the primes and black holes, and between the odd zeta values and string and particle amplitudes, we propose that the obstruction in de Sitter is <b>epistemological</b>—a circumstance of mathematical circularity—rather than <b>ontological</b>—a matter of vacuum selection. At this intersection the obstruction takes one form: how to describe the object without referring to the object, which the 𝔽₁ program seeks to circumvent in arithmetic and the Hilbert–Pólya problem poses for the operator. We trace it to the non-paradoxical self-reference of binary language, in the precise sense of the Lawvere fixed-point theorem and the Yanofsky diagonal g(t)=α(f(t,t)), as one of the most studied cases of self-referential circularity; and we analyse the strategies for confronting this circularity and their relation to the 𝔽₁ program for proving the Riemann hypothesis—particularly Yuri Manin's proposed use of the same noncommutative tori that M-theory uses, but to approach that program. From our own use of this torus we construct a string cocone, from which we later derive previously proposed criteria for holography in de Sitter, as well as the operator we propose as the microstate.",
   "version": "1.2.1",
-  "publication_date": "2026-11-21",
+  "publication_date": "2026-11-20",
   "creators": [
     {
       "name": "González García, Jorge Armando",
@@ -96,7 +96,7 @@
     "Israel, W. (1966). Singular hypersurfaces and thin shells in general relativity. Il Nuovo Cimento. 44, 1. https://doi.org/10.1007/BF02710419",
     "J. A. González García et al. (2026). Odd Zeta Values from the PCF Torus: φ and π as Arithmetic-Geometric Sources. Zenodo. https://doi.org/10.5281/zenodo.19492791",
     "J. A. González García et al. (2026). Simultaneous identities of the golden ratio and Euler's identity, formally verified in Lean 4 over the known Mersenne prime exponents. https://doi.org/10.5281/zenodo.21731878",
-    "J. A. González García et al. (2026). The Hilbert-Pólya Operator and the Primitive Structure of the Complex Plane: Between 𝔽₁, String Theory, and Ancient Geometry. Zenodo. https://doi.org/10.5281/zenodo.17619486",
+    "J. A. González García et al. (2026). The Hilbert–Pólya Operator and the Primitive Structure of the Complex Plane: Between 𝔽₁, String Theory, and Ancient Geometry. Zenodo. https://doi.org/10.5281/zenodo.17619486",
     "Jacobi, C. G. J. (1829). Fundamenta nova theoriae functionum ellipticarum. Bornträger.",
     "Jacobson, T. (1995). Thermodynamics of spacetime: the Einstein equation of state. Physical Review Letters. 75, 1260. https://arxiv.org/abs/gr-qc/9504004",
     "Jacobson, T. (2016). Entanglement equilibrium and the Einstein equation. Physical Review Letters. 116. https://arxiv.org/abs/1505.04753",

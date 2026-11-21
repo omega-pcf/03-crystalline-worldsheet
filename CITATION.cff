@@ -4,7 +4,7 @@ title: "The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽
   for the de Sitter observer problem"
 type: software
 version: 1.2.1
-date-released: 2026-11-21
+date-released: 2026-11-20
 authors:
   - family-names: González García
     given-names: Jorge Armando
@@ -645,7 +645,7 @@ references:
         value: 10.5281/zenodo.17619486
       - type: url
         value: https://doi.org/10.5281/zenodo.17619486
-    title: "The Hilbert-Pólya Operator and the Primitive Structure of the Complex
+    title: "The Hilbert–Pólya Operator and the Primitive Structure of the Complex
       Plane: Between 𝔽₁, String Theory, and Ancient Geometry"
     url: https://doi.org/10.5281/zenodo.17619486
     date-published: 2026-01-01
