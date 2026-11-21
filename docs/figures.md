@@ -4,6 +4,9 @@
 `scripts/figures/CW3_all_figures.py` and `scripts/figures/CW3_gue_figures.py`
 (eight figures, written into `images/`).
 
+The chain table (generator → `images/` → verification) is
+[`architecture.md` §Sources of truth](architecture.md#sources-of-truth).
+
 ## What it guarantees
 
 1. **The text in the PDFs is extractable.** Every generated PDF carries a
