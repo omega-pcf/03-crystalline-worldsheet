@@ -2,7 +2,7 @@
   "title": "The Crystalline Worldsheet: A String Theoretical Framework based on 𝔽₁ for the de Sitter observer problem",
   "description": "Holography and the Riemann hypothesis are missing the same kind of object. The pair correlation of the zeros of ζ follows GUE statistics; so does the boundary side of low-dimensional holography, where the bulk of JT gravity is recovered only as an average over an ensemble of theories. An ensemble is what one writes for want of an individual—the Hermitian operator of Hilbert–Pólya in one case, a single microstate in the other—and an average is a fact about the description, not about what exists. Based on this reading, and on other known connections between the primes and black holes, and between the odd zeta values and string and particle amplitudes, we propose that the obstruction in de Sitter is <b>epistemological</b>—a circumstance of mathematical circularity—rather than <b>ontological</b>—a matter of vacuum selection. At this intersection the obstruction takes one form: how to describe the object without referring to the object, which the 𝔽₁ program seeks to circumvent in arithmetic and the Hilbert–Pólya problem poses for the operator. We trace it to the non-paradoxical self-reference of binary language, in the precise sense of the Lawvere fixed-point theorem and the Yanofsky diagonal g(t)=α(f(t,t)), as one of the most studied cases of self-referential circularity; and we analyse the strategies for confronting this circularity and their relation to the 𝔽₁ program for proving the Riemann hypothesis—particularly Yuri Manin's proposed use of the same noncommutative tori that M-theory uses, but to approach that program. From our own use of this torus we construct a string cocone, from which we later derive previously proposed criteria for holography in de Sitter, as well as the operator we propose as the microstate.",
   "version": "1.2.1",
-  "publication_date": "2026-11-21",
+  "publication_date": "2026-11-22",
   "creators": [
     {
       "name": "González García, Jorge Armando",
@@ -85,7 +85,7 @@
     "G. Sonnino et al. (2024). The golden ratio family of extremal Kerr–Newman black holes and its implications for the cosmological constant. Axioms. 13.",
     "Gibbons, G. W.; Hawking, S. W. (1977). Cosmological event horizons, thermodynamics, and particle creation. Physical Review D. 15, 2738. https://doi.org/10.1103/PhysRevD.15.2738",
     "Gilbert, G.; Cockx, J.; Sozeau, M.; Tabareau, N. (2019). Definitional proof-irrelevance without K. Proceedings of the ACM on Programming Languages. 3, 3:1. https://doi.org/10.1145/3290316",
-    "Grisales Herrera, J. (2023). Golden Prime Symmetry.",
+    "Grisales Herrera, Javier (2024). Simetría Áurea Prima. https://repository.ut.edu.co/entities/publication/8f90e22e-d00a-4341-ac57-651b89ae0f01",
     "Gröblacher, S.; Paterek, T.; Kaltenbaek, R.; Brukner, Č.; Żukowski, M.; Aspelmeyer, M.; Zeilinger, A. (2007). An experimental test of non-local realism. Nature. 446, 871. https://doi.org/10.1038/nature05677 https://arxiv.org/abs/0704.2529",
     "Gubser, S. S.; Klebanov, I. R.; Polyakov, A. M. (1998). Gauge theory correlators from non-critical string theory. Physics Letters B. 428, 105. https://doi.org/10.1016/S0370-2693(98)00377-3",
     "Hartnoll, S. A.; Yang, M. (2025). The conformal primon gas at the end of time. Journal of High Energy Physics. 07, 281. https://arxiv.org/abs/2502.02661",
