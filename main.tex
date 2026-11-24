@@ -142,22 +142,27 @@
 \newcommand{\tiercol}[1]{\expandafter\ifx\csname tiercol@#1\endcsname\relax\else\csname tiercol@#1\endcsname\fi}
 \newcommand{\tier}[2][]{%
   \ifx\relax#1\relax
-    {\mbox{\footnotesize\tiercol{#2}\textbf{#2}}}%
+    {\mbox{\footnotesize\tiercol{#2}\textbf{#2}[#2]}}%
   \else
     \in@{\cite}{#1}\ifin@
       \PackageError{tier}{the optional argument of \string\tier\space holds internal ids only}
       {An external source is a \string\cite\space set next to the tag, never its key; a name of our own file is written raw, with \string\_.}%
     \else
-      {\mbox{\footnotesize\tiercol{#2}\textbf{#2}\texttt{[#1]}}}%
+      {\mbox{\footnotesize\tiercol{#2}\textbf{#2}{\small\texttt{[#1]}}}}%
     \fi
   \fi}
-\makeatother
+% The strict grammar of the contract (docs/witness-contract.md §6.4: a
+% \testref, or raw names with \_ or ',', anything else a \PackageError) is not
+% installed here: it raises 23 errors at the label-style ids this body still
+% carries (eq:…, thm:…, prop:…), and rewriting them is a pending decision.
+% The \cite guard above is the check this manuscript runs today.
 % a witness with names, on a line of its own, flush right: P[name1, name2]
 \newcommand{\witness}[2]{%
   \par\noindent\hfill
   \parbox{\dimexpr\linewidth-1em\relax}{\raggedleft
-    \footnotesize\tiercol{#1}\textbf{#1}\texttt{[#2]}}%
+    \footnotesize\tiercol{#1}\textbf{#1}{\small\texttt{[#2]}}}%
   \par}
+\makeatother
 % dead definition (W01): \Conj — 0 uses; flagged, removal is body work
 \newcommand{\Conj}{{\footnotesize\textcolor{tagH}{\textbf{C}}}}
 % dead definition (W01): \Open — 0 uses; flagged, removal is body work
