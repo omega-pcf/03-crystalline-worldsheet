@@ -138,7 +138,8 @@
 \makeatletter
 \@namedef{tiercol@P}{\color{tagP}}   % blue  — formal proof (Lean)
 \@namedef{tiercol@N}{\color{tagN}}   % green — numerical check
-\newcommand{\tiercol}[1]{\csname tiercol@#1\endcsname}
+% unknown key: no colour, no error (the 05-kkgt form of \tiercol)
+\newcommand{\tiercol}[1]{\expandafter\ifx\csname tiercol@#1\endcsname\relax\else\csname tiercol@#1\endcsname\fi}
 \newcommand{\tier}[2][]{%
   \ifx\relax#1\relax
     {\mbox{\footnotesize\tiercol{#2}\textbf{#2}}}%
