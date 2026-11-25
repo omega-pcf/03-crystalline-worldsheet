@@ -20,7 +20,6 @@ docs/
 ├── witness-contract.md    # The single living norm: rationale, standard (§6) and wave-brief shape (§10)
 ├── witness-decisions.md   # The family ledger: one row per question, open and ruled
 ├── witness-inventory.md   # This repository's census of marks, generated from a measurement
-├── witness-compliance.md  # Applied §8.5 inventory: every witness site with its quantities
 └── reports/               # Specific, repository-tied reports (dated, id'd)
     └── README.md          # Reports convention (template) + index of this repository's reports
 ```
@@ -56,13 +55,12 @@ docs/
   the own-line rendering form §6.12, the ledger segmentation §6.13) and the required shape of a
   wave brief (§10). Portable across the family: byte-identical and manifest-pinned; the applied
   state of a repository lives in its `docs/reports/`.
-- **reports/**: Specific reports — per-site inventories, decision logs, verdict tables and
-  incidents. The convention (naming, ISO header, index format) and the index of this repository's
-  reports are in `reports/README.md`; this repository has no report yet.
-- **witness-compliance.md**: The applied inventory of `05-kkgt` `citations.md` §8.5 for this
-  manuscript — every one of the 223 witness sites with `k`, `L`, `r`, `i`, `d`, `u`, `p` and the
-  rule that decides its shape — plus the compliance audit of the rules of §8.2 (one claim one tag,
-  no compound, no cite inside a tag, no tag in a caption) and the literal gate output.
+- **reports/**: Specific reports — the witness decision gates
+  ([DEC-001](reports/20261116_DEC-001_witness_decision_gates.md)) and the applied witness-site
+  inventory ([WIT-001](reports/20261116_WIT-001_criterion_sites.md): every witness site with
+  `k`, `L`, `r`, `i`, `d`, `u`, `p` and the rule that decides its shape, the audit of the
+  writing rules and the literal gate output). The convention (naming, ISO header, index format)
+  and the index of this repository's reports are in `reports/README.md`.
 - **witness-decisions.md**: The family ledger — one row per question with its resolution and the
   document that carries the evidence; a count is never a row. This repository's own decision gates
   are the historical trace

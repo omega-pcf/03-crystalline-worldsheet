@@ -57,7 +57,7 @@ documents this guide links (`witness-contract.md`, `style/grammar.md`,
 | Citation pipeline (`citation.csl.json` → `src/bibliography.bib`, `CITATION.cff`, `.zenodo.json`) | [`docs/citations.md`](citations.md) §1–§7 |
 | Build, release, and commit convention commands | [`docs/usage.md`](usage.md) |
 | Requirements and installation | [`docs/installation.md`](installation.md) |
-| Concrete reports of this repo (inventories, decisions, verdicts, incidents) | [`docs/witness-compliance.md`](witness-compliance.md) · [`docs/witness-decisions.md`](witness-decisions.md) · [`docs/reports/`](reports/README.md) |
+| Concrete reports of this repo (inventories, decisions, verdicts, incidents) | [`docs/reports/`](reports/README.md) (WIT-001 criterion sites, DEC-001 decision gates) · [`docs/witness-decisions.md`](witness-decisions.md) (family ledger) |
 | Grammar and usage rules for human languages (§1.5, examples in ES/EN/FR/IT) | [`docs/style/grammar.md`](style/grammar.md) |
 
 ---

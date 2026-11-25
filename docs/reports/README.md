@@ -15,7 +15,10 @@ level up in `docs/` (`README.md`, `architecture.md`, `citations.md`,
 `figures.md`, `installation.md`, `style-guide.md`, `usage.md`,
 `witness-contract.md`, `style/grammar.md`); a report is what a generic
 rule *refers to* for its concrete instances. Anything tied to one
-repository state goes here — never to a document at the `docs/` root.
+repository state goes here — never to a document at the `docs/` root: the
+applied inventory of the placement criterion, the counters, the verdicts
+and the pending rows are archived here, and the documents at the `docs/`
+root are rules and rationale only.
 
 ## Naming
 
@@ -99,3 +102,4 @@ evidence and the method.>
 | id | title | status | date | file |
 |---|---|---|---|---|
 | `DEC-001` | Witness decision gates — 03-crystalline-worldsheet | superseded by `docs/witness-decisions.md` (historical line numbers) | 2026-11-16 | [`20261116_DEC-001_witness_decision_gates.md`](20261116_DEC-001_witness_decision_gates.md) |
+| `WIT-001` | Witness compliance: every witness site with its criterion quantities | applied | 2026-11-16 | [`20261116_WIT-001_criterion_sites.md`](20261116_WIT-001_criterion_sites.md) |

@@ -1,18 +1,28 @@
 # Witness compliance — 03-crystalline-worldsheet
 
-**For:** the main author · **Applied:** 2026-11-16 · **Contract:** the family
-witness standard, §8 of this repository's own [`citations.md`](citations.md)
-(grammar §8.1, rules §8.2, alphabet §8.3, conventions §8.4, placement
-criterion §8.5; propagated 2026-11-17), linked from
-[`style-guide.md`](style-guide.md).
+| Field | Value |
+|---|---|
+| **id** | `WIT-001` |
+| **title** | Witness compliance of 03-crystalline-worldsheet: every witness site with its criterion quantities |
+| **status** | applied |
+| **date** | 2026-11-16 |
+| **version** | 1.0 |
 
+**Scope.** This repository only: the applied inventory of the placement
+criterion for the marks the manuscript prints, plus the audit of the writing
+rules against them.
+
+**For:** the main author · **Applied:** 2026-11-16 · **Contract:** the family
+witness standard, [`witness-contract.md`](../witness-contract.md) §6 (grammar
+and writing rules §6.5, alphabet §6.9, placement criterion §6.10), linked from
+[`style-guide.md`](../style-guide.md).
 This file is the applied inventory of §8.5 for this repository — the
 counterpart of `05-kkgt/docs/reports/20261115_WIT-001_criterion_sites.md` —
 plus the compliance audit of every rule of §8.2 against every mark the
 manuscript prints. The open author gates about *what the tags say* are now
-rows of the family ledger [`witness-decisions.md`](witness-decisions.md); the
+rows of the family ledger [`witness-decisions.md`](../witness-decisions.md); the
 gates §1–§3, §5–§7 it replaced are the historical trace
-[`reports/20261116_DEC-001_witness_decision_gates.md`](reports/20261116_DEC-001_witness_decision_gates.md).
+[`20261116_DEC-001_witness_decision_gates.md`](20261116_DEC-001_witness_decision_gates.md).
 This file settles only *where the marks sit and how they are spelled*.
 
 ## 1. Counters
@@ -41,12 +51,12 @@ Per chapter, before → after (block / inline):
 
 ## 2. The rules of §8.2, checked here
 
-| # | Rule (`citations.md` §8.2) | State in this manuscript |
+| # | Rule (`witness-contract.md` §6.5) | State in this manuscript |
 |---|---|---|
 | 1 | **One claim, one tag** — no two tags adjacent | **0 violations.** Every pair of marks in the document is separated by a sentence terminator (198 pairs), an environment or display (8), a paragraph break (2) or the paragraph break a `\witness` block issues (3). The five lines that used to carry two tags on one claim were split (§4). |
 | 2 | **An external source is the citation, not a tag — and never the key of one** | **0 tag keys hold a `\cite` or a bibliography key** (checked against `src/bibliography.bib`); external sources stay outside the bracket as `in~\cite{key}` / `~\cite{key}` next to the tag. The preamble raises `\PackageError` if a `\cite` is ever written inside the optional argument of `\tier` (the guard of `05-kkgt/main.tex`, ported with the grammar). |
-| 3 | A bare tag needs a witness in its sentence | Not re-opened here: every id in this manuscript is the existing one; whether an id should be a `\ref` key or a Lean name is gate §2/§3 of the superseded `reports/20261116_DEC-001_witness_decision_gates.md`, still the author's. |
-| 4 | Every `\tier{N}` carries a `\testref{}` | 03 has no `\testref` macro; the `N` keys are the label keys of gate §1 of the superseded `reports/20261116_DEC-001_witness_decision_gates.md` — unchanged, still open. |
+| 3 | A bare tag needs a witness in its sentence | Not re-opened here: every id in this manuscript is the existing one; whether an id should be a `\ref` key or a Lean name is gate §2/§3 of the superseded `20261116_DEC-001_witness_decision_gates.md`, still the author's. |
+| 4 | Every `\tier{N}` carries a `\testref{}` | 03 has no `\testref` macro; the `N` keys are the label keys of gate §1 of the superseded `20261116_DEC-001_witness_decision_gates.md` — unchanged, still open. |
 | 5 | `\tier{P}` bare = proved here, no name quoted | Used only where a name is not quoted at that point; every other mark carries its ids. |
 | 6 | The legend defines the classes and nothing else | The gloss at `01-introduction.tex:302` names the two classes it prints and is exempt from rules 1 and 3. |
 | 7 | `P*` available, never printed | Not defined here; the alphabet of this manuscript is `P` and `N`. |
