@@ -93,7 +93,7 @@ against the criterion, and nothing was moved against the prose.
    sentence close would be adjacent (rule 1). Each tag was therefore given
    its own claim instead: the `P` tag moved to the statement it witnesses
    (the display of `eq:even-zeta`, the first sentence of
-   `prop:repulsion-modulus`, the cumulative sum of `rmk:backreaction`) and the
+   `repulsion_modulus_is_one`, the cumulative sum of `rmk:backreaction`) and the
    `N` tag stayed on the sentence it checks. Both are inline, neither pair is
    adjacent, and each tag now sits with the claim it supports.
 2. **Three inline marks became blocks** — `04-implications.tex:218`, `:497`

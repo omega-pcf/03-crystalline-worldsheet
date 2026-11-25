@@ -2,7 +2,7 @@
 §4  Dimensional Transmutation & Continuum Limit
 ================================================
 Lambda_QCD and its continuum limit, the self-dual charge and the string gap
-(eq:string-tension), the two towers kept distinct, Brown-Henneaux, the
+(string_tension_positive), the two towers kept distinct, Brown-Henneaux, the
 beta-function identity and the Koide placement of the lepton masses.
 (The projector checks live in test_spectral.py / test_gravity.py.)
 """
@@ -29,7 +29,7 @@ class TestLambdaQCDPositivity:
 
 
 class TestGapSurvivesTransmutation:
-    """eq:transmutation: the gap is a positive multiple of Lambda_QCD and
+    """gap_survives_transmutation: the gap is a positive multiple of Lambda_QCD and
     survives the continuum limit (Lambda_QCD > 0, finite)."""
 
     def test_finite(self):
@@ -50,7 +50,7 @@ class TestSelfDualCharges:
 
 
 class TestColourGap:
-    """eq:string-tension: sigma_tension = q_m^2 V > 0 and
+    """string_tension_positive: sigma_tension = q_m^2 V > 0 and
     Delta_colour = sqrt(sigma_tension) > 0 (dual Meissner)."""
 
     def test_positive(self):

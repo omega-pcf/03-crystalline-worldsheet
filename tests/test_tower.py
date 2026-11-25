@@ -1,8 +1,8 @@
 """
 §3  Tower Modes & Bridge Cocycle
 =================================
-Tower mode counts and their golden growth (eq:tower-modes, cor:golden-growth,
-thm:fib-min), bridge cocycle composition/inverse (eq:bridge), KK golden
+Tower mode counts and their golden growth (tower_mode_count, golden_growth_per_level,
+fibonacci_minimality), bridge cocycle composition/inverse (eq:bridge), KK golden
 identity, and the Regge residue behind eq:veneziano (degree n-1, spin <= n-1).
 """
 import numpy as np
@@ -12,7 +12,7 @@ from cw6.constants import PHI, EPS_0, M_PCF, ARITY, nmodes, bridge_T
 
 
 class TestTowerModes:
-    """eq:tower-modes: N_modes(sigma) = floor(pi phi^sigma)."""
+    """tower_mode_count: N_modes(sigma) = floor(pi phi^sigma)."""
 
     NMODES_SEQ = [3, 5, 8, 13, 21, 34, 56]
 
@@ -21,7 +21,7 @@ class TestTowerModes:
         assert nmodes(sigma) == expected
 
     def test_six_not_fib(self):
-        """thm:fib-min: N_modes(6) = 56 while the Fibonacci value is 55.
+        """fibonacci_minimality: N_modes(6) = 56 while the Fibonacci value is 55.
 
         03-derivations: the pi-scaled staircase equals the Fibonacci values for
         sigma <= 5 and departs at sigma = 6, where 56 != 55.
@@ -37,9 +37,9 @@ class TestTowerModes:
         assert [nmodes(s) for s in range(6)] == [fib(s + 4) for s in range(6)]
 
     def test_ratio_is_phi(self):
-        """cor:golden-growth: the tower grows by phi per level.
+        """golden_growth_per_level: the tower grows by phi per level.
 
-        Checked on the mode counts of eq:tower-modes themselves (the
+        Checked on the mode counts of tower_mode_count themselves (the
         manuscript's N_modes), not on the un-floored formula: each step of the
         staircase is phi within the rounding the floor introduces.
         """

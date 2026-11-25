@@ -112,7 +112,7 @@ $\sin\alpha(\sigma_1)\cos\alpha(\sigma_2)$ has the closed form
   =\frac{\epsz\golden^{\sigma_1}}
         {\sqrt{\bigl(1+\epsz^{2}\golden^{2\sigma_1}\bigr)\bigl(1+\epsz^{2}\golden^{2\sigma_2}\bigr)}} .
 \end{equation}
-What the certainty principle $\epsz\Mpcf=\pi$ \eqref{eq:certainty} contributes is the
+What the certainty principle $\epsz\Mpcf=\pi$ \eqref{certainty_product} contributes is the
 \emph{scale} of the argument, $\epsz=\pi/\Mpcf$, and nothing else: the bound
 $\alpha(\sigma)<\pi/2$ is a property of $\arctan$ and holds for every real argument, so it is
 not the certainty relation that keeps the angle off the right angle. The bound is used for one
@@ -151,7 +151,7 @@ The holographic principle is read off the invariants, not assumed:
   \item and $1/(4\GN)=\mu=\tfrac12$ turns $\SBH=A/(4\GN)$ into the area law.
 \end{enumerate}
 Hence information $=$ one bit per Planck area (the holographic bound), read from the invariants.
-(Numerically verified: \eqref{eq:certainty}, \eqref{eq:obs-interface}, \eqref{eq:brown-henneaux}.)
+(Numerically verified: \eqref{certainty_product}, \eqref{eq:obs-interface}, \eqref{eq:brown-henneaux}.)
 
 This is the holographic bound that Susskind, following 't~Hooft, drew from unproven
 assumptions about the nonperturbative behaviour of string theory: one discrete degree of
@@ -195,31 +195,31 @@ Mediation by $\mu=\tfrac12$ produces the two registers,
 \end{equation}
 \tier[sqrt2\_mediation, sqrt3\_mediation]{P}
 The tower and its mode count are
-\begin{equation}\label{eq:tower-modes}
+\begin{equation}\label{tower_mode_count}
   z(\sigma)=\golden^{\sigma},\qquad \Nmodes(\sigma)=\big\lfloor\pi\,\golden^{\sigma}\big\rfloor
 \end{equation}
-\tier[eq:tower-modes]{N}
+\tier[tower\_mode\_count]{N}
 This is where the geometric encoding replaces the Fourier expansion of the string as the
-device that fixes the mode content: \eqref{eq:tower-modes} counts modes by the cell capacity
-$\pi$ of \eqref{eq:certainty} at each level of the tower rather than by harmonic order. The
+device that fixes the mode content: \eqref{tower_mode_count} counts modes by the cell capacity
+$\pi$ of \eqref{certainty_product} at each level of the tower rather than by harmonic order. The
 two are not in conflict---the count is finer-grained, and it is tied through
 \S\ref{ssec:adscft} to the information the horizon carries.
 
 \begin{remark}[Fibonacci-adjacent, and where it parts company]\label{rmk:fib-adjacent}
-The count \eqref{eq:tower-modes} is \emph{adjacent} to the Fibonacci sequence, not equal to it:
+The count \eqref{tower_mode_count} is \emph{adjacent} to the Fibonacci sequence, not equal to it:
 $\lvert\Nmodes(\sigma)-F\rvert\le1$ for the nearest Fibonacci $F$, with equality
 $\Nmodes(\sigma)=F$ for $\sigma\le5$ --- the values $3,5,8,13,21,34$ --- and a genuine departure at
 the tower ceiling, where $\Nmodes(6)=\lfloor\pi\golden^{6}\rfloor=56$ while the Fibonacci value is
-$55$. The distinction matters: the factor $\pi$ of \eqref{eq:tower-modes} is the cell capacity of
-\eqref{eq:certainty} and not a Fibonacci index, so the staircase is $\pi$-scaled and only
-\emph{shadows} the recurrence of Theorem~\ref{thm:fib-min}. Reading the tower as Fibonacci would
-put $55$ at the tower ceiling $\sigma=2n$, where the saturation entropy is largest \tier[thm:fib-min]{N}.
+$55$. The distinction matters: the factor $\pi$ of \eqref{tower_mode_count} is the cell capacity of
+\eqref{certainty_product} and not a Fibonacci index, so the staircase is $\pi$-scaled and only
+\emph{shadows} the recurrence of Theorem~\ref{fibonacci_minimality}. Reading the tower as Fibonacci would
+put $55$ at the tower ceiling $\sigma=2n$, where the saturation entropy is largest \tier[fibonacci\_minimality]{N}.
 \witness{P}{fib\_adjacent\_le\_one, nmodes\_six\_ne\_fib}
 
 \end{remark}
 
 \begin{remark}[The scale operator of the tower, and which spectrum is which]\label{rmk:mass-operator}
-The tower $z=\golden^{\sigma}$ of \eqref{eq:tower-modes} defines the diagonal scale operator
+The tower $z=\golden^{\sigma}$ of \eqref{tower_mode_count} defines the diagonal scale operator
 \begin{equation}\label{eq:mass-operator}
   H\lvert\sigma\rangle=m_0\,\golden^{\sigma},\qquad
   \mathrm{spec}\,H=\{0\}\cup\{m_0\golden^{\sigma}\}_{\sigma\ge0},
@@ -229,7 +229,7 @@ it supports are established in \S\ref{sec:dof}.
 \witness{P}{tower\_ham\_is\_hermitian, tower\_ham\_bounded\_below}
 
 Two spectra must be kept apart here, and the framework supplies both from the same pair $\pi,\golden$.
-The golden tower \eqref{eq:tower-modes} is the \emph{radial and scale} tower: its successive ratio
+The golden tower \eqref{tower_mode_count} is the \emph{radial and scale} tower: its successive ratio
 tends to $\golden$ and its physical mass reading is the Kaluza--Klein one, the interior KK mass
 carrying the golden identity $\golden^{2}+\golden^{-2}-2=1$ (\S\ref{app:kk},
 \eqref{eq:kk-numerator})---the gravity side. The \emph{confining} mass spectrum, on the gauge side, is
@@ -239,7 +239,7 @@ $M_n/M_1=\sqrt n$, not $\golden^{\sigma}$. The two are distinct spectra but not 
 \end{remark}
 \begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth]{fig3_N_modes.pdf}
-\caption{The mode tower $\Nmodes(\sigma)=\lfloor\pi\golden^{\sigma}\rfloor$ \eqref{eq:tower-modes}:
+\caption{The mode tower $\Nmodes(\sigma)=\lfloor\pi\golden^{\sigma}\rfloor$ \eqref{tower_mode_count}:
 (a) the Fibonacci-adjacent staircase $\{3,5,8,13,21,34,56,\dots\}$, equal to the Fibonacci values
 for $\sigma\le5$ and departing at $\sigma=6$ where $56\neq55$
 (Remark~\ref{rmk:fib-adjacent}); (b) the successive ratio
@@ -328,9 +328,9 @@ chain of HS.
         colour/generation hierarchy rests on two proved anchors, $1-\muthree^{2}=\tfrac34$ and the
         odd zeta values (Theorem~\ref{thm:zeta-odd}), with $\zeta(3)$ as the two-loop constant,
         while the assignment of loop order to colour and generations remains structural;
-  \item the modes at each level are $\Nmodes(\sigma)=\lfloor\pi\golden^{\sigma}\rfloor$ \eqref{eq:tower-modes}.
+  \item the modes at each level are $\Nmodes(\sigma)=\lfloor\pi\golden^{\sigma}\rfloor$ \eqref{tower_mode_count}.
 \end{enumerate}
-(Numerically verified: \eqref{lem:gamma-half}, \eqref{prop:veneziano}, \eqref{thm:basel}, \eqref{eq:pcf-partition}, \eqref{eq:tower-modes}.)
+(Numerically verified: \eqref{lem:gamma-half}, \eqref{veneziano_regge_euler}, \eqref{basel_zeta_two}, \eqref{eq:pcf-partition}, \eqref{tower_mode_count}.)
 
 \paragraph{Thread (the two ultraviolet regulators coexist).}
 \begin{enumerate}
@@ -354,7 +354,7 @@ firewall ambiguity (AMPS) without averaging.
 The throat and its warped metric are
 \begin{equation}\label{eq:throat}
   ds^{2}=e^{2A(z)}\,\eta_{\mu\nu}\,dx^{\mu}dx^{\nu}+dz^{2},
-  \qquad z(\sigma)=\golden^{\sigma}\ \text{of \eqref{eq:tower-modes}}.
+  \qquad z(\sigma)=\golden^{\sigma}\ \text{of \eqref{tower_mode_count}}.
 \end{equation}
 \paragraph{The five-dimensional throat: $\mathrm{AdS}_5$, $S^5$ and the ladder.}
 The throat \eqref{eq:throat} is the $\mathrm{AdS}_5$ geometry whose curvature invariants are fixed
@@ -368,7 +368,7 @@ Eisenstein primes (\S\ref{sec:intro}). The discrete levels $\sigma=0,\dots,5$
 (superpoint~$\to$~NS5, \S\ref{sssec:superpoint}) sit on the Hamming hypercube
 $H_5=\{0,1\}^5$, $|H_5|=2^{5}$, with
 $\Lambda_\sigma=\golden^{\sigma}\Lambda_{\PCF}$ and the saturation entropy
-$S(\sigma)=\pi\golden^{\sigma}$ \eqref{eq:tower-modes}.
+$S(\sigma)=\pi\golden^{\sigma}$ \eqref{tower_mode_count}.
 \witness{P}{hopf\_latitude, hopf\_from\_clifford}
 \witness{P}{hypercube\_card, conductor\_attribution, four\_cocone, S\_tower}
 \begin{figure}[!htbp]\centering
@@ -453,7 +453,7 @@ invariants.
         \eqref{eq:brown-henneaux};
   \item hence GKPW~\cite{GKP98,Witten98} and Ryu--Takayanagi~\cite{RyuTakayanagi06} are consequences of the isometric embedding of the microstate.
 \end{enumerate}
-Thus the entire AdS/CFT correspondence comes from one microstate, not an ensemble. (Numerically verified: $|\Om|_{\sigma}=\tfrac12\ \forall\sigma$ via \eqref{eq:certainty},
+Thus the entire AdS/CFT correspondence comes from one microstate, not an ensemble. (Numerically verified: $|\Om|_{\sigma}=\tfrac12\ \forall\sigma$ via \eqref{certainty_product},
 $\mathrm{GKP}=\tfrac34$, $\SBH=\mu$, $c=3$.)
 
 Maldacena left the AdS boundary conditions unspecified---``we leave this interesting problem
@@ -546,8 +546,8 @@ five string theories) is neither used nor needed here.
 Thus microstate $\to$ tower $\to$ web (HS and per-level AdS/CFT). The quantitative pieces
 ($\golden\to-1/\golden$, the swampland constant $\ln\golden$ (the regulator $R_K$,
 Definition~\ref{def:regulator}), the T-self-dual radius, and the
-shared HS/Maldacena signature) are checked numerically (\eqref{eq:obs-swampland} \tier[eq:obs-swampland]{N})
-and formally in \texttt{CW6\_complete\_v2.lean} (\S\ref{ssec:status}). The signature's null contraction is checked at \eqref{eq:obs-jacobson} \tier[eq:obs-jacobson]{N}; the framework colimit
+shared HS/Maldacena signature) are checked numerically (\eqref{swampland_log_derivative} \tier[swampland\_log\_derivative]{N})
+and formally in \texttt{CW6\_complete\_v2.lean} (\S\ref{ssec:status}). The signature's null contraction is checked at \eqref{null_contraction_vanishes} \tier[null\_contraction\_vanishes]{N}; the framework colimit
 itself---the five frameworks and the PCF core as partial spectral objects, the cocone into the
 vertex $T_{\PCF}$, and its universal property---is proved in the same file
 (\texttt{cocone\_property}, \texttt{colimit\_universal}, \texttt{framework\_colimit}).
@@ -594,7 +594,7 @@ $\mu_3$ comes from the $S_3$ arity (Proposition~\ref{prop:pcf-norms}), not from 
 $T(\sigma_1,\sigma_2)T(\sigma_2,\sigma_1)=1$; the telescoping of numerator and denominator gives
 $T(\sigma_1,\sigma_2)T(\sigma_2,\sigma_3)=T(\sigma_1,\sigma_3)$.
 \emph{($\mathrm{ER}=\mathrm{EPR}$)} The levels are equivalent because
-$\epsz\golden^{\sigma}\!\cdot\!\Mpcf\golden^{-\sigma}=\pi$ at every $\sigma$ \eqref{eq:certainty}, so
+$\epsz\golden^{\sigma}\!\cdot\!\Mpcf\golden^{-\sigma}=\pi$ at every $\sigma$ \eqref{certainty_product}, so
 $|\Om|_\sigma=\tfrac12$ is scale-invariant \eqref{eq:tower-autosimilar}; the entanglement invariant
 $\mu_3^{2}$ and the bridge group thus share one origin.
 \end{proof}
@@ -780,7 +780,7 @@ Each step uses only previous steps.
         \eqref{eq:spectral-invariants}~(\S\ref{ssec:arity},\,\S\ref{ssec:commute}) $\to$ P7 $1/(4\GN)=\tfrac12=|\Om|$, $H(\tfrac12)=1$
         \eqref{eq:bridge-BH}~(\S\ref{ssec:construction}).
   \item[3.3 tower $+$ HS.] P8 chain $i\to\golden$ \eqref{eq:dim-chain}~(\S\ref{ssec:spectrum}) $\to$ P9 $\sqrt2/\sqrt3$ by $\mu$
-        \eqref{eq:tower-mediation}~(\S\ref{ssec:origins}) $\to$ P10 tower $\golden^{\sigma}$, $\Nmodes$ \eqref{eq:tower-modes}~(\S\ref{ssec:tower})
+        \eqref{eq:tower-mediation}~(\S\ref{ssec:origins}) $\to$ P10 tower $\golden^{\sigma}$, $\Nmodes$ \eqref{tower_mode_count}~(\S\ref{ssec:tower})
         $\to$ P11 HS$\leftrightarrow$tower \eqref{eq:HS-tower} $\to$ P12 Veneziano \eqref{eq:veneziano}
         $\to$ P13 loops $\Zpcf(i)$ \eqref{eq:pcf-partition} $\to$ P14 both ultraviolet regulators \eqref{eq:gamma-pole}.
   \item[3.4 AdS/CFT per level.] P15 throat $z(\sigma)=\golden^{\sigma}$ \eqref{eq:throat}~(\S\ref{ssec:tower}) $\to$ P16

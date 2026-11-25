@@ -53,8 +53,8 @@ working at 40 mpmath digits does not rebuild the constants at its own precision.
 
 ## Conventions
 
-* **Docstrings name the manuscript tag** they back — `eq:certainty`,
-  `prop:pcf-norms`, `thm:basel` — so a witness key can be grepped from
+* **Docstrings name the manuscript tag** they back — `certainty_product`,
+  `prop:pcf-norms`, `basel_zeta_two` — so a witness key can be grepped from
   `tests/` and a test can be found from a tag. `test_witness_census.py` enforces
   this for every numerical witness.
 * **Assertions cite figures the manuscript prints.** A number that is not in

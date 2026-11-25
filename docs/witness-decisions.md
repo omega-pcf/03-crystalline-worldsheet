@@ -31,13 +31,13 @@ Re-verified from scratch before editing. Applied changes, by file:line (numbers 
 | # | File:line | Change |
 |---|-----------|--------|
 | A1 | `appendix.tex:265-266` | two blocks that shared one source line → split, `P` block then `N` block, one per line |
-| A2 | `01-introduction.tex:317 → 342` | `\ProofWitnessBlock{phi\_sq}` moved from mid-sentence (after `\end{equation}` of `eq:phisq`, before "which extends…") to the end of the paragraph ("…mounted on a torus.") |
+| A2 | `01-introduction.tex:317 → 342` | `\ProofWitnessBlock{phi\_sq}` moved from mid-sentence (after `\end{equation}` of `phi_sq_identity`, before "which extends…") to the end of the paragraph ("…mounted on a torus.") |
 | A3 | `01-introduction.tex:361 → 373` | `\ProofWitnessBlock{lambda\_log, lambda\_log\_mul\_regulator, mersenne\_bridge}` moved from mid-sentence ("…anchored by the algebraic bridge [eq] BLOCK so that…") to the end of the paragraph ("…spectrum of the primes.") |
 | A4 | `02-methods.tex:629 → 631` | block moved out of the middle of the proposition statement to just before `\end{proposition}` (after the `Lucas1878` citation) |
 | A5 | `03-derivations.tex:370 → 377` | `\ProofWitnessBlock{hopf\_latitude, hopf\_from\_clifford}` moved from between two sentences to the end of its paragraph (immediately before the `hypercube_card…` block, preserving sentence order) |
 | A6 | `04-implications.tex:330 → 329 + 332` | orphan fragment restored: `$S=\ln N$.` + `(by \texttt{rfl}---the most direct realisation).` → `$S=\ln N$ (by \texttt{rfl}---the most direct realisation).` (every word of the fragment kept, no new wording); block moved to the end of the paragraph, after "…the unitarity branch is ``realised''." Git evidence: commit `01f8e35` ("remove orphaned Proof:, dots, and parentheses around ProofWitnessBlocks") deleted the sentence's subject and left the parenthesis dangling |
 | A7 | `03-derivations.tex:502 → 504` | `\ProofWitness{c\_tendsto\_two}` removed from inside the `align` environment (last row) → `\ProofWitnessBlock{c\_tendsto\_two}` on its own line after `\end{align}`; `\label{eq:bridge-fixed}` stays in the row |
-| A8 | `02-methods.tex:370` | `\NumericalWitness{eq:certainty}` alone on a left-aligned line → `\NumericalWitnessBlock{eq:certainty}`: same pattern as every other marker that closes a display (`01:342`, `02:709`, `03:203`); a left-floated inline tag on its own line was the only instance of its kind |
+| A8 | `02-methods.tex:370` | `\NumericalWitness{certainty_product}` alone on a left-aligned line → `\NumericalWitnessBlock{certainty_product}`: same pattern as every other marker that closes a display (`01:342`, `02:709`, `03:203`); a left-floated inline tag on its own line was the only instance of its kind |
 | A9 | `04-implications.tex:739-740` | inverted stack corrected: `P` block now first, `N` block second (order used at every other stacked pair) |
 | A10 | `02-methods.tex:709` | broken `P` name: `{eq:local-dedekind}` → `{local\_dedekind\_ramified\_K, local\_dedekind\_split\_K, local\_dedekind\_inert\_K}` (verified `lean/CW6_complete_v2.lean:3655/3660/3665`; same three names already used at `02-methods.tex:791`) |
 | A11 | `04-implications.tex:423` | broken `P` name: `{prop:shell-tension}` → `{shell\_tension\_determined}` (verified `lean/CW6_complete_v2.lean:5568`) |
@@ -81,57 +81,57 @@ Same contract as 05-kk §8: an `N` tag is valid only if a test actually recomput
 
 | ✓ | # | Site (post-fix) | Claim the tag supports | Real test id (or the gap) | Recommendation |
 |---|---|---|---|---|---|
-| [ ] | 1 | `02-methods.tex:176` `N[eq:phisq]` | the root behind `thm:fib-min` satisfies $\varphi^2=\varphi+1$ | `tests/test_core_identities.py::TestDimensionLadder::test_phi_identity` (`assert abs(PHI**2 - (PHI+1)) < 1e-12`) | **(i)** |
-| [ ] | 2 | `02-methods.tex:370` `N[eq:certainty]` | the Certainty Principle $\varepsilon_0 M_{\rm PCF}=\pi$ | `tests/test_core_identities.py::TestCertainty::test_certainty_product` | **(i)** |
-| [ ] | 3 | `02-methods.tex:723` `N[thm:basel]` | $k=1$ of the even-zeta formula: $\zeta(2)=\pi^2/6$ | **no test asserts it.** `tests/test_arithmetic.py::TestSigmaDiagram::test_analytic_route` *consumes* `mpzeta(2)` as an input; nothing compares it to $\pi^2/6$ | **(ii)** add `tests/test_arithmetic.py::TestEvenZeta::test_basel` asserting `abs(mpzeta(2) - pi**2/6) < mpf('1e-20')`; fallback **(iv)** |
-| [ ] | 4 | `02-methods.tex:1357` `N[prop:repulsion-modulus]` | under the hypotheses, $|1-1/\rho|=1$ exactly | `tests/test_spectral.py::TestLiModulus::test_equivalence` (docstring: `eq:li-modulus: |1-1/rho| = 1 iff Re rho = 1/2`) | **(i)** — see also §3 row 4 (only key never `\ref`'d anywhere in the document) |
-| [ ] | 5 | `03-derivations.tex:203` `N[eq:tower-modes]` | $N_{\rm modes}(\sigma)=\lfloor\pi\varphi^\sigma\rfloor$ | `tests/test_tower.py::TestTowerModes::test_individual[6-56]` (parametrised over $\sigma=0..6$) | **(i)** |
-| [ ] | 6 | `03-derivations.tex:220` `N[thm:fib-min]` | prose: $N_{\rm modes}(6)=56$ while the Fibonacci value is $55$; "the staircase is $\pi$-scaled and only *shadows* the recurrence" | the theorem itself is Lean-only (P tag on line 219); **no test asserts `thm:fib-min`** (depth-2 minimality). `test_individual[6-56]` checks the 56, not the theorem | **(iii)** retag to what is checked: `\NumericalWitnessBlock{eq:tower-modes}` (sentence unchanged); alternative **(ii)** `tests/test_tower.py::TestTowerModes::test_six_not_fib` asserting `nmodes(6) == 56 and 55 != 56` |
-| [ ] | 7 | `03-derivations.tex:556` `N[eq:obs-swampland]` | $|\partial_\sigma V|/V=\ln\varphi$ | `tests/test_observer.py::TestObserverSwampland::test_logarithmic_derivative[0.0]` (+ `[1.5]`, `[3.0]`, `[6.0]`) | **(i)** — same line also has `\eqref{eq:obs-swampland}` → §2 |
-| [ ] | 8 | `03-derivations.tex:556` `N[eq:obs-jacobson]` | $R_{AB}k^Ak^B=0$ for all null $k$ | `tests/test_observer.py::TestObserverJacobson::test_null_contraction_vanishes` (+ `test_discriminates_nonnull`) | **(i)** |
-| [ ] | 9 | `04-implications.tex:316` `N[eq:certainty]` | "…and checked numerically" in the `asm:bridge` sentence | `tests/test_core_identities.py::TestCertainty::test_certainty_product` | **(i)** — also §2 |
-| [ ] | 10 | `04-implications.tex:487` `N[eq:shell-tension]` | $\lambda_\sigma=N_{\rm modes}(\sigma)/M_{\rm PCF}$, feeding the cumulative back-reaction $3,8,16,29,50,84,140$ | the **sequence** is checked (`tests/test_tower.py::TestTowerModes::test_cumulative`), **eq:shell-tension itself is asserted nowhere** (`grep -rE 'shell_tension\|lambda_sigma' tests/` → 0) | **(ii)** add `tests/test_gravity.py::TestShellTension::test_lambda_eq_nmodes_over_mpcf` asserting `abs(nmodes(s)/M_PCF - lam(s)) < 1e-12 for s in range(7)`; alternative **(iii)** retag to the cumulative claim and use `test_cumulative`; fallback **(iv)** |
-| [ ] | 11 | `04-implications.tex:572` `N[prop:entropy-max]` | $f_{\rm crit}=\mu_3=1/2$ is the maximum-entropy point $H(1/2)=1$ bit | `tests/test_arithmetic.py::TestEntropyMax::test_max_at_half` (+ `test_below_one`) | **(i)** |
-| [ ] | 12 | `04-implications.tex:656` `N[eq:obs-landauer]` | Landau–Lifshitz/energy-per-bit claim of `thm:LL-energy` | `tests/test_observer.py::TestObserverLandauer::test_energy_per_bit` (docstring: `eq:obs-landauer: energy/bit = 1/M_PCF; S_BH/k_B = log 2`) | **(i)** |
-| [ ] | 13 | `04-implications.tex:740` `N[eq:Lambda-from-curvature]` | the scale from curvature, $\sigma_{\rm obs}=\ln(6/\Lambda_{\rm obs})/\ln\varphi$ with $\Lambda_5=-d(d-1)/2=-6$ | `tests/test_gravity.py::TestEinsteinCurvature::test_lambda5` (`assert LAMBDA_5 == -6`) | **(i)**; optional **(ii)** a new test `tests/test_observer.py::TestDeSitterGeometry::test_sigma_obs` (does not exist yet) asserting `sigma_obs == log(6/LAMBDA)/log(PHI)` if you want the $\sigma_{\rm obs}$ step itself covered |
-| [ ] | 14 | `04-implications.tex:1031` `N[cor:golden-growth]` | "the growth is golden, $\varphi$ per level" | `tests/test_tower.py::TestTowerModes::test_ratio_is_phi` ("Tower step ratio is exactly φ") — contrary to the earlier audit, a test *does* check the rate | **(i)** — also §2 (the sentence already cites `Corollary~\ref{cor:golden-growth}`) |
-| [ ] | 15 | `04-implications.tex:1519` `N[prop:veneziano]` | Regge tower = Euler product = $\zeta(s)$ | `tests/test_places.py::TestReggeTower::test_dirichlet_eq_zeta[s0]` (+ `test_euler_product`) | **(i)** |
-| [ ] | 16 | `04-implications.tex:1541` `N[eq:string-tension]` | dual-superconductor: $\sigma_{\rm tension}=q_m^2V>0$, $\Delta=\sqrt{\sigma}>0$ | `tests/test_transmutation.py::TestColourGap::test_positive` (asserts exactly `q**2*V_MEISSNER > 0` and its square root) | **(i)** — see §7.4: this inline tag currently splits the sentence |
-| [ ] | 17 | `04-implications.tex:1691` `N[eq:transmutation]` | gap independent of the cutoff; $\Lambda_{\rm QCD}=\Lambda>0$ | `tests/test_transmutation.py::TestGapSurvivesTransmutation::test_finite` + `tests/test_transmutation.py::TestLambdaQCDPositivity::test_positive` | **(i)** |
-| [ ] | 18 | `appendix.tex:266` `N[eq:kk-rowsum]` | the row-sum numerator equals 1 only for $\varphi$ | `tests/test_kk.py::TestKKSpectrum::test_interior_row_sum` ("Interior row sum = 1/ln²φ (the numerator is 1)") + `tests/test_kk.py::TestKKNumerator::test_numerator_value` | **(i)** |
-| [ ] | 19 | `appendix.tex:266` `N[eq:kk-spectrum]` | numerical KK spectrum = closed form, $m^2>0$ | `tests/test_kk.py::TestKKSpectrum::test_numerical_equals_closed` (+ `test_mass_squared_positive`) | **(i)** |
+| [ ] | 1 | `02-methods.tex:176` `N[phi_sq_identity]` | the root behind `fibonacci_minimality` satisfies $\varphi^2=\varphi+1$ | `tests/test_core_identities.py::TestDimensionLadder::test_phi_identity` (`assert abs(PHI**2 - (PHI+1)) < 1e-12`) | **(i)** |
+| [ ] | 2 | `02-methods.tex:370` `N[certainty_product]` | the Certainty Principle $\varepsilon_0 M_{\rm PCF}=\pi$ | `tests/test_core_identities.py::TestCertainty::test_certainty_product` | **(i)** |
+| [ ] | 3 | `02-methods.tex:723` `N[basel_zeta_two]` | $k=1$ of the even-zeta formula: $\zeta(2)=\pi^2/6$ | **no test asserts it.** `tests/test_arithmetic.py::TestSigmaDiagram::test_analytic_route` *consumes* `mpzeta(2)` as an input; nothing compares it to $\pi^2/6$ | **(ii)** add `tests/test_arithmetic.py::TestEvenZeta::test_basel` asserting `abs(mpzeta(2) - pi**2/6) < mpf('1e-20')`; fallback **(iv)** |
+| [ ] | 4 | `02-methods.tex:1357` `N[repulsion_modulus_is_one]` | under the hypotheses, $|1-1/\rho|=1$ exactly | `tests/test_spectral.py::TestLiModulus::test_equivalence` (docstring: `eq:li-modulus: |1-1/rho| = 1 iff Re rho = 1/2`) | **(i)** — see also §3 row 4 (only key never `\ref`'d anywhere in the document) |
+| [ ] | 5 | `03-derivations.tex:203` `N[tower_mode_count]` | $N_{\rm modes}(\sigma)=\lfloor\pi\varphi^\sigma\rfloor$ | `tests/test_tower.py::TestTowerModes::test_individual[6-56]` (parametrised over $\sigma=0..6$) | **(i)** |
+| [ ] | 6 | `03-derivations.tex:220` `N[fibonacci_minimality]` | prose: $N_{\rm modes}(6)=56$ while the Fibonacci value is $55$; "the staircase is $\pi$-scaled and only *shadows* the recurrence" | the theorem itself is Lean-only (P tag on line 219); **no test asserts `fibonacci_minimality`** (depth-2 minimality). `test_individual[6-56]` checks the 56, not the theorem | **(iii)** retag to what is checked: `\NumericalWitnessBlock{tower_mode_count}` (sentence unchanged); alternative **(ii)** `tests/test_tower.py::TestTowerModes::test_six_not_fib` asserting `nmodes(6) == 56 and 55 != 56` |
+| [ ] | 7 | `03-derivations.tex:556` `N[swampland_log_derivative]` | $|\partial_\sigma V|/V=\ln\varphi$ | `tests/test_observer.py::TestObserverSwampland::test_logarithmic_derivative[0.0]` (+ `[1.5]`, `[3.0]`, `[6.0]`) | **(i)** — same line also has `\eqref{swampland_log_derivative}` → §2 |
+| [ ] | 8 | `03-derivations.tex:556` `N[null_contraction_vanishes]` | $R_{AB}k^Ak^B=0$ for all null $k$ | `tests/test_observer.py::TestObserverJacobson::test_null_contraction_vanishes` (+ `test_discriminates_nonnull`) | **(i)** |
+| [ ] | 9 | `04-implications.tex:316` `N[certainty_product]` | "…and checked numerically" in the `asm:bridge` sentence | `tests/test_core_identities.py::TestCertainty::test_certainty_product` | **(i)** — also §2 |
+| [ ] | 10 | `04-implications.tex:487` `N[shell_tension_from_mode_count]` | $\lambda_\sigma=N_{\rm modes}(\sigma)/M_{\rm PCF}$, feeding the cumulative back-reaction $3,8,16,29,50,84,140$ | the **sequence** is checked (`tests/test_tower.py::TestTowerModes::test_cumulative`), **shell_tension_from_mode_count itself is asserted nowhere** (`grep -rE 'shell_tension\|lambda_sigma' tests/` → 0) | **(ii)** add `tests/test_gravity.py::TestShellTension::test_lambda_eq_nmodes_over_mpcf` asserting `abs(nmodes(s)/M_PCF - lam(s)) < 1e-12 for s in range(7)`; alternative **(iii)** retag to the cumulative claim and use `test_cumulative`; fallback **(iv)** |
+| [ ] | 11 | `04-implications.tex:572` `N[entropy_max_at_half]` | $f_{\rm crit}=\mu_3=1/2$ is the maximum-entropy point $H(1/2)=1$ bit | `tests/test_arithmetic.py::TestEntropyMax::test_max_at_half` (+ `test_below_one`) | **(i)** |
+| [ ] | 12 | `04-implications.tex:656` `N[landauer_energy_per_bit]` | Landau–Lifshitz/energy-per-bit claim of `thm:LL-energy` | `tests/test_observer.py::TestObserverLandauer::test_energy_per_bit` (docstring: `landauer_energy_per_bit: energy/bit = 1/M_PCF; S_BH/k_B = log 2`) | **(i)** |
+| [ ] | 13 | `04-implications.tex:740` `N[lambda5_from_curvature]` | the scale from curvature, $\sigma_{\rm obs}=\ln(6/\Lambda_{\rm obs})/\ln\varphi$ with $\Lambda_5=-d(d-1)/2=-6$ | `tests/test_gravity.py::TestEinsteinCurvature::test_lambda5` (`assert LAMBDA_5 == -6`) | **(i)**; optional **(ii)** a new test `tests/test_observer.py::TestDeSitterGeometry::test_sigma_obs` (does not exist yet) asserting `sigma_obs == log(6/LAMBDA)/log(PHI)` if you want the $\sigma_{\rm obs}$ step itself covered |
+| [ ] | 14 | `04-implications.tex:1031` `N[golden_growth_per_level]` | "the growth is golden, $\varphi$ per level" | `tests/test_tower.py::TestTowerModes::test_ratio_is_phi` ("Tower step ratio is exactly φ") — contrary to the earlier audit, a test *does* check the rate | **(i)** — also §2 (the sentence already cites `Corollary~\ref{golden_growth_per_level}`) |
+| [ ] | 15 | `04-implications.tex:1519` `N[veneziano_regge_euler]` | Regge tower = Euler product = $\zeta(s)$ | `tests/test_places.py::TestReggeTower::test_dirichlet_eq_zeta[s0]` (+ `test_euler_product`) | **(i)** |
+| [ ] | 16 | `04-implications.tex:1541` `N[string_tension_positive]` | dual-superconductor: $\sigma_{\rm tension}=q_m^2V>0$, $\Delta=\sqrt{\sigma}>0$ | `tests/test_transmutation.py::TestColourGap::test_positive` (asserts exactly `q**2*V_MEISSNER > 0` and its square root) | **(i)** — see §7.4: this inline tag currently splits the sentence |
+| [ ] | 17 | `04-implications.tex:1691` `N[gap_survives_transmutation]` | gap independent of the cutoff; $\Lambda_{\rm QCD}=\Lambda>0$ | `tests/test_transmutation.py::TestGapSurvivesTransmutation::test_finite` + `tests/test_transmutation.py::TestLambdaQCDPositivity::test_positive` | **(i)** |
+| [ ] | 18 | `appendix.tex:266` `N[kk_row_sum]` | the row-sum numerator equals 1 only for $\varphi$ | `tests/test_kk.py::TestKKSpectrum::test_interior_row_sum` ("Interior row sum = 1/ln²φ (the numerator is 1)") + `tests/test_kk.py::TestKKNumerator::test_numerator_value` | **(i)** |
+| [ ] | 19 | `appendix.tex:266` `N[kk_spectrum_closed_form]` | numerical KK spectrum = closed form, $m^2>0$ | `tests/test_kk.py::TestKKSpectrum::test_numerical_equals_closed` (+ `test_mass_squared_positive`) | **(i)** |
 
 **§1.0 — the three `{...}` `N` uses** (`02-methods.tex:8,10`, `06-conclusions.tex:32`): illustrative legend/abstract prose; **leave as they are** (no gate).
 
 **The four "no test possible" rows from the previous audit, made explicit** — each needs your tick, not a guess from me:
 
-- `thm:basel` (#3): **new test or drop the tag?** Recommendation: new test (one line, `mpzeta(2)` vs `pi**2/6`).
-- `thm:fib-min` (#6): **new test or retag/rewrite?** Recommendation: retag to `eq:tower-modes` — the prose already states the checked numbers.
-- `eq:shell-tension` (#10): **new test or rewrite?** Recommendation: new test (one line, $\lambda_\sigma=N_{\rm modes}(\sigma)/M_{\rm PCF}$).
-- `cor:golden-growth` (#14): audit said "no test possible"; `test_ratio_is_phi` does check the rate → recommendation **(i)** instead of a new test.
+- `basel_zeta_two` (#3): **new test or drop the tag?** Recommendation: new test (one line, `mpzeta(2)` vs `pi**2/6`).
+- `fibonacci_minimality` (#6): **new test or retag/rewrite?** Recommendation: retag to `tower_mode_count` — the prose already states the checked numbers.
+- `shell_tension_from_mode_count` (#10): **new test or rewrite?** Recommendation: new test (one line, $\lambda_\sigma=N_{\rm modes}(\sigma)/M_{\rm PCF}$).
+- `golden_growth_per_level` (#14): audit said "no test possible"; `test_ratio_is_phi` does check the rate → recommendation **(i)** instead of a new test.
 
 ---
 
 ## §2 — Redundancy: tag key and `\ref` of the *same* key in the same paragraph
 
-Criterion used (reproducible): the witness argument `K` is redundant when the source paragraph that contains the tag also contains `\ref{K}` or `\eqref{K}` — the bracket then says twice what the same label says once. 12 instances post-fix (the audit's 11 + `appendix` `eq:kk-rowsum`; `04:423` and `02:709` *left* this list because A11/A10 renamed their keys to Lean names, which is exactly the fix recommended here).
+Criterion used (reproducible): the witness argument `K` is redundant when the source paragraph that contains the tag also contains `\ref{K}` or `\eqref{K}` — the bracket then says twice what the same label says once. 12 instances post-fix (the audit's 11 + `appendix` `kk_row_sum`; `04:423` and `02:709` *left* this list because A11/A10 renamed their keys to Lean names, which is exactly the fix recommended here).
 
 **Gate options:** **(A)** replace the duplicated key by the witness id from §1 (tag and `\ref` then carry different information: the ref points at the statement, the tag names what verifies it) · **(B)** drop the tag · **(C)** keep both and codify in `docs/citations.md` "the tag marks the class, the ref points at the statement".
 
 | ✓ | # | Site | Key (tag = ref) | Recommendation |
 |---|---|------|-----------------|----------------|
-| [ ] | 1 | `02-methods.tex:723` | `thm:basel` | **(A)** → §1 #3 |
-| [ ] | 2 | `03-derivations.tex:203` | `eq:tower-modes` | **(A)** → §1 #5 |
-| [ ] | 3 | `03-derivations.tex:220` | `thm:fib-min` | **(A)** → §1 #6 (retag `eq:tower-modes`) |
-| [ ] | 4 | `03-derivations.tex:556` | `eq:obs-swampland` | **(A)** → §1 #7 |
-| [ ] | 5 | `03-derivations.tex:556` | `eq:obs-jacobson` | **(A)** → §1 #8 |
-| [ ] | 6 | `04-implications.tex:316` | `eq:certainty` | **(A)** → §1 #9 |
-| [ ] | 7 | `04-implications.tex:487` | `eq:shell-tension` | **(A)** → §1 #10 |
-| [ ] | 8 | `04-implications.tex:572` | `prop:entropy-max` | **(A)** → §1 #11 |
-| [ ] | 9 | `04-implications.tex:1031` | `cor:golden-growth` | **(A)** → §1 #14 |
-| [ ] | 10 | `04-implications.tex:1519` | `prop:veneziano` | **(A)** → §1 #15 |
-| [ ] | 11 | `04-implications.tex:1541` | `eq:string-tension` | **(A)** → §1 #16; if you prefer not to touch it, **(C)** |
-| [ ] | 12 | `appendix.tex:266` | `eq:kk-rowsum` | **(A)** → §1 #18 |
+| [ ] | 1 | `02-methods.tex:723` | `basel_zeta_two` | **(A)** → §1 #3 |
+| [ ] | 2 | `03-derivations.tex:203` | `tower_mode_count` | **(A)** → §1 #5 |
+| [ ] | 3 | `03-derivations.tex:220` | `fibonacci_minimality` | **(A)** → §1 #6 (retag `tower_mode_count`) |
+| [ ] | 4 | `03-derivations.tex:556` | `swampland_log_derivative` | **(A)** → §1 #7 |
+| [ ] | 5 | `03-derivations.tex:556` | `null_contraction_vanishes` | **(A)** → §1 #8 |
+| [ ] | 6 | `04-implications.tex:316` | `certainty_product` | **(A)** → §1 #9 |
+| [ ] | 7 | `04-implications.tex:487` | `shell_tension_from_mode_count` | **(A)** → §1 #10 |
+| [ ] | 8 | `04-implications.tex:572` | `entropy_max_at_half` | **(A)** → §1 #11 |
+| [ ] | 9 | `04-implications.tex:1031` | `golden_growth_per_level` | **(A)** → §1 #14 |
+| [ ] | 10 | `04-implications.tex:1519` | `veneziano_regge_euler` | **(A)** → §1 #15 |
+| [ ] | 11 | `04-implications.tex:1541` | `string_tension_positive` | **(A)** → §1 #16; if you prefer not to touch it, **(C)** |
+| [ ] | 12 | `appendix.tex:266` | `kk_row_sum` | **(A)** → §1 #18 |
 
 If §1 ends up choosing **(iv)** for a row, its §2 row closes automatically (no tag, no redundancy) — mark it `[x]` when that happens.
 
@@ -145,13 +145,13 @@ If §1 ends up choosing **(iv)** for a row, its §2 row closes automatically (no
 
 | ✓ | # | Site | Key | Where its label lives | Recommendation |
 |---|---|------|-----|-----------------------|----------------|
-| [ ] | 1 | `02-methods.tex:176` | `eq:phisq` | `01-introduction.tex:314` (another chapter) | **(A)** — the tag points across a chapter boundary with no `\eqref` in sight; add `\eqref{eq:phisq}` after "…positive root of $r^2=r+1$ is $\golden$." |
-| [ ] | 2 | `02-methods.tex:370` | `eq:certainty` | `02-methods.tex:367` — displayed four lines above | **(B)**: the equation is right there; the tag is the marker, not a missing pointer |
-| [ ] | 3 | `02-methods.tex:1357` | `prop:repulsion-modulus` | `02-methods.tex:1353` — the proposition the tag sits in. **Never `\ref`'d anywhere in the document** (only such key) | **(B)** for the tag (it is inside its own environment); separately consider adding a `\ref{prop:repulsion-modulus}` where the result is later used, or dropping the label — *your call, outside the tag system* |
-| [ ] | 4 | `04-implications.tex:656` | `eq:obs-landauer` | `04-implications.tex:392` (displayed 260 lines earlier) | **(A)** — add `\eqref{eq:obs-landauer}` in the `thm:LL-energy` statement |
-| [ ] | 5 | `04-implications.tex:740` | `eq:Lambda-from-curvature` | `04-implications.tex:662` (displayed in the previous remark) | **(A)** — add `\eqref{eq:Lambda-from-curvature}` after the $\sigma_{\rm obs}$ display |
-| [ ] | 6 | `04-implications.tex:1691` | `eq:transmutation` | `04-implications.tex:1680` — displayed in the same paragraph | **(B)** |
-| [ ] | 7 | `appendix.tex:266` | `eq:kk-spectrum` | `appendix.tex:222` (its sibling `eq:kk-rowsum` *is* `\eqref`'d in the paragraph) | **(A)** — add `\eqref{eq:kk-spectrum}` where the closed-form spectrum is written, or **(B)** if you consider the paragraph's $\varphi^2+\varphi^{-2}=3$ line sufficient |
+| [ ] | 1 | `02-methods.tex:176` | `phi_sq_identity` | `01-introduction.tex:314` (another chapter) | **(A)** — the tag points across a chapter boundary with no `\eqref` in sight; add `\eqref{phi_sq_identity}` after "…positive root of $r^2=r+1$ is $\golden$." |
+| [ ] | 2 | `02-methods.tex:370` | `certainty_product` | `02-methods.tex:367` — displayed four lines above | **(B)**: the equation is right there; the tag is the marker, not a missing pointer |
+| [ ] | 3 | `02-methods.tex:1357` | `repulsion_modulus_is_one` | `02-methods.tex:1353` — the proposition the tag sits in. **Never `\ref`'d anywhere in the document** (only such key) | **(B)** for the tag (it is inside its own environment); separately consider adding a `\ref{repulsion_modulus_is_one}` where the result is later used, or dropping the label — *your call, outside the tag system* |
+| [ ] | 4 | `04-implications.tex:656` | `landauer_energy_per_bit` | `04-implications.tex:392` (displayed 260 lines earlier) | **(A)** — add `\eqref{landauer_energy_per_bit}` in the `thm:LL-energy` statement |
+| [ ] | 5 | `04-implications.tex:740` | `lambda5_from_curvature` | `04-implications.tex:662` (displayed in the previous remark) | **(A)** — add `\eqref{lambda5_from_curvature}` after the $\sigma_{\rm obs}$ display |
+| [ ] | 6 | `04-implications.tex:1691` | `gap_survives_transmutation` | `04-implications.tex:1680` — displayed in the same paragraph | **(B)** |
+| [ ] | 7 | `appendix.tex:266` | `kk_spectrum_closed_form` | `appendix.tex:222` (its sibling `kk_row_sum` *is* `\eqref`'d in the paragraph) | **(A)** — add `\eqref{kk_spectrum_closed_form}` where the closed-form spectrum is written, or **(B)** if you consider the paragraph's $\varphi^2+\varphi^{-2}=3$ line sufficient |
 
 ---
 
@@ -244,8 +244,8 @@ Nothing of the decision itself has moved: the checkbox stays `[ ]`. Aligning the
 
 | ✓ | Site | Contradiction | Recommendation |
 |---|------|---------------|----------------|
-| [ ] | `04-implications.tex:1031` | the sentence presents the rate as a *derived* result — "(Corollary~\ref{cor:golden-growth})" — and the tag then says `N`, i.e. numerically checked, with no numeric content in the sentence | keep the tag **after** §1 #14 names `test_ratio_is_phi`, and add the number to the sentence: "the growth is golden, $\varphi$ per level (`test_ratio_is_phi`)" — or drop the tag with **(iv)** |
-| [ ] | `03-derivations.tex:219-220` | a `P` block (Lean) and an `N` block tag the *same* paragraph, but the `N` names `thm:fib-min`, whose proof is the Lean one; nothing numeric about the theorem is checked | resolved by §1 #6 (retag to `eq:tower-modes`) |
+| [ ] | `04-implications.tex:1031` | the sentence presents the rate as a *derived* result — "(Corollary~\ref{golden_growth_per_level})" — and the tag then says `N`, i.e. numerically checked, with no numeric content in the sentence | keep the tag **after** §1 #14 names `test_ratio_is_phi`, and add the number to the sentence: "the growth is golden, $\varphi$ per level (`test_ratio_is_phi`)" — or drop the tag with **(iv)** |
+| [ ] | `03-derivations.tex:219-220` | a `P` block (Lean) and an `N` block tag the *same* paragraph, but the `N` names `fibonacci_minimality`, whose proof is the Lean one; nothing numeric about the theorem is checked | resolved by §1 #6 (retag to `tower_mode_count`) |
 | [ ] | `06-conclusions.tex:31-32` | "…not demonstrated but is verified with code… the verification tags $P/H/N$ of the abstract" advertises `H` although no claim carries it | follows §4: with `(R)` rewrite the list to `$\ProofWitness{...}$/$\NumericalWitness{...}$` |
 
 ---

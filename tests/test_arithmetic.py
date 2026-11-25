@@ -207,7 +207,7 @@ class TestEntropyBridge:
 
 
 class TestEvenZeta:
-    """zeta(2k) = (-1)^{k+1} B_{2k} (2pi)^{2k} / (2(2k)!); k = 1 is thm:basel,
+    """zeta(2k) = (-1)^{k+1} B_{2k} (2pi)^{2k} / (2(2k)!); k = 1 is basel_zeta_two,
     zeta(2) = pi^2/6."""
 
     @pytest.mark.parametrize("k", range(1, 7))
@@ -216,7 +216,7 @@ class TestEvenZeta:
         assert abs(zeta(2*k) - (-1)**(k+1) * bern(2*k) * (2*pi)**(2*k) / (2 * fact(2*k))) < mpf('1e-20')
 
     def test_basel(self):
-        """thm:basel: zeta(2) = pi^2/6, the k = 1 case of the even-zeta formula."""
+        """basel_zeta_two: zeta(2) = pi^2/6, the k = 1 case of the even-zeta formula."""
         assert abs(zeta(2) - pi**2 / 6) < mpf('1e-20')
 
 
@@ -232,7 +232,7 @@ class TestOddZeta:
 
 
 class TestEntropyMax:
-    """prop:entropy-max (eq:entropy-max): H(p) <= 1 on (0,1) with equality ONLY
+    """entropy_max_at_half (eq:entropy-max): H(p) <= 1 on (0,1) with equality ONLY
     at p = 1/2, the maximum-entropy point f_crit = mu_3 = 1/2."""
 
     def test_max_at_half(self):

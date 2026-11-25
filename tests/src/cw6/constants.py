@@ -41,11 +41,11 @@ NORM_C: float = 1.0                                  # prop:pcf-norms
 NORM_F: float = np.sqrt(3) / 2                       # prop:pcf-norms
 """|F| = sqrt(3)/2."""
 
-EPS_0: float = LN_PHI / (6 * np.sqrt(3))            # eq:certainty
+EPS_0: float = LN_PHI / (6 * np.sqrt(3))            # certainty_product
 """Epsilon_0 = ln(phi) / (6 sqrt 3).  The certainty constant."""
 
 M_PCF: float = 6 * np.sqrt(3) * np.pi / np.log(PHI)  # eq:Mpcf (67.846)
-"""M_PCF = 6 sqrt(3) pi / ln(phi) = pi / eps_0 (eq:Mpcf, eq:certainty).
+"""M_PCF = 6 sqrt(3) pi / ln(phi) = pi / eps_0 (eq:Mpcf, certainty_product).
 Defined by the closed form of eq:Mpcf so that eps_0 * M_PCF = pi is a
 computed identity between two independently written constants, not a
 tautology of the definition."""
@@ -83,7 +83,7 @@ def bridge_T_MP(s1, s2):
 
 # ── §4 Gravity (DERIVED) ─────────────────────────────────────────────────
 
-LAMBDA_5: float = -4 * (4 - 1) / 2                    # eq:Lambda-from-curvature
+LAMBDA_5: float = -4 * (4 - 1) / 2                    # lambda5_from_curvature
 """Lambda_5 = -d(d-1)/2 = -6  (AdS5 cosmological constant, d=4)."""
 
 G_N: float = MU_3                                     # eq:israel, eq:brown-henneaux
@@ -106,7 +106,7 @@ SIGMA_L: int = 2 * ARITY                              # eq:interval-levels
 # ── Tower modes (DERIVED) ─────────────────────────────────────────────────
 
 def nmodes(sigma: float) -> int:
-    """N_modes(sigma) = floor(pi * phi^sigma).  eq:tower-modes."""
+    """N_modes(sigma) = floor(pi * phi^sigma).  tower_mode_count."""
     return int(np.floor(np.pi * PHI**sigma))
 
 

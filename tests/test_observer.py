@@ -101,7 +101,7 @@ class TestObserverFixedPoint:
 
 
 class TestObserverSwampland:
-    """eq:obs-swampland: |dV/dsigma| / V = ln phi, for V = eps_0 phi^{-sigma}."""
+    """swampland_log_derivative: |dV/dsigma| / V = ln phi, for V = eps_0 phi^{-sigma}."""
 
     @pytest.mark.parametrize("sigma", [0.0, 1.5, 3.0, 6.0])
     def test_logarithmic_derivative(self, sigma):
@@ -149,7 +149,7 @@ class TestObserverIdentity:
 
 
 class TestObserverLandauer:
-    """eq:obs-landauer: energy/bit = 1/M_PCF; S_BH/k_B = log 2."""
+    """landauer_energy_per_bit: energy/bit = 1/M_PCF; S_BH/k_B = log 2."""
 
     def test_energy_per_bit(self):
         assert abs(1 / M_PCF - EPS_0 / np.pi) < 1e-14
@@ -163,7 +163,7 @@ class TestObserverLandauer:
 
 
 class TestObserverJacobson:
-    """eq:obs-jacobson: R_AB k^A k^B = 0 for ALL null k in Einstein space R_AB = -4 g_AB."""
+    """null_contraction_vanishes: R_AB k^A k^B = 0 for ALL null k in Einstein space R_AB = -4 g_AB."""
 
     def test_null_contraction_vanishes(self):
         gE = np.diag([-1.0, 1.0, 1.0, 1.0, 1.0])

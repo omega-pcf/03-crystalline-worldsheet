@@ -115,7 +115,7 @@ class TestPoissonSDuality:
 
 
 class TestReggeTower:
-    """prop:veneziano: tower = zeta(s)."""
+    """veneziano_regge_euler: tower = zeta(s)."""
 
     @pytest.mark.parametrize("s", [mpf(2), mpc(3, 1), mpc('1.5', 4)])
     def test_dirichlet_eq_zeta(self, s):

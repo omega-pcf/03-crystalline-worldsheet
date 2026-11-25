@@ -14,7 +14,7 @@ from cw6.helpers import mssm_spread
 class TestEntropyRatio:
     """04-implications / appendix: the tower entropy ratio
     S(3)/S(6) = phi^{-3} ~ 0.236, where S(sigma) = pi phi^sigma is the
-    saturation entropy of 03-derivations (eq:tower-modes)."""
+    saturation entropy of 03-derivations (tower_mode_count)."""
 
     def test_ratio(self):
         S = lambda s: np.pi * PHI**s

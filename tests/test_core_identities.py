@@ -22,7 +22,7 @@ class TestDimensionLadder:
         assert abs(1j**2 + 1) < 1e-12
 
     def test_phi_identity(self):
-        """eq:phisq: phi^2 = phi + 1, the root behind thm:fib-min."""
+        """phi_sq_identity: phi^2 = phi + 1, the root behind fibonacci_minimality."""
         assert abs(PHI**2 - (PHI + 1)) < 1e-12
 
 
@@ -49,7 +49,7 @@ class TestPCFNorms:
 
 
 class TestCertainty:
-    """eq:certainty: eps_0 * M_PCF = pi."""
+    """certainty_product: eps_0 * M_PCF = pi."""
 
     def test_certainty_product(self):
         assert abs(EPS_0 * M_PCF - np.pi) < 1e-10

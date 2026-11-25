@@ -212,14 +212,14 @@ $\sigma=0,\dots,2n$, and its spectrum is computable in closed form.
 \begin{proposition}[The discrete Kaluza--Klein spectrum]\label{prop:kk-discrete-spectrum}
 Let $L$ be the second-difference operator of the warped scale direction on the $2n+1$ levels
 $\sigma=0,\dots,2n$, with the golden hopping amplitudes and the step $\ln\golden$ of
-\eqref{eq:tower-modes}:
+\eqref{tower_mode_count}:
 \begin{equation}\label{eq:kk-operator}
   L_{\sigma\sigma}=\frac{-2}{(\ln\golden)^{2}},\qquad
   L_{\sigma,\sigma-1}=\frac{\golden^{+2}}{(\ln\golden)^{2}},\qquad
   L_{\sigma,\sigma+1}=\frac{\golden^{-2}}{(\ln\golden)^{2}} .
 \end{equation}
 Then, with $m^{2}=-\lambda$,
-\begin{equation}\label{eq:kk-spectrum}
+\begin{equation}\label{kk_spectrum_closed_form}
   m^{2}_{k}=\frac{4}{(\ln\golden)^{2}}\,\sin^{2}\!\frac{k\pi}{4(n+1)},
   \qquad k=1,\dots,2n+1 ,
 \end{equation}
@@ -235,14 +235,14 @@ diagonal similarity $D=\operatorname{diag}(\golden^{\sigma})$ conjugates $L$ int
 \emph{symmetric} tridiagonal $(\ln\golden)^{-2}\,\mathrm{tridiag}(1,-2,1)$ on $2n+1$ nodes---the
 Dirichlet second-difference operator, whose spectrum is
 $-4\sin^{2}\bigl(k\pi/(2(2n+2))\bigr)$, $k=1,\dots,2n+1$, strictly negative. A similarity preserves
-the spectrum, so $\lambda_k<0$ and $m^{2}_k=-\lambda_k>0$, which is \eqref{eq:kk-spectrum} after
+the spectrum, so $\lambda_k<0$ and $m^{2}_k=-\lambda_k>0$, which is \eqref{kk_spectrum_closed_form} after
 $2(2n+2)=4(n+1)$.
 \end{proof}
 
 \begin{remark}[Where the sign convention comes from, and what the truncation does]\label{rmk:kk-sign}
 The convention $m^{2}=-\lambda$ is not imposed. The constant mode of the \emph{untruncated}
 operator \eqref{eq:kk-operator} has eigenvalue equal to the interior row sum,
-\begin{equation}\label{eq:kk-rowsum}
+\begin{equation}\label{kk_row_sum}
   \frac{\golden^{2}+\golden^{-2}-2}{(\ln\golden)^{2}}=\frac{1}{(\ln\golden)^{2}}\approx4.3184 ,
 \end{equation}
 whose numerator is exactly the golden identity \eqref{eq:kk-numerator}. With $m^{2}=-\lambda$ that
@@ -258,11 +258,11 @@ what makes the tower stable, and both halves are now computed rather than assert
 Two facts do the work, and each fails without its hypothesis. Reciprocity: with non-reciprocal
 amplitudes the symmetrisation is unavailable and modes of $m^{2}<0$ appear---$(\golden^{2},\golden^{-1})$
 gives $\lambda_{\max}=+1.51$ and $(\golden^{3},\golden^{-1})$ gives $+4.27$. And the base: the
-numerator of \eqref{eq:kk-rowsum} equals $1$ only for $\golden$, since $b^{2}+b^{-2}-2$ is
+numerator of \eqref{kk_row_sum} equals $1$ only for $\golden$, since $b^{2}+b^{-2}-2$ is
 $\tfrac94$ at $b=2$ and $\tfrac{64}9$ at $b=3$; that is where the arity
 $\golden^{2}+\golden^{-2}=3$ enters.
 \witness{P}{kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates}
-\witness{N}{eq:kk-rowsum, eq:kk-spectrum}
+\witness{N}{kk\_row\_sum, kk\_spectrum\_closed\_form}
 \end{remark}
 
 \paragraph{The mechanism, and what remains.}

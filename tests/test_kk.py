@@ -65,7 +65,7 @@ class TestKKSpectrum:
     NLEV = 2 * N_AR + 1  # 7
 
     def test_numerical_equals_closed(self):
-        """eq:kk-spectrum: the numerically diagonalised spectrum equals the
+        """kk_spectrum_closed_form: the numerically diagonalised spectrum equals the
         closed form -4 sin^2(k pi / 4(n+1)) / ln^2 phi."""
         lam_num = kk_spectrum(PHI**2, PHI**(-2), self.NLEV)
         lam_cf = sorted(
@@ -88,7 +88,7 @@ class TestKKSpectrum:
         assert max(abs(m2[k] + lam[self.NLEV - 1 - k]) for k in range(self.NLEV)) < tol
 
     def test_interior_row_sum(self):
-        """eq:kk-rowsum: the interior row of the operator sums to 1/ln^2 phi,
+        """kk_row_sum: the interior row of the operator sums to 1/ln^2 phi,
         because its numerator phi^2 + phi^{-2} - 2 equals 1."""
         L = kk_operator(PHI**2, PHI**(-2), self.NLEV)
         interior = self.NLEV // 2

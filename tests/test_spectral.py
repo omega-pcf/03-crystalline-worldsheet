@@ -18,7 +18,7 @@ from cw6.helpers import chi5, projector
 # ── Spectral angle ───────────────────────────────────────────────────────
 
 def alpha(s):
-    """eps_0 * M_PCF = pi (eq:certainty).  arctan(eps0 phi^s)."""
+    """eps_0 * M_PCF = pi (certainty_product).  arctan(eps0 phi^s)."""
     return mp.atan(EPS_0 * PHI**s)
 
 
@@ -272,7 +272,7 @@ class TestEnvelopeSplits:
 
 
 class TestLiModulus:
-    """prop:repulsion-modulus (eq:li-modulus): |1 - 1/rho| = 1 iff Re rho = 1/2."""
+    """repulsion_modulus_is_one (eq:li-modulus): |1 - 1/rho| = 1 iff Re rho = 1/2."""
 
     def test_equivalence(self):
         """|1-1/rho| = 1 iff Re rho = 1/2 (the critical line is [P], not [C])."""

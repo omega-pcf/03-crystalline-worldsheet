@@ -41,7 +41,7 @@ class TestEinsteinCurvature:
         assert G == 6
 
     def test_lambda5(self):
-        """eq:Lambda-from-curvature: Lambda_5 = -d(d-1)/2 = -6 at d = 4."""
+        """lambda5_from_curvature: Lambda_5 = -d(d-1)/2 = -6 at d = 4."""
         assert LAMBDA_5 == -6
 
     def test_sectional_curvature(self):
@@ -269,7 +269,7 @@ class TestIsraelJunction:
 
 
 class TestShellTension:
-    """eq:shell-tension: lambda_sigma = N_modes(sigma) / M_PCF (prop:shell-tension),
+    """shell_tension_from_mode_count: lambda_sigma = N_modes(sigma) / M_PCF (prop:shell-tension),
     feeding the cumulative back-reaction of rmk:backreaction."""
 
     def test_lambda_eq_nmodes_over_mpcf(self):
