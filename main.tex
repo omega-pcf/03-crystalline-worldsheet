@@ -119,7 +119,9 @@
 %   \tier{X}          -> [X]     the witness sits in the prose of the SAME
 %                                sentence (a \ref/\eqref of this manuscript,
 %                                the name of one of our Lean declarations, or
-%                                a \witness block)
+%                                a \witness block).  A site with no ids stays
+%                                class-pure: the bracket holds the class and
+%                                no id is invented for it.
 %   \tier[ids]{X}     -> X[ids]  the optional argument holds INTERNAL ids
 %                                only — a \label key of this manuscript or a
 %                                raw Lean declaration name, several of them
@@ -179,7 +181,7 @@
 \ExplSyntaxOff
 \newcommand{\tier}[2][]{%
   \ifx\relax#1\relax
-    {\mbox{\footnotesize\tiercol{#2}\textbf{#2}[#2]}}%
+    {\mbox{\footnotesize\tiercol{#2}\textbf{[#2]}}}%
   \else
     \in@{\cite}{#1}\ifin@
       \PackageError{tier}{the optional argument of \string\tier\space holds internal ids only}
