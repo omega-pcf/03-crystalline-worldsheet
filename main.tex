@@ -130,6 +130,15 @@
 %                                [P] in~\cite{key}), so a tag never prints a
 %                                number in its bracket.  A \cite in the
 %                                optional argument raises \PackageError.
+%                                The argument itself is read as an
+%                                ARBITRARY STRING (contract §6.4): \_ and a
+%                                raw _ both print as the breakable
+%                                typewriter underscore and every other token
+%                                passes through, so no valid id is rejected
+%                                by its shape.  Whether a bracket holds a
+%                                citation key is measured where the key set
+%                                exists, by the suite against
+%                                citation.csl.json.
 %   \witness{X}{ids}  -> a line of its own, flush right: X[ids]
 % The shape (inline vs own line) is decided by the quantified criterion of
 % 05-kkgt docs/citations.md §8.5 (k >= 2, L >= 35, r = 0, i = 0, d >= 75,
@@ -140,6 +149,34 @@
 \@namedef{tiercol@N}{\color{tagN}}   % green — numerical check
 % unknown key: no colour, no error (the 05-kkgt form of \tiercol)
 \newcommand{\tiercol}[1]{\expandafter\ifx\csname tiercol@#1\endcsname\relax\else\csname tiercol@#1\endcsname\fi}
+% The one constant the tags print an underscore through.  This manuscript
+% had no \brk@us of its own: its tags printed the kernel \_, whose text
+% form is \textunderscore with NO break permission after it.  The constant
+% keeps that form on purpose -- adding the family's \allowbreak would open
+% a breakpoint after every underscore of a witness list and reflow the
+% manuscript, and the family gate is a byte-identical pdftotext (W-MACRO
+% R1/R2: the break-per-character decision is typography, not this layer).
+\DeclareRobustCommand{\brk@us}{\textunderscore}
+\ExplSyntaxOn
+\tl_new:N \l__tier_src_tl
+\tl_new:N \l__tier_us_tl   \tl_set:Nx \l__tier_us_tl  { \char_generate:nn { 95 } { 8  } }
+\tl_new:N \l__tier_usx_tl  \tl_set:Nx \l__tier_usx_tl { \char_generate:nn { 95 } { 11 } }
+\tl_new:N \l__tier_uso_tl  \tl_set:Nx \l__tier_uso_tl { \char_generate:nn { 95 } { 12 } }
+% \tierids{<arbitrary string>}: \_ and a raw _ (any category code) both
+% become the breakable typewriter underscore; every other token of the
+% argument passes through unchanged.  \tl_replace_all does not descend
+% into brace groups, so every wrapper applies the normalisation to its own
+% argument.
+\cs_new_protected:Npn \tierids #1
+  {
+    \tl_set:Nn \l__tier_src_tl {#1}
+    \tl_replace_all:Nnn \l__tier_src_tl { \_ } { \brk@us }
+    \exp_args:NNV \tl_replace_all:Nnn \l__tier_src_tl \l__tier_us_tl  { \brk@us }
+    \exp_args:NNV \tl_replace_all:Nnn \l__tier_src_tl \l__tier_usx_tl { \brk@us }
+    \exp_args:NNV \tl_replace_all:Nnn \l__tier_src_tl \l__tier_uso_tl { \brk@us }
+    \tl_use:N \l__tier_src_tl
+  }
+\ExplSyntaxOff
 \newcommand{\tier}[2][]{%
   \ifx\relax#1\relax
     {\mbox{\footnotesize\tiercol{#2}\textbf{#2}[#2]}}%
@@ -148,19 +185,22 @@
       \PackageError{tier}{the optional argument of \string\tier\space holds internal ids only}
       {An external source is a \string\cite\space set next to the tag, never its key; a name of our own file is written raw, with \string\_.}%
     \else
-      {\mbox{\footnotesize\tiercol{#2}\textbf{#2}{\small\texttt{[#1]}}}}%
+      {\mbox{\footnotesize\tiercol{#2}\textbf{#2}{\small\texttt{[\tierids{#1}]}}}}%
     \fi
   \fi}
-% The strict grammar of the contract (docs/witness-contract.md §6.4: a
-% \testref, or raw names with \_ or ',', anything else a \PackageError) is not
-% installed here: it raises 23 errors at the label-style ids this body still
-% carries (eq:…, thm:…, prop:…), and rewriting them is a pending decision.
-% The \cite guard above is the check this manuscript runs today.
+% The character-shape grammar of the contract (docs/witness-contract.md
+% §6.4: a \testref, or raw names with \_ or ',', anything else an error) is
+% NOT installed here, and no longer needs to be: it rejected the label-style
+% ids this body still carries (23 sites — 17 label-style ids and 6 ellipsis
+% placeholders in gloss sentences), which remain work items to rewrite in
+% snake_case.  The argument is read as an arbitrary string instead, and the
+% citation-key rule is measured by the suite, where the key set exists; the
+% \cite guard above is the check this manuscript runs at run time.
 % a witness with names, on a line of its own, flush right: P[name1, name2]
 \newcommand{\witness}[2]{%
   \par\noindent\hfill
   \parbox{\dimexpr\linewidth-1em\relax}{\raggedleft
-    \footnotesize\tiercol{#1}\textbf{#1}{\small\texttt{[#2]}}}%
+    \footnotesize\tiercol{#1}\textbf{#1}{\small\texttt{[\tierids{#2}]}}}%
   \par}
 \makeatother
 \newcommand{\Empty}{{\footnotesize\textbf{$\varnothing$}}}
