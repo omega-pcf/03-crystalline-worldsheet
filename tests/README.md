@@ -1,7 +1,7 @@
 # Test suite — 03-crystalline-worldsheet
 
 The numerical companion of the manuscript (`02-methods`, "The numerical
-companion is the pytest suite in `tests/`). <!-- counts:begin id="suite-total" -->571<!-- counts:end id="suite-total" --> tests, ~25 s.
+companion is the pytest suite in `tests/`). <!-- counts:begin id="suite-total" -->573<!-- counts:end id="suite-total" --> tests, ~25 s.
 
 ## How to run it
 
@@ -9,7 +9,7 @@ companion is the pytest suite in `tests/`). <!-- counts:begin id="suite-total" -
 uv run python -m pytest tests/ -q          # full suite (the only entrypoint that works)
 pnpm test                                  # same, through the package script
 # counts:begin id="verify-py"
-pnpm run verify:py                         # same, minus the `slow`-marked tests (543)
+pnpm run verify:py                         # same, minus the `slow`-marked tests (545)
 # counts:end id="verify-py"
 uv run python -m pytest tests/ -q -m 'not slow'   # ditto, without pnpm
 uv run python -m pytest tests/test_kk.py -q       # one module

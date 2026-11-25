@@ -7,8 +7,8 @@
 
 | counter | value | measured from | quoted in |
 |---|---:|---|---|
-| `pytest.collected` | 571 | `uv run python -m pytest tests/ -q --collect-only` | `tests/README.md` (`suite-total`), `README.md` (`readme-suite`) |
-| `pytest.not_slow` | 543 | `uv run python -m pytest tests/ -q -m 'not slow' --collect-only` | `tests/README.md` (`verify-py`), `README.md` (`readme-verify-py`), `README.md` (`readme-verify-py-cmd`) |
+| `pytest.collected` | 573 | `uv run python -m pytest tests/ -q --collect-only` | `tests/README.md` (`suite-total`), `README.md` (`readme-suite`) |
+| `pytest.not_slow` | 545 | `uv run python -m pytest tests/ -q -m 'not slow' --collect-only` | `tests/README.md` (`verify-py`), `README.md` (`readme-verify-py`), `README.md` (`readme-verify-py-cmd`) |
 | `pytest.census` | 4 | `uv run python -m pytest tests/test_witness_census.py -q --collect-only` | `README.md` (`readme-census`) |
 | `lean.theorems` | 591 | declarations in `lean/CW6_complete_v2.lean` (comments stripped) | `README.md` (`readme-lean-theorems`) |
 | `lean.axioms` | 0 | axioms in `lean/CW6_complete_v2.lean` (comments stripped) | `README.md` (`readme-lean-axioms`) |
