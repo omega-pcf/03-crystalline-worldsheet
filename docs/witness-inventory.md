@@ -1,6 +1,6 @@
 # Witness inventory — 03-crystalline-worldsheet
 
-Generated 2026-11-25 from the working tree at `effbd3b` (`git rev-parse --short HEAD`), over `main.tex` and `src/**/*.tex` — 11 files. Every number below is read from those files at run time; nothing here is copied from an older document. The form taxonomy comes from FTI-001 §2, F8-001 §1, WIT-RECON-001 and INV-WIT-001 §A, which this file supersedes (`superseded-by: docs/witness-inventory.md`).
+Generated 2026-11-25 from the working tree at `9319adf` (`git rev-parse --short HEAD`), over `main.tex` and `src/**/*.tex` — 11 files. Every number below is read from those files at run time; nothing here is copied from an older document. The form taxonomy comes from FTI-001 §2, F8-001 §1, WIT-RECON-001 and INV-WIT-001 §A, which this file supersedes (`superseded-by: docs/witness-inventory.md`).
 
 ## Marks
 
