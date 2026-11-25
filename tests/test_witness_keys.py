@@ -1,4 +1,4 @@
-"""The citation-key rule of the tag grammar (docs/witness-contract.md §6.4).
+"""The citation-key rule of the tag grammar (docs/witness-contract.md §6.5).
 
 The tag macro reads a bracket as an arbitrary string, so it cannot know
 whether a part is one of OUR ids or one of the BIBLIOGRAPHY's keys; the key
@@ -155,7 +155,7 @@ def test_no_citation_key_sits_inside_a_tag() -> None:
     manuscript, split on the commas that sit outside ``\\testref{...}``; the
     keys are the ids of ``citation.csl.json``.  The tag macro accepts an
     arbitrary string, so this test -- not the macro -- is the whole of the
-    citation-key rule (contract §6.4).
+    citation-key rule (contract §6.5).
     """
     keys = citation_keys()
     assert keys, "citation.csl.json declares no id: the key set is empty"
