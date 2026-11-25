@@ -1,4 +1,17 @@
+> **superseded-by:** `docs/witness-decisions.md` — the family ledger, one row
+> per question, adopted 2026-11-25. Historical trace: the section numbers and
+> the `file:line` references below are **historical** and were measured at the
+> wave's HEADs; re-measure before quoting any of them.
+
 # Witness decision gates — 03-crystalline-worldsheet
+
+| Field | Value |
+|---|---|
+| **id** | `DEC-001` |
+| **title** | Witness decision gates — 03-crystalline-worldsheet |
+| **status** | superseded by `docs/witness-decisions.md` |
+| **date** | 2026-11-16 |
+| **version** | 1.0 |
 
 **For:** the main author.
 **Purpose:** every remaining choice about the verification-tag system (`\ProofWitness*`, `\NumericalWitness*`, `\HypWitness*`) is written here as a *gate*: one row, one decision, one recommendation, one exact replacement text. Nothing in this file has been applied except §0, which records the mechanical pass already done.

@@ -96,4 +96,6 @@ evidence and the method.>
 
 ## Reports of this repository
 
-*(none yet — the first report of this repository will be indexed here.)*
+| id | title | status | date | file |
+|---|---|---|---|---|
+| `DEC-001` | Witness decision gates — 03-crystalline-worldsheet | superseded by `docs/witness-decisions.md` (historical line numbers) | 2026-11-16 | [`20261116_DEC-001_witness_decision_gates.md`](20261116_DEC-001_witness_decision_gates.md) |
