@@ -83,7 +83,7 @@
 \definecolor{RoyalBlue}{cmyk}{1,0.50,0,0}
 % Verification tag colors
 \definecolor{tagP}{rgb}{0.15,0.35,0.65}  % dark blue — formal proof
-\definecolor{tagN}{rgb}{0.15,0.55,0.25}  % dark green — numerical check
+\definecolor{tagN}{rgb}{0.05,0.40,0.20}  % dark green — numerical check (family palette, contract §6.12 S6)
 \definecolor{tagH}{rgb}{0.70,0.25,0.10}  % dark red — hypothesis
 
 %%% ====================================================================
@@ -149,6 +149,9 @@
 \makeatletter
 \@namedef{tiercol@P}{\color{tagP}}   % blue  — formal proof (Lean)
 \@namedef{tiercol@N}{\color{tagN}}   % green — numerical check
+\@namedef{tiercol@H}{\color{tagH}}   % red   — hypothesis; no H mark is printed
+% today (the class was removed, WIT-001 §4), but the key exists so that an
+% H mark can never fall through to black silently (§6.12 S6)
 % unknown key: no colour, no error (the 05-kkgt form of \tiercol)
 \newcommand{\tiercol}[1]{\expandafter\ifx\csname tiercol@#1\endcsname\relax\else\csname tiercol@#1\endcsname\fi}
 % The one constant the tags print an underscore through.  This manuscript
@@ -181,13 +184,13 @@
 \ExplSyntaxOff
 \newcommand{\tier}[2][]{%
   \ifx\relax#1\relax
-    {\mbox{\footnotesize\tiercol{#2}\textbf{[#2]}}}%
+    {\mbox{\normalfont\footnotesize\tiercol{#2}\textbf{[#2]}}}%
   \else
     \in@{\cite}{#1}\ifin@
       \PackageError{tier}{the optional argument of \string\tier\space holds internal ids only}
       {An external source is a \string\cite\space set next to the tag, never its key; a name of our own file is written raw, with \string\_.}%
     \else
-      {\mbox{\footnotesize\tiercol{#2}\textbf{#2}{\small\texttt{[\tierids{#1}]}}}}%
+      {\mbox{\normalfont\footnotesize\tiercol{#2}\textbf{#2}{\small\texttt{[\tierids{#1}]}}}}%
     \fi
   \fi}
 % The character-shape grammar of the contract (docs/witness-contract.md
@@ -199,12 +202,34 @@
 % The argument is read as an arbitrary string instead, and the
 % citation-key rule is measured by the suite, where the key set exists; the
 % \cite guard above is the check this manuscript runs at run time.
-% a witness with names, on a line of its own, flush right: P[name1, name2]
+% THE MARK -- one name, placement-driven (contract §6.12 S7): the shape
+% follows the position of the call in the source, never the class.
+%   own paragraph (\ifvmode)  -> the block, flush right, \medskip above and
+%                               below, indent 0, no terminal punctuation
+%                               (S2-S5);
+%   mid-line in the source
+%   (\ifhmode)               -> the mark inside the sentence: no \par, no
+%                               indent, no space is eaten, the paragraph
+%                               does not break.
+% The body selects its own font (\normalfont ... \mdseries\upshape), so an
+% enclosing \itshape (amsthm's plain theorem style) cannot print the mark
+% bold italic; colour is ONE branch for the whole mark (S6), the letter and
+% the ids in the class colour; the sizes are the family rule 13/15 (CVR-001
+% TYP-4): the letter in \footnotesize, the ids in \small tt, upright.
 \newcommand{\witness}[2]{%
-  \par\noindent\hfill
-  \parbox{\dimexpr\linewidth-1em\relax}{\raggedleft
-    \footnotesize\tiercol{#1}\textbf{#1}{\small\texttt{[\tierids{#2}]}}}%
-  \par}
+  \ifvmode
+    \par\medskip\noindent\hfill
+    \parbox{\dimexpr\linewidth-1em\relax}{\raggedleft
+      \normalfont\footnotesize\bfseries\tiercol{#1}#1{\mdseries\upshape\small\ttfamily[\tierids{#2}]}}%
+    \par\medskip
+  \else
+    \in@{\cite}{#2}\ifin@
+      \PackageError{witness}{the ids of \string\witness\space are internal ids only}
+      {An external source is a \string\cite\space set next to the tag, never its key;}%
+    \else
+      {\normalfont\footnotesize\bfseries\tiercol{#1}#1{\mdseries\upshape\small\ttfamily[\tierids{#2}]}}%
+    \fi
+  \fi}
 \makeatother
 \newcommand{\Empty}{{\footnotesize\textbf{$\varnothing$}}}
 % Legacy (used once, in status section):

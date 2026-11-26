@@ -50,6 +50,7 @@ domain, closes with the orientation-reversing half-turn $e^{i\pi}=-1$. The world
 non-orientable and one-sided---the half-turn carries the module's interior edge to its exterior---so
 the bulk--boundary relation the torus carries admits no privileged side, independently of which torus
 carries the fibre.
+
 \witness{P}{fibre\_monodromy, fibre\_reflection\_order\_two, fibre\_independent\_of\_base}
 \end{proposition}
 
@@ -83,7 +84,9 @@ spectral invariants are
 The two $\tfrac32$'s of the corpus---the $\Gamma$ argument of \eqref{eq:half-factorial} and the
 spectral exponent here---are one value for a discriminating reason: the first is $1+\mu$, the
 second $3\mu$, and $1+\mu=3\mu$ has the unique solution $\mu=\tfrac12$; at arity $n$ the Basel
-route \eqref{eq:sigma-basel} gives $n^{2}/6$, which meets $\tfrac32$ only at $n=3$. \witness{P}{three\_halves\_unique, arity\_control\_three}
+route \eqref{eq:sigma-basel} gives $n^{2}/6$, which meets $\tfrac32$ only at $n=3$.
+
+\witness{P}{three\_halves\_unique, arity\_control\_three}
 
 \paragraph{The spectral angle and the uniqueness of the invariants.}
 At scale $\sigma$ the worldline subtends the spectral angle
@@ -118,6 +121,7 @@ $\alpha(\sigma)<\pi/2$ is a property of $\arctan$ and holds for every real argum
 not the certainty relation that keeps the angle off the right angle. The bound is used for one
 thing---it gives $\cos\alpha(\sigma)>0$, the hypothesis under which
 Corollary~\ref{cor:bridge-angle} divides by $\cos\alpha$.
+
 \witness{P}{spectral\_angle\_tan, spectral\_angle\_tower\_ratio}
 
 \end{proposition}
@@ -214,6 +218,7 @@ $55$. The distinction matters: the factor $\pi$ of \eqref{tower_mode_count} is t
 \eqref{certainty_product} and not a Fibonacci index, so the staircase is $\pi$-scaled and only
 \emph{shadows} the recurrence of Theorem~\ref{fibonacci_minimality}. Reading the tower as Fibonacci would
 put $55$ at the tower ceiling $\sigma=2n$, where the saturation entropy is largest \tier[fibonacci\_minimality]{N}.
+
 \witness{P}{fib\_adjacent\_le\_one, nmodes\_six\_ne\_fib}
 
 \end{remark}
@@ -226,6 +231,7 @@ The tower $z=\golden^{\sigma}$ of \eqref{tower_mode_count} defines the diagonal 
 \end{equation}
 self-adjoint (real diagonal) and bounded below, with the vacuum at $0$; its gap and the reconstruction
 it supports are established in \S\ref{sec:dof}.
+
 \witness{P}{tower\_ham\_is\_hermitian, tower\_ham\_bounded\_below}
 
 Two spectra must be kept apart here, and the framework supplies both from the same pair $\pi,\golden$.
@@ -275,6 +281,7 @@ The Euler product \eqref{eq:euler-product} of \S\ref{ssec:zeta} is here read on
 the string side. The arithmetic supplies the identity; the amplitude supplies that the pole positions
 $\alpha's=n$ of \eqref{eq:veneziano} are exactly its index set, with nonzero residue at every level.
 The physical content is the identification of the index set, not the arithmetic identity.
+
 \witness{P}{regge\_dirichlet\_eq\_zeta, regge\_tower\_is\_euler\_product}
 \end{remark}
 
@@ -295,7 +302,9 @@ Remark~\ref{rmk:eta-i} of \S\ref{ssec:zeta} it is the Gaussian lattice sum evalu
 point of $t\mapsto1/t$, $\Theta(1)=\golden^{\mu\lng}\eta(i)$ \eqref{eq:eta-i}, with
 $\golden^{\mu\lng}=\sqrt2$ the binary register of Proposition~\ref{prop:mediation}. The finiteness
 of \eqref{eq:pcf-partition} and the convergence of the completed zeta are therefore the same fact,
-read at $\tau=i$ and at general $t$. \witness{P}{theta\_from\_jacobi, theta\_fixed\_point\_unique}
+read at $\tau=i$ and at general $t$.
+
+\witness{P}{theta\_from\_jacobi, theta\_fixed\_point\_unique}
 
 \end{remark}
 
@@ -369,7 +378,9 @@ Eisenstein primes (\S\ref{sec:intro}). The discrete levels $\sigma=0,\dots,5$
 $H_5=\{0,1\}^5$, $|H_5|=2^{5}$, with
 $\Lambda_\sigma=\golden^{\sigma}\Lambda_{\PCF}$ and the saturation entropy
 $S(\sigma)=\pi\golden^{\sigma}$ \eqref{tower_mode_count}.
+
 \witness{P}{hopf\_latitude, hopf\_from\_clifford}
+
 \witness{P}{hypercube\_card, conductor\_attribution, four\_cocone, S\_tower}
 \begin{figure}[!htbp]\centering
 \resizebox{!}{0.85\textheight}{\includegraphics{fig5_three_panel.pdf}}
@@ -401,7 +412,9 @@ $S_3\to\Z_4$ between them preserves $|\Om|=\tfrac12$ and fixes $\tau=i$:
 this is $V^{\dagger}V=\mathbf 1$ read on the lattice --- bulk (geometry, $\Z[i]$) and boundary
 (algebra, $\Z[\omega]$) are two readings of one triangle, neither privileged, exactly as
 \eqref{eq:isometry} requires. The GKPW dictionary
-of \eqref{eq:isometry} enters cited~\cite{Maldacena98,GKP98,Witten98}. \witness{P}{holographic\_area, hopf\_from\_clifford, hopf\_latitude, G\_AB\_pcf, lambda5\_pcf, R\_scalar\_pcf, BF\_value, omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six, eisenstein\_omega, hypercube\_card}
+of \eqref{eq:isometry} enters cited~\cite{Maldacena98,GKP98,Witten98}.
+
+\witness{P}{holographic\_area, hopf\_from\_clifford, hopf\_latitude, G\_AB\_pcf, lambda5\_pcf, R\_scalar\_pcf, BF\_value, omega\_eigenvalues, a2\_minimal\_vectors\_exactly\_six, eisenstein\_omega, hypercube\_card}
 \begin{figure}[!htbp]\centering
 \includegraphics[width=\linewidth,trim={0 5cm 0 5cm},clip]{fig4_top_down.pdf}
 \caption{Isometry $\leftrightarrow$ algebra (bulk--boundary): left, the Eisenstein lattice $\Z[\omega]$
@@ -425,7 +438,9 @@ act on the golden monoid through the one composition law $\psi_p(\golden^{\,n})=
 exponents multiplying while the modulus stands.
 The gravitational data follow from the same $\mu=\tfrac12$, the $\tfrac34$ of the signature being
 the $\lVert v\rVert^{2}$ of \eqref{eq:isometry-triad} read as the colour ratio
-(Remark~\ref{rmk:spectral-origin}): \witness{P}{bulk\_boundary\_isometry, spectral\_uniqueness, bulk\_boundary\_isometry}
+(Remark~\ref{rmk:spectral-origin}):
+
+\witness{P}{bulk\_boundary\_isometry, spectral\_uniqueness, bulk\_boundary\_isometry}
 \begin{equation}\label{eq:brown-henneaux}
   \SBH=\frac{1}{4\GN}=\mu=\tfrac12,\qquad c=\frac{3\ell}{2\GN}=3\quad(\ell=1,\ \GN=\tfrac12).
 \end{equation}
@@ -503,6 +518,7 @@ $\Theta(1/t)=\sqrt t\,\Theta(t)$ \eqref{eq:theta-lattice}, and whose unique fixe
 $\tau=i$ (Proposition~\ref{prop:archimedean}). What \S\ref{ssec:zeta} proves is the transformation;
 what \eqref{eq:bridge-S} adds is that the string's electric--magnetic duality and the Galois
 conjugation $\golden\to-1/\golden$ are that same involution read on the coupling and on the field.
+
 \witness{P}{theta\_from\_jacobi, theta\_fixed\_point\_unique}
 \end{remark}
 
@@ -582,6 +598,7 @@ a round trip is the identity and composition is additive in $\sigma$.
 $\mu_3=\tfrac12$ ($|\Om|_\sigma=\tfrac12\ \forall\sigma$, \eqref{eq:tower-autosimilar}): the
 entanglement between $P$ (south) and $F$ (north), mediated by $C$, \emph{is} the bridge that joins
 them through the equatorial axis. Entanglement is geometry, derived from the modulus, not posited.
+
 \witness{P}{bridge\_cocycle, bridge\_inverse, bridge\_compose} % ADD fase 1: respaldo Lean del cociclo
 \end{proposition} The bridge and its $\tfrac14$ identity are shown in Fig.~\ref{fig:er-epr}.
 
@@ -621,7 +638,9 @@ $\sqrt2\,\sin(\alpha+\tfrac\pi4)/\cos\alpha=1+\tan\alpha$, and the $\tfrac\pi4$ 
 reason only: $\tan\tfrac\pi4=1$ is the $1$ that the cocycle adds to $\epsz\golden^{\sigma}$. So the
 $\mathrm{ER}=\mathrm{EPR}$ bridge and the spectral angle are one object, and the trigonometric form
 that Fig.~\ref{fig:er-epr} plots against the algebraic one is an identity, not a numerical
-coincidence. \witness{P}{bridge\_eq\_tan\_form, bridge\_pi\_quarter, spectral\_angle\_tan}
+coincidence.
+
+\witness{P}{bridge\_eq\_tan\_form, bridge\_pi\_quarter, spectral\_angle\_tan}
 
 \end{corollary}
 \begin{proof}
