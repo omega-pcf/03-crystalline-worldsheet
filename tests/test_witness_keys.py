@@ -7,7 +7,7 @@ check that needs external data runs outside the typesetting).  Ported from
 ``02-odd-zeta/tests/test_witness_census.py``, adapted to this repository's
 manuscript sources and key set.
 
-Rule: no part of a ``\\tier[...]`` or ``\\witness{...}{...}`` argument may
+Rule: no part of a ``\\witness[...]`` argument may
 equal the id of a record of ``citation.csl.json`` or carry a ``\\cite``
 token; an external source stays an adjacent ``\\cite`` in the prose.
 """
@@ -25,7 +25,7 @@ TEX_SOURCES = [source for source in TEX_SOURCES if source.exists()]
 # Two real keys of citation.csl.json, used only by the synthetic fixture.
 FIXTURE_KEYS = ("Strominger01", "Maldacena98")
 
-_TAG_SITE = re.compile(r"\\tier\[|\\witness\{")
+_TAG_SITE = re.compile(r"\\witness\s*\[")
 _TESTREF_WRAPPED = re.compile(r"^\\testref\{(.*)\}$", re.DOTALL)
 _KEYS: set[str] | None = None
 
@@ -70,7 +70,7 @@ def _read_optional(text: str, start: int) -> tuple[str, int] | None:
 
 
 def tag_arguments(text: str) -> list[tuple[int, str, str]]:
-    """``(line, macro, argument)`` for every ``\\tier[...]`` and ``\\witness{...}{...}``.
+    """``(line, macro, argument)`` for every ``\\witness[...]`` of the manuscript.
 
     A ``%`` before the site on its line comments it out in TeX, so such a
     site is not part of the manuscript and is not read as one here.
@@ -81,19 +81,10 @@ def tag_arguments(text: str) -> list[tuple[int, str, str]]:
         if "%" in text[line_start : match.start()]:
             continue
         line = text.count("\n", 0, match.start()) + 1
-        if match.group(0) == "\\tier[":
-            parsed = _read_optional(text, match.end() - 1)
-            if parsed is None:
-                continue
-            sites.append((line, "tier", parsed[0]))
-        else:
-            first = _read_group(text, match.end() - 1)
-            if first is None:
-                continue
-            second = _read_group(text, first[1])
-            if second is None:
-                continue
-            sites.append((line, "witness", second[0]))
+        parsed = _read_optional(text, match.end() - 1)
+        if parsed is None:
+            continue
+        sites.append((line, "witness", parsed[0]))
     return sites
 
 
@@ -151,7 +142,7 @@ def citation_offenders(text: str, keys: set[str], label: str) -> list[str]:
 def test_no_citation_key_sits_inside_a_tag() -> None:
     """No part of any tag bracket equals a citation key or carries ``\\cite``.
 
-    The corpus is every ``\\tier[...]`` and ``\\witness{...}{...}`` of the
+    The corpus is every ``\\witness[...]`` of the
     manuscript, split on the commas that sit outside ``\\testref{...}``; the
     keys are the ids of ``citation.csl.json``.  The tag macro accepts an
     arbitrary string, so this test -- not the macro -- is the whole of the
@@ -179,11 +170,11 @@ def test_the_tag_lint_catches_a_synthetic_insertion() -> None:
     assert set(FIXTURE_KEYS) <= keys, "the fixture keys left citation.csl.json"
     first, second = FIXTURE_KEYS
     synthetic = (
-        f"\\tier[{first}]{{P}}\n"
-        f"\\witness{{P}}{{{second}, a_valid_internal_id}}\n"
-        f"\\tier[\\cite{{{first}}}]{{N}}\n"
-        "\\tier[\\testref{a_valid_id, other_valid_id}]{N}\n"
-        "\\tier[a_valid_id]{N}\n"
+        f"\\witness[{first}]{{P}}\n"
+        f"\\witness[{second}, a_valid_internal_id]{{P}}\n"
+        f"\\witness[\\cite{{{first}}}]{{N}}\n"
+        "\\witness[\\testref{a_valid_id, other_valid_id}]{N}\n"
+        "\\witness[a_valid_id]{N}\n"
     )
     offenders = citation_offenders(synthetic, keys, "synthetic.tex")
     assert len(offenders) == 3, offenders

@@ -4,8 +4,8 @@ Witness census — every numerical witness of the manuscript is backed by a test
 The manuscript tags its claims with the verification tags of the family
 convention:
 
-    \\tier[KEY]{N}              numerical witness, inline
-    \\witness{N}{K1, K2}        numerical witness, block
+    \\witness[KEY]{N}           numerical witness, inline or block
+                                  (the position of the call picks the render)
     \\NumericalWitness{...}     legacy form, still parsed
 
 A numerical tag is only honest if (a) KEY is a real \\label of the document,
@@ -13,7 +13,7 @@ A numerical tag is only honest if (a) KEY is a real \\label of the document,
 call repeats a key.  This test turns that contract into a rule the suite keeps,
 so a retag or a new claim cannot drift away from its backing.
 
-Proof witnesses (\\tier[...]{P}, \\witness{P}{...}) are backed by lean/, not by
+Proof witnesses (\\witness[ids]{P}) are backed by lean/, not by
 pytest; their resolution is checked against lean/CW6_complete_v2.lean by the
 Lean build, not here.
 """
@@ -31,13 +31,29 @@ def _unescape(key: str) -> str:
     return key.replace(r"\_", "_").strip()
 
 
+def _split_ids(arg: str) -> list[str]:
+    """Top-level commas only: a comma inside ``\\testref{...}`` does not split."""
+    parts: list[str] = []
+    depth, current = 0, ""
+    for char in arg:
+        if char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+        if char == "," and depth == 0:
+            parts.append(current)
+            current = ""
+        else:
+            current += char
+    parts.append(current)
+    return [key for key in (_unescape(part) for part in parts) if key.strip()]
+
+
 def _numeric_keys(text: str):
     """All numerical-witness keys of one chapter, one list per witness call."""
     calls = []
-    for m in re.finditer(r"\\tier\[([^\]]+)\]\{N\}", text):
-        calls.append([_unescape(m.group(1))])
-    for m in re.finditer(r"\\witness\{N\}\{([^}]*)\}", text):
-        calls.append([_unescape(k) for k in m.group(1).split(",") if k.strip()])
+    for m in re.finditer(r"\\witness\s*\[([^\]]+)\]\{N\}", text):
+        calls.append(_split_ids(m.group(1)))
     for m in re.finditer(r"\\NumericalWitness(?:Block)?\{([^}]*)\}", text):
         calls.append([_unescape(k) for k in m.group(1).split(",") if k.strip()])
     return calls

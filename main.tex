@@ -114,15 +114,15 @@
 \newcommand{\epsz}{\varepsilon_{0}}
 \newcommand{\lng}{\lambda_{\log}}
 % Verification witness tags — the family grammar (contract: 05-kkgt
-% docs/witness-contract.md §6, linked from docs/style-guide.md). One macro, one
-% optional argument, one shape:
-%   \tier{X}          -> [X]     the witness sits in the prose of the SAME
+% docs/witness-contract.md §6, linked from docs/style-guide.md). ONE macro,
+% ONE argument order, two placements:
+%   \witness{X}        -> [X]     the witness sits in the prose of the SAME
 %                                sentence (a \ref/\eqref of this manuscript,
 %                                the name of one of our Lean declarations, or
-%                                a \witness block).  A site with no ids stays
-%                                class-pure: the bracket holds the class and
-%                                no id is invented for it.
-%   \tier[ids]{X}     -> X[ids]  the optional argument holds INTERNAL ids
+%                                a block of its own).  A site with no ids
+%                                stays class-pure: the bracket holds the
+%                                class and no id is invented for it.
+%   \witness[ids]{X}   -> X[ids]  the optional argument holds INTERNAL ids
 %                                only — a \label key of this manuscript or a
 %                                raw Lean declaration name, several of them
 %                                separated by ',', printed in tt inside the
@@ -141,19 +141,18 @@
 %                                citation key is measured where the key set
 %                                exists, by the suite against
 %                                citation.csl.json.
-%   \witness{X}{ids}  -> a line of its own, flush right: X[ids]
-% The shape (inline vs own line) is decided by the quantified criterion of
+% The placement (inline vs own line) is decided by the quantified criterion of
 % docs/witness-contract.md §6.10 (k >= 2, L >= 35, r = 0, i = 0, d >= 75,
 % amended by the heuristics u and p); the applied inventory lives in
 % docs/reports/20261116_WIT-001_criterion_sites.md.
 \makeatletter
-\@namedef{tiercol@P}{\color{tagP}}   % blue  — formal proof (Lean)
-\@namedef{tiercol@N}{\color{tagN}}   % green — numerical check
-\@namedef{tiercol@H}{\color{tagH}}   % red   — hypothesis; no H mark is printed
+\@namedef{markcol@P}{\color{tagP}}   % blue  — formal proof (Lean)
+\@namedef{markcol@N}{\color{tagN}}   % green — numerical check
+\@namedef{markcol@H}{\color{tagH}}   % red   — hypothesis; no H mark is printed
 % today (the class was removed, WIT-001 §4), but the key exists so that an
 % H mark can never fall through to black silently (§6.12 S6)
-% unknown key: no colour, no error (the 05-kkgt form of \tiercol)
-\newcommand{\tiercol}[1]{\expandafter\ifx\csname tiercol@#1\endcsname\relax\else\csname tiercol@#1\endcsname\fi}
+% unknown key: no colour, no error (the 05-kkgt form of \markcol)
+\newcommand{\markcol}[1]{\expandafter\ifx\csname markcol@#1\endcsname\relax\else\csname markcol@#1\endcsname\fi}
 % The one constant the tags print an underscore through (contract §6.12 S8):
 % line breaking of an id list is comma-first, "_" only as a fallback.  The
 % break after ", " is the natural interword break (penalty 0) and the break
@@ -189,27 +188,16 @@
     \tl_use:N \l__tier_src_tl
   }
 \ExplSyntaxOff
-\newcommand{\tier}[2][]{%
-  \ifx\relax#1\relax
-    {\mbox{\normalfont\footnotesize\tiercol{#2}\textbf{[#2]}}}%
-  \else
-    \in@{\cite}{#1}\ifin@
-      \PackageError{tier}{the optional argument of \string\tier\space holds internal ids only}
-      {An external source is a \string\cite\space set next to the tag, never its key; a name of our own file is written raw, with \string\_.}%
-    \else
-      {\mbox{\normalfont\footnotesize\tiercol{#2}\textbf{#2}{\small\texttt{[\tierids{#1}]}}}}%
-    \fi
-  \fi}
 % The character-shape grammar of the contract (docs/witness-contract.md
 % §6.4: a \testref, or raw names with \_ or ',', anything else an error) is
 % NOT installed here, and no longer needs to be: it rejected the ids this
-% body still carries (18 id parts of \tier — 12 Lean declaration names of
+% body still carries (18 id parts — 12 Lean declaration names of
 % lean/CW6_complete_v2.lean and 6 ellipsis placeholders in gloss
 % sentences), which remain work items to rewrite in snake_case.
 % The argument is read as an arbitrary string instead, and the
 % citation-key rule is measured by the suite, where the key set exists; the
-% \cite guard above is the check this manuscript runs at run time.
-% THE MARK -- one name, placement-driven (contract §6.12 S7): the shape
+% \cite guard below is the check this manuscript runs at run time.
+% THE MARK -- ONE name, placement-driven (contract §6.12 S7): the shape
 % follows the position of the call in the source, never the class.
 %   own paragraph (\ifvmode)  -> the block, flush right, \medskip above and
 %                               below, indent 0, no terminal punctuation
@@ -218,23 +206,35 @@
 %   (\ifhmode)               -> the mark inside the sentence: no \par, no
 %                               indent, no space is eaten, the paragraph
 %                               does not break.
-% The body selects its own font (\normalfont ... \mdseries\upshape), so an
-% enclosing \itshape (amsthm's plain theorem style) cannot print the mark
-% bold italic; colour is ONE branch for the whole mark (S6), the letter and
-% the ids in the class colour; the sizes are the family rule 13/15 (CVR-001
-% TYP-4): the letter in \footnotesize, the ids in \small tt, upright.
-\newcommand{\witness}[2]{%
+% ONE argument order for both branches: \witness[ids]{X} — the ids first,
+% in the optional argument, the class second; a mark with no ids prints the
+% class-pure bracket [X] (contract §6.1).  The body selects its own font
+% (\normalfont ... \mdseries\upshape), so an enclosing \itshape (amsthm's
+% plain theorem style) cannot print the mark bold italic; colour is ONE
+% branch for the whole mark (S6), the letter and the ids in the class
+% colour; the sizes are the family rule 13/15 (CVR-001 TYP-4): the letter
+% in \footnotesize, the ids in \small tt, upright.
+% \witness@text keeps a mark written inside $...$ a TEXT mark (contract
+% §6.12 S7).  It replaces the \mbox the inline macro wrapped its mark in: a
+% \mbox freezes a long id list and defeats the S8 break policy.
+\def\witness@text#1{\ifmmode\text{#1}\else#1\fi}
+\def\witness@mark#1#2{%
+  \ifx\relax#1\relax
+    {\normalfont\footnotesize\bfseries\markcol{#2}[#2]}%
+  \else
+    {\normalfont\footnotesize\bfseries\markcol{#2}#2{\mdseries\upshape\small\ttfamily[\tierids{#1}]}}%
+  \fi}
+\newcommand{\witness}[2][]{%
   \ifvmode
     \par\medskip\noindent\hfill
-    \parbox{\dimexpr\linewidth-1em\relax}{\raggedleft
-      \normalfont\footnotesize\bfseries\tiercol{#1}#1{\mdseries\upshape\small\ttfamily[\tierids{#2}]}}%
+    \parbox{\dimexpr\linewidth-1em\relax}{\raggedleft\witness@mark{#1}{#2}}%
     \par\medskip
   \else
-    \in@{\cite}{#2}\ifin@
-      \PackageError{witness}{the ids of \string\witness\space are internal ids only}
+    \in@{\cite}{#1}\ifin@
+      \PackageError{witness}{the optional argument of \string\witness\space holds internal ids only}
       {An external source is a \string\cite\space set next to the tag, never its key;}%
     \else
-      {\normalfont\footnotesize\bfseries\tiercol{#1}#1{\mdseries\upshape\small\ttfamily[\tierids{#2}]}}%
+      \witness@text{\witness@mark{#1}{#2}}%
     \fi
   \fi}
 \makeatother

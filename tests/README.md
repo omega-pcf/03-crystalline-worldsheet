@@ -41,7 +41,7 @@ tests/
 │   └── helpers.py         shared computations: chi5, fib, the prime sieve,
 │                          Euler/Dedekind products, Gell-Mann matrices, zeta
 │                          zeros, random null vectors, …
-├── test_witness_census.py every \tier[…]{N} / \witness{N}{…} key of the
+├── test_witness_census.py every \witness[…]{N} key of the
 │                          manuscript is a real \label and is named by a test
 └── test_*.py              one module per section of the paper
 ```

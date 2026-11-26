@@ -3,7 +3,7 @@
 This appendix collects, for each physical quantity asserted in the body, the explicit derivation with its
 formally verified tag. Every quantity below is an \emph{output} of the framework---a consequence of the
 microstate $|\Om|=\tfrac12$, the golden tower $z=\golden^{\sigma}$, and the lattice/Clifford/Hopf structure of
-the torus---not an external value matched by hand. The \tier[...]{P} tags certify the \emph{algebraic} identities (the
+the torus---not an external value matched by hand. The \witness[...]{P} tags certify the \emph{algebraic} identities (the
 $\golden$-arithmetic, the dimensions, the moduli); the \emph{physical} identification of each quantity is the
 argument of the body, not of Lean.
 
@@ -36,7 +36,7 @@ tensor, computed directly, all vanish:
 \]
 The ETS metric is therefore \emph{intrinsically flat}---Weyl vanishes because Riemann does---and is
 not de~Sitter (which is curved, $R=12H^2$) but the flat five-dimensional \emph{ambient} in which
-de~Sitter embeds \tier[ets\_constant\_block\_christoffels\_vanish]{P}.
+de~Sitter embeds \witness[ets\_constant\_block\_christoffels\_vanish]{P}.
 
 \paragraph{The extended light cones (causal classification).} Because \eqref{eq:ets-metric}
 is Lorentzian with signature $(-,+,+,+,+)$, it carries a light-cone structure. For two events
@@ -96,7 +96,7 @@ de~Sitter accessible to the observer.
 \paragraph{Two corrections.} The same computation corrects two statements sometimes made about this
 metric: the ETS metric has $C_{abcd}=0$ (being flat, its Weyl tensor cannot be nonzero), and the
 constant-$\sigma$ slices of the ETS metric are totally geodesic, $K_{\mu\nu}=0$, not
-$K_{\mu\nu}=(\lambda/\sigma^2)g_{\mu\nu}$ \tier[ets\_slices\_totally\_geodesic]{P}.
+$K_{\mu\nu}=(\lambda/\sigma^2)g_{\mu\nu}$ \witness[ets\_slices\_totally\_geodesic]{P}.
 
 \subsection{The gauge group $\mathrm{SU}(3)\times\mathrm{SU}(2)\times\mathrm{U}(1)$}\label{app:gauge}
 The internal gauge content descends from three substructures the torus already carries. The Eisenstein
@@ -199,7 +199,7 @@ the reduced Newton constant being the squared modulus, $G_4=|\Om|^{2}=(\tfrac12)
 The boundary Casimir $\tfrac34$ and the bulk Newton $\tfrac14$ sum to unity,
 $\tfrac34+\tfrac14=1$ and the boundary density ratio is $\golden^{-2}-1=-\golden^{-1}$.
 
-\witness{P}{boundary\_density\_ratio, casimir\_plus\_newton}
+\witness[boundary\_density\_ratio, casimir\_plus\_newton]{P}
 
 \paragraph{The Breitenlohner--Freedman bound and discrete stability.}
 For $\mathrm{AdS}_5$ the Breitenlohner--Freedman bound is $m^2_{BF}=-d^2/4=-4$ ($d=4$),
@@ -228,7 +228,7 @@ which at $n=3$ gives seven modes $m^{2}_{k}=4\sin^{2}(k\pi/16)/(\ln\golden)^{2}$
 positive, the lowest $\approx0.657$ and the highest $\approx16.616$. Every one lies above the bound
 \eqref{eq:kk-BF}, so the discrete tower is stable.
 
-\witness{P}{kk\_hopping\_reciprocal, kk\_discrete\_spectrum, kk\_discrete\_positive, kk\_above\_BF, KK\_BF\_bound}
+\witness[kk\_hopping\_reciprocal, kk\_discrete\_spectrum, kk\_discrete\_positive, kk\_above\_BF, KK\_BF\_bound]{P}
 \end{proposition}
 \begin{proof}
 The two hopping amplitudes are \emph{reciprocal}, $\golden^{+2}\cdot\golden^{-2}=1$, because
@@ -249,7 +249,7 @@ operator \eqref{eq:kk-operator} has eigenvalue equal to the interior row sum,
 \end{equation}
 whose numerator is exactly the golden identity \eqref{eq:kk-numerator}. With $m^{2}=-\lambda$ that
 mode carries $m^{2}=-1/(\ln\golden)^{2}\approx-4.318$: the continuous value quoted above, below the
-bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \tier[log\_phi\_lt\_half]{P}.
+bound \eqref{eq:kk-BF} because $\ln\golden<\tfrac12$ \witness[log\_phi\_lt\_half]{P}.
 Truncating to the
 $2n+1$ levels removes the constant mode---the boundary rows have row sums
 $(\golden^{-2}-2)$ and $(\golden^{2}-2)$ over $(\ln\golden)^{2}$, so the all-ones vector is no
@@ -264,9 +264,9 @@ numerator of \eqref{kk_row_sum} equals $1$ only for $\golden$, since $b^{2}+b^{-
 $\tfrac94$ at $b=2$ and $\tfrac{64}9$ at $b=3$; that is where the arity
 $\golden^{2}+\golden^{-2}=3$ enters.
 
-\witness{P}{kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates}
+\witness[kk\_rowsum\_eq\_numerator, kk\_continuous\_below\_BF, kk\_reciprocal\_discriminates]{P}
 
-\witness{N}{kk\_row\_sum, kk\_spectrum\_closed\_form}
+\witness[kk\_row\_sum, kk\_spectrum\_closed\_form]{N}
 \end{remark}
 
 \paragraph{The mechanism, and what remains.}
@@ -277,14 +277,14 @@ $\mathrm{U}(1)\times\mathrm{U}(1)$, abelian and of dimension $2$, so no such red
 non-abelian $A^{a}_\mu$. The torus enters instead as the \emph{maximal torus} of the gauge group---rank
 $2$, Weyl group $S_3$, root lattice $A_2$, the three data the construction already carries
 (Proposition~\ref{prop:a2})---and the gauge bosons arise by enhancement at the self-dual radius
-$R^{2}=\alpha'$\,\tier[tdual\_selfdual]{P}
+$R^{2}=\alpha'$\,\witness[tdual\_selfdual]{P}
 where the minimal vectors of the lattice supply the root
 generators and the torus supplies the Cartan subalgebra. The dimension count is then
 $\dim\mathfrak g=\text{kissing}+\text{rank}$, satisfied at every rung of the ladder of
 Proposition~\ref{prop:ladder}: $8=6+2$, $28=24+4$, $78=72+6$, $248=240+8$. What remains open is not the
 mechanism but the explicit mode expansion realising it.
 
-\witness{P}{ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims, a2\_minimal\_vectors\_exactly\_six, tdual\_selfdual}
+\witness[ladder\_dim\_eq\_kissing\_plus\_rank, fks\_ladder\_dims, a2\_minimal\_vectors\_exactly\_six, tdual\_selfdual]{P}
 
 
 
@@ -306,7 +306,7 @@ The term-level content is the reindexing $n=5m+a$,
   (5m+a)^{-s}=5^{-s}(m+a/5)^{-s},
 \end{equation}
 which pulls one factor $5^{-s}$ out of every term. The rearrangement of the convergent series is
-the classical input.  (the rearrangement~\cite{Hurwitz1891}) \tier[hurwitz\_reindex]{P}
+the classical input.  (the rearrangement~\cite{Hurwitz1891}) \witness[hurwitz\_reindex]{P}
 
 \paragraph{Even values.}
 \begin{equation}\label{eq:even-L}
@@ -318,7 +318,7 @@ $\zeta(-n,x)=-B_{n+1}(x)/(n+1)$ and the functional equation is the classical inp
 $L(2,\chi_5)=\sqrt5\pi^{2}\cdot\tfrac{4}{125}$, $L(4,\chi_5)=\sqrt5\pi^{4}\cdot\tfrac{8}{1875}$,
 $L(6,\chi_5)=\sqrt5\pi^{6}\cdot\tfrac{536}{1171875}$.
 
-\witness{P}{even\_L\_rationality, bernoulli\_eval\_rational}
+\witness[even\_L\_rationality, bernoulli\_eval\_rational]{P}
 
 
 \paragraph{The Archimedean density.}
@@ -342,5 +342,5 @@ An independent check that never touches Gauss--Binet: the von Mangoldt explicit 
 $u\,d\psi/du=u-\sum_\rho u^{\rho}-1/(u^{2}-1)$, so
 $N_\Q-u\,d\psi/du=1+1/(u^{2}-1)=u^{2}/(u^{2}-1)$, reproducing $\kappa_\Q$.
 
-\witness{P}{kappa\_k\_two\_real\_places, kappa\_k\_alt, kappa\_k\_simple\_pole, kappa\_k\_pole\_numerator\_at\_one, kappa\_k\_pos, kappa\_k\_exp, kappa\_per\_real\_place}
+\witness[kappa\_k\_two\_real\_places, kappa\_k\_alt, kappa\_k\_simple\_pole, kappa\_k\_pole\_numerator\_at\_one, kappa\_k\_pos, kappa\_k\_exp, kappa\_per\_real\_place]{P}
 
