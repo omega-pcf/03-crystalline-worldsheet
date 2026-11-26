@@ -154,14 +154,21 @@
 % H mark can never fall through to black silently (§6.12 S6)
 % unknown key: no colour, no error (the 05-kkgt form of \tiercol)
 \newcommand{\tiercol}[1]{\expandafter\ifx\csname tiercol@#1\endcsname\relax\else\csname tiercol@#1\endcsname\fi}
-% The one constant the tags print an underscore through.  This manuscript
-% had no \brk@us of its own: its tags printed the kernel \_, whose text
-% form is \textunderscore with NO break permission after it.  The constant
-% keeps that form on purpose -- adding the family's \allowbreak would open
-% a breakpoint after every underscore of a witness list and reflow the
-% manuscript, and the family gate is a byte-identical pdftotext (W-MACRO
-% R1/R2: the break-per-character decision is typography, not this layer).
-\DeclareRobustCommand{\brk@us}{\textunderscore}
+% The one constant the tags print an underscore through (contract §6.12 S8):
+% line breaking of an id list is comma-first, "_" only as a fallback.  The
+% break after ", " is the natural interword break (penalty 0) and the break
+% inside an identifier is DISCOURAGED (penalty 500), so a list splits at its
+% commas and only an identifier longer than the remaining measure is split at
+% all -- never \allowbreak (= penalty 0), which makes the mid-identifier break
+% equally attractive, and never a bare \textunderscore (the old form of this
+% manuscript), which is the opposite extreme: no break inside an id at all,
+% the one that can go overfull.  The penalty-tuned form sits between them.
+% The trailing \relax is load-bearing: after a <dimen> TeX scans the keywords
+% `plus' and `minus' of \hskip, and an identifier that begins -- right after
+% the underscore -- with the letters `minus' or `plus' would be eaten as that
+% keyword ("Missing number ... Illegal unit of measure").  \relax is not a
+% letter, so both keyword scans push it back and the id prints whole.
+\DeclareRobustCommand{\brk@us}{\textunderscore\penalty500\hskip0pt\relax}
 \ExplSyntaxOn
 \tl_new:N \l__tier_src_tl
 \tl_new:N \l__tier_us_tl   \tl_set:Nx \l__tier_us_tl  { \char_generate:nn { 95 } { 8  } }
