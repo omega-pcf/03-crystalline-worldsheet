@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.3.0](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.2.1...v1.3.0) (2026-11-28)
+
+### Features
+
+* **03:** apply the family placement criterion to all 223 witness marks ([dcedf5b](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/dcedf5b2f843ae250963af2958f0a80baadee8d5))
+* **03:** enforce the family witness rules on the body text ([287c358](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/287c35840d42df8ad6f72b137c2c25c2847c2806))
+* **build:** add the shared-file manifest gate ([a1995cf](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/a1995cff8a18a833d2337a36bb7fbdd671787684))
+* **build:** generate the counts the living documents state ([e854908](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/e85490874d9d4b571cb930b9559f32946b4baef8))
+* **build:** measure the README's counted claims ([8be3d10](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8be3d10dafab7f890bf5803195d9f9ca4e075729))
+* **build:** sync the count regions before the render and pin build.ts ([d529b4c](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/d529b4c945596cafdd859790b7fc68907304c71a))
+* **citation:** port the selfcitations pipeline with the two-tier version token ([8bad52c](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8bad52cb6a5c59c12bfdc624a602924d7bcdd811))
+* **scripts:** generate the witness census and gate it in validate ([6abae2d](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/6abae2def3d14108f39aaee1617886109690038c))
+
+### Bug Fixes
+
+* **build:** commit the clean version token and inject the dev suffix at build time ([8895266](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/8895266bdb61829a48747df5991ef97d3f84d25b))
+* **build:** emit ReleaseConfig from the types generator ([a6ec936](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/a6ec93621097e5b7ddf23aaccf4d01079fb8a52a))
+* **citation:** align the CFF title typography (Unicode F1) ([43d8db0](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/43d8db05c72278261539892611c8a24a73485f19))
+* **citation:** stamp dates in the project timezone ([9f960f6](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/9f960f6052d0d7fc150972f13f56fdd255750051))
+* **citation:** typeset the version token in monospace ([f737739](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/f737739c4e2a5ce2212156f2efb19069d636b739))
+* **citation:** unify the Grisales Herrera record to the Universidad del Tolima repository original ([113c6ec](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/113c6ec4b135091eb1abd2aebfff2d103c2e7496))
+* **citation:** use the canonical en-dash title in cross-references ([324fbe9](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/324fbe9934b094701115d42e0f90f7a3ad028f25))
+* **figures:** pin the PDF font embedding and SOURCE_DATE_EPOCH ([ab866be](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/ab866be7f729bc587b1f990a6c7e2d3f11289809))
+* **frontmatter:** group amsart address and email blocks by institution ([d2c0ac4](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/d2c0ac4637c24ea89246be696c4350ae7140d18a))
+* **frontmatter:** print the family date line with datename in bold and the version ([eac4da5](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/eac4da5528c42bc86a7cc5b91e379b68cef5fe92))
+* **lean:** port CW6_complete_v2 to Lean/Mathlib v4.33.1 — synced with 02-odd-zeta fixes ([486f374](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/486f374c7fcf5fe21f85075c6071b9042263894e))
+* **lean:** rename ds_covers_half_hyperboloid to match the manuscript ([38e267a](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/38e267afa502063b3d8ba6c66e97c4fd1ac144cb))
+* **paper:** accept arbitrary tag strings in the witness macros ([b1fec34](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/b1fec3491b5de4a7ab8a0fba9149f8f9205c96b9))
+* **pipeline:** fail build on latexmk non-zero exit or empty biber .bbl (prevents silent success with stale PDF) ([b211379](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/b211379c1f10457edde441b1d374d1a2f0788db5))
+* **pipeline:** rename generated bibliography keys by position ([207d2d9](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/207d2d98e9635a6cb57077053bb1c24ae26649b7))
+* **preamble:** align the tag definitions with the contract ([861546c](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/861546c689704f07e8be323d2a60f1bd2bb33626))
+* **preamble:** guard the tiercol dispatch against unknown keys ([ee53ebd](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/ee53ebd6a460394a8ae0c1efc35ad2f837230060))
+* **witnesses:** gloss the verification tags at first use and fix three false claims ([6cdd069](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/6cdd06969df87f315af405183be50f154df306a1))
+* **witnesses:** mechanical normalization of the verification tags ([388331a](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/388331a33e97880cf20fd6b15db95482a49193c2))
+* **witness:** unify the break policy to S8 ([4edc048](https://github.com/omega-pcf/03-crystalline-worldsheet/commit/4edc04876b1cc2665c8a06d76de2fa3a7d324c86))
+
 ## [1.2.1](https://github.com/omega-pcf/03-crystalline-worldsheet/compare/v1.2.0...v1.2.1) (2026-09-01)
 
 ### Bug Fixes
