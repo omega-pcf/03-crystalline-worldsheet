@@ -922,7 +922,7 @@ which the section opened is settled by the same object that raised it.
 \draw (half) to[out=-30,in=180,looseness=0.5] (frac);
 \draw (frac) -- (uniq);
 \draw (gap) to[bend left=10] (uniq);
-% cierre III->III
+% closure III->III
 \draw[dashed, draw=red!55] (ein) to[out=-90,in=-90,looseness=0.5]
   node[below,font=\scriptsize]{III$\to$III} (int);
 
@@ -1668,24 +1668,24 @@ Every scale in this framework is the single modulus $\lvert\Om\rvert=\mu_3=\tfra
   nd/.style={inner sep=2pt, outer sep=1pt},
   ap/.style={draw, rounded corners=2pt, fill=black!5, inner sep=3pt},
   every path/.style={->, draw=black!72, line width=0.45pt}]
-  % raiz
+  % root
   \node[ap] (om)  at (0,3.0) {$\lvert\Om\rvert=\mu_3=\tfrac12$};
   \node[nd] (cy)  at (0,1.6) {$\varepsilon_0\Mpcf=2\pi\mu_3=\pi$};
-  % operadores / gap
+  % operators / gap
   \node[nd] (H)   at (3.6,4.2) {$H\lvert\sigma\rangle=m_0\golden^\sigma$};
   \node[nd] (S)   at (3.6,3.0) {$S(\sigma)=\pi\golden^\sigma$};
   \node[nd] (gp)  at (3.6,1.8) {$E_1-E_0=m_0$};
   \node[nd] (cg)  at (3.6,0.6) {$\Delta=\tfrac23 g^2$};
-  % tension soldada
+  % welded tension
   \node[nd] (tw)  at (7.4,3.6) {$\sigma_{\mathrm{tension}}S=\tfrac{4\pi^4}{q^2\Mpcf}$};
   \node[ap] (dc)  at (7.4,2.2) {$\Delta_{\mathrm{colour}}\propto\golden^{-\sigma/2}$};
-  % escala / color / placement
+  % scale / colour / placement
   \node[nd] (Mm)  at (11.2,4.0) {$M=\Mpcf$};
   \node[ap] (col) at (11.2,2.6) {colour scale $+$ running};
   \node[nd] (p5)  at (11.2,1.2) {$m_p/m_e=6\pi^5$};
-  % cierre
+  % closure
   \node[ap] (one) at (14.4,2.6) {one object};
-  % flechas (las que saltan un nodo rodean por un lado)
+  % arrows (the ones that skip a node route around one side)
   \draw (om)--(cy); \draw (cy)--(H); \draw (cy)--(S);
   \draw (H) to[bend right=28] (gp);
   \draw (S) to[bend left=28]  (cg);
